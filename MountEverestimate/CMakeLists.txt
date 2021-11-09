@@ -12,3 +12,10 @@ link_directories(${GOATEngine_LIB_DIR})
 add_executable(MountEverestimate main.cpp)
 
 target_link_libraries(MountEverestimate GOATEngine)
+
+#place all necessary dlls and assets in build folder
+add_custom_command(TARGET MountEverestimate POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/../dlls
+        ${PROJECT_SOURCE_DIR}/assets
+        $<TARGET_FILE_DIR:MountEverestimate>)

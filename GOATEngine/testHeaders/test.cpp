@@ -2,7 +2,10 @@
 // Created by Stijn van Loon on 9-11-2021.
 //
 
+#include <iostream>
 #include "test.h"
+#include "SDL.h"
+#include "SDL_ttf.h"
 
 void test::start() {
     bool quit = false;
@@ -10,16 +13,16 @@ void test::start() {
 
     SDL_Init(SDL_INIT_VIDEO);
 
-    SDL_Window* window = SDL_CreateWindow("WERKT",
+    SDL_Window *window = SDL_CreateWindow("Poc SDL2-TTF",
                                           SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640,
                                           480, 0);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
     TTF_Init();
 
-    TTF_Font* font = TTF_OpenFont("Kenney_Thick.ttf", 25);
+    TTF_Font *font = TTF_OpenFont("Kenney_Thick.ttf", 25);
     SDL_Color color = {255, 255, 255};
-    SDL_Surface* surface = TTF_RenderText_Blended(font, "Kaas is een zoogdier", color);
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Surface *surface = TTF_RenderText_Blended(font, "Kaas is een zoogdier", color);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
     int texW = 0;
     int texH = 0;
     SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
