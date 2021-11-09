@@ -3,13 +3,23 @@
 
 - C++ versie: 17
 
-## Opzetten
+## Opzetten - *Clion*
 
-- TODO: project builden
-- TODO: Clion headers naar .hpp zetten
-- TODO: brackets achter methode zetten in plaats van onder
+### Builden
+
+
+
+### .h naar .hpp
+
+
+
+### Brackets achter methode
+
+
 
 ## Werkmethode
+
+Er kan niet gepushed worden op master.
 
 We werken met feature-branches.
 
