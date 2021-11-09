@@ -21,7 +21,9 @@ link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL
 
 add_library(GOATEngine SHARED Engine.cpp testHeaders/test.cpp testHeaders/test.h)
 
-target_link_libraries(GOATEngine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
+target_link_libraries(GOATEngine PRIVATE SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
+target_include_directories(GOATEngine PUBLIC "lib/")
+target_include_directories(GOATEngine PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 add_custom_command(TARGET GOATEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
