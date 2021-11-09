@@ -1,0 +1,3 @@
+[submodule "GOATEngine/engine-headers"]
+	path = GOATEngine/engine-headers
+	url = https://github.com/42IN7SPICg/engine-headers.git
