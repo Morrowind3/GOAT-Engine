@@ -19,7 +19,7 @@ set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/lib/SQLite/lib")
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
 
-add_library(GOATEngine SHARED Engine.cpp)
+add_library(GOATEngine SHARED Engine.cpp testHeaders/test.cpp testHeaders/test.h)
 
 target_link_libraries(GOATEngine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

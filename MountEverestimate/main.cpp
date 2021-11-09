@@ -1,8 +1,9 @@
 #include <iostream>
-#include "Engine.hpp"
+#include "test.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    test t {};
+    t.start();
 
     return 0;
 }
