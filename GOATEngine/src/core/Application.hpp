@@ -11,9 +11,7 @@
 #include <string>
 #include <vector>
 
-using namespace spic;
-
-namespace spic {
+namespace Engine {
     class SceneManager;
 
     class Application : public NoCopyNoMove {

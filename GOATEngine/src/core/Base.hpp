@@ -1,17 +1,12 @@
-//
-// Created by Stijn van Loon on 12-11-2021.
-//
-
 #ifndef GOATENGINE_BASE_HPP
 #define GOATENGINE_BASE_HPP
-
 
 #include <memory>
 #include <functional>
 #include <utility>
 #include <cstring>
 
-namespace spic {
+namespace Engine {
     using int8 = std::int8_t;
     using int16 = std::int16_t;
     using int32 = std::int32_t;
@@ -29,6 +24,8 @@ namespace spic {
 
     template<typename T1, typename T2>
     using isBase = std::enable_if_t<std::is_base_of_v<T1, T2>, bool>;
+
+    // TODO: Reconsider everything below this comment
 
     template <class T>
     using ref = std::shared_ptr<T>;
@@ -66,6 +63,8 @@ namespace spic {
     constexpr UniqueDel<T> makeUnique(T* instance, std::function<void(T*)> deleter) {
         return UniqueDel<T>(instance, deleter);
     }
+
+    // TODO: Reconsider everything above this comment
 
     /**
      * @brief Cannot be copied nor moved to a different owner
