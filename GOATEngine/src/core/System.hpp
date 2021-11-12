@@ -6,7 +6,7 @@
 #define GOATENGINE_SYSTEM_HPP
 
 #include "Base.hpp"
-//#include "core/Scene.hpp"
+#include "Scene.hpp"
 
 #include <utility>
 
@@ -14,15 +14,18 @@ namespace spic {
     class SceneManager;
 
     class System {
+    protected:
+        SceneManager& manager;
+
     public:
-        explicit System(SceneManager& manager) : Manager(manager) { }
+        explicit System(SceneManager& manager) : manager(manager) {}
 
         /**
          * @brief On scene load is called when the system must load the scene resources
          *
          * @param scene Scene to load
          */
-        virtual void onSceneLoad(Scene<SceneObject>& scene) = 0;
+        virtual void onSceneLoad(Scene& scene) = 0;
 
         /**
          * @brief On update is called for every frame update
@@ -41,12 +44,9 @@ namespace spic {
          *
          * @param scene Scene to unload
          */
-        virtual void onSceneUnload(Scene<SceneObject>& scene) = 0;
+        virtual void onSceneUnload(Scene& scene) = 0;
 
         virtual ~System() = default;
-
-    protected:
-        SceneManager& manager;
     };
 }
 

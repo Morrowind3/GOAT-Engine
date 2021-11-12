@@ -22,7 +22,7 @@ include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INC
 link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
 
 #create target
-add_library(GOATEngine SHARED src/core/Engine.cpp src/core/Application.cpp src/core/Application.hpp src/core/Base.hpp src/core/System.hpp src/systems/RenderingSystem.cpp src/systems/RenderingSystem.hpp src/systems/apis/implementations/RendererImpl.cpp src/systems/apis/implementations/RendererImpl.hpp src/utils/Globals.cpp src/systems/apis/RendererApi.cpp src/systems/apis/RendererApi.hpp)
+add_library(GOATEngine SHARED src/core/Engine.cpp src/core/Application.cpp src/core/Application.hpp src/core/Base.hpp src/core/System.hpp src/systems/RenderingSystem.cpp src/systems/RenderingSystem.hpp src/systems/apis/implementations/RendererImpl.cpp src/systems/apis/implementations/RendererImpl.hpp src/utils/Globals.cpp src/systems/apis/RendererApi.cpp src/systems/apis/RendererApi.hpp src/managers/SceneManager.cpp src/managers/SceneManager.hpp src/core/Scene.cpp src/core/Scene.hpp src/core/GameObject.cpp src/core/GameObject.hpp)
 
 #assign libraries to target
 target_link_libraries(GOATEngine PRIVATE SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
