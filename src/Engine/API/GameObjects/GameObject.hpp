@@ -13,7 +13,7 @@ namespace Engine {
         GameObject(Transform transform, Sprite sprite, bool active);
         bool active;
         // TODO: Find a better way to store components than specifying each possible component type?
-        std::unique_ptr<std::vector<Script*>> scripts;
+        std::vector<Script*> scripts;
         Transform transform;
         Sprite sprite;
     };

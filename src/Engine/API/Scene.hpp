@@ -5,8 +5,10 @@
 #include "GameObjects/GameObject.hpp"
 
 namespace Engine {
-    struct Scene {
-        explicit Scene(std::vector<GameObject>& gameObjects);
-        std::vector<GameObject>& gameObjects;
+    class Scene {
+    public:
+        explicit Scene(std::string name);
+        std::string _name;
+        std::vector<GameObject> _gameObjects{};
     };
 }

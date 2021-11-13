@@ -9,8 +9,8 @@ void GoatTestScript::OnStart() {
 }
 
 void GoatTestScript::OnUpdate(double deltaTime) {
-    _self.transform.position.x++;
-    _self.transform.position.y++;
+    _self.transform._position.x++;
+    _self.transform._position.y++;
 }
 
 void GoatTestScript::OnDestroy() {

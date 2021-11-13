@@ -2,6 +2,4 @@
 
 using namespace Engine;
 
-Scene::Scene(std::vector<GameObject>& gameObjects) : gameObjects(gameObjects) {
-
-}
+Scene::Scene(std::string name) : _name(name) { }

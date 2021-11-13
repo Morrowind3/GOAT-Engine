@@ -2,7 +2,11 @@
 #include "../Engine/Engine.hpp"
 
 int main(int argc, char* args[]) {
-    GoatEngine engine{SceneManager{SCENES}};
+    GoatEngine engine{};
+
+    ExampleScene scene{};
+    engine._sceneManager.AddScene(scene);
+
     engine.Run();
     return 0;
 }
