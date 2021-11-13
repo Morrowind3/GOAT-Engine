@@ -9,7 +9,7 @@ set(GOATEngine_LIB_DIR "../GOATEngine/cmake-build-debug")
 include_directories(${GOATEngine_INCLUDE_DIR})
 link_directories(${GOATEngine_LIB_DIR})
 
-add_executable(MountEverestimate main.cpp)
+add_executable(MountEverestimate main.cpp src/Game.cpp src/Game.hpp)
 
 target_link_libraries(MountEverestimate GOATEngine)
 

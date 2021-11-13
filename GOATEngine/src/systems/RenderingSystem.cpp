@@ -14,12 +14,11 @@ void RenderingSystem::onInit()
     }
 }
 
-void RenderingSystem::onUpdate()
-{
+void RenderingSystem::onUpdate(double deltaTime) {
     RenderApi::beginTick();
-    for (auto &gameObject : _manager.getActiveScene()->getAllGameObjects()) {
+    for (auto& gameObject: _manager.getActiveScene()->getAllGameObjects()) {
         // TODO: ID
-        RenderApi::drawTexture(_textureManager->Get(0), Transform{Point{0,0},0,1,1});
+        RenderApi::drawTexture(_textureManager->Get(0), Transform{Point{0, 0}, 0, 1, 1});
     }
     RenderApi::endTick();
 }
@@ -29,3 +28,10 @@ void RenderingSystem::onDestroy()
 //    RenderApi::end();
 }
 
+void RenderingSystem::onSceneLoad(Scene& scene) {
+
+}
+
+void RenderingSystem::onSceneUnload(Scene& scene) {
+
+}

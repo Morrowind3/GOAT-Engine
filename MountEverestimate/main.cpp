@@ -1,6 +1,8 @@
-using namespace Engine;
+#include "src/Game.hpp"
 
 int main() {
+
+    Game game {};
 
     return 0;
 }
