@@ -14,3 +14,7 @@ void Scene::addGameObject(GameObject gameObject) {
 GameObject Scene::getGameObject(size_t id) {
     return this->registry.at(id);
 }
+
+std::map<size_t, GameObject> Scene::getAllGameObjects() {
+    return this->registry;
+}

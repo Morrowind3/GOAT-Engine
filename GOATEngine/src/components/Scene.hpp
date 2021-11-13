@@ -1,9 +1,9 @@
 #ifndef GOATENGINE_SCENE_HPP
 #define GOATENGINE_SCENE_HPP
 
-#include "GameObject.hpp"
-
 // TODO: Obviously needs fixing
+#include "../core/GameObject.hpp"
+
 namespace Engine {
     class Scene {
         public:

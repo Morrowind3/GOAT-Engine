@@ -8,18 +8,20 @@ RenderingSystem::RenderingSystem(SceneManager& manager):
 
 void RenderingSystem::onInit()
 {
-//    for (auto &gameObject : manager->_gameObjects) {
-//        RenderApi::loadTexture(gameObject.sprite.sprite);
-//    }
+    for (auto &gameObject : _manager.getActiveScene()->getAllGameObjects()) {
+        // TODO: ID
+        _textureManager->Store(0,RenderApi::loadTexture(gameObject.second.getSprite().path()));
+    }
 }
 
 void RenderingSystem::onUpdate()
 {
-//    RenderApi::beginTick();
-//    for (auto &gameObject : _scene->_gameObjects) {
-//        RenderApi::drawTexture(gameObject.sprite.sprite, gameObject.transform);
-//    }
-//    RenderApi::endTick();
+    RenderApi::beginTick();
+    for (auto &gameObject : _manager.getActiveScene()->getAllGameObjects()) {
+        // TODO: ID
+        RenderApi::drawTexture(_textureManager->Get(0), Transform{Point{0,0},0,1,1});
+    }
+    RenderApi::endTick();
 }
 
 void RenderingSystem::onDestroy()

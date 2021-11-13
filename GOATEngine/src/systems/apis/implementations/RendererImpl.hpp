@@ -9,7 +9,7 @@
 #include "SDL_image.h"
 
 #include "../../../core/Base.hpp"
-#include "../../../components/GameObject.hpp"
+#include "../../../core/GameObject.hpp"
 #include "../../../resources/Texture.hpp"
 #include "../../../managers/TextureManager.hpp"
 #include "../../../components/Transform.hpp"

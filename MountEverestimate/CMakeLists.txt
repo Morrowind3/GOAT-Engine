@@ -3,7 +3,7 @@ project(MountEverestimate)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(GOATEngine_INCLUDE_DIR "../GOATEngine/testHeaders")
+set(GOATEngine_INCLUDE_DIR "../GOATEngine")
 set(GOATEngine_LIB_DIR "../GOATEngine/cmake-build-debug")
 
 include_directories(${GOATEngine_INCLUDE_DIR})

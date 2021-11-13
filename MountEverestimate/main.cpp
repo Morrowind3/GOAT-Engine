@@ -1,9 +1,6 @@
-#include <iostream>
-#include "test.h"
+using namespace Engine;
 
 int main() {
-    test t {};
-    t.start();
 
     return 0;
 }

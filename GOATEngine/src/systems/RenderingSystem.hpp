@@ -8,7 +8,7 @@
 namespace Engine {
     class RenderingSystem : public System {
         public:
-            RenderingSystem(SceneManager& manager);
+            explicit RenderingSystem(SceneManager& manager);
             void onInit();
             void onUpdate();
             void onDestroy();
