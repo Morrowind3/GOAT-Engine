@@ -1,7 +1,6 @@
 #include "GameObject.hpp"
 
-#include <utility>
+using namespace Engine;
 
-GameObject::GameObject(Transform transform, Sprite sprite, const std::vector<GameComponent>& gameComponents)
-        : transform {transform}, sprite {std::move(sprite )}, _gameComponents(gameComponents) {
+GameObject::GameObject(Transform transform, Sprite sprite, bool active): transform {transform}, sprite{std::move(sprite)}, active {active} {
 }

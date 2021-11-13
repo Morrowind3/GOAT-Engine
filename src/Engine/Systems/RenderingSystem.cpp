@@ -1,6 +1,8 @@
 #include <iostream>
 #include "RenderingSystem.hpp"
-#include "../Components/Renderer.hpp"
+#include "../Systems/Apis/RendererApi.hpp"
+
+using namespace Engine;
 
 RenderingSystem::RenderingSystem(const Scene* scene) : System(scene)
 {
@@ -9,19 +11,19 @@ RenderingSystem::RenderingSystem(const Scene* scene) : System(scene)
 void RenderingSystem::OnInit()
 {
     std::cout << "RenderingSystem OnInit" << '\n';
-    for (auto &gameObject : _scene->_gameObjects) {
-        Renderer::LoadTexture(gameObject.sprite.sprite);
+    for (auto &gameObject : _scene->gameObjects) {
+        RendererApi::LoadTexture(gameObject.sprite.path);
     }
 }
 
 void RenderingSystem::OnUpdate()
 {
     std::cout << "RenderingSystem OnUpdate" << '\n';
-    Renderer::BeginTick();
-    for (auto &gameObject : _scene->_gameObjects) {
-        Renderer::DrawTexture(gameObject.sprite.sprite, gameObject.transform);
+    RendererApi::BeginRenderTick();
+    for (auto &gameObject : _scene->gameObjects) {
+        RendererApi::DrawTexture(gameObject.sprite.path, gameObject.transform);
     }
-    Renderer::EndTick();
+    RendererApi::EndRenderTick();
 }
 
 void RenderingSystem::OnUpdateDebug()
@@ -33,5 +35,5 @@ void RenderingSystem::OnUpdateDebug()
 void RenderingSystem::OnDestroy()
 {
     std::cout << "RenderingSystem OnDestroy" << '\n';
-    Renderer::End();
+    RendererApi::End();
 }

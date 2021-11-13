@@ -1,15 +1,18 @@
 #pragma once
 
 #include <memory>
-#include <vector>
+#include <map>
 
 #include "GameComponents/GameComponent.hpp"
 #include "Transform.hpp"
-#include "GameComponents/Sprite.hpp"
+#include "GameComponents/Render/Sprite.hpp"
 
-struct GameObject {
-    Transform transform;
-    Sprite sprite;
-    const std::vector<GameComponent>& _gameComponents; // TODO: Research object splicing
-    GameObject(Transform transform, Sprite sprite, const std::vector<GameComponent>& gameComponents);
-};
+namespace Engine {
+    struct GameObject {
+        GameObject(Transform transform, Sprite sprite, bool active);
+        bool active;
+        // TODO: Find a better way to store components than this
+        Transform transform;
+        Sprite sprite;
+    };
+}

@@ -1,5 +1,7 @@
 #include "SceneManager.hpp"
 
+using namespace Engine;
+
 SceneManager::SceneManager(const std::vector<Scene>& scenes) : _scenes(scenes)
 {    
 }

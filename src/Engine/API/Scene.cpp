@@ -1,5 +1,7 @@
 #include "Scene.hpp"
 
-Scene::Scene(std::vector<GameObject>& gameObjects) : _gameObjects(gameObjects) {
+using namespace Engine;
+
+Scene::Scene(std::vector<GameObject>& gameObjects) : gameObjects(gameObjects) {
 
 }

@@ -4,7 +4,9 @@
 
 #include "SDL_image.h"
 
-Engine::Engine(const SceneManager& scenes) :
+using namespace Engine;
+
+GoatEngine::GoatEngine(const SceneManager& scenes) :
 	_isRunning { false },
 	_sceneManager { std::make_unique<SceneManager>(scenes) },
 	_systems { std::make_unique<std::vector<std::unique_ptr<System>>>() },
@@ -13,7 +15,7 @@ Engine::Engine(const SceneManager& scenes) :
 	_systems->emplace_back(std::make_unique<RenderingSystem>(_scene.get()));
 }
 
-void Engine::Run() {
+void GoatEngine::Run() {
 	const int FPS = 60;
 	const int frameDelay = 1000 / FPS;
 	unsigned int frameStart;
@@ -36,10 +38,11 @@ void Engine::Run() {
 			SDL_Delay(frameDelay - frameTime);
 		}
 
+        // TODO: Replace with script
         // Prove that movement is possible
-        for(auto & gameObject : _scene->_gameObjects) {
-            gameObject.transform.position.x+=1.0;
-            gameObject.transform.position.y+=1.0;
+        for(auto & gameObject : _scene->gameObjects) {
+            gameObject.transform.position.x += 1.0;
+            gameObject.transform.position.y += 1.0;
         }
 
         if (ticks == 100) {

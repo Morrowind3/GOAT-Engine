@@ -1,13 +1,8 @@
 #pragma once
 
-enum class GameComponentType
-{
-    SPRITE
-};
-
-struct GameComponent {
-    GameComponentType type;
-    bool active;
-    
-    GameComponent(GameComponentType type, bool active);
-};
+namespace Engine {
+    struct GameComponent {
+        explicit GameComponent(bool _active);
+        bool active;
+    };
+}

@@ -4,7 +4,9 @@
 
 #include "GameObjects/GameObject.hpp"
 
-struct Scene {
-    explicit Scene(std::vector<GameObject>& gameObjects);
-    std::vector<GameObject>& _gameObjects;
-};
+namespace Engine {
+    struct Scene {
+        explicit Scene(std::vector<GameObject>& gameObjects);
+        std::vector<GameObject>& gameObjects;
+    };
+}

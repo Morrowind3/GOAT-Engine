@@ -21,18 +21,18 @@ link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL
 
 add_library(GOAT_Engine STATIC
         "Engine/API/GameObjects/GameComponents/GameComponent.hpp" "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
-        "Engine/API/GameObjects/GameComponents/Sprite.hpp" "Engine/API/GameObjects/GameComponents/Sprite.cpp"
+        "Engine/API/GameObjects/GameComponents/Render/Sprite.hpp" "Engine/API/GameObjects/GameComponents/Render/Sprite.cpp"
         "Engine/API/GameObjects/Transform.hpp" "Engine/API/GameObjects/Transform.cpp"
         "Engine/API/GameObjects/Point.hpp" "Engine/API/GameObjects/Point.cpp"
         "Engine/API/GameObjects/GameObject.hpp" "Engine/API/GameObjects/GameObject.cpp"
         "Engine/API/Scene.hpp" "Engine/API/Scene.cpp"
         "Engine/SceneManager.hpp" "Engine/SceneManager.cpp"
-        "Engine/Components/Libraries/RendererHandler.hpp" "Engine/Components/Libraries/RendererHandler.cpp"
-        "Engine/Components/Renderer.hpp" "Engine/Components/Renderer.cpp"
         "Engine/Systems/RenderingSystem.hpp" "Engine/Systems/RenderingSystem.cpp"
         "Engine/Systems/System.hpp" "Engine/Systems/System.cpp"
         "Engine/Engine.hpp" "Engine/Engine.cpp"
-)
+        Engine/Systems/Apis/Implementations/RendererImpl.cpp Engine/Systems/Apis/Implementations/RendererImpl.hpp
+        Engine/Resources/Texture.cpp Engine/Resources/Texture.hpp
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp)
 
 add_executable(Mount_Everestimate
         "Game/Game.cpp"
