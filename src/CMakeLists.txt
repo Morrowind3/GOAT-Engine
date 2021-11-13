@@ -32,7 +32,7 @@ add_library(GOAT_Engine STATIC
         "Engine/Engine.hpp" "Engine/Engine.cpp"
         Engine/Systems/Apis/Implementations/RendererImpl.cpp Engine/Systems/Apis/Implementations/RendererImpl.hpp
         Engine/Resources/Texture.cpp Engine/Resources/Texture.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp)
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp)
 
 add_executable(Mount_Everestimate
         "Game/Game.cpp"

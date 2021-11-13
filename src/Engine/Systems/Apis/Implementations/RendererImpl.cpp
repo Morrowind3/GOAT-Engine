@@ -4,7 +4,8 @@ using namespace Engine;
 
 RendererImpl::RendererImpl() :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
-        _textures(std::make_unique<std::map<std::string, SDL_Texture*>>()),
+        _textures(std::make_unique<TextureManager>()),
+        // TODO: Make window parameters variable
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow("Engine PoC", 200, 200, 640, 480, 0), SDL_DestroyWindow}},
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0),
@@ -14,10 +15,9 @@ RendererImpl::RendererImpl() :
 
 void RendererImpl::LoadTexture(const std::string& fileName) {
     SDL_Surface* tempSurface = IMG_Load(fileName.c_str());
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(_renderer.get(), tempSurface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(_renderer.get(), tempSurface);
     SDL_FreeSurface(tempSurface);
-    std::pair<std::string, SDL_Texture*> insertPair{fileName, tex};
-    _textures->insert(insertPair);
+    _textures->store(std::pair<std::string, SDL_Texture*> {fileName, texture});
 }
 
 void RendererImpl::BeginRenderTick() {
@@ -25,7 +25,7 @@ void RendererImpl::BeginRenderTick() {
 }
 
 void RendererImpl::DrawTexture(const std::string& name, const Transform& transform) {
-    auto texture = _textures->at(name);
+    auto texture = _textures->get(name);
     int textureWidth, textureHeight;
     SDL_QueryTexture(texture, nullptr, nullptr, &textureWidth, &textureHeight);
     SDL_Rect source{}, destination{};
