@@ -2,6 +2,7 @@
 #define GOAT_ENGINE_TEXTUREMANAGER_HPP
 
 #include "SDL.h"
+#include "Texture.hpp"
 #include <map>
 #include <memory>
 
@@ -9,11 +10,11 @@ namespace Engine {
     class TextureManager {
         public:
             TextureManager();
-            void store(std::pair<std::string,SDL_Texture*> texture);
-            SDL_Texture* get(const std::string& name);
+            void store(std::string name, SDL_Texture* data);
+            const Texture& get(const std::string& name) const;
             void remove(const std::string& name);
         private:
-            std::unique_ptr<std::map<std::string,SDL_Texture*>> _textures;
+            std::unique_ptr<std::map<std::string,Texture>> _textures;
     };
 }
 

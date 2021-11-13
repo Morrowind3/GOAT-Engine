@@ -8,7 +8,7 @@
 #include "SDL_image.h"
 
 #include "../../../API/GameObjects/GameObject.hpp"
-#include "../../../Resources/Texture.hpp"
+#include "Managers/Texture.hpp"
 #include "../../../API/GameObjects/Transform.hpp"
 #include "Managers/TextureManager.hpp"
 

@@ -2,11 +2,12 @@
 
 using namespace Engine;
 
-TextureManager::TextureManager(): _textures { std::make_unique<std::map<std::string,SDL_Texture*>>() } {
+TextureManager::TextureManager(): _textures { std::make_unique<std::map<std::string,Texture>>() } {
 
 }
 
-void TextureManager::store(std::pair<std::string,SDL_Texture*> texture) {
+void TextureManager::store(std::string name, SDL_Texture* data) {
+    std::pair<std::string,Texture> texture { name, Texture{data} };
     auto iterator { _textures->find(texture.first) };
     if (iterator == _textures->end()) {
         _textures->insert(texture);
@@ -16,7 +17,7 @@ void TextureManager::store(std::pair<std::string,SDL_Texture*> texture) {
     }
 }
 
-SDL_Texture* TextureManager::get(const std::string& name) {
+const Texture& TextureManager::get(const std::string& name) const {
     return _textures->at(name);
 }
 

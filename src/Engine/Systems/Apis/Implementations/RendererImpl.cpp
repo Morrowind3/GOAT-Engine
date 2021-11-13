@@ -17,7 +17,7 @@ void RendererImpl::LoadTexture(const std::string& fileName) {
     SDL_Surface* tempSurface = IMG_Load(fileName.c_str());
     SDL_Texture* texture = SDL_CreateTextureFromSurface(_renderer.get(), tempSurface);
     SDL_FreeSurface(tempSurface);
-    _textures->store(std::pair<std::string, SDL_Texture*> {fileName, texture});
+    _textures->store(fileName, texture);
 }
 
 void RendererImpl::BeginRenderTick() {
@@ -26,20 +26,18 @@ void RendererImpl::BeginRenderTick() {
 
 void RendererImpl::DrawTexture(const std::string& name, const Transform& transform) {
     auto texture = _textures->get(name);
-    int textureWidth, textureHeight;
-    SDL_QueryTexture(texture, nullptr, nullptr, &textureWidth, &textureHeight);
     SDL_Rect source{}, destination{};
 
     source.x = source.y = 0;
-    source.w = static_cast<int>(transform.width) * textureWidth;
-    source.h = static_cast<int>(transform.height) * textureHeight;
+    source.w = static_cast<int>(transform.width) * texture.width();
+    source.h = static_cast<int>(transform.height) * texture.height();
 
     destination.x = static_cast<int>(transform.position.x);
     destination.y = static_cast<int>(transform.position.y);
-    destination.w = static_cast<int>(transform.width) * textureWidth;
-    destination.h = static_cast<int>(transform.height) * textureHeight;
+    destination.w = static_cast<int>(transform.width) * texture.width();
+    destination.h = static_cast<int>(transform.height) * texture.height();
 
-    SDL_RenderCopy(_renderer.get(), texture, &source, &destination);
+    SDL_RenderCopy(_renderer.get(), texture.texture(), &source, &destination);
 }
 
 void RendererImpl::EndRenderTick() {
