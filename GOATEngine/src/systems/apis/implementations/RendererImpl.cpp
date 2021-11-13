@@ -2,9 +2,10 @@
 
 #include <string>
 
-extern std::string TITLE;
-extern int SCREENWIDTH;
-extern int SCREENHEIGHT;
+// TODO: Fix this
+std::string TITLE = "Test";
+int SCREENWIDTH = 800;
+int SCREENHEIGHT = 600;
 
 namespace Engine {
     RendererImpl::RendererImpl() :
