@@ -11,7 +11,7 @@ RenderingSystem::RenderingSystem(const Scene* scene) : System(scene)
 void RenderingSystem::OnInit()
 {
     std::cout << "RenderingSystem OnInit" << '\n';
-    for (auto &gameObject : _scene->gameObjects) {
+    for (auto &gameObject : _scene->_gameObjects) {
         RendererApi::LoadTexture(gameObject.sprite.path);
     }
 }
@@ -20,7 +20,7 @@ void RenderingSystem::OnUpdate()
 {
     std::cout << "RenderingSystem OnUpdate" << '\n';
     RendererApi::BeginRenderTick();
-    for (auto &gameObject : _scene->gameObjects) {
+    for (auto &gameObject : _scene->_gameObjects) {
         RendererApi::DrawTexture(gameObject.sprite.path, gameObject.transform);
     }
     RendererApi::EndRenderTick();

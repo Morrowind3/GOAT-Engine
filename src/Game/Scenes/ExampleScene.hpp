@@ -9,5 +9,7 @@ static std::vector<GameObject> EXAMPLE_GAME_COMPONENTS {
 
 class ExampleScene : public Scene {
 public:
-    ExampleScene() : Scene(EXAMPLE_GAME_COMPONENTS) {}
+    ExampleScene() : Scene("Example Scene") {
+        _gameObjects = EXAMPLE_GAME_COMPONENTS;
+    }
 };
