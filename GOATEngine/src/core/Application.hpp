@@ -1,7 +1,3 @@
-//
-// Created by Stijn van Loon on 12-11-2021.
-//
-
 #ifndef GOATENGINE_APPLICATION_HPP
 #define GOATENGINE_APPLICATION_HPP
 
@@ -21,18 +17,14 @@ namespace Engine {
 
     protected:
         explicit Application(const std::string &title, size_t width, size_t height);
-
-//        void addSystem(System system);
-//
-//        ~Application() override;
-
-        unique <SceneManager> manager;
+        ~Application() override;
+        unique<SceneManager> manager;
 
     private:
+        unique<RenderingSystem> _renderingSystem;
         std::string title;
         size_t width;
         size_t height;
-
     };
 }
 

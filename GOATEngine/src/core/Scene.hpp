@@ -13,6 +13,7 @@ namespace Engine {
             size_t idCounter{1};
 
         public:
+            explicit Scene(std::map<size_t,GameObject> gameObjects);
             std::map<size_t,GameObject> getAllGameObjects();
             GameObject getGameObject(size_t id);
             void addGameObject(GameObject gameObject);

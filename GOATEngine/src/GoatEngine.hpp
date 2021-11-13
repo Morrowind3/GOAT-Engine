@@ -1,0 +1,6 @@
+#ifndef GOATENGINE_GOATENGINE_HPP
+#define GOATENGINE_GOATENGINE_HPP
+
+#include "core/Engine.hpp"
+
+#endif //GOATENGINE_GOATENGINE_HPP

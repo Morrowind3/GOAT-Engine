@@ -4,6 +4,6 @@
 
 #include "Game.hpp"
 
-Game::Game() : Application("MountEverestimate", 820, 640) {
+Game::Game() : Application("MountEverestimate", 800, 600) {
     this->run();
 }
