@@ -28,18 +28,31 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
     auto texture = _textures->at(name);
     int textureWidth, textureHeight;
     SDL_QueryTexture(texture, nullptr, nullptr, &textureWidth, &textureHeight);
-    SDL_Rect source{}, destination{};
+    SDL_Rect sourceRect{}, destinationRect{};
 
-    source.x = source.y = 0;
-    source.w = static_cast<int>(transform.width) * textureWidth;
-    source.h = static_cast<int>(transform.height) * textureHeight;
+    sourceRect.x = sourceRect.y = 0;
+    sourceRect.w = static_cast<int>(transform._scaleWidth) * textureWidth;
+    sourceRect.h = static_cast<int>(transform._scaleheight) * textureHeight;
 
-    destination.x = static_cast<int>(transform.position.x);
-    destination.y = static_cast<int>(transform.position.y);
-    destination.w = static_cast<int>(transform.width) * textureWidth;
-    destination.h = static_cast<int>(transform.height) * textureHeight;
+    destinationRect.x = static_cast<int>(transform._position.x);
+    destinationRect.y = static_cast<int>(transform._position.y);
+    destinationRect.w = static_cast<int>(transform._scaleWidth) * textureWidth;
+    destinationRect.h = static_cast<int>(transform._scaleWidth) * textureHeight;
 
-    SDL_RenderCopy(_renderer.get(), texture, &source, &destination);
+    SDL_RendererFlip flip;
+    switch (transform._flip) {
+        case FLIP_NONE:
+            flip = SDL_FLIP_NONE;
+            break;
+        case FLIP_HORIZONTAL:
+            flip = SDL_FLIP_HORIZONTAL;
+            break;
+        case FLIP_VERTICAL:
+            flip = SDL_FLIP_VERTICAL;
+            break;
+    }
+
+    SDL_RenderCopyEx(_renderer.get(), texture, &sourceRect, &destinationRect, transform._rotation, nullptr, flip);
 }
 
 void RendererImpl::EndRenderTick() {
