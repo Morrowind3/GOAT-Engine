@@ -8,8 +8,6 @@ namespace Engine {
             explicit RenderingSystem(const Scene* scene);
             void OnInit();
             void OnUpdate();
-            void OnUpdateDebug();
             void OnDestroy();
-        private:
     };
 }

@@ -32,7 +32,7 @@ add_library(GOAT_Engine STATIC
         "Engine/Engine.hpp" "Engine/Engine.cpp"
         Engine/Systems/Apis/Implementations/RendererImpl.cpp Engine/Systems/Apis/Implementations/RendererImpl.hpp
         Engine/Systems/Apis/Implementations/Managers/Texture.cpp Engine/Systems/Apis/Implementations/Managers/Texture.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp)
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp Engine/API/GameObjects/GameComponents/Script/Script.cpp)
 
 add_executable(Mount_Everestimate
         "Game/Game.cpp"
@@ -40,7 +40,7 @@ add_executable(Mount_Everestimate
         # Scenes
         "Game/Scenes/ExampleScene.hpp"
         # Objects
-        "Game/GameObjects/Goat.hpp")
+        "Game/GameObjects/Goat.hpp" Game/Scripts/GoatTestScript.cpp Game/Scripts/GoatTestScript.hpp Game/GameObjects/Goat.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
