@@ -4,6 +4,7 @@
 
 #include "SDL_image.h"
 #include "Systems/ScriptSystem.hpp"
+#include "Systems/AudioSystem.hpp"
 
 using namespace Engine;
 
@@ -15,7 +16,7 @@ void GoatEngine::Run() {
     // add systems
     _systems->emplace_back(std::make_unique<RenderingSystem>(_sceneManager.CurrentScene()));
     _systems->emplace_back(std::make_unique<ScriptSystem>(_sceneManager.CurrentScene()));
-
+    _systems->emplace_back(std::make_unique<AudioSystem>(_sceneManager.CurrentScene()));
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
     unsigned int frameStart;
