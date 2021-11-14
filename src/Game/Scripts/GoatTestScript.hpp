@@ -8,10 +8,11 @@ using namespace Engine;
 
 class GoatTestScript : public Script {
     public:
+        // TODO: Reference goat class instead of game object class
         GoatTestScript(GameObject& self, bool active);
-        void OnStart() override;
-        void OnUpdate(double deltaTime) override;
-        void OnDestroy() override;
+        void OnStart();
+        void OnUpdate(double deltaTime);
+        void OnDestroy();
     private:
         GameObject& _self;
 };

@@ -3,6 +3,7 @@
 #include "Systems/RenderingSystem.hpp"
 
 #include "SDL_image.h"
+#include "Systems/ScriptSystem.hpp"
 
 using namespace Engine;
 
@@ -13,6 +14,7 @@ GoatEngine::GoatEngine() :
 void GoatEngine::Run() {
     // add systems
     _systems->emplace_back(std::make_unique<RenderingSystem>(_sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<ScriptSystem>(_sceneManager.CurrentScene()));
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
@@ -36,13 +38,7 @@ void GoatEngine::Run() {
             SDL_Delay(frameDelay - frameTime);
         }
 
-        // TODO: Replace with script
-        // Prove that movement is possible
-        for (auto& gameObject: _sceneManager.CurrentScene()->_gameObjects) {
-            gameObject.transform._position.x += 1.0;
-            gameObject.transform._position.y += 1.0;
-        }
-
+        // TODO: Make this run for longer than 100 ticks
         if (ticks == 100) {
             _isRunning = false;
         }

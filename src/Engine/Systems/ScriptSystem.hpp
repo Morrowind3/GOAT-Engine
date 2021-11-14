@@ -7,8 +7,8 @@ namespace Engine {
     class ScriptSystem : public System  {
         public:
             explicit ScriptSystem(const Scene* scene);
-            void OnInit();
-            void OnUpdate();
+            void OnInit() override;
+            void OnUpdate() override;
             void OnDestroy() override;
     };
 }

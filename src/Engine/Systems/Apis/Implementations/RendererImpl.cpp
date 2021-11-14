@@ -32,8 +32,8 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
     sourceRect.w = static_cast<int>(transform._scaleWidth) * texture.width();
     sourceRect.h = static_cast<int>(transform._scaleheight) * texture.height();
 
-    destinationRect.x = static_cast<int>(transform._position.x);
-    destinationRect.y = static_cast<int>(transform._position.y);
+    destinationRect.x = static_cast<int>(transform.position.x);
+    destinationRect.y = static_cast<int>(transform.position.y);
     destinationRect.w = static_cast<int>(transform._scaleWidth) * texture.width();
     destinationRect.h = static_cast<int>(transform._scaleWidth) * texture.height();
 

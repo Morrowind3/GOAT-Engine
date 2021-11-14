@@ -9,6 +9,6 @@ namespace Engine {
     public:
         explicit Scene(std::string name);
         std::string _name;
-        std::vector<GameObject> _gameObjects{};
+        std::vector<GameObject*> _gameObjects{};
     };
 }

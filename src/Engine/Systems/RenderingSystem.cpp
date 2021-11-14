@@ -9,7 +9,7 @@ RenderingSystem::RenderingSystem(const Scene* scene) : System(scene) {
 void RenderingSystem::OnInit()
 {
     for (auto &gameObject : _scene->_gameObjects) {
-        RendererApi::LoadTexture(gameObject.sprite.path);
+        RendererApi::LoadTexture(gameObject->sprite.path);
     }
 }
 
@@ -17,7 +17,7 @@ void RenderingSystem::OnUpdate()
 {
     RendererApi::BeginRenderTick();
     for (auto &gameObject : _scene->_gameObjects) {
-        RendererApi::DrawTexture(gameObject.sprite.path, gameObject.transform);
+        RendererApi::DrawTexture(gameObject->sprite.path, gameObject->transform);
     }
     RendererApi::EndRenderTick();
 }
