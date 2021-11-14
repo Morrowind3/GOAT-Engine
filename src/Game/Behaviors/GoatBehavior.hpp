@@ -13,8 +13,8 @@ class GoatBehavior : public Behavior {
     public:
         GoatBehavior(GameObject& self, bool active) : Behavior(active) {
             _goatTestScript = std::make_unique<GoatTestScript>(self, true);
-            _additionalGoatTestScript = std::make_unique<AdditionalGoatTestScript>(self, true);
             scripts.emplace_back(_goatTestScript.get());
+            _additionalGoatTestScript = std::make_unique<AdditionalGoatTestScript>(self, true);
             scripts.emplace_back(_additionalGoatTestScript.get());
         }
     private:
