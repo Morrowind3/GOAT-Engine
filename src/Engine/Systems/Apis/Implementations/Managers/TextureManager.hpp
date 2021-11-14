@@ -5,6 +5,7 @@
 #include "Texture.hpp"
 #include <map>
 #include <memory>
+#include <string>
 
 namespace Engine {
     class TextureManager {

@@ -30,10 +30,12 @@ add_library(GOAT_Engine STATIC
         "Engine/Systems/RenderingSystem.hpp" "Engine/Systems/RenderingSystem.cpp"
         "Engine/Systems/System.hpp" "Engine/Systems/System.cpp"
         "Engine/Engine.hpp" "Engine/Engine.cpp"
+        "Engine/Systems/AudioSystem.hpp" "Engine/Systems/AudioSystem.cpp"
         Engine/Systems/Apis/Implementations/RendererImpl.cpp Engine/Systems/Apis/Implementations/RendererImpl.hpp
         Engine/Systems/Apis/Implementations/Managers/Texture.cpp Engine/Systems/Apis/Implementations/Managers/Texture.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp Engine/API/GameObjects/GameComponents/Script/Script.cpp)
-
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp Engine/API/GameObjects/GameComponents/Script/Script.cpp
+        Engine/Systems/Apis/Implementations/AudioImpl.cpp Engine/Systems/Apis/Implementations/AudioImpl.hpp
+        Engine/Systems/Apis/AudioApi.cpp Engine/Systems/Apis/AudioApi.hpp)
 add_executable(Mount_Everestimate
         "Game/Game.cpp"
         "Game/GameScenes.hpp"
