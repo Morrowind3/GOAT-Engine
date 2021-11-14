@@ -2,5 +2,6 @@
 
 using namespace Engine;
 
-GameObject::GameObject(Transform transform, Sprite sprite, bool active): transform {transform}, sprite{std::move(sprite)}, active {active}, scripts { } {
+GameObject::GameObject(Transform transform, bool active): transform{transform}, active {active},
+                                                          behaviors{}, sprites{} {
 }

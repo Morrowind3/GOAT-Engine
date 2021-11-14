@@ -8,7 +8,7 @@ namespace Engine {
         public:
             explicit ScriptSystem(const Scene* scene);
             void OnInit() override;
-            void OnUpdate() override;
+            void OnUpdate(double deltaTime) override;
             void OnDestroy() override;
     };
 }

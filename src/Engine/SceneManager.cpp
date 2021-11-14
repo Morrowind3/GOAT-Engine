@@ -3,10 +3,10 @@
 using namespace Engine;
 
 void SceneManager::AddScene(Scene& scene) {
-    _scenes->insert(std::pair<std::string, std::unique_ptr<Scene>>(scene._name, std::make_unique<Scene>(scene)));
+    _scenes->insert(std::pair<std::string, std::unique_ptr<Scene>>(scene.name, std::make_unique<Scene>(scene)));
 
     if(_currentScene == nullptr) {
-        _currentScene = GetScene(scene._name);
+        _currentScene = GetScene(scene.name);
     }
 }
 

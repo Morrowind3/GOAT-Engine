@@ -6,8 +6,8 @@ namespace Engine {
     class RenderingSystem : public System {
         public:
             explicit RenderingSystem(const Scene* scene);
-            void OnInit();
-            void OnUpdate();
-            void OnDestroy();
+            void OnInit() override;
+            void OnUpdate(double deltaTime) override;
+            void OnDestroy() override;
     };
 }

@@ -2,5 +2,5 @@
 
 using namespace Engine;
 
-Transform::Transform(Point position, double rotation, double scaleWidth, double scaleheight, FLIP flip)
-        : position(position), _rotation(rotation), _scaleWidth(scaleWidth), _scaleheight(scaleheight), _flip(flip) {}
+Transform::Transform(Point position, double rotation, double scaleWidth, double scaleHeight, FLIP flip)
+        : position(position), rotation(rotation), scaleWidth(scaleWidth), scaleHeight(scaleHeight), flip(flip) {}
