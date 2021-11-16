@@ -48,8 +48,8 @@ add_executable(Mount_Everestimate
         # Scenes
         "Game/Scenes/ExampleScene.hpp"
         # Objects
-        "Game/GameObjects/Goat.hpp" Game/Behaviors/Scripts/GoatTestScript.cpp Game/Behaviors/Scripts/GoatTestScript.hpp Game/GameObjects/Goat.cpp
-        Game/Behaviors/GoatBehavior.hpp Game/Behaviors/Scripts/AdditionalGoatTestScript.cpp Game/Behaviors/Scripts/AdditionalGoatTestScript.hpp)
+        "Game/GameObjects/ExampleGoat.hpp" Game/Behaviors/Scripts/_TESTSDELETE/GoatTestScript.cpp Game/Behaviors/Scripts/_TESTSDELETE/GoatTestScript.hpp Game/GameObjects/ExampleGoat.cpp
+        Game/Behaviors/TestGoatBehavior.hpp Game/Behaviors/Scripts/_TESTSDELETE/AdditionalGoatTestScript.cpp Game/Behaviors/Scripts/_TESTSDELETE/AdditionalGoatTestScript.hpp Game/Scenes/Etappes/EtappeOne.hpp Game/GameObjects/Characters/Player.hpp Game/Behaviors/PlayerBehavior.hpp Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp Game/GameObjects/Characters/Player.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

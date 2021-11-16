@@ -4,7 +4,7 @@
 int main(int argc, char* args[]) {
     GoatEngine engine{};
 
-    ExampleScene scene{};
+    EtappeOne scene{};
     engine._sceneManager.AddScene(scene);
 
     engine.Run();
