@@ -38,6 +38,9 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp
         Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp
         Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp
+        Engine/Systems/Apis/Implementations/AudioImpl.cpp Engine/Systems/Apis/Implementations/AudioImpl.hpp
+        Engine/Systems/Apis/AudioApi.cpp Engine/Systems/Apis/AudioApi.hpp
+        Engine/Systems/AudioSystem.cpp Engine/Systems/AudioSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.cpp Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
         Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/Hud/UIObject.hpp Engine/API/GameObjects/Hud/UIObjects/Text.cpp Engine/API/GameObjects/Hud/UIObjects/Text.hpp Engine/API/GameObjects/Hud/Alignment.hpp Engine/API/GameObjects/Hud/Color.hpp Engine/API/GameObjects/Hud/Canvas.cpp Engine/API/GameObjects/Hud/Canvas.hpp Game/Scenes/MainMenuScene.hpp Engine/API/GameObjects/Hud/CanvasBehaviour.hpp Engine/API/GameObjects/Hud/CanvasScript.hpp)
