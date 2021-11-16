@@ -1,9 +1,6 @@
-//
-// Created by MDstu on 14/11/2021.
-//
-
 #include "AudioSystem.hpp"
-#include "../Systems/Apis/AudioApi.hpp."
+#include "../Systems/Apis/AudioApi.hpp"
+
 using namespace Engine;
 
 AudioSystem::AudioSystem(const Scene *scene) : System(scene) {
@@ -13,11 +10,12 @@ AudioSystem::AudioSystem(const Scene *scene) : System(scene) {
 void AudioSystem::OnInit() {
     AudioApi::Start();
 
-    /* Used for testing */
-    // AudioApi::Play(AudioApi::CreateClip(<Path to a .wav file>), false, 1, 100.0);
+    /* TODO: Used for testing */
+    AudioApi::Play(AudioApi::CreateClip("Bleathing.ogg"), false, 1, 100.0);
 }
 
-void AudioSystem::OnUpdate() {
+void AudioSystem::OnUpdate(double deltaTime) {
+    // TODO: Logic here
 }
 
 void AudioSystem::OnDestroy() {
