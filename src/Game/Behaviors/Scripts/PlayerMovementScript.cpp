@@ -6,6 +6,20 @@ PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script
 }
 
 void PlayerMovementScript::OnUpdate(double deltaTime) {
-    if (_input.GetKeyDown(Input::KeyCode::D)) _player.transform.position.x+=PLAYER_SPEED;
-    if (_input.GetKeyDown(Input::KeyCode::A)) _player.transform.position.x-=PLAYER_SPEED;
+    bool moveLeft = _input.GetKeyDown(Input::KeyCode::A);
+    bool moveRight = _input.GetKeyDown(Input::KeyCode::D);
+
+    // Perform movement
+    if (moveRight) {
+        _player.transform.position.x += PLAYER_SPEED;
+        _player.transform.flip = Engine::FLIP::FLIP_NONE;
+    }
+    if (moveLeft) {
+        _player.transform.position.x-=PLAYER_SPEED;
+        _player.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
+    }
+
+    // Show correct sprite
+    if (moveLeft || moveRight) _player.activeSprite = &_player.sprites.at(PLAYER::MOVE1);
+    else _player.activeSprite = &_player.sprites.at(PLAYER::IDLE);
 }

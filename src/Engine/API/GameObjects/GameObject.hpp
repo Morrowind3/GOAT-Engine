@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <memory>
 #include <vector>
 
@@ -14,6 +15,7 @@ namespace Engine {
         bool active;
         Transform transform;
         std::vector<Behavior> behaviors;
-        std::vector<Sprite> sprites;
+        std::map<std::string,Sprite> sprites;
+        Sprite* activeSprite = nullptr;
     };
 }
