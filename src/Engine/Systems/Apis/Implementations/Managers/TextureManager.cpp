@@ -13,7 +13,6 @@ void TextureManager::store(const std::string& fileName) {
         SDL_FreeSurface(tempSurface);
         _textures->insert(std::pair<std::string,Texture>{fileName, Texture{texture}});
     }
-
 }
 
 const Texture& TextureManager::get(const std::string& fileName) const {

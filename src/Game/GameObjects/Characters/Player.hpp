@@ -12,7 +12,7 @@ namespace PLAYER {
 
 class Player : public GameObject {
     public:
-        explicit Player(Transform transform);
+        explicit Player(Transform transform, bool active);
 };
 
 

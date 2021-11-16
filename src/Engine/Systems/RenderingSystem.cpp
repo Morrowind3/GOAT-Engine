@@ -17,7 +17,9 @@ void RenderingSystem::OnInit() {
 void RenderingSystem::OnUpdate(double deltaTime) {
     RendererApi::BeginRenderTick();
     for (auto& gameObject : _scene->gameObjects) {
-        RendererApi::DrawTexture(gameObject->activeSprite->path, gameObject->transform);
+        if (gameObject->activeSprite) {
+            RendererApi::DrawTexture(gameObject->activeSprite->path, gameObject->transform);
+        }
     }
     RendererApi::EndRenderTick();
 }

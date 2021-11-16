@@ -53,6 +53,7 @@ add_executable(Mount_Everestimate
         Game/Scenes/Etappes/EtappeOne.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
+        Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         # Behaviors
         Game/Behaviors/PlayerBehavior.hpp
         # Scripts
