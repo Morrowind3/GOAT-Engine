@@ -19,6 +19,6 @@ void AudioApi::Play(Mix_Chunk *clip, bool loop, unsigned long times, float volum
     AUDIO_IMPL.get()->Play(clip, loop, times, volume);
 }
 
-void AudioApi::CreateClip(const std::string &clip) {
-    AUDIO_IMPL.get()->CreateClip(clip);
+Mix_Chunk* AudioApi::CreateClip(const std::string &clip) {
+    return AUDIO_IMPL.get()->CreateClip(clip);
 }

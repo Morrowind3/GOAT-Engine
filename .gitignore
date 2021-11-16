@@ -1,4 +1,5 @@
 src/.idea/
+.idea/
 src/cmake-build-debug/
 
 # Prerequisites

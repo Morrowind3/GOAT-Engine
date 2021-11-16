@@ -14,7 +14,7 @@
 namespace Engine::AudioApi {
     void Play(Mix_Chunk *clip, bool loop, unsigned long times, float volume);
 
-    void CreateClip(const std::string &clip);
+    Mix_Chunk* CreateClip(const std::string &clip);
 
     void Start();
 
