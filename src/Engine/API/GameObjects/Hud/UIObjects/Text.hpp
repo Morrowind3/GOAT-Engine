@@ -1,10 +1,10 @@
 #ifndef GOAT_ENGINE_TEXT_HPP
 #define GOAT_ENGINE_TEXT_HPP
 
-#include "UIObject.hpp"
-#include "Color.hpp"
+#include "../UIObject.hpp"
+#include "../Color.hpp"
 #include "SDL_ttf.h"
-#include "Alignment.hpp"
+#include "../Alignment.hpp"
 
 #include <string>
 

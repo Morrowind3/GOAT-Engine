@@ -7,8 +7,9 @@ using namespace Engine;
 int main(int argc, char* args[]) {
     GoatEngine engine{};
 
-     EtappeOne scene{};
-     engine.sceneManager.AddScene(scene);
+//     EtappeOne scene{};
+    MainMenuScene scene{};
+    engine.sceneManager.AddScene(scene);
 
     engine.Run();
     return 0;
