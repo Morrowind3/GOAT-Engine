@@ -11,9 +11,7 @@ namespace Engine {
     class GoatEngine {
     public:
         explicit GoatEngine();
-
         void Run();
-
         SceneManager _sceneManager{};
     private:
         bool _isRunning;
