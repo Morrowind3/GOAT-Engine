@@ -1,4 +1,5 @@
 #include "ScriptSystem.hpp"
+#include "../Utilities/Input.hpp"
 
 using namespace Engine;
 
@@ -14,6 +15,7 @@ void ScriptSystem::OnInit() {
 }
 
 void ScriptSystem::OnUpdate(double deltaTime) {
+    Input::getInstance().Update();
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& behavior : gameObject->behaviors) {
             behavior.OnUpdate(deltaTime);

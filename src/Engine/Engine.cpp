@@ -4,6 +4,7 @@
 
 #include "SDL_image.h"
 #include "Systems/ScriptSystem.hpp"
+#include "Utilities/Input.hpp"
 
 using namespace Engine;
 
@@ -38,9 +39,7 @@ void GoatEngine::Run() {
             SDL_Delay(frameDelay - frameTime);
         }
 
-        SDL_Event event;
-        SDL_PollEvent(&event);
-        if (event.type == SDL_QUIT) {
+        if (Input::getInstance().QuitEvent()) {
             _isRunning = false;
         }
     }
