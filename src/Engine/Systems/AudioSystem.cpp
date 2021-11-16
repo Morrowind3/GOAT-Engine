@@ -4,7 +4,6 @@
 
 #include "AudioSystem.hpp"
 #include "../Systems/Apis/AudioApi.hpp."
-#include <iostream>
 using namespace Engine;
 
 AudioSystem::AudioSystem(const Scene *scene) : System(scene) {
