@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_GOATTESTSCRIPT_HPP
 #define GOAT_ENGINE_GOATTESTSCRIPT_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../Engine/Utilities/Input.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/Utilities/Input.hpp"
 
 using namespace Engine;
 
