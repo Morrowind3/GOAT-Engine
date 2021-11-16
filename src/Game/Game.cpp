@@ -5,10 +5,13 @@
 using namespace Engine;
 
 int main(int argc, char* args[]) {
-    GoatEngine engine{};
+    std::string name{"Mount Everestimate"};
+    std::string icon{"icon.png"};
 
-//     EtappeOne scene{};
-    MainMenuScene scene{};
+    GoatEngine engine{name, icon};
+
+     EtappeOne scene{};
+//    MainMenuScene scene{};
     engine.sceneManager.AddScene(scene);
 
     engine.Run();

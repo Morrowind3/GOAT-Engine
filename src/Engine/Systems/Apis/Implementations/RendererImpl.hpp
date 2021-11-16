@@ -15,7 +15,7 @@
 namespace Engine {
     class RendererImpl {
         public:
-            RendererImpl();
+            RendererImpl(const std::string& name, std::string& iconPath);
             void LoadTexture(const std::string& fileName);
             void BeginRenderTick();
             void DrawTexture(const std::string& texture, const Transform& location);
