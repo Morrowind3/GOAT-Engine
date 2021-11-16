@@ -4,20 +4,18 @@ using namespace Engine;
 
 RendererImpl::RendererImpl() :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
-        _textures(std::make_unique<TextureManager>()),
         // TODO: Make window parameters variable
-        _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
-                SDL_CreateWindow("Engine PoC", 200, 200, 640, 480, 0), SDL_DestroyWindow}},
-        _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0),
-                                                                         SDL_DestroyRenderer}} {
+        // TODO: Make game world independent of resolution of window
+        _window{std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>
+                {SDL_CreateWindow("Mount Everestimate", 200, 200, 640, 480, 0), SDL_DestroyWindow}},
+        _renderer{std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>
+                {SDL_CreateRenderer(_window.get(), -1, 0),SDL_DestroyRenderer}} {
+    _textures = std::make_unique<TextureManager>(_renderer.get());
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
 }
 
 void RendererImpl::LoadTexture(const std::string& fileName) {
-    SDL_Surface* tempSurface = IMG_Load(fileName.c_str());
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(_renderer.get(), tempSurface);
-    SDL_FreeSurface(tempSurface);
-    _textures->store(fileName, texture);
+    _textures->store(fileName);
 }
 
 void RendererImpl::BeginRenderTick() {

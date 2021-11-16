@@ -2,25 +2,24 @@
 
 using namespace Engine;
 
-TextureManager::TextureManager(): _textures { std::make_unique<std::map<std::string,Texture>>() } {
+TextureManager::TextureManager(SDL_Renderer* renderer): _renderer{renderer}, _textures{ std::make_unique<std::map<std::string,Texture>>() } {
 
 }
 
-void TextureManager::store(std::string name, SDL_Texture* data) {
-    std::pair<std::string,Texture> texture { name, Texture{data} };
-    auto iterator { _textures->find(texture.first) };
-    if (iterator == _textures->end()) {
-        _textures->insert(texture);
-    } else {
-        _textures->erase(texture.first);
-        _textures->insert(texture);
+void TextureManager::store(const std::string& fileName) {
+    if (_textures->find(fileName) == _textures->end()) { // Only add a texture if it hasn't been loaded in yet
+        SDL_Surface* tempSurface = IMG_Load(fileName.c_str());
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(_renderer, tempSurface);
+        SDL_FreeSurface(tempSurface);
+        _textures->insert(std::pair<std::string,Texture>{fileName, Texture{texture}});
     }
+
 }
 
-const Texture& TextureManager::get(const std::string& name) const {
-    return _textures->at(name);
+const Texture& TextureManager::get(const std::string& fileName) const {
+    return _textures->at(fileName);
 }
 
-void TextureManager::remove(const std::string& name) {
-    _textures->erase(name);
+void TextureManager::remove(const std::string& fileName) {
+    _textures->erase(fileName);
 }

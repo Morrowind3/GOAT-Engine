@@ -1,7 +1,3 @@
-//
-// Created by MDstu on 14/11/2021.
-//
-
 #ifndef GOAT_ENGINE_AUDIOIMPL_HPP
 #define GOAT_ENGINE_AUDIOIMPL_HPP
 
@@ -13,11 +9,8 @@ namespace Engine {
     class AudioImpl {
     public:
         void Start();
-
         void End();
-
         void Play(Mix_Chunk *clip, bool loop, unsigned long times, float volume);
-
         Mix_Chunk *CreateClip(const std::string &clip);
     };
 }
