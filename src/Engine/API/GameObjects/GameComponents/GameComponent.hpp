@@ -2,8 +2,7 @@
 
 namespace Engine {
     struct GameComponent {
-        explicit GameComponent(bool _active);
-        
+        explicit GameComponent(bool active);
         bool active;
     };
 }

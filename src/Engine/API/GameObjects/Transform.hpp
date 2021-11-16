@@ -4,19 +4,17 @@
 #include "SDL.h"
 
 namespace Engine {
-    enum FLIP {
+    enum class FLIP {
         FLIP_NONE,
         FLIP_HORIZONTAL,
         FLIP_VERTICAL
     };
 
     struct Transform {
-        explicit Transform(Point position, double rotation = 0.0, double scaleWidth = 1.0, double scaleheight = 1.0,
-                           FLIP flip = FLIP_NONE);
-
+        explicit Transform(Point position, double rotation = 0.0, double scaleWidth = 1.0, double scaleHeight = 1.0,
+                           FLIP flip = FLIP::FLIP_NONE);
         Point position;
-        double _rotation, _scaleWidth, _scaleheight;
-        FLIP _flip;
-
+        double rotation, scaleWidth, scaleHeight;
+        FLIP flip;
     };
 }

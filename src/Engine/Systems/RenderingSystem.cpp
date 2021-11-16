@@ -6,23 +6,24 @@ using namespace Engine;
 RenderingSystem::RenderingSystem(const Scene* scene) : System(scene) {
 }
 
-void RenderingSystem::OnInit()
-{
-    for (auto &gameObject : _scene->_gameObjects) {
-        RendererApi::LoadTexture(gameObject->sprite.path);
+void RenderingSystem::OnInit() {
+    for (auto& gameObject : _scene->gameObjects) {
+        for (auto& sprite : gameObject->sprites) {
+            RendererApi::LoadTexture(sprite.path);
+        }
     }
 }
 
-void RenderingSystem::OnUpdate()
-{
+void RenderingSystem::OnUpdate(double deltaTime) {
     RendererApi::BeginRenderTick();
-    for (auto &gameObject : _scene->_gameObjects) {
-        RendererApi::DrawTexture(gameObject->sprite.path, gameObject->transform);
+    for (auto& gameObject : _scene->gameObjects) {
+        for (auto& sprite : gameObject->sprites) {
+            RendererApi::DrawTexture(sprite.path, gameObject->transform);
+        }
     }
     RendererApi::EndRenderTick();
 }
 
-void RenderingSystem::OnDestroy()
-{
+void RenderingSystem::OnDestroy() {
     RendererApi::End();
 }

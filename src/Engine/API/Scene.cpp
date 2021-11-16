@@ -2,4 +2,5 @@
 
 using namespace Engine;
 
-Scene::Scene(std::string name) : _name(name) { }
+Scene::Scene(std::string name) : name(std::move(name)), gameObjects{} {
+}
