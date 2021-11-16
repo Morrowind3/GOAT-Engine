@@ -6,15 +6,14 @@
 #include "GameComponents/GameComponent.hpp"
 #include "Transform.hpp"
 #include "GameComponents/Render/Sprite.hpp"
-#include "GameComponents/Script/Script.hpp"
+#include "GameComponents/Script/Behavior.hpp"
 
 namespace Engine {
     struct GameObject {
-        GameObject(Transform transform, Sprite sprite, bool active);
+        explicit GameObject(Transform transform, bool active);
         bool active;
-        // TODO: Find a better way to store components than specifying each possible component type?
-        std::vector<Script*> scripts;
         Transform transform;
-        Sprite sprite;
+        std::vector<Behavior> behaviors;
+        std::vector<Sprite> sprites;
     };
 }

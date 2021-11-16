@@ -12,7 +12,7 @@ GoatEngine::GoatEngine() :
         _systems{std::make_unique<std::vector<std::unique_ptr<System>>>()} {}
 
 void GoatEngine::Run() {
-    // add systems
+    // Add systems
     _systems->emplace_back(std::make_unique<RenderingSystem>(_sceneManager.CurrentScene()));
     _systems->emplace_back(std::make_unique<ScriptSystem>(_sceneManager.CurrentScene()));
 
@@ -20,26 +20,27 @@ void GoatEngine::Run() {
     const int frameDelay = 1000 / FPS;
     unsigned int frameStart;
     unsigned int frameTime;
+    double deltaTime = 0;
 
     // Start systems
     for (auto& system: *_systems) system->OnInit();
     _isRunning = true;
 
     // Update systems
-    unsigned int ticks = 0;
     while (_isRunning) {
-        std::cout << "Tick number " << ++ticks << "/100" << '\n';
         frameStart = SDL_GetTicks();
 
-        for (auto& system: *_systems) system->OnUpdate();
+        for (auto& system: *_systems) system->OnUpdate(deltaTime);
 
         frameTime = SDL_GetTicks() - frameStart;
+        deltaTime = (double)frameTime*1000/(double)SDL_GetPerformanceFrequency();
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);
         }
 
-        // TODO: Make this run for longer than 100 ticks
-        if (ticks == 100) {
+        SDL_Event event;
+        SDL_PollEvent(&event);
+        if (event.type == SDL_QUIT) {
             _isRunning = false;
         }
     }

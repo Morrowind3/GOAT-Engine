@@ -7,9 +7,9 @@
 namespace Engine {
     struct Script : public GameComponent {
         explicit Script(bool active);
-        virtual void OnStart() = 0;
-        virtual void OnUpdate(double deltaTime) = 0;
-        virtual void OnDestroy() = 0;
+        virtual void OnStart();
+        virtual void OnUpdate(double deltaTime);
+        virtual void OnDestroy();
         // TODO: Collisions
     };
 }
