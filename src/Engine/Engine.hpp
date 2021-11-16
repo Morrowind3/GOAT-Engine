@@ -14,7 +14,7 @@ namespace Engine {
 
         void Run();
 
-        SceneManager _sceneManager{};
+        SceneManager sceneManager{};
     private:
         bool _isRunning;
         const std::unique_ptr<std::vector<std::unique_ptr<System>>> _systems;

@@ -1,11 +1,13 @@
-#include "GameScenes.hpp"
 #include "../Engine/Engine.hpp"
+#include "Scenes/MainMenuScene.hpp"
+
+using namespace Engine;
 
 int main(int argc, char* args[]) {
     GoatEngine engine{};
 
-    ExampleScene scene{};
-    engine._sceneManager.AddScene(scene);
+    MainMenuScene scene{};
+    engine.sceneManager.AddScene(scene);
 
     engine.Run();
     return 0;

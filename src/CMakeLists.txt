@@ -40,11 +40,10 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.cpp Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp)
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/GameComponents/Hud/UIObject.hpp Engine/API/GameObjects/GameComponents/Hud/Text.cpp Engine/API/GameObjects/GameComponents/Hud/Text.hpp Engine/API/GameObjects/GameComponents/Hud/Alignment.hpp Engine/API/GameObjects/GameComponents/Hud/Color.hpp Engine/API/Canvas.cpp Engine/API/Canvas.hpp Game/Scenes/MainMenuScene.hpp)
 
 add_executable(Mount_Everestimate
         "Game/Game.cpp"
-        "Game/GameScenes.hpp"
         # Scenes
         "Game/Scenes/ExampleScene.hpp"
         # Objects

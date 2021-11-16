@@ -14,8 +14,8 @@ GoatEngine::GoatEngine() :
 
 void GoatEngine::Run() {
     // Add systems
-    _systems->emplace_back(std::make_unique<RenderingSystem>(_sceneManager.CurrentScene()));
-    _systems->emplace_back(std::make_unique<ScriptSystem>(_sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<RenderingSystem>(sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<ScriptSystem>(sceneManager.CurrentScene()));
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
