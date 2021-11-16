@@ -1,19 +1,19 @@
 #include "GoatTestScript.hpp"
 #include <iostream>
 
-GoatTestScript::GoatTestScript(GameObject& self, bool active) : Script(active), _self{self} {
+GoatTestScript::GoatTestScript(GameObject& self, bool active) : Script(active), _self{self}, _input{Input::getInstance()} {
 }
 
 void GoatTestScript::OnStart() {
-    std::cout << "GoatTestScript on start!" << '\n';
 }
 
 void GoatTestScript::OnUpdate(double deltaTime) {
-    std::cout << "GoatTestScript on update!" << '\n';
-    _self.transform.position.x++;
-    _self.transform.position.y++;
+    if (_input.GetKeyDown(Input::KeyCode::D)) _self.transform.position.x+=10;
+    if (_input.GetKeyDown(Input::KeyCode::A)) _self.transform.position.x-=10;
+    if (_input.GetKeyDown(Input::KeyCode::W)) _self.transform.position.y-=10;
+    if (_input.GetKeyDown(Input::KeyCode::S)) _self.transform.position.y+=10;
 }
 
 void GoatTestScript::OnDestroy() {
-    std::cout << "GoatTestScript on destroy!" << '\n';
+
 }

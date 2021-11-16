@@ -1,15 +1,12 @@
-//
-// Created by Morrowind3 on 14/11/2021.
-//
-
 #ifndef GOAT_ENGINE_INPUT_HPP
 #define GOAT_ENGINE_INPUT_HPP
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 #include "../API/GameObjects/Point.hpp"
 
-namespace Engine{
-
+namespace Engine {
     class Input {
         public:
             enum class KeyCode {
@@ -144,33 +141,29 @@ namespace Engine{
                 MIDDLE = 2,
                 RIGHT = 3
             };
-            Input(Input const&)  = delete;
-            void operator=(Input const&)  = delete;
+            Input(Input const&) = delete;
+            void operator=(Input const&) = delete;
             static Input& getInstance()
             {
                 static Input instance;
                 return instance;
             }
 
-            void Init();
             void Update();
-            const bool AnyKey();
-            const bool AnyKeyUp();
-            const bool AnyKeydown();
-            const bool GetKey(KeyCode code);
-            const bool GetKeyUp(KeyCode code);
-            const bool GetKeyDown(KeyCode code);
-            const Point MousePosition();
-            const bool AnyMouse();
-            const bool AnyMouseUp();
-            const bool AnyMouseDown();
-            const bool GetMouseButton(MouseButton button);
-            const bool GetMouseUp(MouseButton button);
-            const bool GetMouseDown(MouseButton button);
+            [[nodiscard]] bool AnyKeyDown() const;
+            [[nodiscard]] bool GetKeyDown(KeyCode code) const;
+            [[nodiscard]] Point MousePosition() const;
+            [[nodiscard]] bool AnyMouse() const;
+            [[nodiscard]] bool AnyMouseUp() const;
+            [[nodiscard]] bool AnyMouseDown() const;
+            [[nodiscard]] bool GetMouseButton(MouseButton button) const;
+            [[nodiscard]] bool GetMouseUp(MouseButton button) const;
+            [[nodiscard]] bool GetMouseDown(MouseButton button) const;
+            [[nodiscard]] bool QuitEvent() const;
         private:
-            Input(){};
+            Input()= default;
         };
 }
 
-
+#pragma clang diagnostic pop
 #endif //GOAT_ENGINE_INPUT_HPP

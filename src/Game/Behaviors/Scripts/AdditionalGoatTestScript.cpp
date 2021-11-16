@@ -4,5 +4,5 @@ AdditionalGoatTestScript::AdditionalGoatTestScript(GameObject& self, bool active
 }
 
 void AdditionalGoatTestScript::OnUpdate(double deltaTime) {
-    _self.transform.rotation++;
+    //_self.transform.rotation++;
 }
