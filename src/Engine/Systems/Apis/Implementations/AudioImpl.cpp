@@ -1,9 +1,8 @@
-//
-// Created by MDstu on 14/11/2021.
-//
-
 #include "AudioImpl.hpp"
 #include <iostream>
+
+// TODO: Store audio in an audio manager
+
 using namespace Engine;
 
 void AudioImpl::Start() {
