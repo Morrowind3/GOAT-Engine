@@ -10,8 +10,8 @@ int main(int argc, char* args[]) {
 
     GoatEngine engine{name, icon};
 
-     EtappeOne scene{};
-//    MainMenuScene scene{};
+//     EtappeOne scene{};
+    MainMenuScene scene{};
     engine.sceneManager.AddScene(scene);
 
     engine.Run();

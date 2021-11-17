@@ -13,17 +13,19 @@ using namespace Engine;
 
 class CanvasScript : public Script {
 public:
-    CanvasScript(std::vector<UIObject>& uiObjects, bool active) : Script(active), _uiObjects(uiObjects) {};
+    CanvasScript(bool active, std::vector<UIObject>& uiObjects) : Script(active), _uiObjects(uiObjects) {};
 
-    void OnStart() override {
+    void OnStart() {
+        for (const auto &obj : _uiObjects) {
+
+        }
+    };
+
+    void OnUpdate(double deltaTime) {
 
     };
 
-    void OnUpdate(double deltaTime) override {
-
-    };
-
-    void OnDestroy() override {
+    void OnDestroy() {
 
     };
 private:

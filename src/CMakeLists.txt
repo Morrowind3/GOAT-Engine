@@ -43,7 +43,7 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/AudioSystem.cpp Engine/Systems/AudioSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.cpp Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/Hud/UIObject.hpp Engine/API/GameObjects/Hud/UIObjects/Text.cpp Engine/API/GameObjects/Hud/UIObjects/Text.hpp Engine/API/GameObjects/Hud/Alignment.hpp Engine/API/GameObjects/Hud/Color.hpp Engine/API/GameObjects/Hud/Canvas.cpp Engine/API/GameObjects/Hud/Canvas.hpp Game/Scenes/MainMenuScene.hpp Engine/API/GameObjects/Hud/CanvasBehaviour.hpp Engine/API/GameObjects/Hud/CanvasScript.hpp)
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/Hud/UIObject.hpp Engine/API/GameObjects/Hud/UIObjects/Text.cpp Engine/API/GameObjects/Hud/UIObjects/Text.hpp Engine/API/GameObjects/Hud/Alignment.hpp Engine/API/GameObjects/Hud/Color.hpp Engine/API/GameObjects/Hud/Canvas.cpp Engine/API/GameObjects/Hud/Canvas.hpp Game/Scenes/MainMenuScene.hpp Engine/API/GameObjects/Hud/CanvasBehavior.hpp Engine/API/GameObjects/Hud/CanvasScript.hpp)
 
 add_executable(Mount_Everestimate
         "Game/Game.cpp"
