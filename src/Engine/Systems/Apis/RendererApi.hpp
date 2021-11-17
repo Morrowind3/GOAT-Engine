@@ -11,7 +11,6 @@ namespace RendererApi {
     class RendererApi {
     public:
         RendererApi(RendererApi const&) = delete;
-
         void operator=(RendererApi const&) = delete;
 
         static RendererApi& getInstance(std::string& name, std::string& iconPath) {
@@ -26,19 +25,14 @@ namespace RendererApi {
         void LoadFont(const std::string& name, const std::string& path, Uint8 size);
 
         void BeginRenderTick();
-
         void DrawTexture(const std::string& texture, const Transform& location);
-
         void EndRenderTick();
-
         void End();
 
     private:
         RendererApi(std::string& name, std::string& iconPath) : renderer(name, iconPath) {};
         RendererImpl renderer;
     };
-
-
 }
 
 #endif //GOAT_ENGINE_RENDERERAPI_HPP

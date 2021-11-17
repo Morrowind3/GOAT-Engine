@@ -13,7 +13,6 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0),
                                                                          SDL_DestroyRenderer}} {
     TTF_Init();
-
     _textures = std::make_unique<TextureManager>(_renderer.get());
     _fonts = std::make_unique<FontManager>();
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
@@ -36,6 +35,20 @@ void RendererImpl::BeginRenderTick() {
 void RendererImpl::DrawTexture(const std::string& name, const Transform& transform) {
     const auto& texture = _textures->get(name);
     _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, &texture});
+}
+
+// TODO: This is mega temporary
+void RendererImpl::DrawText(const std::string& fontName, const std::string& text) {
+    auto* font = _fonts->get(fontName);
+    SDL_Color color = {255, 255, 255};
+    SDL_Surface *surface = TTF_RenderText_Blended(font, text.c_str(), color);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(_renderer.get(), surface);
+    int texW = 0;
+    int texH = 0;
+    SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+    SDL_Rect dstrect = {0, 0, texW, texH};
+    SDL_RenderCopy(_renderer.get(), texture, NULL, &dstrect);
+    SDL_RenderPresent(_renderer.get());
 }
 
 bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
@@ -92,3 +105,5 @@ void RendererImpl::End() {
     SDL_Quit();
     TTF_Quit();
 }
+
+

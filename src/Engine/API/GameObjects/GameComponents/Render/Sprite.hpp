@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GOAT_ENGINE_SPRITE_HPP
+#define GOAT_ENGINE_SPRITE_HPP
 
 #include "../GameComponent.hpp"
 #include <string>
@@ -9,3 +10,5 @@ namespace Engine {
         std::string path;
     };
 }
+
+#endif //GOAT_ENGINE_SPRITE_HPP

@@ -1,10 +1,4 @@
-//
-// Created by Stijn van Loon on 17-11-2021.
-//
-
 #include "Font.hpp"
-
-#include <utility>
 
 using namespace Engine;
 

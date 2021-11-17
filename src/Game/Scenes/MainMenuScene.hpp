@@ -1,13 +1,7 @@
-//
-// Created by Stijn van Loon on 16-11-2021.
-//
-
 #ifndef GOAT_ENGINE_MAINMENUSCENE_HPP
 #define GOAT_ENGINE_MAINMENUSCENE_HPP
 
 #include "../../Engine/API/Scene.hpp"
-#include "../../Engine/API/GameObjects/Hud/Canvas.hpp"
-#include "../../Engine/API/GameObjects/Hud/UIObjects/Text.hpp"
 #include "../GameObjects/UI/Fonts.hpp"
 #include <vector>
 
