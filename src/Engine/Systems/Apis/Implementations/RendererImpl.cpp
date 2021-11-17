@@ -1,24 +1,31 @@
 #include "RendererImpl.hpp"
 
 #include <algorithm>
+#include "SDL_ttf.h"
 
 using namespace Engine;
 
 RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
-        // TODO: Make window parameters variable
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
                                  SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0),
                                                                          SDL_DestroyRenderer}} {
+    TTF_Init();
+
     _textures = std::make_unique<TextureManager>(_renderer.get());
+    _fonts = std::make_unique<FontManager>();
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
 }
 
 void RendererImpl::LoadTexture(const std::string& fileName) {
     _textures->store(fileName);
+}
+
+void RendererImpl::LoadFont(const std::string& name, const std::string& path, Uint8 size) {
+    _fonts->store(name, path, size);
 }
 
 void RendererImpl::BeginRenderTick() {
@@ -28,16 +35,17 @@ void RendererImpl::BeginRenderTick() {
 
 void RendererImpl::DrawTexture(const std::string& name, const Transform& transform) {
     const auto& texture = _textures->get(name);
-    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform,&texture});
+    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, &texture});
 }
 
-bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a, const std::pair<const Transform*, const Texture*>& b) {
+bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
+                          const std::pair<const Transform*, const Texture*>& b) {
     return a.first->layer < b.first->layer;
 }
 
 void RendererImpl::EndRenderTick() {
     std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
-    for (auto& drawable : _tickTextureCache) {
+    for (auto& drawable: _tickTextureCache) {
         auto& transform = drawable.first;
         auto& texture = drawable.second;
 
@@ -65,11 +73,22 @@ void RendererImpl::EndRenderTick() {
                 break;
         }
 
-        SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform->rotation, nullptr, flip);
+        SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform->rotation,
+                         nullptr, flip);
     }
     SDL_RenderPresent(_renderer.get());
 }
 
 void RendererImpl::End() {
+    //TODO correctly freeing application
+//    SDL_DestroyTexture(texture);
+//    SDL_FreeSurface(surface);
+//    TTF_CloseFont(font);
+//    SDL_RenderClear(renderer);
+//    TTF_Quit();
+//    SDL_DestroyRenderer(renderer);
+//    SDL_DestroyWindow(window);
+//    SDL_Quit();
     SDL_Quit();
+    TTF_Quit();
 }

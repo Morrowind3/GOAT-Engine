@@ -23,6 +23,8 @@ namespace RendererApi {
 
         void LoadTexture(const std::string& fileName);
 
+        void LoadFont(const std::string& name, const std::string& path, Uint8 size);
+
         void BeginRenderTick();
 
         void DrawTexture(const std::string& texture, const Transform& location);

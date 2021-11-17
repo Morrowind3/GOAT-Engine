@@ -11,12 +11,14 @@
 #include "Managers/Texture.hpp"
 #include "../../../API/GameObjects/Transform.hpp"
 #include "Managers/TextureManager.hpp"
+#include "Managers/FontManager.hpp"
 
 namespace Engine {
     class RendererImpl {
         public:
             RendererImpl(const std::string& name, std::string& iconPath);
             void LoadTexture(const std::string& fileName);
+            void LoadFont(const std::string& name, const std::string& path, Uint8 size);
             void BeginRenderTick();
             void DrawTexture(const std::string& texture, const Transform& location);
             void EndRenderTick();
@@ -25,6 +27,7 @@ namespace Engine {
         private:
             int _sdlStatus;
             std::unique_ptr<TextureManager> _textures;
+            std::unique_ptr<FontManager> _fonts;
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
             std::vector<std::pair<const Transform*, const Texture*>> _tickTextureCache;

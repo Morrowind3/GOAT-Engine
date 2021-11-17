@@ -6,6 +6,10 @@ void RendererApi::RendererApi::LoadTexture(const std::string& fileName) {
     renderer.LoadTexture(fileName);
 }
 
+void RendererApi::RendererApi::LoadFont(const std::string& name, const std::string& path, Uint8 size) {
+    renderer.LoadFont(name, path, size);
+}
+
 void RendererApi::RendererApi::BeginRenderTick() {
     renderer.BeginRenderTick();
 }

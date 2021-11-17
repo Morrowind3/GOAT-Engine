@@ -13,6 +13,9 @@ void RenderingSystem::OnInit() {
         for (auto& sprite : gameObject->sprites) {
             _api.LoadTexture(sprite.second.path);
         }
+        for (auto &font : gameObject->fonts) {
+            _api.LoadFont(font.name, font.path, font.size);
+        }
     }
 }
 
