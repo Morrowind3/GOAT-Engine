@@ -101,7 +101,7 @@ namespace Engine {
                 INSERT = 0x40000049,
                 HOME = 0x4000004A,
                 PAGE_UP = 0x4000004B,
-                DELETE = '\x7F',
+                DELETE_KEY = '\x7F',
                 END = 0x4000004D,
                 PAGE_DOWN = 0x4000004E,
                 RIGHT = 0x4000004F,

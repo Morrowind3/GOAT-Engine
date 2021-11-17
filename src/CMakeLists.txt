@@ -56,6 +56,12 @@ add_executable(Mount_Everestimate
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
+add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
+target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)
+
+add_executable(game_tests "Game/Tests/PlayerTest.cpp")
+target_link_libraries(engine_tests GOAT_Engine)
+enable_testing()
 # Place all necessary dlls and assets in build folder
 add_custom_command(TARGET Mount_Everestimate POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
