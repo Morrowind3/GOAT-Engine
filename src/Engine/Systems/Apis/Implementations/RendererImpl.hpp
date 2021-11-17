@@ -18,10 +18,10 @@ namespace Engine {
         public:
             RendererImpl(const std::string& name, std::string& iconPath);
             void LoadTexture(const std::string& fileName);
-            void LoadFont(const std::string& name, const std::string& path, Uint8 size);
+            void LoadFont(const std::string& fileName);
             void BeginRenderTick();
             void DrawTexture(const std::string& texture, const Transform& location);
-            void DrawText(const std::string& fontName, const std::string& text); // TODO: Color
+            void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);
             void EndRenderTick();
             void End();
 
@@ -32,6 +32,7 @@ namespace Engine {
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
             std::vector<std::pair<const Transform*, const Texture*>> _tickTextureCache;
+            std::vector<Texture*> _temporaryFixSoWeHaveSomethingToShowInClassTomorrow; // TODO: Delete this
     };
 }
 

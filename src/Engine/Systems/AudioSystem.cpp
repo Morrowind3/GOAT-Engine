@@ -15,9 +15,9 @@ void AudioSystem::OnInit() {
 }
 
 void AudioSystem::OnUpdate(double deltaTime) {
-    for (auto& gameObject : _scene->gameObjects) {
+    for (auto& gameObject : activeObjects()) {
         for (auto& audioSource : gameObject->audioSources) {
-            if (audioSource.second.queueForPlay) {
+            if (audioSource.second.active && audioSource.second.queueForPlay) {
                 if (audioSource.second.type == AudioSourceType::SAMPLE) _api.PlaySample(audioSource.second.path);
                 if (audioSource.second.type == AudioSourceType::MUSIC)  _api.PlayMusic(audioSource.second.path);
                 audioSource.second.queueForPlay = false;

@@ -20,6 +20,12 @@ void PlayerMovementScript::OnUpdate(double deltaTime) {
     }
 
     // Show correct sprite
-    if (moveLeft || moveRight) _player.activeSprite = &_player.sprites.at(PLAYER::MOVE1);
-    else _player.activeSprite = &_player.sprites.at(PLAYER::IDLE);
+    if (moveLeft || moveRight) {
+        _player.sprites.at(PLAYER::MOVE1).active = true;
+        _player.sprites.at(PLAYER::IDLE).active = false;
+    }
+    else {
+        _player.sprites.at(PLAYER::MOVE1).active = false;
+        _player.sprites.at(PLAYER::IDLE).active = true;
+    }
 }

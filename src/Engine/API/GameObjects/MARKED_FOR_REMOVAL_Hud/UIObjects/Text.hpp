@@ -2,9 +2,10 @@
 #define GOAT_ENGINE_TEXT_HPP
 
 #include "../UIObject.hpp"
-#include "../Color.hpp"
+
 #include "SDL_ttf.h"
 #include "../Alignment.hpp"
+#include "../../GameComponents/Render/Color.hpp"
 
 #include <string>
 

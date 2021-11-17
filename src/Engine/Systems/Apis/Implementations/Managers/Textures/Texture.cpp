@@ -20,3 +20,7 @@ int Texture::width() const {
 int Texture::height() const {
     return _height;
 }
+
+Texture::~Texture() {
+    //SDL_DestroyTexture(_texture); // TODO: This destroys the game
+}

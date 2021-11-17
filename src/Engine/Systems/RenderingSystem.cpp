@@ -1,8 +1,5 @@
 #include "RenderingSystem.hpp"
 
-#include <utility>
-
-
 using namespace Engine;
 
 RenderingSystem::RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath) :
@@ -13,17 +10,20 @@ void RenderingSystem::OnInit() {
         for (auto& sprite : gameObject->sprites) {
             _api.LoadTexture(sprite.second.path);
         }
-        for (auto &font : gameObject->fonts) {
-            _api.LoadFont(font.name, font.path, font.size);
+        for (auto &text : gameObject->text) {
+            _api.LoadFont(text.second.font);
         }
     }
 }
 
 void RenderingSystem::OnUpdate(double deltaTime) {
     _api.BeginRenderTick();
-    for (auto& gameObject : _scene->gameObjects) {
-        if (gameObject->activeSprite) {
-            _api.DrawTexture(gameObject->activeSprite->path, gameObject->transform);
+    for (auto& gameObject : activeObjects()) {
+        for (auto& sprite : gameObject->sprites) {
+            if (sprite.second.active) _api.DrawTexture(sprite.second.path, gameObject->transform);
+        }
+        for (auto& text : gameObject->text) {
+            if (text.second.active) _api.DrawText(text.second.text, text.second.size, text.second.color, text.second.font, text.second.location);
         }
     }
     _api.EndRenderTick();

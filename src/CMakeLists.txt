@@ -43,17 +43,12 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/AudioSystem.cpp Engine/Systems/AudioSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.cpp Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/UIObject.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/UIObjects/Text.cpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/UIObjects/Text.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Alignment.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Color.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Canvas.cpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Canvas.hpp Game/Scenes/MainMenuScene.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/CanvasBehavior.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/CanvasScript.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/CanvasScript.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp Engine/API/GameObjects/GameComponents/UI/Font.cpp Engine/API/GameObjects/GameComponents/UI/Font.hpp Game/GameObjects/UI/Fonts.hpp
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp Game/GameObjects/UI/Fonts.hpp
         Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp
-        Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/UIObject.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/UIObjects/Text.cpp
-        Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/UIObjects/Text.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Alignment.hpp
-        Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Color.hpp Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Canvas.cpp
-        Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/Canvas.hpp
-        Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/CanvasBehavior.hpp
-        Engine/API/GameObjects/MARKED_FOR_REMOVAL_Hud/CanvasScript.hpp Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.hpp
         Engine/Systems/Apis/Implementations/Managers/Audio/Music.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Music.hpp
-        Engine/Systems/Apis/Implementations/Managers/Audio/Sample.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Sample.hpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.cpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp Engine/NoCopyNoMove.hpp Engine/API/GameObjects/GameComponents/UI/Text.cpp Engine/API/GameObjects/GameComponents/UI/Text.hpp)
+        Engine/Systems/Apis/Implementations/Managers/Audio/Sample.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Sample.hpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.cpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp Engine/NoCopyNoMove.hpp Engine/API/GameObjects/GameComponents/Render/UI/Text.cpp Engine/API/GameObjects/GameComponents/Render/UI/Text.hpp Engine/API/GameObjects/GameComponents/Render/Color.cpp Engine/API/GameObjects/GameComponents/Render/Color.hpp Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp)
 
 add_executable(Mount_Everestimate
         # Core

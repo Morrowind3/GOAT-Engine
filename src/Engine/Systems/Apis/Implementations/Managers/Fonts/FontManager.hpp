@@ -3,22 +3,21 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include "Font.hpp"
 #include <string>
 #include <map>
 #include <memory>
 
-// TODO: Font class that stores TTF_Font*
-
 namespace Engine {
     class FontManager {
-    public:
-        FontManager();
-        void store(const std::string& name, const std::string& path, Uint8 size);
-        [[nodiscard]] TTF_Font* get(const std::string& name) const;
-        void remove(const std::string& name);
-
-    private:
-        std::unique_ptr<std::map<std::string, TTF_Font*>> _fonts;
+        public:
+            explicit FontManager(SDL_Renderer* renderer);
+            void store(const std::string& fileName);
+            [[nodiscard]] Font& get(const std::string& fileName) const;
+            void remove(const std::string& fileName);
+        private:
+            std::unique_ptr<std::map<std::string,Font>> _fonts;
+            SDL_Renderer* _renderer;
     };
 }
 

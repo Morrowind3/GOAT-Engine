@@ -16,9 +16,9 @@ void ScriptSystem::OnInit() {
 
 void ScriptSystem::OnUpdate(double deltaTime) {
     Input::getInstance().Update();
-    for (auto& gameObject : _scene->gameObjects) {
+    for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {
-            behavior.OnUpdate(deltaTime);
+            if(behavior.active) behavior.OnUpdate(deltaTime);
         }
     }
 }

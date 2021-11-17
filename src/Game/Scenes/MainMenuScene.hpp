@@ -2,7 +2,6 @@
 #define GOAT_ENGINE_MAINMENUSCENE_HPP
 
 #include "../../Engine/API/Scene.hpp"
-#include "../GameObjects/UI/Fonts.hpp"
 #include <vector>
 
 using namespace Engine;
@@ -22,7 +21,7 @@ public:
 
 //        gameObjects.emplace_back(_canvas.get());
 
-        gameObjects.push_back(new Fonts());
+        //gameObjects.push_back(new Fonts());
 
     }
 };

@@ -14,18 +14,14 @@ namespace RendererApi {
         void operator=(RendererApi const&) = delete;
 
         static RendererApi& getInstance(std::string& name, std::string& iconPath) {
-
-
             static RendererApi instance{name, iconPath};
             return instance;
         }
-
         void LoadTexture(const std::string& fileName);
-
-        void LoadFont(const std::string& name, const std::string& path, Uint8 size);
-
+        void LoadFont(const std::string& fileName);
         void BeginRenderTick();
         void DrawTexture(const std::string& texture, const Transform& location);
+        void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);
         void EndRenderTick();
         void End();
 

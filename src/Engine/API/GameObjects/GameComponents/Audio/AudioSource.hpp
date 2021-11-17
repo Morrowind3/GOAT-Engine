@@ -12,7 +12,7 @@ namespace Engine {
         AudioSource(std::string path, AudioSourceType type, bool queueForPlay, bool active);
         AudioSource(std::string path, AudioSourceType type, bool active);
         std::string path;
-        AudioSourceType type;
+        const AudioSourceType type;
         bool queueForPlay;
     };
 }
