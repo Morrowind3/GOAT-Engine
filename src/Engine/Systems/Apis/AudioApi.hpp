@@ -7,12 +7,21 @@
 #include <memory>
 #include "Implementations/AudioImpl.hpp"
 
-namespace Engine::AudioApi {
-    void Play(Mix_Chunk *clip, bool loop, unsigned long times, float volume);
-    Mix_Chunk* CreateClip(const std::string &clip);
-    void Start();
-    void End();
-    static std::unique_ptr<AudioImpl> AUDIO_IMPL;
+namespace Engine {
+    class AudioApi: NoCopyNoMove {
+        public:
+            static AudioApi& getInstance() {
+                static AudioApi instance{};
+                return instance;
+            }
+            void LoadSample(const std::string& fileName);
+            void LoadMusic(const std::string& fileName);
+            void PlaySample(const std::string& fileName);
+            void PlayMusic(const std::string& fileName);
+        private:
+            AudioApi();
+            std::unique_ptr<AudioImpl> _impl;
+    };
 }
 
 

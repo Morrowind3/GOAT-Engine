@@ -11,6 +11,7 @@ namespace GOAT {
     const std::string ATTACK_STANCE = "Attack Stance";
     const std::string ATTACK1 = "Attack1";
     const std::string ATTACK2 = "Attack2";
+    const std::string BLEATHING = "Bleathing";
 }
 
 class Goat : public GameObject {

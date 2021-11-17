@@ -10,8 +10,7 @@ namespace Engine {
             void OnInit() override;
             void OnUpdate(double deltaTime) override;
             void OnDestroy() override;
-
-    private:
-        RendererApi::RendererApi& _api;
+        private:
+            RendererApi::RendererApi& _api;
     };
 }

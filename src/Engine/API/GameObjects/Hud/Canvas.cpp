@@ -1,6 +1,3 @@
-//
-// Created by Stijn van Loon on 16-11-2021.
-//
 
 #include "Canvas.hpp"
 

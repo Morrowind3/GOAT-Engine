@@ -8,9 +8,9 @@
 #include "SDL_image.h"
 
 #include "../../../API/GameObjects/GameObject.hpp"
-#include "Managers/Texture.hpp"
+#include "Managers/Textures/Texture.hpp"
 #include "../../../API/GameObjects/Transform.hpp"
-#include "Managers/TextureManager.hpp"
+#include "Managers/Textures/TextureManager.hpp"
 
 namespace Engine {
     class RendererImpl {

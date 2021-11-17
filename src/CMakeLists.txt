@@ -34,29 +34,39 @@ add_library(GOAT_Engine STATIC
         "Engine/Systems/System.hpp" "Engine/Systems/System.cpp"
         "Engine/Engine.hpp" "Engine/Engine.cpp"
         Engine/Systems/Apis/Implementations/RendererImpl.cpp Engine/Systems/Apis/Implementations/RendererImpl.hpp
-        Engine/Systems/Apis/Implementations/Managers/Texture.cpp Engine/Systems/Apis/Implementations/Managers/Texture.hpp
+        Engine/Systems/Apis/Implementations/Managers/Textures/Texture.cpp Engine/Systems/Apis/Implementations/Managers/Textures/Texture.hpp
         Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp
-        Engine/Systems/Apis/Implementations/Managers/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/TextureManager.hpp
+        Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
         Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp
         Engine/Systems/Apis/Implementations/AudioImpl.cpp Engine/Systems/Apis/Implementations/AudioImpl.hpp
         Engine/Systems/Apis/AudioApi.cpp Engine/Systems/Apis/AudioApi.hpp
         Engine/Systems/AudioSystem.cpp Engine/Systems/AudioSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.cpp Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/Hud/UIObject.hpp Engine/API/GameObjects/Hud/UIObjects/Text.cpp Engine/API/GameObjects/Hud/UIObjects/Text.hpp Engine/API/GameObjects/Hud/Alignment.hpp Engine/API/GameObjects/Hud/Color.hpp Engine/API/GameObjects/Hud/Canvas.cpp Engine/API/GameObjects/Hud/Canvas.hpp Game/Scenes/MainMenuScene.hpp Engine/API/GameObjects/Hud/CanvasBehavior.hpp Engine/API/GameObjects/Hud/CanvasScript.hpp)
+        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp
+        Engine/API/GameObjects/Hud/UIObject.hpp Engine/API/GameObjects/Hud/UIObjects/Text.cpp
+        Engine/API/GameObjects/Hud/UIObjects/Text.hpp Engine/API/GameObjects/Hud/Alignment.hpp
+        Engine/API/GameObjects/Hud/Color.hpp Engine/API/GameObjects/Hud/Canvas.cpp
+        Engine/API/GameObjects/Hud/Canvas.hpp
+        Engine/API/GameObjects/Hud/CanvasBehavior.hpp
+        Engine/API/GameObjects/Hud/CanvasScript.hpp Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.hpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/Music.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Music.hpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/Sample.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Sample.hpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.cpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp Engine/NoCopyNoMove.hpp)
 
 add_executable(Mount_Everestimate
         # Core
         "Game/Game.cpp"
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp
+        Game/Scenes/MainMenuScene.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         # Behaviors
         Game/Behaviors/PlayerBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp)
+        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

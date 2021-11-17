@@ -1,25 +1,32 @@
 #include "AudioSystem.hpp"
-#include "../Systems/Apis/AudioApi.hpp"
 
 using namespace Engine;
 
-AudioSystem::AudioSystem(const Scene *scene) : System(scene) {
-
+AudioSystem::AudioSystem(const Scene* scene) : System(scene), _api{AudioApi::getInstance()} {
 }
 
 void AudioSystem::OnInit() {
-    AudioApi::Start();
-
-    /* TODO: Used for testing */
-//    AudioApi::Play(AudioApi::CreateClip("Bleathing.ogg"), false, 1, 100.0);
+    for (auto& gameObject : _scene->gameObjects) {
+        for (auto& audioSource : gameObject->audioSources) {
+            if (audioSource.second.type == AudioSourceType::SAMPLE) _api.LoadSample(audioSource.second.path);
+            if (audioSource.second.type == AudioSourceType::MUSIC)  _api.LoadMusic(audioSource.second.path);
+        }
+    }
 }
 
 void AudioSystem::OnUpdate(double deltaTime) {
-    // TODO: Logic here
+    for (auto& gameObject : _scene->gameObjects) {
+        for (auto& audioSource : gameObject->audioSources) {
+            if (audioSource.second.queueForPlay) {
+                if (audioSource.second.type == AudioSourceType::SAMPLE) _api.PlaySample(audioSource.second.path);
+                if (audioSource.second.type == AudioSourceType::MUSIC)  _api.PlayMusic(audioSource.second.path);
+                audioSource.second.queueForPlay = false;
+            }
+        }
+    }
 }
 
 void AudioSystem::OnDestroy() {
-    AudioApi::End();
 }
 
 
