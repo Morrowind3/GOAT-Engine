@@ -15,6 +15,8 @@ namespace RendererApi {
         void operator=(RendererApi const&) = delete;
 
         static RendererApi& getInstance(std::string& name, std::string& iconPath) {
+
+
             static RendererApi instance{name, iconPath};
             return instance;
         }
