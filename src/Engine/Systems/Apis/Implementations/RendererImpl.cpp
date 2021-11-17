@@ -4,15 +4,16 @@
 
 using namespace Engine;
 
-RendererImpl::RendererImpl() :
+RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         // TODO: Make window parameters variable
-        // TODO: Make game world independent of resolution of window
-        _window{std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>
-                {SDL_CreateWindow("Mount Everestimate", 200, 200, 640, 480, 0), SDL_DestroyWindow}},
-        _renderer{std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>
-                {SDL_CreateRenderer(_window.get(), -1, 0),SDL_DestroyRenderer}} {
+        _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
+                SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
+                                 SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
+        _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0),
+                                                                         SDL_DestroyRenderer}} {
     _textures = std::make_unique<TextureManager>(_renderer.get());
+    SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
 }
 
