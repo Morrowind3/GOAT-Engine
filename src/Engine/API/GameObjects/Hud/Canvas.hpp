@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_CANVAS_HPP
 
 #include "../GameObject.hpp"
-#include "CanvasBehaviour.hpp"
+#include "CanvasBehavior.hpp"
 #include "UIObject.hpp"
 
 #include <utility>
@@ -14,6 +14,8 @@ namespace Engine {
         explicit Canvas(Transform transform, bool active, std::vector<UIObject> uiObjects);
 
         std::vector<UIObject> uiObjects;
+    private:
+        std::unique_ptr<CanvasBehavior> _canvasBehavior;
     };
 }
 

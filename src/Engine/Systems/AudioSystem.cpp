@@ -11,7 +11,7 @@ void AudioSystem::OnInit() {
     AudioApi::Start();
 
     /* TODO: Used for testing */
-    AudioApi::Play(AudioApi::CreateClip("Bleathing.ogg"), false, 1, 100.0);
+//    AudioApi::Play(AudioApi::CreateClip("Bleathing.ogg"), false, 1, 100.0);
 }
 
 void AudioSystem::OnUpdate(double deltaTime) {
