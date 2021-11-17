@@ -19,9 +19,9 @@ public:
         Text text{"Hallo", "", 26, {0, 255, 0}, TOP_CENTER};
 
         _canvas = std::make_unique<Canvas>(Canvas{
-                                                   Transform{Point{0.0, 0.0}, 0, 1.0, 1.0, FLIP::FLIP_VERTICAL},
+                                                   Transform{Point{0.0, 0.0}, 0, 0, 1.0, 1.0, FLIP::FLIP_VERTICAL},
                                                    true,
-                                                   {text}
+                                                   {text} // TODO: Object splicing
                                            }
         );
 

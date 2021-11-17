@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_TEXTUREMANAGER_HPP
 #define GOAT_ENGINE_TEXTUREMANAGER_HPP
 
-#include "SDL.h"
+#include "SDL_image.h"
 #include "Texture.hpp"
 #include <map>
 #include <memory>
@@ -10,12 +10,13 @@
 namespace Engine {
     class TextureManager {
         public:
-            TextureManager();
-            void store(std::string name, SDL_Texture* data);
-            const Texture& get(const std::string& name) const;
-            void remove(const std::string& name);
+            explicit TextureManager(SDL_Renderer* renderer);
+            void store(const std::string& fileName);
+            [[nodiscard]] const Texture& get(const std::string& fileName) const;
+            void remove(const std::string& fileName);
         private:
             std::unique_ptr<std::map<std::string,Texture>> _textures;
+            SDL_Renderer* _renderer;
     };
 }
 

@@ -9,18 +9,18 @@ RenderingSystem::RenderingSystem(const Scene* scene, std::string& name, std::str
         System(scene), _api(RendererApi::RendererApi::getInstance(name, iconPath)) {}
 
 void RenderingSystem::OnInit() {
-    for (auto& gameObject: _scene->gameObjects) {
-        for (auto& sprite: gameObject->sprites) {
-            _api.LoadTexture(sprite.path);
+    for (auto& gameObject : _scene->gameObjects) {
+        for (auto& sprite : gameObject->sprites) {
+            _api.LoadTexture(sprite.second.path);
         }
     }
 }
 
 void RenderingSystem::OnUpdate(double deltaTime) {
     _api.BeginRenderTick();
-    for (auto& gameObject: _scene->gameObjects) {
-        for (auto& sprite: gameObject->sprites) {
-            _api.DrawTexture(sprite.path, gameObject->transform);
+    for (auto& gameObject : _scene->gameObjects) {
+        if (gameObject->activeSprite) {
+            _api.DrawTexture(gameObject->activeSprite->path, gameObject->transform);
         }
     }
     _api.EndRenderTick();

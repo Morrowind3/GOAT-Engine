@@ -46,12 +46,17 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/API/GameObjects/Hud/UIObject.hpp Engine/API/GameObjects/Hud/UIObjects/Text.cpp Engine/API/GameObjects/Hud/UIObjects/Text.hpp Engine/API/GameObjects/Hud/Alignment.hpp Engine/API/GameObjects/Hud/Color.hpp Engine/API/GameObjects/Hud/Canvas.cpp Engine/API/GameObjects/Hud/Canvas.hpp Game/Scenes/MainMenuScene.hpp Engine/API/GameObjects/Hud/CanvasBehavior.hpp Engine/API/GameObjects/Hud/CanvasScript.hpp Engine/API/GameObjects/Hud/CanvasScript.cpp)
 
 add_executable(Mount_Everestimate
+        # Core
         "Game/Game.cpp"
         # Scenes
-        "Game/Scenes/ExampleScene.hpp"
+        Game/Scenes/Etappes/EtappeOne.hpp
         # Objects
-        "Game/GameObjects/ExampleGoat.hpp" Game/Behaviors/Scripts/_TESTSDELETE/GoatTestScript.cpp Game/Behaviors/Scripts/_TESTSDELETE/GoatTestScript.hpp Game/GameObjects/ExampleGoat.cpp
-        Game/Behaviors/TestGoatBehavior.hpp Game/Behaviors/Scripts/_TESTSDELETE/AdditionalGoatTestScript.cpp Game/Behaviors/Scripts/_TESTSDELETE/AdditionalGoatTestScript.hpp Game/Scenes/Etappes/EtappeOne.hpp Game/GameObjects/Characters/Player.hpp Game/Behaviors/PlayerBehavior.hpp Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp Game/GameObjects/Characters/Player.cpp)
+        Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
+        Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
+        # Behaviors
+        Game/Behaviors/PlayerBehavior.hpp
+        # Scripts
+        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

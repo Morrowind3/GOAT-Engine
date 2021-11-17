@@ -27,6 +27,7 @@ namespace Engine {
             std::unique_ptr<TextureManager> _textures;
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
+            std::vector<std::pair<const Transform*, const Texture*>> _tickTextureCache;
     };
 }
 

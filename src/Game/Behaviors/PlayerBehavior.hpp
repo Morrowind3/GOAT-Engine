@@ -11,11 +11,8 @@ using namespace Engine;
 class PlayerBehavior : public Behavior {
     public:
         PlayerBehavior(Player& player, bool active) : Behavior(active) {
-            _playerMovementScript = std::make_unique<PlayerMovementScript>(player,true);
-            scripts.emplace_back(_playerMovementScript.get());
+            scripts.emplace_back(new PlayerMovementScript{player, true});
         }
-    private:
-        std::unique_ptr<PlayerMovementScript> _playerMovementScript;
 };
 
 
