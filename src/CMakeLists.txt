@@ -85,7 +85,7 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Color.cpp
         Engine/API/GameObjects/GameComponents/Render/Color.hpp
         Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp
-        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp)
+        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp Engine/Systems/Apis/Implementations/PhysicsImpl.cpp Engine/Systems/Apis/Implementations/PhysicsImpl.hpp)
 
 add_executable(Mount_Everestimate
         # Core
