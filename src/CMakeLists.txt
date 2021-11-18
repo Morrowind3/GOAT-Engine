@@ -3,7 +3,7 @@ project(GOAT_Engine)
 
 set(CMAKE_CXX_STANDARD 17)
 
-SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++")
+SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${MINGW_STATIC_FLAGS}")
 
 set(SDL2_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2-2.0.16/include")
