@@ -14,6 +14,10 @@ class PlayerMovementScript : public Script {
     private:
         Player& _player;
         Input& _input;
+        bool _jumpState = false;
+        bool _jumpStepAltSfx = false;
+        // Consts
+        static const int PLAYER_SPEED = 4;
 };
 
 
