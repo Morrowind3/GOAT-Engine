@@ -1,24 +1,23 @@
-//
-// Created by MDstu on 14/11/2021.
-//
-
 #include "AudioApi.hpp"
 
 using namespace Engine;
-using namespace Engine::AudioApi;
 
-void AudioApi::Start() {
-    AUDIO_IMPL.get()->Start();
+AudioApi::AudioApi(): _impl{std::make_unique<AudioImpl>()} {
+
 }
 
-void AudioApi::End() {
-    AUDIO_IMPL.get()->End();
+void AudioApi::LoadSample(const std::string& fileName) {
+    _impl->LoadSample(fileName);
 }
 
-void AudioApi::Play(Mix_Chunk *clip, bool loop, unsigned long times, float volume) {
-    AUDIO_IMPL.get()->Play(clip, loop, times, volume);
+void AudioApi::LoadMusic(const std::string& fileName) {
+    _impl->LoadMusic(fileName);
 }
 
-Mix_Chunk* AudioApi::CreateClip(const std::string &clip) {
-    return AUDIO_IMPL.get()->CreateClip(clip);
+void AudioApi::PlaySample(const std::string& fileName) {
+    _impl->PlaySample(fileName);
+}
+
+void AudioApi::PlayMusic(const std::string& fileName) {
+    _impl->PlayMusic(fileName);
 }

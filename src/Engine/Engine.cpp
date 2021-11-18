@@ -9,15 +9,17 @@
 
 using namespace Engine;
 
-GoatEngine::GoatEngine() :
+GoatEngine::GoatEngine(std::string& name, std::string& iconPath) :
         _isRunning{false},
-        _systems{std::make_unique<std::vector<std::unique_ptr<System>>>()} {}
+        _systems{std::make_unique<std::vector<std::unique_ptr<System>>>()},
+        _name(name),
+        _iconPath(iconPath) {}
 
 void GoatEngine::Run() {
     // Add systems
-    _systems->emplace_back(std::make_unique<RenderingSystem>(_sceneManager.CurrentScene()));
-    _systems->emplace_back(std::make_unique<ScriptSystem>(_sceneManager.CurrentScene()));
-    _systems->emplace_back(std::make_unique<AudioSystem>(_sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<RenderingSystem>(sceneManager.CurrentScene(), _name, _iconPath));
+    _systems->emplace_back(std::make_unique<ScriptSystem>(sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<AudioSystem>(sceneManager.CurrentScene()));
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;

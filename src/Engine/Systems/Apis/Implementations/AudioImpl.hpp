@@ -1,25 +1,24 @@
-//
-// Created by MDstu on 14/11/2021.
-//
-
 #ifndef GOAT_ENGINE_AUDIOIMPL_HPP
 #define GOAT_ENGINE_AUDIOIMPL_HPP
 
 #include <string>
-#include "SDL.h"
-#include "SDL_mixer.h"
+#include "../../../NoCopyNoMove.hpp"
+#include "Managers/Audio/AudioManager.hpp"
 
 namespace Engine {
-    class AudioImpl {
-    public:
-        void Start();
+    class AudioImpl: NoCopyNoMove {
+        public:
+            AudioImpl();
+            ~AudioImpl() override;
+            void LoadSample(const std::string& fileName);
+            void LoadMusic(const std::string& fileName);
+            void PlaySample(const std::string& fileName);
+            void PlayMusic(const std::string& fileName);
 
-        void End();
-
-        void Play(Mix_Chunk *clip, bool loop, unsigned long times, float volume);
-
-        Mix_Chunk *CreateClip(const std::string &clip);
-    };
+        private:
+            int _sdlStatus;
+            std::unique_ptr<AudioManager> _audio;
+        };
 }
 
 

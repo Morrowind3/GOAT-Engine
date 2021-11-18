@@ -1,27 +1,31 @@
 #include "RendererApi.hpp"
-#include "Implementations/RendererImpl.hpp"
 
 using namespace Engine;
-using namespace Engine::RendererApi;
 
-static RendererImpl RENDERER_IMPL{};
-
-void RendererApi::LoadTexture(const std::string& fileName) {
-    RENDERER_IMPL.LoadTexture(fileName);
+void RendererApi::RendererApi::LoadTexture(const std::string& fileName) {
+    renderer.LoadTexture(fileName);
 }
 
-void RendererApi::BeginRenderTick() {
-    RENDERER_IMPL.BeginRenderTick();
+void RendererApi::RendererApi::LoadFont(const std::string& fileName) {
+    renderer.LoadFont(fileName);
 }
 
-void RendererApi::DrawTexture(const std::string& texture, const Transform& location) {
-    RENDERER_IMPL.DrawTexture(texture, location);
+void RendererApi::RendererApi::BeginRenderTick() {
+    renderer.BeginRenderTick();
 }
 
-void RendererApi::EndRenderTick() {
-    RENDERER_IMPL.EndRenderTick();
+void RendererApi::RendererApi::DrawTexture(const std::string& texture, const Transform& location) {
+    renderer.DrawTexture(texture, location);
 }
 
-void RendererApi::End() {
-    RENDERER_IMPL.End();
+void RendererApi::RendererApi::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
+    renderer.DrawText(text,size,color,fontName,transform);
+}
+
+void RendererApi::RendererApi::EndRenderTick() {
+    renderer.EndRenderTick();
+}
+
+void RendererApi::RendererApi::End() {
+    renderer.End();
 }

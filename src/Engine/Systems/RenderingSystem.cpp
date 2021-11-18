@@ -1,29 +1,34 @@
 #include "RenderingSystem.hpp"
-#include "../Systems/Apis/RendererApi.hpp"
 
 using namespace Engine;
 
-RenderingSystem::RenderingSystem(const Scene* scene) : System(scene) {
-}
+RenderingSystem::RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath) :
+        System(scene), _api(RendererApi::RendererApi::getInstance(name, iconPath)) {}
 
 void RenderingSystem::OnInit() {
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& sprite : gameObject->sprites) {
-            RendererApi::LoadTexture(sprite.path);
+            _api.LoadTexture(sprite.second.path);
+        }
+        for (auto &text : gameObject->text) {
+            _api.LoadFont(text.second.font);
         }
     }
 }
 
 void RenderingSystem::OnUpdate(double deltaTime) {
-    RendererApi::BeginRenderTick();
-    for (auto& gameObject : _scene->gameObjects) {
+    _api.BeginRenderTick();
+    for (auto& gameObject : activeObjects()) {
         for (auto& sprite : gameObject->sprites) {
-            RendererApi::DrawTexture(sprite.path, gameObject->transform);
+            if (sprite.second.active) _api.DrawTexture(sprite.second.path, gameObject->transform);
+        }
+        for (auto& text : gameObject->text) {
+            if (text.second.active) _api.DrawText(text.second.text, text.second.size, text.second.color, text.second.font, text.second.location);
         }
     }
-    RendererApi::EndRenderTick();
+    _api.EndRenderTick();
 }
 
 void RenderingSystem::OnDestroy() {
-    RendererApi::End();
+    _api.End();
 }

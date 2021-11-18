@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GOAT_ENGINE_SYSTEM_HPP
+#define GOAT_ENGINE_SYSTEM_HPP
 
 #include "../API/Scene.hpp"
 
@@ -11,5 +12,8 @@ namespace Engine {
             virtual void OnDestroy() = 0;
         protected:
             const Scene* _scene;
+            [[nodiscard]] std::vector<GameObject*> activeObjects() const;
     };
 }
+
+#endif //GOAT_ENGINE_SYSTEM_HPP

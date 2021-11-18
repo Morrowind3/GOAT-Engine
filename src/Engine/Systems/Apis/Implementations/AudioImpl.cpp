@@ -1,41 +1,53 @@
 #include "AudioImpl.hpp"
 #include <iostream>
-
-// TODO: Store audio in an audio manager
+#include "SDL.h"
+#include "SDL_mixer.h"
 
 using namespace Engine;
 
-void AudioImpl::Start() {
-    SDL_Init(SDL_INIT_AUDIO);
+AudioImpl::AudioImpl(): _sdlStatus{SDL_Init(SDL_INIT_AUDIO)}, _audio{std::make_unique<AudioManager>()} {
+    // TODO: Adjustable
+    const int audio_rate = 22050;
+    const Uint16 audio_format = AUDIO_S16SYS;
+    const int audio_channels = 2;
+    const int audio_buffers = 4096;
 
-    int audio_rate = 22050;
-    Uint16 audio_format = AUDIO_S16SYS;
-    int audio_channels = 2;
-    int audio_buffers = 4096;
-
-    if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) != 0) {
+    if (_sdlStatus == 0) _sdlStatus = Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers);
+    if (_sdlStatus != 0) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Could not initialise audio: %s", Mix_GetError());
-        exit(-1);
+        exit(_sdlStatus);
     }
 }
 
-void AudioImpl::End() {
+void AudioImpl::LoadSample(const std::string& fileName) {
+    try {
+        _audio->storeSample(fileName);
+    } catch (const std::runtime_error& error) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        exit(111);
+    }
+}
+
+void AudioImpl::LoadMusic(const std::string& fileName) {
+    try {
+        _audio->storeMusic(fileName);
+    } catch (const std::runtime_error& error) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        exit(112);
+    }
+}
+
+void AudioImpl::PlaySample(const std::string& fileName) {
+    const auto& sample = _audio->getSample(fileName);
+    Mix_PlayChannel(-1, sample.audio(), 0);
+}
+
+void AudioImpl::PlayMusic(const std::string& fileName) {
+    const auto& music = _audio->getMusic(fileName);
+    Mix_PlayMusic(music.audio(), -1);
+}
+
+AudioImpl::~AudioImpl() {
     SDL_Quit();
 }
 
-void AudioImpl::Play(Mix_Chunk *clip, bool loop, unsigned long times, float volume) {
-    if(clip != nullptr) {
-        if (loop) {
-            // 'loops: -1' means infinitely loops
-            Mix_PlayChannel(-1, clip, -1);
-        } else {
-            Mix_PlayChannel(-1, clip, times);
-        }
-    }else{
-        std::cerr << Mix_GetError() << ": " << std::endl;
-    }
-}
-
-Mix_Chunk* AudioImpl::CreateClip(const std::string &clip) {
-    return Mix_LoadWAV(clip.c_str());
-}
