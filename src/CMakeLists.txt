@@ -23,32 +23,69 @@ include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INC
 link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
 
 add_library(GOAT_Engine STATIC
-        "Engine/API/GameObjects/GameComponents/GameComponent.hpp" "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
-        "Engine/API/GameObjects/GameComponents/Render/Sprite.hpp" "Engine/API/GameObjects/GameComponents/Render/Sprite.cpp"
-        "Engine/API/GameObjects/Transform.hpp" "Engine/API/GameObjects/Transform.cpp"
-        "Engine/API/GameObjects/Point.hpp" "Engine/API/GameObjects/Point.cpp"
-        "Engine/API/GameObjects/GameObject.hpp" "Engine/API/GameObjects/GameObject.cpp"
-        "Engine/API/Scene.hpp" "Engine/API/Scene.cpp"
-        "Engine/SceneManager.hpp" "Engine/SceneManager.cpp"
-        "Engine/Systems/RenderingSystem.hpp" "Engine/Systems/RenderingSystem.cpp"
-        "Engine/Systems/System.hpp" "Engine/Systems/System.cpp"
-        "Engine/Engine.hpp" "Engine/Engine.cpp"
-        Engine/Systems/Apis/Implementations/RendererImpl.cpp Engine/Systems/Apis/Implementations/RendererImpl.hpp
-        Engine/Systems/Apis/Implementations/Managers/Textures/Texture.cpp Engine/Systems/Apis/Implementations/Managers/Textures/Texture.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp
-        Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
-        Engine/Systems/ScriptSystem.cpp Engine/Systems/ScriptSystem.hpp Engine/API/GameObjects/GameComponents/Script/Script.hpp
-        Engine/Systems/Apis/Implementations/AudioImpl.cpp Engine/Systems/Apis/Implementations/AudioImpl.hpp
-        Engine/Systems/Apis/AudioApi.cpp Engine/Systems/Apis/AudioApi.hpp
-        Engine/Systems/AudioSystem.cpp Engine/Systems/AudioSystem.hpp
-        Engine/API/GameObjects/GameComponents/Script/Script.cpp Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
+        "Engine/API/GameObjects/GameComponents/GameComponent.hpp"
+        "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
+        "Engine/API/GameObjects/GameComponents/Render/Sprite.hpp"
+        "Engine/API/GameObjects/GameComponents/Render/Sprite.cpp"
+        "Engine/API/GameObjects/Transform.hpp"
+        "Engine/API/GameObjects/Transform.cpp"
+        "Engine/API/GameObjects/Point.hpp"
+        "Engine/API/GameObjects/Point.cpp"
+        "Engine/API/GameObjects/GameObject.hpp"
+        "Engine/API/GameObjects/GameObject.cpp"
+        "Engine/API/Scene.hpp"
+        "Engine/API/Scene.cpp"
+        "Engine/SceneManager.hpp"
+        "Engine/SceneManager.cpp"
+        "Engine/Systems/RenderingSystem.hpp"
+        "Engine/Systems/RenderingSystem.cpp"
+        "Engine/Systems/System.hpp"
+        "Engine/Systems/System.cpp"
+        "Engine/Engine.hpp"
+        "Engine/Engine.cpp"
+        Engine/Systems/Apis/Implementations/RendererImpl.cpp
+        Engine/Systems/Apis/Implementations/RendererImpl.hpp
+        Engine/Systems/Apis/Implementations/Managers/Textures/Texture.cpp
+        Engine/Systems/Apis/Implementations/Managers/Textures/Texture.hpp
+        Engine/Systems/Apis/RendererApi.cpp
+        Engine/Systems/Apis/RendererApi.hpp
+        Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp
+        Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
+        Engine/Systems/ScriptSystem.cpp
+        Engine/Systems/ScriptSystem.hpp
+        Engine/API/GameObjects/GameComponents/Script/Script.hpp
+        Engine/Systems/Apis/Implementations/AudioImpl.cpp
+        Engine/Systems/Apis/Implementations/AudioImpl.hpp
+        Engine/Systems/Apis/AudioApi.cpp
+        Engine/Systems/Apis/AudioApi.hpp
+        Engine/Systems/AudioSystem.cpp
+        Engine/Systems/AudioSystem.hpp
+        Engine/API/GameObjects/GameComponents/Script/Script.cpp
+        Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp Game/GameObjects/UI/Fonts.hpp
-        Engine/Systems/Apis/RendererApi.cpp Engine/Systems/Apis/RendererApi.hpp Engine/Utilities/Input.cpp
+        Engine/Systems/Apis/RendererApi.cpp
+        Engine/Systems/Apis/RendererApi.hpp
+        Engine/Utilities/Input.cpp
+        Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.cpp
+        Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp
+        Engine/Systems/Apis/RendererApi.cpp
+        Engine/Systems/Apis/RendererApi.hpp
+        Engine/Utilities/Input.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.hpp
-        Engine/Systems/Apis/Implementations/Managers/Audio/Music.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Music.hpp
-        Engine/Systems/Apis/Implementations/Managers/Audio/Sample.cpp Engine/Systems/Apis/Implementations/Managers/Audio/Sample.hpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.cpp Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp Engine/NoCopyNoMove.hpp Engine/API/GameObjects/GameComponents/Render/UI/Text.cpp Engine/API/GameObjects/GameComponents/Render/UI/Text.hpp Engine/API/GameObjects/GameComponents/Render/Color.cpp Engine/API/GameObjects/GameComponents/Render/Color.hpp Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp)
+        Engine/Systems/Apis/Implementations/Managers/Audio/Music.cpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/Music.hpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/Sample.cpp
+        Engine/Systems/Apis/Implementations/Managers/Audio/Sample.hpp
+        Engine/API/GameObjects/GameComponents/Audio/AudioSource.cpp
+        Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp
+        Engine/NoCopyNoMove.hpp
+        Engine/API/GameObjects/GameComponents/Render/UI/Text.cpp
+        Engine/API/GameObjects/GameComponents/Render/UI/Text.hpp
+        Engine/API/GameObjects/GameComponents/Render/Color.cpp
+        Engine/API/GameObjects/GameComponents/Render/Color.hpp
+        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp
+        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp)
 
 add_executable(Mount_Everestimate
         # Core
