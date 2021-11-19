@@ -7,7 +7,9 @@
 
 
 #include <memory>
-#include "DataImpl.hpp"
+#include "Implementations/DataImpl.hpp"
+
+namespace Engine{
 
 class DataApi {
 public:
@@ -18,13 +20,15 @@ public:
         static DataApi instance;
         return instance;
     }
-    void Start();
-    void End();
-private:
-    DataApi() = default;
+    void Insert(DataModel model);
+    void Update(DataModel model);
+    void Get(std::string table,std::string whereKey, std::string isValue);
+    void Delete(DataModel model);
 
+private:
+    DataApi();
     std::unique_ptr<DataImpl> impl;
 };
-
+};
 
 #endif //GOAT_ENGINE_DATAAPI_HPP
