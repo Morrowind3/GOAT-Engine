@@ -85,7 +85,13 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Color.cpp
         Engine/API/GameObjects/GameComponents/Render/Color.hpp
         Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp
-        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp)
+        Engine/Systems/Apis/DataApi.cpp
+        Engine/Systems/Apis/Implementations/DataImpl.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/SqlColumn.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
 
 add_executable(Mount_Everestimate
         # Core
