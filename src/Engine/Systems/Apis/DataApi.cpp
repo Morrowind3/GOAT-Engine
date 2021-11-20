@@ -19,5 +19,13 @@ void DataApi::Delete(DataModel model) {
 }
 
 DataApi::DataApi() {
-    impl = std::make_unique<DataImpl>();
+    impl = std::make_unique<DataImpl>("StoredData.db");
+}
+
+void DataApi::RunMigrations(std::vector<std::basic_string<char>> migrationQueries) {
+    impl->RunMigrations(migrationQueries);
+}
+
+bool DataApi::DatabaseExists() {
+    return impl->DatabaseExists();
 }

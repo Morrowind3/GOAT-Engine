@@ -24,6 +24,8 @@ public:
     void Update(DataModel model);
     void Get(std::string table,std::string whereKey, std::string isValue);
     void Delete(DataModel model);
+    void RunMigrations(std::vector<std::basic_string<char>> migrationQueries);
+    bool DatabaseExists();
 
 private:
     DataApi();

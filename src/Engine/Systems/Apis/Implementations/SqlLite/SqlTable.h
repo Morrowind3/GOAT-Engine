@@ -12,14 +12,14 @@ class SqlTable {
 
 public:
     std::vector<SqlColumn*> columns;
-    std::vector<ForeignKey *> forgeinKeys;
+    std::vector<ForeignKey *> foreignKeys;
 
     std::vector<SqlColumn*> getColumns() {
         return columns;
     };
 
     std::vector<ForeignKey *> getForeignKeys() {
-        return forgeinKeys;
+        return foreignKeys;
     };
 
     std::string getTableName() {

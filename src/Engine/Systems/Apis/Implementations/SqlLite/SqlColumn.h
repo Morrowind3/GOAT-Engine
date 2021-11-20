@@ -6,21 +6,22 @@
 #define SQLITEPOC_SQLCOLUMN_H
 
 #include <iostream>
+#include <utility>
 
 class SqlColumn {
 
 private:
-    char *name;
+    std::string name;
     bool isPrimaryKey;
-    char *type;
+    std::string type;
     bool nullable;
     bool isUnique;
 
 public:
-    SqlColumn::SqlColumn(const bool isPrimaryKey, char *columnName, char *type, bool NotNull, bool isUnique) {
+    SqlColumn(const bool isPrimaryKey, std::string columnName, std::string type, bool NotNull, bool isUnique) {
         this->isPrimaryKey = isPrimaryKey;
-        this->name = columnName;
-        this->type = type;
+        this->name = std::move(columnName);
+        this->type = std::move(type);
         this->nullable = NotNull;
         this->isUnique = isUnique;
     }
@@ -33,15 +34,15 @@ public:
         return type;
     }
 
-    bool getPrimaryKey() {
+    bool getPrimaryKey() const {
         return isPrimaryKey;
     }
 
-    bool getUnique() {
+    bool getUnique() const {
         return isUnique;
     }
 
-    bool isNullable() {
+    bool isNullable() const {
         return nullable;
     }
 };

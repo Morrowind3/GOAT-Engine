@@ -1,18 +1,37 @@
-#include "SQlite.h"
+//
+// Created by ismet on 25-10-2021.
+//
 
-int SQlite::callback(void *data, int argc, char **argv, char **azColName){
-    int i;
+#include "MigrationBuilder.h"
 
-    for(i = 0; i<argc; i++){
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "");
+std::vector<std::basic_string<char>> MigrationBuilder::getMigrationQueries() {
+    while (!tables.empty()) {
+        allTablesQueries.push_back(CreateTable(tables.back()));
+        delete tables.back();
+        tables.pop_back();
     }
 
-    printf("\n");
-    return 0;
+    return allTablesQueries;
 }
 
+void MigrationBuilder::NewTable(std::string name) {
+    ++currentTable;
+    tables.push_back(new SqlTable());
+    tables.back()->setTableName(name);
+    AddColumn("id", "INTEGER", true, false, true);
+}
+void MigrationBuilder::AddColumn(std::string name,  std::string type, bool primaryKey, bool nullable, bool unique) {
+    tables.back()->columns.push_back(new SqlColumn(primaryKey, std::move(name),  std::move(type), !nullable, unique));
+}
 
-std::string SQlite::createTable(SqlTable *table) {
+void MigrationBuilder::AddForeignKey(const std::string& referenceColumn, const std::string& referenceTable) {
+    std::string keyName = referenceTable + "_" + referenceColumn;
+    ForeignKey *level_id_fk = new ForeignKey(keyName, referenceTable, referenceColumn);
+    tables.at(currentTable)->foreignKeys.push_back(level_id_fk);
+
+}
+
+std::string MigrationBuilder::CreateTable(SqlTable* table) {
     std::string sqlQuery = "CREATE TABLE IF NOT EXISTS " + table->getTableName() + "(";
     std::vector<SqlColumn *> columns = table->getColumns();
 
@@ -49,27 +68,3 @@ std::string SQlite::createTable(SqlTable *table) {
     return sqlQuery;
 }
 
-bool SQlite::ExecuteQuery(std::string query) {
-    sqlite3 *db;
-    int rc = sqlite3_open(dbName, &db);
-    char **zErr = 0;
-    if (checkResponseCode(rc, zErr)) {
-        rc = sqlite3_exec(db, query.c_str(), callback, 0, zErr);
-        if (!checkResponseCode(rc, zErr)) {
-            fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
-            return false;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-bool SQlite::checkResponseCode(int rc, char **err) {
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", err);
-        return false;
-    } else {
-        return true;
-    }
-}
