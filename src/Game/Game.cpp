@@ -49,10 +49,7 @@ int main(int argc, char* args[]) {
         setupDatabase();
     }
 
-
-
-
-
+    
     engine.Run();
 
 

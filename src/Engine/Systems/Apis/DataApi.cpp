@@ -3,19 +3,21 @@
 //
 
 #include "DataApi.hpp"
+
+#include <utility>
 using namespace Engine;
 
 void DataApi::Insert(DataModel model) {
-    impl->Insert(model);
+    impl->Insert(std::move(model));
 }
 void DataApi::Update(DataModel model) {
-    impl->Update(model);
+    impl->Update(std::move(model));
 }
-void DataApi::Get(std::string table,std::string whereKey, std::string isValue) {
-    impl->Get(table,whereKey, isValue);
+DataModel DataApi::Get(const std::string& table,const std::string& whereKey, const std::string& isValue) {
+    return impl->Get(table,whereKey, isValue);
 }
 void DataApi::Delete(DataModel model) {
-    impl->Delete(model);
+    impl->Delete(std::move(model));
 }
 
 DataApi::DataApi() {
@@ -23,9 +25,13 @@ DataApi::DataApi() {
 }
 
 void DataApi::RunMigrations(std::vector<std::basic_string<char>> migrationQueries) {
-    impl->RunMigrations(migrationQueries);
+    impl->RunMigrations(std::move(migrationQueries));
 }
 
 bool DataApi::DatabaseExists() {
     return impl->DatabaseExists();
+}
+
+std::vector<DataModel> DataApi::GetAll(std::string table, std::string orderBy, bool descending) {
+    return impl->GetAll(std::move(table), std::move(orderBy), descending);
 }

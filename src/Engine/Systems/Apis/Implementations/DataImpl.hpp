@@ -17,7 +17,7 @@ namespace Engine {
 class DataImpl: NoCopyNoMove {
 private:
     std::string databaseName;
-    bool ExecuteQuery(std::string query);
+    bool ExecuteQuery(const std::string& query);
     static bool checkResponseCode(int rc, char **err);
     static int callback(void *data, int argc, char **argv, char **azColName);
 public:
@@ -28,8 +28,8 @@ public:
     void Delete(DataModel model);
     bool DatabaseExists();
 
-    DataModel Get(std::string table,std::string whereKey, std::string isValue);
-    std::vector<DataModel> GetAll(std::string table, std::string orderBy = "", bool descending = false);
+    DataModel Get(const std::string& table,const std::string& whereKey, const std::string& isValue);
+    std::vector<DataModel> GetAll(const std::string& table, const std::string& orderBy, bool descending);
 
 };
 };

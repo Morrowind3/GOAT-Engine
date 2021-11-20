@@ -24,3 +24,4 @@ std::string DataModel::getValue(std::string key) {
 void DataModel::setValue(std::string key, std::string value) {
     data[key] = value;
 }
+

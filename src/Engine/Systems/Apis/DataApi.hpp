@@ -22,7 +22,8 @@ public:
     }
     void Insert(DataModel model);
     void Update(DataModel model);
-    void Get(std::string table,std::string whereKey, std::string isValue);
+    DataModel Get(const std::string& table,const std::string& whereKey, const std::string& isValue);
+    std::vector<DataModel> GetAll(std::string table, std::string orderBy = "", bool descending = false);
     void Delete(DataModel model);
     void RunMigrations(std::vector<std::basic_string<char>> migrationQueries);
     bool DatabaseExists();
