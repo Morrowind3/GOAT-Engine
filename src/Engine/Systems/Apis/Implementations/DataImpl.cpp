@@ -6,7 +6,6 @@
 #include <iostream>
 #include <filesystem>
 #include "DataImpl.hpp"
-#pragma table_info(table_name);
 
 using namespace Engine;
 

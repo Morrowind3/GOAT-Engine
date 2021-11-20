@@ -8,8 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "SqlColumn.h"
-#include "SqlTable.h"
+#include "SqlColumn.hpp"
+#include "SqlTable.hpp"
 #include "DataModel.hpp"
 
 class MigrationBuilder {
