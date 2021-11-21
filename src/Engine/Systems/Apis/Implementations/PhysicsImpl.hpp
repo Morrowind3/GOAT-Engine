@@ -8,15 +8,20 @@
 #include "box2d.h"
 #include <memory>
 
-class PhysicsImpl {
-public:
-    void CreateWorld();
-    void DestroyWorld();
-    void DestroyBody(b2Body *body);
-    void AttachCollision();
-private:
-    std::unique_ptr<b2World> world;
-};
+namespace  Engine {
+    class PhysicsImpl {
+    public:
+        void CreateWorld();
 
+        void DestroyWorld();
+
+        void DestroyBody(b2Body *body);
+
+        void AttachCollision();
+
+    private:
+        std::unique_ptr<b2World> world;
+    };
+}
 
 #endif //GOAT_ENGINE_PHYSICSIMPL_HPP

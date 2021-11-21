@@ -70,6 +70,8 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp
         Engine/Systems/Apis/RendererApi.cpp
         Engine/Systems/Apis/RendererApi.hpp
+        Engine/Systems/Apis/PhysicsApi.cpp
+        Engine/Systems/Apis/PhysicsApi.hpp
         Engine/Utilities/Input.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.hpp

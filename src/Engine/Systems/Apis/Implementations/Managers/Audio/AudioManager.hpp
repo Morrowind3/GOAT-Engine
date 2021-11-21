@@ -8,6 +8,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <iostream>
 
 namespace Engine {
     class AudioManager {
