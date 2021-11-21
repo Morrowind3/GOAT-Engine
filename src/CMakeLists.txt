@@ -3,7 +3,7 @@ project(GOAT_Engine)
 
 set(CMAKE_CXX_STANDARD 17)
 
-SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
+SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${MINGW_STATIC_FLAGS}")
 
 set(SDL2_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2-2.0.16/include")
@@ -70,8 +70,6 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp
         Engine/Systems/Apis/RendererApi.cpp
         Engine/Systems/Apis/RendererApi.hpp
-        Engine/Systems/Apis/PhysicsApi.cpp
-        Engine/Systems/Apis/PhysicsApi.hpp
         Engine/Utilities/Input.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.hpp
@@ -87,7 +85,13 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Color.cpp
         Engine/API/GameObjects/GameComponents/Render/Color.hpp
         Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp
-        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp Engine/Systems/Apis/Implementations/PhysicsImpl.cpp Engine/Systems/Apis/Implementations/PhysicsImpl.hpp)
+        Engine/Systems/Apis/DataApi.cpp
+        Engine/Systems/Apis/Implementations/DataImpl.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/SqlColumn.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
 
 add_executable(Mount_Everestimate
         # Core
