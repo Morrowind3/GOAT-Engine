@@ -10,7 +10,6 @@
 #include "GameComponents/Script/Behavior.hpp"
 #include "GameComponents/Audio/AudioSource.hpp"
 #include "GameComponents/Render/UI/Text.hpp"
-#include "GameComponents/Tiled/TiledMap.hpp"
 
 namespace Engine {
     struct GameObject {
@@ -21,6 +20,5 @@ namespace Engine {
         std::map<std::string,Text> text;
         std::map<std::string,Sprite> sprites;
         std::map<std::string,AudioSource> audioSources;
-        std::unique_ptr<TiledMap> tiledMap = nullptr;
     };
 }

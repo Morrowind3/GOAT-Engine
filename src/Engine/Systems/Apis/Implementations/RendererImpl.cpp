@@ -29,46 +29,6 @@ void RendererImpl::LoadFont(const std::string& fileName) {
     _fonts->store(fileName);
 }
 
-void RendererImpl::LoadMap(std::string& path, int tilesX, int tilesY, int tileSize, std::map<int, std::string>& tileDictionary) {
-    // load all textures needed for map
-    for (const auto &item : tileDictionary) {
-        LoadTexture(item.second);
-    }
-
-    char tile;
-    std::fstream mapFile;
-    mapFile.open(path);
-
-    // dit gaat er fout: hij kopieerd telkens de voorgaande transform
-
-    BeginRenderTick();
-    for (int y = 0; y < tilesY; y++)
-    {
-        for (int x = 0; x < tilesX; x++) {
-            while (tile == ' ' || tile == ',') {
-                mapFile.ignore();
-                mapFile.get(tile);
-            }
-
-            double posY {y * tileSize * 1.0};
-            double posX {x * tileSize * 1.0};
-
-            DrawTexture(
-                    tileDictionary.at(atoi(&tile)),
-                    Transform{Point{posX, posY}, 20, 0, 1, 1}
-                    );
-
-            Point p1 {_tickTextureCache.at(_tickTextureCache.size()-1).first->position};
-            Point p2 {_tickTextureCache.at(0).first->position};
-
-
-            mapFile.ignore();
-        }
-    }
-    mapFile.close();
-    EndRenderTick();
-}
-
 void RendererImpl::BeginRenderTick() {
     _tickTextureCache = {};
     _temporaryFixSoWeHaveSomethingToShowInClassTomorrow = {};
@@ -83,7 +43,7 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
 void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
     auto& font = _fonts->get(fontName);
     auto* texture = font.text(text,size,color);
-//    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture});
+    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture});
     _temporaryFixSoWeHaveSomethingToShowInClassTomorrow.push_back(texture);
 }
 
@@ -93,7 +53,7 @@ bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
 }
 
 void RendererImpl::EndRenderTick() {
-//    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
+    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
 
     for (auto& drawable: _tickTextureCache) {
         auto& transform = drawable.first;
