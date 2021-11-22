@@ -9,6 +9,6 @@ namespace Engine {
     public:
         explicit Scene(std::string name);
         std::string name;
-        std::vector<GameObject*> gameObjects{};
+        std::vector<std::shared_ptr<GameObject>> gameObjects{};
     };
 }

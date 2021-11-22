@@ -8,7 +8,7 @@ using namespace Engine;
 
 class SlabTile : public Tile {
 public:
-    explicit SlabTile(std::string sprite, Transform transform, bool active);
+    explicit SlabTile(const std::string& sprite, Transform transform, bool active);
 };
 
 

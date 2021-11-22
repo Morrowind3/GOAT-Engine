@@ -10,7 +10,7 @@ using namespace Engine;
 class SlabTileBehavior : public Behavior {
 public:
     SlabTileBehavior(SlabTile& self, bool active) : Behavior(active) {
-        scripts.emplace_back(new SlabTileScript{self, true});
+        scripts.emplace_back(std::make_shared<SlabTileScript>(self, true));
     }
 };
 

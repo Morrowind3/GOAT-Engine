@@ -12,7 +12,7 @@ namespace Engine {
             virtual void OnDestroy() = 0;
         protected:
             const Scene* _scene;
-            [[nodiscard]] std::vector<GameObject*> activeObjects() const;
+            [[nodiscard]] std::vector<std::shared_ptr<GameObject>> activeObjects() const;
     };
 }
 

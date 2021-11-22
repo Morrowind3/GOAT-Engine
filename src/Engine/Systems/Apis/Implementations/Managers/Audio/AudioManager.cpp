@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "AudioManager.hpp"
 
 using namespace Engine;
