@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include <string>
 #include <map>
+#include <vector>
 #include "../../../../../API/GameObjects/GameComponents/Render/Color.hpp"
 #include "../Textures/Texture.hpp"
 
@@ -17,6 +18,7 @@ namespace Engine {
         private:
             std::string _fileName;
             std::map<uint8_t,TTF_Font*> _fontSizes;
+            std::vector<SDL_Surface*> surfaceReferences;
             SDL_Renderer* _renderer;
     };
 }

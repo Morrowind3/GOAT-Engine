@@ -12,12 +12,15 @@ Texture* Font::text(const std::string& text, uint8_t size, Color color) {
     }
     TTF_Font* font = _fontSizes.at(size);
     SDL_Color sdlColor = {color.R, color.G, color.B, color.A};
-    SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), sdlColor);
-    return new Texture{SDL_CreateTextureFromSurface(_renderer, surface)};
+    surfaceReferences.emplace_back(TTF_RenderText_Blended(font, text.c_str(), sdlColor));
+    return new Texture{SDL_CreateTextureFromSurface(_renderer, surfaceReferences.back())};
 }
 
 Font::~Font() {
     for(auto& font : _fontSizes) {
         TTF_CloseFont(font.second);
+    }
+    for(SDL_Surface* surface : surfaceReferences){
+        delete surface;
     }
 }
