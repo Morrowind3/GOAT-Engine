@@ -22,5 +22,5 @@ int Texture::height() const {
 }
 
 Texture::~Texture() {
-    //SDL_DestroyTexture(_texture); // TODO: This destroys the game
+//    SDL_DestroyTexture(_texture); // TODO: This destroys the game
 }
