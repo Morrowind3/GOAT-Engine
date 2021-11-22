@@ -3,5 +3,4 @@
 using namespace Engine;
 
 GameObject::GameObject(Transform transform, bool active): transform{transform}, active {active},
-                                                          behaviors{}, sprites{}, audioSources{}, text{} {
-}
+                                                          behaviors{}, sprites{}, audioSources{}, text{}, collider{active}, rigidBody{} {}

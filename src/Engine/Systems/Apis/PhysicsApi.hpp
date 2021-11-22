@@ -19,6 +19,7 @@ namespace Engine {
         void CreateWorld();
         void DestroyWorld();
         void DestroyBody(b2Body *body);
+        void AttachCollision(GameObject &gameObject);
     private:
         std::unique_ptr<PhysicsImpl> _impl;
     };

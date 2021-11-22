@@ -6,6 +6,7 @@
 #define GOAT_ENGINE_PHYSICSIMPL_HPP
 
 #include "box2d.h"
+#include "../../../API/GameObjects/GameObject.hpp"
 #include <memory>
 
 namespace  Engine {
@@ -17,7 +18,7 @@ namespace  Engine {
 
         void DestroyBody(b2Body *body);
 
-        void AttachCollision();
+        void AttachCollision(GameObject &gameObject);
 
     private:
         std::unique_ptr<b2World> world;

@@ -43,6 +43,12 @@ add_library(GOAT_Engine STATIC
         "Engine/Systems/System.cpp"
         "Engine/Engine.hpp"
         "Engine/Engine.cpp"
+        Engine/API/GameObjects/GameComponents/Collision/RigidBody.hpp
+        Engine/API/GameObjects/GameComponents/Collision/RigidBody.cpp
+        Engine/API/GameObjects/GameComponents/Collision/Collider.hpp
+        Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
+        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
+        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/Texture.cpp

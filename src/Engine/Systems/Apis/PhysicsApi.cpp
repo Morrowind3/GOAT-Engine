@@ -17,3 +17,7 @@ void PhysicsApi::DestroyWorld() {
 void PhysicsApi::DestroyBody(b2Body *body) {
     _impl->DestroyBody(body);
 }
+
+void PhysicsApi::AttachCollision(GameObject &gameObject) {
+    _impl->AttachCollision(gameObject);
+}

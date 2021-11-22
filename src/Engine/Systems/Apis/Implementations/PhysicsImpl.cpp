@@ -18,3 +18,7 @@ void PhysicsImpl::DestroyWorld() {
 void PhysicsImpl::DestroyBody(b2Body *body) {
     world.get()->DestroyBody(body);
 }
+
+void PhysicsImpl::AttachCollision(GameObject &gameObject) {
+
+}
