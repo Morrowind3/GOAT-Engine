@@ -1,5 +1,6 @@
 #include "../Engine/Engine.hpp"
 #include "Scenes/Etappes/EtappeOne.hpp"
+#include "Scenes/Etappes/EtappeTwo.hpp"
 
 using namespace Engine;
 
@@ -9,9 +10,10 @@ int main(int argc, char* args[]) {
 
     GoatEngine engine{name, icon};
 
-    EtappeOne scene{};
+    EtappeOne etappeOne{};
+    EtappeTwo etappeTwo{};
     //MainMenuScene scene{};
-    engine.sceneManager.AddScene(scene);
+    engine.sceneManager.AddScene(etappeTwo);
 
     engine.Run();
     return 0;

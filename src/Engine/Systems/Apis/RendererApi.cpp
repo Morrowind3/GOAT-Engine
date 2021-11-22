@@ -10,6 +10,10 @@ void RendererApi::RendererApi::LoadFont(const std::string& fileName) {
     renderer.LoadFont(fileName);
 }
 
+void RendererApi::RendererApi::LoadMap(std::string& path, int tilesX, int tilesY, int tileSize, std::map<int, std::string>& tileDictionary) {
+    renderer.LoadMap(path, tilesX, tilesY, tileSize, tileDictionary);
+}
+
 void RendererApi::RendererApi::BeginRenderTick() {
     renderer.BeginRenderTick();
 }

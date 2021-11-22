@@ -19,6 +19,7 @@ namespace RendererApi {
         }
         void LoadTexture(const std::string& fileName);
         void LoadFont(const std::string& fileName);
+        void LoadMap(std::string& path, int tilesX, int tilesY, int tileSize, std::map<int, std::string>& tileDictionary);
         void BeginRenderTick();
         void DrawTexture(const std::string& texture, const Transform& location);
         void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);

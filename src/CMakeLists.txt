@@ -85,26 +85,33 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Color.cpp
         Engine/API/GameObjects/GameComponents/Render/Color.hpp
         Engine/Systems/Apis/Implementations/Managers/Fonts/Font.cpp
-        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp)
+        Engine/Systems/Apis/Implementations/Managers/Fonts/Font.hpp
+        Engine/API/GameObjects/GameComponents/Tiled/TiledMap.hpp
+        Engine/API/GameObjects/GameComponents/Tiled/TiledMap.cpp)
+
 
 add_executable(Mount_Everestimate
         # Core
         "Game/Game.cpp"
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp
+        Game/Scenes/Etappes/EtappeTwo.hpp
         Game/Scenes/MainMenuScene.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
+        Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
         # Behaviors
         Game/Behaviors/PlayerBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp)
+        Game/Behaviors/Scripts/PlayerMovementScript.cpp
+        Game/Behaviors/Scripts/PlayerMovementScript.hpp
+        )
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
-add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
+add_executable(engine_tests "Engine/Tests/SampleTest.cpp" Engine/API/GameObjects/GameComponents/Tiled/TiledMap.cpp Engine/API/GameObjects/GameComponents/Tiled/TiledMap.hpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")
