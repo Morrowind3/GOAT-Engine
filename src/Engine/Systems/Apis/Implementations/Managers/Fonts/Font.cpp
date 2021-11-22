@@ -22,8 +22,3 @@ std::shared_ptr<Texture> Font::text(const std::string& text, uint8_t size, Color
     return texture;
 }
 
-Font::~Font() {
-    for(SDL_Surface* surface : _surfaceReferences){
-        delete surface;
-    }
-}

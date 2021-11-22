@@ -16,7 +16,6 @@ namespace Engine {
         public:
             Font(std::string fileName, SDL_Renderer* renderer);
             std::shared_ptr<Texture>  text(const std::string& text, uint8_t size, Color color);
-            ~Font();
             // TODO: Rule of five
         private:
         using fontParams = std::tuple<std::string, uint8_t, Color>;
