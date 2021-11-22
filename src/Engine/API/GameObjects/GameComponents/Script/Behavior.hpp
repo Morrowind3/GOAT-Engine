@@ -4,11 +4,12 @@
 #include "../GameComponent.hpp"
 #include "Script.hpp"
 #include <vector>
+#include <memory>
 
 namespace Engine {
     struct Behavior : public GameComponent {
         explicit Behavior(bool active);
-        std::vector<Script*> scripts;
+        std::vector<std::shared_ptr<Script>> scripts;
         void OnStart();
         void OnUpdate(double deltaTime);
         void OnDestroy();

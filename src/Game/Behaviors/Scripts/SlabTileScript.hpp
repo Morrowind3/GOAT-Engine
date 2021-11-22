@@ -13,7 +13,7 @@ public:
     void OnUpdate(double deltaTime);
 
 private:
-    SlabTile _self;
+    SlabTile& _self;
     Input& _input;
 };
 

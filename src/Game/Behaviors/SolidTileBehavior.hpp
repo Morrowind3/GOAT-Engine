@@ -4,13 +4,13 @@
 #include <memory>
 
 #include "../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "Scripts/PlayerMovementScript.hpp"
 
 using namespace Engine;
 
 class SolidTileBehavior : public Behavior {
 public:
     SolidTileBehavior(SolidTile& self, bool active) : Behavior(active) {
-//        scripts.emplace_back(new PlayerMovementScript{player, true});
     }
 };
 

@@ -74,99 +74,71 @@ public:
     }
 
     void placeTile(int index, Transform transform) {
+        std::string texturePath;
+
         switch (index) {
             case 1:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/grass_ground_empty.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/grass_ground_empty.png";
                 break;
             case 2:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/grass_ground_end_left.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/grass_ground_end_left.png";
                 break;
             case 3:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/grass_ground_end_right.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/grass_ground_end_right.png";
                 break;
             case 4:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/grass_ground_flat.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/grass_ground_flat.png";
                 break;
             case 5:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/grass_ground_normal.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/grass_ground_normal.png";
                 break;
             case 6:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/grass_slab_end_left.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/grass_slab_end_left.png";
                 break;
             case 7:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/grass_slab_end_right.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/grass_slab_end_right.png";
                 break;
             case 8:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/grass_slab_flat.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/grass_slab_flat.png";
                 break;
             case 9:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/grass_slab_normal.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/grass_slab_normal.png";
                 break;
             case 10:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/stone_ground_empty.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/stone_ground_empty.png";
                 break;
             case 11:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/stone_ground_end_left.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/stone_ground_end_left.png";
                 break;
             case 12:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/stone_ground_end_right.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/stone_ground_end_right.png";
                 break;
             case 13:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/stone_ground_flat.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/stone_ground_flat.png";
                 break;
             case 14:
-                gameObjects.emplace_back(
-                        new SolidTile("Sprites/landscapes/grass/stone_ground_normal.png", transform,
-                                      true));
+                texturePath = "Sprites/landscapes/grass/stone_ground_normal.png";
                 break;
             case 15:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/stone_slab_end_left.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/stone_slab_end_left.png";
                 break;
             case 16:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/stone_slab_end_right.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/stone_slab_end_right.png";
                 break;
             case 17:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/stone_slab_flat.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/stone_slab_flat.png";
                 break;
             case 18:
-                gameObjects.emplace_back(
-                        new SlabTile("Sprites/landscapes/grass/stone_slab_normal.png", transform,
-                                     true));
+                texturePath = "Sprites/landscapes/grass/stone_slab_normal.png";
                 break;
             default:
                 break;
+        }
+        if(index <= 5 || ( index >= 10 && index <= 14)){
+            gameObjects.emplace_back(std::make_shared<SolidTile>(texturePath, transform, true));
+        } else
+        if((index >= 6 && index <= 9) || ( index >= 15 && index <= 18)){
+            gameObjects.emplace_back(std::make_shared<SlabTile>(texturePath, transform, true));
         }
     }
 };

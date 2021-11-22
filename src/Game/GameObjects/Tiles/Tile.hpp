@@ -18,7 +18,7 @@ namespace TILE {
 
 class Tile : public GameObject {
 public:
-    explicit Tile(const std::string& sprite, const Behavior& tileBehavior, std::string tag, Transform transform, bool active)
+    explicit Tile(const std::string& sprite, const std::shared_ptr<Behavior>& tileBehavior, std::string tag, Transform transform, bool active)
             : GameObject(transform, active), tag(std::move(tag)) {
         sprites.insert(std::make_pair(TILE::SPRITE, Sprite{sprite, true}));
         behaviors.push_back(tileBehavior);
