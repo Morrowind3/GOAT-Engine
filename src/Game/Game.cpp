@@ -47,9 +47,12 @@ int main(int argc, char* args[]) {
     Debug::getInstance().toggle(true);
 
     // Feed scenes
-    EtappeOne etappeOne{};                          engine.sceneManager.AddScene(etappeOne);
-    EtappeTwo etappeTwo{};                          engine.sceneManager.AddScene(etappeTwo);
-    MainMenuScene mainMenu{engine.sceneManager};    engine.sceneManager.AddScene(mainMenu);
+    EtappeOne etappeOne{engine.sceneManager};
+    engine.sceneManager.AddScene(etappeOne);
+    EtappeTwo etappeTwo{};
+    engine.sceneManager.AddScene(etappeTwo);
+    MainMenuScene mainMenu{engine.sceneManager};
+    engine.sceneManager.AddScene(mainMenu);
 
     engine.sceneManager.ChangeCurrentScene(mainMenu.name);
 
@@ -57,9 +60,7 @@ int main(int argc, char* args[]) {
         setupDatabase();
     }
 
-    
-    engine.Run();
-
+    engine.Run(60);
 
     return 0;
 }

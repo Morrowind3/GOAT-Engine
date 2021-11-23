@@ -6,12 +6,13 @@
 namespace Engine {
     class System {
         public:
-            explicit System(const Scene* scene);
-            virtual void OnInit() = 0;
-            virtual void OnUpdate(double deltaTime) = 0;
-            virtual void OnDestroy() = 0;
+            System() = default;
+            virtual void OnLaunchEngine() = 0;                // Called when the program starts
+            virtual void OnLoadScene(const Scene* scene) = 0; // Called when loading or switching scene
+            virtual void OnFrameTick(double deltaTime) = 0;   // Called when a frame gets processed by the systems
+            virtual void OnCloseEngine() = 0;                 // Called when the program ends
         protected:
-            const Scene* _scene;
+            const Scene* _scene = nullptr;
             [[nodiscard]] std::vector<std::shared_ptr<GameObject>> activeObjects() const;
     };
 }
