@@ -41,9 +41,9 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
 
 void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
     auto& font = _fonts->get(fontName);
-    auto* texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture});
-    _temporaryFixSoWeHaveSomethingToShowInClassTomorrow.push_back(texture);
+    auto texture = font.text(text,size,color);
+    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture.get()});
+    _temporaryFixSoWeHaveSomethingToShowInClassTomorrow.push_back(texture.get());
 }
 
 bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
@@ -85,10 +85,10 @@ void RendererImpl::EndRenderTick() {
     }
     SDL_RenderPresent(_renderer.get());
 
-    // TODO: Delete this
-    for (auto* deleteThis : _temporaryFixSoWeHaveSomethingToShowInClassTomorrow) {
-        delete deleteThis;
-    }
+//    // TODO: Delete this
+//    for (auto* deleteThis : _temporaryFixSoWeHaveSomethingToShowInClassTomorrow) {
+//        delete deleteThis;
+//    }
 }
 
 void RendererImpl::End() {
