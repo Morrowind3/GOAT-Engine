@@ -100,6 +100,7 @@ void RendererImpl::EndRenderTick() {
 
 void RendererImpl::End() {
     //TODO correctly freeing application
+//    SDL_FreeCursor(cursor);
 //    SDL_DestroyTexture(texture);
 //    SDL_FreeSurface(surface);
 //    TTF_CloseFont(font);
