@@ -12,9 +12,7 @@ namespace Engine {
     class GoatEngine {
     public:
         explicit GoatEngine(std::string& name, std::string& iconPath);
-
         void Run();
-
         SceneManager sceneManager{};
     private:
         bool _isRunning;

@@ -9,6 +9,7 @@ namespace Engine {
         explicit Script(bool active);
         virtual void OnStart();
         virtual void OnUpdate(double deltaTime);
+        virtual void OnExternalEvent();
         virtual void OnDestroy();
         // TODO: Collisions
     };

@@ -15,10 +15,17 @@ void ScriptSystem::OnInit() {
 }
 
 void ScriptSystem::OnUpdate(double deltaTime) {
-    Input::getInstance().Update();
+    auto& input = Input::getInstance();
+    input.Update();
     for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {
             if(behavior->active) behavior->OnUpdate(deltaTime);
+        }
+        for (auto& button : gameObject->buttons) {
+            // Detect if mouse clicked on button
+            if(button.second.active && input.GetMouseDown(Input::MouseButton::LEFT) && button.second.dimensions.intersects(input.MousePosition())) {
+                button.second.onClick->OnExternalEvent();
+            }
         }
     }
 }

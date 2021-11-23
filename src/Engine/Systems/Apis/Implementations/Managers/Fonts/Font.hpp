@@ -4,7 +4,7 @@
 #include <SDL_ttf.h>
 #include <string>
 #include <map>
-#include "../../../../../API/GameObjects/GameComponents/Render/Color.hpp"
+#include "../../../../../API/GameObjects/Color.hpp"
 #include "../Textures/Texture.hpp"
 
 namespace Engine {

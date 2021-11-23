@@ -17,9 +17,9 @@ GoatEngine::GoatEngine(std::string& name, std::string& iconPath) :
 
 void GoatEngine::Run() {
     // Add systems
-    _systems->emplace_back(std::make_unique<RenderingSystem>(sceneManager.CurrentScene(), _name, _iconPath));
     _systems->emplace_back(std::make_unique<ScriptSystem>(sceneManager.CurrentScene()));
     _systems->emplace_back(std::make_unique<AudioSystem>(sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<RenderingSystem>(sceneManager.CurrentScene(), _name, _iconPath));
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
