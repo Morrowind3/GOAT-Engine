@@ -18,10 +18,12 @@ namespace  Engine {
 
         void DestroyBody(b2Body *body);
 
-        void AttachCollision(GameObject &gameObject);
+        void Update(GameObject &gameObject);
+
+        void Step();
 
     private:
-        std::unique_ptr<b2World> world;
+        b2World *world;
     };
 }
 

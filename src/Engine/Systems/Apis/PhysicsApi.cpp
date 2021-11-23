@@ -18,6 +18,10 @@ void PhysicsApi::DestroyBody(b2Body *body) {
     _impl->DestroyBody(body);
 }
 
-void PhysicsApi::AttachCollision(GameObject &gameObject) {
-    _impl->AttachCollision(gameObject);
+void PhysicsApi::Update(GameObject &gameObject) {
+    _impl->Update(gameObject);
+}
+
+void PhysicsApi::Step() {
+    _impl->Step();
 }

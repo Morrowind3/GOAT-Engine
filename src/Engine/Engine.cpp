@@ -6,6 +6,7 @@
 #include "Systems/ScriptSystem.hpp"
 #include "Systems/AudioSystem.hpp"
 #include "Utilities/Input.hpp"
+#include "Systems/CollisionSystem.hpp"
 
 using namespace Engine;
 
@@ -20,6 +21,7 @@ void GoatEngine::Run() {
     _systems->emplace_back(std::make_unique<RenderingSystem>(sceneManager.CurrentScene(), _name, _iconPath));
     _systems->emplace_back(std::make_unique<ScriptSystem>(sceneManager.CurrentScene()));
     _systems->emplace_back(std::make_unique<AudioSystem>(sceneManager.CurrentScene()));
+    _systems->emplace_back(std::make_unique<CollisionSystem>(sceneManager.CurrentScene()));
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
