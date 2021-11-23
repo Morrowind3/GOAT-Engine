@@ -143,7 +143,7 @@ namespace Engine {
             };
             Input(Input const&) = delete;
             void operator=(Input const&) = delete;
-            static Input& getInstance()
+            static Input& GetInstance()
             {
                 static Input instance;
                 return instance;

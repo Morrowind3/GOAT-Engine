@@ -1,4 +1,5 @@
 #include "RendererApi.hpp"
+#include "../../API/Camera.hpp"
 
 using namespace Engine;
 

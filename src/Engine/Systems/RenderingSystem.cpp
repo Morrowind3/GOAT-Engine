@@ -20,8 +20,9 @@ void RenderingSystem::OnInit() {
 void RenderingSystem::OnUpdate(double deltaTime) {
     _api.BeginRenderTick();
     for (auto& gameObject: activeObjects()) {
+        Transform cameraAdjustedTransform = _scene->GetCamera()->AdjustForCamera(gameObject->transform);
         for (auto& sprite: gameObject->sprites) {
-            if (sprite.second.active) _api.DrawTexture(sprite.second.path, gameObject->transform);
+            if (sprite.second.active) _api.DrawTexture(sprite.second.path, cameraAdjustedTransform);
         }
         for (auto& text: gameObject->text) {
             if (text.second.active)

@@ -91,7 +91,9 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/SqlColumn.cpp
         Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
+        Engine/API/Camera.cpp
+        Engine/API/GameObjects/Rectangle.cpp)
 
 
 add_executable(Mount_Everestimate

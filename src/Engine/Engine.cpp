@@ -30,10 +30,26 @@ void GoatEngine::Run() {
     // Start systems
     for (auto& system: *_systems) system->OnInit();
     _isRunning = true;
-
     // Update systems
     while (_isRunning) {
         frameStart = SDL_GetTicks();
+
+        double xCamMovement = 0, yCamMovement = 0;
+        if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)){
+            xCamMovement += 20;
+        }
+        if(Input::GetInstance().GetKeyDown(Input::KeyCode::LEFT)){
+            xCamMovement -= 20;
+        }
+        if(Input::GetInstance().GetKeyDown(Input::KeyCode::UP)){
+            yCamMovement -= 20;
+        }
+        if(Input::GetInstance().GetKeyDown(Input::KeyCode::DOWN)){
+            yCamMovement += 20;
+        }
+        sceneManager.CurrentScene()->MoveCamera(xCamMovement,yCamMovement);
+
+
 
         for (auto& system: *_systems) system->OnUpdate(deltaTime);
 
@@ -43,7 +59,7 @@ void GoatEngine::Run() {
             SDL_Delay(frameDelay - frameTime);
         }
 
-        if (Input::getInstance().QuitEvent()) {
+        if (Input::GetInstance().QuitEvent()) {
             _isRunning = false;
             exit(0);
         }
