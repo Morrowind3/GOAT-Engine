@@ -21,7 +21,7 @@ namespace Engine {
         Transform transform;
         Collider collider;
         std::any rigidBody;
-        std::vector<Behavior> behaviors; // TODO: Convert to map
+        std::vector<std::shared_ptr<Behavior>> behaviors; // TODO: Convert to map
         std::map<std::string,Text> text;
         std::map<std::string,Sprite> sprites;
         std::map<std::string,AudioSource> audioSources;

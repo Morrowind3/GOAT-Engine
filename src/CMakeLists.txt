@@ -103,20 +103,33 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
 
+
 add_executable(Mount_Everestimate
         # Core
         "Game/Game.cpp"
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp
+        Game/Scenes/Etappes/EtappeTwo.hpp
         Game/Scenes/MainMenuScene.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
+        Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
+        Game/GameObjects/Tiles/SolidTile.cpp
+        Game/GameObjects/Tiles/SolidTile.hpp
+        Game/GameObjects/Tiles/SlabTile.cpp
+        Game/GameObjects/Tiles/SlabTile.hpp
+        Game/GameObjects/Tiles/Tile.hpp
         # Behaviors
         Game/Behaviors/PlayerBehavior.hpp
+        Game/Behaviors/SolidTileBehavior.hpp
+        Game/Behaviors/SlabTileBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp)
+        Game/Behaviors/Scripts/PlayerMovementScript.cpp
+        Game/Behaviors/Scripts/PlayerMovementScript.hpp
+        Game/Behaviors/Scripts/SlabTileScript.cpp
+        Game/Behaviors/Scripts/SlabTileScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
