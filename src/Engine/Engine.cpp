@@ -45,9 +45,11 @@ void GoatEngine::Run() {
 
         if (Input::getInstance().QuitEvent()) {
             _isRunning = false;
+            exit(0);
         }
     }
 
+    // TODO: It hangs here
     // Destroy systems
     for (auto& system: *_systems) system->OnDestroy();
 }

@@ -11,7 +11,7 @@ using namespace Engine;
 class PlayerBehavior : public Behavior {
     public:
         PlayerBehavior(Player& player, bool active) : Behavior(active) {
-            scripts.emplace_back(new PlayerMovementScript{player, true});
+            scripts.emplace_back(std::make_shared<PlayerMovementScript>(player, true));
         }
 };
 

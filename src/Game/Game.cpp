@@ -1,6 +1,6 @@
 #include "../Engine/Engine.hpp"
-#include "Scenes/MainMenuScene.hpp"
 #include "Scenes/Etappes/EtappeOne.hpp"
+#include "Scenes/Etappes/EtappeTwo.hpp"
 #include "../Engine/Systems/Apis/DataApi.hpp"
 #include "../Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.hpp"
 
@@ -41,9 +41,10 @@ int main(int argc, char* args[]) {
 
     GoatEngine engine{name, icon};
 
-    EtappeOne scene{};
+    EtappeOne etappeOne{};
+    EtappeTwo etappeTwo{};
     //MainMenuScene scene{};
-    engine.sceneManager.AddScene(scene);
+    engine.sceneManager.AddScene(etappeTwo);
 
     if(!DataApi::getInstance().DatabaseExists()){
         setupDatabase();

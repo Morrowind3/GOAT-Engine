@@ -476,7 +476,7 @@ extern DECLSPEC int SDLCALL SDL_SetPaletteColors(SDL_Palette * palette,
 extern DECLSPEC void SDLCALL SDL_FreePalette(SDL_Palette * palette);
 
 /**
- * Map an RGB triple to an opaque pixel value for a given pixel format.
+ * TiledMap an RGB triple to an opaque pixel value for a given pixel format.
  *
  * This function maps the RGB color value to the specified pixel format and
  * returns the pixel value best approximating the given RGB color value for
@@ -507,7 +507,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_MapRGB(const SDL_PixelFormat * format,
                                           Uint8 r, Uint8 g, Uint8 b);
 
 /**
- * Map an RGBA quadruple to a pixel value for a given pixel format.
+ * TiledMap an RGBA quadruple to a pixel value for a given pixel format.
  *
  * This function maps the RGBA color value to the specified pixel format and
  * returns the pixel value best approximating the given RGBA color value for

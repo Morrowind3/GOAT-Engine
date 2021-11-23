@@ -4,7 +4,7 @@
 
 #include <string>
 #include <iostream>
-#include <filesystem>
+//#include <filesystem>
 #include "DataImpl.hpp"
 
 using namespace Engine;
@@ -156,6 +156,7 @@ void DataImpl::RunMigrations(std::vector<std::basic_string<char>> migrationQueri
 }
 
 bool DataImpl::DatabaseExists() {
-    return std::filesystem::exists(databaseName);
+//    return std::filesystem::exists(databaseName);
+    return false;
 }
 

@@ -1,6 +1,7 @@
 #include "RendererImpl.hpp"
 
 #include <algorithm>
+#include <fstream>
 #include "SDL_ttf.h"
 
 using namespace Engine;
@@ -53,6 +54,7 @@ bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
 
 void RendererImpl::EndRenderTick() {
     std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
+
     for (auto& drawable: _tickTextureCache) {
         auto& transform = drawable.first;
         auto& texture = drawable.second;
