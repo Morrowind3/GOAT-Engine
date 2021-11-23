@@ -8,7 +8,7 @@
 namespace Engine {
     class SceneManager {
     public:
-        Scene* CurrentScene() const;
+        [[nodiscard]] Scene* CurrentScene() const;
         void ChangeCurrentScene(std::string& name);
         void AddScene(Scene& scene);
         Scene* GetScene(std::string& name) const;

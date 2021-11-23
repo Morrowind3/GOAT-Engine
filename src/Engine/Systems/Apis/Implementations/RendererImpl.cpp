@@ -39,8 +39,8 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
 
 void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
     auto& font = _fonts->get(fontName);
-    auto* texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture});
+    std::shared_ptr<Texture> texture = font.text(text,size,color);
+    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture.get()});
 }
 
 void RendererImpl::DrawSolid(Color color, const Rectangle& dimensions) {
