@@ -8,7 +8,7 @@ namespace Keys {
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
     const std::string ETAPPE_ONE = "ETAPPE_ONE"; // Usage: Etappe 1 level ID
     const std::string START_GAME = "START_GAME"; // Usage: Start game button ID
-    const std::string QUIT_GAME = "START_GAME"; // Usage: Quit game button ID
+    const std::string QUIT_GAME = "QUIT_GAME"; // Usage: Quit game button ID
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP

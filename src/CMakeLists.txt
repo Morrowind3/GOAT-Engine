@@ -89,7 +89,7 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/UI/Button.cpp
         Engine/API/GameObjects/GameComponents/Render/UI/Button.hpp
         Engine/API/GameObjects/Rectangle.cpp
-        Engine/API/GameObjects/Rectangle.hpp)
+        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp)
 
 
 add_executable(Mount_Everestimate
