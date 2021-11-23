@@ -6,7 +6,7 @@
 
 using namespace Engine;
 
-RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
+RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
@@ -17,6 +17,11 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
     _fonts = std::make_unique<FontManager>(_renderer.get());
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
+
+    auto cursorSurface = IMG_Load(cursor.c_str());
+    auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
+    SDL_SetCursor(sdlCursor);
+
 }
 
 void RendererImpl::LoadTexture(const std::string& fileName) {
@@ -66,14 +71,14 @@ void RendererImpl::EndRenderTick() {
 
         SDL_Rect sourceRect{}, destinationRect{};
 
-        sourceRect.x = sourceRect.y = 0;
-        sourceRect.w = static_cast<int>(transform->scaleWidth) * texture->width();
-        sourceRect.h = static_cast<int>(transform->scaleHeight) * texture->height();
+        // transform NIET naar een static int casten!! gaat fout met afronden
+        sourceRect.w = transform->scaleWidth * texture->width();
+        sourceRect.h = transform->scaleHeight * texture->height();
 
         destinationRect.x = static_cast<int>(transform->position.x);
         destinationRect.y = static_cast<int>(transform->position.y);
-        destinationRect.w = static_cast<int>(transform->scaleWidth) * texture->width();
-        destinationRect.h = static_cast<int>(transform->scaleWidth) * texture->height();
+        destinationRect.w = transform->scaleWidth * texture->width();
+        destinationRect.h = transform->scaleWidth * texture->height();
 
         SDL_RendererFlip flip;
         switch (transform->flip) {

@@ -6,7 +6,7 @@
 namespace Engine {
     class RenderingSystem : public System {
         public:
-            explicit RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath);
+            explicit RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath, std::string& cursor);
             void OnInit() override;
             void OnUpdate(double deltaTime) override;
             void OnDestroy() override;

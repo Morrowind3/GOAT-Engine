@@ -3,8 +3,8 @@
 
 using namespace Engine;
 
-RenderingSystem::RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath) :
-        System(scene), _api(RendererApi::RendererApi::getInstance(name, iconPath)) {}
+RenderingSystem::RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath, std::string& cursor) :
+        System(scene), _api(RendererApi::RendererApi::getInstance(name, iconPath, cursor)) {}
 
 void RenderingSystem::OnInit() {
     for (auto& gameObject: _scene->gameObjects) {

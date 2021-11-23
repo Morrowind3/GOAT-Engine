@@ -41,7 +41,9 @@ int main(int argc, char* args[]) {
     // Configure engine
     std::string name{"Mount Everestimate"};
     std::string icon{"icon.png"};
-    GoatEngine engine{name, icon};
+    std::string cursor{"cursor.png"};
+
+    GoatEngine engine{name, icon, cursor};
     Debug::getInstance().toggle(true);
 
     // Feed scenes

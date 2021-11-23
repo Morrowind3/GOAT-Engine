@@ -13,8 +13,8 @@ namespace RendererApi {
         RendererApi(RendererApi const&) = delete;
         void operator=(RendererApi const&) = delete;
 
-        static RendererApi& getInstance(std::string& name, std::string& iconPath) {
-            static RendererApi instance{name, iconPath};
+        static RendererApi& getInstance(std::string& name, std::string& iconPath, std::string& cursor) {
+            static RendererApi instance{name, iconPath, cursor};
             return instance;
         }
         void LoadTexture(const std::string& fileName);
@@ -27,7 +27,7 @@ namespace RendererApi {
         void End();
 
     private:
-        RendererApi(std::string& name, std::string& iconPath) : renderer(name, iconPath) {};
+        RendererApi(std::string& name, std::string& iconPath, std::string& cursor) : renderer(name, iconPath, cursor) {};
         RendererImpl renderer;
     };
 }
