@@ -9,6 +9,7 @@ using namespace Engine;
 
 void PhysicsImpl::CreateWorld() {
     b2Vec2 gravity(0.0f, -10.0f);
+    world = std::make_unique<b2World>(b2World{gravity});
 }
 
 void PhysicsImpl::DestroyWorld() {

@@ -15,7 +15,7 @@ void CollisionSystem::OnInit() {
 }
 
 void CollisionSystem::OnUpdate(double deltaTime) {
-    _api.Step();
+//    _api.Step();
 }
 
 void CollisionSystem::OnDestroy() {
