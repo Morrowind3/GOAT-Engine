@@ -5,9 +5,7 @@
 #include "../../API/GameObjects/Transform.hpp"
 #include "Implementations/RendererImpl.hpp"
 
-using namespace Engine;
-
-namespace RendererApi {
+namespace Engine {
     class RendererApi {
     public:
         RendererApi(RendererApi const&) = delete;

@@ -137,7 +137,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/PlayerMovementScript.cpp
         Game/Behaviors/Scripts/PlayerMovementScript.hpp
         Game/Behaviors/Scripts/SlabTileScript.cpp
-        Game/Behaviors/Scripts/SlabTileScript.hpp)
+        Game/Behaviors/Scripts/SlabTileScript.hpp Game/Scenes/Etappes/EtappeOne.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

@@ -17,6 +17,7 @@ MainMenu::MainMenu(SceneManager& sceneManager, Transform transform, bool active)
             Text{"Quit game", "Fonts/Kenney_Thick.ttf", 16, {0,0,0,255}, Transform{{0,540},300,0,6,6},true},
             Color{255,0,0,255},
             Rectangle{{0,540},1280,540},
-            std::make_shared<QuitGameBehavior>(true),
+            //std::make_shared<QuitGameBehavior>(true),
+            std::make_shared<SwitchSceneButtonBehavior>(Keys::MAIN_MENU, sceneManager,true),
             true}));
 }

@@ -3,10 +3,12 @@
 
 using namespace Engine;
 
-ScriptSystem::ScriptSystem(const Scene* scene) : System(scene) {
+void ScriptSystem::OnLaunchEngine() {
+    // Empty
 }
 
-void ScriptSystem::OnInit() {
+void ScriptSystem::OnLoadScene(const Scene* scene) {
+    _scene = scene;
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& behavior : gameObject->behaviors) {
             behavior->OnStart();
@@ -14,7 +16,7 @@ void ScriptSystem::OnInit() {
     }
 }
 
-void ScriptSystem::OnUpdate(double deltaTime) {
+void ScriptSystem::OnFrameTick(double deltaTime) {
     auto& input = Input::getInstance();
     input.Update();
     for (auto& gameObject : activeObjects()) {
@@ -30,10 +32,8 @@ void ScriptSystem::OnUpdate(double deltaTime) {
     }
 }
 
-void ScriptSystem::OnDestroy() {
-    for (auto& gameObject : _scene->gameObjects) {
-        for (auto& behavior : gameObject->behaviors) {
-            behavior->OnDestroy();
-        }
-    }
+void ScriptSystem::OnCloseEngine() {
+    // Empty
 }
+
+
