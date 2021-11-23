@@ -14,13 +14,13 @@ set(SDL2_IMAGE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_IMAGE-2.0.5/inc
 set(SDL2_IMAGE_LIB_DIR ${PROJECT_SOURCE_DIR}/Libraries/SDL2_IMAGE-2.0.5/lib/x86)
 set(SDL2_MIXER_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_MIXER-2.0.4/include")
 set(SDL2_MIXER_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_MIXER-2.0.4/lib/x86")
-set(BOX2D_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/Box2D/include")
+set(BOX2D_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/Box2D")
 set(BOX2D_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/Box2D/lib")
 set(SQLITE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/include")
 set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/lib")
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR})
-link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
+link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${SQLITE_LIB_DIR})
 
 add_library(GOAT_Engine STATIC
         "Engine/API/GameObjects/GameComponents/GameComponent.hpp"
@@ -106,7 +106,6 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
 
-
 add_executable(Mount_Everestimate
         # Core
         "Game/Game.cpp"
@@ -134,10 +133,18 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/SlabTileScript.cpp
         Game/Behaviors/Scripts/SlabTileScript.hpp)
 
-target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
+#file(GLOB_RECURSE Box2D_SRC
+#        .//Box2D/*.h
+#        Box2D/Box2D/*.cpp
+#        )
+
+
+target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer Box2D sqlite3)
+
+
 
 add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
-target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)
+target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer Box2D)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")
 target_link_libraries(engine_tests GOAT_Engine)

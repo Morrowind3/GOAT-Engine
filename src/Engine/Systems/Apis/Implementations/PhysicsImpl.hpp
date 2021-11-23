@@ -5,7 +5,7 @@
 #ifndef GOAT_ENGINE_PHYSICSIMPL_HPP
 #define GOAT_ENGINE_PHYSICSIMPL_HPP
 
-#include "box2d.h"
+#include "Box2D.h"
 #include "../../../API/GameObjects/GameObject.hpp"
 #include <memory>
 
@@ -23,7 +23,7 @@ namespace  Engine {
         void Step();
 
     private:
-        b2World *world;
+//        std::unique_ptr<b2World> world;
     };
 }
 
