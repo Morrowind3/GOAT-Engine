@@ -9,7 +9,6 @@ using namespace Engine;
 
 void PhysicsImpl::CreateWorld() {
     b2Vec2 gravity(0.0f, -10.0f);
-
 }
 
 void PhysicsImpl::DestroyWorld() {

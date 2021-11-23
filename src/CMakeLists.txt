@@ -3,7 +3,7 @@ project(GOAT_Engine)
 
 set(CMAKE_CXX_STANDARD 17)
 
-SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++")
+SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${MINGW_STATIC_FLAGS}")
 
 set(SDL2_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2-2.0.16/include")
@@ -14,15 +14,20 @@ set(SDL2_IMAGE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_IMAGE-2.0.5/inc
 set(SDL2_IMAGE_LIB_DIR ${PROJECT_SOURCE_DIR}/Libraries/SDL2_IMAGE-2.0.5/lib/x86)
 set(SDL2_MIXER_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_MIXER-2.0.4/include")
 set(SDL2_MIXER_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_MIXER-2.0.4/lib/x86")
-set(BOX2D_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/Box2D")
-set(BOX2D_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/Box2D/lib")
+set(BOX2D_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/BOX2D")
+#set(BOX2D_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/BOX2D/lib")
 set(SQLITE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/include")
 set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/lib")
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${SQLITE_LIB_DIR})
 
+file(GLOB_RECURSE Box2D_SRC
+        Libraries/Box2D/*.h
+        Libraries/Box2D/*.cpp)
+
 add_library(GOAT_Engine STATIC
+        ${Box2D_SRC}
         "Engine/API/GameObjects/GameComponents/GameComponent.hpp"
         "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
         "Engine/API/GameObjects/GameComponents/Render/Sprite.hpp"
@@ -71,7 +76,6 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Script/Script.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.cpp
         Engine/API/GameObjects/GameComponents/Script/Behavior.hpp
-
         Engine/Systems/Apis/RendererApi.cpp
         Engine/Systems/Apis/RendererApi.hpp
         Engine/Utilities/Input.cpp
@@ -104,7 +108,10 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/SqlColumn.cpp
         Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
+
+target_include_directories(GOAT_Engine PUBLIC "Box2D")
 
 add_executable(Mount_Everestimate
         # Core
@@ -133,18 +140,10 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/SlabTileScript.cpp
         Game/Behaviors/Scripts/SlabTileScript.hpp)
 
-#file(GLOB_RECURSE Box2D_SRC
-#        .//Box2D/*.h
-#        Box2D/Box2D/*.cpp
-#        )
-
-
-target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer Box2D sqlite3)
-
-
+target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
 
 add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
-target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer Box2D)
+target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")
 target_link_libraries(engine_tests GOAT_Engine)

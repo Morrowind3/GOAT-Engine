@@ -23,7 +23,7 @@ namespace  Engine {
         void Step();
 
     private:
-//        std::unique_ptr<b2World> world;
+        std::unique_ptr<b2World> world;
     };
 }
 
