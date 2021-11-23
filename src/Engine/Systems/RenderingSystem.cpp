@@ -31,7 +31,10 @@ void RenderingSystem::OnUpdate(double deltaTime) {
         }
         // TODO: Button rendering
         for (auto& button: gameObject->buttons) {
-            if (button.second.active) _api.DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
+            if (button.second.active) {
+                _api.DrawSolid(button.second.backgroundColor, button.second.dimensions);
+                _api.DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
+            }
         }
     }
     _api.EndRenderTick();

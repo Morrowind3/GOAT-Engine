@@ -4,6 +4,7 @@
 #include "Scenes/MainMenuScene.hpp"
 #include "../Engine/Systems/Apis/DataApi.hpp"
 #include "../Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.hpp"
+#include "../Engine/Utilities/Debug.hpp"
 
 using namespace Engine;
 
@@ -37,15 +38,18 @@ void setupDatabase(){
 
 
 int main(int argc, char* args[]) {
+    // Configure engine
     std::string name{"Mount Everestimate"};
     std::string icon{"icon.png"};
-
     GoatEngine engine{name, icon};
+    Debug::getInstance().toggle(true);
 
-    EtappeOne etappeOne{};
-    EtappeTwo etappeTwo{};
-    MainMenuScene mainMenu{engine.sceneManager};
-    engine.sceneManager.AddScene(mainMenu);
+    // Feed scenes
+    EtappeOne etappeOne{};                          engine.sceneManager.AddScene(etappeOne);
+    EtappeTwo etappeTwo{};                          engine.sceneManager.AddScene(etappeTwo);
+    MainMenuScene mainMenu{engine.sceneManager};    engine.sceneManager.AddScene(mainMenu);
+
+    engine.sceneManager.ChangeCurrentScene(mainMenu.name);
 
     if(!DataApi::getInstance().DatabaseExists()){
         setupDatabase();

@@ -7,7 +7,6 @@
 using namespace Engine;
 
 RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
-        _temporaryFixSoWeHaveSomethingToShowInClassTomorrow{}, // TODO: DELETE!
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
@@ -18,7 +17,6 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
     _fonts = std::make_unique<FontManager>(_renderer.get());
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
-
 }
 
 void RendererImpl::LoadTexture(const std::string& fileName) {
@@ -31,7 +29,6 @@ void RendererImpl::LoadFont(const std::string& fileName) {
 
 void RendererImpl::BeginRenderTick() {
     _tickTextureCache = {};
-    _temporaryFixSoWeHaveSomethingToShowInClassTomorrow = {};
     SDL_RenderClear(_renderer.get());
 }
 
@@ -42,9 +39,17 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
 
 void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
     auto& font = _fonts->get(fontName);
-    auto texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture.get()});
-    _temporaryFixSoWeHaveSomethingToShowInClassTomorrow.push_back(texture.get());
+    auto* texture = font.text(text,size,color);
+    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture});
+}
+
+void RendererImpl::DrawSolid(Color color, const Rectangle& dimensions) {
+    // TODO: Make this less bad
+    auto* sdlDimensions = new SDL_Rect {static_cast<int>(dimensions.topLeft.x), static_cast<int>(dimensions.topLeft.y),
+                                        static_cast<int>(dimensions.width), static_cast<int>(dimensions.height)};
+    SDL_SetRenderDrawColor(_renderer.get(), color.R, color.G, color.B, color.A);
+    SDL_RenderFillRect(_renderer.get(), sdlDimensions);
+    SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
 }
 
 bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
@@ -86,11 +91,6 @@ void RendererImpl::EndRenderTick() {
         SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform->rotation, nullptr, flip);
     }
     SDL_RenderPresent(_renderer.get());
-
-//    // TODO: Delete this
-//    for (auto* deleteThis : _temporaryFixSoWeHaveSomethingToShowInClassTomorrow) {
-//        delete deleteThis;
-//    }
 }
 
 void RendererImpl::End() {
