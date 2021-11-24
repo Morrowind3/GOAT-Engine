@@ -13,8 +13,8 @@ class FpsScript : public Script {
         void OnUpdate(double deltaTime);
     private:
         Text& _text;
-        Input& _input = Input::getInstance();
-        Debug& _debug = Debug::getInstance();
+        Input& _input = Input::GetInstance();
+        Debug& _debug = Debug::GetInstance();
 };
 
 

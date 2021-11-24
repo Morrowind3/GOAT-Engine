@@ -43,13 +43,15 @@ void GoatEngine::Run(const unsigned int maxFps) {
         while (_isRunning && _sceneManager.CurrentScene() == active) {
             // Only handle frame when allowed to by the FPS cap
             currentFrameTickInMs = SDL_GetTicks();
+
             deltaTimeInMs = currentFrameTickInMs - previousFrameTickInMs;
             if (deltaTimeInMs >= frameDelayInMs) {
                 previousFrameTickInMs = currentFrameTickInMs;
                 // Perform frame logic
-                for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
                 if (Input::GetInstance().QuitEvent()) _isRunning = false; // Quit game event
             }
+
+            for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
 
             if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)) {
                 delay += 10000;
@@ -58,6 +60,9 @@ void GoatEngine::Run(const unsigned int maxFps) {
                 if(delay -10000 >= 0) {
                     delay -= 10000;
                 }
+            }
+            if(Input::GetInstance().GetKeyDown(Input::KeyCode::Q)) {
+                _sceneManager.CurrentScene()->MoveCamera(50,0);
             }
             if(delay > 0) {
                 usleep(delay);

@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif GOAT_ENGINE_CAMERA_HPP
+#endif //GOAT_ENGINE_CAMERA_HPP
