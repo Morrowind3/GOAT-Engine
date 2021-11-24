@@ -7,21 +7,21 @@
 using namespace  Engine;
 
 void PhysicsApi::CreateWorld() {
-    _impl->CreateWorld();
+    physics.CreateWorld();
 }
 
 void PhysicsApi::DestroyWorld() {
-    _impl->DestroyWorld();
+    physics.DestroyWorld();
 }
 
 void PhysicsApi::DestroyBody(b2Body *body) {
-    _impl->DestroyBody(body);
+    physics.DestroyBody(body);
 }
 
 void PhysicsApi::Update(GameObject &gameObject) {
-    _impl->Update(gameObject);
+    physics.Update(gameObject);
 }
 
 void PhysicsApi::Step() {
-    _impl->Step();
+    physics.Step();
 }

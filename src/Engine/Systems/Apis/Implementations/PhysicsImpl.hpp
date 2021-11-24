@@ -12,8 +12,9 @@
 
 namespace Engine {
     class PhysicsImpl {
-        PhysicsImpl();
     public:
+        PhysicsImpl();
+
         void CreateWorld();
 
         void DestroyWorld();

@@ -6,15 +6,15 @@
 
 using namespace Engine;
 
-PhysicsImpl::PhysicsImpl() : _world(b2World{b2Vec2{0.0f, -10.0f}}) {
+PhysicsImpl::PhysicsImpl() : _world{b2World{b2Vec2{0.0f, -10.0f}}} {
 
 }
 
 void PhysicsImpl::CreateWorld() {
-    b2World test {b2Vec2(0.0f, -10.0f)};
-    test.Step(1.0f / 60.0f, 8,6);
-
-    _world = test;
+//    b2World test {b2Vec2(0.0f, -10.0f)};
+//    test.Step(1.0f / 60.0f, 8,6);
+//
+//    _world = test;
 }
 
 void PhysicsImpl::DestroyWorld() {
@@ -30,6 +30,5 @@ void PhysicsImpl::Update(GameObject &gameObject) {
 }
 
 void PhysicsImpl::Step() {
-//    std::cout << _world.GetGravity().y << std::endl;
-//    _world.Step(1.0f / 60.0f, 8,6);
+    _world.Step(1.0f / 60.0f, 8,6);
 }

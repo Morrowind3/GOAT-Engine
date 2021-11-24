@@ -12,17 +12,22 @@ using namespace Engine;
 namespace Engine {
     class PhysicsApi {
     public:
+        PhysicsApi(PhysicsApi const&) = delete;
+        void operator=(PhysicsApi const&) = delete;
+
         static PhysicsApi& getInstance(){
             static PhysicsApi instance{};
             return instance;
         }
+
         void CreateWorld();
         void DestroyWorld();
         void DestroyBody(b2Body *body);
         void Update(GameObject &gameObject);
         void Step();
     private:
-        std::unique_ptr<PhysicsImpl> _impl;
+        PhysicsApi() : physics() {};
+        PhysicsImpl physics;
     };
 }
 

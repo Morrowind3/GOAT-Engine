@@ -6,7 +6,7 @@
 
 using namespace Engine;
 
-CollisionSystem::CollisionSystem(const Scene *scene): System(scene), _api{PhysicsApi::getInstance()} {
+CollisionSystem::CollisionSystem(const Scene *scene): System(scene), _api(PhysicsApi::PhysicsApi::getInstance()) {
 
 }
 
