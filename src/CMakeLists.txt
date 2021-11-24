@@ -102,7 +102,7 @@ add_executable(Mount_Everestimate
         # Core
         Game/Keys.hpp
         Game/Game.cpp
-        Game/GameSceneManager.cpp Game/GameSceneManager.hpp
+        Game/GameSceneManager.cpp
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp

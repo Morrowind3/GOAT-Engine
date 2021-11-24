@@ -34,9 +34,9 @@ void GoatEngine::Run(const unsigned int maxFps) {
 
         // Load scene
         std::shared_ptr<Scene> active = _sceneManager.CurrentScene();
-        Debug::getInstance().log("Scene start: " + active->name);
+        Debug::GetInstance().log("Scene start: " + active->name);
         for (auto& system: *_systems) system->OnLoadScene(active);
-        Debug::getInstance().log("Scene started: " + active->name);
+        Debug::GetInstance().log("Scene started: " + active->name);
 
         // Loop until scene change
         while (_isRunning && _sceneManager.CurrentScene() == active) {
@@ -56,12 +56,11 @@ void GoatEngine::Run(const unsigned int maxFps) {
             if(Input::GetInstance().GetKeyDown(Input::KeyCode::DOWN)){
                 yCamMovement += 20;
             }
-
-        sceneManager.CurrentScene()->MoveCamera(xCamMovement,yCamMovement);
-
+        _sceneManager.CurrentScene()->MoveCamera(xCamMovement,yCamMovement);
 
 
-        for (auto& system: *_systems) system->OnUpdate(deltaTime);
+
+        for (auto& system: *_systems) system->OnFrameTick(deltaTime);
 
             frameTime = SDL_GetTicks() - frameStart;
             deltaTime = (double)frameTime*1000/(double)SDL_GetPerformanceFrequency();
@@ -73,7 +72,7 @@ void GoatEngine::Run(const unsigned int maxFps) {
                 _isRunning = false; // Quit game
             }
         }
-        Debug::getInstance().log("Scene end: " + active->name);
+        Debug::GetInstance().log("Scene end: " + active->name);
     }
 
     // Destroy systems

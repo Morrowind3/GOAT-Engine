@@ -29,21 +29,21 @@ void RenderingSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
 void RenderingSystem::OnFrameTick(double deltaTime) {
     _api->BeginRenderTick();
     for (auto& gameObject: activeObjects()) {
-        Transform cameraAdjustedTransform = _scene->GetCamera()->AdjustForCamera(gameObject->transform);
+        Transform camAdjustedSprite = _scene->GetCamera()->AdjustForCamera(gameObject->transform);
         for (auto& sprite: gameObject->sprites) {
-            if (sprite.second.active) _api->DrawTexture(sprite.second.path, cameraAdjustedTransform);
+            if (sprite.second.active) _api->DrawTexture(sprite.second.path, camAdjustedSprite);
         }
         for (auto& text: gameObject->text) {
             if (!text.second.active) continue;
-            cameraAdjustedTransform = _scene->GetCamera()->AdjustForCamera(text.second.location);
+            Transform camAdjustedText = _scene->GetCamera()->AdjustForCamera(text.second.location);
             _api->DrawText(text.second.text, text.second.size, text.second.color, text.second.font,
-                          cameraAdjustedTransform);
+                           camAdjustedText);
         }
         for (auto& button: gameObject->buttons) {
-            if (button.second.active) {
-                _api->DrawTexture(button.second.sprite.path, gameObject->transform);
-                _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
-            }
+            if (!button.second.active) return;
+            Transform camAdjustedText = _scene->GetCamera()->AdjustForCamera(button.second.text.location);
+            _api->DrawTexture(button.second.sprite.path, camAdjustedSprite);
+            _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font,camAdjustedText );
         }
     }
     _api->EndRenderTick();

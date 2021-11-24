@@ -6,6 +6,6 @@ QuitGameScript::QuitGameScript(bool active) : Script(active) {
 }
 
 void QuitGameScript::OnExternalEvent() {
-    Input::getInstance().QueueQuitEvent();
-    Debug::getInstance().log("Quit game called");
+    Input::GetInstance().QueueQuitEvent();
+    Debug::GetInstance().log("Quit game called");
 }

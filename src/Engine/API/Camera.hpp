@@ -21,7 +21,7 @@ public:
 private:
     void Reposition(Engine::Transform& t) const;
     void Zoom(Engine::Transform& t) const;
-    Rectangle camera;
+    Engine::Rectangle camera;
     float zoomLevel;
 };
 
