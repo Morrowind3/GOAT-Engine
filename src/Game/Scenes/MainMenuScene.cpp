@@ -3,8 +3,10 @@
 #include "../GameObjects/Meta/MainMenu/ExitButton.hpp"
 #include "../GameObjects/Meta/MainMenu/PlayButton.hpp"
 #include "../GameObjects/Enemies/Hawk.hpp"
+#include "../GameObjects/Meta/FpsDisplay.hpp"
 
 MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
+    gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
     gameObjects.emplace_back(std::make_shared<Background>(
             manager, Transform{Point{0, 0}, 1, 0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<ExitButton>(

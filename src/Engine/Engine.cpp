@@ -2,7 +2,7 @@
 #include "Engine.hpp"
 #include "Systems/RenderingSystem.hpp"
 
-#include "SDL_image.h"
+#include "SDL_image.h" // TODO: Delegate SDL time functions to a pimpl
 #include "Systems/ScriptSystem.hpp"
 #include "Systems/AudioSystem.hpp"
 #include "Utilities/Input.hpp"
@@ -15,11 +15,6 @@ GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::strin
 }
 
 void GoatEngine::Run(const unsigned int maxFps) {
-    // Frame variables
-    const unsigned int frameDelay = 1000 / maxFps;
-    unsigned int frameStart, frameTime;
-    double deltaTime = 0;
-
     // Add systems
     _systems->emplace_back(std::make_unique<ScriptSystem>());
     _systems->emplace_back(std::make_unique<AudioSystem>());
@@ -28,7 +23,11 @@ void GoatEngine::Run(const unsigned int maxFps) {
     // Start systems
     for (auto& system: *_systems) system->OnLaunchEngine();
 
-    // Update systems
+    // Frame variables
+    const double frameDelayInMs = 1000.0/(double)maxFps;
+    unsigned int currentFrameTickInMs, previousFrameTickInMs = SDL_GetTicks();
+    double deltaTimeInMs {0};
+
     _isRunning = true;
     while (_isRunning) {
 
@@ -38,20 +37,16 @@ void GoatEngine::Run(const unsigned int maxFps) {
         for (auto& system: *_systems) system->OnLoadScene(active);
         Debug::getInstance().log("Scene started: " + active->name);
 
-        // Loop until scene change
+        // Update systems until scene change
         while (_isRunning && _sceneManager.CurrentScene() == active) {
-            frameStart = SDL_GetTicks();
-
-            for (auto& system: *_systems) system->OnFrameTick(deltaTime);
-
-            frameTime = SDL_GetTicks() - frameStart;
-            deltaTime = (double)frameTime*1000/(double)SDL_GetPerformanceFrequency();
-            if (frameDelay > frameTime) {
-                SDL_Delay(frameDelay - frameTime);
-            }
-
-            if (Input::getInstance().QuitEvent()) {
-                _isRunning = false; // Quit game
+            // Only handle frame when allowed to by the FPS cap
+            currentFrameTickInMs = SDL_GetTicks();
+            deltaTimeInMs = currentFrameTickInMs - previousFrameTickInMs;
+            if (deltaTimeInMs >= frameDelayInMs) {
+                previousFrameTickInMs = currentFrameTickInMs;
+                // Perform frame logic
+                for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
+                if (Input::getInstance().QuitEvent()) _isRunning = false; // Quit game event
             }
         }
         Debug::getInstance().log("Scene end: " + active->name);

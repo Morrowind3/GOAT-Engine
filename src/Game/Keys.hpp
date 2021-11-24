@@ -10,6 +10,7 @@ namespace Keys {
     const std::string ETAPPE_TWO = "ETAPPE_TWO"; // Usage: Etappe 2 level ID
     const std::string START_GAME = "START_GAME"; // Usage: Start game button ID
     const std::string QUIT_GAME = "QUIT_GAME"; // Usage: Quit game button ID
+    const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP
