@@ -1,7 +1,3 @@
-//
-// Created by Stijn van Loon on 24-11-2021.
-//
-
 #ifndef GOAT_ENGINE_PLAYBUTTON_HPP
 #define GOAT_ENGINE_PLAYBUTTON_HPP
 
@@ -24,7 +20,7 @@ public:
                 Text{"Play", "Fonts/Kenney_Thick.ttf", 36, {255, 255, 255, 255}, textTransform, true},
                 Sprite{"Sprites/ui/buttons/button_large_blue.png", active},
                 Rectangle{Point{transform.position.x, transform.position.y}, 250, 160},
-                std::make_shared<SwitchSceneButtonBehavior>("Etappe two", sceneManager, active),
+                std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_ONE, sceneManager, active),
                 true}));
     };
 };

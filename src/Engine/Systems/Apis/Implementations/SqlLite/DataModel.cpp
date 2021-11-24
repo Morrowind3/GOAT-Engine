@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 19/11/2021.
-//
-
 #include "DataModel.hpp"
 
 std::string DataModel::getTableName() {

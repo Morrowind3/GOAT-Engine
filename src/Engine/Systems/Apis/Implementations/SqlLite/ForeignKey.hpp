@@ -1,7 +1,3 @@
-//
-// Created by ismet on 2-11-2021.
-//
-
 #ifndef SQLITEPOC_FOREIGNKEY_H
 #define SQLITEPOC_FOREIGNKEY_H
 

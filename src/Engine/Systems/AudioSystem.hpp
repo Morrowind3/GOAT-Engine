@@ -9,7 +9,7 @@ namespace Engine {
         public:
             AudioSystem() = default;
             void OnLaunchEngine() override;
-            void OnLoadScene(const Scene* scene) override;
+            void OnLoadScene(std::shared_ptr<Scene> scene) override;
             void OnFrameTick(double deltaTime) override;
             void OnCloseEngine() override;
         private:

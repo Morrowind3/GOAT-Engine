@@ -1,7 +1,3 @@
-//
-// Created by ismet on 25-10-2021.
-//
-
 #ifndef SQLITEPOC_MIGRATIONS_H
 #define SQLITEPOC_MIGRATIONS_H
 

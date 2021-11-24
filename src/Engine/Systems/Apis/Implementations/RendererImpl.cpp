@@ -63,12 +63,12 @@ void RendererImpl::EndRenderTick() {
 
         SDL_Rect sourceRect{}, destinationRect{};
 
-        // transform NIET naar een static int casten!! gaat fout met afronden
+        // Do NOT cast transform to a static int because of rounding errors!!
         sourceRect.w = transform->scaleWidth * texture->width();
         sourceRect.h = transform->scaleHeight * texture->height();
 
-        destinationRect.x = static_cast<int>(transform->position.x);
-        destinationRect.y = static_cast<int>(transform->position.y);
+        destinationRect.x = transform->position.x;
+        destinationRect.y = transform->position.y;
         destinationRect.w = transform->scaleWidth * texture->width();
         destinationRect.h = transform->scaleWidth * texture->height();
 

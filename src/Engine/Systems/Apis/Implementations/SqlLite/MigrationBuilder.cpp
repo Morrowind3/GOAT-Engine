@@ -1,7 +1,3 @@
-//
-// Created by ismet on 25-10-2021.
-//
-
 #include "MigrationBuilder.hpp"
 
 std::vector<std::basic_string<char>> MigrationBuilder::getMigrationQueries() {

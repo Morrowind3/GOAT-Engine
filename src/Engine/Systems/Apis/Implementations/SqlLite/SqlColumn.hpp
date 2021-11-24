@@ -1,7 +1,3 @@
-//
-// Created by ismet on 22-10-2021.
-//
-
 #ifndef SQLITEPOC_SQLCOLUMN_H
 #define SQLITEPOC_SQLCOLUMN_H
 

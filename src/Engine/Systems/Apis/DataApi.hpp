@@ -1,10 +1,5 @@
-//
-// Created by harley on 18-11-21.
-//
-
 #ifndef GOAT_ENGINE_DATAAPI_HPP
 #define GOAT_ENGINE_DATAAPI_HPP
-
 
 #include <memory>
 #include "Implementations/DataImpl.hpp"

@@ -7,14 +7,10 @@
 
 namespace Engine {
     class SceneManager {
-    public:
-        [[nodiscard]] Scene* CurrentScene() const;
-        void ChangeCurrentScene(std::string& name);
-        void AddScene(Scene& scene);
-        Scene* GetScene(std::string& name) const;
-
-    private:
-        Scene* _currentScene = nullptr;
-        std::unique_ptr<std::map<std::string, std::unique_ptr<Scene>>> _scenes = std::make_unique<std::map<std::string, std::unique_ptr<Scene>>>();
+        public:
+            [[nodiscard]] std::shared_ptr<Scene> CurrentScene() const;
+            virtual void ChangeCurrentScene(const std::string& name) = 0;
+        protected:
+            std::shared_ptr<Scene> _currentScene;
     };
 }

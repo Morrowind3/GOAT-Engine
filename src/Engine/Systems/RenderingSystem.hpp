@@ -8,7 +8,7 @@ namespace Engine {
         public:
             RenderingSystem(std::string& name, std::string& iconPath, std::string& cursor);
             void OnLaunchEngine() override;
-            void OnLoadScene(const Scene* scene) override;
+            void OnLoadScene(std::shared_ptr<Scene> scene) override;
             void OnFrameTick(double deltaTime) override;
             void OnCloseEngine() override;
         private:
