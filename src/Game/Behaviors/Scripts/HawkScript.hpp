@@ -25,7 +25,9 @@ private:
     Hawk& _self;
     Point _startingPos;
     Direction _direction = RIGHT;
-    std::time_t _lastMoveTime = std::time(0);
+    int _updateCounter{0};
+//    std::time_t _lastMoveTime = std::time(0);
+
 };
 
 
