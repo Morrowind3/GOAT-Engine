@@ -119,18 +119,23 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
+        Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
+        Game/GameObjects/Meta/FpsDisplay.cpp Game/GameObjects/Meta/FpsDisplay.hpp
         # Behaviors
         Game/Behaviors/PlayerBehavior.hpp
         Game/Behaviors/SolidTileBehavior.hpp
         Game/Behaviors/SlabTileBehavior.hpp
         Game/Behaviors/QuitGameBehavior.hpp Game/Behaviors/QuitGameBehavior.cpp
         Game/Behaviors/SwitchSceneButtonBehavior.hpp
+        Game/Behaviors/HawkBehavior.hpp
+        Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp
         # Scripts
         Game/Behaviors/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/SwitchSceneButtonScript.hpp
         Game/Behaviors/Scripts/QuitGameScript.cpp Game/Behaviors/Scripts/QuitGameScript.hpp
         Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
         Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
-)
+        Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
+        Game/Behaviors/Scripts/FpsScript.cpp Game/Behaviors/Scripts/FpsScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
