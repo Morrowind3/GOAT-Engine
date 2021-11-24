@@ -3,6 +3,8 @@
 
 #include "SDL_image.h"
 #include "Texture.hpp"
+#include "../../../../../API/GameObjects/Rectangle.hpp"
+#include "../../../../../API/GameObjects/Color.hpp"
 
 #include <map>
 #include <memory>

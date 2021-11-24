@@ -1,7 +1,3 @@
-//
-// Created by Stijn van Loon on 22-11-2021.
-//
-
 #ifndef GOAT_ENGINE_TILE_HPP
 #define GOAT_ENGINE_TILE_HPP
 

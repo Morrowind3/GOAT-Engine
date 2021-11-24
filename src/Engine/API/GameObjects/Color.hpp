@@ -28,5 +28,4 @@ struct Color {
     }
 };
 
-
 #endif //GOAT_ENGINE_COLOR_HPP

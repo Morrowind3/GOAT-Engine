@@ -159,9 +159,11 @@ namespace Engine {
             [[nodiscard]] bool GetMouseButton(MouseButton button) const;
             [[nodiscard]] bool GetMouseUp(MouseButton button) const;
             [[nodiscard]] bool GetMouseDown(MouseButton button) const;
+            void QueueQuitEvent();
             [[nodiscard]] bool QuitEvent() const;
         private:
             Input()= default;
+            bool _manualQuitEvent = false;
         };
 }
 

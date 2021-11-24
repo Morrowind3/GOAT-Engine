@@ -6,10 +6,11 @@
 namespace Engine {
     class ScriptSystem : public System  {
         public:
-            explicit ScriptSystem(const Scene* scene);
-            void OnInit() override;
-            void OnUpdate(double deltaTime) override;
-            void OnDestroy() override;
+            ScriptSystem() = default;
+            void OnLaunchEngine() override;
+            void OnLoadScene(std::shared_ptr<Scene> scene) override;
+            void OnFrameTick(double deltaTime) override;
+            void OnCloseEngine() override;
     };
 }
 

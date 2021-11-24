@@ -6,8 +6,7 @@
 
 using namespace Engine;
 
-RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
-        _temporaryFixSoWeHaveSomethingToShowInClassTomorrow{}, // TODO: DELETE!
+RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
@@ -18,6 +17,11 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath) :
     _fonts = std::make_unique<FontManager>(_renderer.get());
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
+    SDL_RenderSetLogicalSize(_renderer.get(), 1920, 985);
+
+    auto cursorSurface = IMG_Load(cursor.c_str());
+    auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
+    SDL_SetCursor(sdlCursor);
 
 }
 
@@ -31,7 +35,6 @@ void RendererImpl::LoadFont(const std::string& fileName) {
 
 void RendererImpl::BeginRenderTick() {
     _tickTextureCache = {};
-    _temporaryFixSoWeHaveSomethingToShowInClassTomorrow = {};
     SDL_RenderClear(_renderer.get());
 }
 
@@ -42,9 +45,8 @@ void RendererImpl::DrawTexture(const std::string& name, const Transform& transfo
 
 void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
     auto& font = _fonts->get(fontName);
-    auto texture = font.text(text,size,color);
+    std::shared_ptr<Texture> texture = font.text(text,size,color);
     _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture.get()});
-    _temporaryFixSoWeHaveSomethingToShowInClassTomorrow.push_back(texture.get());
 }
 
 bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
@@ -61,14 +63,14 @@ void RendererImpl::EndRenderTick() {
 
         SDL_Rect sourceRect{}, destinationRect{};
 
-        sourceRect.x = sourceRect.y = 0;
-        sourceRect.w = static_cast<int>(transform->scaleWidth) * texture->width();
-        sourceRect.h = static_cast<int>(transform->scaleHeight) * texture->height();
+        // Do NOT cast transform to a static int because of rounding errors!!
+        sourceRect.w = transform->scaleWidth * texture->width();
+        sourceRect.h = transform->scaleHeight * texture->height();
 
-        destinationRect.x = static_cast<int>(transform->position.x);
-        destinationRect.y = static_cast<int>(transform->position.y);
-        destinationRect.w = static_cast<int>(transform->scaleWidth) * texture->width();
-        destinationRect.h = static_cast<int>(transform->scaleWidth) * texture->height();
+        destinationRect.x = transform->position.x;
+        destinationRect.y = transform->position.y;
+        destinationRect.w = transform->scaleWidth * texture->width();
+        destinationRect.h = transform->scaleWidth * texture->height();
 
         SDL_RendererFlip flip;
         switch (transform->flip) {
@@ -86,15 +88,11 @@ void RendererImpl::EndRenderTick() {
         SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform->rotation, nullptr, flip);
     }
     SDL_RenderPresent(_renderer.get());
-
-//    // TODO: Delete this
-//    for (auto* deleteThis : _temporaryFixSoWeHaveSomethingToShowInClassTomorrow) {
-//        delete deleteThis;
-//    }
 }
 
 void RendererImpl::End() {
     //TODO correctly freeing application
+//    SDL_FreeCursor(cursor);
 //    SDL_DestroyTexture(texture);
 //    SDL_FreeSurface(surface);
 //    TTF_CloseFont(font);

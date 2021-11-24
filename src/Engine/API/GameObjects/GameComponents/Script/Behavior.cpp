@@ -17,6 +17,12 @@ void Behavior::OnUpdate(double deltaTime) {
     }
 }
 
+void Behavior::OnExternalEvent() {
+    for(auto& script : scripts) {
+        script->OnExternalEvent();
+    }
+}
+
 void Behavior::OnDestroy() {
     for(auto& script : scripts) {
         script->OnDestroy();
