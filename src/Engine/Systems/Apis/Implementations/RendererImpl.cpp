@@ -17,6 +17,7 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::
     _fonts = std::make_unique<FontManager>(_renderer.get());
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
+    SDL_RenderSetLogicalSize(_renderer.get(), 1920, 985);
 
     auto cursorSurface = IMG_Load(cursor.c_str());
     auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
@@ -46,15 +47,6 @@ void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, 
     auto& font = _fonts->get(fontName);
     std::shared_ptr<Texture> texture = font.text(text,size,color);
     _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture.get()});
-}
-
-void RendererImpl::DrawSolid(Color color, const Rectangle& dimensions) {
-    // TODO: Make this less bad
-    auto* sdlDimensions = new SDL_Rect {static_cast<int>(dimensions.topLeft.x), static_cast<int>(dimensions.topLeft.y),
-                                        static_cast<int>(dimensions.width), static_cast<int>(dimensions.height)};
-    SDL_SetRenderDrawColor(_renderer.get(), color.R, color.G, color.B, color.A);
-    SDL_RenderFillRect(_renderer.get(), sdlDimensions);
-    SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
 }
 
 bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,

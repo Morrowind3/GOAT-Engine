@@ -4,12 +4,13 @@
 #include "Text.hpp"
 #include "../../Script/Behavior.hpp"
 #include "../../../Rectangle.hpp"
+#include "../Sprite.hpp"
 
 namespace Engine {
     struct Button : public GameComponent {
-        Button(Text text, Color backgroundColor, Rectangle dimensions, std::shared_ptr<Behavior> onClick, bool active);
+        Button(Text text, Sprite sprite, Rectangle dimensions, std::shared_ptr<Behavior> onClick, bool active);
         Text text;
-        Color backgroundColor;
+        Sprite sprite;
         Rectangle dimensions;
         std::shared_ptr<Behavior> onClick;
     };

@@ -114,7 +114,6 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
         Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
-        Game/GameObjects/Meta/MainMenu.cpp Game/GameObjects/Meta/MainMenu.hpp
         Game/GameObjects/Tiles/Tile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
@@ -139,7 +138,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/SlabTileScript.cpp
         Game/Behaviors/Scripts/SlabTileScript.hpp Game/GameObjects/Meta/MainMenu/Background.hpp
         Game/GameObjects/Meta/MainMenu/ExitButton.hpp
-        Game/Behaviors/Scripts/SlabTileScript.hpp Game/Scenes/Etappes/EtappeOne.cpp)
+        Game/Behaviors/Scripts/SlabTileScript.hpp Game/Scenes/Etappes/EtappeOne.cpp Game/GameObjects/Meta/MainMenu/PlayButton.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

@@ -22,10 +22,6 @@ void RendererApi::RendererApi::DrawText(const std::string& text, uint8_t size, C
     renderer.DrawText(text,size,color,fontName,transform);
 }
 
-void RendererApi::RendererApi::DrawSolid(Color color, const Rectangle& dimensions) {
-    renderer.DrawSolid(color,dimensions);
-}
-
 void RendererApi::RendererApi::EndRenderTick() {
     renderer.EndRenderTick();
 }

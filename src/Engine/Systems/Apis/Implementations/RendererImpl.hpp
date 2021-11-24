@@ -22,7 +22,6 @@ namespace Engine {
             void BeginRenderTick();
             void DrawTexture(const std::string& texture, const Transform& location);
             void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);
-            void DrawSolid(Color color, const Rectangle& dimensions);
             void EndRenderTick();
             void End();
 
