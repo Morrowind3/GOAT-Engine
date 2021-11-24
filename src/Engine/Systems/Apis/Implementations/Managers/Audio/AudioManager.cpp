@@ -32,10 +32,10 @@ const Music& Engine::AudioManager::getMusic(const std::string& fileName) const {
     return _music->at(fileName);
 }
 
-void AudioManager::removeSample(const std::string& fileName) {
+[[maybe_unused]] void AudioManager::removeSample(const std::string& fileName) {
     _samples->erase(fileName);
 }
 
-void AudioManager::removeMusic(const std::string& fileName) {
+[[maybe_unused]] void AudioManager::removeMusic(const std::string& fileName) {
     _music->erase(fileName);
 }

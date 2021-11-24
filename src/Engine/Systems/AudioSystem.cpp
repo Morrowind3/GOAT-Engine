@@ -7,6 +7,7 @@ void AudioSystem::OnLaunchEngine() {
 }
 
 void AudioSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
+    _api->Reset();
     _scene = scene;
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& audioSource : gameObject->audioSources) {

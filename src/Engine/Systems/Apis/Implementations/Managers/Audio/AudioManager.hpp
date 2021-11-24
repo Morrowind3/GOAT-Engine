@@ -17,8 +17,8 @@ namespace Engine {
             void storeMusic(const std::string& fileName);
             [[nodiscard]] const Sample& getSample(const std::string& fileName) const;
             [[nodiscard]] const Music& getMusic(const std::string& fileName) const;
-            void removeSample(const std::string& fileName);
-            void removeMusic(const std::string& fileName);
+            [[maybe_unused]] void removeSample(const std::string& fileName);
+            [[maybe_unused]] void removeMusic(const std::string& fileName);
         private:
             std::unique_ptr<std::map<std::string,Sample>> _samples;
             std::unique_ptr<std::map<std::string,Music>> _music;

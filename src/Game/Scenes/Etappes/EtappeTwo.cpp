@@ -3,6 +3,8 @@
 #include "../../GameObjects/Tiles/SolidTile.hpp"
 #include "../../Behaviors/SolidTileBehavior.hpp"
 #include "../../GameObjects/Tiles/SlabTile.hpp"
+#include "../../GameObjects/Meta/EtappeTwoManager.hpp"
+#include "../../GameObjects/Meta/FpsDisplay.hpp"
 
 #include <fstream>
 #include <string>
@@ -13,16 +15,17 @@
 void placeTile(int index, Transform transform, Scene& scene);
 
 EtappeTwo::EtappeTwo(SceneManager& manager) : Scene("Etappe two") {
-//        gameObjects.emplace_back(new Player{Transform{Point{100,912},15,0,5,5},true});
-
+    gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
+    gameObjects.emplace_back(std::make_shared<EtappeTwoManager>(
+            Transform{Point{0,0},0}, true));
     int tileSize{21};
-    int tilesY{3};
-    int tilesX{3};
+    int tilesY{50};
+    int tilesX{250};
     // warn: only use whole numbers like 1, 2, 3. With doubles like 1.3 there will be gaps between tiles
-    double scale{3};
+    double scale{2};
 
     // get file as string
-    std::ifstream file("Maps/test.map");
+    std::ifstream file("Maps/etappe2.map");
     std::stringstream buffer;
     buffer << file.rdbuf();
     std::string text = buffer.str();
@@ -57,7 +60,8 @@ EtappeTwo::EtappeTwo(SceneManager& manager) : Scene("Etappe two") {
             if (index != 0) {
                 double posY{y * tileSize * scale};
                 double posX{x * tileSize * scale};
-                Transform transform{Point{posX, posY}, 10, 0, scale, scale};
+                //temp fix posY - 1000
+                Transform transform{Point{posX, posY-1000}, 10, 0, scale, scale};
                 Scene& ref = *this;
                 placeTile(index, transform, ref);
             }
