@@ -25,9 +25,10 @@ void RenderingSystem::OnUpdate(double deltaTime) {
             if (sprite.second.active) _api.DrawTexture(sprite.second.path, cameraAdjustedTransform);
         }
         for (auto& text: gameObject->text) {
-            if (text.second.active)
-                _api.DrawText(text.second.text, text.second.size, text.second.color, text.second.font,
-                              text.second.location);
+            if (!text.second.active) continue;
+            cameraAdjustedTransform = _scene->GetCamera()->AdjustForCamera(text.second.location);
+            _api.DrawText(text.second.text, text.second.size, text.second.color, text.second.font,
+                          cameraAdjustedTransform);
         }
     }
     _api.EndRenderTick();

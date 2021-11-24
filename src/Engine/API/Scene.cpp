@@ -2,7 +2,7 @@
 
 using namespace Engine;
 
-Scene::Scene(std::string name) : name(std::move(name)), gameObjects{}, _camera({0,0,400,400}) {
+Scene::Scene(std::string name) : name(std::move(name)), gameObjects{}, _camera({0,0,1.0}) {
 }
 
 void Scene::SetCamera(Camera camera) {

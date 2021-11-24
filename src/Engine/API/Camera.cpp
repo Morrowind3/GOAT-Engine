@@ -7,8 +7,16 @@
 Engine::Transform Camera::AdjustForCamera(const Engine::Transform& transform) {
     Engine::Transform adjusted {transform};
     Reposition(adjusted);
-
+    Zoom(adjusted);
     return adjusted;
+}
+
+void Camera::MoveCamera(double x, double y) {
+    camera.topLeft.x += x;
+    camera.topLeft.y += y;
+}
+void Camera::setZoomLevel(float zoom) {
+    zoomLevel = zoom;
 }
 
 void Camera::Reposition(Engine::Transform& t) const {
@@ -16,12 +24,9 @@ void Camera::Reposition(Engine::Transform& t) const {
     t.position.y -= camera.topLeft.y;
 }
 
-void Camera::Crop(Engine::Transform& t) const {
-
+void Camera::Zoom(Engine::Transform& t) const {
+t.scaleHeight *= zoomLevel;
+t.scaleWidth *= zoomLevel;
 }
 
-void Camera::MoveCamera(double x, double y) {
-    camera.topLeft.x += x;
-    camera.topLeft.y += y;
-}
 
