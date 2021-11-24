@@ -130,7 +130,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/QuitGameScript.cpp Game/Behaviors/Scripts/QuitGameScript.hpp
         Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
         Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
-)
+        Game/Behaviors/Scripts/FpsScript.cpp Game/Behaviors/Scripts/FpsScript.hpp Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp Game/GameObjects/Meta/FpsDisplay.cpp Game/GameObjects/Meta/FpsDisplay.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
