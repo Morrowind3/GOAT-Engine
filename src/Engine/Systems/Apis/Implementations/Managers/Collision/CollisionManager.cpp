@@ -7,9 +7,9 @@
 
 using namespace Engine;
 
-//
-//CollisionManager::CollisionManager() : _bodies(std::make_unique<std::map<std::string, b2Body>>()){}
-//
-//void CollisionManager::storeBody(const std::string &bodyName) {
-//
-//}
+
+CollisionManager::CollisionManager() : _bodies(std::map<std::string, b2Body>()){}
+
+void CollisionManager::storeBody(const std::string &bodyName, b2Body &body) {
+
+}

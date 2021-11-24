@@ -11,6 +11,7 @@ CollisionSystem::CollisionSystem(const Scene *scene): System(scene), _api(Physic
 }
 
 void CollisionSystem::OnInit() {
+    // maak alle box
     _api.CreateWorld();
 }
 

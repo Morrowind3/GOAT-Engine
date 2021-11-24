@@ -16,10 +16,10 @@ namespace Engine {
     class CollisionManager {
         public:
         CollisionManager();
-        void storeBody(const std::string &bodyName);
+        void storeBody(const std::string &bodyName, b2Body &body);
 
         private:
-            std::unique_ptr<std::map<std::string, b2Body>> _bodies;
+           std::map<std::string, b2Body> _bodies;
         };
 }
 
