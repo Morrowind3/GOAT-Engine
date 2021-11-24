@@ -5,7 +5,7 @@
 
 using namespace Engine;
 
-AudioImpl::AudioImpl(): _sdlStatus{SDL_Init(SDL_INIT_AUDIO)}, _audio{std::make_unique<AudioManager>()} {
+AudioImpl::AudioImpl(): _sdlStatus{SDL_Init(SDL_INIT_AUDIO)} {
     // TODO: Adjustable
     const int audio_rate = 22050;
     const Uint16 audio_format = AUDIO_S16SYS;
@@ -47,7 +47,12 @@ void AudioImpl::PlayMusic(const std::string& fileName) {
     Mix_PlayMusic(music.audio(), -1);
 }
 
+void AudioImpl::Reset() {
+    Mix_HaltMusic();
+    Mix_HaltChannel(-1);
+    _audio = std::make_unique<AudioManager>();
+}
+
 AudioImpl::~AudioImpl() {
     SDL_Quit();
 }
-

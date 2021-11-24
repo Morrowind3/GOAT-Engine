@@ -21,3 +21,7 @@ void AudioApi::PlaySample(const std::string& fileName) {
 void AudioApi::PlayMusic(const std::string& fileName) {
     _impl->PlayMusic(fileName);
 }
+
+void AudioApi::Reset() {
+    _impl->Reset();
+}

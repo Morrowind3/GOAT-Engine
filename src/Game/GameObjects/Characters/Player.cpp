@@ -9,5 +9,4 @@ Player::Player(Transform transform, bool active) : GameObject(transform, active)
     audioSources.insert(std::make_pair(PLAYER::JUMP_SFX,AudioSource{"Sounds/Jump.wav",AudioSourceType::SAMPLE,false,true}));
     audioSources.insert(std::make_pair(PLAYER::WALK_SFX_A,AudioSource{"Sounds/Walk.ogg",AudioSourceType::SAMPLE,false,true}));
     audioSources.insert(std::make_pair(PLAYER::WALK_SFX_B,AudioSource{"Sounds/WalkAlt.ogg",AudioSourceType::SAMPLE,false,true}));
-    text.insert(std::make_pair(PLAYER::TEST_TEXT, Text{"Mount Everestimate","Fonts/Kenney_Thick.ttf",16,{0,0,0,255},Transform{{0,0},300,0,6,6},true}));
 }
