@@ -104,11 +104,11 @@ add_executable(Mount_Everestimate
         # Core
         Game/Keys.hpp
         Game/Game.cpp
+        Game/GameSceneManager.cpp Game/GameSceneManager.hpp
         # Scenes
-        Game/Scenes/Etappes/EtappeOne.hpp
-        Game/Scenes/Etappes/EtappeTwo.hpp
-        Game/Scenes/MainMenuScene.hpp
-        Game/Scenes/MainMenuScene.cpp
+        Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
+        Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
+        Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
@@ -118,26 +118,20 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Tiles/Tile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
-        Game/GameObjects/Tiles/SolidTile.cpp
-        Game/GameObjects/Tiles/SolidTile.hpp
-        Game/GameObjects/Tiles/SlabTile.cpp
-        Game/GameObjects/Tiles/SlabTile.hpp
+        Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
+        Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         # Behaviors
         Game/Behaviors/PlayerBehavior.hpp
         Game/Behaviors/SolidTileBehavior.hpp
         Game/Behaviors/SlabTileBehavior.hpp
-        Game/Behaviors/QuitGameBehavior.cpp
-        Game/Behaviors/QuitGameBehavior.hpp
-        # Scripts
+        Game/Behaviors/QuitGameBehavior.hpp Game/Behaviors/QuitGameBehavior.cpp
         Game/Behaviors/SwitchSceneButtonBehavior.hpp
-        Game/Behaviors/Scripts/SwitchSceneButtonScript.cpp
-        Game/Behaviors/Scripts/SwitchSceneButtonScript.hpp
-        Game/Behaviors/Scripts/QuitGameScript.cpp
-        Game/Behaviors/Scripts/QuitGameScript.hpp
-        Game/Behaviors/Scripts/PlayerMovementScript.cpp
-        Game/Behaviors/Scripts/PlayerMovementScript.hpp
-        Game/Behaviors/Scripts/SlabTileScript.cpp
-        Game/Behaviors/Scripts/SlabTileScript.hpp Game/Scenes/Etappes/EtappeOne.cpp)
+        # Scripts
+        Game/Behaviors/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/SwitchSceneButtonScript.hpp
+        Game/Behaviors/Scripts/QuitGameScript.cpp Game/Behaviors/Scripts/QuitGameScript.hpp
+        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
+        Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
+)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

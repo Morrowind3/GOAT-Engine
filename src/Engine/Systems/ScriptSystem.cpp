@@ -7,7 +7,7 @@ void ScriptSystem::OnLaunchEngine() {
     // Empty
 }
 
-void ScriptSystem::OnLoadScene(const Scene* scene) {
+void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
     _scene = scene;
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& behavior : gameObject->behaviors) {

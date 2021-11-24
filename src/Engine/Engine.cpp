@@ -6,14 +6,13 @@
 #include "Systems/ScriptSystem.hpp"
 #include "Systems/AudioSystem.hpp"
 #include "Utilities/Input.hpp"
+#include "Utilities/Debug.hpp"
 
 using namespace Engine;
 
-GoatEngine::GoatEngine(std::string& name, std::string& iconPath) :
-        _isRunning{false},
-        _systems{std::make_unique<std::vector<std::unique_ptr<System>>>()},
-        _name(name),
-        _iconPath(iconPath) {}
+GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath) :
+        _sceneManager{sceneManager}, _name{name}, _iconPath{iconPath} {
+}
 
 void GoatEngine::Run(const unsigned int maxFps) {
     // Frame variables
@@ -34,11 +33,13 @@ void GoatEngine::Run(const unsigned int maxFps) {
     while (_isRunning) {
 
         // Load scene
-        Scene* active = sceneManager.CurrentScene();
+        std::shared_ptr<Scene> active = _sceneManager.CurrentScene();
+        Debug::getInstance().log("Scene start: " + active->name);
         for (auto& system: *_systems) system->OnLoadScene(active);
+        Debug::getInstance().log("Scene started: " + active->name);
 
         // Loop until scene change
-        while (_isRunning && sceneManager.CurrentScene() == active) {
+        while (_isRunning && _sceneManager.CurrentScene() == active) {
             frameStart = SDL_GetTicks();
 
             for (auto& system: *_systems) system->OnFrameTick(deltaTime);
@@ -53,6 +54,7 @@ void GoatEngine::Run(const unsigned int maxFps) {
                 _isRunning = false; // Quit game
             }
         }
+        Debug::getInstance().log("Scene end: " + active->name);
     }
 
     // Destroy systems

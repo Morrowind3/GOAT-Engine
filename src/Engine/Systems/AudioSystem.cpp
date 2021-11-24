@@ -6,7 +6,7 @@ void AudioSystem::OnLaunchEngine() {
     _api = &AudioApi::getInstance();
 }
 
-void AudioSystem::OnLoadScene(const Scene* scene) {
+void AudioSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
     _scene = scene;
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& audioSource : gameObject->audioSources) {

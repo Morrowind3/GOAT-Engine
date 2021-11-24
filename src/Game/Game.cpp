@@ -1,14 +1,13 @@
+#include "Keys.hpp"
 #include "../Engine/Engine.hpp"
-#include "Scenes/Etappes/EtappeOne.hpp"
-#include "Scenes/Etappes/EtappeTwo.hpp"
-#include "Scenes/MainMenuScene.hpp"
 #include "../Engine/Systems/Apis/DataApi.hpp"
 #include "../Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.hpp"
 #include "../Engine/Utilities/Debug.hpp"
+#include "GameSceneManager.hpp"
 
 using namespace Engine;
 
-void setupDatabase(){
+void setupDatabase() {
     MigrationBuilder migrations;
     migrations.NewTable("settings");
     migrations.AddColumn("fullscreen", "BOOLEAN", false, false, false);
@@ -36,30 +35,29 @@ void setupDatabase(){
     DataApi::getInstance().Insert(settings);
 }
 
-
 int main(int argc, char* args[]) {
-    // Configure engine
-    std::string name{"Mount Everestimate"};
-    std::string icon{"icon.png"};
-    GoatEngine engine{name, icon};
-    Debug::getInstance().toggle(true);
+    try {
+        // Configure engine
+        std::unique_ptr<SceneManager> sceneManager = std::make_unique<GameSceneManager>();
+        sceneManager->ChangeCurrentScene(Keys::MAIN_MENU);
+        std::string name{"Mount Everestimate"};
+        std::string icon{"icon.png"};
+        // Unique pointer used to make sure the <i>potentially</i> memory-intensive Goat Engine is in the heap
+        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon);
+        Debug::getInstance().toggle(true);
 
-    // Feed scenes
-    EtappeOne etappeOne{engine.sceneManager};
-    engine.sceneManager.AddScene(etappeOne);
-    EtappeTwo etappeTwo{};
-    engine.sceneManager.AddScene(etappeTwo);
-    MainMenuScene mainMenu{engine.sceneManager};
-    engine.sceneManager.AddScene(mainMenu);
+        if(!DataApi::getInstance().DatabaseExists()) {
+            setupDatabase();
+        }
 
-    engine.sceneManager.ChangeCurrentScene(mainMenu.name);
-
-    if(!DataApi::getInstance().DatabaseExists()){
-        setupDatabase();
+        engine->Run(60);
+        return 0;
+    } catch (const std::runtime_error& error) {
+        Debug::getInstance().log(error.what());
+        return 1;
+    } catch (...) {
+        Debug::getInstance().log("Fatal uncatchable error thrown!");
+        return 2;
     }
-
-    engine.Run(60);
-
-    return 0;
 }
 

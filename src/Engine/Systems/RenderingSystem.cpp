@@ -10,7 +10,7 @@ void RenderingSystem::OnLaunchEngine() {
     _api = &RendererApi::RendererApi::getInstance(_name, _iconPath);
 }
 
-void RenderingSystem::OnLoadScene(const Scene* scene) {
+void RenderingSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
     _scene = scene;
     for (auto& gameObject: _scene->gameObjects) {
         for (auto& sprite: gameObject->sprites) {
