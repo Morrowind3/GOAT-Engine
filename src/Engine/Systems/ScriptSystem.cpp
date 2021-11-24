@@ -17,7 +17,7 @@ void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
 }
 
 void ScriptSystem::OnFrameTick(double deltaTime) {
-    auto& input = Input::getInstance();
+    auto& input = Input::GetInstance();
     input.Update();
     for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {

@@ -45,7 +45,7 @@ int main(int argc, char* args[]) {
         std::string cursor{"cursor.png"};
         // Unique pointer used to make sure the <i>potentially</i> memory-intensive Goat Engine is in the heap
         std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor);
-        Debug::getInstance().toggle(true);
+        Debug::GetInstance().toggle(true);
 
         if(!DataApi::getInstance().DatabaseExists()) {
             setupDatabase();
@@ -54,10 +54,10 @@ int main(int argc, char* args[]) {
         engine->Run(60);
         return 0;
     } catch (const std::runtime_error& error) {
-        Debug::getInstance().log(error.what());
+        Debug::GetInstance().log(error.what());
         return 1;
     } catch (...) {
-        Debug::getInstance().log("Fatal uncatchable error thrown!");
+        Debug::GetInstance().log("Fatal uncatchable error thrown!");
         return 2;
     }
 }
