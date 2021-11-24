@@ -3,6 +3,7 @@
 #include "../../GameObjects/Tiles/SolidTile.hpp"
 #include "../../Behaviors/SolidTileBehavior.hpp"
 #include "../../GameObjects/Tiles/SlabTile.hpp"
+#include "../../GameObjects/Meta/EtappeTwoManager.hpp"
 
 #include <fstream>
 #include <string>
@@ -13,7 +14,7 @@
 void placeTile(int index, Transform transform, Scene& scene);
 
 EtappeTwo::EtappeTwo(SceneManager& manager) : Scene("Etappe two") {
-//        gameObjects.emplace_back(new Player{Transform{Point{100,912},15,0,5,5},true});
+    gameObjects.emplace_back(new EtappeTwoManager{Transform{Point{0,0},0}, true});
 
     int tileSize{21};
     int tilesY{3};

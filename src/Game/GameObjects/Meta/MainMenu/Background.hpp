@@ -19,6 +19,7 @@ public:
             Transform{{250,150},transform.layer+1,0,1,1},
             true}));
 //        audioSources.insert(std::make_pair("Music",AudioSource{"Music/Snowstorm.wav", AudioSourceType::MUSIC, true, true}));
+        audioSources.insert(std::make_pair("Music",AudioSource{"Music/Journey.mp3", AudioSourceType::MUSIC, true, true}));
     };
 };
 
