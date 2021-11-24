@@ -38,20 +38,20 @@ void RendererImpl::BeginRenderTick() {
     SDL_RenderClear(_renderer.get());
 }
 
-void RendererImpl::DrawTexture(const std::string& name, const Transform& transform) {
+void RendererImpl::DrawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
     const auto& texture = _textures->get(name);
-    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, &texture});
+    _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, &texture});
 }
 
 void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
     auto& font = _fonts->get(fontName);
     std::shared_ptr<Texture> texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(std::pair<const Transform*, const Texture*>{&transform, texture.get()});
+    _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{transform, texture.get()});
 }
 
-bool tickTextureCacheSort(const std::pair<const Transform*, const Texture*>& a,
-                          const std::pair<const Transform*, const Texture*>& b) {
-    return a.first->layer < b.first->layer;
+bool tickTextureCacheSort(const std::pair<const Transform, const Texture*>& a,
+                          const std::pair<const Transform, const Texture*>& b) {
+    return a.first.layer < b.first.layer;
 }
 
 void RendererImpl::EndRenderTick() {
@@ -64,16 +64,16 @@ void RendererImpl::EndRenderTick() {
         SDL_Rect sourceRect{}, destinationRect{};
 
         // Do NOT cast transform to a static int because of rounding errors!!
-        sourceRect.w = transform->scaleWidth * texture->width();
-        sourceRect.h = transform->scaleHeight * texture->height();
+        sourceRect.w = transform.scaleWidth * texture->width();
+        sourceRect.h = transform.scaleHeight * texture->height();
 
-        destinationRect.x = transform->position.x;
-        destinationRect.y = transform->position.y;
-        destinationRect.w = transform->scaleWidth * texture->width();
-        destinationRect.h = transform->scaleWidth * texture->height();
+        destinationRect.x = transform.position.x;
+        destinationRect.y = transform.position.y;
+        destinationRect.w = transform.scaleWidth * texture->width();
+        destinationRect.h = transform.scaleWidth * texture->height();
 
         SDL_RendererFlip flip;
-        switch (transform->flip) {
+        switch (transform.flip) {
             case FLIP::FLIP_NONE:
                 flip = SDL_FLIP_NONE;
                 break;
@@ -85,7 +85,7 @@ void RendererImpl::EndRenderTick() {
                 break;
         }
 
-        SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform->rotation, nullptr, flip);
+        SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform.rotation, nullptr, flip);
     }
     SDL_RenderPresent(_renderer.get());
 }

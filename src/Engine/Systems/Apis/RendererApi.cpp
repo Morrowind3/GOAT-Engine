@@ -14,7 +14,7 @@ void RendererApi::RendererApi::BeginRenderTick() {
     renderer.BeginRenderTick();
 }
 
-void RendererApi::RendererApi::DrawTexture(const std::string& texture, const Transform& location) {
+void RendererApi::RendererApi::DrawTexture(const std::string& texture, const std::shared_ptr<Transform>& location) {
     renderer.DrawTexture(texture, location);
 }
 

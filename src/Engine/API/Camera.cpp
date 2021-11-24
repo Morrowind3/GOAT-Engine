@@ -2,8 +2,8 @@
 
 Engine::Transform Camera::AdjustForCamera(const Engine::Transform& transform) {
     Engine::Transform adjusted {transform};
-//    Reposition(adjusted);
-//    Zoom(adjusted);
+    Reposition(adjusted);
+    Zoom(adjusted);
     return adjusted;
 }
 
