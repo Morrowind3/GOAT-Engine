@@ -20,7 +20,7 @@ public:
                 Text{"Play", "Fonts/Kenney_Thick.ttf", 36, {255, 255, 255, 255}, textTransform, true},
                 Sprite{"Sprites/ui/buttons/button_large_blue.png", active},
                 Rectangle{Point{transform.position.x, transform.position.y}, 250, 160},
-                std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_ONE, sceneManager, active),
+                std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_TWO, sceneManager, active),
                 true}));
     };
 };
