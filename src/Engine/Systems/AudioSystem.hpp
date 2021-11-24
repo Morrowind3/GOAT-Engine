@@ -7,13 +7,13 @@
 namespace Engine {
     class AudioSystem : public System {
         public:
-            explicit AudioSystem(const Scene *scene);
-            void OnInit();
-            void OnUpdate(double deltaTime);
-            void OnDestroy();
-
+            AudioSystem() = default;
+            void OnLaunchEngine() override;
+            void OnLoadScene(const Scene* scene) override;
+            void OnFrameTick(double deltaTime) override;
+            void OnCloseEngine() override;
         private:
-            AudioApi& _api;
+            AudioApi* _api = nullptr;
     };
 }
 

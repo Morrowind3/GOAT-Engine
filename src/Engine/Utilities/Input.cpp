@@ -58,7 +58,11 @@ bool Input::GetMouseDown(MouseButton button) const {
 }
 
 bool Input::QuitEvent() const {
-    return event.type == SDL_QUIT;
+    return event.type == SDL_QUIT || _manualQuitEvent;
+}
+
+void Input::QueueQuitEvent() {
+    _manualQuitEvent = true;
 }
 
 

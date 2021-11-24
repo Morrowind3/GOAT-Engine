@@ -11,15 +11,14 @@
 namespace Engine {
     class GoatEngine {
     public:
-        explicit GoatEngine(std::string& name, std::string& iconPath);
-
-        void Run();
-
+        explicit GoatEngine(std::string& name, std::string& iconPath, std::string& cursor);
+        void Run(unsigned int maxFps);
         SceneManager sceneManager{};
     private:
         bool _isRunning;
         const std::unique_ptr<std::vector<std::unique_ptr<System>>> _systems;
         std::string& _name;
         std::string& _iconPath;
+        std::string& _cursor;
     };
 }

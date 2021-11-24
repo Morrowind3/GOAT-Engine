@@ -12,6 +12,7 @@ namespace Engine {
         std::vector<std::shared_ptr<Script>> scripts;
         void OnStart();
         void OnUpdate(double deltaTime);
+        void OnExternalEvent();
         void OnDestroy();
         // TODO: Collisions
     };

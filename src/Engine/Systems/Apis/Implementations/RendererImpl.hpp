@@ -16,7 +16,7 @@
 namespace Engine {
     class RendererImpl {
         public:
-            RendererImpl(const std::string& name, std::string& iconPath);
+            RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor);
             void LoadTexture(const std::string& fileName);
             void LoadFont(const std::string& fileName);
             void BeginRenderTick();
@@ -32,7 +32,6 @@ namespace Engine {
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
             std::vector<std::pair<const Transform*, const Texture*>> _tickTextureCache;
-            std::vector<Texture*> _temporaryFixSoWeHaveSomethingToShowInClassTomorrow; // TODO: Delete this
     };
 }
 

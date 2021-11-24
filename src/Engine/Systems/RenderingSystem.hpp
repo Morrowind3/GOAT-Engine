@@ -6,11 +6,13 @@
 namespace Engine {
     class RenderingSystem : public System {
         public:
-            explicit RenderingSystem(const Scene* scene, std::string& name, std::string& iconPath);
-            void OnInit() override;
-            void OnUpdate(double deltaTime) override;
-            void OnDestroy() override;
+            RenderingSystem(std::string& name, std::string& iconPath, std::string& cursor);
+            void OnLaunchEngine() override;
+            void OnLoadScene(const Scene* scene) override;
+            void OnFrameTick(double deltaTime) override;
+            void OnCloseEngine() override;
         private:
-            RendererApi::RendererApi& _api;
+            RendererApi* _api = nullptr;
+            std::string& _name, _iconPath, _cursor;
     };
 }

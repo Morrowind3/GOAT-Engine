@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_TEXT_HPP
 
 #include "../../GameComponent.hpp"
-#include "../Color.hpp"
+#include "../../../Color.hpp"
 #include "../../../Transform.hpp"
 #include <string>
 
