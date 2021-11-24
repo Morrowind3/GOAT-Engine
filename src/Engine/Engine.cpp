@@ -7,6 +7,7 @@
 #include "Systems/AudioSystem.hpp"
 #include "Utilities/Input.hpp"
 #include "Utilities/Debug.hpp"
+#include <unistd.h>
 
 using namespace Engine;
 
@@ -27,6 +28,7 @@ void GoatEngine::Run(const unsigned int maxFps) {
     const double frameDelayInMs = 1000.0/(double)maxFps;
     unsigned int currentFrameTickInMs, previousFrameTickInMs = SDL_GetTicks();
     double deltaTimeInMs {0};
+    int delay {0};
 
     _isRunning = true;
     while (_isRunning) {
@@ -47,6 +49,18 @@ void GoatEngine::Run(const unsigned int maxFps) {
                 // Perform frame logic
                 for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
                 if (Input::getInstance().QuitEvent()) _isRunning = false; // Quit game event
+            }
+
+            if(Input::getInstance().GetKeyDown(Input::KeyCode::RIGHT)) {
+                delay += 10000;
+            }
+            if(Input::getInstance().GetKeyDown(Input::KeyCode::LEFT)) {
+                if(delay -10000 >= 0) {
+                    delay -= 10000;
+                }
+            }
+            if(delay > 0) {
+                usleep(delay);
             }
         }
         Debug::getInstance().log("Scene end: " + active->name);

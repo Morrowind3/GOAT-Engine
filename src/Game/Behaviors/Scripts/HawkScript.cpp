@@ -25,7 +25,7 @@ void HawkScript::OnUpdate(double deltaTime) {
     }
 
     //switch move sprite
-    if(difftime(_lastMoveTime, std::time(0)) < -0.4) {
+    if(_updateCounter%50 == 1) {
         if(_self.sprites.at(HAWK::MOVE1).active) {
             _self.sprites.at(HAWK::MOVE1).active = false;
             _self.sprites.at(HAWK::MOVE2).active = true;
@@ -33,6 +33,6 @@ void HawkScript::OnUpdate(double deltaTime) {
             _self.sprites.at(HAWK::MOVE1).active = true;
             _self.sprites.at(HAWK::MOVE2).active = false;
         }
-        _lastMoveTime = std::time(0);
     }
+    _updateCounter++;
 }
