@@ -130,7 +130,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/QuitGameScript.cpp Game/Behaviors/Scripts/QuitGameScript.hpp
         Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
         Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
-)
+        Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp Game/Behaviors/HawkBehavior.hpp Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
