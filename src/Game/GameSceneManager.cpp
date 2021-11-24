@@ -4,6 +4,7 @@
 #include "Scenes/Etappes/EtappeOne.hpp"
 #include "Scenes/Etappes/EtappeTwo.hpp"
 #include "../Engine/Utilities/Debug.hpp"
+#include <stdexcept>
 
 void GameSceneManager::ChangeCurrentScene(const std::string& name) {
     Debug::getInstance().log("Game scene manager will attempt to switch to scene: " + name);

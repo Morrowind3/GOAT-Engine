@@ -8,7 +8,7 @@
 #include <string>
 #include <regex>
 #include <any>
-
+#include <sstream>
 // TODO: Delegate tiled level-construction to a more logical place than scene construction
 void placeTile(int index, Transform transform, Scene& scene);
 
