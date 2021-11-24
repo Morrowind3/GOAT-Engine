@@ -2,12 +2,12 @@
 
 using namespace Engine;
 
-RenderingSystem::RenderingSystem(std::string& name, std::string& iconPath):
-    _name{name}, _iconPath(iconPath)  {
+RenderingSystem::RenderingSystem(std::string& name, std::string& iconPath, std::string& cursor):
+    _name{name}, _iconPath(iconPath), _cursor(cursor)  {
 }
 
 void RenderingSystem::OnLaunchEngine() {
-    _api = &RendererApi::RendererApi::getInstance(_name, _iconPath);
+    _api = &RendererApi::RendererApi::getInstance(_name, _iconPath, _cursor);
 }
 
 void RenderingSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
@@ -21,6 +21,7 @@ void RenderingSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
         }
         for (auto& button: gameObject->buttons) {
             _api->LoadFont(button.second.text.font);
+            _api->LoadTexture(button.second.sprite.path);
         }
     }
 }
@@ -36,7 +37,7 @@ void RenderingSystem::OnFrameTick(double deltaTime) {
         }
         for (auto& button: gameObject->buttons) {
             if (button.second.active) {
-                _api->DrawSolid(button.second.backgroundColor, button.second.dimensions);
+                _api->DrawTexture(button.second.sprite.path, gameObject->transform);
                 _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
             }
         }

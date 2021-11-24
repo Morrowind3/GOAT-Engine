@@ -10,8 +10,8 @@
 
 using namespace Engine;
 
-GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath) :
-        _sceneManager{sceneManager}, _name{name}, _iconPath{iconPath} {
+GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor) :
+        _sceneManager{sceneManager}, _name{name}, _iconPath{iconPath}, _cursor{cursor} {
 }
 
 void GoatEngine::Run(const unsigned int maxFps) {
@@ -23,7 +23,7 @@ void GoatEngine::Run(const unsigned int maxFps) {
     // Add systems
     _systems->emplace_back(std::make_unique<ScriptSystem>());
     _systems->emplace_back(std::make_unique<AudioSystem>());
-    _systems->emplace_back(std::make_unique<RenderingSystem>(_name, _iconPath));
+    _systems->emplace_back(std::make_unique<RenderingSystem>(_name, _iconPath, _cursor));
 
     // Start systems
     for (auto& system: *_systems) system->OnLaunchEngine();

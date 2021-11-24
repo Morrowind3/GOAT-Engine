@@ -114,7 +114,6 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
         Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
-        Game/GameObjects/Meta/MainMenu.cpp Game/GameObjects/Meta/MainMenu.hpp
         Game/GameObjects/Tiles/Tile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp

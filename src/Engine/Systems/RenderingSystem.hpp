@@ -6,13 +6,13 @@
 namespace Engine {
     class RenderingSystem : public System {
         public:
-            RenderingSystem(std::string& name, std::string& iconPath);
+            RenderingSystem(std::string& name, std::string& iconPath, std::string& cursor);
             void OnLaunchEngine() override;
             void OnLoadScene(std::shared_ptr<Scene> scene) override;
             void OnFrameTick(double deltaTime) override;
             void OnCloseEngine() override;
         private:
             RendererApi* _api = nullptr;
-            std::string& _name, _iconPath;
+            std::string& _name, _iconPath, _cursor;
     };
 }

@@ -16,13 +16,12 @@
 namespace Engine {
     class RendererImpl {
         public:
-            RendererImpl(const std::string& name, std::string& iconPath);
+            RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor);
             void LoadTexture(const std::string& fileName);
             void LoadFont(const std::string& fileName);
             void BeginRenderTick();
             void DrawTexture(const std::string& texture, const Transform& location);
             void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);
-            void DrawSolid(Color color, const Rectangle& dimensions);
             void EndRenderTick();
             void End();
 

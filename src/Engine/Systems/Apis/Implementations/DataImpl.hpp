@@ -1,7 +1,3 @@
-//
-// Created by harley on 18-11-21.
-//
-
 #ifndef GOAT_ENGINE_DATAIMPL_HPP
 #define GOAT_ENGINE_DATAIMPL_HPP
 

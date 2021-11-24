@@ -12,7 +12,7 @@
 namespace Engine {
     class GoatEngine {
     public:
-        explicit GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath);
+        explicit GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor);
         void Run(unsigned int maxFps);
     private:
         SceneManager& _sceneManager;
@@ -21,6 +21,7 @@ namespace Engine {
         bool _isRunning = false;
         const std::unique_ptr<std::vector<std::unique_ptr<System>>> _systems =
                 std::make_unique<std::vector<std::unique_ptr<System>>>();
+        std::string& _cursor;
     };
 }
 

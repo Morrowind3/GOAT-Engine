@@ -42,8 +42,9 @@ int main(int argc, char* args[]) {
         sceneManager->ChangeCurrentScene(Keys::MAIN_MENU);
         std::string name{"Mount Everestimate"};
         std::string icon{"icon.png"};
+        std::string cursor{"cursor.png"};
         // Unique pointer used to make sure the <i>potentially</i> memory-intensive Goat Engine is in the heap
-        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon);
+        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor);
         Debug::getInstance().toggle(true);
 
         if(!DataApi::getInstance().DatabaseExists()) {
