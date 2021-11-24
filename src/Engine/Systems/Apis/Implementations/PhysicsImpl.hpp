@@ -8,9 +8,11 @@
 #include "Box2D.h"
 #include "../../../API/GameObjects/GameObject.hpp"
 #include <memory>
+#include <iostream>
 
-namespace  Engine {
+namespace Engine {
     class PhysicsImpl {
+        PhysicsImpl();
     public:
         void CreateWorld();
 
@@ -21,9 +23,7 @@ namespace  Engine {
         void Update(GameObject &gameObject);
 
         void Step();
-
-    private:
-       std::unique_ptr<b2World> world;
+        b2World _world;
     };
 }
 

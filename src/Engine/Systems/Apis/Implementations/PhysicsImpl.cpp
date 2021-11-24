@@ -2,20 +2,24 @@
 // Created by Mike on 18-11-2021.
 //
 
-#include <iostream>
 #include "PhysicsImpl.hpp"
 
 using namespace Engine;
 
+PhysicsImpl::PhysicsImpl() : _world(b2World{b2Vec2{0.0f, -10.0f}}) {
+
+}
+
 void PhysicsImpl::CreateWorld() {
-    b2Vec2 gravity(0.0f, -10.0f);
-    world = std::make_unique<b2World>(b2World{gravity});
+    b2World test {b2Vec2(0.0f, -10.0f)};
+    test.Step(1.0f / 60.0f, 8,6);
+
+    _world = test;
 }
 
 void PhysicsImpl::DestroyWorld() {
 
 }
-
 
 void PhysicsImpl::DestroyBody(b2Body *body) {
 
@@ -26,10 +30,6 @@ void PhysicsImpl::Update(GameObject &gameObject) {
 }
 
 void PhysicsImpl::Step() {
-//    double timeStep = 1.0f / 60.0f;
-//    int32 velocityIterations = 10;
-//    int32 positionIterations = 8;
-//    world->Step(timeStep, velocityIterations, positionIterations);
-
-    std::cout << "step" <<std::endl;
+//    std::cout << _world.GetGravity().y << std::endl;
+//    _world.Step(1.0f / 60.0f, 8,6);
 }

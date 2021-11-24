@@ -62,6 +62,8 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/RendererApi.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
+        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.cpp
+        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.hpp
         Engine/Systems/ScriptSystem.cpp
         Engine/Systems/ScriptSystem.hpp
         Engine/Systems/CollisionSystem.cpp
