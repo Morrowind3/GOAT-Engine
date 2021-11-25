@@ -8,5 +8,5 @@ FpsDisplay::FpsDisplay(bool active) : GameObject(Transform{Point{0,0}}, active) 
             Color{0,0,0,255},
             Transform{Point{0,0},0xffffffff},
             true}));
-    behaviors.emplace_back(std::make_shared<FpsBehavior>(text.at(Keys::FPS), true));
+    behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<FpsBehavior>(text.at(Keys::FPS), true)));
 }

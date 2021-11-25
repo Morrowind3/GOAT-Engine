@@ -4,14 +4,12 @@
 #include <memory>
 
 #include "../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "Scripts/PlayerMovementScript.hpp"
+#include "../GameObjects/Tiles/SolidTile.hpp"
 
 using namespace Engine;
 
 class SolidTileBehavior : public Behavior {
-public:
-    SolidTileBehavior(SolidTile& self, bool active) : Behavior(active) {
-    }
+    public: SolidTileBehavior(SolidTile& self, bool active);
 };
 
 

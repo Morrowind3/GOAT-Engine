@@ -1,7 +1,6 @@
 #ifndef GOAT_ENGINE_CAMERA_HPP
 #define GOAT_ENGINE_CAMERA_HPP
 
-
 #include <SDL_rect.h>
 #include <vector>
 #include "GameObjects/GameObject.hpp"

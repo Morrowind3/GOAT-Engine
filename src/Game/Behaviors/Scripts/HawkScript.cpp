@@ -1,4 +1,5 @@
 #include "HawkScript.hpp"
+#include "../../Keys.hpp"
 
 HawkScript::HawkScript(Hawk& self, bool active) : Script(active), _self(self), _startingPos(self.transform.position) {
     _self.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
@@ -26,12 +27,12 @@ void HawkScript::OnUpdate(double deltaTime) {
 
     //switch move sprite
     if(_updateCounter%50 == 1) {
-        if(_self.sprites.at(HAWK::MOVE1).active) {
-            _self.sprites.at(HAWK::MOVE1).active = false;
-            _self.sprites.at(HAWK::MOVE2).active = true;
+        if(_self.sprites.at(Keys::MOVE1).active) {
+            _self.sprites.at(Keys::MOVE1).active = false;
+            _self.sprites.at(Keys::MOVE2).active = true;
         } else {
-            _self.sprites.at(HAWK::MOVE1).active = true;
-            _self.sprites.at(HAWK::MOVE2).active = false;
+            _self.sprites.at(Keys::MOVE1).active = true;
+            _self.sprites.at(Keys::MOVE2).active = false;
         }
     }
     _updateCounter++;

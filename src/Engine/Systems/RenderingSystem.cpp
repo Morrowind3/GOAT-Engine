@@ -52,5 +52,3 @@ void RenderingSystem::OnFrameTick(double deltaTime) {
 void RenderingSystem::OnCloseEngine() {
     _api->End();
 }
-
-

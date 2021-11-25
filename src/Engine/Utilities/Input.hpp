@@ -150,6 +150,7 @@ namespace Engine {
             }
 
             void Update();
+            // TODO: Test and enhance this further
             [[nodiscard]] bool AnyKeyDown() const;
             [[nodiscard]] bool GetKeyDown(KeyCode code) const;
             [[nodiscard]] Point MousePosition() const;

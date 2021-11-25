@@ -1,5 +1,6 @@
 #include "ScriptSystem.hpp"
 #include "../Utilities/Input.hpp"
+#include "../Utilities/Globals.hpp"
 
 using namespace Engine;
 
@@ -8,10 +9,11 @@ void ScriptSystem::OnLaunchEngine() {
 }
 
 void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
+    Globals::GetInstance().sceneReset();
     _scene = scene;
-    for (auto& gameObject : _scene->gameObjects) {
+    for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {
-            behavior->OnStart();
+            if(behavior.second->active) behavior.second->OnStart();
         }
     }
 }
@@ -21,7 +23,7 @@ void ScriptSystem::OnFrameTick(double deltaTime) {
     input.Update();
     for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {
-            if(behavior->active) behavior->OnUpdate(deltaTime);
+            if(behavior.second->active) behavior.second->OnUpdate(deltaTime);
         }
         for (auto& button : gameObject->buttons) {
             // Detect if mouse clicked on button

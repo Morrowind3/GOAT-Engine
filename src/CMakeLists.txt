@@ -97,7 +97,7 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
-        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp Engine/API/Camera.cpp Engine/API/Camera.hpp)
+        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp Engine/API/Camera.cpp Engine/API/Camera.hpp Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp)
 
 
 add_executable(Mount_Everestimate
@@ -130,16 +130,16 @@ add_executable(Mount_Everestimate
         Game/Behaviors/HawkBehavior.hpp
         Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/SwitchSceneButtonScript.hpp
-        Game/Behaviors/Scripts/QuitGameScript.cpp Game/Behaviors/Scripts/QuitGameScript.hpp
+        Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.hpp
+        Game/Behaviors/Scripts/Meta/QuitGameScript.cpp Game/Behaviors/Scripts/Meta/QuitGameScript.hpp
         Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
         Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
         Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
-        Game/Behaviors/Scripts/FpsScript.cpp Game/Behaviors/Scripts/FpsScript.hpp)
+        Game/Behaviors/Scripts/Meta/FpsScript.cpp Game/Behaviors/Scripts/Meta/FpsScript.hpp Game/Behaviors/Scripts/Meta/PauseScript.cpp Game/Behaviors/Scripts/Meta/PauseScript.hpp Game/Behaviors/EtappeBehavior.cpp Game/Behaviors/EtappeBehavior.hpp Game/Behaviors/HawkBehavior.cpp Game/Behaviors/PlayerBehavior.cpp Game/Behaviors/SwitchSceneButtonBehavior.cpp Game/Behaviors/SlabTileBehavior.cpp Game/Behaviors/SolidTileBehavior.cpp Game/GameObjects/Tiles/Tile.cpp Game/GameObjects/Meta/MainMenu/Background.cpp Game/GameObjects/Meta/MainMenu/ExitButton.cpp Game/GameObjects/Meta/MainMenu/PlayButton.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
-add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
+add_executable(engine_tests "Engine/Tests/SampleTest.cpp" Game/GameObjects/Meta/MainMenu/Background.cpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")

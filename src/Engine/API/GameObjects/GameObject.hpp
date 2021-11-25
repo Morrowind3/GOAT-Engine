@@ -3,7 +3,6 @@
 
 #include <map>
 #include <memory>
-#include <vector>
 
 #include "GameComponents/GameComponent.hpp"
 #include "Transform.hpp"
@@ -17,7 +16,7 @@ namespace Engine {
         explicit GameObject(Transform transform, bool active);
         bool active;
         Transform transform;
-        std::vector<std::shared_ptr<Behavior>> behaviors{}; // TODO: Convert to map
+        std::map<std::string,std::shared_ptr<Behavior>> behaviors{}; // TODO: Convert to map
         // TODO: Merge text and button into UIObject?
         std::map<std::string,Text> text{};
         std::map<std::string,Button> buttons{};

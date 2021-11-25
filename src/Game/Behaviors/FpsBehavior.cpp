@@ -1,6 +1,7 @@
 #include "FpsBehavior.hpp"
-#include "Scripts/FpsScript.hpp"
+#include "Scripts/Meta/FpsScript.hpp"
+#include "../Keys.hpp"
 
 FpsBehavior::FpsBehavior(Text& fpsText, bool active): Behavior(active) {
-    scripts.emplace_back(std::make_shared<FpsScript>(fpsText, true));
+    scripts.insert(std::make_pair(Keys::FPS,std::make_shared<FpsScript>(fpsText, true)));
 }
