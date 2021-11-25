@@ -12,6 +12,6 @@ SettingsButton::SettingsButton(SceneManager& sceneManager, Transform transform, 
             Text{"Settings", "Fonts/Kenney_Thick.ttf", 12, {0, 0, 0, 255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/button_small_white.png", active},
             Rectangle{{transform.position.x, transform.position.y}, 200, 80},
-            std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_TWO, sceneManager, active),
+            std::make_shared<SwitchSceneButtonBehavior>(Keys::SETTINGS_MENU, sceneManager, active),
             true}));
 };
