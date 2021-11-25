@@ -1,6 +1,7 @@
 #include "Camera.hpp"
 
 Engine::Transform Camera::AdjustForCamera(const Engine::Transform& transform) {
+    if(transform.layer == Engine::LAYER::UI) return transform;
     Engine::Transform adjusted {transform};
     Reposition(adjusted);
     Zoom(adjusted);
@@ -16,8 +17,13 @@ void Camera::setZoomLevel(float zoom) {
 }
 
 void Camera::Reposition(Engine::Transform& t) const {
-    t.position.x -= camera.topLeft.x;
-    t.position.y -= camera.topLeft.y;
+    if(t.layer == Engine::LAYER::PARALLAX_BACKGROUND){
+        t.position.x -= (camera.topLeft.x / 3);
+        t.position.y -= (camera.topLeft.y / 3);
+    } else {
+        t.position.x -= camera.topLeft.x;
+        t.position.y -= camera.topLeft.y;
+    }
 }
 
 void Camera::Zoom(Engine::Transform& t) const {

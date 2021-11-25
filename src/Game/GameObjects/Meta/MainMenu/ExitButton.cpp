@@ -6,7 +6,7 @@ ExitButton::ExitButton(SceneManager& sceneManager, Transform transform, bool act
 
     Transform textTransform{
             Point{transform.position.x + 60, transform.position.y + 20},
-            transform.layer + 1, 0, 1, 1};
+            LAYER::UI, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::QUIT_GAME, Button{
             Text{"Exit", "Fonts/Kenney_Thick.ttf", 16, {0, 0, 0, 255}, textTransform, true},
