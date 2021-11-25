@@ -1,5 +1,5 @@
 #include "SettingsButton.hpp"
-#include "../../../Behaviors/SwitchSceneButtonBehavior.hpp"
+#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
 
 SettingsButton::SettingsButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {

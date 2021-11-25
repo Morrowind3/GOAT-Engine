@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_SWITCHSCENEBUTTONBEHAVIOR_HPP
 #define GOAT_ENGINE_SWITCHSCENEBUTTONBEHAVIOR_HPP
 
-#include "../../Engine/SceneManager.hpp"
+#include "../../../Engine/SceneManager.hpp"
 
 using namespace Engine;
 

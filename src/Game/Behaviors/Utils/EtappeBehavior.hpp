@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_ETAPPEBEHAVIOR_HPP
 
 #include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
+#include "../../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
 
 using namespace Engine;
 

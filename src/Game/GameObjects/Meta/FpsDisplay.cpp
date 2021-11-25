@@ -1,6 +1,6 @@
 #include "FpsDisplay.hpp"
 #include "../../Keys.hpp"
-#include "../../Behaviors/FpsBehavior.hpp"
+#include "../../Behaviors/Utils/FpsBehavior.hpp"
 
 FpsDisplay::FpsDisplay(bool active) : GameObject(Transform{Point{0,0}}, active) {
     text.insert(std::make_pair(Keys::FPS,

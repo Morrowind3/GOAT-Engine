@@ -1,5 +1,5 @@
 #include "DebugButton.hpp"
-#include "../../../Behaviors/QuitGameBehavior.hpp"
+#include "../../../Behaviors/Buttons/QuitGameBehavior.hpp"
 #include "../../../Keys.hpp"
 
 DebugButton::DebugButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {

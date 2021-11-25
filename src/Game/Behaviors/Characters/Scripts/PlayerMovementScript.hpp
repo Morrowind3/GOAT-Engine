@@ -1,10 +1,10 @@
 #ifndef GOAT_ENGINE_PLAYERMOVEMENTSCRIPT_HPP
 #define GOAT_ENGINE_PLAYERMOVEMENTSCRIPT_HPP
 
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../Engine/Utilities/Input.hpp"
-#include "../../GameObjects/Characters/Player.hpp"
-#include "../../../Engine/Utilities/Globals.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/Utilities/Input.hpp"
+#include "../../../GameObjects/Characters/Player.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 

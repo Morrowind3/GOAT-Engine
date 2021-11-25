@@ -1,7 +1,7 @@
 #include "EtappeTwo.hpp"
 
 #include "../../GameObjects/Tiles/SolidTile.hpp"
-#include "../../Behaviors/SolidTileBehavior.hpp"
+#include "../../Behaviors/Tiles/SolidTileBehavior.hpp"
 #include "../../GameObjects/Tiles/SlabTile.hpp"
 #include "../../GameObjects/Meta/EtappeTwoManager.hpp"
 #include "../../GameObjects/Meta/FpsDisplay.hpp"

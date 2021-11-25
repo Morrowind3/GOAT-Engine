@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_HAWKSCRIPT_HPP
 #define GOAT_ENGINE_HAWKSCRIPT_HPP
 
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../GameObjects/Enemies/Hawk.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
+#include "../../../GameObjects/Enemies/Hawk.hpp"
 #include <ctime>
 
 using namespace Engine;

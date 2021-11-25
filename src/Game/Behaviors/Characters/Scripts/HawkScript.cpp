@@ -1,5 +1,5 @@
 #include "HawkScript.hpp"
-#include "../../Keys.hpp"
+#include "../../../Keys.hpp"
 
 HawkScript::HawkScript(Hawk& self, bool active) : Script(active), _self(self), _startingPos(self.transform.position) {
     _self.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;

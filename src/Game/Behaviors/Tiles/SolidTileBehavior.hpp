@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "../GameObjects/Tiles/SolidTile.hpp"
+#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "../../GameObjects/Tiles/SolidTile.hpp"
 
 using namespace Engine;
 

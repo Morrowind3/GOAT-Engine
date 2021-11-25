@@ -1,5 +1,5 @@
 #include "ScoreboardButton.hpp"
-#include "../../../Behaviors/SwitchSceneButtonBehavior.hpp"
+#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
 
 ScoreboardButton::ScoreboardButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {

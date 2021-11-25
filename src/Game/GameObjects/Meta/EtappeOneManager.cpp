@@ -1,6 +1,6 @@
 #include "EtappeOneManager.hpp"
 #include "../../Keys.hpp"
-#include "../../Behaviors/EtappeBehavior.hpp"
+#include "../../Behaviors/Utils/EtappeBehavior.hpp"
 
 EtappeOneManager::EtappeOneManager(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::BACKGROUND, Sprite{"Sprites/backgrounds/background_normal.png", true}));

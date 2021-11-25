@@ -1,5 +1,5 @@
 #include "ExitButton.hpp"
-#include "../../../Behaviors/QuitGameBehavior.hpp"
+#include "../../../Behaviors/Buttons/QuitGameBehavior.hpp"
 #include "../../../Keys.hpp"
 
 ExitButton::ExitButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {

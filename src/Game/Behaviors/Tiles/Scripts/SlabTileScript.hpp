@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_SLABTILESCRIPT_HPP
 #define GOAT_ENGINE_SLABTILESCRIPT_HPP
 
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../Engine/Utilities/Input.hpp"
-#include "../../GameObjects/Tiles/SlabTile.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/Utilities/Input.hpp"
+#include "../../../GameObjects/Tiles/SlabTile.hpp"
 
 using namespace Engine;
 
