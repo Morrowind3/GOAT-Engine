@@ -22,6 +22,9 @@ set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/lib")
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
 
+add_library(TessilOrdered STATIC "Libraries/Tessil/ordered_hash.hpp" "Libraries/Tessil/ordered_set.hpp" "Libraries/Tessil/ordered_map.hpp")
+set_target_properties(TessilOrdered PROPERTIES LINKER_LANGUAGE CXX)
+
 add_library(GOAT_Engine STATIC
         "Engine/API/GameObjects/GameComponents/GameComponent.hpp"
         "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
@@ -97,8 +100,13 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
-        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp Engine/API/Camera.cpp Engine/API/Camera.hpp Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp)
+        Engine/API/GameObjects/Rectangle.hpp 
+		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
+		Engine/API/Camera.cpp Engine/API/Camera.hpp 
+		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
+		)
 
+target_link_libraries(GOAT_Engine TessilOrdered)
 
 add_executable(Mount_Everestimate
         # Core
@@ -126,6 +134,7 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Meta/MainMenu/ExitButton.cpp
         Game/GameObjects/Meta/MainMenu/PlayButton.cpp
 		Game/GameObjects/Meta/EtappeSelection/EtappeMarker.cpp Game/GameObjects/Meta/EtappeSelection/EtappeMarker.hpp
+		Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.cpp Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.hpp
         # Behaviors
         Game/Behaviors/EtappeBehavior.cpp Game/Behaviors/EtappeBehavior.hpp
         Game/Behaviors/PlayerBehavior.hpp Game/Behaviors/PlayerBehavior.cpp
@@ -135,6 +144,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/SwitchSceneButtonBehavior.hpp Game/Behaviors/SwitchSceneButtonBehavior.cpp
         Game/Behaviors/HawkBehavior.hpp Game/Behaviors/HawkBehavior.cpp
         Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp
+		Game/Behaviors/EtappeMarkerBehavior.cpp Game/Behaviors/EtappeMarkerBehavior.hpp
         # Scripts
         Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.hpp
         Game/Behaviors/Scripts/Meta/QuitGameScript.cpp Game/Behaviors/Scripts/Meta/QuitGameScript.hpp
@@ -143,7 +153,9 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
         Game/Behaviors/Scripts/Meta/FpsScript.cpp Game/Behaviors/Scripts/Meta/FpsScript.hpp
         Game/Behaviors/Scripts/Meta/PauseScript.cpp Game/Behaviors/Scripts/Meta/PauseScript.hpp
-        )
+        Game/Behaviors/Scripts/Progress/EtappeProgress.cpp Game/Behaviors/Scripts/Progress/EtappeProgress.hpp
+		Game/Behaviors/Scripts/Progress/EtappeMarkerConfigurator.cpp Game/Behaviors/Scripts/Progress/EtappeMarkerConfigurator.hpp
+		Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.cpp Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

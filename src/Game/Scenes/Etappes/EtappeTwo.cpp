@@ -5,6 +5,7 @@
 #include "../../GameObjects/Tiles/SlabTile.hpp"
 #include "../../GameObjects/Meta/EtappeTwoManager.hpp"
 #include "../../GameObjects/Meta/FpsDisplay.hpp"
+#include "../../GameObjects/Characters/Player.hpp"
 
 #include <fstream>
 #include <string>
@@ -18,6 +19,8 @@ EtappeTwo::EtappeTwo(SceneManager& manager) : Scene("Etappe two") {
     gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
     gameObjects.emplace_back(std::make_shared<EtappeTwoManager>(
             Transform{Point{0,0},0}, true));
+    gameObjects.emplace_back(std::make_shared<Player>(
+            Transform{Point{100,890},1,0,5,5},true));
     int tileSize{21};
     int tilesY{50};
     int tilesX{250};

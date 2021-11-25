@@ -1,12 +1,13 @@
 #ifndef GOAT_ENGINE_ETAPPEMARKER_HPP
 #define GOAT_ENGINE_ETAPPEMARKER_HPP
 
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/SceneManager.hpp"
 
 using namespace Engine;
 
 class EtappeMarker: public GameObject {
-    public: EtappeMarker(Transform transform, bool active);
+    public: EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
+                         Transform transform, bool active);
 };
 
 

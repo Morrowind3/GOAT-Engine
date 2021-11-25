@@ -5,7 +5,6 @@ using namespace Engine;
 TextureManager::TextureManager(SDL_Renderer* renderer): _renderer{renderer}, _textures{ std::make_unique<std::map<std::string,Texture>>() } {
 }
 
-// TODO: Throw on image not found
 void TextureManager::store(const std::string& fileName) {
     if (_textures->find(fileName) == _textures->end()) { // Only add a texture if it hasn't been loaded in yet
         SDL_Surface* tempSurface = IMG_Load(fileName.c_str());

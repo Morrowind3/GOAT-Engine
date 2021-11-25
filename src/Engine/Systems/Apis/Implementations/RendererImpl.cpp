@@ -22,15 +22,24 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::
     auto cursorSurface = IMG_Load(cursor.c_str());
     auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
     SDL_SetCursor(sdlCursor);
-
 }
 
 void RendererImpl::LoadTexture(const std::string& fileName) {
-    _textures->store(fileName);
+    try {
+        _textures->store(fileName);
+    } catch (const std::runtime_error& error) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        exit(101);
+    }
 }
 
 void RendererImpl::LoadFont(const std::string& fileName) {
-    _fonts->store(fileName);
+    try {
+        _fonts->store(fileName);
+    } catch (const std::runtime_error& error) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        exit(102);
+    }
 }
 
 void RendererImpl::BeginRenderTick() {
@@ -91,16 +100,6 @@ void RendererImpl::EndRenderTick() {
 }
 
 void RendererImpl::End() {
-    //TODO correctly freeing application
-//    SDL_FreeCursor(cursor);
-//    SDL_DestroyTexture(texture);
-//    SDL_FreeSurface(surface);
-//    TTF_CloseFont(font);
-//    SDL_RenderClear(renderer);
-//    TTF_Quit();
-//    SDL_DestroyRenderer(renderer);
-//    SDL_DestroyWindow(window);
-//    SDL_Quit();
-    SDL_Quit();
     TTF_Quit();
+    SDL_Quit();
 }

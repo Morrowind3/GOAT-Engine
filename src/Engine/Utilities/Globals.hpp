@@ -18,10 +18,12 @@ namespace Engine {
             }
             // Scene-scope
             void sceneStore(const std::string& key, const std::string& value);
+            [[nodiscard]] bool sceneExists(const std::string& key) const;
             [[nodiscard]] std::string sceneGet(const std::string& key) const;
             [[maybe_unused]] void sceneRemove(const std::string& key);
             // Game-scope
             void gameStore(const std::string& key, const std::string& value);
+            [[nodiscard]] bool gameExists(const std::string& key) const;
             [[nodiscard]] std::string gameGet(const std::string& key) const;
             [[maybe_unused]] void gameRemove(const std::string& key);
         private:
