@@ -8,6 +8,13 @@
 
 
 EtappeOne::EtappeOne(SceneManager& manager) : Scene(Keys::ETAPPE_ONE) {
+    _camera.AddWaypoint({0,400}, 2);
+    _camera.AddWaypoint({500,400}, 3, 3.0);
+    _camera.AddWaypoint({0,500}, 10, 1.0 );
+
+//    _camera.AddWaypoint({400,800}, 15000);
+//    _camera.AddWaypoint({200,200}, 400000);
+
     gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
     gameObjects.emplace_back(std::make_shared<EtappeOneManager>(
             Transform{Point{0,0},0,0,18,18}, true));
