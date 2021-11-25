@@ -31,7 +31,9 @@ void PhysicsImpl::CreateBody(RigidBody &rigidBody, Transform &transform) {
             break;
     }
     RigidBody *pointerToRigidBody = &rigidBody;
+
     b2Body *box2dRigidBody = _world.CreateBody(&bodyDef);
+    box2dRigidBody->SetGravityScale(rigidBody.gravityScale);
     box2dRigidBody->SetUserData(pointerToRigidBody);
 
     b2PolygonShape collisionShape;
@@ -63,6 +65,7 @@ void PhysicsImpl::Update(RigidBody &rigidBody, Transform &transform) {
         if (body->GetUserData() == pointerToRigidBody) {
             transform.position.x = body->GetPosition().x * PPM;
             transform.position.y = body->GetPosition().y * PPM;
+
         }
     }
 }
