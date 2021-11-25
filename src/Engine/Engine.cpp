@@ -48,22 +48,22 @@ void GoatEngine::Run(const unsigned int maxFps) {
             if (deltaTimeInMs >= frameDelayInMs) {
                 previousFrameTickInMs = currentFrameTickInMs;
                 // Perform frame logic
+                for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
                 if (Input::GetInstance().QuitEvent()) _isRunning = false; // Quit game event
+                if(Input::GetInstance().GetKeyDown(Input::KeyCode::Q)) { // TODO: Delegate this to a script
+                    _sceneManager.CurrentScene()->MoveCamera(50,0);
+                }
             }
 
-            for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
-
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)) {
+            if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)) { // TODO: Delegate this to a script
                 delay += 10000;
             }
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::LEFT)) {
+            if(Input::GetInstance().GetKeyDown(Input::KeyCode::LEFT)) { // TODO: Delegate this to a script
                 if(delay -10000 >= 0) {
                     delay -= 10000;
                 }
             }
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::Q)) {
-                _sceneManager.CurrentScene()->MoveCamera(50,0);
-            }
+
             if(delay > 0) {
                 usleep(delay);
             }

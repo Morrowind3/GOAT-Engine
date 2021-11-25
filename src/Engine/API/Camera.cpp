@@ -21,7 +21,7 @@ void Camera::Reposition(Engine::Transform& t) const {
 }
 
 void Camera::Zoom(Engine::Transform& t) const {
-    //TODO: Text gets fucked up when zooming out. Zooming in works fine.
+    //TODO: Text gets broken when zooming out. Zooming in works fine.
     t.scaleHeight *= zoomLevel;
     t.scaleWidth *= zoomLevel;
 }
