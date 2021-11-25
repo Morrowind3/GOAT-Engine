@@ -14,6 +14,7 @@ namespace Keys {
     const std::string FALSE = "FALSE"; // Usage: negative bool (pause)
 	const std::string BACKGROUND = "BACKGROUND"; // Usage: generic background ID (EtappeOne)
 	const std::string ETAPPE = "ETAPPE"; // Usage: Etappe behavior ID on all etappe managers
+	const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection scene ID
     const std::string SNOWSTORM = "SNOWSTORM"; // Usage: snowstorm ambient music
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
     const std::string ETAPPE_ONE = "ETAPPE_ONE"; // Usage: Etappe 1 level ID

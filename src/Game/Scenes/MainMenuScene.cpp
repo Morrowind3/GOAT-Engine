@@ -4,6 +4,7 @@
 #include "../GameObjects/Meta/MainMenu/PlayButton.hpp"
 #include "../GameObjects/Enemies/Hawk.hpp"
 #include "../GameObjects/Meta/FpsDisplay.hpp"
+#include "../Keys.hpp"
 
 MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
     gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
