@@ -20,7 +20,7 @@ namespace Engine {
         bool active;
         Transform transform;
         Collider collider;
-        std::any rigidBody;
+        RigidBody rigidBody;
         std::vector<std::shared_ptr<Behavior>> behaviors; // TODO: Convert to map
         std::map<std::string,Text> text;
         std::map<std::string,Sprite> sprites;

@@ -20,10 +20,10 @@ namespace Engine {
             return instance;
         }
 
-        void CreateWorld();
+        void CreateBody(RigidBody &rigidBody, Transform &transform);
         void DestroyWorld();
         void DestroyBody(b2Body *body);
-        void Update(GameObject &gameObject);
+        void Update(RigidBody &rigidBody, Transform &transform);
         void Step();
     private:
         PhysicsApi() : physics() {};

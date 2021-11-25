@@ -8,8 +8,5 @@
 using namespace Engine;
 
 
-CollisionManager::CollisionManager() : _bodies(std::map<std::string, b2Body>()){}
+CollisionManager::CollisionManager(){}
 
-void CollisionManager::storeBody(const std::string &bodyName, b2Body &body) {
-
-}

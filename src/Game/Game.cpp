@@ -44,7 +44,7 @@ int main(int argc, char* args[]) {
     EtappeOne etappeOne{};
     EtappeTwo etappeTwo{};
     //MainMenuScene scene{};
-    engine.sceneManager.AddScene(etappeTwo);
+    engine.sceneManager.AddScene(etappeOne);
 
     if(!DataApi::getInstance().DatabaseExists()){
         setupDatabase();

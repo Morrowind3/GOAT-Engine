@@ -20,7 +20,7 @@ using namespace Engine;
 class EtappeTwo : public Scene {
 public:
     EtappeTwo() : Scene("Etappe two") {
-//        gameObjects.emplace_back(new Player{Transform{Point{100,912},15,0,5,5},true});
+        gameObjects.emplace_back(new Player{Transform{Point{100,-200},15,0,5,5},true});
 
         int tileSize{21};
         int tilesY{3};

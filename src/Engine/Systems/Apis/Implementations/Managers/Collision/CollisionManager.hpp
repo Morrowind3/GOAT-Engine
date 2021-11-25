@@ -11,16 +11,14 @@
 #include <memory>
 #include <string>
 #include <iostream>
+#include <vector>
 
 namespace Engine {
     class CollisionManager {
         public:
         CollisionManager();
         void storeBody(const std::string &bodyName, b2Body &body);
-
-        private:
-           std::map<std::string, b2Body> _bodies;
-        };
+    };
 }
 
 #endif //GOAT_ENGINE_COLLISIONMANAGER_HPP

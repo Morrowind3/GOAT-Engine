@@ -22,6 +22,8 @@ public:
             : GameObject(transform, active), tag(std::move(tag)) {
         sprites.insert(std::make_pair(TILE::SPRITE, Sprite{sprite, true}));
         behaviors.push_back(tileBehavior);
+        rigidBody = RigidBody(5.0f, 5.0f, BodyType::STATIC, true);
+
     };
     std::string tag;
 };

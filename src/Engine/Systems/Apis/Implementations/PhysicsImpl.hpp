@@ -7,6 +7,7 @@
 
 #include "Box2D.h"
 #include "../../../API/GameObjects/GameObject.hpp"
+#include "Managers/Collision/CollisionManager.hpp"
 #include <memory>
 #include <iostream>
 
@@ -15,16 +16,18 @@ namespace Engine {
     public:
         PhysicsImpl();
 
-        void CreateWorld();
+        void CreateBody(RigidBody &rigidBody, Transform &transform);
 
         void DestroyWorld();
 
         void DestroyBody(b2Body *body);
 
-        void Update(GameObject &gameObject);
+        void Update(RigidBody &rigidBody, Transform &transform);
 
         void Step();
+    private:
         b2World _world;
+        std::unique_ptr<CollisionManager> _collision;
     };
 }
 

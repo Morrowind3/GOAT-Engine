@@ -6,8 +6,8 @@
 
 using namespace  Engine;
 
-void PhysicsApi::CreateWorld() {
-    physics.CreateWorld();
+void PhysicsApi::CreateBody(RigidBody &rigidBody, Transform &transform)  {
+    physics.CreateBody(rigidBody, transform);
 }
 
 void PhysicsApi::DestroyWorld() {
@@ -18,8 +18,8 @@ void PhysicsApi::DestroyBody(b2Body *body) {
     physics.DestroyBody(body);
 }
 
-void PhysicsApi::Update(GameObject &gameObject) {
-    physics.Update(gameObject);
+void PhysicsApi::Update(RigidBody &rigidBody, Transform &transform) {
+    physics.Update(rigidBody, transform);
 }
 
 void PhysicsApi::Step() {
