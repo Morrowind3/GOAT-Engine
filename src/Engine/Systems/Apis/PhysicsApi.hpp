@@ -20,7 +20,7 @@ namespace Engine {
             return instance;
         }
 
-        void CreateBody(RigidBody &rigidBody, Transform &transform);
+        void CreateBody(GameObject &gameObject);
         void DestroyWorld();
         void DestroyBody(b2Body *body);
         void Update(RigidBody &rigidBody, Transform &transform);
