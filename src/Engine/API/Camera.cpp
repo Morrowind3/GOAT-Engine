@@ -41,7 +41,6 @@ void Camera::AddWaypoint(Point waypoint, int seconds) {
     }
 }
 
-//TODO: support for 0 coordinates
 void Camera::AddWaypoint(Point waypoint, int seconds, float _zoomLevel) {
     //TODO: Better time calculation. I just pulled this out of my ass but it's close enough in present conditions.
     int time = seconds * 60;
@@ -71,7 +70,8 @@ void Camera::AddWaypoint(Point waypoint, int seconds, float _zoomLevel) {
         zoomPerMs = (_zoomLevel*100 - waypoints.back().zoomTarget*100) / time / 100;
     };
 
-    waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, _zoomLevel, [&]{ return camera.topLeft.x == waypoint.x; }});
+//    waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, _zoomLevel, [&]{  }});
+    waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, _zoomLevel});
 }
 
 void Camera::InterpolateToNextWaypoint() {

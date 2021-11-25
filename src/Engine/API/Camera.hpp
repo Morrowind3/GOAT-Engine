@@ -26,9 +26,7 @@ private:
         float zoomPerMs;
         Point destination;
         float zoomTarget;
-        std::function<bool()> endCondition;
-                int ticks;
-
+//        std::function<bool()> endCondition; TODO: Scriptable end condition.
     };
 
     void Reposition(Engine::Transform& t) const;
