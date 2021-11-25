@@ -143,7 +143,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
         Game/Behaviors/Scripts/Meta/FpsScript.cpp Game/Behaviors/Scripts/Meta/FpsScript.hpp
         Game/Behaviors/Scripts/Meta/PauseScript.cpp Game/Behaviors/Scripts/Meta/PauseScript.hpp
-        )
+        Game/GameObjects/Meta/MainMenu/ScoreboardButton.cpp Game/GameObjects/Meta/MainMenu/ScoreboardButton.hpp Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
