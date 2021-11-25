@@ -18,7 +18,7 @@ namespace Engine {
         void LoadTexture(const std::string& fileName);
         void LoadFont(const std::string& fileName);
         void BeginRenderTick();
-        void DrawTexture(const std::string& texture, const Transform& location);
+        void DrawTexture(const std::string& texture, const std::shared_ptr<Transform>& location);
         void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);
         void EndRenderTick();
         void End();

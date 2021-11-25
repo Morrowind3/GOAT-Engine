@@ -30,16 +30,20 @@ void RenderingSystem::OnFrameTick(double deltaTime) {
     _api->BeginRenderTick();
     for (auto& gameObject: activeObjects()) {
         for (auto& sprite: gameObject->sprites) {
-            if (sprite.second.active) _api->DrawTexture(sprite.second.path, gameObject->transform);
+            if (!sprite.second.active) continue;
+            std::shared_ptr camAdjustedSprite = std::make_shared<Transform>(_scene->GetCamera()->AdjustForCamera(gameObject->transform));
+            _api->DrawTexture(sprite.second.path, camAdjustedSprite);
         }
         for (auto& text: gameObject->text) {
-            if (text.second.active) _api->DrawText(text.second.text, text.second.size, text.second.color, text.second.font, text.second.location);
+            if (!text.second.active) continue;
+            Transform camAdjustedText = _scene->GetCamera()->AdjustForCamera(text.second.location);
+            _api->DrawText(text.second.text, text.second.size, text.second.color, text.second.font, camAdjustedText);
         }
         for (auto& button: gameObject->buttons) {
-            if (button.second.active) {
-                _api->DrawTexture(button.second.sprite.path, gameObject->transform);
-                _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
-            }
+            if (!button.second.active) continue;
+            std::shared_ptr btnPointer = std::make_shared<Transform>(gameObject->transform);
+            _api->DrawTexture(button.second.sprite.path, btnPointer);
+            _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
         }
     }
     _api->EndRenderTick();

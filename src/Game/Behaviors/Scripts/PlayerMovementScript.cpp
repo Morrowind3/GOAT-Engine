@@ -1,6 +1,7 @@
 #include "PlayerMovementScript.hpp"
 
-PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player}, _input{Input::getInstance()} {
+PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player}, _input{
+        Input::GetInstance()} {
 }
 
 void PlayerMovementScript::OnUpdate(double deltaTime) {

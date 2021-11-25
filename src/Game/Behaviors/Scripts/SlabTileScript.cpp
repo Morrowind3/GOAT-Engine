@@ -1,6 +1,6 @@
 #include "SlabTileScript.hpp"
 
-SlabTileScript::SlabTileScript(SlabTile& self, bool active) : Script(active), _self{self}, _input{Input::getInstance()} { }
+SlabTileScript::SlabTileScript(SlabTile& self, bool active) : Script(active), _self{self}, _input{Input::GetInstance()} { }
 
 void SlabTileScript::OnUpdate(double deltaTime) {
     //example usage of tilescript

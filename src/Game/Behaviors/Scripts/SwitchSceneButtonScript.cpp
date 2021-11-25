@@ -6,6 +6,6 @@ SwitchSceneButtonScript::SwitchSceneButtonScript(std::string levelName, SceneMan
 }
 
 void SwitchSceneButtonScript::OnExternalEvent() {
-    Debug::getInstance().log("Switch scene called towards " + _levelName);
+    Debug::GetInstance().log("Switch scene called towards " + _levelName);
     _sceneManager.ChangeCurrentScene(_levelName);
 }

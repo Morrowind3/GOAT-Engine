@@ -20,7 +20,7 @@ namespace Engine {
             void LoadTexture(const std::string& fileName);
             void LoadFont(const std::string& fileName);
             void BeginRenderTick();
-            void DrawTexture(const std::string& texture, const Transform& location);
+            void DrawTexture(const std::string& texture, const std::shared_ptr<Transform>& location);
             void DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform);
             void EndRenderTick();
             void End();
@@ -31,7 +31,7 @@ namespace Engine {
             std::unique_ptr<FontManager> _fonts;
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
-            std::vector<std::pair<const Transform*, const Texture*>> _tickTextureCache;
+            std::vector<std::pair<Transform, const Texture*>> _tickTextureCache;
     };
 }
 

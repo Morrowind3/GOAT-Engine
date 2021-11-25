@@ -35,35 +35,40 @@ void GoatEngine::Run(const unsigned int maxFps) {
 
         // Load scene
         std::shared_ptr<Scene> active = _sceneManager.CurrentScene();
-        Debug::getInstance().log("Scene start: " + active->name);
+        Debug::GetInstance().log("Scene start: " + active->name);
         for (auto& system: *_systems) system->OnLoadScene(active);
-        Debug::getInstance().log("Scene started: " + active->name);
+        Debug::GetInstance().log("Scene started: " + active->name);
 
         // Update systems until scene change
         while (_isRunning && _sceneManager.CurrentScene() == active) {
             // Only handle frame when allowed to by the FPS cap
             currentFrameTickInMs = SDL_GetTicks();
+
             deltaTimeInMs = currentFrameTickInMs - previousFrameTickInMs;
             if (deltaTimeInMs >= frameDelayInMs) {
                 previousFrameTickInMs = currentFrameTickInMs;
                 // Perform frame logic
                 for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
-                if (Input::getInstance().QuitEvent()) _isRunning = false; // Quit game event
+                if (Input::GetInstance().QuitEvent()) _isRunning = false; // Quit game event
+                if(Input::GetInstance().GetKeyDown(Input::KeyCode::Q)) { // TODO: Delegate this to a script
+                    _sceneManager.CurrentScene()->MoveCamera(50,0);
+                }
             }
 
-            if(Input::getInstance().GetKeyDown(Input::KeyCode::RIGHT)) {
+            if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)) { // TODO: Delegate this to a script
                 delay += 10000;
             }
-            if(Input::getInstance().GetKeyDown(Input::KeyCode::LEFT)) {
+            if(Input::GetInstance().GetKeyDown(Input::KeyCode::LEFT)) { // TODO: Delegate this to a script
                 if(delay -10000 >= 0) {
                     delay -= 10000;
                 }
             }
+
             if(delay > 0) {
                 usleep(delay);
             }
         }
-        Debug::getInstance().log("Scene end: " + active->name);
+        Debug::GetInstance().log("Scene end: " + active->name);
     }
 
     // Destroy systems
