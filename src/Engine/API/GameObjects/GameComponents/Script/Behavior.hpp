@@ -3,13 +3,13 @@
 
 #include "../GameComponent.hpp"
 #include "Script.hpp"
-#include <vector>
+#include <map>
 #include <memory>
 
 namespace Engine {
     struct Behavior : public GameComponent {
         explicit Behavior(bool active);
-        std::vector<std::shared_ptr<Script>> scripts;
+        std::map<std::string,std::shared_ptr<Script>> scripts{};
         void OnStart();
         void OnUpdate(double deltaTime);
         void OnExternalEvent();

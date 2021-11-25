@@ -1,6 +1,7 @@
 #include "QuitGameBehavior.hpp"
-#include "Scripts/QuitGameScript.hpp"
+#include "Scripts/Meta/QuitGameScript.hpp"
+#include "../Keys.hpp"
 
 QuitGameBehavior::QuitGameBehavior(bool active) : Behavior(active) {
-    scripts.emplace_back(std::make_shared<QuitGameScript>(true));
+    scripts.insert(std::make_pair(Keys::BEHAVIOR,std::make_shared<QuitGameScript>(true)));
 }

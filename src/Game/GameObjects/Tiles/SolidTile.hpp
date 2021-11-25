@@ -2,13 +2,11 @@
 #define GOAT_ENGINE_SOLIDTILE_HPP
 
 #include "./Tile.hpp"
-#include <string>
 
 using namespace Engine;
 
 class SolidTile : public Tile {
-public:
-    explicit SolidTile(const std::string& sprite, Transform transform, bool active);
+    public: explicit SolidTile(const std::string& sprite, Transform transform, bool active);
 };
 
 

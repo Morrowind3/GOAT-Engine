@@ -2,29 +2,29 @@
 
 using namespace Engine;
 
-Behavior::Behavior(bool active) : GameComponent(active), scripts{} {
+Behavior::Behavior(bool active) : GameComponent(active) {
 }
 
 void Behavior::OnStart() {
     for(auto& script : scripts) {
-        script->OnStart();
+        script.second->OnStart();
     }
 }
 
 void Behavior::OnUpdate(double deltaTime) {
     for(auto& script : scripts) {
-        script->OnUpdate(deltaTime);
+        script.second->OnUpdate(deltaTime);
     }
 }
 
 void Behavior::OnExternalEvent() {
     for(auto& script : scripts) {
-        script->OnExternalEvent();
+        script.second->OnExternalEvent();
     }
 }
 
 void Behavior::OnDestroy() {
     for(auto& script : scripts) {
-        script->OnDestroy();
+        script.second->OnDestroy();
     }
 }

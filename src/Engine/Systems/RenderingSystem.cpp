@@ -36,14 +36,15 @@ void RenderingSystem::OnFrameTick(double deltaTime) {
         }
         for (auto& text: gameObject->text) {
             if (!text.second.active) continue;
-            Transform camAdjustedText = _scene->GetCamera()->AdjustForCamera(text.second.location);
+            std::shared_ptr   camAdjustedText = std::make_shared<Transform>(_scene->GetCamera()->AdjustForCamera(text.second.location));
             _api->DrawText(text.second.text, text.second.size, text.second.color, text.second.font, camAdjustedText);
         }
         for (auto& button: gameObject->buttons) {
             if (!button.second.active) continue;
-            std::shared_ptr btnPointer = std::make_shared<Transform>(gameObject->transform);
+            std::shared_ptr btnPointer = std::make_shared<Transform>(_scene->GetCamera()->AdjustForCamera(gameObject->transform));
+            std::shared_ptr txtPointer = std::make_shared<Transform>(_scene->GetCamera()->AdjustForCamera(button.second.text.location));
             _api->DrawTexture(button.second.sprite.path, btnPointer);
-            _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, button.second.text.location);
+            _api->DrawText(button.second.text.text, button.second.text.size, button.second.text.color, button.second.text.font, txtPointer);
         }
     }
     _api->EndRenderTick();
@@ -52,5 +53,3 @@ void RenderingSystem::OnFrameTick(double deltaTime) {
 void RenderingSystem::OnCloseEngine() {
     _api->End();
 }
-
-

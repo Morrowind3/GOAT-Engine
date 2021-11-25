@@ -97,7 +97,7 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
-        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp Engine/API/Camera.cpp Engine/API/Camera.hpp)
+        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp Engine/API/Camera.cpp Engine/API/Camera.hpp Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp)
 
 
 add_executable(Mount_Everestimate
@@ -109,33 +109,41 @@ add_executable(Mount_Everestimate
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
         Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
+        Game/Scenes/EtappeSelection.cpp Game/Scenes/EtappeSelection.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
         Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
         Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
-        Game/GameObjects/Tiles/Tile.hpp
+        Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
         Game/GameObjects/Meta/FpsDisplay.cpp Game/GameObjects/Meta/FpsDisplay.hpp
+        Game/GameObjects/Meta/MainMenu/Background.cpp
+        Game/GameObjects/Meta/MainMenu/ExitButton.cpp
+        Game/GameObjects/Meta/MainMenu/PlayButton.cpp
+		Game/GameObjects/Meta/EtappeSelection/EtappeMarker.cpp Game/GameObjects/Meta/EtappeSelection/EtappeMarker.hpp
         # Behaviors
-        Game/Behaviors/PlayerBehavior.hpp
-        Game/Behaviors/SolidTileBehavior.hpp
-        Game/Behaviors/SlabTileBehavior.hpp
+        Game/Behaviors/EtappeBehavior.cpp Game/Behaviors/EtappeBehavior.hpp
+        Game/Behaviors/PlayerBehavior.hpp Game/Behaviors/PlayerBehavior.cpp
+        Game/Behaviors/SolidTileBehavior.hpp Game/Behaviors/SolidTileBehavior.cpp
+        Game/Behaviors/SlabTileBehavior.hpp Game/Behaviors/SlabTileBehavior.cpp
         Game/Behaviors/QuitGameBehavior.hpp Game/Behaviors/QuitGameBehavior.cpp
-        Game/Behaviors/SwitchSceneButtonBehavior.hpp
-        Game/Behaviors/HawkBehavior.hpp
+        Game/Behaviors/SwitchSceneButtonBehavior.hpp Game/Behaviors/SwitchSceneButtonBehavior.cpp
+        Game/Behaviors/HawkBehavior.hpp Game/Behaviors/HawkBehavior.cpp
         Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/SwitchSceneButtonScript.hpp
-        Game/Behaviors/Scripts/QuitGameScript.cpp Game/Behaviors/Scripts/QuitGameScript.hpp
+        Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.hpp
+        Game/Behaviors/Scripts/Meta/QuitGameScript.cpp Game/Behaviors/Scripts/Meta/QuitGameScript.hpp
         Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
         Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
         Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
-        Game/Behaviors/Scripts/FpsScript.cpp Game/Behaviors/Scripts/FpsScript.hpp)
+        Game/Behaviors/Scripts/Meta/FpsScript.cpp Game/Behaviors/Scripts/Meta/FpsScript.hpp
+        Game/Behaviors/Scripts/Meta/PauseScript.cpp Game/Behaviors/Scripts/Meta/PauseScript.hpp
+        )
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

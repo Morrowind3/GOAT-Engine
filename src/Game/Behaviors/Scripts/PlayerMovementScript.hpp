@@ -4,6 +4,7 @@
 #include "../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../Engine/Utilities/Input.hpp"
 #include "../../GameObjects/Characters/Player.hpp"
+#include "../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 
@@ -12,8 +13,11 @@ class PlayerMovementScript : public Script {
         PlayerMovementScript(Player& player, bool active);
         void OnUpdate(double deltaTime);
     private:
+        // Globals
+        Input& _input = Input::GetInstance();
+        Globals& _globals = Globals::GetInstance();
+        // Variables
         Player& _player;
-        Input& _input;
         bool _jumpState = false;
         bool _jumpStepAltSfx = false;
         // Consts

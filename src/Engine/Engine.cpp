@@ -50,8 +50,12 @@ void GoatEngine::Run(const unsigned int maxFps) {
                 // Perform frame logic
                 for (auto& system: *_systems) system->OnFrameTick(deltaTimeInMs);
                 if (Input::GetInstance().QuitEvent()) _isRunning = false; // Quit game event
+
+                _sceneManager.CurrentScene()->MoveCamera(1,0);
+
+
                 if(Input::GetInstance().GetKeyDown(Input::KeyCode::Q)) { // TODO: Delegate this to a script
-                    _sceneManager.CurrentScene()->MoveCamera(50,0);
+                    _sceneManager.CurrentScene()->MoveCamera(0,10);
                 }
             }
 

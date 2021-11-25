@@ -5,11 +5,6 @@
 
 using namespace Engine;
 
-namespace ETAPPE_ONE { // TODO: To keys.hpp
-    const std::string BACKGROUND = "Background";
-    const std::string SNOWSTORM = "Snowstorm";
-}
-
 class EtappeOneManager : public GameObject {
     public: EtappeOneManager(Transform transform, bool active);
 };

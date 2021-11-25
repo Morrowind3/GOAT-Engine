@@ -43,10 +43,10 @@ void RendererImpl::DrawTexture(const std::string& name, const std::shared_ptr<Tr
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, &texture});
 }
 
-void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
+void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
     auto& font = _fonts->get(fontName);
     std::shared_ptr<Texture> texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{transform, texture.get()});
+    _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
 }
 
 bool tickTextureCacheSort(const std::pair<const Transform, const Texture*>& a,

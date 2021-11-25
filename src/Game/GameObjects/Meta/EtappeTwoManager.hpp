@@ -6,9 +6,7 @@
 using namespace Engine;
 
 class EtappeTwoManager : public GameObject {
-public:
-    EtappeTwoManager(Transform transform, bool active);
+    public: EtappeTwoManager(Transform transform, bool active);
 };
-
 
 #endif //GOAT_ENGINE_ETAPPETWOMANAGER_HPP
