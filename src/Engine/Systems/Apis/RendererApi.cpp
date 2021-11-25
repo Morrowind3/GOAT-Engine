@@ -18,7 +18,7 @@ void RendererApi::RendererApi::DrawTexture(const std::string& texture, const std
     renderer.DrawTexture(texture, location);
 }
 
-void RendererApi::RendererApi::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const Transform& transform) {
+void RendererApi::RendererApi::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
     renderer.DrawText(text,size,color,fontName,transform);
 }
 

@@ -16,7 +16,7 @@ public:
             "Fonts/Kenney_Thick.ttf",
             80,
             {0,0,0,255},
-            Transform{{250,150},transform.layer+1,0,1,1},
+            Transform{{250,150},LAYER::PARALLAX_BACKGROUND,0,1,1},
             true}));
 //        audioSources.insert(std::make_pair("Music",AudioSource{"Music/Snowstorm.wav", AudioSourceType::MUSIC, true, true}));
         audioSources.insert(std::make_pair("Music",AudioSource{"Music/Journey.mp3", AudioSourceType::MUSIC, true, true}));
