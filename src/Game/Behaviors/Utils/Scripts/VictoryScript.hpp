@@ -12,7 +12,7 @@ using namespace Engine;
 
 class VictoryScript : public Script {
 public:
-    VictoryScript();
+    VictoryScript(bool active);
     void OnExternalEvent() override;
 
 private:

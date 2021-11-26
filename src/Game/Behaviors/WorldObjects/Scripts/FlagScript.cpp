@@ -8,23 +8,21 @@
 
 //FlagScript::FlagScript(bool active, VictoryFlag& flag, Player& player) : Script(active), _flag(flag), _player(player) {
 //}
-FlagScript::FlagScript(bool active, VictoryFlag& flag) : Script(active), _flag(flag) {
+FlagScript::FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player) : Script(active), _flag(flag), _player(player) {
 }
 
 void FlagScript::OnUpdate(double deltaTime) {
     if(PlayerEntered()){
-//        VictoryScript victoryScript;
-//        victoryScript.OnExternalEvent();
+        VictoryScript victoryScript(true);
+        victoryScript.OnExternalEvent();
     }
-    std::cout << deltaTime << std::endl;
     animationTimer += deltaTime;
     if(animationTimer >= 800) AnimateFlag();
 }
 
 //TODO: Box2d collission detection;
 bool FlagScript::PlayerEntered() {
-    return false;
-//    return _player.transform.position.x > _flag.transform.position.x;
+    return _player->transform.position.x > _flag.transform.position.x;
 }
 
 void FlagScript::AnimateFlag() {

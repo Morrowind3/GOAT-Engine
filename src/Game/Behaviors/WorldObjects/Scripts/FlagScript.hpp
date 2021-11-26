@@ -14,7 +14,7 @@ using namespace Engine;
 class FlagScript : public Script {
 public:
 //    FlagScript(bool active, VictoryFlag& flag, Player& player);
-    FlagScript(bool active, VictoryFlag& flag); //temp
+    FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player);
 
     void OnUpdate(double deltaTime) override;
 private:
@@ -22,7 +22,7 @@ private:
     void AnimateFlag();
     VictoryFlag& _flag;
     double animationTimer = 0;
-//    Player& _player;
+    const std::shared_ptr<Player>& _player;
 };
 
 

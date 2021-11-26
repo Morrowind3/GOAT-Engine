@@ -12,7 +12,7 @@
 using namespace Engine;
 
 class VictoryFlagBehavior : public Behavior {
-    public: VictoryFlagBehavior(VictoryFlag& flag, bool active);
+    public: VictoryFlagBehavior(VictoryFlag& flag, const std::shared_ptr<Player>& player, bool active);
 
 };
 
