@@ -53,18 +53,20 @@ void GoatEngine::Run(const unsigned int maxFps) {
                 _sceneManager.CurrentScene()->MoveCameraToNextWaypoint();
             }
 
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)) { // TODO: Delegate this to a script
+            // TODO: Delegate this to a script
+            if(Input::GetInstance().GetKeyDown(KeyCode::RIGHT)) {
                 delay += 10000;
             }
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::LEFT)) { // TODO: Delegate this to a script
+            if(Input::GetInstance().GetKeyDown(KeyCode::LEFT)) {
                 if(delay -10000 >= 0) {
                     delay -= 10000;
                 }
             }
-
             if(delay > 0) {
                 usleep(delay);
             }
+            // ~TODO: Delegate this to a script
+
         }
         Debug::GetInstance().log("Scene end: " + active->name);
     }

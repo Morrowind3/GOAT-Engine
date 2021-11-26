@@ -22,6 +22,9 @@ set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/lib")
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
 
+add_library(TessilOrdered STATIC "Libraries/Tessil/ordered_hash.hpp" "Libraries/Tessil/ordered_set.hpp" "Libraries/Tessil/ordered_map.hpp")
+set_target_properties(TessilOrdered PROPERTIES LINKER_LANGUAGE CXX)
+
 add_library(GOAT_Engine STATIC
         "Engine/API/GameObjects/GameComponents/GameComponent.hpp"
         "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
@@ -97,55 +100,81 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
-        Engine/API/GameObjects/Rectangle.hpp Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp Engine/API/Camera.cpp Engine/API/Camera.hpp Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp)
+        Engine/API/GameObjects/Rectangle.hpp 
+		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
+		Engine/API/Camera.cpp Engine/API/Camera.hpp 
+		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
+        Engine/Utilities/InputRegistry.cpp Engine/Utilities/InputRegistry.hpp
+		Engine/Utilities/Input/KeyCode.hpp
+		Engine/Utilities/Input/MouseButton.hpp
+		Engine/Utilities/Input/PressState.hpp
+		)
 
+target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
 add_executable(Mount_Everestimate
         # Core
         Game/Keys.hpp
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
+		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
         Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
         Game/Scenes/EtappeSelection.cpp Game/Scenes/EtappeSelection.hpp
+		Game/Scenes/SettingsMenuScene.cpp Game/Scenes/SettingsMenuScene.hpp
+		Game/Scenes/ScoreboardMenuScene.cpp Game/Scenes/ScoreboardMenuScene.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
-        Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
-        Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
+		Game/GameObjects/Meta/Etappes/EtappeOneManager.cpp Game/GameObjects/Meta/Etappes/EtappeOneManager.hpp
+		Game/GameObjects/Meta/Etappes/EtappeTwoManager.cpp Game/GameObjects/Meta/Etappes/EtappeTwoManager.hpp
         Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
-        Game/GameObjects/Meta/FpsDisplay.cpp Game/GameObjects/Meta/FpsDisplay.hpp
+		Game/GameObjects/Meta/Hud/FpsDisplay.cpp Game/GameObjects/Meta/Hud/FpsDisplay.hpp
         Game/GameObjects/Meta/MainMenu/Background.cpp
         Game/GameObjects/Meta/MainMenu/ExitButton.cpp
         Game/GameObjects/Meta/MainMenu/PlayButton.cpp
 		Game/GameObjects/Meta/EtappeSelection/EtappeMarker.cpp Game/GameObjects/Meta/EtappeSelection/EtappeMarker.hpp
-        # Behaviors
-        Game/Behaviors/EtappeBehavior.cpp Game/Behaviors/EtappeBehavior.hpp
-        Game/Behaviors/PlayerBehavior.hpp Game/Behaviors/PlayerBehavior.cpp
-        Game/Behaviors/SolidTileBehavior.hpp Game/Behaviors/SolidTileBehavior.cpp
-        Game/Behaviors/SlabTileBehavior.hpp Game/Behaviors/SlabTileBehavior.cpp
-        Game/Behaviors/QuitGameBehavior.hpp Game/Behaviors/QuitGameBehavior.cpp
-        Game/Behaviors/SwitchSceneButtonBehavior.hpp Game/Behaviors/SwitchSceneButtonBehavior.cpp
-        Game/Behaviors/HawkBehavior.hpp Game/Behaviors/HawkBehavior.cpp
-        Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp
+		Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.cpp Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.hpp
+		Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.cpp Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.hpp
+		Game/GameObjects/Meta/Cheats.cpp Game/GameObjects/Meta/Cheats.hpp
+		Game/GameObjects/Meta/MainMenu/ScoreboardButton.cpp Game/GameObjects/Meta/MainMenu/ScoreboardButton.hpp
+		Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp
+		Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp
+		Game/GameObjects/Meta/Hud/LifeHeart.cpp Game/GameObjects/Meta/Hud/LifeHeart.hpp
+		# Behaviors
+		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
+		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
+		Game/Behaviors/Tiles/SolidTileBehavior.hpp Game/Behaviors/Tiles/SolidTileBehavior.cpp
+		Game/Behaviors/Tiles/SlabTileBehavior.hpp Game/Behaviors/Tiles/SlabTileBehavior.cpp
+		Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
+		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
+		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
+		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
+		Game/Behaviors/Utils/FpsBehavior.cpp Game/Behaviors/Utils/FpsBehavior.hpp
+		Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.hpp
-        Game/Behaviors/Scripts/Meta/QuitGameScript.cpp Game/Behaviors/Scripts/Meta/QuitGameScript.hpp
-        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
-        Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
-        Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
-        Game/Behaviors/Scripts/Meta/FpsScript.cpp Game/Behaviors/Scripts/Meta/FpsScript.hpp
-        Game/Behaviors/Scripts/Meta/PauseScript.cpp Game/Behaviors/Scripts/Meta/PauseScript.hpp
-        )
+		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
+		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
+		Game/Behaviors/Buttons/Scripts/EtappeProgress.cpp Game/Behaviors/Buttons/Scripts/EtappeProgress.hpp
+		Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.cpp Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.hpp
+		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
+		Game/Behaviors/Tiles/Scripts/SlabTileScript.cpp Game/Behaviors/Tiles/Scripts/SlabTileScript.hpp
+		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
+		Game/Behaviors/Utils/Scripts/FpsScript.cpp Game/Behaviors/Utils/Scripts/FpsScript.hpp
+		Game/Behaviors/Utils/Scripts/PauseScript.cpp Game/Behaviors/Utils/Scripts/PauseScript.hpp
+		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
+		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
+		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp)
 
-target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
+target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
 add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)

@@ -14,6 +14,10 @@ void Globals::sceneStore(const std::string& key, const std::string& value) {
     _sceneGlobals->insert(std::make_pair(key, value));
 }
 
+bool Globals::sceneExists(const std::string& key) const {
+    return _sceneGlobals->find(key) != _sceneGlobals->end();
+}
+
 std::string Globals::sceneGet(const std::string& key) const {
     auto result = _sceneGlobals->find(key);
     if (result != _sceneGlobals->end()) {
@@ -26,12 +30,18 @@ std::string Globals::sceneGet(const std::string& key) const {
     _sceneGlobals->erase(key);
 }
 
+// ------------------------------------------------------------------------
+
 void Globals::gameStore(const std::string& key, const std::string& value) {
     auto result = _gameGlobals->find(key);
     if (result != _gameGlobals->end()) {
         _gameGlobals->erase(key);
     }
     _gameGlobals->insert(std::make_pair(key, value));
+}
+
+bool Globals::gameExists(const std::string& key) const {
+    return _gameGlobals->find(key) != _gameGlobals->end();
 }
 
 std::string Globals::gameGet(const std::string& key) const {
@@ -45,5 +55,3 @@ std::string Globals::gameGet(const std::string& key) const {
 [[maybe_unused]] void Globals::gameRemove(const std::string& key) {
     _gameGlobals->erase(key);
 }
-
-

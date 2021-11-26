@@ -1,5 +1,5 @@
 #include "Hawk.hpp"
-#include "../../Behaviors/HawkBehavior.hpp"
+#include "../../Behaviors/Characters/HawkBehavior.hpp"
 #include "../../Keys.hpp"
 
 Hawk::Hawk(Transform transform, bool active) : GameObject(transform, active) {

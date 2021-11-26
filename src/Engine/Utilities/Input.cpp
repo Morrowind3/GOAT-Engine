@@ -1,70 +1,78 @@
 #include "Input.hpp"
+#include <algorithm>
 #include <SDL.h>
-#include <iostream>
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "readability-convert-member-functions-to-static"
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using namespace Engine;
 
-using KeyCode = Engine::Input::KeyCode;
-using MouseButton = Engine::Input::MouseButton;
-
-SDL_Event event;
-
 void Input::Update() {
-    SDL_PumpEvents();
-    SDL_PollEvent(&event);
+    _registry.FlushForNextFrame();
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) { QueueQuitEvent(); return; }
+        if (event.type == SDL_KEYDOWN) _registry.StoreKeyDown(static_cast<KeyCode>(event.key.keysym.sym));
+        if (event.type == SDL_KEYUP) _registry.StoreKeyUp(static_cast<KeyCode>(event.key.keysym.sym));
+        if (event.type == SDL_MOUSEBUTTONDOWN) _registry.StoreMouseDown(static_cast<MouseButton>(event.button.button));
+        if (event.type == SDL_MOUSEBUTTONUP) _registry.StoreMouseUp(static_cast<MouseButton>(event.button.button));
+    }
+    SDL_GetMouseState(&_mousePositionX, &_mousePositionY);
+}
+
+bool Input::AnyKey() const {
+    return _registry.AnyKeyRegistered();
+}
+
+bool Input::AnyKeyUp() const {
+    return _registry.AnyKeyInState(PressState::RELEASED);
 }
 
 bool Input::AnyKeyDown() const {
-    return (event.type == SDL_KEYDOWN);
+    return _registry.AnyKeyInState(PressState::PRESSED);
+}
+
+bool Input::GetKey(KeyCode code) const {
+    return _registry.KeyStatus(code) != PressState::UNDETECTED;
+}
+
+bool Input::GetKeyUp(KeyCode code) const {
+    return _registry.KeyStatus(code) == PressState::RELEASED;
 }
 
 bool Input::GetKeyDown(KeyCode code) const {
-    return (event.type == SDL_KEYDOWN && event.key.keysym.sym == static_cast<SDL_KeyCode>(code) );
+    return _registry.KeyStatus(code) == PressState::PRESSED;
 }
 
 Point Input::MousePosition() const {
-    int x, y;
-    SDL_GetMouseState(&x, &y);
-    return Point(x, y);
+    return {_mousePositionX, _mousePositionY};
 }
 
 bool Input::AnyMouse() const {
-    return SDL_GetMouseState(nullptr, NULL);
+    return _registry.AnyMouseRegistered();
 }
 
 bool Input::AnyMouseUp() const {
-    return (event.type == SDL_MOUSEBUTTONUP);
+    return _registry.AnyMouseInState(PressState::RELEASED);
 }
 
 bool Input::AnyMouseDown() const {
-    return (event.type == SDL_MOUSEBUTTONDOWN);
+    return _registry.AnyMouseInState(PressState::PRESSED);
 }
 
-bool Input::GetMouseButton(MouseButton button) const {
-    return (static_cast<MouseButton>(event.button.button) == button);
+bool Input::GetMouse(MouseButton button) const {
+    return _registry.MouseStatus(button) != PressState::UNDETECTED;
 }
 
 bool Input::GetMouseUp(MouseButton button) const {
-    return (event.type == SDL_MOUSEBUTTONUP && static_cast<MouseButton>(event.button.button) == button);
+    return _registry.MouseStatus(button) == PressState::RELEASED;
 }
 
 bool Input::GetMouseDown(MouseButton button) const {
-    return (event.type == SDL_MOUSEBUTTONDOWN && static_cast<MouseButton>(event.button.button) == button);
+    return _registry.MouseStatus(button) == PressState::PRESSED;
 }
 
 bool Input::QuitEvent() const {
-    return event.type == SDL_QUIT || _manualQuitEvent;
+    return _quitEvent;
 }
 
 void Input::QueueQuitEvent() {
-    _manualQuitEvent = true;
+    _quitEvent = true;
 }
-
-
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop
