@@ -53,6 +53,7 @@ namespace Keys {
 	const std::string FLAG = "FLAG"; // Usage: Flag sprite (etappemarker)
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
+	const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP

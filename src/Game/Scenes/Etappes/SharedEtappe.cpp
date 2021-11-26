@@ -2,8 +2,13 @@
 #include "../../GameObjects/Meta/Hud/FpsDisplay.hpp"
 #include "../../GameObjects/Characters/Player.hpp"
 #include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
+#include "../../MountEverestimateLevelConstructor.hpp"
 
-SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition): Scene(etappeKey) {
+SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition,
+    const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey) {
+    // Level
+    MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.Construct(xOffset, yOffset);
+
     // Hud
     gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
     // Hearts (hud)
