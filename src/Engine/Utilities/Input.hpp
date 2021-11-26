@@ -1,9 +1,10 @@
 #ifndef GOAT_ENGINE_INPUT_HPP
 #define GOAT_ENGINE_INPUT_HPP
 
-#pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
+#include <map>
+#include <vector>
 #include "../API/GameObjects/Point.hpp"
 
 namespace Engine {
@@ -136,23 +137,30 @@ namespace Engine {
                 RALT = 0x400000E6,
                 RGUI = 0x400000E7,
             };
+
             enum class MouseButton {
                 LEFT = 1,
                 MIDDLE = 2,
                 RIGHT = 3
             };
+
             Input(Input const&) = delete;
             void operator=(Input const&) = delete;
-            static Input& GetInstance()
-            {
+            static Input& GetInstance() {
                 static Input instance;
                 return instance;
             }
 
+            // Input
             void Update();
-            // TODO: Test and enhance this further
+            // Keyboard
+            [[nodiscard]] bool AnyKey() const;
+            [[nodiscard]] bool AnyKeyUp() const;
             [[nodiscard]] bool AnyKeyDown() const;
+            [[nodiscard]] bool GetKey(KeyCode code) const;
+            [[nodiscard]] bool GetKeyUp(KeyCode code) const;
             [[nodiscard]] bool GetKeyDown(KeyCode code) const;
+            // Mouse
             [[nodiscard]] Point MousePosition() const;
             [[nodiscard]] bool AnyMouse() const;
             [[nodiscard]] bool AnyMouseUp() const;
@@ -160,13 +168,20 @@ namespace Engine {
             [[nodiscard]] bool GetMouseButton(MouseButton button) const;
             [[nodiscard]] bool GetMouseUp(MouseButton button) const;
             [[nodiscard]] bool GetMouseDown(MouseButton button) const;
+            // Special
             void QueueQuitEvent();
             [[nodiscard]] bool QuitEvent() const;
+
         private:
             Input()= default;
+            // State
             bool _manualQuitEvent = false;
+            int _mousePositionX, _mousePositionY;
+            std::map<KeyCode,bool> _keysPressedThisFrame{}, _keysPressedLastFrame{};
+            std::map<MouseButton,bool> _mousePressedThisFrame{}, _mousePressedLastFrame{};
+            std::vector<KeyCode> _keysUp {}, _keysDown {};
+            std::vector<MouseButton> _mouseUp {}, _mouseDown {};
         };
 }
 
-#pragma clang diagnostic pop
 #endif //GOAT_ENGINE_INPUT_HPP

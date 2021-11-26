@@ -106,7 +106,7 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
 		)
 
-target_link_libraries(GOAT_Engine TessilOrdered)
+target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
 add_executable(Mount_Everestimate
         # Core
@@ -168,9 +168,9 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-		)
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp)
 
-target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
+target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
 add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)

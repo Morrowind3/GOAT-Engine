@@ -58,16 +58,16 @@ void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { tr
     // Debug code to see where all tiles have been constructed
     if (Globals::GetInstance().gameExists(Keys::LEVEL_DEBUG)) {
         auto& debug = Debug::GetInstance();
-        for (auto& temp : _scene.gameObjects) {
+        for (auto& tile : _scene.gameObjects) {
             debug.log(
-                "[SP: " + temp->sprites.at(Keys::SPRITE).path +             // Sprite Path
-                ", SA: " + std::to_string(temp->sprites.at(Keys::SPRITE).active) +  // Sprite Active
-                ", A: " + std::to_string(temp->active) +                            // Active
-                ", X: " + std::to_string(temp->transform.position.x) +              // X
-                ", Y: " + std::to_string(temp->transform.position.y) +              // Y
-                ", L: " + std::to_string(temp->transform.layer) +                   // Layer
-                ", SW: " + std::to_string(temp->transform.scaleWidth) +             // Scale Width
-                ", SH: " + std::to_string(temp->transform.scaleHeight) +            // Scale Height
+                "[SP: " + tile->sprites.at(Keys::SPRITE).path +             // Sprite Path
+                ", SA: " + std::to_string(tile->sprites.at(Keys::SPRITE).active) +  // Sprite Active
+                ", A: " + std::to_string(tile->active) +                            // Active
+                ", X: " + std::to_string(tile->transform.position.x) +              // X
+                ", Y: " + std::to_string(tile->transform.position.y) +              // Y
+                ", L: " + std::to_string(tile->transform.layer) +                   // Layer
+                ", SW: " + std::to_string(tile->transform.scaleWidth) +             // Scale Width
+                ", SH: " + std::to_string(tile->transform.scaleHeight) +            // Scale Height
             "]");
         }
     }
