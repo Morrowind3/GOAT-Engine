@@ -104,6 +104,10 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
 		Engine/API/Camera.cpp Engine/API/Camera.hpp 
 		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
+        Engine/Utilities/InputRegistry.cpp Engine/Utilities/InputRegistry.hpp
+		Engine/Utilities/Input/KeyCode.hpp
+		Engine/Utilities/Input/MouseButton.hpp
+		Engine/Utilities/Input/PressState.hpp
 		)
 
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)

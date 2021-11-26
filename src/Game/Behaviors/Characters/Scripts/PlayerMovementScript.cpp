@@ -7,9 +7,9 @@ PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script
 void PlayerMovementScript::OnUpdate(double deltaTime) {
     if (_globals.sceneGet(Keys::PAUSE) == Keys::TRUE) return; // Don't allow when paused
 
-    bool moveLeft = _input.GetKeyDown(Input::KeyCode::A);
-    bool moveRight = _input.GetKeyDown(Input::KeyCode::D);
-    bool moveUp = _input.GetKeyDown(Input::KeyCode::W);
+    bool moveLeft = _input.GetKey(KeyCode::A);
+    bool moveRight = _input.GetKey(KeyCode::D);
+    bool moveUp = _input.GetKeyDown(KeyCode::W);
 
     // Perform movement
     if (moveRight) {

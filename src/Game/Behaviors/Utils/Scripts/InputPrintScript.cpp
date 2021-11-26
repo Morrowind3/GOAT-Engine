@@ -1,15 +1,12 @@
 #include "InputPrintScript.hpp"
 #include "../../../Keys.hpp"
 
-using KeyCode = Engine::Input::KeyCode;
-using MouseButton = Engine::Input::MouseButton;
-
 InputPrintScript::InputPrintScript(bool active) : Script(active) {
 }
 
 void InputPrintScript::OnUpdate(double deltaTime) {
-    //if (_globals.gameExists(Keys::INPUT_DEBUG)) {
-        //_debug.log("---BEGIN INPUT PRINT SCRIPT---");
+    if (_globals.gameExists(Keys::INPUT_DEBUG)) {
+        _debug.log("---BEGIN INPUT PRINT SCRIPT---");
         const std::string prefix{"(INPUT PRINT SCRIPT) "};
         if (_input.AnyKey()) _debug.log(prefix+"AnyKey");
         if (_input.AnyKeyUp()) _debug.log(prefix+"AnyKeyUp");
@@ -20,10 +17,10 @@ void InputPrintScript::OnUpdate(double deltaTime) {
         if (_input.AnyMouse()) _debug.log(prefix+"AnyMouse");
         if (_input.AnyMouseUp()) _debug.log(prefix+"AnyMouseUp");
         if (_input.AnyMouseDown()) _debug.log(prefix+"AnyMouseDown");
-        if (_input.GetMouseButton(MouseButton::RIGHT)) _debug.log(prefix+"GetMouseButton");
+        if (_input.GetMouse(MouseButton::RIGHT)) _debug.log(prefix + "GetMouse");
         if (_input.GetMouseUp(MouseButton::RIGHT)) _debug.log(prefix+"GetMouseUp");
         if (_input.GetMouseDown(MouseButton::RIGHT)) _debug.log(prefix+"GetMouseDown");
-        //_debug.log(prefix+"Mouse X: "+std::to_string(_input.MousePosition().x)+" Mouse Y: "+std::to_string(_input.MousePosition().y));
-        //_debug.log("---END INPUT PRINT SCRIPT---");
-    //}
+        _debug.log(prefix+"Mouse X: "+std::to_string(_input.MousePosition().x)+" Mouse Y: "+std::to_string(_input.MousePosition().y));
+        _debug.log("---END INPUT PRINT SCRIPT---");
+    }
 }

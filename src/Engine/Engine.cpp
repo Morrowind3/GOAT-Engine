@@ -54,10 +54,10 @@ void GoatEngine::Run(const unsigned int maxFps) {
             }
 
             // TODO: Delegate this to a script
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::RIGHT)) {
+            if(Input::GetInstance().GetKeyDown(KeyCode::RIGHT)) {
                 delay += 10000;
             }
-            if(Input::GetInstance().GetKeyDown(Input::KeyCode::LEFT)) {
+            if(Input::GetInstance().GetKeyDown(KeyCode::LEFT)) {
                 if(delay -10000 >= 0) {
                     delay -= 10000;
                 }
