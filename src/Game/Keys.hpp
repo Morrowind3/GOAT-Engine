@@ -24,6 +24,8 @@ namespace Keys {
 	const std::string ETAPPE_CONFIG = "ETAPPE_CONFIG"; // Usage: Etappe config script ID
     const std::string SNOWSTORM = "SNOWSTORM"; // Usage: snowstorm ambient music
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
+    const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
+    const std::string SETTINGS_MENU =  "SETTINGS_MENU"; // Usage: Settings menu level ID
     const std::string ETAPPE_ONE = "ETAPPE_ONE"; // Usage: Etappe 1 level ID
     const std::string ETAPPE_TWO = "ETAPPE_TWO"; // Usage: Etappe 2 level ID
 	const std::string ETAPPE_THREE = "ETAPPE_THREE"; // Usage: Etappe 3 level ID

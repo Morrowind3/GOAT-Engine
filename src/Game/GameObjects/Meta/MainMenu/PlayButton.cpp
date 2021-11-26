@@ -1,5 +1,5 @@
 #include "PlayButton.hpp"
-#include "../../../Behaviors/SwitchSceneButtonBehavior.hpp"
+#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
 
 PlayButton::PlayButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {

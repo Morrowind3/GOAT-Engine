@@ -1,5 +1,5 @@
 #include "EtappeTwoManager.hpp"
-#include "../../Behaviors/EtappeBehavior.hpp"
+#include "../../Behaviors/Utils/EtappeBehavior.hpp"
 #include "../../Keys.hpp"
 
 EtappeTwoManager::EtappeTwoManager(Transform transform, bool active) : GameObject(transform, active) {

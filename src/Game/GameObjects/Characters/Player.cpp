@@ -1,5 +1,5 @@
 #include "Player.hpp"
-#include "../../Behaviors/PlayerBehavior.hpp"
+#include "../../Behaviors/Characters/PlayerBehavior.hpp"
 #include "../../Keys.hpp"
 
 Player::Player(Transform transform, bool active) : GameObject(transform, active) {

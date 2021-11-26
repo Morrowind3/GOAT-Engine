@@ -118,6 +118,8 @@ add_executable(Mount_Everestimate
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
         Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
         Game/Scenes/EtappeSelection.cpp Game/Scenes/EtappeSelection.hpp
+		Game/Scenes/SettingsMenuScene.cpp Game/Scenes/SettingsMenuScene.hpp
+		Game/Scenes/ScoreboardMenuScene.cpp Game/Scenes/ScoreboardMenuScene.hpp
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
@@ -135,27 +137,32 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Meta/MainMenu/PlayButton.cpp
 		Game/GameObjects/Meta/EtappeSelection/EtappeMarker.cpp Game/GameObjects/Meta/EtappeSelection/EtappeMarker.hpp
 		Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.cpp Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.hpp
-        # Behaviors
-        Game/Behaviors/EtappeBehavior.cpp Game/Behaviors/EtappeBehavior.hpp
-        Game/Behaviors/PlayerBehavior.hpp Game/Behaviors/PlayerBehavior.cpp
-        Game/Behaviors/SolidTileBehavior.hpp Game/Behaviors/SolidTileBehavior.cpp
-        Game/Behaviors/SlabTileBehavior.hpp Game/Behaviors/SlabTileBehavior.cpp
-        Game/Behaviors/QuitGameBehavior.hpp Game/Behaviors/QuitGameBehavior.cpp
-        Game/Behaviors/SwitchSceneButtonBehavior.hpp Game/Behaviors/SwitchSceneButtonBehavior.cpp
-        Game/Behaviors/HawkBehavior.hpp Game/Behaviors/HawkBehavior.cpp
-        Game/Behaviors/FpsBehavior.cpp Game/Behaviors/FpsBehavior.hpp
-		Game/Behaviors/EtappeMarkerBehavior.cpp Game/Behaviors/EtappeMarkerBehavior.hpp
+		Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.cpp Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.hpp
+		Game/GameObjects/Meta/Cheats.cpp Game/GameObjects/Meta/Cheats.hpp
+		Game/GameObjects/Meta/MainMenu/ScoreboardButton.cpp Game/GameObjects/Meta/MainMenu/ScoreboardButton.hpp
+		Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp
+		Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp
+		# Behaviors
+		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
+		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
+		Game/Behaviors/Tiles/SolidTileBehavior.hpp Game/Behaviors/Tiles/SolidTileBehavior.cpp
+		Game/Behaviors/Tiles/SlabTileBehavior.hpp Game/Behaviors/Tiles/SlabTileBehavior.cpp
+		Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
+		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
+		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
+		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
+		Game/Behaviors/Utils/FpsBehavior.cpp Game/Behaviors/Utils/FpsBehavior.hpp
         # Scripts
-        Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.cpp Game/Behaviors/Scripts/Meta/SwitchSceneButtonScript.hpp
-        Game/Behaviors/Scripts/Meta/QuitGameScript.cpp Game/Behaviors/Scripts/Meta/QuitGameScript.hpp
-        Game/Behaviors/Scripts/PlayerMovementScript.cpp Game/Behaviors/Scripts/PlayerMovementScript.hpp
-        Game/Behaviors/Scripts/SlabTileScript.cpp Game/Behaviors/Scripts/SlabTileScript.hpp
-        Game/Behaviors/Scripts/HawkScript.cpp Game/Behaviors/Scripts/HawkScript.hpp
-        Game/Behaviors/Scripts/Meta/FpsScript.cpp Game/Behaviors/Scripts/Meta/FpsScript.hpp
-        Game/Behaviors/Scripts/Meta/PauseScript.cpp Game/Behaviors/Scripts/Meta/PauseScript.hpp
-        Game/Behaviors/Scripts/Progress/EtappeProgress.cpp Game/Behaviors/Scripts/Progress/EtappeProgress.hpp
-		Game/Behaviors/Scripts/Progress/EtappeMarkerConfigurator.cpp Game/Behaviors/Scripts/Progress/EtappeMarkerConfigurator.hpp
-		Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.cpp Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.hpp)
+		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
+		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
+		Game/Behaviors/Buttons/Scripts/EtappeProgress.cpp Game/Behaviors/Buttons/Scripts/EtappeProgress.hpp
+		Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.cpp Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.hpp
+		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
+		Game/Behaviors/Tiles/Scripts/SlabTileScript.cpp Game/Behaviors/Tiles/Scripts/SlabTileScript.hpp
+		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
+		Game/Behaviors/Utils/Scripts/FpsScript.cpp Game/Behaviors/Utils/Scripts/FpsScript.hpp
+		Game/Behaviors/Utils/Scripts/PauseScript.cpp Game/Behaviors/Utils/Scripts/PauseScript.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 
