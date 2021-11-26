@@ -6,14 +6,13 @@
 #define GOAT_ENGINE_VICTORYSCRIPT_HPP
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../../../Engine/API/GameObjects/GameObject.hpp"
 
 using namespace Engine;
 
 class VictoryScript : public Script {
 public:
     VictoryScript(bool active);
-    void OnExternalEvent() override;
+    void OnStart() override;
 
 private:
 };

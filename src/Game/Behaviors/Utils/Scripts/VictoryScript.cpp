@@ -10,7 +10,7 @@ VictoryScript::VictoryScript(bool active) : Script(active) {
 }
 
 
-void VictoryScript::OnExternalEvent() {
+void VictoryScript::OnStart() {
     std::cout << "A winner is you!" << std::endl;
 }
 

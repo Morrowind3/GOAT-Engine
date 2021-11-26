@@ -8,7 +8,9 @@
 namespace Keys {
     const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
     // (Hawk, Player, Quit, SwitchScene SlabTile, Tile, FPS, etappemarker)
-	const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
+    const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects than can receive damage.
+
+    const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
 	// (Tile)
 	const std::string TEXT = "TEXT"; // Usage: generic text ID for single text objects
 	// (EtappeMarker)
