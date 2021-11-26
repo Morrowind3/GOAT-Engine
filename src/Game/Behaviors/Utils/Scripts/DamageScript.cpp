@@ -11,11 +11,17 @@
 void DamageScript::OnExternalEvent() {
     if(_graceTimer < GRACE_PERIOD) return;
     std::cout << "Ouch!" << std::endl;
+    _actor.audioSources.at(Keys::DAMAGE_SFX).queueForPlay = true;
+
     int currentHealth = std::stoi(Globals::GetInstance().sceneGet(Keys::HP));
-    --currentHealth;
-    Globals::GetInstance().sceneGet(Keys::HP) = std::to_string(currentHealth);
+    Globals::GetInstance().sceneStore(Keys::HP, std::to_string(--currentHealth));
     _graceTimer = 0;
-    if(currentHealth <= 0)  GameOverScript gameOver {true};
+    if(currentHealth <= 0){
+        _actor.audioSources.at(Keys::DEATH_SFX).queueForPlay = true;
+        GameOverScript gameOver {true};
+        gameOver.OnStart();
+    }
+
 }
 
 void DamageScript::OnUpdate(double deltaTime) {

@@ -3,20 +3,15 @@
 //
 
 #include "FlagScript.hpp"
-#include "../../Utils/Scripts/VictoryScript.hpp"
-#include "../../Utils/Scripts/DamageScript.hpp"
 #include "../../../Keys.hpp"
-#include <iostream>
 
-//FlagScript::FlagScript(bool active, VictoryFlag& flag, Player& player) : Script(active), _flag(flag), _player(player) {
-//}
 FlagScript::FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player) : Script(active), _flag(flag), _player(player) {
 }
 void FlagScript::OnUpdate(double deltaTime) {
     if(PlayerEntered()){
         _player->behaviors.at(Keys::BEHAVIOR)->scripts.at(Keys::DAMAGE)->OnExternalEvent();
 //        VictoryScript victoryScript(true);
-//        victoryScript.OnExternalEvent();
+//        victoryScript.OnStart();
     }
     animationTimer += deltaTime;
     if(animationTimer >= 800) AnimateFlag();
