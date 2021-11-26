@@ -123,15 +123,15 @@ add_executable(Mount_Everestimate
         # Objects
         Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
-        Game/GameObjects/Meta/EtappeOneManager.cpp Game/GameObjects/Meta/EtappeOneManager.hpp
-        Game/GameObjects/Meta/EtappeTwoManager.cpp Game/GameObjects/Meta/EtappeTwoManager.hpp
+		Game/GameObjects/Meta/Etappes/EtappeOneManager.cpp Game/GameObjects/Meta/Etappes/EtappeOneManager.hpp
+		Game/GameObjects/Meta/Etappes/EtappeTwoManager.cpp Game/GameObjects/Meta/Etappes/EtappeTwoManager.hpp
         Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
-        Game/GameObjects/Meta/FpsDisplay.cpp Game/GameObjects/Meta/FpsDisplay.hpp
+		Game/GameObjects/Meta/Hud/FpsDisplay.cpp Game/GameObjects/Meta/Hud/FpsDisplay.hpp
         Game/GameObjects/Meta/MainMenu/Background.cpp
         Game/GameObjects/Meta/MainMenu/ExitButton.cpp
         Game/GameObjects/Meta/MainMenu/PlayButton.cpp
@@ -142,6 +142,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Meta/MainMenu/ScoreboardButton.cpp Game/GameObjects/Meta/MainMenu/ScoreboardButton.hpp
 		Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp
 		Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp
+		Game/GameObjects/Meta/Hud/LifeHeart.cpp Game/GameObjects/Meta/Hud/LifeHeart.hpp
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
@@ -152,6 +153,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
 		Game/Behaviors/Utils/FpsBehavior.cpp Game/Behaviors/Utils/FpsBehavior.hpp
+		Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -162,6 +164,9 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
 		Game/Behaviors/Utils/Scripts/FpsScript.cpp Game/Behaviors/Utils/Scripts/FpsScript.hpp
 		Game/Behaviors/Utils/Scripts/PauseScript.cpp Game/Behaviors/Utils/Scripts/PauseScript.hpp
+		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
+		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
+		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)

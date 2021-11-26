@@ -6,7 +6,7 @@
 #include "../GameObjects/Meta/MainMenu/SettingsButton.hpp"
 #include "../GameObjects/Meta/MainMenu/DebugButton.hpp"
 #include "../GameObjects/Enemies/Hawk.hpp"
-#include "../GameObjects/Meta/FpsDisplay.hpp"
+#include "../GameObjects/Meta/Hud/FpsDisplay.hpp"
 #include "../Keys.hpp"
 
 MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {

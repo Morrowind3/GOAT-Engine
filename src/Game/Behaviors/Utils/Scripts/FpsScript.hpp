@@ -12,9 +12,11 @@ class FpsScript : public Script {
         FpsScript(Text& fpsText, bool active);
         void OnUpdate(double deltaTime);
     private:
-        Text& _text;
+        // Globals
         Input& _input = Input::GetInstance();
         Debug& _debug = Debug::GetInstance();
+        // Variables
+        Text& _text;
 };
 
 

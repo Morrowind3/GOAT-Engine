@@ -3,24 +3,20 @@
 #include "../../GameObjects/Tiles/SolidTile.hpp"
 #include "../../Behaviors/Tiles/SolidTileBehavior.hpp"
 #include "../../GameObjects/Tiles/SlabTile.hpp"
-#include "../../GameObjects/Meta/EtappeTwoManager.hpp"
-#include "../../GameObjects/Meta/FpsDisplay.hpp"
-#include "../../GameObjects/Characters/Player.hpp"
+#include "../../GameObjects/Meta/Etappes/EtappeTwoManager.hpp"
+#include "../../Keys.hpp"
 
 #include <fstream>
 #include <string>
 #include <regex>
 #include <any>
-#include <sstream>
+
 // TODO: Delegate tiled level-construction to a more logical place than scene construction
 void placeTile(int index, Transform transform, Scene& scene);
 
-EtappeTwo::EtappeTwo(SceneManager& manager) : Scene("Etappe two") {
-    gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
+EtappeTwo::EtappeTwo(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_TWO, Transform{Point{100,890},1,0,5,5}) {
     gameObjects.emplace_back(std::make_shared<EtappeTwoManager>(
             Transform{Point{0,0},0}, true));
-    gameObjects.emplace_back(std::make_shared<Player>(
-            Transform{Point{100,890},1,0,5,5},true));
     int tileSize{21};
     int tilesY{50};
     int tilesX{250};

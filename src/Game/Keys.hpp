@@ -16,8 +16,8 @@ namespace Keys {
 	// (EtappeSelectionBG)
 	const std::string BACKGROUND = "BACKGROUND"; // Usage: generic background ID 
 	// (EtappeOne, EtappeSelectionBG)
-    const std::string TRUE = "TRUE"; // Usage: positive bool (pause, etappemarker green button)
-    const std::string FALSE = "FALSE"; // Usage: negative bool (pause, etappemarket gray button)
+    const std::string TRUE = "TRUE"; // Usage: positive bool (pause, etappemarker green button, heart)
+    const std::string FALSE = "FALSE"; // Usage: negative bool (pause, etappemarket gray button, heart)
 	const std::string ETAPPE = "ETAPPE"; // Usage: Etappe behavior ID on all etappe managers
 	const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection scene ID, key for global that stores unlocked levels
 	const std::string ETAPPE_PROGRESS = "ETAPPE_PROGRESS"; // Usage: Etappe progress script ID
@@ -51,7 +51,8 @@ namespace Keys {
     const std::string BLEATHING = "BLEATHING"; // Usage: Goat bleathing SFX
 	const std::string STAR = "STAR"; // Usage: Star sprite (etappemarker)
 	const std::string FLAG = "FLAG"; // Usage: Flag sprite (etappemarker)
-	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG) 
+	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
+	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP

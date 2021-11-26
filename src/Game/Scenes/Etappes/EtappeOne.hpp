@@ -1,12 +1,12 @@
 #ifndef GOAT_ENGINE_ETAPPEONE_HPP
 #define GOAT_ENGINE_ETAPPEONE_HPP
 
-#include "../../../Engine/API/Scene.hpp"
+#include "SharedEtappe.hpp"
 #include "../../../Engine/SceneManager.hpp"
 
 using namespace Engine;
 
-class EtappeOne : public Scene {
+class EtappeOne : public SharedEtappe {
     public: explicit EtappeOne(SceneManager& manager);
 };
 

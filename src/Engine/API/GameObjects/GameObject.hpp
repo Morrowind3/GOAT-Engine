@@ -16,8 +16,7 @@ namespace Engine {
         explicit GameObject(Transform transform, bool active);
         bool active;
         Transform transform;
-        std::map<std::string,std::shared_ptr<Behavior>> behaviors{}; // TODO: Convert to map
-        // TODO: Merge text and button into UIObject?
+        tsl::ordered_map<std::string,std::shared_ptr<Behavior>> behaviors{};
         std::map<std::string,Text> text{};
         std::map<std::string,Button> buttons{};
         std::map<std::string,Sprite> sprites{};
