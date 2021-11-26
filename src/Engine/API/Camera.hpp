@@ -2,10 +2,12 @@
 #define GOAT_ENGINE_CAMERA_HPP
 
 #include <SDL_rect.h>
-#include <vector>
+#include <queue>
+#include <functional>
 #include "GameObjects/GameObject.hpp"
 #include "GameObjects/Rectangle.hpp"
 
+//<Coordinates, seconds, zoom>
 class Camera {
 public:
     Camera(): camera({Point{0,0},0,0}), zoomLevel(1){};
@@ -13,10 +15,23 @@ public:
     Camera(double x, double y, float zoom): camera({Point{x,y}, 0, 0}), zoomLevel(zoom){};
     Engine::Transform AdjustForCamera(const Engine::Transform& transform);
     void MoveCamera(double x, double y);
-    void setZoomLevel(float zoom);
+    void InterpolateToNextWaypoint();
+    void SetZoomLevel(float zoom);
+    void AddWaypoint(Point waypoint, int seconds);
+    void AddWaypoint(Point waypoint, int seconds, float zoomLevel);
 private:
+    struct WaypointParams {
+        double xPerMs;
+        double yPerMs;
+        float zoomPerMs;
+        Point destination;
+        float zoomTarget;
+//        std::function<bool()> endCondition; TODO: Scriptable end condition.
+    };
+
     void Reposition(Engine::Transform& t) const;
     void Zoom(Engine::Transform& t) const;
+    std::queue<WaypointParams> waypoints;
     Engine::Rectangle camera;
     float zoomLevel;
 };
