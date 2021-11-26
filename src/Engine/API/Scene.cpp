@@ -12,3 +12,7 @@ std::shared_ptr<Camera> Scene::GetCamera() const {
 void Scene::MoveCamera(double x, double y) {
     _camera.MoveCamera(x, y);
 }
+
+void Scene::MoveCameraToNextWaypoint() {
+    _camera.InterpolateToNextWaypoint();
+}
