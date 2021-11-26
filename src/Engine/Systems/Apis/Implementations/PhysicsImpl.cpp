@@ -3,6 +3,7 @@
 //
 
 #include "PhysicsImpl.hpp"
+#include "math.h"
 
 using namespace Engine;
 
@@ -37,9 +38,12 @@ void PhysicsImpl::CreateBody(std::shared_ptr<GameObject> gameObject) {
     // Attaching collider
     if (gameObject.get()->collider.active) {
        if(gameObject->collider.type == ColliderType::BOX_COLLIDER){
-           AttachBoxCollider(box2dRigidBody, gameObject->collider.GetData().at(0), gameObject->collider.GetData().at(1));
+           double density = gameObject->rigidBody.mass / ((width / PPM) * (width / PPM));
+           AttachBoxCollider(box2dRigidBody, gameObject->collider.GetData().at(0), gameObject->collider.GetData().at(1), density);
        }else if(gameObject->collider.type == ColliderType::CIRCLE_COLLIDER){
-           AttachCircleCollider(box2dRigidBody, gameObject->collider.GetData().at(0));
+           double radius  = gameObject->collider.GetData().at(0);
+           double density = gameObject->rigidBody.mass / (M_PI * (radius / PPM * radius / PPM));
+           AttachCircleCollider(box2dRigidBody, radius, density);
        }
     }
 }
@@ -52,13 +56,13 @@ void PhysicsImpl::DestroyBody(b2Body *body) {
 
 }
 
-void PhysicsImpl::AttachBoxCollider(b2Body *rigidBody, double width, double height) {
+void PhysicsImpl::AttachBoxCollider(b2Body *rigidBody, double width, double height, double density) {
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
     if (rigidBody->GetType() != b2_staticBody) {
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
-        fixtureDef.density = 1.0f;
+        fixtureDef.density = density;
         fixtureDef.friction = 0.3f;
         rigidBody->CreateFixture(&fixtureDef);
     } else {
@@ -66,14 +70,14 @@ void PhysicsImpl::AttachBoxCollider(b2Body *rigidBody, double width, double heig
     }
 }
 
-void PhysicsImpl::AttachCircleCollider(b2Body *rigidBody, double radius) {
+void PhysicsImpl::AttachCircleCollider(b2Body *rigidBody, double radius, double density) {
     b2CircleShape collisionShape;
     collisionShape.m_radius = radius / PPM;
 
     if(rigidBody->GetType() != b2_staticBody){
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
-        fixtureDef.density = 1.0f;
+        fixtureDef.density = density;
         fixtureDef.friction = 0.3f;
         rigidBody->CreateFixture(&fixtureDef);
     }

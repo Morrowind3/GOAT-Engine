@@ -26,8 +26,8 @@ namespace Engine {
 
         void Step();
     private:
-        void AttachBoxCollider(b2Body *rigidBody, double width, double height);
-        void AttachCircleCollider(b2Body *rigidBody, double radius);
+        void AttachBoxCollider(b2Body *rigidBody, double width, double height, double density);
+        void AttachCircleCollider(b2Body *rigidBody, double radius, double density);
 
         b2World _world;
         std::unique_ptr<CollisionManager> _collision;

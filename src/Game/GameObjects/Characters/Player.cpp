@@ -3,7 +3,7 @@
 
 Player::Player(Transform transform, bool active) : GameObject(transform, active) {
     behaviors.push_back(std::make_shared<PlayerBehavior>(*this, true));
-    rigidBody = RigidBody(5.0f, 3.5f, BodyType::DYNAMIC, true);
+    rigidBody = RigidBody(75.0f, 3.5f, BodyType::DYNAMIC, true);
     collider = BoxCollider(105,105, true);
     sprites.insert(std::make_pair(PLAYER::IDLE, Sprite{"Sprites/player/player_idle.png",true}));
     sprites.insert(std::make_pair(PLAYER::MOVE1, Sprite{"Sprites/player/player_move_1.png", false}));
