@@ -20,10 +20,10 @@ namespace Engine {
             return instance;
         }
 
-        void CreateBody(GameObject &gameObject);
+        void CreateBody(std::shared_ptr<GameObject> gameObjectPointer);
         void DestroyWorld();
         void DestroyBody(b2Body *body);
-        void Update(RigidBody &rigidBody, Transform &transform);
+        void Update(std::shared_ptr<GameObject> gameObjectPointer);
         void Step();
     private:
         PhysicsApi() : physics() {};

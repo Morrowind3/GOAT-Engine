@@ -6,4 +6,7 @@
 
 using namespace Engine;
 
-BoxCollider::BoxCollider(double width, double height, bool active) : Collider(active), width(width), height(height) {}
+BoxCollider::BoxCollider(double width, double height, bool active) : Collider(active, ColliderType::BOX_COLLIDER), width(width), height(height) {
+    _data.emplace_back(width);
+    _data.emplace_back(height);
+}

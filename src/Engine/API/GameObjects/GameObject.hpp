@@ -12,7 +12,10 @@
 #include "GameComponents/Audio/AudioSource.hpp"
 #include "GameComponents/Render/UI/Text.hpp"
 #include "GameComponents/Collision/Collider.hpp"
-#include "GameComponents/Collision/RigidBody.hpp."
+#include "GameComponents/Collision/RigidBody.hpp"
+#include "GameComponents/Collision/BoxCollider.hpp"
+#include "GameComponents/Collision/CircleCollider.hpp"
+
 
 namespace Engine {
     struct GameObject {

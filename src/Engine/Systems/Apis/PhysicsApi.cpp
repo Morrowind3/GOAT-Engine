@@ -6,8 +6,8 @@
 
 using namespace  Engine;
 
-void PhysicsApi::CreateBody(GameObject &gameObject)  {
-//    physics.CreateBody(rigidBody, transform);
+void PhysicsApi::CreateBody(std::shared_ptr<GameObject> gameObjectPointer)  {
+    physics.CreateBody(gameObjectPointer);
 }
 
 void PhysicsApi::DestroyWorld() {
@@ -18,8 +18,8 @@ void PhysicsApi::DestroyBody(b2Body *body) {
     physics.DestroyBody(body);
 }
 
-void PhysicsApi::Update(RigidBody &rigidBody, Transform &transform) {
-    physics.Update(rigidBody, transform);
+void PhysicsApi::Update(std::shared_ptr<GameObject> gameObjectPointer) {
+    physics.Update(gameObjectPointer);
 }
 
 void PhysicsApi::Step() {

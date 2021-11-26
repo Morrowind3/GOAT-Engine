@@ -6,24 +6,24 @@
 
 using namespace Engine;
 
-CollisionSystem::CollisionSystem(const Scene *scene): System(scene), _api(PhysicsApi::PhysicsApi::getInstance()) {
+CollisionSystem::CollisionSystem(const Scene *scene) : System(scene), _api(PhysicsApi::PhysicsApi::getInstance()) {
 
 }
 
 void CollisionSystem::OnInit() {
     for (auto &gameObject: _scene->gameObjects) {
         if(gameObject->rigidBody.active) {
-//            _api.CreateBody(gameObject->rigidBody, gameObject->transform);
             _api.CreateBody(gameObject);
         }
     }
 }
+
 void CollisionSystem::OnUpdate(double deltaTime) {
     _api.Step();
 
-    for(auto &gameObject : _scene->gameObjects){
-        if(gameObject->rigidBody.active){
-            _api.Update(gameObject->rigidBody, gameObject->transform);
+    for (auto &gameObject: _scene->gameObjects) {
+        if (gameObject->rigidBody.active) {
+            _api.Update(gameObject);
         }
     }
 }

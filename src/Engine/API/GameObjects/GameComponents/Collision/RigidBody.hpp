@@ -18,6 +18,7 @@ namespace Engine {
     class RigidBody : public GameComponent {
     public:
         RigidBody(double mass, double gravityScale, BodyType bodyType, bool isActive);
+        RigidBody();
 
         double mass;
         double gravityScale;

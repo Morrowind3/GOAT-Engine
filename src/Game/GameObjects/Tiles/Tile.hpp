@@ -23,6 +23,7 @@ public:
         sprites.insert(std::make_pair(TILE::SPRITE, Sprite{sprite, true}));
         behaviors.push_back(tileBehavior);
         rigidBody = RigidBody(5.0f, 5.0f, BodyType::STATIC, true);
+        collider = BoxCollider(105,105,true);
 
     };
     std::string tag;

@@ -18,7 +18,7 @@ GoatEngine::GoatEngine(std::string& name, std::string& iconPath) :
 
 void GoatEngine::Run() {
     // Add systems
-    _systems->emplace_back(std::make_unique<CollisionSystem>(sceneManager.CurrentScene())); // collision manager moet 1 van de eerste systems zijn
+    _systems->emplace_back(std::make_unique<CollisionSystem>(sceneManager.CurrentScene())); // collision system moet 1 van de eerste systems zijn
     _systems->emplace_back(std::make_unique<RenderingSystem>(sceneManager.CurrentScene(), _name, _iconPath));
     _systems->emplace_back(std::make_unique<ScriptSystem>(sceneManager.CurrentScene()));
     _systems->emplace_back(std::make_unique<AudioSystem>(sceneManager.CurrentScene()));

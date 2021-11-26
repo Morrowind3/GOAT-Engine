@@ -16,16 +16,19 @@ namespace Engine {
     public:
         PhysicsImpl();
 
-        void CreateBody(RigidBody &rigidBody, Transform &transform);
+        void CreateBody(std::shared_ptr<GameObject> gameObjectPointer);
 
         void DestroyWorld();
 
         void DestroyBody(b2Body *body);
 
-        void Update(RigidBody &rigidBody, Transform &transform);
+        void Update(std::shared_ptr<GameObject> gameObjectPointer);
 
         void Step();
     private:
+        void AttachBoxCollider(b2Body *rigidBody, double width, double height);
+        void AttachCircleCollider(b2Body *rigidBody, double radius);
+
         b2World _world;
         std::unique_ptr<CollisionManager> _collision;
     };

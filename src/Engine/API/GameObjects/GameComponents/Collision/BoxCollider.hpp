@@ -8,6 +8,7 @@
 #include "Collider.hpp"
 
 namespace Engine {
+
     class BoxCollider : public Collider {
     public:
         BoxCollider(double width, double height, bool active);
