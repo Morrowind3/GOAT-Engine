@@ -9,9 +9,6 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     // Level
     MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.Construct(xOffset, yOffset);
 
-    // Cheats
-    gameObjects.emplace_back(std::make_shared<Cheats>(true));
-
     // Hud
     // Hearts (hud)
     gameObjects.emplace_back(std::make_shared<LifeHeart>(1,
@@ -23,4 +20,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     _player = std::make_shared<Player>(playerStartPosition,true);
     gameObjects.emplace_back(_player);
     _camera.TrackObject(_player);
+
+    // Cheats
+    gameObjects.emplace_back(std::make_shared<Cheats>(true));
 }

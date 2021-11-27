@@ -5,6 +5,7 @@ PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script
 }
 
 void PlayerMovementScript::OnUpdate(double deltaTime) {
+    //TODO remove this, this is no REAL pause, because box2d slides you further, and other entities must be taken accounted for
     if (_globals.sceneGet(Keys::PAUSE) == Keys::TRUE) return; // Don't allow when paused
 
     bool moveLeft = _input.GetKey(KeyCode::A);
