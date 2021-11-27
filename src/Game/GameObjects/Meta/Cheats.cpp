@@ -11,10 +11,10 @@ Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}}, active) {
     text.insert(std::make_pair("CHEATS_1", Text{"Cheats", font, size, color,
                                             Transform{{10, 150}, transform.layer, 0, 1, 1},
                                             false}));
-    text.insert(std::make_pair("CHEATS_2", Text{"1 - Pause/unpause game", font, size, color,
+    text.insert(std::make_pair("CHEATS_2", Text{"1 - Pause or unpause game", font, size, color,
                                             Transform{{10, 170}, transform.layer, 0, 1, 1},
                                             false}));
-    text.insert(std::make_pair("CHEATS_3", Text{"2 - Show/hide FPS", font, size, color,
+    text.insert(std::make_pair("CHEATS_3", Text{"2 - Show or hide FPS", font, size, color,
                                                 Transform{{10, 190}, transform.layer, 0, 1, 1},
                                                 false}));
 
