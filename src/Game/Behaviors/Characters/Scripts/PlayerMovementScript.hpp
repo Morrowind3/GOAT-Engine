@@ -21,7 +21,7 @@ class PlayerMovementScript : public Script {
         bool _jumpState = false;
         bool _jumpStepAltSfx = false;
         // Consts
-        static const int PLAYER_SPEED = 800;
+        static const int PLAYER_SPEED = 1000;
 };
 
 
