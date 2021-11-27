@@ -85,6 +85,19 @@ void PhysicsImpl::AttachCircleCollider(b2Body *rigidBody, double radius, double 
 void PhysicsImpl::Update(std::shared_ptr<GameObject> gameObject) {
     for (b2Body *body = _world.GetBodyList(); body; body = body->GetNext()) {
         if (body->GetUserData() == gameObject.get()) {
+
+                        b2Vec2 pos = body->GetPosition();
+            pos.y += gameObject.get()->rigidBody.forceY / PPM;
+            pos.x += gameObject.get()->rigidBody.forceX / PPM;
+
+            body->ApplyForceToCenter( 100 * body->GetMass() * pos, true);
+
+
+
+
+            gameObject.get()->rigidBody.forceY = 0;
+            gameObject.get()->rigidBody.forceX = 0;
+
             gameObject.get()->transform.position.x = body->GetPosition().x * PPM;
             gameObject.get()->transform.position.y = body->GetPosition().y * PPM;
         }

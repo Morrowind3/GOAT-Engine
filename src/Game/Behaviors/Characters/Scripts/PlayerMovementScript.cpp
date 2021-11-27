@@ -13,11 +13,11 @@ void PlayerMovementScript::OnUpdate(double deltaTime) {
 
     // Perform movement
     if (moveRight) {
-        _player.transform.position.x += PLAYER_SPEED;
+        _player.rigidBody.forceX = PLAYER_SPEED;
         _player.transform.flip = Engine::FLIP::FLIP_NONE;
     }
     if (moveLeft) {
-        _player.transform.position.x-=PLAYER_SPEED;
+        _player.rigidBody.forceX = -PLAYER_SPEED;
         _player.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
     }
 
