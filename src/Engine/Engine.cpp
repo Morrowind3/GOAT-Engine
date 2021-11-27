@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Engine.hpp"
 #include "Systems/RenderingSystem.hpp"
 
@@ -8,6 +7,7 @@
 #include "Utilities/Input.hpp"
 #include "Utilities/Debug.hpp"
 #include <unistd.h>
+#include "Systems/CollisionSystem.hpp"
 
 using namespace Engine;
 
@@ -17,6 +17,7 @@ GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::strin
 
 void GoatEngine::Run(const unsigned int maxFps) {
     // Add systems
+    _systems->emplace_back(std::make_unique<CollisionSystem>());
     _systems->emplace_back(std::make_unique<ScriptSystem>());
     _systems->emplace_back(std::make_unique<AudioSystem>());
     _systems->emplace_back(std::make_unique<RenderingSystem>(_name, _iconPath, _cursor));

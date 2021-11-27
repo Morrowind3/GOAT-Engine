@@ -6,7 +6,7 @@
 
 
 EtappeOne::EtappeOne(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_ONE, Transform{Point{100,912},1,0,5,5},
-        "Maps/test.map", 21, 3, 3, 4, 0, 0) {
+                                                           "Maps/etappe2.map", 21, 50, 250, 2, 0, -1000) {
     gameObjects.emplace_back(std::make_shared<EtappeOneManager>(
             Transform{Point{0,0},0,0,18,18}, true));
     gameObjects.emplace_back(std::make_shared<Goat>(
