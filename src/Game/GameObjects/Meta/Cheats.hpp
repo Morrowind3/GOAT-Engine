@@ -2,8 +2,13 @@
 #define GOAT_ENGINE_CHEATS_HPP
 
 
-class Cheats {
+#include "../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../Engine/API/Scene.hpp"
 
+using namespace Engine;
+
+class Cheats : public GameObject {
+public: explicit Cheats(bool active);
 };
 
 

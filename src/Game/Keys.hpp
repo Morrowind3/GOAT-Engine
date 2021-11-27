@@ -34,6 +34,7 @@ namespace Keys {
     const std::string START_GAME = "START_GAME"; // Usage: Start game button ID
     const std::string QUIT_GAME = "QUIT_GAME"; // Usage: Quit game button ID
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
+    const std::string CHEATS = "CHEATS";  // Usage: TODO
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
 	const std::string PAUSE_SFX = "PAUSE_SFX"; // Usage: pause SFX ID
     const std::string HAWK = "HAWK"; // Usage: Hawk script ID
