@@ -1,12 +1,11 @@
 #include "Player.hpp"
 #include "../../Behaviors/Characters/PlayerBehavior.hpp"
 #include "../../Keys.hpp"
-#include "../../../Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp"
 
 Player::Player(Transform transform, bool active) : GameObject(transform, active) {
     behaviors.insert(std::make_pair(Keys::BEHAVIOR,std::make_shared<PlayerBehavior>(*this, true)));
     rigidBody = RigidBody(75.0f, 3.5f, BodyType::DYNAMIC, true);
-    collider = BoxCollider(105,105, true);
+    collider = CircleCollider(52.5, true);
     sprites.insert(std::make_pair(Keys::IDLE, Sprite{"Sprites/player/player_idle.png",true}));
     sprites.insert(std::make_pair(Keys::MOVE1, Sprite{"Sprites/player/player_move_1.png", false}));
     sprites.insert(std::make_pair(Keys::JUMP, Sprite{"Sprites/player/player_jump.png", false}));

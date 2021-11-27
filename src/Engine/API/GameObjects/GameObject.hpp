@@ -12,6 +12,9 @@
 #include "GameComponents/Render/UI/Button.hpp"
 #include "GameComponents/Collision/Collider.hpp"
 #include "GameComponents/Collision/RigidBody.hpp"
+#include "GameComponents/Collision/BoxCollider.hpp"
+#include "GameComponents/Collision/CircleCollider.hpp"
+
 
 
 namespace Engine {
