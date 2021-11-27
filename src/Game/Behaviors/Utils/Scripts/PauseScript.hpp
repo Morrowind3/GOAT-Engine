@@ -10,7 +10,7 @@ using namespace Engine;
 
 class PauseScript : public Script {
     public:
-        PauseScript(AudioSource& pauseSound, bool active);
+        PauseScript(bool active);
         void OnStart();
         void OnUpdate(double deltaTime);
         void OnExternalEvent();
@@ -24,7 +24,6 @@ class PauseScript : public Script {
         Globals& _globals = Globals::GetInstance();
         // Variables
         bool _isPaused = false; // Quick access bool
-        AudioSource& pauseSound;
 };
 
 
