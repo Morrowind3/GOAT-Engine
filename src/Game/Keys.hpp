@@ -8,7 +8,9 @@
 namespace Keys {
     const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
     // (Hawk, Player, Quit, SwitchScene SlabTile, Tile, FPS, etappemarker)
-	const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
+    const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
+
+    const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
 	// (Tile)
 	const std::string TEXT = "TEXT"; // Usage: generic text ID for single text objects
 	// (EtappeMarker)
@@ -36,27 +38,30 @@ namespace Keys {
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string CHEATS = "CHEATS";  // Usage: TODO
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
-	const std::string PAUSE_SFX = "PAUSE_SFX"; // Usage: pause SFX ID
     const std::string HAWK = "HAWK"; // Usage: Hawk script ID
     const std::string MOVE1 = "MOVE1"; // Usage: Hawk sprite 1, Player walk sprite 1
     const std::string MOVE2 = "MOVE2"; // Usage: Hawk sprite 2
 	const std::string IDLE = "IDLE"; // Usage: Player/Goat idle sprite
 	const std::string IDLE2 = "IDLE2"; // Usage: Goat idle sprite 2
     const std::string JUMP = "JUMP"; // Usage: Player jump sprite
-    const std::string JUMP_SFX = "JUMP_SFX"; // Usage: Player jump sfx
-    const std::string WALK_SFX_A = "WALK_SFX_A"; // Usage: Player walk sfx, primary step
-    const std::string WALK_SFX_B = "WALK_SFX_B"; // Usage: Player walk sfx, alternating step
     const std::string ATTACK_STANCE = "ATTACK_STANCE"; // Usage: Goat attack ready sprite
     const std::string ATTACK1 = "ATTACK1"; // Usage: Goat attack sprite
     const std::string ATTACK2 = "ATTACK2"; // Usage: Goat attack sprite 2
-    const std::string BLEATHING = "BLEATHING"; // Usage: Goat bleathing SFX
 	const std::string STAR = "STAR"; // Usage: Star sprite (etappemarker)
 	const std::string FLAG = "FLAG"; // Usage: Flag sprite (etappemarker)
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
 	// TODO: Enable these game flags with cheats
 	const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
-	const std::string INPUT_DEBUG = "INPUT_DEBUG"; // Usage: game global flag to debug input
+
+    //SOUND EFFECTS
+    const std::string PAUSE_SFX = "PAUSE_SFX"; // Usage: pause SFX ID
+    const std::string WALK_SFX_A = "WALK_SFX_A"; // Usage: Player walk sfx, primary step
+    const std::string WALK_SFX_B = "WALK_SFX_B"; // Usage: Player walk sfx, alternating step
+    const std::string DAMAGE_SFX = "DAMAGE_SFX"; // For damage sound effects
+    const std::string DEATH_SFX = "DEATH_SFX"; // For death sound effects
+    const std::string JUMP_SFX = "JUMP_SFX"; // Usage: Player jump sfx
+    const std::string BLEATHING = "BLEATHING"; // Usage: Goat bleathing SFX
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP

@@ -20,6 +20,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
         Transform{{105,0},LAYER::UI,0,5,5},true));
     gameObjects.emplace_back(std::make_shared<LifeHeart>(3,
         Transform{{210,0},LAYER::UI,0,5,5},true));
-
-    gameObjects.emplace_back(std::make_shared<Player>(playerStartPosition,true));
+    _player = std::make_shared<Player>(playerStartPosition,true);
+    gameObjects.emplace_back(_player);
+    _camera.TrackObject(_player);
 }
