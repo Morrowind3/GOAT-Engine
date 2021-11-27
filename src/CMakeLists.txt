@@ -136,7 +136,6 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
-		Game/GameObjects/Meta/Hud/FpsDisplay.cpp Game/GameObjects/Meta/Hud/FpsDisplay.hpp
         Game/GameObjects/Meta/MainMenu/Background.cpp
         Game/GameObjects/Meta/MainMenu/ExitButton.cpp
         Game/GameObjects/Meta/MainMenu/PlayButton.cpp
@@ -157,8 +156,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
-		Game/Behaviors/Utils/FpsBehavior.cpp Game/Behaviors/Utils/FpsBehavior.hpp
-		Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
+        Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -167,8 +165,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
 		Game/Behaviors/Tiles/Scripts/SlabTileScript.cpp Game/Behaviors/Tiles/Scripts/SlabTileScript.hpp
 		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
-		Game/Behaviors/Utils/Scripts/FpsScript.cpp Game/Behaviors/Utils/Scripts/FpsScript.hpp
-		Game/Behaviors/Utils/Scripts/PauseScript.cpp Game/Behaviors/Utils/Scripts/PauseScript.hpp
+		Game/Behaviors/Utils/Scripts/Cheats/FpsScript.cpp Game/Behaviors/Utils/Scripts/Cheats/FpsScript.hpp
+		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp

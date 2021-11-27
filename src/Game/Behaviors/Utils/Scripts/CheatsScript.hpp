@@ -23,6 +23,7 @@ private:
     bool _visible{false};
     std::map<std::string,Text>& _textObjects;
     Input& _input = Input::GetInstance();
+    std::string _filterKey{"CHEATS_"};
 };
 
 

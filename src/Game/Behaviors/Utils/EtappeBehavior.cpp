@@ -1,6 +1,6 @@
 #include "EtappeBehavior.hpp"
 #include "../../Keys.hpp"
-#include "Scripts/PauseScript.hpp"
+#include "Scripts/Cheats/PauseScript.hpp"
 #include "Scripts/LifeInitScript.hpp"
 
 EtappeBehavior::EtappeBehavior(int startHpAmount, bool active): Behavior(active) {

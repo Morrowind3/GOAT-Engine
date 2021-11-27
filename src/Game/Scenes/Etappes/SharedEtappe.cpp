@@ -1,5 +1,4 @@
 #include "SharedEtappe.hpp"
-#include "../../GameObjects/Meta/Hud/FpsDisplay.hpp"
 #include "../../GameObjects/Characters/Player.hpp"
 #include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
 #include "../../MountEverestimateLevelConstructor.hpp"
@@ -14,7 +13,6 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     gameObjects.emplace_back(std::make_shared<Cheats>(true));
 
     // Hud
-    gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
     // Hearts (hud)
     gameObjects.emplace_back(std::make_shared<LifeHeart>(1,
         Transform{{0,0},LAYER::UI,0,5,5},true));

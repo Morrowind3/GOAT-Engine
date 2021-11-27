@@ -6,11 +6,9 @@
 #include "../GameObjects/Meta/MainMenu/SettingsButton.hpp"
 #include "../GameObjects/Meta/MainMenu/DebugButton.hpp"
 #include "../GameObjects/Enemies/Hawk.hpp"
-#include "../GameObjects/Meta/Hud/FpsDisplay.hpp"
 #include "../Keys.hpp"
 
 MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
-    gameObjects.emplace_back(std::make_shared<FpsDisplay>(true));
     gameObjects.emplace_back(std::make_shared<Background>(
             manager, Transform{Point{0, -50}, 1, 0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<ExitButton>(

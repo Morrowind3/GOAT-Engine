@@ -1,5 +1,5 @@
 #include "PauseScript.hpp"
-#include "../../../Keys.hpp"
+#include "../../../../Keys.hpp"
 
 PauseScript::PauseScript(bool active): Script(active) { }
 
@@ -11,6 +11,8 @@ void PauseScript::OnUpdate(double deltaTime) {
     // 1 key pauses
     if (_input.GetKeyDown(KeyCode::NUMBER_1)) {
         pauseLogic();
+        if (_isPaused) Debug::GetInstance().log("Game paused");
+        else              Debug::GetInstance().log("Game unpaused");
     }
 }
 
