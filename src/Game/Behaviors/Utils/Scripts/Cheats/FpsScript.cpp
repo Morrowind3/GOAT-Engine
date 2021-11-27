@@ -8,7 +8,7 @@ FpsScript::FpsScript(Text& fpsText, bool active):
 
 void FpsScript::OnUpdate(double deltaTime) {
     // End key toggles FPS
-    if (_input.GetKeyDown(KeyCode::END)) {
+    if (_input.GetKeyDown(KeyCode::NUMBER_2)) {
         _text.active = !_text.active;
         if (_text.active) Debug::GetInstance().log("Enabled FPS counter");
         else              Debug::GetInstance().log("Disabled FPS counter");
