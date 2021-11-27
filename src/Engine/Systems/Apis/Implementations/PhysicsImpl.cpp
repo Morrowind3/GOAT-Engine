@@ -60,7 +60,6 @@ void PhysicsImpl::AttachBoxCollider(b2Body* rigidBody, double width, double heig
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
-//        fixtureDef.friction = 0.3f;
         fixtureDef.friction = 1.0f;
 
         rigidBody->CreateFixture(&fixtureDef);
@@ -77,7 +76,7 @@ void PhysicsImpl::AttachCircleCollider(b2Body* rigidBody, double radius, double 
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
-        fixtureDef.friction = 1000000000000000.0f;
+        fixtureDef.friction = 1.0f;
         rigidBody->CreateFixture(&fixtureDef);
     } else {
         rigidBody->CreateFixture(&collisionShape, 0.0f);

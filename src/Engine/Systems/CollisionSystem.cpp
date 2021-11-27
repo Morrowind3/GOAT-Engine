@@ -18,7 +18,7 @@ void CollisionSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
 void CollisionSystem::OnFrameTick(double deltaTime) {
     _api->Step();
     for (auto &gameObject: _scene->gameObjects) {
-        if (gameObject->rigidBody.active) {
+        if (gameObject->rigidBody.active && gameObject->rigidBody.bodyType == BodyType::DYNAMIC) {
             _api->Update(gameObject);
         }
     }
