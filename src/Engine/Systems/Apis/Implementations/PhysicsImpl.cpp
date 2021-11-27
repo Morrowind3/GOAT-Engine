@@ -59,10 +59,9 @@ void PhysicsImpl::AttachBoxCollider(b2Body* rigidBody, double width, double heig
     if (rigidBody->GetType() != b2_staticBody) {
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
-//        fixtureDef.density = density;
-        fixtureDef.density = 1;
+        fixtureDef.density = density;
 //        fixtureDef.friction = 0.3f;
-        fixtureDef.friction = 0.0f;
+        fixtureDef.friction = 1.0f;
 
         rigidBody->CreateFixture(&fixtureDef);
     } else {
@@ -78,7 +77,7 @@ void PhysicsImpl::AttachCircleCollider(b2Body* rigidBody, double radius, double 
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
-        fixtureDef.friction = 0.3f;
+        fixtureDef.friction = 1000000000000000.0f;
         rigidBody->CreateFixture(&fixtureDef);
     } else {
         rigidBody->CreateFixture(&collisionShape, 0.0f);
@@ -89,16 +88,10 @@ void PhysicsImpl::Update(std::shared_ptr<GameObject> gameObject) {
     for (b2Body* body = _world.GetBodyList(); body; body = body->GetNext()) {
         if (body->GetUserData() == gameObject.get()) {
 
-            b2Vec2 force = {gameObject.get()->rigidBody.forceX / PPM, gameObject.get()->rigidBody.forceY / PPM};
+            b2Vec2 force = {gameObject.get()->rigidBody.forceX / PPM, gameObject.get()->rigidBody.forceY * -1 / PPM};
             b2Vec2 pos = body->GetPosition();
 
-//            b2Vec2 pos = body->GetPosition();
-//            pos.y += gameObject.get()->rigidBody.forceY / PPM;
-//            pos.x += gameObject.get()->rigidBody.forceX / PPM;
-
             body->ApplyLinearImpulse(force, pos, true);
-
-
 
             gameObject.get()->rigidBody.forceY = 0;
             gameObject.get()->rigidBody.forceX = 0;

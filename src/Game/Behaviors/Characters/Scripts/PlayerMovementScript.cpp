@@ -22,7 +22,7 @@ void PlayerMovementScript::OnUpdate(double deltaTime) {
     }
 
     if(moveUp) {
-        _player.rigidBody.forceY = 80000;
+        _player.rigidBody.forceY = 30000;
     }
 
     // Show correct sprite
