@@ -4,15 +4,15 @@
 using namespace Engine;
 
 // All keys that were pressed last frame are now in a held state
-// All keys that were released last frame are removed (implicit undetected state)
+// All keys that were released last frame are now in an undetected state
 void InputRegistry::FlushForNextFrame() {
     for (auto& key : _keyStates) {
         if (key.second == PressState::PRESSED) key.second = PressState::HELD;
-        if (key.second == PressState::RELEASED) _keyStates.erase(key.first);
+        if (key.second == PressState::RELEASED) key.second = PressState::UNDETECTED;
     }
     for (auto& button : _mouseStates) {
         if (button.second == PressState::PRESSED) button.second = PressState::HELD;
-        if (button.second == PressState::RELEASED) _mouseStates.erase(button.first);
+        if (button.second == PressState::RELEASED) button.second = PressState::UNDETECTED;
     }
 }
 
@@ -26,7 +26,8 @@ void InputRegistry::StoreKeyUp(KeyCode key) {
 }
 
 bool InputRegistry::AnyKeyRegistered() const {
-    return !_keyStates.empty();
+    return std::find_if(_keyStates.begin(),_keyStates.end(),
+                        [](const auto& key){return key.second != PressState::UNDETECTED;}) == _keyStates.end();
 }
 
 bool InputRegistry::AnyKeyInState(PressState state) const {
@@ -48,7 +49,8 @@ void InputRegistry::StoreMouseUp(MouseButton button) {
 }
 
 bool InputRegistry::AnyMouseRegistered() const {
-    return !_mouseStates.empty();
+    return std::find_if(_mouseStates.begin(),_mouseStates.end(),
+                        [](const auto& button){return button.second != PressState::UNDETECTED;}) == _mouseStates.end();
 }
 
 bool InputRegistry::AnyMouseInState(PressState state) const {
