@@ -1,6 +1,5 @@
 #include "RendererImpl.hpp"
 
-#include <algorithm>
 #include <fstream>
 #include "SDL_ttf.h"
 
@@ -12,13 +11,11 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
                                  SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0), SDL_DestroyRenderer}} {
+
     TTF_Init();
-    _textures = std::make_unique<TextureManager>(_renderer.get());
-    _fonts = std::make_unique<FontManager>(_renderer.get());
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
     SDL_RenderSetLogicalSize(_renderer.get(), 1920, 985);
-
     auto cursorSurface = IMG_Load(cursor.c_str());
     auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
     SDL_SetCursor(sdlCursor);
@@ -97,6 +94,13 @@ void RendererImpl::EndRenderTick() {
         SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform.rotation, nullptr, flip);
     }
     SDL_RenderPresent(_renderer.get());
+}
+
+void RendererImpl::ResetForNextScene() {
+    _textures->resetForNextScene();
+    _fonts->resetForNextScene();
+    _textures = std::make_unique<TextureManager>(_renderer.get());
+    _fonts = std::make_unique<FontManager>(_renderer.get());
 }
 
 void RendererImpl::End() {

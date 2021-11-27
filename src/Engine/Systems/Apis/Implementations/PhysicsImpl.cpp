@@ -1,22 +1,18 @@
 #include "PhysicsImpl.hpp"
-#include "math.h"
+#include <cmath>
 
 using namespace Engine;
 
 const float PPM = 21.0f;
 
-PhysicsImpl::PhysicsImpl() : _world{b2World{b2Vec2{0.0f, 10.0f}}}, _collision{std::make_unique<CollisionManager>()} {
-
-}
-
-void PhysicsImpl::CreateBody(std::shared_ptr<GameObject> gameObject) {
-    float width = 21 * gameObject.get()->transform.scaleWidth;
-    float height = 21 * gameObject.get()->transform.scaleHeight;
+void PhysicsImpl::CreateBody(const GameObject& gameObject) {
+    float width = 21 * gameObject.transform.scaleWidth;
+    float height = 21 * gameObject.transform.scaleHeight;
 
     // Making the box2d rigidbody
     b2BodyDef bodyDef;
-    bodyDef.position.Set(gameObject.get()->transform.position.x / PPM, gameObject.get()->transform.position.y / PPM);
-    switch (gameObject.get()->rigidBody.bodyType) {
+    bodyDef.position.Set(gameObject.transform.position.x / PPM, gameObject.transform.position.y / PPM);
+    switch (gameObject.rigidBody.bodyType) {
         case BodyType::STATIC:
             bodyDef.type = b2_staticBody;
             break;
@@ -27,29 +23,25 @@ void PhysicsImpl::CreateBody(std::shared_ptr<GameObject> gameObject) {
             bodyDef.type = b2_kinematicBody;
             break;
     }
-    b2Body *box2dRigidBody = _world.CreateBody(&bodyDef);
-    box2dRigidBody->SetGravityScale(gameObject.get()->rigidBody.gravityScale);
-    box2dRigidBody->SetUserData(gameObject.get());
+    b2Body *box2dRigidBody = _world->CreateBody(&bodyDef);
+    box2dRigidBody->SetGravityScale(gameObject.rigidBody.gravityScale);
+    box2dRigidBody->SetUserData((void*)&gameObject);
 
     // Attaching collider
-    if (gameObject.get()->collider.active) {
-       if(gameObject->collider.type == ColliderType::BOX_COLLIDER){
-           double density = gameObject->rigidBody.mass / ((width / PPM) * (width / PPM));
-           AttachBoxCollider(box2dRigidBody, gameObject->collider.GetData().at(0), gameObject->collider.GetData().at(1), density);
-       }else if(gameObject->collider.type == ColliderType::CIRCLE_COLLIDER){
-           double radius  = gameObject->collider.GetData().at(0);
-           double density = gameObject->rigidBody.mass / (M_PI * (radius / PPM * radius / PPM));
+    if (gameObject.collider.active) {
+       if(gameObject.collider.type == ColliderType::BOX_COLLIDER){
+           double density = gameObject.rigidBody.mass / ((width / PPM) * (width / PPM));
+           AttachBoxCollider(box2dRigidBody, gameObject.collider.GetData().at(0), gameObject.collider.GetData().at(1), density);
+       } else if (gameObject.collider.type == ColliderType::CIRCLE_COLLIDER){
+           double radius  = gameObject.collider.GetData().at(0);
+           double density = gameObject.rigidBody.mass / (M_PI * (radius / PPM * radius / PPM));
            AttachCircleCollider(box2dRigidBody, radius, density);
        }
     }
 }
 
-void PhysicsImpl::DestroyWorld() {
-
-}
-
-void PhysicsImpl::DestroyBody(b2Body *body) {
-
+void PhysicsImpl::ResetForNextScene() {
+    _world = std::make_unique<b2World>(b2Vec2{0.0f, 10.0f});
 }
 
 void PhysicsImpl::AttachBoxCollider(b2Body *rigidBody, double width, double height, double density) {
@@ -82,15 +74,15 @@ void PhysicsImpl::AttachCircleCollider(b2Body *rigidBody, double radius, double 
     }
 }
 
-void PhysicsImpl::Update(std::shared_ptr<GameObject> gameObject) {
-    for (b2Body *body = _world.GetBodyList(); body; body = body->GetNext()) {
-        if (body->GetUserData() == gameObject.get()) {
-            gameObject.get()->transform.position.x = body->GetPosition().x * PPM;
-            gameObject.get()->transform.position.y = body->GetPosition().y * PPM;
-        }
-    }
+void PhysicsImpl::PerformPhysicsCalculationsForFrame() {
+    _world->Step(1.0f / 60.0f, 8, 6);
 }
 
-void PhysicsImpl::Step() {
-    _world.Step(1.0f / 60.0f, 8, 6);
+void PhysicsImpl::UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
+    for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
+        if (body->GetUserData() == &gameObject) {
+            gameObject.transform.position.x = body->GetPosition().x * PPM;
+            gameObject.transform.position.y = body->GetPosition().y * PPM;
+        }
+    }
 }

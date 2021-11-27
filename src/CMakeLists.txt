@@ -67,8 +67,6 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/RendererApi.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
-        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.cpp
-        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.hpp
         Engine/Systems/ScriptSystem.cpp
         Engine/Systems/ScriptSystem.hpp
         Engine/Systems/CollisionSystem.cpp
@@ -130,7 +128,8 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Input/MouseButton.hpp
 		Engine/Utilities/Input/PressState.hpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -142,6 +141,7 @@ add_executable(Mount_Everestimate
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
 		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
         # Scenes
+		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
         Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
@@ -180,6 +180,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
         Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
+		Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -192,8 +193,9 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
-		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp)
+		Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
+        Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

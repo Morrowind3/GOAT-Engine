@@ -7,10 +7,13 @@ RenderingSystem::RenderingSystem(std::string& name, std::string& iconPath, std::
 }
 
 void RenderingSystem::OnLaunchEngine() {
+    _debug.log("Rendering system launch");
     _api = &RendererApi::RendererApi::getInstance(_name, _iconPath, _cursor);
 }
 
 void RenderingSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
+    _debug.log("Rendering system load");
+    _api->ResetForNextScene();
     _scene = scene;
     for (auto& gameObject: _scene->gameObjects) {
         for (auto& sprite: gameObject->sprites) {
@@ -51,5 +54,6 @@ void RenderingSystem::OnFrameTick(double deltaTime) {
 }
 
 void RenderingSystem::OnCloseEngine() {
+    _debug.log("Rendering system close");
     _api->End();
 }

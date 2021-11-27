@@ -5,10 +5,11 @@
 using namespace Engine;
 
 void ScriptSystem::OnLaunchEngine() {
-    // Empty
+    _debug.log("Script system launch"); // Empty
 }
 
 void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
+    _debug.log("Script system load");
     Globals::GetInstance().sceneReset();
     _scene = scene;
     for (auto& gameObject : activeObjects()) {
@@ -35,7 +36,7 @@ void ScriptSystem::OnFrameTick(double deltaTime) {
 }
 
 void ScriptSystem::OnCloseEngine() {
-    // Empty
+    _debug.log("Script system close"); // Empty
 }
 
 

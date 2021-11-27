@@ -23,6 +23,7 @@ namespace Engine {
             std::map<fontParams, std::shared_ptr<Texture>> _fontTextures;
             std::vector<SDL_Surface*> _surfaceReferences;
             SDL_Renderer* _renderer;
+            friend class FontManager;
     };
 }
 

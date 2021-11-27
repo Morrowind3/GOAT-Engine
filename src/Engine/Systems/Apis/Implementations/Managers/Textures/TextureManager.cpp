@@ -2,7 +2,8 @@
 
 using namespace Engine;
 
-TextureManager::TextureManager(SDL_Renderer* renderer): _renderer{renderer}, _textures{ std::make_unique<std::map<std::string,Texture>>() } {
+TextureManager::TextureManager(SDL_Renderer* renderer): _renderer{renderer} {
+    resetForNextScene();
 }
 
 void TextureManager::store(const std::string& fileName) {
@@ -18,6 +19,13 @@ const Texture& TextureManager::get(const std::string& fileName) const {
     return _textures->at(fileName);
 }
 
-void TextureManager::remove(const std::string& fileName) {
+[[maybe_unused]] void TextureManager::remove(const std::string& fileName) {
     _textures->erase(fileName);
+}
+
+void TextureManager::resetForNextScene() {
+    for (auto& texture: *_textures) {
+        SDL_DestroyTexture(texture.second.texture());
+    }
+    _textures = std::make_unique<std::map<std::string,Texture>>();
 }

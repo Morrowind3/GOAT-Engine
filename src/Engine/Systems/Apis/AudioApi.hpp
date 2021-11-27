@@ -18,7 +18,7 @@ namespace Engine {
             void LoadMusic(const std::string& fileName);
             void PlaySample(const std::string& fileName);
             void PlayMusic(const std::string& fileName);
-            void Reset();
+            void ResetForNextScene();
         private:
             AudioApi();
             std::unique_ptr<AudioImpl> _impl;

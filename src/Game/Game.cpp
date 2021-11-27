@@ -54,11 +54,19 @@ int main(int argc, char* args[]) {
         engine->Run(60);
         return 0;
     } catch (const std::runtime_error& error) {
-        Debug::GetInstance().log(error.what());
+        std::string message {error.what()};
+        Debug::GetInstance().log("Runtime error: " + message);
         return 1;
+    } catch (const std::exception& error) {
+        std::string message {error.what()};
+        Debug::GetInstance().log("Exception: " + message);
+        return 2;
+    } catch (const std::string& error) {
+        Debug::GetInstance().log("String: " + error);
+        return 3;
     } catch (...) {
         Debug::GetInstance().log("Fatal uncatchable error thrown!");
-        return 2;
+        return 4;
     }
 }
 

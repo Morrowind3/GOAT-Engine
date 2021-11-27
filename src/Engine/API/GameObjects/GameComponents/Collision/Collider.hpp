@@ -7,19 +7,20 @@
 namespace Engine {
 
     enum class ColliderType{
-        BOX_COLLIDER,
-        CIRCLE_COLLIDER,
+        NONE = 0,
+        BOX_COLLIDER = 1,
+        CIRCLE_COLLIDER = 2,
     };
 
     class Collider : public GameComponent {
     public:
         Collider(bool active, ColliderType type);
-        Collider();
-        virtual ~Collider();
+        Collider(); // Default constructor for objects that don't need an active collider
+        virtual ~Collider(); // Enforce C++ polymorphism
 
-        std::vector<double> GetData();
+        [[nodiscard]] std::vector<double> GetData() const;
 
-        ColliderType type;
+        ColliderType type{ColliderType::NONE};
         std::vector<double> _data{}; // TODO: Only accessible by class that explicitly needs this
 
     };

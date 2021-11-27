@@ -3,7 +3,6 @@
 using namespace Engine;
 
 AudioApi::AudioApi(): _impl{std::make_unique<AudioImpl>()} {
-
 }
 
 void AudioApi::LoadSample(const std::string& fileName) {
@@ -22,6 +21,6 @@ void AudioApi::PlayMusic(const std::string& fileName) {
     _impl->PlayMusic(fileName);
 }
 
-void AudioApi::Reset() {
-    _impl->Reset();
+void AudioApi::ResetForNextScene() {
+    _impl->ResetForNextScene();
 }
