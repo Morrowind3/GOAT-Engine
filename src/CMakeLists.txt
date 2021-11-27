@@ -167,7 +167,11 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag.hpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp Game/Behaviors/Utils/Scripts/VictoryScript.cpp Game/Behaviors/Utils/Scripts/VictoryScript.hpp Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp Game/Behaviors/Utils/Scripts/GameOverScript.cpp Game/Behaviors/Utils/Scripts/GameOverScript.hpp)
+		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp
+		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
+		Game/Behaviors/Utils/Scripts/DamageScript.cpp
+		Game/Behaviors/Utils/GameStateBehavior.cpp
+		Game/Behaviors/Utils/Scripts/GameStateScript.cpp Game/GameObjects/Meta/GameStateManager.cpp Game/GameObjects/Meta/GameStateManager.hpp Game/Scenes/VictoryScene.cpp Game/Scenes/VictoryScene.hpp Game/Scenes/DefeatScene.cpp Game/Scenes/DefeatScene.hpp Game/GameObjects/Meta/VictoryBackground.cpp Game/GameObjects/Meta/VictoryBackground.hpp Game/GameObjects/Meta/DefeatBackground.cpp Game/GameObjects/Meta/DefeatBackground.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

@@ -7,6 +7,8 @@
 #include "Scenes/EtappeSelection.hpp"
 #include "Scenes/ScoreboardMenuScene.hpp"
 #include "Scenes/SettingsMenuScene.hpp"
+#include "Scenes/DefeatScene.hpp"
+#include "Scenes/VictoryScene.hpp"
 #include <stdexcept>
 
 void GameSceneManager::ChangeCurrentScene(const std::string& name) {
@@ -18,5 +20,7 @@ void GameSceneManager::ChangeCurrentScene(const std::string& name) {
     else if (name == Keys::ETAPPE_SELECT) _currentScene = std::make_shared<EtappeSelection>(sceneManager);
     else if (name == Keys::ETAPPE_ONE) _currentScene = std::make_shared<EtappeOne>(sceneManager);
     else if (name == Keys::ETAPPE_TWO) _currentScene = std::make_shared<EtappeTwo>(sceneManager);
+    else if (name == Keys::DEFEAT_SCREEN) _currentScene = std::make_shared<DefeatScene>(sceneManager);
+    else if (name == Keys::VICTORY_SCREEN) _currentScene = std::make_shared<VictoryScene>(sceneManager);
     else throw std::runtime_error("GameSceneManager: No valid scene loaded in! Attempted key: " + name);
 }

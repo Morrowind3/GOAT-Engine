@@ -14,7 +14,7 @@
 // TODO: Delegate tiled level-construction to a more logical place than scene construction
 void placeTile(int index, Transform transform, Scene& scene);
 
-EtappeTwo::EtappeTwo(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_TWO, Transform{Point{100,890},1,0,5,5}) {
+EtappeTwo::EtappeTwo(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_TWO, Transform{Point{100,890},1,0,5,5}, manager) {
     gameObjects.emplace_back(std::make_shared<EtappeTwoManager>(
             Transform{Point{0,0},0}, true));
     int tileSize{21};

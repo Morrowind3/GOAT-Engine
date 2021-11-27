@@ -60,6 +60,14 @@ namespace Keys {
     const std::string JUMP_SFX = "JUMP_SFX"; // Usage: Player jump sfx
     const std::string BLEATHING = "BLEATHING"; // Usage: Goat bleathing SFX
 
+    //GAME STATES, flags used by GameStateScript.
+    const std::string GAMESTATE = "GAMESTATE";
+    const std::string GAMESTATE_DEFAULT = "DEFAULT";
+    const std::string GAMESTATE_VICTORY = "VICTORY";
+    const std::string GAMESTATE_DEFEAT = "DEFEAT";
+    const std::string VICTORY_SCREEN = "VICTORY_SCREEN"; //Scene on victory
+    const std::string DEFEAT_SCREEN = "DEFEAT_SCREENdddddddddd"; //Scene on defeat
+
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP
