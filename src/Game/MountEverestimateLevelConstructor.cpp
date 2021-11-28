@@ -135,7 +135,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
         //TODO lava/stone/snow tiles
         case 10:
             transform.layer = LAYER::TILES_BACK;
-            _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, _etappe.player, true));
+            _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, true));
             break;
         default:
             break;

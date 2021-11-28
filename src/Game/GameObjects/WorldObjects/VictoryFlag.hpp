@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class VictoryFlag : public GameObject {
-    public: VictoryFlag(Transform transform, const std::shared_ptr<Player>& player, bool active);
+    public: VictoryFlag(Transform transform, bool active);
 };
 
 

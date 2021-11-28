@@ -9,15 +9,13 @@ using namespace Engine;
 
 class FlagScript : public Script {
     public:
-    //    FlagScript(bool active, VictoryFlag& flag, Player& player);
-        FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player);
+        FlagScript(bool active, VictoryFlag& flag);
         void onUpdate(double deltaTime) override;
-    private:
-        bool playerEntered();
+        void onTriggerEnter2D(GameObject &other) override;
+private:
         void animateFlag();
         VictoryFlag& _flag;
         double animationTimer = 0;
-        const std::shared_ptr<Player>& _player;
 };
 
 
