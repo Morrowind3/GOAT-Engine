@@ -20,6 +20,8 @@ namespace Engine {
             double mass{0};
             double gravityScale{0};
             BodyType bodyType{BodyType::STATIC};
+        float forceY;
+        float forceX;
     };
 }
 #endif //GOAT_ENGINE_RIGIDBODY_HPP

@@ -22,6 +22,7 @@ namespace Engine {
         unsigned int layer;
         double rotation, scaleWidth, scaleHeight;
         FLIP flip;
+        bool visible = true;
     };
 
 }

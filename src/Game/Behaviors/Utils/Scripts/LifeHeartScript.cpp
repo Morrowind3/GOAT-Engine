@@ -6,6 +6,7 @@ LifeHeartScript::LifeHeartScript(int filledAtHp, LifeHeart& lifeHeart, bool acti
 }
 
 void LifeHeartScript::OnUpdate(double deltaTime) {
+    //TODO: It's more efficient to move this to OnExternalEvent and letting DamageScript call it.
     int queryValue = std::stoi(_globals.sceneGet(Keys::HP));
     if (_lastQueryValue != queryValue) {
         _lastQueryValue = queryValue;

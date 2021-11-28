@@ -5,20 +5,25 @@ PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script
 }
 
 void PlayerMovementScript::OnUpdate(double deltaTime) {
+    //TODO remove this, this is no REAL pause, because box2d slides you further, and other entities must be taken accounted for
     if (_globals.sceneGet(Keys::PAUSE) == Keys::TRUE) return; // Don't allow when paused
 
     bool moveLeft = _input.GetKey(KeyCode::A);
     bool moveRight = _input.GetKey(KeyCode::D);
-    bool moveUp = _input.GetKeyDown(KeyCode::W);
+    bool moveUp = _input.GetKeyDown(KeyCode::SPACE);
 
     // Perform movement
     if (moveRight) {
-        _player.transform.position.x += PLAYER_SPEED;
+        _player.rigidBody.forceX = PLAYER_SPEED;
         _player.transform.flip = Engine::FLIP::FLIP_NONE;
     }
     if (moveLeft) {
-        _player.transform.position.x-=PLAYER_SPEED;
+        _player.rigidBody.forceX = -PLAYER_SPEED;
         _player.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
+    }
+
+    if(moveUp) {
+        _player.rigidBody.forceY = 50000;
     }
 
     // Show correct sprite
@@ -27,13 +32,13 @@ void PlayerMovementScript::OnUpdate(double deltaTime) {
         _player.sprites.at(Keys::MOVE1).active = true;
         _player.sprites.at(Keys::IDLE).active = false;
 
-        if (_jumpStepAltSfx) {
-            _player.audioSources.at(Keys::WALK_SFX_A).queueForPlay = true;
-            _jumpStepAltSfx = false;
-        } else {
-            _player.audioSources.at(Keys::WALK_SFX_B).queueForPlay = true;
-            _jumpStepAltSfx = true;
-        }
+//        if (_jumpStepAltSfx) {
+//            _player.audioSources.at(Keys::WALK_SFX_A).queueForPlay = true;
+//            _jumpStepAltSfx = false;
+//        } else {
+//            _player.audioSources.at(Keys::WALK_SFX_B).queueForPlay = true;
+//            _jumpStepAltSfx = true;
+//        }
 
     }
     else {

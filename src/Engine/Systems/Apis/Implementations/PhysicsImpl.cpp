@@ -40,10 +40,6 @@ void PhysicsImpl::CreateBody(const GameObject& gameObject) {
     }
 }
 
-void PhysicsImpl::ResetForNextScene() {
-    _world = std::make_unique<b2World>(b2Vec2{0.0f, 10.0f});
-}
-
 void PhysicsImpl::AttachBoxCollider(b2Body *rigidBody, double width, double height, double density) {
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
@@ -51,25 +47,27 @@ void PhysicsImpl::AttachBoxCollider(b2Body *rigidBody, double width, double heig
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
-        fixtureDef.friction = 0.3f;
+        fixtureDef.friction = 1.0f;
+        rigidBody->SetLinearDamping(1.0f);
+
         rigidBody->CreateFixture(&fixtureDef);
     } else {
         rigidBody->CreateFixture(&collisionShape, 0.0f);
     }
 }
 
-void PhysicsImpl::AttachCircleCollider(b2Body *rigidBody, double radius, double density) {
+void PhysicsImpl::AttachCircleCollider(b2Body* rigidBody, double radius, double density) {
     b2CircleShape collisionShape;
     collisionShape.m_radius = radius / PPM;
 
-    if(rigidBody->GetType() != b2_staticBody){
+    if (rigidBody->GetType() != b2_staticBody) {
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
-        fixtureDef.friction = 0.3f;
+//        fixtureDef.friction = 1.0f;
+        rigidBody->SetLinearDamping(2.0f);
         rigidBody->CreateFixture(&fixtureDef);
-    }
-    else {
+    } else {
         rigidBody->CreateFixture(&collisionShape, 0.0f);
     }
 }
@@ -79,10 +77,23 @@ void PhysicsImpl::PerformPhysicsCalculationsForFrame() {
 }
 
 void PhysicsImpl::UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
-    for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
+    for (b2Body* body = _world->GetBodyList(); body; body = body->GetNext()) {
         if (body->GetUserData() == &gameObject) {
+
+            b2Vec2 force = {gameObject.rigidBody.forceX / PPM, gameObject.rigidBody.forceY * -1 / PPM};
+            b2Vec2 pos = body->GetPosition();
+
+            body->ApplyLinearImpulse(force, pos, true);
+
+            gameObject.rigidBody.forceY = 0;
+            gameObject.rigidBody.forceX = 0;
+
             gameObject.transform.position.x = body->GetPosition().x * PPM;
             gameObject.transform.position.y = body->GetPosition().y * PPM;
         }
     }
+}
+
+void PhysicsImpl::ResetForNextScene() {
+    _world = std::make_unique<b2World>(b2Vec2{0.0f, 10.0f});
 }

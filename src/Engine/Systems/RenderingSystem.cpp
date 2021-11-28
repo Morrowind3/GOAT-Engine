@@ -32,6 +32,7 @@ void RenderingSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
 void RenderingSystem::OnFrameTick(double deltaTime) {
     _api->BeginRenderTick();
     for (auto& gameObject: activeObjects()) {
+        if(!gameObject->transform.visible) continue;
         for (auto& sprite: gameObject->sprites) {
             if (!sprite.second.active) continue;
             std::shared_ptr camAdjustedSprite = std::make_shared<Transform>(_scene->GetCamera()->AdjustForCamera(gameObject->transform));
