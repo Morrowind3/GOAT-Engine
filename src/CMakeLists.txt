@@ -171,7 +171,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
 		Game/Behaviors/Utils/Scripts/DamageScript.cpp
 		Game/Behaviors/Utils/GameStateBehavior.cpp
-		Game/Behaviors/Utils/Scripts/GameStateScript.cpp Game/GameObjects/Meta/GameStateManager.cpp Game/GameObjects/Meta/GameStateManager.hpp Game/Scenes/VictoryScene.cpp Game/Scenes/VictoryScene.hpp Game/Scenes/DefeatScene.cpp Game/Scenes/DefeatScene.hpp Game/GameObjects/Meta/VictoryBackground.cpp Game/GameObjects/Meta/VictoryBackground.hpp Game/GameObjects/Meta/DefeatBackground.cpp Game/GameObjects/Meta/DefeatBackground.hpp)
+		Game/Behaviors/Utils/Scripts/GameStateScript.cpp Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/GameObjects/Meta/EtappeEnd/GameStateManager.hpp Game/Scenes/VictoryScene.cpp Game/Scenes/VictoryScene.hpp Game/Scenes/DefeatScene.cpp Game/Scenes/DefeatScene.hpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.hpp Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/DefeatBackground.hpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.hpp Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.hpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
 

@@ -5,8 +5,8 @@
 #ifndef GOAT_ENGINE_GAMESTATEMANAGER_HPP
 #define GOAT_ENGINE_GAMESTATEMANAGER_HPP
 
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../Engine/SceneManager.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/SceneManager.hpp"
 
 using namespace Engine;
 

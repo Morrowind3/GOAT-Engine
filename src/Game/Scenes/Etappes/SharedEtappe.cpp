@@ -3,7 +3,7 @@
 #include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
 #include "../../../Engine/Utilities/Globals.hpp"
 #include "../../Keys.hpp"
-#include "../../GameObjects/Meta/GameStateManager.hpp"
+#include "../../GameObjects/Meta/EtappeEnd/GameStateManager.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition, SceneManager& sceneManager): Scene(etappeKey), _sceneManager(sceneManager) {
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
