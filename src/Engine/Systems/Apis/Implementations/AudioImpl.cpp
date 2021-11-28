@@ -6,7 +6,6 @@
 using namespace Engine;
 
 AudioImpl::AudioImpl(): _sdlStatus{SDL_Init(SDL_INIT_AUDIO)} {
-    // TODO: Adjustable?
     const int audio_rate = 22050;
     const Uint16 audio_format = AUDIO_S16SYS;
     const int audio_channels = 2;

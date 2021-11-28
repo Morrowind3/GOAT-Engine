@@ -39,7 +39,7 @@ void GoatEngine::Run(const unsigned int maxFps) {
         Debug::GetInstance().log("Scene start: " + active->name);
         for (auto& system: *_systems) system->OnLoadScene(active);
         Debug::GetInstance().log("Scene started: " + active->name);
-
+        
         // Update systems until scene change
         while (_isRunning && _sceneManager.CurrentScene() == active) {
             // Only handle frame when allowed to by the FPS cap

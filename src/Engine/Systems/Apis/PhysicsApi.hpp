@@ -19,7 +19,9 @@ namespace Engine {
             void CreateBody(const GameObject& gameObject);
             void PerformPhysicsCalculationsForFrame();
             void UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject);
+            void runCollisionScripts();
             void ResetForNextScene();
+
         private:
             PhysicsApi() : physics() {};
             PhysicsImpl physics;

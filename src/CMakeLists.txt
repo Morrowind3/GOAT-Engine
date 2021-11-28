@@ -129,6 +129,8 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Input/PressState.hpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+        Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.cpp Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.hpp
+		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
 		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
@@ -202,6 +204,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp
 		Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp
 		Game/Behaviors/Utils/Scripts/GameOverScript.cpp Game/Behaviors/Utils/Scripts/GameOverScript.hpp
+		Game/Behaviors/Utils/Scripts/CollisionTestScript.cpp Game/Behaviors/Utils/Scripts/CollisionTestScript.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

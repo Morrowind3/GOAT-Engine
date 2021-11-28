@@ -15,7 +15,10 @@ namespace Engine {
         void OnUpdate(double deltaTime);
         void OnExternalEvent();
         void OnDestroy();
-        // TODO: Collisions
+        // Collisions
+        void OnTriggerEnter2D(GameObject& other);
+        void OnTriggerStay2D(GameObject& other);
+        void OnTriggerExit2D(GameObject& other);
     };
 }
 

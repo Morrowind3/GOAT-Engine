@@ -22,6 +22,7 @@ void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
 void ScriptSystem::OnFrameTick(double deltaTime) {
     auto& input = Input::GetInstance();
     input.Update();
+    _physics.runCollisionScripts();
     for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {
             if(behavior.second->active) behavior.second->OnUpdate(deltaTime);

@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 26/11/2021.
-//
-
 #include "DamageScript.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"

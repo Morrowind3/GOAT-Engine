@@ -2,6 +2,7 @@
 #define GOAT_ENGINE_SCRIPTSYSTEM_HPP
 
 #include "System.hpp"
+#include "Apis/PhysicsApi.hpp"
 
 namespace Engine {
     class ScriptSystem : public System  {
@@ -11,6 +12,8 @@ namespace Engine {
             void OnLoadScene(std::shared_ptr<Scene> scene) override;
             void OnFrameTick(double deltaTime) override;
             void OnCloseEngine() override;
+        private:
+            PhysicsApi& _physics = PhysicsApi::getInstance();
     };
 }
 
