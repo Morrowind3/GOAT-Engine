@@ -15,7 +15,8 @@ void GameSceneManager::ChangeCurrentScene(const std::string& name) {
     Debug::GetInstance().log("Game scene manager will attempt to switch to scene: " + name);
     SceneManager& sceneManager = *this;
 
-    if (name == Keys::NEXT){
+    if(name == Keys::CURRENT_ETAPPE) setEtappeScene();
+    else if (name == Keys::NEXT_ETAPPE){
         ++currentEtappe;
         setEtappeScene();
     }

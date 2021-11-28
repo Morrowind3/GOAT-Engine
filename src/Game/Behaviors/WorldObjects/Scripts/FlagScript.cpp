@@ -9,12 +9,7 @@
 FlagScript::FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player) : Script(active), _flag(flag), _player(player) {
 }
 void FlagScript::OnUpdate(double deltaTime) {
-    if(PlayerEntered()){
-//        _player->behaviors.at(Keys::BEHAVIOR)->scripts.at(Keys::DAMAGE)->OnExternalEvent();
-        Globals::GetInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_VICTORY);
-//        VictoryScript victoryScript(true);
-//        victoryScript.OnStart();
-    }
+    if(PlayerEntered()) Globals::GetInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_VICTORY);
     animationTimer += deltaTime;
     if(animationTimer >= 800) AnimateFlag();
 }

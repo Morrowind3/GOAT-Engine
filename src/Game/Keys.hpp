@@ -24,7 +24,6 @@ namespace Keys {
 	const std::string ETAPPE_PROGRESS = "ETAPPE_PROGRESS"; // Usage: Etappe progress script ID
 	const std::string ETAPPE_CONFIG = "ETAPPE_CONFIG"; // Usage: Etappe config script ID
     const std::string SNOWSTORM = "SNOWSTORM"; // Usage: snowstorm ambient music
-    const std::string NEXT = "NEXT"; // Usage: Flag to request the "Next" of something (e.g. the next stage)
 
     //SCENE IDS
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
@@ -39,6 +38,8 @@ namespace Keys {
     const std::string DEFEAT_SCREEN = "DEFEAT_SCREEN"; //Usage: Defeat screen level ID
     const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID,
                                                        // key for global that stores unlocked levels
+    const std::string NEXT_ETAPPE = "NEXT_ETAPPE"; // Usage: Flag to request the next stage
+    const std::string CURRENT_ETAPPE = "CURRENT_ETAPPE"; // Usage: Flag to request the current stage
 
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
