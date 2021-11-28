@@ -15,12 +15,14 @@ namespace Engine{
             //width and height unused until we need to crop.
             Camera(double x, double y, float zoom): _camera({Point{x, y}, 0, 0}), _zoomLevel(zoom){};
             Engine::Transform AdjustForCamera(const Engine::Transform& transform);
+
             void MoveCamera(double x, double y);
             void InterpolateToNextWaypoint();
             void TrackObject(std::shared_ptr<GameObject> object);
             void SetZoomLevel(float zoom);
             void AddWaypoint(Point waypoint, int seconds);
             void AddWaypoint(Point waypoint, int seconds, float zoomLevel);
+
         private:
             struct WaypointParams {
                 double xPerMs;
@@ -30,10 +32,12 @@ namespace Engine{
                 float zoomTarget;
         //        std::function<bool()> endCondition; TODO: Scriptable end condition.
             };
+
             void TrackObject();
-            std::shared_ptr<GameObject> _trackedObject = nullptr;
             void Reposition(Engine::Transform& t) const;
             void Zoom(Engine::Transform& t) const;
+
+            std::shared_ptr<GameObject> _trackedObject = nullptr;
             std::queue<WaypointParams> _waypoints;
             Engine::Rectangle _camera;
             float _zoomLevel;

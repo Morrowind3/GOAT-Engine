@@ -3,6 +3,7 @@
 #include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
 #include "../../MountEverestimateLevelConstructor.hpp"
 #include "../../GameObjects/Meta/Cheats.hpp"
+#include "../../Layers.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey) {
@@ -17,6 +18,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
         Transform{{105,0},LAYER::UI,0,5,5},true));
     gameObjects.emplace_back(std::make_shared<LifeHeart>(3,
         Transform{{210,0},LAYER::UI,0,5,5},true));
+
     _player = std::make_shared<Player>(playerStartPosition,true);
     gameObjects.emplace_back(_player);
     _camera.TrackObject(_player);

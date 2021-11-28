@@ -10,10 +10,6 @@ namespace Engine {
         FLIP_HORIZONTAL,
         FLIP_VERTICAL
     };
-    enum LAYER {
-        UI = 100,
-        PARALLAX_BACKGROUND = 0
-    };
 
     struct Transform {
         explicit Transform(Point position, unsigned int layer = 0, double rotation = 0.0, double scaleWidth = 1.0,

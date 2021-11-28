@@ -4,6 +4,7 @@
 #include "../Engine/Utilities/Debug.hpp"
 #include "../Engine/Utilities/Globals.hpp"
 #include "Keys.hpp"
+#include "Layers.hpp"
 
 #include <regex>
 #include <fstream>
@@ -49,7 +50,7 @@ void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { tr
             if (index != 0) {
                 double posY{y * _tileSize * _scale};
                 double posX{x * _tileSize * _scale};
-                Transform transform{Point{posX+xOffset, posY+yOffset}, 10, 0, _scale, _scale};
+                Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, _scale, _scale};
                 PlaceTile(index, transform);
             }
         }
@@ -92,15 +93,19 @@ void MountEverestimateLevelConstructor::PlaceTile(int index, Transform transform
             texturePath = "Sprites/landscapes/grass/grass_ground_normal.png";
             break;
         case 6:
+            transform.layer = LAYER::TILES_BACK;
             texturePath = "Sprites/landscapes/grass/grass_slab_end_left.png";
             break;
         case 7:
+            transform.layer = LAYER::TILES_BACK;
             texturePath = "Sprites/landscapes/grass/grass_slab_end_right.png";
             break;
         case 8:
+            transform.layer = LAYER::TILES_BACK;
             texturePath = "Sprites/landscapes/grass/grass_slab_flat.png";
             break;
         case 9:
+            transform.layer = LAYER::TILES_BACK;
             texturePath = "Sprites/landscapes/grass/grass_slab_normal.png";
             break;
         case 10:

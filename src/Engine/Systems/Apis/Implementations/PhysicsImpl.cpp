@@ -77,8 +77,7 @@ void PhysicsImpl::AttachCircleCollider(b2Body* rigidBody, double radius, double 
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
-//        fixtureDef.friction = 1.0f;
-        rigidBody->SetLinearDamping(2.0f);
+        rigidBody->SetLinearDamping(1.0f);
         rigidBody->CreateFixture(&fixtureDef);
     } else {
         rigidBody->CreateFixture(&collisionShape, 0.0f);

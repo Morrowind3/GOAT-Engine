@@ -1,6 +1,7 @@
 #include "Cheats.hpp"
 #include "../../Behaviors/Utils/CheatsBehavior.hpp"
 #include "../../Keys.hpp"
+#include "../../Layers.hpp"
 
 Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
     // Too bad, you can't render on new line, so you have to make every line a text object

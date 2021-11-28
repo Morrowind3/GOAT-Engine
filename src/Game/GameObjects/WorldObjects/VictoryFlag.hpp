@@ -1,8 +1,3 @@
-//
-// Created by Morrowind3 on 26/11/2021.
-//
-
-
 #ifndef GOAT_ENGINE_VICTORYFLAG_HPP
 #define GOAT_ENGINE_VICTORYFLAG_HPP
 

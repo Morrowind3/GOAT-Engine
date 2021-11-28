@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 26/11/2021.
-//
-
 #include "FlagScript.hpp"
 #include "../../../Keys.hpp"
 

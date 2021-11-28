@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 26/11/2021.
-//
-
 #include "VictoryFlag.hpp"
 #include "../../Keys.hpp"
 #include "../../Behaviors/WorldObjects/VictoryFlagBehavior.hpp"
