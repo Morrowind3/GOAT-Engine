@@ -1,4 +1,5 @@
 #include "Camera.hpp"
+#include "../../Game/Layers.hpp"
 #include <iostream>
 #include <utility>
 
@@ -6,7 +7,7 @@ using namespace Engine;
 
 Transform Camera::adjustForCamera(const Transform& transform) {
     if(_trackedObject != nullptr) trackObject();
-//    if(transform.layer > 100) return transform;
+    if(transform.layer == LAYER::UI) return transform;
     Engine::Transform adjusted {transform};
     reposition(adjusted);
     zoom(adjusted);
@@ -39,16 +40,6 @@ void Camera::reposition(Transform& t) const {
         t.position.x -= _camera.topLeft.x;
         t.position.y -= _camera.topLeft.y;
     }
-
-
-
-//    if(t.layer == LAYER::PARALLAX_BACKGROUND){
-//        t.position.x -= (_camera.topLeft.x / 3);
-//        t.position.y -= (_camera.topLeft.y / 3);
-//    } else {
-//        t.position.x -= _camera.topLeft.x;
-//        t.position.y -= _camera.topLeft.y;
-//    }
 }
 
 void Camera::zoom(Engine::Transform& t) const {
