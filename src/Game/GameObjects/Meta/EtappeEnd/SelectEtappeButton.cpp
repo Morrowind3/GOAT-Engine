@@ -5,6 +5,7 @@
 #include "SelectEtappeButton.hpp"
 #include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
+#include "../../../Layers.hpp"
 
 SelectEtappeButton::SelectEtappeButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active){
     Transform textTransform{

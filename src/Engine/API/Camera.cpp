@@ -4,10 +4,10 @@
 
 using namespace Engine;
 
-Transform Camera::AdjustForCamera(const Engine::Transform& transform) {
-    if(transform.layer == Engine::LAYER::UI) return transform;
-    Engine::Transform adjusted {transform};
+Transform Camera::AdjustForCamera(const Transform& transform) {
     if(_trackedObject != nullptr) TrackObject();
+//    if(transform.layer > 100) return transform;
+    Engine::Transform adjusted {transform};
     Reposition(adjusted);
     Zoom(adjusted);
     return adjusted;
@@ -21,14 +21,34 @@ void Camera::SetZoomLevel(float zoom) {
     _zoomLevel = zoom;
 }
 
-void Camera::Reposition(Engine::Transform& t) const {
-    if(t.layer == Engine::LAYER::PARALLAX_BACKGROUND){
-        t.position.x -= (_camera.topLeft.x / 3);
-        t.position.y -= (_camera.topLeft.y / 3);
+void Camera::Reposition(Transform& t) const {
+    //the lower from 100, the lower the speed (higher diff)
+    //layer 100 = 1
+    //layer 0 = 100
+    if(t.layer <= 100) {
+        double diff{101 - static_cast<double>(t.layer)};
+
+
+//        double diff{static_cast<double>(t.layer) / 100};
+//        diff *= 10;
+//        diff = 100 - diff;
+
+        t.position.x -= (_camera.topLeft.x / diff);
+        t.position.y -= (_camera.topLeft.y / diff);
     } else {
         t.position.x -= _camera.topLeft.x;
         t.position.y -= _camera.topLeft.y;
     }
+
+
+
+//    if(t.layer == LAYER::PARALLAX_BACKGROUND){
+//        t.position.x -= (_camera.topLeft.x / 3);
+//        t.position.y -= (_camera.topLeft.y / 3);
+//    } else {
+//        t.position.x -= _camera.topLeft.x;
+//        t.position.y -= _camera.topLeft.y;
+//    }
 }
 
 void Camera::Zoom(Engine::Transform& t) const {
@@ -87,13 +107,14 @@ void Camera::InterpolateToNextWaypoint() {
     if(std::abs(_camera.topLeft.x) >= std::abs(next.destination.x) && std::abs(_camera.topLeft.y) >= std::abs(next.destination.y)) _waypoints.pop();
 }
 
-void Camera::TrackObject()
-{
+void Camera::TrackObject() {
     //TODO: More reliable way to get screen centre.
     SDL_DisplayMode DM;
     SDL_GetCurrentDisplayMode(0, &DM);
     auto displayWidth = DM.w;
     auto displayHeight = DM.h;
+
+    double xPos{_trackedObject->transform.position.x};
 
     _camera.topLeft.x = _trackedObject->transform.position.x - displayWidth / 3;
     _camera.topLeft.y = _trackedObject->transform.position.y - (displayHeight / 2);

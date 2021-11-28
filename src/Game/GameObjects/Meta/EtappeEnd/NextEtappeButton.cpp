@@ -5,6 +5,7 @@
 #include "NextEtappeButton.hpp"
 #include "../../../Keys.hpp"
 #include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
+#include "../../../Layers.hpp"
 
 NextEtappeButton::NextEtappeButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
     Transform textTransform{

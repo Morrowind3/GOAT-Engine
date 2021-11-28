@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 26/11/2021.
-//
-
 #include "VictoryFlag.hpp"
 #include "../../Keys.hpp"
 #include "../../Behaviors/WorldObjects/VictoryFlagBehavior.hpp"
@@ -11,5 +7,5 @@ VictoryFlag::VictoryFlag(Transform transform, const std::shared_ptr<Player>& pla
     behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<VictoryFlagBehavior>(*this, player, true)));
     sprites.insert(std::make_pair("Default", Sprite{"Sprites/utils/flag/Flag.png",true}));
     sprites.insert(std::make_pair("Wave", Sprite{"Sprites/utils/flag/Flag_wave.png",false}));
-
+    collider = BoxCollider(21 * transform.scaleWidth, 7 * transform.scaleHeight, true);
 }

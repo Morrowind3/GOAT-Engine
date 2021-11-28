@@ -1,6 +1,7 @@
 #include "SettingsButton.hpp"
 #include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
+#include "../../../Layers.hpp"
 
 SettingsButton::SettingsButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
 

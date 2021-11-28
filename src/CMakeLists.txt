@@ -55,8 +55,8 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Collision/RigidBody.cpp
         Engine/API/GameObjects/GameComponents/Collision/Collider.hpp
         Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
-        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
-        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
+		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
+		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
@@ -139,6 +139,7 @@ add_executable(Mount_Everestimate
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
 		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
+		Game/Layers.hpp
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
@@ -168,6 +169,9 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp
 		Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp
 		Game/GameObjects/Meta/Hud/LifeHeart.cpp Game/GameObjects/Meta/Hud/LifeHeart.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag.hpp
+		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
+		Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
@@ -178,6 +182,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
         Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
+		Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -191,11 +196,13 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp  Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
+		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
+		Game/Behaviors/Utils/Scripts/DamageScript.cpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
 		Game/Behaviors/Utils/CheatsBehavior.cpp
 		Game/Behaviors/Utils/Scripts/CheatsScript.cpp
-		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp
-		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp	Game/Behaviors/Utils/Scripts/DamageScript.cpp
+		Game/GameObjects/WorldObjects/VictoryFlag.cpp
 		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
 		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
 		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp

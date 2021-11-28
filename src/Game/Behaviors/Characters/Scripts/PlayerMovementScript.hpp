@@ -18,10 +18,12 @@ class PlayerMovementScript : public Script {
         Globals& _globals = Globals::GetInstance();
         // Variables
         Player& _player;
+        int _counter{0};
+        int _walkingState{0};
         bool _jumpState = false;
         bool _jumpStepAltSfx = false;
         // Consts
-        static const int PLAYER_SPEED = 4;
+        static const int PLAYER_SPEED = 1000;
 };
 
 

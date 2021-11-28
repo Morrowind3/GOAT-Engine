@@ -19,6 +19,9 @@ namespace Engine {
         double mass;
         double gravityScale;
         BodyType bodyType;
+
+        float forceY;
+        float forceX;
     };
 }
 #endif //GOAT_ENGINE_RIGIDBODY_HPP

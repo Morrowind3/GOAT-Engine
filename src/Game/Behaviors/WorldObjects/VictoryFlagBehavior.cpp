@@ -1,6 +1,3 @@
-//
-// Created by Morrowind3 on 26/11/2021.
-//
 #include "../../Keys.hpp"
 #include "VictoryFlagBehavior.hpp"
 #include "Scripts/FlagScript.hpp"

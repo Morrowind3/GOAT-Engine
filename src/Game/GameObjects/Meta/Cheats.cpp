@@ -1,8 +1,9 @@
 #include "Cheats.hpp"
 #include "../../Behaviors/Utils/CheatsBehavior.hpp"
 #include "../../Keys.hpp"
+#include "../../Layers.hpp"
 
-Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}}, active) {
+Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
     // Too bad, you can't render on new line, so you have to make every line a text object
     std::string font{"Fonts/Kenney_Thick.ttf"};
     uint8_t size{12};
@@ -20,7 +21,7 @@ Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}}, active) {
 
     text.insert(std::make_pair("FPS", Text{"FPS", "Fonts/Fraps.ttf", 48,
                 Color{0,0,0,255},
-                Transform{Point{0,0},0xffffffff}, // ALWAYS on top!
+                Transform{Point{0,0},transform.layer}, // ALWAYS on top!
                 false}));
 
     behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(this->text, true)));
