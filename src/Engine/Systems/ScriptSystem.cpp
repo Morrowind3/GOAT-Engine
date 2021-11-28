@@ -27,7 +27,7 @@ void ScriptSystem::OnFrameTick(double deltaTime) {
         }
         for (auto& button : gameObject->buttons) {
             // Detect if mouse clicked on button
-            if(button.second.active && input.GetMouseDown(Input::MouseButton::LEFT) && button.second.dimensions.intersects(input.MousePosition())) {
+            if(button.second.active && input.GetMouseDown(MouseButton::LEFT) && button.second.dimensions.intersects(input.MousePosition())) {
                 button.second.onClick->OnExternalEvent();
             }
         }

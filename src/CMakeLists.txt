@@ -14,18 +14,23 @@ set(SDL2_IMAGE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_IMAGE-2.0.5/inc
 set(SDL2_IMAGE_LIB_DIR ${PROJECT_SOURCE_DIR}/Libraries/SDL2_IMAGE-2.0.5/lib/x86)
 set(SDL2_MIXER_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_MIXER-2.0.4/include")
 set(SDL2_MIXER_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2_MIXER-2.0.4/lib/x86")
-set(BOX2D_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/BOX2D/include")
-set(BOX2D_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/BOX2D/lib")
+set(BOX2D_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/BOX2D")
+#set(BOX2D_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/BOX2D/lib")
 set(SQLITE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/include")
 set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/lib")
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR})
-link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${BOX2D_LIB_DIR} ${SQLITE_LIB_DIR})
+link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${SQLITE_LIB_DIR})
+
+file(GLOB_RECURSE Box2D_SRC
+        Libraries/Box2D/*.h
+        Libraries/Box2D/*.cpp)
 
 add_library(TessilOrdered STATIC "Libraries/Tessil/ordered_hash.hpp" "Libraries/Tessil/ordered_set.hpp" "Libraries/Tessil/ordered_map.hpp")
 set_target_properties(TessilOrdered PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(GOAT_Engine STATIC
+        ${Box2D_SRC}
         "Engine/API/GameObjects/GameComponents/GameComponent.hpp"
         "Engine/API/GameObjects/GameComponents/GameComponent.cpp"
         "Engine/API/GameObjects/GameComponents/Render/Sprite.hpp"
@@ -46,6 +51,14 @@ add_library(GOAT_Engine STATIC
         "Engine/Systems/System.cpp"
         "Engine/Engine.hpp"
         "Engine/Engine.cpp"
+        Engine/API/GameObjects/GameComponents/Collision/RigidBody.hpp
+        Engine/API/GameObjects/GameComponents/Collision/RigidBody.cpp
+        Engine/API/GameObjects/GameComponents/Collision/Collider.hpp
+        Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
+        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
+        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
+        Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp
+        Engine/API/GameObjects/GameComponents/Collision/CircleCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/Texture.cpp
@@ -54,8 +67,12 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/RendererApi.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
+        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.cpp
+        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.hpp
         Engine/Systems/ScriptSystem.cpp
         Engine/Systems/ScriptSystem.hpp
+        Engine/Systems/CollisionSystem.cpp
+        Engine/Systems/CollisionSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.hpp
         Engine/Systems/Apis/Implementations/AudioImpl.cpp
         Engine/Systems/Apis/Implementations/AudioImpl.hpp
@@ -73,7 +90,11 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/Managers/Fonts/FontManager.hpp
         Engine/Systems/Apis/RendererApi.cpp
         Engine/Systems/Apis/RendererApi.hpp
+        Engine/Systems/Apis/PhysicsApi.cpp
+        Engine/Systems/Apis/PhysicsApi.hpp
         Engine/Utilities/Input.cpp
+        Engine/Systems/Apis/Implementations/PhysicsImpl.cpp
+        Engine/Systems/Apis/Implementations/PhysicsImpl.hpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Audio/AudioManager.hpp
         Engine/Systems/Apis/Implementations/Managers/Audio/Music.cpp
@@ -104,15 +125,20 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
 		Engine/API/Camera.cpp Engine/API/Camera.hpp 
 		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
-		)
+        Engine/Utilities/InputRegistry.cpp Engine/Utilities/InputRegistry.hpp
+		Engine/Utilities/Input/KeyCode.hpp
+		Engine/Utilities/Input/MouseButton.hpp
+		Engine/Utilities/Input/PressState.hpp)
 
-target_link_libraries(GOAT_Engine TessilOrdered)
+target_include_directories(GOAT_Engine PUBLIC "Box2D")
+target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
 
 add_executable(Mount_Everestimate
         # Core
         Game/Keys.hpp
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
+		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
         # Scenes
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
@@ -131,7 +157,6 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
         Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
         Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
-		Game/GameObjects/Meta/Hud/FpsDisplay.cpp Game/GameObjects/Meta/Hud/FpsDisplay.hpp
         Game/GameObjects/Meta/MainMenu/Background.cpp
         Game/GameObjects/Meta/MainMenu/ExitButton.cpp
         Game/GameObjects/Meta/MainMenu/PlayButton.cpp
@@ -152,8 +177,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
-		Game/Behaviors/Utils/FpsBehavior.cpp Game/Behaviors/Utils/FpsBehavior.hpp
-		Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
+        Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -162,21 +186,26 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
 		Game/Behaviors/Tiles/Scripts/SlabTileScript.cpp Game/Behaviors/Tiles/Scripts/SlabTileScript.hpp
 		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
-		Game/Behaviors/Utils/Scripts/FpsScript.cpp Game/Behaviors/Utils/Scripts/FpsScript.hpp
-		Game/Behaviors/Utils/Scripts/PauseScript.cpp Game/Behaviors/Utils/Scripts/PauseScript.hpp
+		Game/Behaviors/Utils/Scripts/Cheats/FpsScript.cpp Game/Behaviors/Utils/Scripts/Cheats/FpsScript.hpp
+		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
+		Game/Behaviors/Utils/CheatsBehavior.cpp
+		Game/Behaviors/Utils/Scripts/CheatsScript.cpp
 		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp
-		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
-		Game/Behaviors/Utils/Scripts/DamageScript.cpp
-		Game/Behaviors/Utils/GameStateBehavior.cpp
-		Game/Behaviors/Utils/Scripts/GameStateScript.cpp Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/GameObjects/Meta/EtappeEnd/GameStateManager.hpp Game/Scenes/VictoryScene.cpp Game/Scenes/VictoryScene.hpp Game/Scenes/DefeatScene.cpp Game/Scenes/DefeatScene.hpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.hpp Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/DefeatBackground.hpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.hpp Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.hpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.hpp)
+		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp	Game/Behaviors/Utils/Scripts/DamageScript.cpp
+		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
+		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
+		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp
+		Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp
+		Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp)
 
-target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d sqlite3)
+target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
 add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
-target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer box2d)
+target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")
 target_link_libraries(engine_tests GOAT_Engine)
