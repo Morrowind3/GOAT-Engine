@@ -145,7 +145,7 @@ extern DECLSPEC void SDLCALL SDL_UnlockSensors(void);
 extern DECLSPEC int SDLCALL SDL_NumSensors(void);
 
 /**
- * Get the implementation dependent name of a sensor.
+ * get the implementation dependent name of a sensor.
  *
  * \param device_index The sensor to obtain name from
  * \returns the sensor name, or NULL if `device_index` is out of range.
@@ -153,7 +153,7 @@ extern DECLSPEC int SDLCALL SDL_NumSensors(void);
 extern DECLSPEC const char *SDLCALL SDL_SensorGetDeviceName(int device_index);
 
 /**
- * Get the type of a sensor.
+ * get the type of a sensor.
  *
  * \param device_index The sensor to get the type from
  * \returns the SDL_SensorType, or `SDL_SENSOR_INVALID` if `device_index` is
@@ -162,7 +162,7 @@ extern DECLSPEC const char *SDLCALL SDL_SensorGetDeviceName(int device_index);
 extern DECLSPEC SDL_SensorType SDLCALL SDL_SensorGetDeviceType(int device_index);
 
 /**
- * Get the platform dependent type of a sensor.
+ * get the platform dependent type of a sensor.
  *
  * \param device_index The sensor to check
  * \returns the sensor platform dependent type, or -1 if `device_index` is out
@@ -171,7 +171,7 @@ extern DECLSPEC SDL_SensorType SDLCALL SDL_SensorGetDeviceType(int device_index)
 extern DECLSPEC int SDLCALL SDL_SensorGetDeviceNonPortableType(int device_index);
 
 /**
- * Get the instance ID of a sensor.
+ * get the instance ID of a sensor.
  *
  * \param device_index The sensor to get instance id from
  * \returns the sensor instance ID, or -1 if `device_index` is out of range.
@@ -195,7 +195,7 @@ extern DECLSPEC SDL_Sensor *SDLCALL SDL_SensorOpen(int device_index);
 extern DECLSPEC SDL_Sensor *SDLCALL SDL_SensorFromInstanceID(SDL_SensorID instance_id);
 
 /**
- * Get the implementation dependent name of a sensor
+ * get the implementation dependent name of a sensor
  *
  * \param sensor The SDL_Sensor object
  * \returns the sensor name, or NULL if `sensor` is NULL.
@@ -203,7 +203,7 @@ extern DECLSPEC SDL_Sensor *SDLCALL SDL_SensorFromInstanceID(SDL_SensorID instan
 extern DECLSPEC const char *SDLCALL SDL_SensorGetName(SDL_Sensor *sensor);
 
 /**
- * Get the type of a sensor.
+ * get the type of a sensor.
  *
  * \param sensor The SDL_Sensor object to inspect
  * \returns the SDL_SensorType type, or `SDL_SENSOR_INVALID` if `sensor` is
@@ -212,7 +212,7 @@ extern DECLSPEC const char *SDLCALL SDL_SensorGetName(SDL_Sensor *sensor);
 extern DECLSPEC SDL_SensorType SDLCALL SDL_SensorGetType(SDL_Sensor *sensor);
 
 /**
- * Get the platform dependent type of a sensor.
+ * get the platform dependent type of a sensor.
  *
  * \param sensor The SDL_Sensor object to inspect
  * \returns the sensor platform dependent type, or -1 if `sensor` is NULL.
@@ -220,7 +220,7 @@ extern DECLSPEC SDL_SensorType SDLCALL SDL_SensorGetType(SDL_Sensor *sensor);
 extern DECLSPEC int SDLCALL SDL_SensorGetNonPortableType(SDL_Sensor *sensor);
 
 /**
- * Get the instance ID of a sensor.
+ * get the instance ID of a sensor.
  *
  * \param sensor The SDL_Sensor object to inspect
  * \returns the sensor instance ID, or -1 if `sensor` is NULL.
@@ -228,7 +228,7 @@ extern DECLSPEC int SDLCALL SDL_SensorGetNonPortableType(SDL_Sensor *sensor);
 extern DECLSPEC SDL_SensorID SDLCALL SDL_SensorGetInstanceID(SDL_Sensor *sensor);
 
 /**
- * Get the current state of an opened sensor.
+ * get the current state of an opened sensor.
  *
  * The number of values and interpretation of the data is sensor dependent.
  *
@@ -247,7 +247,7 @@ extern DECLSPEC int SDLCALL SDL_SensorGetData(SDL_Sensor * sensor, float *data, 
 extern DECLSPEC void SDLCALL SDL_SensorClose(SDL_Sensor * sensor);
 
 /**
- * Update the current state of the open sensors.
+ * update the current state of the open sensors.
  *
  * This is called automatically by the event loop if sensor events are
  * enabled.

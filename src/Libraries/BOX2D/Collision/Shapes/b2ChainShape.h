@@ -64,7 +64,7 @@ public:
 	/// @see b2Shape::GetChildCount
 	int32 GetChildCount() const override;
 
-	/// Get a child edge.
+	/// get a child edge.
 	void GetChildEdge(b2EdgeShape* edge, int32 index) const;
 
 	/// This always return false.

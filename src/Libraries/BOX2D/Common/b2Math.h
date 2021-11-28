@@ -38,7 +38,7 @@ struct b2Vec2
 	/// Default constructor does nothing (for performance).
 	b2Vec2() {}
 
-	/// Construct using coordinates.
+	/// construct using coordinates.
 	b2Vec2(float32 xIn, float32 yIn) : x(xIn), y(yIn) {}
 
 	/// Set this vector to all zeros.
@@ -80,13 +80,13 @@ struct b2Vec2
 		x *= a; y *= a;
 	}
 
-	/// Get the length of this vector (the norm).
+	/// get the length of this vector (the norm).
 	float32 Length() const
 	{
 		return b2Sqrt(x * x + y * y);
 	}
 
-	/// Get the length squared. For performance, use this instead of
+	/// get the length squared. For performance, use this instead of
 	/// b2Vec2::Length (if possible).
 	float32 LengthSquared() const
 	{
@@ -114,7 +114,7 @@ struct b2Vec2
 		return b2IsValid(x) && b2IsValid(y);
 	}
 
-	/// Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
+	/// get the skew vector such that dot(skew_vec, other) == cross(vec, other)
 	b2Vec2 Skew() const
 	{
 		return b2Vec2(-y, x);
@@ -129,7 +129,7 @@ struct b2Vec3
 	/// Default constructor does nothing (for performance).
 	b2Vec3() {}
 
-	/// Construct using coordinates.
+	/// construct using coordinates.
 	b2Vec3(float32 xIn, float32 yIn, float32 zIn) : x(xIn), y(yIn), z(zIn) {}
 
 	/// Set this vector to all zeros.
@@ -168,14 +168,14 @@ struct b2Mat22
 	/// The default constructor does nothing (for performance).
 	b2Mat22() {}
 
-	/// Construct this matrix using columns.
+	/// construct this matrix using columns.
 	b2Mat22(const b2Vec2& c1, const b2Vec2& c2)
 	{
 		ex = c1;
 		ey = c2;
 	}
 
-	/// Construct this matrix using scalars.
+	/// construct this matrix using scalars.
 	b2Mat22(float32 a11, float32 a12, float32 a21, float32 a22)
 	{
 		ex.x = a11; ex.y = a21;
@@ -242,7 +242,7 @@ struct b2Mat33
 	/// The default constructor does nothing (for performance).
 	b2Mat33() {}
 
-	/// Construct this matrix using columns.
+	/// construct this matrix using columns.
 	b2Mat33(const b2Vec3& c1, const b2Vec3& c2, const b2Vec3& c3)
 	{
 		ex = c1;
@@ -267,11 +267,11 @@ struct b2Mat33
 	/// 2-by-2 matrix equation.
 	b2Vec2 Solve22(const b2Vec2& b) const;
 
-	/// Get the inverse of this matrix as a 2-by-2.
+	/// get the inverse of this matrix as a 2-by-2.
 	/// Returns the zero matrix if singular.
 	void GetInverse22(b2Mat33* M) const;
 
-	/// Get the symmetric inverse of this matrix as a 3-by-3.
+	/// get the symmetric inverse of this matrix as a 3-by-3.
 	/// Returns the zero matrix if singular.
 	void GetSymInverse33(b2Mat33* M) const;
 
@@ -306,19 +306,19 @@ struct b2Rot
 		c = 1.0f;
 	}
 
-	/// Get the angle in radians
+	/// get the angle in radians
 	float32 GetAngle() const
 	{
 		return b2Atan2(s, c);
 	}
 
-	/// Get the x-axis
+	/// get the x-axis
 	b2Vec2 GetXAxis() const
 	{
 		return b2Vec2(c, s);
 	}
 
-	/// Get the u-axis
+	/// get the u-axis
 	b2Vec2 GetYAxis() const
 	{
 		return b2Vec2(-s, c);
@@ -362,7 +362,7 @@ struct b2Transform
 /// we must interpolate the center of mass position.
 struct b2Sweep
 {
-	/// Get the interpolated transform at a specific time.
+	/// get the interpolated transform at a specific time.
 	/// @param beta is a factor in [0,1], where 0 indicates alpha0.
 	void GetTransform(b2Transform* xfb, float32 beta) const;
 

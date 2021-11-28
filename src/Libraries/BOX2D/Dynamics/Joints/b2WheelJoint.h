@@ -93,16 +93,16 @@ public:
 	/// The local joint axis relative to bodyA.
 	const b2Vec2& GetLocalAxisA() const { return m_localXAxisA; }
 
-	/// Get the current joint translation, usually in meters.
+	/// get the current joint translation, usually in meters.
 	float32 GetJointTranslation() const;
 
-	/// Get the current joint linear speed, usually in meters per second.
+	/// get the current joint linear speed, usually in meters per second.
 	float32 GetJointLinearSpeed() const;
 
-	/// Get the current joint angle in radians.
+	/// get the current joint angle in radians.
 	float32 GetJointAngle() const;
 
-	/// Get the current joint angular speed in radians per second.
+	/// get the current joint angular speed in radians per second.
 	float32 GetJointAngularSpeed() const;
 
 	/// Is the joint motor enabled?
@@ -114,21 +114,21 @@ public:
 	/// Set the motor speed, usually in radians per second.
 	void SetMotorSpeed(float32 speed);
 
-	/// Get the motor speed, usually in radians per second.
+	/// get the motor speed, usually in radians per second.
 	float32 GetMotorSpeed() const;
 
-	/// Set/Get the maximum motor force, usually in N-m.
+	/// Set/get the maximum motor force, usually in N-m.
 	void SetMaxMotorTorque(float32 torque);
 	float32 GetMaxMotorTorque() const;
 
-	/// Get the current motor torque given the inverse time step, usually in N-m.
+	/// get the current motor torque given the inverse time step, usually in N-m.
 	float32 GetMotorTorque(float32 inv_dt) const;
 
-	/// Set/Get the spring frequency in hertz. Setting the frequency to zero disables the spring.
+	/// Set/get the spring frequency in hertz. Setting the frequency to zero disables the spring.
 	void SetSpringFrequencyHz(float32 hz);
 	float32 GetSpringFrequencyHz() const;
 
-	/// Set/Get the spring damping ratio
+	/// Set/get the spring damping ratio
 	void SetSpringDampingRatio(float32 ratio);
 	float32 GetSpringDampingRatio() const;
 

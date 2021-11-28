@@ -1,26 +1,26 @@
 #include "PauseScript.hpp"
 #include "../../../../Keys.hpp"
 
-PauseScript::PauseScript(bool active): Script(active) { }
+PauseScript::PauseScript(AudioSource& pauseSound, bool active): Script(active), _pauseSound{pauseSound} { }
 
-void PauseScript::OnStart() {
+void PauseScript::onStart() {
     _globals.sceneStore(Keys::PAUSE, Keys::FALSE);
 }
 
-void PauseScript::OnUpdate(double deltaTime) {
+void PauseScript::onUpdate(double deltaTime) {
     // 1 key pauses
-    if (_input.GetKeyDown(KeyCode::NUMBER_1)) {
+    if (_input.getKeyDown(KeyCode::NUMBER_1)) {
         pauseLogic();
-        if (_isPaused) Debug::GetInstance().log("Game paused");
-        else              Debug::GetInstance().log("Game unpaused");
+        if (_isPaused) Debug::getInstance().log("Game paused");
+        else Debug::getInstance().log("Game unpaused");
     }
 }
 
-void PauseScript::OnExternalEvent() {
+void PauseScript::onExternalEvent() {
     pauseLogic();
 }
 
-void PauseScript::OnDestroy() {
+void PauseScript::onDestroy() {
     _globals.sceneStore(Keys::PAUSE, Keys::FALSE);
 }
 
@@ -28,4 +28,5 @@ void PauseScript::pauseLogic() {
     if(_isPaused) _globals.sceneStore(Keys::PAUSE, Keys::FALSE);
     else          _globals.sceneStore(Keys::PAUSE, Keys::TRUE);
     _isPaused = !_isPaused;
+    _pauseSound.queueForPlay = true;
 }

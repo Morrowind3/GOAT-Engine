@@ -3,30 +3,25 @@
 
 #include "Box2D.h"
 #include "../../../API/GameObjects/GameObject.hpp"
-#include "Managers/Collision/CollisionManager.hpp"
+#include "Managers/Physics/ContactListener.hpp"
 #include <memory>
 #include <iostream>
 
 namespace Engine {
     class PhysicsImpl {
-    public:
-        PhysicsImpl();
+        public:
+            PhysicsImpl();
+            void createBody(const GameObject& gameObject);
+            void performPhysicsCalculationsForFrame();
+            void updateGameObjectStateFromPhysicsTick(GameObject& gameObject);
+            void runCollisionScripts();
+            void resetForNextScene();
 
-        void CreateBody(std::shared_ptr<GameObject> gameObjectPointer);
-
-        void DestroyWorld();
-
-        void DestroyBody(b2Body *body);
-
-        void Update(std::shared_ptr<GameObject> gameObjectPointer);
-
-        void Step();
-    private:
-        void AttachBoxCollider(b2Body *rigidBody, double width, double height, double density);
-        void AttachCircleCollider(b2Body *rigidBody, double radius, double density);
-
-        b2World _world;
-        std::unique_ptr<CollisionManager> _collision;
+        private:
+            void attachBoxCollider(b2Body *rigidBody, double width, double height, double density);
+            void attachCircleCollider(b2Body *rigidBody, double radius, double density);
+            std::unique_ptr<b2World> _world;
+            std::unique_ptr<ContactListener> _contactListener;
     };
 }
 

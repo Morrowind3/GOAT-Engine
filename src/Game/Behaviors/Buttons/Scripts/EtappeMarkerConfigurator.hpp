@@ -8,11 +8,11 @@
 class EtappeMarkerConfigurator : public Script {
     public:
         EtappeMarkerConfigurator(EtappeMarker& etappeMarker, int levelNumber, bool active);
-        void OnStart();
+        void onStart();
     private:
         // Globals
-        Globals& _globals = Globals::GetInstance();
-        Debug& _debug = Debug::GetInstance();
+        Globals& _globals = Globals::getInstance();
+        Debug& _debug = Debug::getInstance();
         // Variables
         EtappeMarker& _etappeMarker;
         int _levelNumber;

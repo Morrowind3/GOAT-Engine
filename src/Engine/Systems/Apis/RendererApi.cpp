@@ -2,30 +2,36 @@
 
 using namespace Engine;
 
-void RendererApi::RendererApi::LoadTexture(const std::string& fileName) {
-    renderer.LoadTexture(fileName);
+void RendererApi::RendererApi::loadTexture(const std::string& fileName) {
+    renderer.loadTexture(fileName);
 }
 
-void RendererApi::RendererApi::LoadFont(const std::string& fileName) {
-    renderer.LoadFont(fileName);
+void RendererApi::RendererApi::loadFont(const std::string& fileName) {
+    renderer.loadFont(fileName);
 }
 
-void RendererApi::RendererApi::BeginRenderTick() {
-    renderer.BeginRenderTick();
+void RendererApi::RendererApi::beginRenderTick() {
+    renderer.beginRenderTick();
 }
 
-void RendererApi::RendererApi::DrawTexture(const std::string& texture, const std::shared_ptr<Transform>& location) {
-    renderer.DrawTexture(texture, location);
+void RendererApi::RendererApi::drawTexture(const std::string& texture, const std::shared_ptr<Transform>& location) {
+    renderer.drawTexture(texture, location);
 }
 
-void RendererApi::RendererApi::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
-    renderer.DrawText(text,size,color,fontName,transform);
+void RendererApi::RendererApi::drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
+    renderer.drawText(text, size, color, fontName, transform);
 }
 
-void RendererApi::RendererApi::EndRenderTick() {
-    renderer.EndRenderTick();
+void RendererApi::RendererApi::endRenderTick() {
+    renderer.endRenderTick();
 }
 
-void RendererApi::RendererApi::End() {
-    renderer.End();
+void RendererApi::resetForNextScene() {
+    renderer.resetForNextScene();
 }
+
+void RendererApi::RendererApi::end() {
+    renderer.end();
+}
+
+

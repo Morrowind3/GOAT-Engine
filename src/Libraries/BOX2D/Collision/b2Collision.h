@@ -164,19 +164,19 @@ struct b2AABB
 	/// Verify that the bounds are sorted.
 	bool IsValid() const;
 
-	/// Get the center of the AABB.
+	/// get the center of the AABB.
 	b2Vec2 GetCenter() const
 	{
 		return 0.5f * (lowerBound + upperBound);
 	}
 
-	/// Get the extents of the AABB (half-widths).
+	/// get the extents of the AABB (half-widths).
 	b2Vec2 GetExtents() const
 	{
 		return 0.5f * (upperBound - lowerBound);
 	}
 
-	/// Get the perimeter length
+	/// get the perimeter length
 	float32 GetPerimeter() const
 	{
 		float32 wx = upperBound.x - lowerBound.x;

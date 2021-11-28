@@ -124,7 +124,7 @@ struct b2BodyDef
 	float32 gravityScale;
 };
 
-/// A rigid body. These are created via b2World::CreateBody.
+/// A rigid body. These are created via b2World::createBody.
 class b2Body
 {
 public:
@@ -162,29 +162,29 @@ public:
 	/// @param angle the world rotation in radians.
 	void SetTransform(const b2Vec2& position, float32 angle);
 
-	/// Get the body transform for the body's origin.
+	/// get the body transform for the body's origin.
 	/// @return the world transform of the body's origin.
 	const b2Transform& GetTransform() const;
 
-	/// Get the world body origin position.
+	/// get the world body origin position.
 	/// @return the world position of the body's origin.
 	const b2Vec2& GetPosition() const;
 
-	/// Get the angle in radians.
+	/// get the angle in radians.
 	/// @return the current world rotation angle in radians.
 	float32 GetAngle() const;
 
-	/// Get the world position of the center of mass.
+	/// get the world position of the center of mass.
 	const b2Vec2& GetWorldCenter() const;
 
-	/// Get the local position of the center of mass.
+	/// get the local position of the center of mass.
 	const b2Vec2& GetLocalCenter() const;
 
 	/// Set the linear velocity of the center of mass.
 	/// @param v the new linear velocity of the center of mass.
 	void SetLinearVelocity(const b2Vec2& v);
 
-	/// Get the linear velocity of the center of mass.
+	/// get the linear velocity of the center of mass.
 	/// @return the linear velocity of the center of mass.
 	const b2Vec2& GetLinearVelocity() const;
 
@@ -192,7 +192,7 @@ public:
 	/// @param omega the new angular velocity in radians/second.
 	void SetAngularVelocity(float32 omega);
 
-	/// Get the angular velocity.
+	/// get the angular velocity.
 	/// @return the angular velocity in radians/second.
 	float32 GetAngularVelocity() const;
 
@@ -233,15 +233,15 @@ public:
 	/// @param wake also wake up the body
 	void ApplyAngularImpulse(float32 impulse, bool wake);
 
-	/// Get the total mass of the body.
+	/// get the total mass of the body.
 	/// @return the mass, usually in kilograms (kg).
 	float32 GetMass() const;
 
-	/// Get the rotational inertia of the body about the local origin.
+	/// get the rotational inertia of the body about the local origin.
 	/// @return the rotational inertia, usually in kg-m^2.
 	float32 GetInertia() const;
 
-	/// Get the mass data of the body.
+	/// get the mass data of the body.
 	/// @return a struct containing the mass, inertia and center of the body.
 	void GetMassData(b2MassData* data) const;
 
@@ -257,12 +257,12 @@ public:
 	/// the mass and you later want to reset the mass.
 	void ResetMassData();
 
-	/// Get the world coordinates of a point given the local coordinates.
+	/// get the world coordinates of a point given the local coordinates.
 	/// @param localPoint a point on the body measured relative the the body's origin.
 	/// @return the same point expressed in world coordinates.
 	b2Vec2 GetWorldPoint(const b2Vec2& localPoint) const;
 
-	/// Get the world coordinates of a vector given the local coordinates.
+	/// get the world coordinates of a vector given the local coordinates.
 	/// @param localVector a vector fixed in the body.
 	/// @return the same vector expressed in world coordinates.
 	b2Vec2 GetWorldVector(const b2Vec2& localVector) const;
@@ -277,29 +277,29 @@ public:
 	/// @return the corresponding local vector.
 	b2Vec2 GetLocalVector(const b2Vec2& worldVector) const;
 
-	/// Get the world linear velocity of a world point attached to this body.
+	/// get the world linear velocity of a world point attached to this body.
 	/// @param a point in world coordinates.
 	/// @return the world velocity of a point.
 	b2Vec2 GetLinearVelocityFromWorldPoint(const b2Vec2& worldPoint) const;
 
-	/// Get the world velocity of a local point.
+	/// get the world velocity of a local point.
 	/// @param a point in local coordinates.
 	/// @return the world velocity of a point.
 	b2Vec2 GetLinearVelocityFromLocalPoint(const b2Vec2& localPoint) const;
 
-	/// Get the linear damping of the body.
+	/// get the linear damping of the body.
 	float32 GetLinearDamping() const;
 
 	/// Set the linear damping of the body.
 	void SetLinearDamping(float32 linearDamping);
 
-	/// Get the angular damping of the body.
+	/// get the angular damping of the body.
 	float32 GetAngularDamping() const;
 
 	/// Set the angular damping of the body.
 	void SetAngularDamping(float32 angularDamping);
 
-	/// Get the gravity scale of the body.
+	/// get the gravity scale of the body.
 	float32 GetGravityScale() const;
 
 	/// Set the gravity scale of the body.
@@ -308,7 +308,7 @@ public:
 	/// Set the type of this body. This may alter the mass and velocity.
 	void SetType(b2BodyType type);
 
-	/// Get the type of this body.
+	/// get the type of this body.
 	b2BodyType GetType() const;
 
 	/// Should this body be treated like a bullet for continuous collision detection?
@@ -329,7 +329,7 @@ public:
 	/// @param flag set to true to wake the body, false to put it to sleep.
 	void SetAwake(bool flag);
 
-	/// Get the sleeping state of this body.
+	/// get the sleeping state of this body.
 	/// @return true if the body is awake.
 	bool IsAwake() const;
 
@@ -348,7 +348,7 @@ public:
 	/// in the body list.
 	void SetActive(bool flag);
 
-	/// Get the active state of the body.
+	/// get the active state of the body.
 	bool IsActive() const;
 
 	/// Set this body to have fixed rotation. This causes the mass
@@ -358,31 +358,31 @@ public:
 	/// Does this body have fixed rotation?
 	bool IsFixedRotation() const;
 
-	/// Get the list of all fixtures attached to this body.
+	/// get the list of all fixtures attached to this body.
 	b2Fixture* GetFixtureList();
 	const b2Fixture* GetFixtureList() const;
 
-	/// Get the list of all joints attached to this body.
+	/// get the list of all joints attached to this body.
 	b2JointEdge* GetJointList();
 	const b2JointEdge* GetJointList() const;
 
-	/// Get the list of all contacts attached to this body.
+	/// get the list of all contacts attached to this body.
 	/// @warning this list changes during the time step and you may
 	/// miss some collisions if you don't use b2ContactListener.
 	b2ContactEdge* GetContactList();
 	const b2ContactEdge* GetContactList() const;
 
-	/// Get the next body in the world's body list.
+	/// get the next body in the world's body list.
 	b2Body* GetNext();
 	const b2Body* GetNext() const;
 
-	/// Get the user data pointer that was provided in the body definition.
+	/// get the user data pointer that was provided in the body definition.
 	void* GetUserData() const;
 
 	/// Set the user data. Use this to store your application specific data.
 	void SetUserData(void* data);
 
-	/// Get the parent world of this body.
+	/// get the parent world of this body.
 	b2World* GetWorld();
 	const b2World* GetWorld() const;
 

@@ -1315,7 +1315,7 @@ class ordered_hash : private Hash, private KeyEqual {
   }
 
   /**
-   * Insert the element at the end.
+   * insert the element at the end.
    */
   template <class K, class... Args>
   std::pair<iterator, bool> insert_impl(const K& key,
@@ -1357,7 +1357,7 @@ class ordered_hash : private Hash, private KeyEqual {
   }
 
   /**
-   * Insert the element before insert_position.
+   * insert the element before insert_position.
    */
   template <class K, class... Args>
   std::pair<iterator, bool> insert_at_position_impl(

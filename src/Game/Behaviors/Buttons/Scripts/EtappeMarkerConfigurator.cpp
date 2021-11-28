@@ -5,7 +5,7 @@ EtappeMarkerConfigurator::EtappeMarkerConfigurator(EtappeMarker& etappeMarker, i
         Script(active), _etappeMarker{etappeMarker}, _levelNumber{levelNumber} {
 }
 
-void EtappeMarkerConfigurator::OnStart() {
+void EtappeMarkerConfigurator::onStart() {
     if (_globals.gameExists(Keys::ETAPPE_SELECT)) {
         int currentUnlockedLevel = std::stoi(_globals.gameGet(Keys::ETAPPE_SELECT));
         // Current level is unlocked

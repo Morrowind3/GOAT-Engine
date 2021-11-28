@@ -4,75 +4,75 @@
 
 using namespace Engine;
 
-void Input::Update() {
-    _registry.FlushForNextFrame();
+void Input::update() {
+    _registry.flushForNextFrame();
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) { QueueQuitEvent(); return; }
-        if (event.type == SDL_KEYDOWN) _registry.StoreKeyDown(static_cast<KeyCode>(event.key.keysym.sym));
-        if (event.type == SDL_KEYUP) _registry.StoreKeyUp(static_cast<KeyCode>(event.key.keysym.sym));
-        if (event.type == SDL_MOUSEBUTTONDOWN) _registry.StoreMouseDown(static_cast<MouseButton>(event.button.button));
-        if (event.type == SDL_MOUSEBUTTONUP) _registry.StoreMouseUp(static_cast<MouseButton>(event.button.button));
+        if (event.type == SDL_QUIT) { queueQuitEvent(); return; }
+        if (event.type == SDL_KEYDOWN) _registry.storeKeyDown(static_cast<KeyCode>(event.key.keysym.sym));
+        if (event.type == SDL_KEYUP) _registry.storeKeyUp(static_cast<KeyCode>(event.key.keysym.sym));
+        if (event.type == SDL_MOUSEBUTTONDOWN) _registry.storeMouseDown(static_cast<MouseButton>(event.button.button));
+        if (event.type == SDL_MOUSEBUTTONUP) _registry.storeMouseUp(static_cast<MouseButton>(event.button.button));
     }
     SDL_GetMouseState(&_mousePositionX, &_mousePositionY);
 }
 
-bool Input::AnyKey() const {
-    return _registry.AnyKeyRegistered();
+bool Input::anyKey() const {
+    return _registry.anyKeyRegistered();
 }
 
-bool Input::AnyKeyUp() const {
-    return _registry.AnyKeyInState(PressState::RELEASED);
+bool Input::anyKeyUp() const {
+    return _registry.anyKeyInState(PressState::RELEASED);
 }
 
-bool Input::AnyKeyDown() const {
-    return _registry.AnyKeyInState(PressState::PRESSED);
+bool Input::anyKeyDown() const {
+    return _registry.anyKeyInState(PressState::PRESSED);
 }
 
-bool Input::GetKey(KeyCode code) const {
-    return _registry.KeyStatus(code) != PressState::UNDETECTED;
+bool Input::getKey(KeyCode code) const {
+    return _registry.keyStatus(code) != PressState::UNDETECTED;
 }
 
-bool Input::GetKeyUp(KeyCode code) const {
-    return _registry.KeyStatus(code) == PressState::RELEASED;
+bool Input::getKeyUp(KeyCode code) const {
+    return _registry.keyStatus(code) == PressState::RELEASED;
 }
 
-bool Input::GetKeyDown(KeyCode code) const {
-    return _registry.KeyStatus(code) == PressState::PRESSED;
+bool Input::getKeyDown(KeyCode code) const {
+    return _registry.keyStatus(code) == PressState::PRESSED;
 }
 
-Point Input::MousePosition() const {
+Point Input::mousePosition() const {
     return {_mousePositionX, _mousePositionY};
 }
 
-bool Input::AnyMouse() const {
-    return _registry.AnyMouseRegistered();
+bool Input::anyMouse() const {
+    return _registry.anyMouseRegistered();
 }
 
-bool Input::AnyMouseUp() const {
-    return _registry.AnyMouseInState(PressState::RELEASED);
+bool Input::anyMouseUp() const {
+    return _registry.anyMouseInState(PressState::RELEASED);
 }
 
-bool Input::AnyMouseDown() const {
-    return _registry.AnyMouseInState(PressState::PRESSED);
+bool Input::anyMouseDown() const {
+    return _registry.anyMouseInState(PressState::PRESSED);
 }
 
-bool Input::GetMouse(MouseButton button) const {
-    return _registry.MouseStatus(button) != PressState::UNDETECTED;
+bool Input::getMouse(MouseButton button) const {
+    return _registry.mouseStatus(button) != PressState::UNDETECTED;
 }
 
-bool Input::GetMouseUp(MouseButton button) const {
-    return _registry.MouseStatus(button) == PressState::RELEASED;
+bool Input::getMouseUp(MouseButton button) const {
+    return _registry.mouseStatus(button) == PressState::RELEASED;
 }
 
-bool Input::GetMouseDown(MouseButton button) const {
-    return _registry.MouseStatus(button) == PressState::PRESSED;
+bool Input::getMouseDown(MouseButton button) const {
+    return _registry.mouseStatus(button) == PressState::PRESSED;
 }
 
-bool Input::QuitEvent() const {
+bool Input::quitEvent() const {
     return _quitEvent;
 }
 
-void Input::QueueQuitEvent() {
+void Input::queueQuitEvent() {
     _quitEvent = true;
 }

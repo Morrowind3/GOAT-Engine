@@ -10,11 +10,11 @@ using namespace Engine;
 class FpsScript : public Script {
     public:
         FpsScript(Text& fpsText, bool active);
-        void OnUpdate(double deltaTime);
+        void onUpdate(double deltaTime);
     private:
         // Globals
-        Input& _input = Input::GetInstance();
-        Debug& _debug = Debug::GetInstance();
+        Input& _input = Input::getInstance();
+        Debug& _debug = Debug::getInstance();
         // Variables
         Text& _text;
 };

@@ -4,29 +4,29 @@
 #include <memory>
 #include "Implementations/DataImpl.hpp"
 
-namespace Engine{
+namespace Engine {
 
-class DataApi {
-public:
-    DataApi(DataApi const&) = delete;
-    void operator=(DataApi const&) = delete;
-    static DataApi& getInstance()
-    {
-        static DataApi instance;
-        return instance;
-    }
-    void Insert(DataModel model);
-    void Update(DataModel model);
-    DataModel Get(const std::string& table,const std::string& whereKey, const std::string& isValue);
-    std::vector<DataModel> GetAll(std::string table, std::string orderBy = "", bool descending = false);
-    void Delete(DataModel model);
-    void RunMigrations(std::vector<std::basic_string<char>> migrationQueries);
-    bool DatabaseExists();
+    class DataApi {
+        public:
+            DataApi(DataApi const&) = delete;
+            void operator=(DataApi const&) = delete;
+            static DataApi& getInstance()
+            {
+                static DataApi instance;
+                return instance;
+            }
+            void insert(DataModel model);
+            void update(DataModel model);
+            DataModel get(const std::string& table, const std::string& whereKey, const std::string& isValue);
+            std::vector<DataModel> getAll(std::string table, std::string orderBy = "", bool descending = false);
+            void remove(DataModel model);
+            void runMigrations(std::vector<std::basic_string<char>> migrationQueries);
+            bool databaseExists();
 
-private:
-    DataApi();
-    std::unique_ptr<DataImpl> impl;
-};
+        private:
+            DataApi();
+            std::unique_ptr<DataImpl> impl;
+    };
 };
 
 #endif //GOAT_ENGINE_DATAAPI_HPP

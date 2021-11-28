@@ -5,7 +5,7 @@ using namespace Engine;
 
 // All keys that were pressed last frame are now in a held state
 // All keys that were released last frame are now in an undetected state
-void InputRegistry::FlushForNextFrame() {
+void InputRegistry::flushForNextFrame() {
     for (auto& key : _keyStates) {
         if (key.second == PressState::PRESSED) key.second = PressState::HELD;
         if (key.second == PressState::RELEASED) key.second = PressState::UNDETECTED;
@@ -16,49 +16,49 @@ void InputRegistry::FlushForNextFrame() {
     }
 }
 
-void InputRegistry::StoreKeyDown(KeyCode key) {
+void InputRegistry::storeKeyDown(KeyCode key) {
     // Key down event gets sent multiple times when key is held, which is useful in a text editor but not in a game
-    if (KeyStatus(key) != PressState::HELD) _keyStates[key] = PressState::PRESSED;
+    if (keyStatus(key) != PressState::HELD) _keyStates[key] = PressState::PRESSED;
 }
 
-void InputRegistry::StoreKeyUp(KeyCode key) {
+void InputRegistry::storeKeyUp(KeyCode key) {
     _keyStates[key] = PressState::RELEASED;
 }
 
-bool InputRegistry::AnyKeyRegistered() const {
+bool InputRegistry::anyKeyRegistered() const {
     return std::find_if(_keyStates.begin(),_keyStates.end(),
                         [](const auto& key){return key.second != PressState::UNDETECTED;}) == _keyStates.end();
 }
 
-bool InputRegistry::AnyKeyInState(PressState state) const {
+bool InputRegistry::anyKeyInState(PressState state) const {
     return std::find_if(_keyStates.begin(),_keyStates.end(),
                         [state](const auto& key){return key.second == state;}) != _keyStates.end();
 }
 
-PressState InputRegistry::KeyStatus(KeyCode key) const {
+PressState InputRegistry::keyStatus(KeyCode key) const {
     auto keyIterator = _keyStates.find(key);
     return keyIterator != _keyStates.end() ? keyIterator->second : PressState::UNDETECTED;
 }
 
-void InputRegistry::StoreMouseDown(MouseButton button) {
+void InputRegistry::storeMouseDown(MouseButton button) {
     _mouseStates[button] = PressState::PRESSED;
 }
 
-void InputRegistry::StoreMouseUp(MouseButton button) {
+void InputRegistry::storeMouseUp(MouseButton button) {
     _mouseStates[button] = PressState::RELEASED;
 }
 
-bool InputRegistry::AnyMouseRegistered() const {
+bool InputRegistry::anyMouseRegistered() const {
     return std::find_if(_mouseStates.begin(),_mouseStates.end(),
                         [](const auto& button){return button.second != PressState::UNDETECTED;}) == _mouseStates.end();
 }
 
-bool InputRegistry::AnyMouseInState(PressState state) const {
+bool InputRegistry::anyMouseInState(PressState state) const {
     return std::find_if(_mouseStates.begin(),_mouseStates.end(),
                         [state](const auto& button){return button.second == state;}) != _mouseStates.end();
 }
 
-PressState InputRegistry::MouseStatus(MouseButton button) const {
+PressState InputRegistry::mouseStatus(MouseButton button) const {
     auto mouseIterator = _mouseStates.find(button);
     return mouseIterator != _mouseStates.end() ? mouseIterator->second : PressState::UNDETECTED;
 }

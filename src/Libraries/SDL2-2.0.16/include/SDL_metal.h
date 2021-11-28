@@ -74,14 +74,14 @@ extern DECLSPEC SDL_MetalView SDLCALL SDL_Metal_CreateView(SDL_Window * window);
 extern DECLSPEC void SDLCALL SDL_Metal_DestroyView(SDL_MetalView view);
 
 /**
- * Get a pointer to the backing CAMetalLayer for the given view.
+ * get a pointer to the backing CAMetalLayer for the given view.
  *
  * \sa SDL_MetalCreateView
  */
 extern DECLSPEC void *SDLCALL SDL_Metal_GetLayer(SDL_MetalView view);
 
 /**
- * Get the size of a window's underlying drawable in pixels (for use with
+ * get the size of a window's underlying drawable in pixels (for use with
  * setting viewport, scissor & etc).
  *
  * \param window SDL_Window from which the drawable size should be queried

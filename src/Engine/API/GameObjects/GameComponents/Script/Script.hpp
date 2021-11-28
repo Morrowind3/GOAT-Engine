@@ -5,13 +5,17 @@
 #include <string>
 
 namespace Engine {
+    class GameObject;
     struct Script : public GameComponent {
         explicit Script(bool active);
-        virtual void OnStart();
-        virtual void OnUpdate(double deltaTime);
-        virtual void OnExternalEvent();
-        virtual void OnDestroy();
-        // TODO: Collisions
+        virtual void onStart();
+        virtual void onUpdate(double deltaTime);
+        virtual void onExternalEvent();
+        virtual void onDestroy();
+        // Collisions
+        virtual void onTriggerEnter2D(GameObject& other);
+        virtual void onTriggerStay2D(GameObject& other);
+        virtual void onTriggerExit2D(GameObject& other);
     };
 }
 

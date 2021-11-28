@@ -126,7 +126,7 @@ extern "C" {
 #define SDL_CACHELINE_SIZE  128
 
 /**
- * Get the number of CPU cores available.
+ * get the number of CPU cores available.
  *
  * \returns the total number of logical CPU cores. On CPUs that include
  *          technologies such as hyperthreading, the number of logical cores
@@ -407,7 +407,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_HasARMSIMD(void);
 extern DECLSPEC SDL_bool SDLCALL SDL_HasNEON(void);
 
 /**
- * Get the amount of RAM configured in the system.
+ * get the amount of RAM configured in the system.
  *
  * \returns the amount of RAM configured in the system in MB.
  *

@@ -83,7 +83,7 @@ So now:
   but it'll also just work in the default case.
 - Developers can ship the same package to everyone (Humble Bundle, GOG, etc), 
   and it'll do the right thing.
-- End users (and Valve) can update a game's SDL in almost any case, 
+- end users (and Valve) can update a game's SDL in almost any case, 
   to keep abandoned games running on newer platforms.
 - Everyone develops with SDL exactly as they have been doing all along. 
   Same headers, same ABI. Just get the latest version to enable this magic.

@@ -74,7 +74,7 @@ public:
 	/// The local anchor point relative to bodyB's origin.
 	const b2Vec2& GetLocalAnchorB() const  { return m_localAnchorB; }
 
-	/// Get the reference angle.
+	/// get the reference angle.
 	float32 GetReferenceAngle() const { return m_referenceAngle; }
 
 	/// Set/get frequency in Hz.

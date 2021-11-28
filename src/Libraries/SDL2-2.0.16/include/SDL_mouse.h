@@ -72,7 +72,7 @@ typedef enum
 /* Function prototypes */
 
 /**
- * Get the window which currently has mouse focus.
+ * get the window which currently has mouse focus.
  *
  * \returns the window with mouse focus.
  */
@@ -100,7 +100,7 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_GetMouseFocus(void);
 extern DECLSPEC Uint32 SDLCALL SDL_GetMouseState(int *x, int *y);
 
 /**
- * Get the current state of the mouse in relation to the desktop.
+ * get the current state of the mouse in relation to the desktop.
  *
  * This works similarly to SDL_GetMouseState(), but the coordinates will be
  * reported relative to the top-left of the desktop. This can be useful if you
@@ -346,7 +346,7 @@ extern DECLSPEC SDL_Cursor *SDLCALL SDL_CreateSystemCursor(SDL_SystemCursor id);
 extern DECLSPEC void SDLCALL SDL_SetCursor(SDL_Cursor * cursor);
 
 /**
- * Get the active cursor.
+ * get the active cursor.
  *
  * This function returns a pointer to the current cursor which is owned by the
  * library. It is not necessary to free the cursor with SDL_FreeCursor().
@@ -358,7 +358,7 @@ extern DECLSPEC void SDLCALL SDL_SetCursor(SDL_Cursor * cursor);
 extern DECLSPEC SDL_Cursor *SDLCALL SDL_GetCursor(void);
 
 /**
- * Get the default cursor.
+ * get the default cursor.
  *
  * \returns the default cursor on success or NULL on failure.
  *

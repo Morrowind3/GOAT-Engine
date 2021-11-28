@@ -54,7 +54,7 @@ Here is a more manual method:
 2.  Build the SDL static library (libSDL2.a) for iOS and include them in your project.  Xcode will ignore the library that is not currently of the correct architecture, hence your app will work both on iOS and in the iOS Simulator.
 3.  Include the SDL header files in your project.
 4.  Remove the ApplicationDelegate.h and ApplicationDelegate.m files -- SDL for iOS provides its own UIApplicationDelegate.  Remove MainWindow.xib -- SDL for iOS produces its user interface programmatically.
-5.  Delete the contents of main.m and program your app as a regular SDL program instead.  You may replace main.m with your own main.c, but you must tell Xcode not to use the project prefix file, as it includes Objective-C code.
+5.  remove the contents of main.m and program your app as a regular SDL program instead.  You may replace main.m with your own main.c, but you must tell Xcode not to use the project prefix file, as it includes Objective-C code.
 
 
 Notes -- Retina / High-DPI and window sizes

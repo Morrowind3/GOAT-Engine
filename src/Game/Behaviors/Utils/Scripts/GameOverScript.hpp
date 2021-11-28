@@ -1,0 +1,16 @@
+#ifndef GOAT_ENGINE_GAMEOVERSCRIPT_HPP
+#define GOAT_ENGINE_GAMEOVERSCRIPT_HPP
+
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
+
+using namespace Engine;
+
+class GameOverScript : public Script{
+public:
+    explicit GameOverScript(bool active) : Script(active){ };
+    void onStart() override;
+
+};
+
+
+#endif //GOAT_ENGINE_GAMEOVERSCRIPT_HPP

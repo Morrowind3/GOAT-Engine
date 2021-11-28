@@ -1,0 +1,24 @@
+#ifndef GOAT_ENGINE_FLAGSCRIPT_HPP
+#define GOAT_ENGINE_FLAGSCRIPT_HPP
+
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
+#include "../../../GameObjects/WorldObjects/VictoryFlag.hpp"
+#include "../../../GameObjects/Characters/Player.hpp"
+
+using namespace Engine;
+
+class FlagScript : public Script {
+    public:
+    //    FlagScript(bool active, VictoryFlag& flag, Player& player);
+        FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player);
+        void onUpdate(double deltaTime) override;
+    private:
+        bool playerEntered();
+        void animateFlag();
+        VictoryFlag& _flag;
+        double animationTimer = 0;
+        const std::shared_ptr<Player>& _player;
+};
+
+
+#endif //GOAT_ENGINE_FLAGSCRIPT_HPP

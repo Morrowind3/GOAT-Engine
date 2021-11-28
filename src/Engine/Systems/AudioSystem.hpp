@@ -8,10 +8,10 @@ namespace Engine {
     class AudioSystem : public System {
         public:
             AudioSystem() = default;
-            void OnLaunchEngine() override;
-            void OnLoadScene(std::shared_ptr<Scene> scene) override;
-            void OnFrameTick(double deltaTime) override;
-            void OnCloseEngine() override;
+            void onLaunchEngine() override;
+            void onLoadScene(std::shared_ptr<Scene> scene) override;
+            void onFrameTick(double deltaTime) override;
+            void onCloseEngine() override;
         private:
             AudioApi* _api = nullptr;
     };

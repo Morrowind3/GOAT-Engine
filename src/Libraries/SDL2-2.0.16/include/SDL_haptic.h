@@ -32,7 +32,7 @@
  *    - SDL_HapticOpenFromJoystick() to open from an existing joystick.
  *   - Create an effect (::SDL_HapticEffect).
  *   - Upload the effect with SDL_HapticNewEffect().
- *   - Run the effect with SDL_HapticRunEffect().
+ *   - run the effect with SDL_HapticRunEffect().
  *   - (optional) Free the effect with SDL_HapticDestroyEffect().
  *   - Close the haptic device with SDL_HapticClose().
  *
@@ -833,7 +833,7 @@ typedef union SDL_HapticEffect
 extern DECLSPEC int SDLCALL SDL_NumHaptics(void);
 
 /**
- * Get the implementation dependent name of a haptic device.
+ * get the implementation dependent name of a haptic device.
  *
  * This can be called before any joysticks are opened. If no name can be
  * found, this function returns NULL.
@@ -890,7 +890,7 @@ extern DECLSPEC SDL_Haptic *SDLCALL SDL_HapticOpen(int device_index);
 extern DECLSPEC int SDLCALL SDL_HapticOpened(int device_index);
 
 /**
- * Get the index of a haptic device.
+ * get the index of a haptic device.
  *
  * \param haptic the SDL_Haptic device to query
  * \returns the index of the specified haptic device or a negative error code
@@ -975,7 +975,7 @@ extern DECLSPEC SDL_Haptic *SDLCALL SDL_HapticOpenFromJoystick(SDL_Joystick *
 extern DECLSPEC void SDLCALL SDL_HapticClose(SDL_Haptic * haptic);
 
 /**
- * Get the number of effects a haptic device can store.
+ * get the number of effects a haptic device can store.
  *
  * On some platforms this isn't fully supported, and therefore is an
  * approximation. Always check to see if your created effect was actually
@@ -993,7 +993,7 @@ extern DECLSPEC void SDLCALL SDL_HapticClose(SDL_Haptic * haptic);
 extern DECLSPEC int SDLCALL SDL_HapticNumEffects(SDL_Haptic * haptic);
 
 /**
- * Get the number of effects a haptic device can play at the same time.
+ * get the number of effects a haptic device can play at the same time.
  *
  * This is not supported on all platforms, but will always return a value.
  *
@@ -1010,7 +1010,7 @@ extern DECLSPEC int SDLCALL SDL_HapticNumEffects(SDL_Haptic * haptic);
 extern DECLSPEC int SDLCALL SDL_HapticNumEffectsPlaying(SDL_Haptic * haptic);
 
 /**
- * Get the haptic device's supported features in bitwise manner.
+ * get the haptic device's supported features in bitwise manner.
  *
  * \param haptic the SDL_Haptic device to query
  * \returns a list of supported haptic features in bitwise manner (OR'd), or 0
@@ -1025,7 +1025,7 @@ extern DECLSPEC unsigned int SDLCALL SDL_HapticQuery(SDL_Haptic * haptic);
 
 
 /**
- * Get the number of haptic axes the device has.
+ * get the number of haptic axes the device has.
  *
  * The number of haptic axes might be useful if working with the
  * SDL_HapticDirection effect.
@@ -1071,7 +1071,7 @@ extern DECLSPEC int SDLCALL SDL_HapticNewEffect(SDL_Haptic * haptic,
                                                 SDL_HapticEffect * effect);
 
 /**
- * Update the properties of an effect.
+ * update the properties of an effect.
  *
  * Can be used dynamically, although behavior when dynamically changing
  * direction may be strange. Specifically the effect may re-upload itself and
@@ -1096,7 +1096,7 @@ extern DECLSPEC int SDLCALL SDL_HapticUpdateEffect(SDL_Haptic * haptic,
                                                    SDL_HapticEffect * data);
 
 /**
- * Run the haptic effect on its associated haptic device.
+ * run the haptic effect on its associated haptic device.
  *
  * To repeat the effect over and over indefinitely, set `iterations` to
  * `SDL_HAPTIC_INFINITY`. (Repeats the envelope - attack and fade.) To make
@@ -1156,7 +1156,7 @@ extern DECLSPEC void SDLCALL SDL_HapticDestroyEffect(SDL_Haptic * haptic,
                                                      int effect);
 
 /**
- * Get the status of the current effect on the specified haptic device.
+ * get the status of the current effect on the specified haptic device.
  *
  * Device must support the SDL_HAPTIC_STATUS feature.
  *
@@ -1282,7 +1282,7 @@ extern DECLSPEC int SDLCALL SDL_HapticRumbleSupported(SDL_Haptic * haptic);
 extern DECLSPEC int SDLCALL SDL_HapticRumbleInit(SDL_Haptic * haptic);
 
 /**
- * Run a simple rumble effect on a haptic device.
+ * run a simple rumble effect on a haptic device.
  *
  * \param haptic the haptic device to play the rumble effect on
  * \param strength strength of the rumble to play as a 0-1 float value

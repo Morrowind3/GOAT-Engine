@@ -2,7 +2,8 @@
 
 using namespace Engine;
 
-FontManager::FontManager(SDL_Renderer* renderer) : _renderer{renderer}, _fonts(std::make_unique<std::map<std::string, Font>>()) {}
+FontManager::FontManager(SDL_Renderer* renderer) : _renderer{renderer} {
+}
 
 void FontManager::store(const std::string& fileName) {
     if (_fonts->find(fileName) == _fonts->end()) { // If not already stored
@@ -14,6 +15,15 @@ Font& FontManager::get(const std::string& fileName) const {
     return _fonts->at(fileName);
 }
 
-void FontManager::remove(const std::string& name) {
+[[maybe_unused]] void FontManager::remove(const std::string& name) {
     _fonts->erase(name);
+}
+
+void FontManager::resetForNextScene() {
+    for (auto& font: *_fonts) {
+        for (auto& texture: font.second._fontTextures) {
+            SDL_DestroyTexture(texture.second->texture());
+        }
+    }
+    _fonts = std::make_unique<std::map<std::string, Font>>();
 }

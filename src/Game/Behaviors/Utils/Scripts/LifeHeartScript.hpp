@@ -10,10 +10,10 @@ using namespace Engine;
 class LifeHeartScript : public Script {
     public:
         LifeHeartScript(int filledAtHp, LifeHeart& lifeHeart, bool active);
-        void OnUpdate(double deltaTime);
+        void onUpdate(double deltaTime);
     private:
         // Globals
-        Globals& _globals = Globals::GetInstance();
+        Globals& _globals = Globals::getInstance();
         // Variables
         LifeHeart& _lifeHeart;
         int _filledAtHp, _lastQueryValue = -1;

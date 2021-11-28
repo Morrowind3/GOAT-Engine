@@ -9,10 +9,10 @@ using namespace Engine;
 class LifeInitScript : public Script {
     public:
         LifeInitScript(int startHp, bool active);
-        void OnStart();
+        void onStart();
     private:
         // Globals
-        Globals& _globals = Globals::GetInstance();
+        Globals& _globals = Globals::getInstance();
         // Variables
         int _startHp;
 };

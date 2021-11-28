@@ -37,7 +37,7 @@ Requirements
     editions of Windows, however they will not be able to take advantage of
     8.1-specific features.
   - Visual C++ 2013 cannot create app projects that target Windows 8.0.
-    Visual C++ 2013 Update 4, can create app projects for Windows Phone 8.0,
+    Visual C++ 2013 update 4, can create app projects for Windows Phone 8.0,
     Windows Phone 8.1, and Windows 8.1, but not Windows 8.0.  An optional
     Visual Studio add-in, "Tools for Maintaining Store apps for Windows 8",
     allows Visual C++ 2013 to load and build Windows 8.0 projects that were

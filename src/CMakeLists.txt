@@ -55,8 +55,8 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Collision/RigidBody.cpp
         Engine/API/GameObjects/GameComponents/Collision/Collider.hpp
         Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
-        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
-        Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
+		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
+		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
@@ -67,8 +67,6 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/RendererApi.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.cpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
-        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.cpp
-        Engine/Systems/Apis/Implementations/Managers/Collision/CollisionManager.hpp
         Engine/Systems/ScriptSystem.cpp
         Engine/Systems/ScriptSystem.hpp
         Engine/Systems/CollisionSystem.cpp
@@ -130,7 +128,10 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Input/MouseButton.hpp
 		Engine/Utilities/Input/PressState.hpp
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
+        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+        Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.cpp Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.hpp
+		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
+		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -141,7 +142,9 @@ add_executable(Mount_Everestimate
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
 		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
+		Game/Layers.hpp
         # Scenes
+		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
         Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
@@ -170,6 +173,9 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp
 		Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp
 		Game/GameObjects/Meta/Hud/LifeHeart.cpp Game/GameObjects/Meta/Hud/LifeHeart.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag.hpp
+		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
+		Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
@@ -180,6 +186,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
         Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
+		Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp
+		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -193,7 +201,26 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp)
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp  Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
+		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
+		Game/Behaviors/Utils/Scripts/DamageScript.cpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
+		Game/Behaviors/Utils/CheatsBehavior.cpp
+		Game/Behaviors/Utils/Scripts/CheatsScript.cpp
+		Game/GameObjects/WorldObjects/VictoryFlag.cpp
+		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
+		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
+		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp
+		Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp
+		Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
+		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
+		Game/Behaviors/Utils/Scripts/VictoryScript.cpp Game/Behaviors/Utils/Scripts/VictoryScript.hpp
+		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp
+		Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp
+		Game/Behaviors/Utils/Scripts/GameOverScript.cpp Game/Behaviors/Utils/Scripts/GameOverScript.hpp
+		Game/Behaviors/Utils/Scripts/CollisionTestScript.cpp Game/Behaviors/Utils/Scripts/CollisionTestScript.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

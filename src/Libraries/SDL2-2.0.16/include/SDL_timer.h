@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 /**
- * Get the number of milliseconds since SDL library initialization.
+ * get the number of milliseconds since SDL library initialization.
  *
  * This value wraps if the program runs for more than ~49 days.
  *
@@ -64,7 +64,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_GetTicks(void);
 #define SDL_TICKS_PASSED(A, B)  ((Sint32)((B) - (A)) <= 0)
 
 /**
- * Get the current value of the high resolution counter.
+ * get the current value of the high resolution counter.
  *
  * This function is typically used for profiling.
  *
@@ -79,7 +79,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_GetTicks(void);
 extern DECLSPEC Uint64 SDLCALL SDL_GetPerformanceCounter(void);
 
 /**
- * Get the count per second of the high resolution counter.
+ * get the count per second of the high resolution counter.
  *
  * \returns a platform-specific count per second.
  *

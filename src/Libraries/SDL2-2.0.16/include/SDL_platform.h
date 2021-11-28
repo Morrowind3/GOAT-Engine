@@ -207,7 +207,7 @@ extern "C" {
 #endif
 
 /**
- * Get the name of the platform.
+ * get the name of the platform.
  *
  * Here are the names returned for some (but not all) supported platforms:
  *

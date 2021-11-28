@@ -104,32 +104,32 @@ class b2Joint
 {
 public:
 
-	/// Get the type of the concrete joint.
+	/// get the type of the concrete joint.
 	b2JointType GetType() const;
 
-	/// Get the first body attached to this joint.
+	/// get the first body attached to this joint.
 	b2Body* GetBodyA();
 
-	/// Get the second body attached to this joint.
+	/// get the second body attached to this joint.
 	b2Body* GetBodyB();
 
-	/// Get the anchor point on bodyA in world coordinates.
+	/// get the anchor point on bodyA in world coordinates.
 	virtual b2Vec2 GetAnchorA() const = 0;
 
-	/// Get the anchor point on bodyB in world coordinates.
+	/// get the anchor point on bodyB in world coordinates.
 	virtual b2Vec2 GetAnchorB() const = 0;
 
-	/// Get the reaction force on bodyB at the joint anchor in Newtons.
+	/// get the reaction force on bodyB at the joint anchor in Newtons.
 	virtual b2Vec2 GetReactionForce(float32 inv_dt) const = 0;
 
-	/// Get the reaction torque on bodyB in N*m.
+	/// get the reaction torque on bodyB in N*m.
 	virtual float32 GetReactionTorque(float32 inv_dt) const = 0;
 
-	/// Get the next joint the world joint list.
+	/// get the next joint the world joint list.
 	b2Joint* GetNext();
 	const b2Joint* GetNext() const;
 
-	/// Get the user data pointer.
+	/// get the user data pointer.
 	void* GetUserData() const;
 
 	/// Set the user data pointer.
@@ -138,7 +138,7 @@ public:
 	/// Short-cut function to determine if either body is inactive.
 	bool IsActive() const;
 
-	/// Get collide connected.
+	/// get collide connected.
 	/// Note: modifying the collide connect flag won't work correctly because
 	/// the flag is only checked when fixture AABBs begin to overlap.
 	bool GetCollideConnected() const;

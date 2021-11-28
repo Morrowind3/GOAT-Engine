@@ -62,7 +62,7 @@ typedef struct SDL_Keysym
 extern DECLSPEC SDL_Window * SDLCALL SDL_GetKeyboardFocus(void);
 
 /**
- * Get a snapshot of the current state of the keyboard.
+ * get a snapshot of the current state of the keyboard.
  *
  * The pointer returned is a pointer to an internal SDL array. It will be
  * valid for the whole lifetime of the application and should not be freed by
@@ -90,7 +90,7 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_GetKeyboardFocus(void);
 extern DECLSPEC const Uint8 *SDLCALL SDL_GetKeyboardState(int *numkeys);
 
 /**
- * Get the current key modifier state for the keyboard.
+ * get the current key modifier state for the keyboard.
  *
  * \returns an OR'd combination of the modifier keys for the keyboard. See
  *          SDL_Keymod for details.
@@ -118,7 +118,7 @@ extern DECLSPEC SDL_Keymod SDLCALL SDL_GetModState(void);
 extern DECLSPEC void SDLCALL SDL_SetModState(SDL_Keymod modstate);
 
 /**
- * Get the key code corresponding to the given scancode according to the
+ * get the key code corresponding to the given scancode according to the
  * current keyboard layout.
  *
  * See SDL_Keycode for details.
@@ -132,7 +132,7 @@ extern DECLSPEC void SDLCALL SDL_SetModState(SDL_Keymod modstate);
 extern DECLSPEC SDL_Keycode SDLCALL SDL_GetKeyFromScancode(SDL_Scancode scancode);
 
 /**
- * Get the scancode corresponding to the given key code according to the
+ * get the scancode corresponding to the given key code according to the
  * current keyboard layout.
  *
  * See SDL_Scancode for details.
@@ -146,7 +146,7 @@ extern DECLSPEC SDL_Keycode SDLCALL SDL_GetKeyFromScancode(SDL_Scancode scancode
 extern DECLSPEC SDL_Scancode SDLCALL SDL_GetScancodeFromKey(SDL_Keycode key);
 
 /**
- * Get a human-readable name for a scancode.
+ * get a human-readable name for a scancode.
  *
  * See SDL_Scancode for details.
  *
@@ -171,7 +171,7 @@ extern DECLSPEC SDL_Scancode SDLCALL SDL_GetScancodeFromKey(SDL_Keycode key);
 extern DECLSPEC const char *SDLCALL SDL_GetScancodeName(SDL_Scancode scancode);
 
 /**
- * Get a scancode from a human-readable name.
+ * get a scancode from a human-readable name.
  *
  * \param name the human-readable scancode name
  * \returns the SDL_Scancode, or `SDL_SCANCODE_UNKNOWN` if the name wasn't
@@ -186,7 +186,7 @@ extern DECLSPEC const char *SDLCALL SDL_GetScancodeName(SDL_Scancode scancode);
 extern DECLSPEC SDL_Scancode SDLCALL SDL_GetScancodeFromName(const char *name);
 
 /**
- * Get a human-readable name for a key.
+ * get a human-readable name for a key.
  *
  * See SDL_Scancode and SDL_Keycode for details.
  *
@@ -203,7 +203,7 @@ extern DECLSPEC SDL_Scancode SDLCALL SDL_GetScancodeFromName(const char *name);
 extern DECLSPEC const char *SDLCALL SDL_GetKeyName(SDL_Keycode key);
 
 /**
- * Get a key code from a human-readable name.
+ * get a key code from a human-readable name.
  *
  * \param name the human-readable key name
  * \returns key code, or `SDLK_UNKNOWN` if the name wasn't recognized; call

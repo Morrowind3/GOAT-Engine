@@ -1,19 +1,22 @@
 #include "MountEverestimateLevelConstructor.hpp"
 #include "GameObjects/Tiles/SolidTile.hpp"
 #include "GameObjects/Tiles/SlabTile.hpp"
+#include "GameObjects/Enemies/Goat.hpp"
+#include "GameObjects/WorldObjects/VictoryFlag.hpp"
 #include "../Engine/Utilities/Debug.hpp"
 #include "../Engine/Utilities/Globals.hpp"
 #include "Keys.hpp"
+#include "Layers.hpp"
 
 #include <regex>
 #include <fstream>
 
-MountEverestimateLevelConstructor::MountEverestimateLevelConstructor(Scene& scene, const std::string& fileLocation,
+MountEverestimateLevelConstructor::MountEverestimateLevelConstructor(SharedEtappe& etappe, const std::string& fileLocation,
         int tileSize, int columns, int rows, int scale):
-    _scene{scene}, _fileLocation{fileLocation}, _tileSize{tileSize}, _columns{columns}, _rows{rows}, _scale{(double)scale} {
+    _etappe{etappe}, _fileLocation{fileLocation}, _tileSize{tileSize}, _columns{columns}, _rows{rows}, _scale{(double)scale} {
 }
 
-void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { try {
+void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { try {
     // Step 1: Read and clean input
     // Get file as string
     std::ifstream file(_fileLocation);
@@ -49,16 +52,16 @@ void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { tr
             if (index != 0) {
                 double posY{y * _tileSize * _scale};
                 double posX{x * _tileSize * _scale};
-                Transform transform{Point{posX+xOffset, posY+yOffset}, 10, 0, _scale, _scale};
-                PlaceTile(index, transform);
+                Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, _scale, _scale};
+                placeTile(index, transform);
             }
         }
     } } catch (...) { throw std::runtime_error("Level " + _fileLocation + " is invalid"); }
 
     // Debug code to see where all tiles have been constructed
-    if (Globals::GetInstance().gameExists(Keys::LEVEL_DEBUG)) {
-        auto& debug = Debug::GetInstance();
-        for (auto& tile : _scene.gameObjects) {
+    if (Globals::getInstance().gameExists(Keys::LEVEL_DEBUG)) {
+        auto& debug = Debug::getInstance();
+        for (auto& tile : _etappe.gameObjects) {
             debug.log(
                 "[SP: " + tile->sprites.at(Keys::SPRITE).path +             // Sprite Path
                 ", SA: " + std::to_string(tile->sprites.at(Keys::SPRITE).active) +  // Sprite Active
@@ -73,70 +76,68 @@ void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { tr
     }
 }
 
-void MountEverestimateLevelConstructor::PlaceTile(int index, Transform transform) {
+void MountEverestimateLevelConstructor::placeTile(int index, Transform transform) {
     std::string texturePath;
     switch (index) {
+        // TILES GRASS
         case 1:
-            texturePath = "Sprites/landscapes/grass/grass_ground_empty.png";
+            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+                    "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
             break;
         case 2:
-            texturePath = "Sprites/landscapes/grass/grass_ground_end_left.png";
+            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+                    "Sprites/landscapes/grass/grass_ground_end_left.png", transform, true));
             break;
         case 3:
-            texturePath = "Sprites/landscapes/grass/grass_ground_end_right.png";
+            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+                    "Sprites/landscapes/grass/grass_ground_end_right.png", transform, true));
             break;
         case 4:
-            texturePath = "Sprites/landscapes/grass/grass_ground_flat.png";
+            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+                    "Sprites/landscapes/grass/grass_ground_flat.png", transform, true));
             break;
         case 5:
-            texturePath = "Sprites/landscapes/grass/grass_ground_normal.png";
+            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+                    "Sprites/landscapes/grass/grass_ground_normal.png", transform, true));
             break;
         case 6:
-            texturePath = "Sprites/landscapes/grass/grass_slab_end_left.png";
+            transform.layer = LAYER::TILES_BACK;
+            _etappe.gameObjects.emplace_back(std::make_shared<SlabTile >(
+                    "Sprites/landscapes/grass/grass_slab_end_left.png", transform, true));
             break;
         case 7:
-            texturePath = "Sprites/landscapes/grass/grass_slab_end_right.png";
+            transform.layer = LAYER::TILES_BACK;
+            _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
+                    "Sprites/landscapes/grass/grass_slab_end_right.png", transform, true));
             break;
         case 8:
-            texturePath = "Sprites/landscapes/grass/grass_slab_flat.png";
+            transform.layer = LAYER::TILES_BACK;
+            _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
+                    "Sprites/landscapes/grass/grass_slab_flat.png", transform, true));
             break;
         case 9:
-            texturePath = "Sprites/landscapes/grass/grass_slab_normal.png";
-            break;
-        case 10:
-            texturePath = "Sprites/landscapes/grass/stone_ground_empty.png";
-            break;
-        case 11:
-            texturePath = "Sprites/landscapes/grass/stone_ground_end_left.png";
-            break;
-        case 12:
-            texturePath = "Sprites/landscapes/grass/stone_ground_end_right.png";
-            break;
-        case 13:
-            texturePath = "Sprites/landscapes/grass/stone_ground_flat.png";
+            transform.layer = LAYER::TILES_BACK;
+            _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
+                    "Sprites/landscapes/grass/grass_slab_normal.png", transform, true));
             break;
         case 14:
-            texturePath = "Sprites/landscapes/grass/stone_ground_normal.png";
+            _etappe.gameObjects.emplace_back(std::make_shared<Goat>(transform, true));
             break;
-        case 15:
-            texturePath = "Sprites/landscapes/grass/stone_slab_end_left.png";
+        case 19:
+            //TODO Hawk
             break;
-        case 16:
-            texturePath = "Sprites/landscapes/grass/stone_slab_end_right.png";
+        case 23:
+            //TODO Snake
             break;
-        case 17:
-            texturePath = "Sprites/landscapes/grass/stone_slab_flat.png";
+        case 24:
+            //TODO Snowball
             break;
-        case 18:
-            texturePath = "Sprites/landscapes/grass/stone_slab_normal.png";
+        //TODO lava/stone/snow tiles
+        case 10:
+            transform.layer = LAYER::TILES_BACK;
+            _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, _etappe.player, true));
             break;
         default:
             break;
-    }
-    if(index <= 5 || ( index >= 10 && index <= 14)){
-        _scene.gameObjects.emplace_back(std::make_shared<SolidTile>(texturePath, transform, true));
-    }
-    if((index >= 6 && index <= 9) || ( index >= 15 && index <= 18)){
-        _scene.gameObjects.emplace_back(std::make_shared<SlabTile>(texturePath, transform, true));
     }
 }

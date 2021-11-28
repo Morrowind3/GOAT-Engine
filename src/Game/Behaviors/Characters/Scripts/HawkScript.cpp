@@ -5,7 +5,7 @@ HawkScript::HawkScript(Hawk& self, bool active) : Script(active), _self(self), _
     _self.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
 }
 
-void HawkScript::OnUpdate(double deltaTime) {
+void HawkScript::onUpdate(double deltaTime) {
 
     if(_direction == RIGHT) {
         _self.transform.position.x += 0.8;

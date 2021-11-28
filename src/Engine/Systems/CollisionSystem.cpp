@@ -2,28 +2,31 @@
 
 using namespace Engine;
 
-void CollisionSystem::OnLaunchEngine() {
+void CollisionSystem::onLaunchEngine() {
+    _debug.log("Collision system launch");
     _api = &PhysicsApi::getInstance();
 }
 
-void CollisionSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
+void CollisionSystem::onLoadScene(std::shared_ptr<Scene> scene) {
+    _debug.log("Collision system load");
+    _api->resetForNextScene();
     _scene = scene;
     for (auto& gameObject: _scene->gameObjects) {
         if(gameObject->rigidBody.active) {
-            _api->CreateBody(gameObject);
+            _api->createBody(*gameObject);
         }
     }
 }
 
-void CollisionSystem::OnFrameTick(double deltaTime) {
-    _api->Step();
+void CollisionSystem::onFrameTick(double deltaTime) {
+    _api->performPhysicsCalculationsForFrame();
     for (auto &gameObject: _scene->gameObjects) {
-        if (gameObject->rigidBody.active) {
-            _api->Update(gameObject);
+        if (gameObject->rigidBody.active && gameObject->rigidBody.bodyType == BodyType::DYNAMIC) {
+            _api->updateGameObjectStateFromPhysicsTick(*gameObject);
         }
     }
 }
 
-void CollisionSystem::OnCloseEngine() {
-    // Empty
+void CollisionSystem::onCloseEngine() {
+    _debug.log("Collision system close"); // Empty
 }

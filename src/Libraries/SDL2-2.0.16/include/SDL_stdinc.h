@@ -403,7 +403,7 @@ typedef void *(SDLCALL *SDL_realloc_func)(void *mem, size_t size);
 typedef void (SDLCALL *SDL_free_func)(void *mem);
 
 /**
- * Get the current set of SDL memory functions
+ * get the current set of SDL memory functions
  */
 extern DECLSPEC void SDLCALL SDL_GetMemoryFunctions(SDL_malloc_func *malloc_func,
                                                     SDL_calloc_func *calloc_func,
@@ -419,7 +419,7 @@ extern DECLSPEC int SDLCALL SDL_SetMemoryFunctions(SDL_malloc_func malloc_func,
                                                    SDL_free_func free_func);
 
 /**
- * Get the number of outstanding (unfreed) allocations
+ * get the number of outstanding (unfreed) allocations
  */
 extern DECLSPEC int SDLCALL SDL_GetNumAllocations(void);
 

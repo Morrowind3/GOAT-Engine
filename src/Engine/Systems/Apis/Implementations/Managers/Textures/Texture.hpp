@@ -7,7 +7,6 @@ namespace Engine {
     class Texture {
         public:
             explicit Texture(SDL_Texture* texture);
-            ~Texture();
             // TODO: Rule of five
             [[nodiscard]] SDL_Texture* texture() const;
             [[nodiscard]] int width() const;

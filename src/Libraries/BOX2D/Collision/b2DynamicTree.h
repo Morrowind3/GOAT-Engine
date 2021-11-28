@@ -79,11 +79,11 @@ public:
 	/// @return true if the proxy was re-inserted.
 	bool MoveProxy(int32 proxyId, const b2AABB& aabb1, const b2Vec2& displacement);
 
-	/// Get proxy user data.
+	/// get proxy user data.
 	/// @return the proxy user data or 0 if the id is invalid.
 	void* GetUserData(int32 proxyId) const;
 
-	/// Get the fat AABB for a proxy.
+	/// get the fat AABB for a proxy.
 	const b2AABB& GetFatAABB(int32 proxyId) const;
 
 	/// Query an AABB for overlapping proxies. The callback class
@@ -108,11 +108,11 @@ public:
 	/// called often.
 	int32 GetHeight() const;
 
-	/// Get the maximum balance of an node in the tree. The balance is the difference
+	/// get the maximum balance of an node in the tree. The balance is the difference
 	/// in height of the two children of a node.
 	int32 GetMaxBalance() const;
 
-	/// Get the ratio of the sum of the node areas to the root area.
+	/// get the ratio of the sum of the node areas to the root area.
 	float32 GetAreaRatio() const;
 
 	/// Build an optimal tree. Very expensive. For testing.

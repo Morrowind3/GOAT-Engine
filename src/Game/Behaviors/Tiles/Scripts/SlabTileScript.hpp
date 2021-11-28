@@ -8,13 +8,13 @@
 using namespace Engine;
 
 class SlabTileScript : public Script {
-public:
-    SlabTileScript(SlabTile& self, bool active);
-    void OnUpdate(double deltaTime);
+    public:
+        SlabTileScript(SlabTile& self, bool active);
+        void onUpdate(double deltaTime);
 
-private:
-    SlabTile& _self;
-    Input& _input;
+    private:
+        SlabTile& _self;
+        Input& _input;
 };
 
 

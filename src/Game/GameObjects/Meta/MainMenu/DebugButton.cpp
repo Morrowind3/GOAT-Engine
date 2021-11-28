@@ -1,6 +1,7 @@
 #include "DebugButton.hpp"
 #include "../../../Behaviors/Buttons/QuitGameBehavior.hpp"
 #include "../../../Keys.hpp"
+#include "../../../Layers.hpp"
 
 DebugButton::DebugButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
 

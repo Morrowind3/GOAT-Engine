@@ -11,12 +11,12 @@ using namespace Engine;
 class InputPrintScript : public Script {
     public:
         explicit InputPrintScript(bool active);
-        void OnUpdate(double deltaTime);
+        void onUpdate(double deltaTime);
     private:
         // Globals
-        Input& _input = Input::GetInstance();
-        Debug& _debug = Debug::GetInstance();
-        Globals& _globals = Globals::GetInstance();
+        Input& _input = Input::getInstance();
+        Debug& _debug = Debug::getInstance();
+        Globals& _globals = Globals::getInstance();
 };
 
 

@@ -71,11 +71,11 @@ public:
 	b2Vec2 GetAnchorA() const override;
 	b2Vec2 GetAnchorB() const override;
 
-	/// Get the reaction force given the inverse time step.
+	/// get the reaction force given the inverse time step.
 	/// Unit is N.
 	b2Vec2 GetReactionForce(float32 inv_dt) const override;
 
-	/// Get the reaction torque given the inverse time step.
+	/// get the reaction torque given the inverse time step.
 	/// Unit is N*m. This is always zero for a distance joint.
 	float32 GetReactionTorque(float32 inv_dt) const override;
 

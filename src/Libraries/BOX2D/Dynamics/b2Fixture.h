@@ -107,11 +107,11 @@ struct b2FixtureProxy
 class b2Fixture
 {
 public:
-	/// Get the type of the child shape. You can use this to down cast to the concrete shape.
+	/// get the type of the child shape. You can use this to down cast to the concrete shape.
 	/// @return the shape type.
 	b2Shape::Type GetType() const;
 
-	/// Get the child shape. You can modify the child shape, however you should not change the
+	/// get the child shape. You can modify the child shape, however you should not change the
 	/// number of vertices because this will crash some collision caching mechanisms.
 	/// Manipulating the shape may lead to non-physical behavior.
 	b2Shape* GetShape();
@@ -129,23 +129,23 @@ public:
 	/// This automatically calls Refilter.
 	void SetFilterData(const b2Filter& filter);
 
-	/// Get the contact filtering data.
+	/// get the contact filtering data.
 	const b2Filter& GetFilterData() const;
 
 	/// Call this if you want to establish collision that was previously disabled by b2ContactFilter::ShouldCollide.
 	void Refilter();
 
-	/// Get the parent body of this fixture. This is nullptr if the fixture is not attached.
+	/// get the parent body of this fixture. This is nullptr if the fixture is not attached.
 	/// @return the parent body.
 	b2Body* GetBody();
 	const b2Body* GetBody() const;
 
-	/// Get the next fixture in the parent body's fixture list.
+	/// get the next fixture in the parent body's fixture list.
 	/// @return the next shape.
 	b2Fixture* GetNext();
 	const b2Fixture* GetNext() const;
 
-	/// Get the user data that was assigned in the fixture definition. Use this to
+	/// get the user data that was assigned in the fixture definition. Use this to
 	/// store your application specific data.
 	void* GetUserData() const;
 
@@ -161,7 +161,7 @@ public:
 	/// @param input the ray-cast input parameters.
 	bool RayCast(b2RayCastOutput* output, const b2RayCastInput& input, int32 childIndex) const;
 
-	/// Get the mass data for this fixture. The mass data is based on the density and
+	/// get the mass data for this fixture. The mass data is based on the density and
 	/// the shape. The rotational inertia is about the shape's origin. This operation
 	/// may be expensive.
 	void GetMassData(b2MassData* massData) const;
@@ -170,24 +170,24 @@ public:
 	/// of the body. You must call b2Body::ResetMassData to update the body's mass.
 	void SetDensity(float32 density);
 
-	/// Get the density of this fixture.
+	/// get the density of this fixture.
 	float32 GetDensity() const;
 
-	/// Get the coefficient of friction.
+	/// get the coefficient of friction.
 	float32 GetFriction() const;
 
 	/// Set the coefficient of friction. This will _not_ change the friction of
 	/// existing contacts.
 	void SetFriction(float32 friction);
 
-	/// Get the coefficient of restitution.
+	/// get the coefficient of restitution.
 	float32 GetRestitution() const;
 
 	/// Set the coefficient of restitution. This will _not_ change the restitution of
 	/// existing contacts.
 	void SetRestitution(float32 restitution);
 
-	/// Get the fixture's AABB. This AABB may be enlarge and/or stale.
+	/// get the fixture's AABB. This AABB may be enlarge and/or stale.
 	/// If you need a more accurate AABB, compute it using the shape and
 	/// the body transform.
 	const b2AABB& GetAABB(int32 childIndex) const;

@@ -279,7 +279,7 @@ typedef enum
 /* Function prototypes */
 
 /**
- * Get the number of video drivers compiled into SDL.
+ * get the number of video drivers compiled into SDL.
  *
  * \returns a number >= 1 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
@@ -289,7 +289,7 @@ typedef enum
 extern DECLSPEC int SDLCALL SDL_GetNumVideoDrivers(void);
 
 /**
- * Get the name of a built in video driver.
+ * get the name of a built in video driver.
  *
  * The video drivers are presented in the order in which they are normally
  * checked during initialization.
@@ -340,7 +340,7 @@ extern DECLSPEC int SDLCALL SDL_VideoInit(const char *driver_name);
 extern DECLSPEC void SDLCALL SDL_VideoQuit(void);
 
 /**
- * Get the name of the currently initialized video driver.
+ * get the name of the currently initialized video driver.
  *
  * \returns the name of the current video driver or NULL if no driver has been
  *          initialized.
@@ -353,7 +353,7 @@ extern DECLSPEC void SDLCALL SDL_VideoQuit(void);
 extern DECLSPEC const char *SDLCALL SDL_GetCurrentVideoDriver(void);
 
 /**
- * Get the number of available video displays.
+ * get the number of available video displays.
  *
  * \returns a number >= 1 or a negative error code on failure; call
  *          SDL_GetError() for more information.
@@ -365,7 +365,7 @@ extern DECLSPEC const char *SDLCALL SDL_GetCurrentVideoDriver(void);
 extern DECLSPEC int SDLCALL SDL_GetNumVideoDisplays(void);
 
 /**
- * Get the name of a display in UTF-8 encoding.
+ * get the name of a display in UTF-8 encoding.
  *
  * \param displayIndex the index of display from which the name should be
  *                     queried
@@ -379,7 +379,7 @@ extern DECLSPEC int SDLCALL SDL_GetNumVideoDisplays(void);
 extern DECLSPEC const char * SDLCALL SDL_GetDisplayName(int displayIndex);
 
 /**
- * Get the desktop area represented by a display.
+ * get the desktop area represented by a display.
  *
  * The primary display (`displayIndex` zero) is always located at 0,0.
  *
@@ -393,7 +393,7 @@ extern DECLSPEC const char * SDLCALL SDL_GetDisplayName(int displayIndex);
 extern DECLSPEC int SDLCALL SDL_GetDisplayBounds(int displayIndex, SDL_Rect * rect);
 
 /**
- * Get the usable desktop area represented by a display.
+ * get the usable desktop area represented by a display.
  *
  * The primary display (`displayIndex` zero) is always located at 0,0.
  *
@@ -424,7 +424,7 @@ extern DECLSPEC int SDLCALL SDL_GetDisplayBounds(int displayIndex, SDL_Rect * re
 extern DECLSPEC int SDLCALL SDL_GetDisplayUsableBounds(int displayIndex, SDL_Rect * rect);
 
 /**
- * Get the dots/pixels-per-inch for a display.
+ * get the dots/pixels-per-inch for a display.
  *
  * Diagonal, horizontal and vertical DPI can all be optionally returned if the
  * appropriate parameter is non-NULL.
@@ -450,7 +450,7 @@ extern DECLSPEC int SDLCALL SDL_GetDisplayUsableBounds(int displayIndex, SDL_Rec
 extern DECLSPEC int SDLCALL SDL_GetDisplayDPI(int displayIndex, float * ddpi, float * hdpi, float * vdpi);
 
 /**
- * Get the orientation of a display.
+ * get the orientation of a display.
  *
  * \param displayIndex the index of the display to query
  * \returns The SDL_DisplayOrientation enum value of the display, or
@@ -461,7 +461,7 @@ extern DECLSPEC int SDLCALL SDL_GetDisplayDPI(int displayIndex, float * ddpi, fl
 extern DECLSPEC SDL_DisplayOrientation SDLCALL SDL_GetDisplayOrientation(int displayIndex);
 
 /**
- * Get the number of available display modes.
+ * get the number of available display modes.
  *
  * The `displayIndex` needs to be in the range from 0 to
  * SDL_GetNumVideoDisplays() - 1.
@@ -478,7 +478,7 @@ extern DECLSPEC SDL_DisplayOrientation SDLCALL SDL_GetDisplayOrientation(int dis
 extern DECLSPEC int SDLCALL SDL_GetNumDisplayModes(int displayIndex);
 
 /**
- * Get information about a specific display mode.
+ * get information about a specific display mode.
  *
  * The display modes are sorted in this priority:
  *
@@ -501,7 +501,7 @@ extern DECLSPEC int SDLCALL SDL_GetDisplayMode(int displayIndex, int modeIndex,
                                                SDL_DisplayMode * mode);
 
 /**
- * Get information about the desktop's display mode.
+ * get information about the desktop's display mode.
  *
  * There's a difference between this function and SDL_GetCurrentDisplayMode()
  * when SDL runs fullscreen and has changed the resolution. In that case this
@@ -521,7 +521,7 @@ extern DECLSPEC int SDLCALL SDL_GetDisplayMode(int displayIndex, int modeIndex,
 extern DECLSPEC int SDLCALL SDL_GetDesktopDisplayMode(int displayIndex, SDL_DisplayMode * mode);
 
 /**
- * Get information about the current display mode.
+ * get information about the current display mode.
  *
  * There's a difference between this function and SDL_GetDesktopDisplayMode()
  * when SDL runs fullscreen and has changed the resolution. In that case this
@@ -543,7 +543,7 @@ extern DECLSPEC int SDLCALL SDL_GetCurrentDisplayMode(int displayIndex, SDL_Disp
 
 
 /**
- * Get the closest match to the requested display mode.
+ * get the closest match to the requested display mode.
  *
  * The available display modes are scanned and `closest` is filled in with the
  * closest mode matching the requested mode and returned. The mode format and
@@ -566,7 +566,7 @@ extern DECLSPEC int SDLCALL SDL_GetCurrentDisplayMode(int displayIndex, SDL_Disp
 extern DECLSPEC SDL_DisplayMode * SDLCALL SDL_GetClosestDisplayMode(int displayIndex, const SDL_DisplayMode * mode, SDL_DisplayMode * closest);
 
 /**
- * Get the index of the display associated with a window.
+ * get the index of the display associated with a window.
  *
  * \param window the window to query
  * \returns the index of the display containing the center of the window on
@@ -614,7 +614,7 @@ extern DECLSPEC int SDLCALL SDL_GetWindowDisplayMode(SDL_Window * window,
                                                      SDL_DisplayMode * mode);
 
 /**
- * Get the pixel format associated with the window.
+ * get the pixel format associated with the window.
  *
  * \param window the window to query
  * \returns the pixel format of the window on success or
@@ -713,7 +713,7 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_CreateWindow(const char *title,
 extern DECLSPEC SDL_Window * SDLCALL SDL_CreateWindowFrom(const void *data);
 
 /**
- * Get the numeric ID of a window.
+ * get the numeric ID of a window.
  *
  * The numeric ID is what SDL_WindowEvent references, and is necessary to map
  * these events to specific SDL_Window objects.
@@ -729,7 +729,7 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_CreateWindowFrom(const void *data);
 extern DECLSPEC Uint32 SDLCALL SDL_GetWindowID(SDL_Window * window);
 
 /**
- * Get a window from a stored ID.
+ * get a window from a stored ID.
  *
  * The numeric ID is what SDL_WindowEvent references, and is necessary to map
  * these events to specific SDL_Window objects.
@@ -743,7 +743,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_GetWindowID(SDL_Window * window);
 extern DECLSPEC SDL_Window * SDLCALL SDL_GetWindowFromID(Uint32 id);
 
 /**
- * Get the window flags.
+ * get the window flags.
  *
  * \param window the window to query
  * \returns a mask of the SDL_WindowFlags associated with `window`
@@ -772,7 +772,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowTitle(SDL_Window * window,
                                                 const char *title);
 
 /**
- * Get the title of a window.
+ * get the title of a window.
  *
  * \param window the window to query
  * \returns the title of the window in UTF-8 format or "" if there is no
@@ -836,7 +836,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowPosition(SDL_Window * window,
                                                    int x, int y);
 
 /**
- * Get the position of a window.
+ * get the position of a window.
  *
  * If you do not need the value for one of the positions a NULL may be passed
  * in the `x` or `y` parameter.
@@ -876,7 +876,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowSize(SDL_Window * window, int w,
                                                int h);
 
 /**
- * Get the size of a window's client area.
+ * get the size of a window's client area.
  *
  * NULL can safely be passed as the `w` or `h` parameter if the width or
  * height value is not desired.
@@ -901,7 +901,7 @@ extern DECLSPEC void SDLCALL SDL_GetWindowSize(SDL_Window * window, int *w,
                                                int *h);
 
 /**
- * Get the size of a window's borders (decorations) around the client area.
+ * get the size of a window's borders (decorations) around the client area.
  *
  * Note: If this function fails (returns -1), the size values will be
  * initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the
@@ -950,7 +950,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowMinimumSize(SDL_Window * window,
                                                       int min_w, int min_h);
 
 /**
- * Get the minimum size of a window's client area.
+ * get the minimum size of a window's client area.
  *
  * \param window the window to query
  * \param w a pointer filled in with the minimum width of the window, may be
@@ -978,7 +978,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowMaximumSize(SDL_Window * window,
                                                       int max_w, int max_h);
 
 /**
- * Get the maximum size of a window's client area.
+ * get the maximum size of a window's client area.
  *
  * \param window the window to query
  * \param w a pointer filled in with the maximum width of the window, may be
@@ -1122,7 +1122,7 @@ extern DECLSPEC int SDLCALL SDL_SetWindowFullscreen(SDL_Window * window,
                                                     Uint32 flags);
 
 /**
- * Get the SDL surface associated with the window.
+ * get the SDL surface associated with the window.
  *
  * A new surface will be created with the optimal format for the window, if
  * necessary. This surface will be freed when the window is destroyed. Do not
@@ -1229,7 +1229,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowMouseGrab(SDL_Window * window,
                                                     SDL_bool grabbed);
 
 /**
- * Get a window's input grab mode.
+ * get a window's input grab mode.
  *
  * \param window the window to query
  * \returns SDL_TRUE if input is grabbed, SDL_FALSE otherwise.
@@ -1239,7 +1239,7 @@ extern DECLSPEC void SDLCALL SDL_SetWindowMouseGrab(SDL_Window * window,
 extern DECLSPEC SDL_bool SDLCALL SDL_GetWindowGrab(SDL_Window * window);
 
 /**
- * Get a window's keyboard grab mode.
+ * get a window's keyboard grab mode.
  *
  * \param window the window to query
  * \returns SDL_TRUE if keyboard is grabbed, and SDL_FALSE otherwise.
@@ -1250,7 +1250,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_GetWindowGrab(SDL_Window * window);
 extern DECLSPEC SDL_bool SDLCALL SDL_GetWindowKeyboardGrab(SDL_Window * window);
 
 /**
- * Get a window's mouse grab mode.
+ * get a window's mouse grab mode.
  *
  * \param window the window to query
  * \returns SDL_TRUE if mouse is grabbed, and SDL_FALSE otherwise.
@@ -1261,7 +1261,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_GetWindowKeyboardGrab(SDL_Window * window);
 extern DECLSPEC SDL_bool SDLCALL SDL_GetWindowMouseGrab(SDL_Window * window);
 
 /**
- * Get the window that currently has an input grab enabled.
+ * get the window that currently has an input grab enabled.
  *
  * \returns the window if input is grabbed or NULL otherwise.
  *
@@ -1299,7 +1299,7 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_GetGrabbedWindow(void);
 extern DECLSPEC int SDLCALL SDL_SetWindowBrightness(SDL_Window * window, float brightness);
 
 /**
- * Get the brightness (gamma multiplier) for a given window's display.
+ * get the brightness (gamma multiplier) for a given window's display.
  *
  * Despite the name and signature, this method retrieves the brightness of the
  * entire display, not an individual window. A window is considered to be
@@ -1335,7 +1335,7 @@ extern DECLSPEC float SDLCALL SDL_GetWindowBrightness(SDL_Window * window);
 extern DECLSPEC int SDLCALL SDL_SetWindowOpacity(SDL_Window * window, float opacity);
 
 /**
- * Get the opacity of a window.
+ * get the opacity of a window.
  *
  * If transparency isn't supported on this platform, opacity will be reported
  * as 1.0f without error.
@@ -1418,7 +1418,7 @@ extern DECLSPEC int SDLCALL SDL_SetWindowGammaRamp(SDL_Window * window,
                                                    const Uint16 * blue);
 
 /**
- * Get the gamma ramp for a given window's display.
+ * get the gamma ramp for a given window's display.
  *
  * Despite the name and signature, this method retrieves the gamma ramp of the
  * entire display, not an individual window. A window is considered to be
@@ -1612,7 +1612,7 @@ extern DECLSPEC void SDLCALL SDL_DisableScreenSaver(void);
 extern DECLSPEC int SDLCALL SDL_GL_LoadLibrary(const char *path);
 
 /**
- * Get an OpenGL function by name.
+ * get an OpenGL function by name.
  *
  * If the GL library is loaded at runtime with SDL_GL_LoadLibrary(), then all
  * GL functions must be retrieved this way. Usually this is used to retrieve
@@ -1720,7 +1720,7 @@ extern DECLSPEC void SDLCALL SDL_GL_ResetAttributes(void);
 extern DECLSPEC int SDLCALL SDL_GL_SetAttribute(SDL_GLattr attr, int value);
 
 /**
- * Get the actual value for an attribute from the current context.
+ * get the actual value for an attribute from the current context.
  *
  * \param attr an SDL_GLattr enum value specifying the OpenGL attribute to get
  * \param value a pointer filled in with the current value of `attr`
@@ -1769,7 +1769,7 @@ extern DECLSPEC int SDLCALL SDL_GL_MakeCurrent(SDL_Window * window,
                                                SDL_GLContext context);
 
 /**
- * Get the currently active OpenGL window.
+ * get the currently active OpenGL window.
  *
  * \returns the currently active OpenGL window on success or NULL on failure;
  *          call SDL_GetError() for more information.
@@ -1779,7 +1779,7 @@ extern DECLSPEC int SDLCALL SDL_GL_MakeCurrent(SDL_Window * window,
 extern DECLSPEC SDL_Window* SDLCALL SDL_GL_GetCurrentWindow(void);
 
 /**
- * Get the currently active OpenGL context.
+ * get the currently active OpenGL context.
  *
  * \returns the currently active OpenGL context or NULL on failure; call
  *          SDL_GetError() for more information.
@@ -1791,7 +1791,7 @@ extern DECLSPEC SDL_Window* SDLCALL SDL_GL_GetCurrentWindow(void);
 extern DECLSPEC SDL_GLContext SDLCALL SDL_GL_GetCurrentContext(void);
 
 /**
- * Get the size of a window's underlying drawable in pixels.
+ * get the size of a window's underlying drawable in pixels.
  *
  * This returns info useful for calling glViewport().
  *
@@ -1848,7 +1848,7 @@ extern DECLSPEC void SDLCALL SDL_GL_GetDrawableSize(SDL_Window * window, int *w,
 extern DECLSPEC int SDLCALL SDL_GL_SetSwapInterval(int interval);
 
 /**
- * Get the swap interval for the current OpenGL context.
+ * get the swap interval for the current OpenGL context.
  *
  * If the system can't determine the swap interval, or there isn't a valid
  * current context, this function will return 0 as a safe default.
@@ -1865,7 +1865,7 @@ extern DECLSPEC int SDLCALL SDL_GL_SetSwapInterval(int interval);
 extern DECLSPEC int SDLCALL SDL_GL_GetSwapInterval(void);
 
 /**
- * Update a window with OpenGL rendering.
+ * update a window with OpenGL rendering.
  *
  * This is used with double-buffered OpenGL contexts, which are the default.
  *
@@ -1879,7 +1879,7 @@ extern DECLSPEC int SDLCALL SDL_GL_GetSwapInterval(void);
 extern DECLSPEC void SDLCALL SDL_GL_SwapWindow(SDL_Window * window);
 
 /**
- * Delete an OpenGL context.
+ * remove an OpenGL context.
  *
  * \param context the OpenGL context to be deleted
  *

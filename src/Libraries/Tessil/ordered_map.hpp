@@ -779,7 +779,7 @@ class ordered_map {
   void shrink_to_fit() { m_ht.shrink_to_fit(); }
 
   /**
-   * Insert the value before pos shifting all the elements on the right of pos
+   * insert the value before pos shifting all the elements on the right of pos
    * (including pos) one position to the right.
    *
    * Amortized linear time-complexity in the distance between pos and end().

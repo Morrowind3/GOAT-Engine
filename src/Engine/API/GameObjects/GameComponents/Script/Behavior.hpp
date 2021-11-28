@@ -11,11 +11,14 @@ namespace Engine {
     struct Behavior : public GameComponent {
         explicit Behavior(bool active);
         tsl::ordered_map<std::string,std::shared_ptr<Script>> scripts{};
-        void OnStart();
-        void OnUpdate(double deltaTime);
-        void OnExternalEvent();
-        void OnDestroy();
-        // TODO: Collisions
+        void onStart();
+        void onUpdate(double deltaTime);
+        void onExternalEvent();
+        void onDestroy();
+        // Collisions
+        void onTriggerEnter2D(GameObject& other);
+        void onTriggerStay2D(GameObject& other);
+        void onTriggerExit2D(GameObject& other);
     };
 }
 

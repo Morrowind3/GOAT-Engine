@@ -59,19 +59,19 @@ public:
 	/// Call to trigger a re-processing of it's pairs on the next call to UpdatePairs.
 	void TouchProxy(int32 proxyId);
 
-	/// Get the fat AABB for a proxy.
+	/// get the fat AABB for a proxy.
 	const b2AABB& GetFatAABB(int32 proxyId) const;
 
-	/// Get user data from a proxy. Returns nullptr if the id is invalid.
+	/// get user data from a proxy. Returns nullptr if the id is invalid.
 	void* GetUserData(int32 proxyId) const;
 
 	/// Test overlap of fat AABBs.
 	bool TestOverlap(int32 proxyIdA, int32 proxyIdB) const;
 
-	/// Get the number of proxies.
+	/// get the number of proxies.
 	int32 GetProxyCount() const;
 
-	/// Update the pairs. This results in pair callbacks. This can only add pairs.
+	/// update the pairs. This results in pair callbacks. This can only add pairs.
 	template <typename T>
 	void UpdatePairs(T* callback);
 
@@ -90,13 +90,13 @@ public:
 	template <typename T>
 	void RayCast(T* callback, const b2RayCastInput& input) const;
 
-	/// Get the height of the embedded tree.
+	/// get the height of the embedded tree.
 	int32 GetTreeHeight() const;
 
-	/// Get the balance of the embedded tree.
+	/// get the balance of the embedded tree.
 	int32 GetTreeBalance() const;
 
-	/// Get the quality metric of the embedded tree.
+	/// get the quality metric of the embedded tree.
 	float32 GetTreeQuality() const;
 
 	/// Shift the world origin. Useful for large worlds.

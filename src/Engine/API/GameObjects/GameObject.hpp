@@ -12,12 +12,14 @@
 #include "GameComponents/Render/UI/Button.hpp"
 #include "GameComponents/Collision/Collider.hpp"
 #include "GameComponents/Collision/RigidBody.hpp"
-
+#include "GameComponents/Collision/BoxCollider.hpp"
+#include "GameComponents/Collision/CircleCollider.hpp"
 
 namespace Engine {
     struct GameObject {
         explicit GameObject(Transform transform, bool active);
         bool active;
+        std::map<std::string,bool> tags{}; // True if tag should not be ignored
         Transform transform;
         Collider collider;
         RigidBody rigidBody;

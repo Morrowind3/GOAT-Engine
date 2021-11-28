@@ -10,10 +10,10 @@ using namespace Engine;
 class EtappeProgress : public Script {
     public:
         explicit EtappeProgress(bool active);
-        void OnStart();
+        void onStart();
     private:
         // Globals
-        Globals& _globals = Globals::GetInstance();
+        Globals& _globals = Globals::getInstance();
 };
 
 

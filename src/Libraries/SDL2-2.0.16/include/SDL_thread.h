@@ -258,7 +258,7 @@ SDL_CreateThreadWithStackSize(SDL_ThreadFunction fn, const char *name, const siz
 #endif
 
 /**
- * Get the thread name as it was specified in SDL_CreateThread().
+ * get the thread name as it was specified in SDL_CreateThread().
  *
  * This is internal memory, not to be freed by the caller, and remains valid
  * until the specified thread is cleaned up by SDL_WaitThread().
@@ -272,7 +272,7 @@ SDL_CreateThreadWithStackSize(SDL_ThreadFunction fn, const char *name, const siz
 extern DECLSPEC const char *SDLCALL SDL_GetThreadName(SDL_Thread *thread);
 
 /**
- * Get the thread identifier for the current thread.
+ * get the thread identifier for the current thread.
  *
  * This thread identifier is as reported by the underlying operating system.
  * If SDL is running on a platform that does not support threads the return
@@ -288,7 +288,7 @@ extern DECLSPEC const char *SDLCALL SDL_GetThreadName(SDL_Thread *thread);
 extern DECLSPEC SDL_threadID SDLCALL SDL_ThreadID(void);
 
 /**
- * Get the thread identifier for the specified thread.
+ * get the thread identifier for the specified thread.
  *
  * This thread identifier is as reported by the underlying operating system.
  * If SDL is running on a platform that does not support threads the return
@@ -400,7 +400,7 @@ extern DECLSPEC void SDLCALL SDL_DetachThread(SDL_Thread * thread);
 extern DECLSPEC SDL_TLSID SDLCALL SDL_TLSCreate(void);
 
 /**
- * Get the current thread's value associated with a thread local storage ID.
+ * get the current thread's value associated with a thread local storage ID.
  *
  * \param id the thread local storage ID
  * \returns the value associated with the ID for the current thread or NULL if

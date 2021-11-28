@@ -14,9 +14,10 @@ namespace Engine {
             explicit FontManager(SDL_Renderer* renderer);
             void store(const std::string& fileName);
             [[nodiscard]] Font& get(const std::string& fileName) const;
-            void remove(const std::string& fileName);
+            [[maybe_unused]] void remove(const std::string& fileName);
+            void resetForNextScene();
         private:
-            std::unique_ptr<std::map<std::string,Font>> _fonts;
+            std::unique_ptr<std::map<std::string,Font>> _fonts = std::make_unique<std::map<std::string, Font>>();
             SDL_Renderer* _renderer;
     };
 }

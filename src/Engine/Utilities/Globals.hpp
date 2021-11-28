@@ -12,7 +12,7 @@ namespace Engine {
             friend class Engine::ScriptSystem;
             Globals(Globals const&) = delete;
             void operator=(Globals const&) = delete;
-            static Globals& GetInstance() {
+            static Globals& getInstance() {
                 static Globals instance;
                 return instance;
             }

@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 /**
- * Get the directory where the application was run from.
+ * get the directory where the application was run from.
  *
  * This is not necessarily a fast call, so you should call this once near
  * startup and save the string if you need it.
@@ -78,9 +78,9 @@ extern "C" {
 extern DECLSPEC char *SDLCALL SDL_GetBasePath(void);
 
 /**
- * Get the user-and-app-specific path where files can be written.
+ * get the user-and-app-specific path where files can be written.
  *
- * Get the "pref dir". This is meant to be where users can write personal
+ * get the "pref dir". This is meant to be where users can write personal
  * files (preferences and save games, etc) that are specific to your
  * application. This directory is unique per user, per application.
  *

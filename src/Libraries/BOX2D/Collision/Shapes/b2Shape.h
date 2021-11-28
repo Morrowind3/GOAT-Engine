@@ -57,11 +57,11 @@ public:
 	/// Clone the concrete shape using the provided allocator.
 	virtual b2Shape* Clone(b2BlockAllocator* allocator) const = 0;
 
-	/// Get the type of this shape. You can use this to down cast to the concrete shape.
+	/// get the type of this shape. You can use this to down cast to the concrete shape.
 	/// @return the shape type.
 	Type GetType() const;
 
-	/// Get the number of child primitives.
+	/// get the number of child primitives.
 	virtual int32 GetChildCount() const = 0;
 
 	/// Test a point for containment in this shape. This only works for convex shapes.

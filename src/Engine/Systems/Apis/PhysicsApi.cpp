@@ -1,23 +1,25 @@
 #include "PhysicsApi.hpp"
 
-using namespace  Engine;
+using namespace Engine;
 
-void PhysicsApi::CreateBody(std::shared_ptr<GameObject> gameObjectPointer)  {
-    physics.CreateBody(gameObjectPointer);
+void PhysicsApi::createBody(const GameObject& gameObject)  {
+    physics.createBody(gameObject);
 }
 
-void PhysicsApi::DestroyWorld() {
-    physics.DestroyWorld();
+void PhysicsApi::performPhysicsCalculationsForFrame() {
+    physics.performPhysicsCalculationsForFrame();
 }
 
-void PhysicsApi::DestroyBody(b2Body *body) {
-    physics.DestroyBody(body);
+void PhysicsApi::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
+    physics.updateGameObjectStateFromPhysicsTick(gameObject);
 }
 
-void PhysicsApi::Update(std::shared_ptr<GameObject> gameObjectPointer) {
-    physics.Update(gameObjectPointer);
+void PhysicsApi::runCollisionScripts() {
+    physics.runCollisionScripts();
 }
 
-void PhysicsApi::Step() {
-    physics.Step();
+void PhysicsApi::resetForNextScene() {
+    physics.resetForNextScene();
 }
+
+

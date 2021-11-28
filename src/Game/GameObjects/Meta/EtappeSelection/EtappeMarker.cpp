@@ -2,6 +2,7 @@
 #include "../../../Keys.hpp"
 #include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
 #include "../../../Behaviors/Buttons/EtappeMarkerBehavior.hpp"
+#include "../../../Layers.hpp"
 
 EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
                            Transform transform, bool active) : GameObject(transform, active) {
