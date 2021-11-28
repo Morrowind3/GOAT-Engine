@@ -22,11 +22,16 @@ void Camera::SetZoomLevel(float zoom) {
 }
 
 void Camera::Reposition(Transform& t) const {
+    //the lower from 100, the lower the speed (higher diff)
     //layer 100 = 1
-    //layer 0 = 10
+    //layer 0 = 100
     if(t.layer <= 100) {
-        double diff{static_cast<double>(t.layer) / 100};
-        diff *= 10;
+        double diff{101 - static_cast<double>(t.layer)};
+
+
+//        double diff{static_cast<double>(t.layer) / 100};
+//        diff *= 10;
+//        diff = 100 - diff;
 
         t.position.x -= (_camera.topLeft.x / diff);
         t.position.y -= (_camera.topLeft.y / diff);

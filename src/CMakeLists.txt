@@ -197,7 +197,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp  Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
-		Game/Behaviors/Utils/Scripts/VictoryScript.cpp Game/Behaviors/Utils/Scripts/VictoryScript.hpp Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp Game/Behaviors/Utils/Scripts/GameOverScript.cpp Game/Behaviors/Utils/Scripts/GameOverScript.hpp Game/Layers.hpp)
+		Game/Behaviors/Utils/Scripts/VictoryScript.cpp Game/Behaviors/Utils/Scripts/VictoryScript.hpp Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp Game/Behaviors/Utils/Scripts/GameOverScript.cpp Game/Behaviors/Utils/Scripts/GameOverScript.hpp Game/Layers.hpp Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
