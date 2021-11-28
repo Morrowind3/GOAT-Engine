@@ -18,5 +18,5 @@ EtappeOne::EtappeOne(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_ONE, Tra
 //    gameObjects.emplace_back(std::make_shared<Goat>(
 //            Transform{Point{100,912},3,0,5,5},true));
 //    gameObjects.emplace_back(std::make_shared<VictoryFlag>(
-//            Transform{Point{325,912},2,0,3,8}, _player, true));
+//            Transform{Point{325,912},2,0,3,8}, player, true));
 }
