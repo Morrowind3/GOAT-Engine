@@ -3,11 +3,13 @@
 using namespace Engine;
 
 void AudioSystem::OnLaunchEngine() {
+    _debug.log("Audio system launch");
     _api = &AudioApi::getInstance();
 }
 
 void AudioSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
-    _api->Reset();
+    _debug.log("Audio system load");
+    _api->ResetForNextScene();
     _scene = scene;
     for (auto& gameObject : _scene->gameObjects) {
         for (auto& audioSource : gameObject->audioSources) {
@@ -30,5 +32,5 @@ void AudioSystem::OnFrameTick(double deltaTime) {
 }
 
 void AudioSystem::OnCloseEngine() {
-    // Empty
+    _debug.log("Audio system close"); // Empty
 }

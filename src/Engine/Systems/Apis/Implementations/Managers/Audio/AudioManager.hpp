@@ -13,16 +13,17 @@
 namespace Engine {
     class AudioManager {
         public:
-            AudioManager();
+            AudioManager() = default;
             void storeSample(const std::string& fileName);
             void storeMusic(const std::string& fileName);
             [[nodiscard]] const Sample& getSample(const std::string& fileName) const;
             [[nodiscard]] const Music& getMusic(const std::string& fileName) const;
             [[maybe_unused]] void removeSample(const std::string& fileName);
             [[maybe_unused]] void removeMusic(const std::string& fileName);
+            void resetForNextScene();
         private:
-            std::unique_ptr<std::map<std::string,Sample>> _samples;
-            std::unique_ptr<std::map<std::string,Music>> _music;
+            std::unique_ptr<std::map<std::string,Sample>> _samples = std::make_unique<std::map<std::string,Sample>>();
+            std::unique_ptr<std::map<std::string,Music>> _music = std::make_unique<std::map<std::string,Music>>();
     };
 }
 

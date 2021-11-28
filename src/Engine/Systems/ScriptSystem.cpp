@@ -5,10 +5,11 @@
 using namespace Engine;
 
 void ScriptSystem::OnLaunchEngine() {
-    // Empty
+    _debug.log("Script system launch"); // Empty
 }
 
 void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
+    _debug.log("Script system load");
     Globals::GetInstance().sceneReset();
     _scene = scene;
     for (auto& gameObject : activeObjects()) {
@@ -21,6 +22,7 @@ void ScriptSystem::OnLoadScene(std::shared_ptr<Scene> scene) {
 void ScriptSystem::OnFrameTick(double deltaTime) {
     auto& input = Input::GetInstance();
     input.Update();
+    _physics.runCollisionScripts();
     for (auto& gameObject : activeObjects()) {
         for (auto& behavior : gameObject->behaviors) {
             if(behavior.second->active) behavior.second->OnUpdate(deltaTime);
@@ -35,7 +37,7 @@ void ScriptSystem::OnFrameTick(double deltaTime) {
 }
 
 void ScriptSystem::OnCloseEngine() {
-    // Empty
+    _debug.log("Script system close"); // Empty
 }
 
 

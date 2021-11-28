@@ -1,6 +1,7 @@
 #ifndef GOAT_ENGINE_SYSTEM_HPP
 #define GOAT_ENGINE_SYSTEM_HPP
 
+#include "../Utilities/Debug.hpp"
 #include "../API/Scene.hpp"
 
 namespace Engine {
@@ -13,6 +14,7 @@ namespace Engine {
             virtual void OnCloseEngine() = 0;                           // Called when the program ends
         protected:
             std::shared_ptr<Scene> _scene;
+            Debug& _debug = Debug::GetInstance();
             [[nodiscard]] std::vector<std::shared_ptr<GameObject>> activeObjects() const;
     };
 }

@@ -1,4 +1,5 @@
 #include "Script.hpp"
+#include "../../GameObject.hpp"
 
 using namespace Engine;
 
@@ -10,3 +11,6 @@ void Script::OnStart() {}
 void Script::OnUpdate(double deltaTime) {}
 void Script::OnExternalEvent() {}
 void Script::OnDestroy() {}
+void Script::OnTriggerEnter2D(GameObject& other) {}
+void Script::OnTriggerStay2D(GameObject& other) {}
+void Script::OnTriggerExit2D(GameObject& other) {}

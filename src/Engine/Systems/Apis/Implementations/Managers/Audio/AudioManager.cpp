@@ -3,11 +3,6 @@
 
 using namespace Engine;
 
-AudioManager::AudioManager():
-    _samples{std::make_unique<std::map<std::string,Sample>>()},
-    _music{std::make_unique<std::map<std::string,Music>>()} {
-}
-
 void AudioManager::storeSample(const std::string& fileName) {
     if (_samples->find(fileName) == _samples->end()) { // Only add a sample if it hasn't been loaded in yet
         Mix_Chunk* sample = Mix_LoadWAV(fileName.c_str());
@@ -38,4 +33,15 @@ const Music& Engine::AudioManager::getMusic(const std::string& fileName) const {
 
 [[maybe_unused]] void AudioManager::removeMusic(const std::string& fileName) {
     _music->erase(fileName);
+}
+
+void AudioManager::resetForNextScene() {
+    for (auto& sample: *_samples) {
+        Mix_FreeChunk(sample.second.audio());
+    }
+    _samples = std::make_unique<std::map<std::string,Sample>>();
+    for (auto& music: *_music) {
+        Mix_FreeMusic(music.second.audio());
+    }
+    _music = std::make_unique<std::map<std::string,Music>>();
 }

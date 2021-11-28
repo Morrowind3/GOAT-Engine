@@ -26,6 +26,12 @@ void RendererApi::RendererApi::EndRenderTick() {
     renderer.EndRenderTick();
 }
 
+void RendererApi::ResetForNextScene() {
+    renderer.ResetForNextScene();
+}
+
 void RendererApi::RendererApi::End() {
     renderer.End();
 }
+
+
