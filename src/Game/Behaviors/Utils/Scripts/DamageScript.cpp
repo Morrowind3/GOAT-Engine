@@ -5,8 +5,10 @@
 #include "DamageScript.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"
-#include "GameOverScript.hpp"
 #include <iostream>
+
+//TODO: Find a way to connect this script with the health counter script and defeat menu to avoid polling.
+// Observer pattern??
 
 void DamageScript::OnExternalEvent() {
     if(_graceTimer < GRACE_PERIOD) return;
@@ -18,8 +20,7 @@ void DamageScript::OnExternalEvent() {
     _graceTimer = 0;
     if(currentHealth <= 0){
         _actor.audioSources.at(Keys::DEATH_SFX).queueForPlay = true;
-        GameOverScript gameOver {true};
-        gameOver.OnStart();
+        Globals::GetInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_DEFEAT);
     }
 
 }

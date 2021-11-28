@@ -128,9 +128,7 @@ add_library(GOAT_Engine STATIC
         Engine/Utilities/InputRegistry.cpp Engine/Utilities/InputRegistry.hpp
 		Engine/Utilities/Input/KeyCode.hpp
 		Engine/Utilities/Input/MouseButton.hpp
-		Engine/Utilities/Input/PressState.hpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp)
+		Engine/Utilities/Input/PressState.hpp)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -198,9 +196,18 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-		Game/Behaviors/Utils/Scripts/GameOverScript.cpp Game/Behaviors/Utils/Scripts/GameOverScript.hpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp  Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
-		Game/Behaviors/Utils/Scripts/VictoryScript.cpp Game/Behaviors/Utils/Scripts/VictoryScript.hpp Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp)
+		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
+		Game/Behaviors/Utils/Scripts/DamageScript.cpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
+		Game/Behaviors/Utils/CheatsBehavior.cpp
+		Game/Behaviors/Utils/Scripts/CheatsScript.cpp
+		Game/GameObjects/WorldObjects/VictoryFlag.cpp
+		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
+		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
+		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp
+		Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp
+		Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
