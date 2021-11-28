@@ -33,7 +33,7 @@ public:
 	/// Reset the timer.
 	void Reset();
 
-	/// Get the time since construction or the last reset.
+	/// get the time since construction or the last reset.
 	float32 GetMilliseconds() const;
 
 private:

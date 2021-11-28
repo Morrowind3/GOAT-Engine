@@ -6,12 +6,12 @@ FpsScript::FpsScript(Text& fpsText, bool active):
         Script(active), _text{fpsText} {
 }
 
-void FpsScript::OnUpdate(double deltaTime) {
+void FpsScript::onUpdate(double deltaTime) {
     // End key toggles FPS
-    if (_input.GetKeyDown(KeyCode::NUMBER_2)) {
+    if (_input.getKeyDown(KeyCode::NUMBER_2)) {
         _text.active = !_text.active;
-        if (_text.active) Debug::GetInstance().log("Enabled FPS counter");
-        else              Debug::GetInstance().log("Disabled FPS counter");
+        if (_text.active) Debug::getInstance().log("Enabled FPS counter");
+        else Debug::getInstance().log("Disabled FPS counter");
     }
 
     // One extra FPS needed because of SDL Tick rounding issues

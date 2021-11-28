@@ -9,5 +9,4 @@ class EtappeSelection : public Scene {
     public: explicit EtappeSelection(SceneManager& manager);
 };
 
-
 #endif //GOAT_ENGINE_ETAPPESELECTION_HPP

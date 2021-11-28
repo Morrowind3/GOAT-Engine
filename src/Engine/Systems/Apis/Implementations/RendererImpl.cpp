@@ -21,7 +21,7 @@ RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::
     SDL_SetCursor(sdlCursor);
 }
 
-void RendererImpl::LoadTexture(const std::string& fileName) {
+void RendererImpl::loadTexture(const std::string& fileName) {
     try {
         _textures->store(fileName);
     } catch (const std::runtime_error& error) {
@@ -30,7 +30,7 @@ void RendererImpl::LoadTexture(const std::string& fileName) {
     }
 }
 
-void RendererImpl::LoadFont(const std::string& fileName) {
+void RendererImpl::loadFont(const std::string& fileName) {
     try {
         _fonts->store(fileName);
     } catch (const std::runtime_error& error) {
@@ -39,17 +39,17 @@ void RendererImpl::LoadFont(const std::string& fileName) {
     }
 }
 
-void RendererImpl::BeginRenderTick() {
+void RendererImpl::beginRenderTick() {
     _tickTextureCache = {};
     SDL_RenderClear(_renderer.get());
 }
 
-void RendererImpl::DrawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
+void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
     const auto& texture = _textures->get(name);
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, &texture});
 }
 
-void RendererImpl::DrawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
+void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
     auto& font = _fonts->get(fontName);
     std::shared_ptr<Texture> texture = font.text(text,size,color);
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
@@ -60,7 +60,7 @@ bool tickTextureCacheSort(const std::pair<const Transform, const Texture*>& a,
     return a.first.layer < b.first.layer;
 }
 
-void RendererImpl::EndRenderTick() {
+void RendererImpl::endRenderTick() {
     std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
 
     for (auto& drawable: _tickTextureCache) {
@@ -96,14 +96,14 @@ void RendererImpl::EndRenderTick() {
     SDL_RenderPresent(_renderer.get());
 }
 
-void RendererImpl::ResetForNextScene() {
+void RendererImpl::resetForNextScene() {
     _textures->resetForNextScene();
     _fonts->resetForNextScene();
     _textures = std::make_unique<TextureManager>(_renderer.get());
     _fonts = std::make_unique<FontManager>(_renderer.get());
 }
 
-void RendererImpl::End() {
+void RendererImpl::end() {
     TTF_Quit();
     SDL_Quit();
 }

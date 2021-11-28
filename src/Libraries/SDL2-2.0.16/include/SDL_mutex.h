@@ -289,7 +289,7 @@ extern DECLSPEC int SDLCALL SDL_SemWaitTimeout(SDL_sem * sem, Uint32 ms);
 extern DECLSPEC int SDLCALL SDL_SemPost(SDL_sem * sem);
 
 /**
- * Get the current value of a semaphore.
+ * get the current value of a semaphore.
  *
  * \param sem the semaphore to query
  * \returns the current value of the semaphore.

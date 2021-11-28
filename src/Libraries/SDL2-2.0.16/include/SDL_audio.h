@@ -270,7 +270,7 @@ extern DECLSPEC void SDLCALL SDL_AudioQuit(void);
 /* @} */
 
 /**
- * Get the name of the current audio driver.
+ * get the name of the current audio driver.
  *
  * The returned string points to internal static memory and thus never becomes
  * invalid, even if you quit the audio subsystem and initialize a new driver
@@ -347,7 +347,7 @@ extern DECLSPEC int SDLCALL SDL_OpenAudio(SDL_AudioSpec * desired,
 typedef Uint32 SDL_AudioDeviceID;
 
 /**
- * Get the number of built-in audio devices.
+ * get the number of built-in audio devices.
  *
  * This function is only valid after successfully initializing the audio
  * subsystem.
@@ -393,7 +393,7 @@ typedef Uint32 SDL_AudioDeviceID;
 extern DECLSPEC int SDLCALL SDL_GetNumAudioDevices(int iscapture);
 
 /**
- * Get the human-readable name of a specific audio device.
+ * get the human-readable name of a specific audio device.
  *
  * This function is only valid after successfully initializing the audio
  * subsystem. The values returned by this function reflect the latest call to
@@ -418,7 +418,7 @@ extern DECLSPEC const char *SDLCALL SDL_GetAudioDeviceName(int index,
                                                            int iscapture);
 
 /**
- * Get the preferred audio format of a specific audio device.
+ * get the preferred audio format of a specific audio device.
  *
  * This function is only valid after a successfully initializing the audio
  * subsystem. The values returned by this function reflect the latest call to
@@ -561,7 +561,7 @@ extern DECLSPEC SDL_AudioDeviceID SDLCALL SDL_OpenAudioDevice(
 /**
  *  \name Audio state
  *
- *  Get the current audio state.
+ *  get the current audio state.
  */
 /* @{ */
 typedef enum
@@ -826,7 +826,7 @@ extern DECLSPEC SDL_AudioStream * SDLCALL SDL_NewAudioStream(const SDL_AudioForm
 extern DECLSPEC int SDLCALL SDL_AudioStreamPut(SDL_AudioStream *stream, const void *buf, int len);
 
 /**
- * Get converted/resampled data from the stream
+ * get converted/resampled data from the stream
  *
  * \param stream The stream the audio is being requested from
  * \param buf A buffer to fill with audio data
@@ -843,7 +843,7 @@ extern DECLSPEC int SDLCALL SDL_AudioStreamPut(SDL_AudioStream *stream, const vo
 extern DECLSPEC int SDLCALL SDL_AudioStreamGet(SDL_AudioStream *stream, void *buf, int len);
 
 /**
- * Get the number of converted/resampled bytes available.
+ * get the number of converted/resampled bytes available.
  *
  * The stream may be buffering data behind the scenes until it has enough to
  * resample correctly, so this number might be lower than what you expect, or
@@ -1054,7 +1054,7 @@ extern DECLSPEC int SDLCALL SDL_QueueAudio(SDL_AudioDeviceID dev, const void *da
 extern DECLSPEC Uint32 SDLCALL SDL_DequeueAudio(SDL_AudioDeviceID dev, void *data, Uint32 len);
 
 /**
- * Get the number of bytes of still-queued audio.
+ * get the number of bytes of still-queued audio.
  *
  * For playback devices: this is the number of bytes that have been queued for
  * playback with SDL_QueueAudio(), but have not yet been sent to the hardware.

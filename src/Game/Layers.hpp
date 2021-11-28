@@ -1,6 +1,7 @@
 #ifndef GOAT_ENGINE_LAYERS_HPP
 #define GOAT_ENGINE_LAYERS_HPP
 
+// Not an "enum class" because these are essentially named integers
 enum LAYER {
     // Layers < 100 have parallax effect, the lower, the less parralax speed
     UI = 200,

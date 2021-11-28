@@ -85,25 +85,25 @@ public:
 	b2Vec2 GetReactionForce(float32 inv_dt) const override;
 	float32 GetReactionTorque(float32 inv_dt) const override;
 
-	/// Get the first ground anchor.
+	/// get the first ground anchor.
 	b2Vec2 GetGroundAnchorA() const;
 
-	/// Get the second ground anchor.
+	/// get the second ground anchor.
 	b2Vec2 GetGroundAnchorB() const;
 
-	/// Get the current length of the segment attached to bodyA.
+	/// get the current length of the segment attached to bodyA.
 	float32 GetLengthA() const;
 
-	/// Get the current length of the segment attached to bodyB.
+	/// get the current length of the segment attached to bodyB.
 	float32 GetLengthB() const;
 
-	/// Get the pulley ratio.
+	/// get the pulley ratio.
 	float32 GetRatio() const;
 
-	/// Get the current length of the segment attached to bodyA.
+	/// get the current length of the segment attached to bodyA.
 	float32 GetCurrentLengthA() const;
 
-	/// Get the current length of the segment attached to bodyB.
+	/// get the current length of the segment attached to bodyB.
 	float32 GetCurrentLengthB() const;
 
 	/// Dump joint to dmLog

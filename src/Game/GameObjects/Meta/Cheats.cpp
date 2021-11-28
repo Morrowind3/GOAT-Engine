@@ -9,6 +9,8 @@ Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, acti
     uint8_t size{12};
     Color color{0, 0, 0, 255};
 
+    // TODO: This no longer sticks on top like a HUD
+    // TODO: Keys.hpp
     text.insert(std::make_pair("CHEATS_1", Text{"Cheats", font, size, color,
                                             Transform{{10, 150}, transform.layer, 0, 1, 1},
                                             false}));
@@ -24,5 +26,6 @@ Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, acti
                 Transform{Point{0,0},transform.layer}, // ALWAYS on top!
                 false}));
 
-    behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(this->text, true)));
+    audioSources.insert(std::make_pair(Keys::PAUSE_SFX, AudioSource{"Sounds/Pause.ogg",AudioSourceType::SAMPLE, true}));
+    behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(this->text, audioSources.at(Keys::PAUSE_SFX), true)));
 }

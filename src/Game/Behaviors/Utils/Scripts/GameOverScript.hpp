@@ -8,7 +8,7 @@ using namespace Engine;
 class GameOverScript : public Script{
 public:
     explicit GameOverScript(bool active) : Script(active){ };
-    void OnStart() override;
+    void onStart() override;
 
 };
 

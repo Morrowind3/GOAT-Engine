@@ -99,7 +99,7 @@ extern DECLSPEC int SDLCALL SDL_SetError(SDL_PRINTF_FORMAT_STRING const char *fm
 extern DECLSPEC const char *SDLCALL SDL_GetError(void);
 
 /**
- * Get the last error message that was set for the current thread.
+ * get the last error message that was set for the current thread.
  *
  * This allows the caller to copy the error string into a provided buffer, but
  * otherwise operates exactly the same as SDL_GetError().

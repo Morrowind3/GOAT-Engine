@@ -50,7 +50,7 @@ typedef enum
 
 
 /**
- * Get the current power supply details.
+ * get the current power supply details.
  *
  * You should never take a battery status as absolute truth. Batteries
  * (especially failing batteries) are delicate hardware, and the values

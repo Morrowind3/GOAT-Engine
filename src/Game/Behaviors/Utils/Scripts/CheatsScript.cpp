@@ -9,11 +9,11 @@
 CheatsScript::CheatsScript(std::map<std::string, Text>& textObjects, bool active) : Script(active),
                                                                                     _textObjects(textObjects) {}
 
-void CheatsScript::OnStart() {
+void CheatsScript::onStart() {
 }
 
-void CheatsScript::OnUpdate(double deltaTime) {
-    if (_input.GetKeyDown(KeyCode::ESCAPE)) {
+void CheatsScript::onUpdate(double deltaTime) {
+    if (_input.getKeyDown(KeyCode::ESCAPE)) {
         if (_visible) {
             for (auto &[key, val]: _textObjects) {
                 if(std::includes(key.begin(), key.end(), _filterKey.begin(), _filterKey.end())) {
@@ -32,8 +32,8 @@ void CheatsScript::OnUpdate(double deltaTime) {
     }
 }
 
-void CheatsScript::OnDestroy() {
+void CheatsScript::onDestroy() {
 
 }
 
-void CheatsScript::OnExternalEvent() {}
+void CheatsScript::onExternalEvent() {}

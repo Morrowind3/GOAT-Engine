@@ -41,7 +41,7 @@ class b2Joint;
 class b2World
 {
 public:
-	/// Construct a world object.
+	/// construct a world object.
 	/// @param gravity the world gravity vector.
 	b2World(const b2Vec2& gravity);
 
@@ -121,19 +121,19 @@ public:
 	/// @param point2 the ray ending point
 	void RayCast(b2RayCastCallback* callback, const b2Vec2& point1, const b2Vec2& point2) const;
 
-	/// Get the world body list. With the returned body, use b2Body::GetNext to get
+	/// get the world body list. With the returned body, use b2Body::GetNext to get
 	/// the next body in the world list. A nullptr body indicates the end of the list.
 	/// @return the head of the world body list.
 	b2Body* GetBodyList();
 	const b2Body* GetBodyList() const;
 
-	/// Get the world joint list. With the returned joint, use b2Joint::GetNext to get
+	/// get the world joint list. With the returned joint, use b2Joint::GetNext to get
 	/// the next joint in the world list. A nullptr joint indicates the end of the list.
 	/// @return the head of the world joint list.
 	b2Joint* GetJointList();
 	const b2Joint* GetJointList() const;
 
-	/// Get the world contact list. With the returned contact, use b2Contact::GetNext to get
+	/// get the world contact list. With the returned contact, use b2Contact::GetNext to get
 	/// the next contact in the world list. A nullptr contact indicates the end of the list.
 	/// @return the head of the world contact list.
 	/// @warning contacts are created and destroyed in the middle of a time step.
@@ -157,32 +157,32 @@ public:
 	void SetSubStepping(bool flag) { m_subStepping = flag; }
 	bool GetSubStepping() const { return m_subStepping; }
 
-	/// Get the number of broad-phase proxies.
+	/// get the number of broad-phase proxies.
 	int32 GetProxyCount() const;
 
-	/// Get the number of bodies.
+	/// get the number of bodies.
 	int32 GetBodyCount() const;
 
-	/// Get the number of joints.
+	/// get the number of joints.
 	int32 GetJointCount() const;
 
-	/// Get the number of contacts (each may have 0 or more contact points).
+	/// get the number of contacts (each may have 0 or more contact points).
 	int32 GetContactCount() const;
 
-	/// Get the height of the dynamic tree.
+	/// get the height of the dynamic tree.
 	int32 GetTreeHeight() const;
 
-	/// Get the balance of the dynamic tree.
+	/// get the balance of the dynamic tree.
 	int32 GetTreeBalance() const;
 
-	/// Get the quality metric of the dynamic tree. The smaller the better.
+	/// get the quality metric of the dynamic tree. The smaller the better.
 	/// The minimum is 1.
 	float32 GetTreeQuality() const;
 
 	/// Change the global gravity vector.
 	void SetGravity(const b2Vec2& gravity);
 	
-	/// Get the global gravity vector.
+	/// get the global gravity vector.
 	b2Vec2 GetGravity() const;
 
 	/// Is the world locked (in the middle of a time step).
@@ -191,7 +191,7 @@ public:
 	/// Set flag to control automatic clearing of forces after each time step.
 	void SetAutoClearForces(bool flag);
 
-	/// Get the flag that controls automatic clearing of forces after each time step.
+	/// get the flag that controls automatic clearing of forces after each time step.
 	bool GetAutoClearForces() const;
 
 	/// Shift the world origin. Useful for large worlds.
@@ -199,10 +199,10 @@ public:
 	/// @param newOrigin the new origin with respect to the old origin
 	void ShiftOrigin(const b2Vec2& newOrigin);
 
-	/// Get the contact manager for testing.
+	/// get the contact manager for testing.
 	const b2ContactManager& GetContactManager() const;
 
-	/// Get the current profile.
+	/// get the current profile.
 	const b2Profile& GetProfile() const;
 
 	/// Dump the world into the log file.
@@ -335,7 +335,7 @@ inline void b2World::SetAutoClearForces(bool flag)
 	}
 }
 
-/// Get the flag that controls automatic clearing of forces after each time step.
+/// get the flag that controls automatic clearing of forces after each time step.
 inline bool b2World::GetAutoClearForces() const
 {
 	return (m_flags & e_clearForces) == e_clearForces;

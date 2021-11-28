@@ -9,12 +9,12 @@ using namespace Engine;
 class CollisionTestScript : public Script {
     public:
         explicit CollisionTestScript(bool active);
-        void OnTriggerEnter2D(GameObject& other) override;
-        void OnTriggerStay2D(GameObject& other) override;
-        void OnTriggerExit2D(GameObject& other) override;
+        void onTriggerEnter2D(GameObject& other) override;
+        void onTriggerStay2D(GameObject& other) override;
+        void onTriggerExit2D(GameObject& other) override;
     private:
         // Globals
-        Debug& _debug = Debug::GetInstance();
+        Debug& _debug = Debug::getInstance();
 };
 
 

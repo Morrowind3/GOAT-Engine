@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 28/11/2021.
-//
-
 #ifndef GOAT_ENGINE_SELECTETAPPEBUTTON_HPP
 #define GOAT_ENGINE_SELECTETAPPEBUTTON_HPP
 
@@ -10,9 +6,8 @@
 
 using namespace Engine;
 
-
 class SelectEtappeButton : public GameObject {
-public:  SelectEtappeButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: SelectEtappeButton(SceneManager& sceneManager, Transform transform, bool active);
 };
 
 

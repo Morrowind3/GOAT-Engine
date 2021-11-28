@@ -65,7 +65,7 @@ typedef struct SDL_Finger
 
 
 /**
- * Get the number of registered touch devices.
+ * get the number of registered touch devices.
  *
  * On some platforms SDL first sees the touch device if it was actually used.
  * Therefore SDL_GetNumTouchDevices() may return 0 although devices are
@@ -83,7 +83,7 @@ typedef struct SDL_Finger
 extern DECLSPEC int SDLCALL SDL_GetNumTouchDevices(void);
 
 /**
- * Get the touch ID with the given index.
+ * get the touch ID with the given index.
  *
  * \param index the touch device index
  * \returns the touch ID with the given index on success or 0 if the index is
@@ -96,12 +96,12 @@ extern DECLSPEC int SDLCALL SDL_GetNumTouchDevices(void);
 extern DECLSPEC SDL_TouchID SDLCALL SDL_GetTouchDevice(int index);
 
 /**
- * Get the type of the given touch device.
+ * get the type of the given touch device.
  */
 extern DECLSPEC SDL_TouchDeviceType SDLCALL SDL_GetTouchDeviceType(SDL_TouchID touchID);
 
 /**
- * Get the number of active fingers for a given touch device.
+ * get the number of active fingers for a given touch device.
  *
  * \param touchID the ID of a touch device
  * \returns the number of active fingers for a given touch device on success
@@ -114,7 +114,7 @@ extern DECLSPEC SDL_TouchDeviceType SDLCALL SDL_GetTouchDeviceType(SDL_TouchID t
 extern DECLSPEC int SDLCALL SDL_GetNumTouchFingers(SDL_TouchID touchID);
 
 /**
- * Get the finger object for specified touch device ID and finger index.
+ * get the finger object for specified touch device ID and finger index.
  *
  * The returned resource is owned by SDL and should not be deallocated.
  *

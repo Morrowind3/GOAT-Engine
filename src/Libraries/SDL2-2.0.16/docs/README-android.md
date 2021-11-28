@@ -93,7 +93,7 @@ If you already have a project that uses CMake, the instructions change somewhat:
 
 If you wish to use Android Studio, you can skip the last step.
 
-4. Run './gradlew installDebug' or './gradlew installRelease' in the project directory. It will build and install your .apk on any
+4. run './gradlew installDebug' or './gradlew installRelease' in the project directory. It will build and install your .apk on any
    connected Android device
 
 Here's an explanation of the files in the Android project, so you can customize them:

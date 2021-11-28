@@ -13460,7 +13460,7 @@ namespace Catch {
                 << "\nError(s) in input:\n"
                 << Column( result.errorMessage() ).indent( 2 )
                 << "\n\n";
-            Catch::cerr() << "Run with -? for usage\n" << std::endl;
+            Catch::cerr() << "run with -? for usage\n" << std::endl;
             return MaxExitCode;
         }
 
@@ -16613,7 +16613,7 @@ void ConsoleReporter::lazyPrintRunInfo() {
     Colour colour(Colour::SecondaryText);
     stream << currentTestRunInfo->name
         << " is a Catch v" << libraryVersion() << " host application.\n"
-        << "Run with -? for options\n\n";
+        << "run with -? for options\n\n";
 
     if (m_config->rngSeed() != 0)
         stream << "Randomness seeded to: " << m_config->rngSeed() << "\n\n";

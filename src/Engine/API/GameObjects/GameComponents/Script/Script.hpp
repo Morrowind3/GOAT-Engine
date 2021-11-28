@@ -8,14 +8,14 @@ namespace Engine {
     class GameObject;
     struct Script : public GameComponent {
         explicit Script(bool active);
-        virtual void OnStart();
-        virtual void OnUpdate(double deltaTime);
-        virtual void OnExternalEvent();
-        virtual void OnDestroy();
+        virtual void onStart();
+        virtual void onUpdate(double deltaTime);
+        virtual void onExternalEvent();
+        virtual void onDestroy();
         // Collisions
-        virtual void OnTriggerEnter2D(GameObject& other);
-        virtual void OnTriggerStay2D(GameObject& other);
-        virtual void OnTriggerExit2D(GameObject& other);
+        virtual void onTriggerEnter2D(GameObject& other);
+        virtual void onTriggerStay2D(GameObject& other);
+        virtual void onTriggerExit2D(GameObject& other);
     };
 }
 

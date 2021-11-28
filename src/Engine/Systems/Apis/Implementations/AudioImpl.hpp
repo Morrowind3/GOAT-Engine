@@ -9,11 +9,11 @@ namespace Engine {
     class AudioImpl: NoCopyNoMove {
         public:
             AudioImpl();
-            void LoadSample(const std::string& fileName);
-            void LoadMusic(const std::string& fileName);
-            void PlaySample(const std::string& fileName); // TODO: Loops
-            void PlayMusic(const std::string& fileName);
-            void ResetForNextScene();
+            void loadSample(const std::string& fileName);
+            void loadMusic(const std::string& fileName);
+            void playSample(const std::string& fileName); // TODO: Loops
+            void playMusic(const std::string& fileName);
+            void resetForNextScene();
         private:
             int _sdlStatus;
             std::unique_ptr<AudioManager> _audio = std::make_unique<AudioManager>();

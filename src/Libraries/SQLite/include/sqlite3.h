@@ -10050,7 +10050,7 @@ struct sqlite3_rtree_query_info {
 
 #endif  /* ifndef _SQLITE3RTREE_H_ */
 
-/******** End of sqlite3rtree.h *********/
+/******** end of sqlite3rtree.h *********/
 /******** Begin file sqlite3session.h *********/
 
 #if !defined(__SQLITESESSION_H_) && defined(SQLITE_ENABLE_SESSION)
@@ -11773,7 +11773,7 @@ SQLITE_API int sqlite3session_config(int op, void *pArg);
 
 #endif  /* !defined(__SQLITESESSION_H_) && defined(SQLITE_ENABLE_SESSION) */
 
-/******** End of sqlite3session.h *********/
+/******** end of sqlite3session.h *********/
 /******** Begin file fts5.h *********/
 /*
 ** 2014 May 31
@@ -12350,4 +12350,4 @@ struct fts5_api {
 
 #endif /* _FTS5_H */
 
-/******** End of fts5.h *********/
+/******** end of fts5.h *********/

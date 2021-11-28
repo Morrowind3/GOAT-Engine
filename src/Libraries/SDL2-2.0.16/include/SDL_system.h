@@ -54,7 +54,7 @@ typedef void (SDLCALL * SDL_WindowsMessageHook)(void *userdata, void *hWnd, unsi
 extern DECLSPEC void SDLCALL SDL_SetWindowsMessageHook(SDL_WindowsMessageHook callback, void *userdata);
 
 /**
- * Get the D3D9 adapter index that matches the specified display index.
+ * get the D3D9 adapter index that matches the specified display index.
  *
  * The returned adapter index can be passed to `IDirect3D9::CreateDevice` and
  * controls on which monitor a full screen application will appear.
@@ -71,7 +71,7 @@ extern DECLSPEC int SDLCALL SDL_Direct3D9GetAdapterIndex( int displayIndex );
 typedef struct IDirect3DDevice9 IDirect3DDevice9;
 
 /**
- * Get the D3D9 device associated with a renderer.
+ * get the D3D9 device associated with a renderer.
  *
  * Once you are done using the device, you should release it to avoid a
  * resource leak.
@@ -87,7 +87,7 @@ extern DECLSPEC IDirect3DDevice9* SDLCALL SDL_RenderGetD3D9Device(SDL_Renderer *
 typedef struct ID3D11Device ID3D11Device;
 
 /**
- * Get the D3D11 device associated with a renderer.
+ * get the D3D11 device associated with a renderer.
  *
  * Once you are done using the device, you should release it to avoid a
  * resource leak.
@@ -99,7 +99,7 @@ typedef struct ID3D11Device ID3D11Device;
 extern DECLSPEC ID3D11Device* SDLCALL SDL_RenderGetD3D11Device(SDL_Renderer * renderer);
 
 /**
- * Get the DXGI Adapter and Output indices for the specified display index.
+ * get the DXGI Adapter and Output indices for the specified display index.
  *
  * The DXGI Adapter and Output indices can be passed to `EnumAdapters` and
  * `EnumOutputs` respectively to get the objects required to create a DX10 or

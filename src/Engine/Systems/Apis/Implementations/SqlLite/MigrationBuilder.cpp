@@ -10,17 +10,17 @@ std::vector<std::basic_string<char>> MigrationBuilder::getMigrationQueries() {
     return allTablesQueries;
 }
 
-void MigrationBuilder::NewTable(std::string name) {
+void MigrationBuilder::newTable(std::string name) {
     ++currentTable;
     tables.push_back(new SqlTable());
     tables.back()->setTableName(name);
-    AddColumn("id", "INTEGER", true, false, true);
+    addColumn("id", "INTEGER", true, false, true);
 }
-void MigrationBuilder::AddColumn(std::string name,  std::string type, bool primaryKey, bool nullable, bool unique) {
+void MigrationBuilder::addColumn(std::string name, std::string type, bool primaryKey, bool nullable, bool unique) {
     tables.back()->columns.push_back(new SqlColumn(primaryKey, std::move(name),  std::move(type), !nullable, unique));
 }
 
-void MigrationBuilder::AddForeignKey(const std::string& referenceColumn, const std::string& referenceTable) {
+void MigrationBuilder::addForeignKey(const std::string& referenceColumn, const std::string& referenceTable) {
     std::string keyName = referenceTable + "_" + referenceColumn;
     ForeignKey *level_id_fk = new ForeignKey(keyName, referenceTable, referenceColumn);
     tables.at(currentTable)->foreignKeys.push_back(level_id_fk);

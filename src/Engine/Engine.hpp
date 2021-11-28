@@ -13,7 +13,7 @@ namespace Engine {
     class GoatEngine {
     public:
         explicit GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor);
-        void Run(unsigned int maxFps);
+        void run(unsigned int maxFps);
     private:
         SceneManager& _sceneManager;
         std::string& _name;

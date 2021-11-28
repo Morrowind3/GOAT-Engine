@@ -51,7 +51,7 @@ extern "C" {
 extern DECLSPEC int SDLCALL SDL_SetClipboardText(const char *text);
 
 /**
- * Get UTF-8 text from the clipboard, which must be freed with SDL_free().
+ * get UTF-8 text from the clipboard, which must be freed with SDL_free().
  *
  * This functions returns NULL if there was not enough memory left for a copy
  * of the clipboard's content.

@@ -11,12 +11,12 @@
 #include "Scenes/VictoryScene.hpp"
 #include <stdexcept>
 
-void GameSceneManager::ChangeCurrentScene(const std::string& name) {
-    Debug::GetInstance().log("Game scene manager will attempt to switch to scene: " + name);
+void GameSceneManager::changeCurrentScene(const std::string& name) {
+    Debug::getInstance().log("Game scene manager will attempt to switch to scene: " + name);
     SceneManager& sceneManager = *this;
 
     if(name == Keys::CURRENT_ETAPPE) setEtappeScene();
-    else if (name == Keys::NEXT_ETAPPE){
+    else if (name == Keys::NEXT_ETAPPE) {
         ++currentEtappe;
         setEtappeScene();
     }
@@ -40,6 +40,7 @@ void GameSceneManager::ChangeCurrentScene(const std::string& name) {
     }
 }
 
+// TODO: Is this needed?
 void GameSceneManager::setEtappeScene() {
     switch(currentEtappe){
         case 1:  _currentScene = std::make_shared<EtappeOne>(*this);
@@ -47,5 +48,4 @@ void GameSceneManager::setEtappeScene() {
         case 2:  _currentScene = std::make_shared<EtappeTwo>(*this);
             break;
     }
-
 }

@@ -8,6 +8,6 @@ Collider::Collider() : GameComponent(false){}
 
 Collider::~Collider() {}
 
-std::vector<double> Collider::GetData() const {
+std::vector<double> Collider::getData() const {
     return _data;
 }

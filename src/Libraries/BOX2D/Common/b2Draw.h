@@ -59,7 +59,7 @@ public:
 	/// Set the drawing flags.
 	void SetFlags(uint32 flags);
 
-	/// Get the drawing flags.
+	/// get the drawing flags.
 	uint32 GetFlags() const;
 	
 	/// Append flags to the current flags.

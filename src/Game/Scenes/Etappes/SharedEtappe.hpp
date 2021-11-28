@@ -12,8 +12,8 @@ class SharedEtappe : public Scene {
     public: SharedEtappe(const std::string& etappeKey, Transform playerStartPosition, SceneManager& manager,
         // Level constructor params
         const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset);
+    private: friend class MountEverestimateLevelConstructor;
         std::shared_ptr<Player> player;
-    // TODO: Not sure if this is a good idea, but maybe put a pure virtual constructFromTiled method here to force this to stay abstract
 };
 
 

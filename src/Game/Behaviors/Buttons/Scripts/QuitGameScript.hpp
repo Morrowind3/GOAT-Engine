@@ -8,7 +8,7 @@ using namespace Engine;
 class QuitGameScript : public Script {
     public:
         explicit QuitGameScript(bool active);
-        void OnExternalEvent();
+        void onExternalEvent();
 };
 
 

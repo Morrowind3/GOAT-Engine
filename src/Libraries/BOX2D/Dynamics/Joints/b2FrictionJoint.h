@@ -70,13 +70,13 @@ public:
 	/// Set the maximum friction force in N.
 	void SetMaxForce(float32 force);
 
-	/// Get the maximum friction force in N.
+	/// get the maximum friction force in N.
 	float32 GetMaxForce() const;
 
 	/// Set the maximum friction torque in N*m.
 	void SetMaxTorque(float32 torque);
 
-	/// Get the maximum friction torque in N*m.
+	/// get the maximum friction torque in N*m.
 	float32 GetMaxTorque() const;
 
 	/// Dump joint to dmLog

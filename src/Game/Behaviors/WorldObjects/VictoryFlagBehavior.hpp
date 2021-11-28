@@ -9,7 +9,6 @@ using namespace Engine;
 
 class VictoryFlagBehavior : public Behavior {
     public: VictoryFlagBehavior(VictoryFlag& flag, const std::shared_ptr<Player>& player, bool active);
-
 };
 
 

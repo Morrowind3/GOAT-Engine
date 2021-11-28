@@ -1,6 +1,6 @@
 #include "GameOverScript.hpp"
 #include <iostream>
 
-void GameOverScript::OnStart() {
+void GameOverScript::onStart() {
     std::cout << "git gud" << std::endl;
 }

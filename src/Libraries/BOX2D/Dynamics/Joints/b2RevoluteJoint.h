@@ -99,13 +99,13 @@ public:
 	/// The local anchor point relative to bodyB's origin.
 	const b2Vec2& GetLocalAnchorB() const  { return m_localAnchorB; }
 
-	/// Get the reference angle.
+	/// get the reference angle.
 	float32 GetReferenceAngle() const { return m_referenceAngle; }
 
-	/// Get the current joint angle in radians.
+	/// get the current joint angle in radians.
 	float32 GetJointAngle() const;
 
-	/// Get the current joint angle speed in radians per second.
+	/// get the current joint angle speed in radians per second.
 	float32 GetJointSpeed() const;
 
 	/// Is the joint limit enabled?
@@ -114,10 +114,10 @@ public:
 	/// Enable/disable the joint limit.
 	void EnableLimit(bool flag);
 
-	/// Get the lower joint limit in radians.
+	/// get the lower joint limit in radians.
 	float32 GetLowerLimit() const;
 
-	/// Get the upper joint limit in radians.
+	/// get the upper joint limit in radians.
 	float32 GetUpperLimit() const;
 
 	/// Set the joint limits in radians.
@@ -132,22 +132,22 @@ public:
 	/// Set the motor speed in radians per second.
 	void SetMotorSpeed(float32 speed);
 
-	/// Get the motor speed in radians per second.
+	/// get the motor speed in radians per second.
 	float32 GetMotorSpeed() const;
 
 	/// Set the maximum motor torque, usually in N-m.
 	void SetMaxMotorTorque(float32 torque);
 	float32 GetMaxMotorTorque() const { return m_maxMotorTorque; }
 
-	/// Get the reaction force given the inverse time step.
+	/// get the reaction force given the inverse time step.
 	/// Unit is N.
 	b2Vec2 GetReactionForce(float32 inv_dt) const override;
 
-	/// Get the reaction torque due to the joint limit given the inverse time step.
+	/// get the reaction torque due to the joint limit given the inverse time step.
 	/// Unit is N*m.
 	float32 GetReactionTorque(float32 inv_dt) const override;
 
-	/// Get the current motor torque given the inverse time step.
+	/// get the current motor torque given the inverse time step.
 	/// Unit is N*m.
 	float32 GetMotorTorque(float32 inv_dt) const;
 

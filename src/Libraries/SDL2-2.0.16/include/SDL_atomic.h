@@ -273,7 +273,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_AtomicCAS(SDL_atomic_t *a, int oldval, int 
 extern DECLSPEC int SDLCALL SDL_AtomicSet(SDL_atomic_t *a, int v);
 
 /**
- * Get the value of an atomic variable.
+ * get the value of an atomic variable.
  *
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
@@ -354,7 +354,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_AtomicCASPtr(void **a, void *oldval, void *
 extern DECLSPEC void* SDLCALL SDL_AtomicSetPtr(void **a, void* v);
 
 /**
- * Get the value of a pointer atomically.
+ * get the value of a pointer atomically.
  *
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***

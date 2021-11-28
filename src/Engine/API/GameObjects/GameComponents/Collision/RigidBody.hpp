@@ -16,7 +16,6 @@ namespace Engine {
         public:
             RigidBody(double mass, double gravityScale, BodyType bodyType, bool isActive);
             RigidBody(); // Default constructor for objects that don't need an active rididbody
-
             double mass{0};
             double gravityScale{0};
             BodyType bodyType{BodyType::STATIC};

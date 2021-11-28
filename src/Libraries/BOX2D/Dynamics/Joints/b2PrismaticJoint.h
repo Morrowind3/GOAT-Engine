@@ -101,13 +101,13 @@ public:
 	/// The local joint axis relative to bodyA.
 	const b2Vec2& GetLocalAxisA() const { return m_localXAxisA; }
 
-	/// Get the reference angle.
+	/// get the reference angle.
 	float32 GetReferenceAngle() const { return m_referenceAngle; }
 
-	/// Get the current joint translation, usually in meters.
+	/// get the current joint translation, usually in meters.
 	float32 GetJointTranslation() const;
 
-	/// Get the current joint translation speed, usually in meters per second.
+	/// get the current joint translation speed, usually in meters per second.
 	float32 GetJointSpeed() const;
 
 	/// Is the joint limit enabled?
@@ -116,10 +116,10 @@ public:
 	/// Enable/disable the joint limit.
 	void EnableLimit(bool flag);
 
-	/// Get the lower joint limit, usually in meters.
+	/// get the lower joint limit, usually in meters.
 	float32 GetLowerLimit() const;
 
-	/// Get the upper joint limit, usually in meters.
+	/// get the upper joint limit, usually in meters.
 	float32 GetUpperLimit() const;
 
 	/// Set the joint limits, usually in meters.
@@ -134,14 +134,14 @@ public:
 	/// Set the motor speed, usually in meters per second.
 	void SetMotorSpeed(float32 speed);
 
-	/// Get the motor speed, usually in meters per second.
+	/// get the motor speed, usually in meters per second.
 	float32 GetMotorSpeed() const;
 
 	/// Set the maximum motor force, usually in N.
 	void SetMaxMotorForce(float32 force);
 	float32 GetMaxMotorForce() const { return m_maxMotorForce; }
 
-	/// Get the current motor force given the inverse time step, usually in N.
+	/// get the current motor force given the inverse time step, usually in N.
 	float32 GetMotorForce(float32 inv_dt) const;
 
 	/// Dump to b2Log

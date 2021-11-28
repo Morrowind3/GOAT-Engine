@@ -6,11 +6,9 @@
 using namespace Engine;
 
 class VictoryScript : public Script {
-public:
-    VictoryScript(bool active);
-    void OnStart() override;
-
-private:
+    public:
+        VictoryScript(bool active);
+        void onStart() override;
 };
 
 

@@ -4,7 +4,7 @@
 InputPrintScript::InputPrintScript(bool active) : Script(active) {
 }
 
-void InputPrintScript::OnUpdate(double deltaTime) {
+void InputPrintScript::onUpdate(double deltaTime) {
 //    if (_globals.gameExists(Keys::INPUT_DEBUG)) {
 //        _debug.log("---BEGIN INPUT PRINT SCRIPT---");
 //        const std::string prefix{"(INPUT PRINT SCRIPT) "};

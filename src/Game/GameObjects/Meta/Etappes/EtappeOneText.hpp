@@ -6,8 +6,7 @@
 using namespace Engine;
 
 class EtappeOneText : public GameObject {
-public:
-    EtappeOneText(Transform transform, bool active);
+    public: EtappeOneText(Transform transform, bool active);
 };
 
 

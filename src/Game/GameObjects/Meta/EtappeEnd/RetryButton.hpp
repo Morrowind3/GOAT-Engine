@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 28/11/2021.
-//
-
 #ifndef GOAT_ENGINE_RETRYBUTTON_HPP
 #define GOAT_ENGINE_RETRYBUTTON_HPP
 
@@ -10,8 +6,7 @@
 using namespace Engine;
 
 class RetryButton : public GameObject {
-public:  RetryButton(SceneManager& sceneManager, Transform transform, bool active);
-
+    public: RetryButton(SceneManager& sceneManager, Transform transform, bool active);
 };
 
 

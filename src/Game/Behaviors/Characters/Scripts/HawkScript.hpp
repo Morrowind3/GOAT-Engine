@@ -16,7 +16,7 @@ enum Direction {
 class HawkScript : public Script {
 public:
     HawkScript(Hawk& self, bool active);
-    void OnUpdate(double deltaTime);
+    void onUpdate(double deltaTime);
 private:
     Hawk& _self;
     Point _startingPos;

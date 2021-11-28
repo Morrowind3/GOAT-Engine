@@ -10,20 +10,21 @@ using namespace Engine;
 
 class PauseScript : public Script {
     public:
-        PauseScript(bool active);
-        void OnStart();
-        void OnUpdate(double deltaTime);
-        void OnExternalEvent();
-        void OnDestroy();
+        PauseScript(AudioSource& pauseSound, bool active);
+        void onStart();
+        void onUpdate(double deltaTime);
+        void onExternalEvent();
+        void onDestroy();
 
     private:
         void pauseLogic();
         // Utilities
-        Input& _input = Input::GetInstance();
-        Debug& _debug = Debug::GetInstance();
-        Globals& _globals = Globals::GetInstance();
+        Input& _input = Input::getInstance();
+        Debug& _debug = Debug::getInstance();
+        Globals& _globals = Globals::getInstance();
         // Variables
         bool _isPaused = false; // Quick access bool
+        AudioSource& _pauseSound;
 };
 
 

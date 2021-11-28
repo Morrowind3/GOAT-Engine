@@ -14,11 +14,11 @@ namespace Engine {
                 static AudioApi instance{};
                 return instance;
             }
-            void LoadSample(const std::string& fileName);
-            void LoadMusic(const std::string& fileName);
-            void PlaySample(const std::string& fileName);
-            void PlayMusic(const std::string& fileName);
-            void ResetForNextScene();
+            void loadSample(const std::string& fileName);
+            void loadMusic(const std::string& fileName);
+            void playSample(const std::string& fileName);
+            void playMusic(const std::string& fileName);
+            void resetForNextScene();
         private:
             AudioApi();
             std::unique_ptr<AudioImpl> _impl;

@@ -7,21 +7,21 @@
 #include "../../../Keys.hpp"
 #include <iostream>
 
-void GameStateScript::OnUpdate(double deltaTime) {
-    auto gameState = Globals::GetInstance().gameGet(Keys::GAMESTATE);
+void GameStateScript::onUpdate(double deltaTime) {
+    auto gameState = Globals::getInstance().gameGet(Keys::GAMESTATE);
 
     if(gameState == Keys::GAMESTATE_VICTORY){
-        GameWon();
+        gameWon();
     }
     if(gameState == Keys::GAMESTATE_DEFEAT){
-        GameLost();
+        gameLost();
     }
 }
 
-void GameStateScript::GameLost() {
-    _sceneManager.ChangeCurrentScene(Keys::DEFEAT_SCREEN);
+void GameStateScript::gameLost() {
+    _sceneManager.changeCurrentScene(Keys::DEFEAT_SCREEN);
 }
 
-void GameStateScript::GameWon() {
-    _sceneManager.ChangeCurrentScene(Keys::VICTORY_SCREEN);
+void GameStateScript::gameWon() {
+    _sceneManager.changeCurrentScene(Keys::VICTORY_SCREEN);
 }

@@ -8,22 +8,18 @@
 using namespace Engine;
 
 class CheatsScript : public Script {
-public:
-    CheatsScript(std::map<std::string,Text>& textObjects, bool active);
+    public:
+        CheatsScript(std::map<std::string,Text>& textObjects, bool active);
+        void onStart();
+        void onUpdate(double deltaTime);
+        void onExternalEvent();
+        void onDestroy();
 
-    void OnStart();
-
-    void OnUpdate(double deltaTime);
-
-    void OnExternalEvent();
-
-    void OnDestroy();
-
-private:
-    bool _visible{false};
-    std::map<std::string,Text>& _textObjects;
-    Input& _input = Input::GetInstance();
-    std::string _filterKey{"CHEATS_"};
+    private:
+        bool _visible{false};
+        std::map<std::string,Text>& _textObjects;
+        Input& _input = Input::getInstance();
+        std::string _filterKey{"CHEATS_"};
 };
 
 

@@ -141,7 +141,7 @@ typedef struct SDL_Texture SDL_Texture;
 /* Function prototypes */
 
 /**
- * Get the number of 2D rendering drivers available for the current display.
+ * get the number of 2D rendering drivers available for the current display.
  *
  * A render driver is a set of code that handles rendering and texture
  * management on a particular display. Normally there is only one, but some
@@ -160,7 +160,7 @@ typedef struct SDL_Texture SDL_Texture;
 extern DECLSPEC int SDLCALL SDL_GetNumRenderDrivers(void);
 
 /**
- * Get info about a specific 2D rendering driver for the current display.
+ * get info about a specific 2D rendering driver for the current display.
  *
  * \param index the index of the driver to query information about
  * \param info an SDL_RendererInfo structure to be filled with information on
@@ -232,7 +232,7 @@ extern DECLSPEC SDL_Renderer * SDLCALL SDL_CreateRenderer(SDL_Window * window,
 extern DECLSPEC SDL_Renderer * SDLCALL SDL_CreateSoftwareRenderer(SDL_Surface * surface);
 
 /**
- * Get the renderer associated with a window.
+ * get the renderer associated with a window.
  *
  * \param window the window to query
  * \returns the rendering context on success or NULL on failure; call
@@ -243,7 +243,7 @@ extern DECLSPEC SDL_Renderer * SDLCALL SDL_CreateSoftwareRenderer(SDL_Surface * 
 extern DECLSPEC SDL_Renderer * SDLCALL SDL_GetRenderer(SDL_Window * window);
 
 /**
- * Get information about a rendering context.
+ * get information about a rendering context.
  *
  * \param renderer the rendering context
  * \param info an SDL_RendererInfo structure filled with information about the
@@ -257,7 +257,7 @@ extern DECLSPEC int SDLCALL SDL_GetRendererInfo(SDL_Renderer * renderer,
                                                 SDL_RendererInfo * info);
 
 /**
- * Get the output size in pixels of a rendering context.
+ * get the output size in pixels of a rendering context.
  *
  * Due to high-dpi displays, you might end up with a rendering context that
  * has more pixels than the window that contains it, so use this instead of
@@ -372,7 +372,7 @@ extern DECLSPEC int SDLCALL SDL_SetTextureColorMod(SDL_Texture * texture,
 
 
 /**
- * Get the additional color value multiplied into render copy operations.
+ * get the additional color value multiplied into render copy operations.
  *
  * \param texture the texture to query
  * \param r a pointer filled in with the current red color value
@@ -411,7 +411,7 @@ extern DECLSPEC int SDLCALL SDL_SetTextureAlphaMod(SDL_Texture * texture,
                                                    Uint8 alpha);
 
 /**
- * Get the additional alpha value multiplied into render copy operations.
+ * get the additional alpha value multiplied into render copy operations.
  *
  * \param texture the texture to query
  * \param alpha a pointer filled in with the current alpha value
@@ -442,7 +442,7 @@ extern DECLSPEC int SDLCALL SDL_SetTextureBlendMode(SDL_Texture * texture,
                                                     SDL_BlendMode blendMode);
 
 /**
- * Get the blend mode used for texture copy operations.
+ * get the blend mode used for texture copy operations.
  *
  * \param texture the texture to query
  * \param blendMode a pointer filled in with the current SDL_BlendMode
@@ -469,7 +469,7 @@ extern DECLSPEC int SDLCALL SDL_SetTextureScaleMode(SDL_Texture * texture,
                                                     SDL_ScaleMode scaleMode);
 
 /**
- * Get the scale mode used for texture scale operations.
+ * get the scale mode used for texture scale operations.
  *
  * \param texture the texture to query.
  * \param scaleMode a pointer filled in with the current scale mode.
@@ -481,7 +481,7 @@ extern DECLSPEC int SDLCALL SDL_GetTextureScaleMode(SDL_Texture * texture,
                                                     SDL_ScaleMode *scaleMode);
 
 /**
- * Update the given texture rectangle with new pixel data.
+ * update the given texture rectangle with new pixel data.
  *
  * The pixel data must be in the pixel format of the texture. Use
  * SDL_QueryTexture() to query the pixel format of the texture.
@@ -512,7 +512,7 @@ extern DECLSPEC int SDLCALL SDL_UpdateTexture(SDL_Texture * texture,
                                               const void *pixels, int pitch);
 
 /**
- * Update a rectangle within a planar YV12 or IYUV texture with new pixel
+ * update a rectangle within a planar YV12 or IYUV texture with new pixel
  * data.
  *
  * You can use SDL_UpdateTexture() as long as your pixel data is a contiguous
@@ -545,7 +545,7 @@ extern DECLSPEC int SDLCALL SDL_UpdateYUVTexture(SDL_Texture * texture,
                                                  const Uint8 *Vplane, int Vpitch);
 
 /**
- * Update a rectangle within a planar NV12 or NV21 texture with new pixels.
+ * update a rectangle within a planar NV12 or NV21 texture with new pixels.
  *
  * You can use SDL_UpdateTexture() as long as your pixel data is a contiguous
  * block of NV12/21 planes in the proper order, but this function is available
@@ -685,7 +685,7 @@ extern DECLSPEC int SDLCALL SDL_SetRenderTarget(SDL_Renderer *renderer,
                                                 SDL_Texture *texture);
 
 /**
- * Get the current render target.
+ * get the current render target.
  *
  * The default render target is the window for which the renderer was created,
  * and is reported a NULL here.
@@ -728,7 +728,7 @@ extern DECLSPEC SDL_Texture * SDLCALL SDL_GetRenderTarget(SDL_Renderer *renderer
 extern DECLSPEC int SDLCALL SDL_RenderSetLogicalSize(SDL_Renderer * renderer, int w, int h);
 
 /**
- * Get device independent resolution for rendering.
+ * get device independent resolution for rendering.
  *
  * This may return 0 for `w` and `h` if the SDL_Renderer has never had its
  * logical size set by SDL_RenderSetLogicalSize() and never had a render
@@ -765,7 +765,7 @@ extern DECLSPEC int SDLCALL SDL_RenderSetIntegerScale(SDL_Renderer * renderer,
                                                       SDL_bool enable);
 
 /**
- * Get whether integer scales are forced for resolution-independent rendering.
+ * get whether integer scales are forced for resolution-independent rendering.
  *
  * \param renderer the renderer from which integer scaling should be queried
  * \returns SDL_TRUE if integer scales are forced or SDL_FALSE if not and on
@@ -795,7 +795,7 @@ extern DECLSPEC int SDLCALL SDL_RenderSetViewport(SDL_Renderer * renderer,
                                                   const SDL_Rect * rect);
 
 /**
- * Get the drawing area for the current target.
+ * get the drawing area for the current target.
  *
  * \param renderer the rendering context
  * \param rect an SDL_Rect structure filled in with the current drawing area
@@ -822,7 +822,7 @@ extern DECLSPEC int SDLCALL SDL_RenderSetClipRect(SDL_Renderer * renderer,
                                                   const SDL_Rect * rect);
 
 /**
- * Get the clip rectangle for the current target.
+ * get the clip rectangle for the current target.
  *
  * \param renderer the rendering context from which clip rectangle should be
  *                 queried
@@ -836,7 +836,7 @@ extern DECLSPEC void SDLCALL SDL_RenderGetClipRect(SDL_Renderer * renderer,
                                                    SDL_Rect * rect);
 
 /**
- * Get whether clipping is enabled on the given renderer.
+ * get whether clipping is enabled on the given renderer.
  *
  * \param renderer the renderer from which clip state should be queried
  * \returns SDL_TRUE if clipping is enabled or SDL_FALSE if not; call
@@ -876,7 +876,7 @@ extern DECLSPEC int SDLCALL SDL_RenderSetScale(SDL_Renderer * renderer,
                                                float scaleX, float scaleY);
 
 /**
- * Get the drawing scale for the current target.
+ * get the drawing scale for the current target.
  *
  * \param renderer the renderer from which drawing scale should be queried
  * \param scaleX a pointer filled in with the horizontal scaling factor
@@ -921,7 +921,7 @@ extern DECLSPEC int SDLCALL SDL_SetRenderDrawColor(SDL_Renderer * renderer,
                                            Uint8 a);
 
 /**
- * Get the color used for drawing operations (Rect, Line and Clear).
+ * get the color used for drawing operations (Rect, Line and Clear).
  *
  * \param renderer the rendering context
  * \param r a pointer filled in with the red value used to draw on the
@@ -965,7 +965,7 @@ extern DECLSPEC int SDLCALL SDL_SetRenderDrawBlendMode(SDL_Renderer * renderer,
                                                        SDL_BlendMode blendMode);
 
 /**
- * Get the blend mode used for drawing operations.
+ * get the blend mode used for drawing operations.
  *
  * \param renderer the rendering context
  * \param blendMode a pointer filled in with the current SDL_BlendMode
@@ -1448,7 +1448,7 @@ extern DECLSPEC int SDLCALL SDL_RenderReadPixels(SDL_Renderer * renderer,
                                                  void *pixels, int pitch);
 
 /**
- * Update the screen with any rendering performed since the previous call.
+ * update the screen with any rendering performed since the previous call.
  *
  * SDL's rendering functions operate on a backbuffer; that is, calling a
  * rendering function such as SDL_RenderDrawLine() does not directly put a
@@ -1587,7 +1587,7 @@ extern DECLSPEC int SDLCALL SDL_GL_BindTexture(SDL_Texture *texture, float *texw
 extern DECLSPEC int SDLCALL SDL_GL_UnbindTexture(SDL_Texture *texture);
 
 /**
- * Get the CAMetalLayer associated with the given Metal renderer.
+ * get the CAMetalLayer associated with the given Metal renderer.
  *
  * This function returns `void *`, so SDL doesn't have to include Metal's
  * headers, but it can be safely cast to a `CAMetalLayer *`.
@@ -1601,7 +1601,7 @@ extern DECLSPEC int SDLCALL SDL_GL_UnbindTexture(SDL_Texture *texture);
 extern DECLSPEC void *SDLCALL SDL_RenderGetMetalLayer(SDL_Renderer * renderer);
 
 /**
- * Get the Metal command encoder for the current frame
+ * get the Metal command encoder for the current frame
  *
  * This function returns `void *`, so SDL doesn't have to include Metal's
  * headers, but it can be safely cast to an `id<MTLRenderCommandEncoder>`.

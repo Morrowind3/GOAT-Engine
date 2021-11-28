@@ -8,7 +8,7 @@ namespace Engine {
         public:
             Debug(Debug const&) = delete;
             void operator=(Debug const&) = delete;
-            static Debug& GetInstance() {
+            static Debug& getInstance() {
                 static Debug instance;
                 return instance;
             }

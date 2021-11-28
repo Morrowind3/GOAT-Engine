@@ -6,10 +6,10 @@ using namespace Engine;
 const float PPM = 21.0f;
 
 PhysicsImpl::PhysicsImpl() {
-    ResetForNextScene();
+    resetForNextScene();
 }
 
-void PhysicsImpl::CreateBody(const GameObject& gameObject) {
+void PhysicsImpl::createBody(const GameObject& gameObject) {
     float width = 21 * gameObject.transform.scaleWidth;
     float height = 21 * gameObject.transform.scaleHeight;
 
@@ -36,11 +36,12 @@ void PhysicsImpl::CreateBody(const GameObject& gameObject) {
         if (gameObject.collider.active) {
             if(gameObject.collider.type == ColliderType::BOX_COLLIDER) {
                 double density = gameObject.rigidBody.mass / ((width / PPM) * (width / PPM));
-                AttachBoxCollider(box2dRigidBody, gameObject.collider.GetData().at(0), gameObject.collider.GetData().at(1), density);
+                attachBoxCollider(box2dRigidBody, gameObject.collider.getData().at(0),
+                                  gameObject.collider.getData().at(1), density);
             } else if (gameObject.collider.type == ColliderType::CIRCLE_COLLIDER){
-                double radius  = gameObject.collider.GetData().at(0);
+                double radius  = gameObject.collider.getData().at(0);
                 double density = gameObject.rigidBody.mass / (M_PI * (radius / PPM * radius / PPM));
-                AttachCircleCollider(box2dRigidBody, radius, density);
+                attachCircleCollider(box2dRigidBody, radius, density);
             }
         }
     } catch (const std::exception& error) {
@@ -49,7 +50,7 @@ void PhysicsImpl::CreateBody(const GameObject& gameObject) {
     }
 }
 
-void PhysicsImpl::AttachBoxCollider(b2Body* rigidBody, double width, double height, double density) {
+void PhysicsImpl::attachBoxCollider(b2Body* rigidBody, double width, double height, double density) {
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
     if (rigidBody->GetType() != b2_staticBody) {
@@ -65,7 +66,7 @@ void PhysicsImpl::AttachBoxCollider(b2Body* rigidBody, double width, double heig
     }
 }
 
-void PhysicsImpl::AttachCircleCollider(b2Body* rigidBody, double radius, double density) {
+void PhysicsImpl::attachCircleCollider(b2Body* rigidBody, double radius, double density) {
     b2CircleShape collisionShape;
     collisionShape.m_radius = radius / PPM;
 
@@ -80,12 +81,12 @@ void PhysicsImpl::AttachCircleCollider(b2Body* rigidBody, double radius, double 
     }
 }
 
-void PhysicsImpl::PerformPhysicsCalculationsForFrame() {
+void PhysicsImpl::performPhysicsCalculationsForFrame() {
     _contactListener->flushForNextFrame();
     _world->Step(1.0f / 60.0f, 8, 6);
 }
 
-void PhysicsImpl::UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
+void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
     for (b2Body* body = _world->GetBodyList(); body; body = body->GetNext()) {
         if (body->GetUserData() == &gameObject) {
 
@@ -107,7 +108,7 @@ void PhysicsImpl::runCollisionScripts() {
     _contactListener->runCollisionScripts();
 }
 
-void PhysicsImpl::ResetForNextScene() {
+void PhysicsImpl::resetForNextScene() {
     _world = std::make_unique<b2World>(b2Vec2{0.0f, 10.0f});
     _contactListener = std::make_unique<ContactListener>();
     _world->SetContactListener(_contactListener.get());

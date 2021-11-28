@@ -18,7 +18,7 @@ AudioImpl::AudioImpl(): _sdlStatus{SDL_Init(SDL_INIT_AUDIO)} {
     }
 }
 
-void AudioImpl::LoadSample(const std::string& fileName) {
+void AudioImpl::loadSample(const std::string& fileName) {
     try {
         _audio->storeSample(fileName);
     } catch (const std::runtime_error& error) {
@@ -27,7 +27,7 @@ void AudioImpl::LoadSample(const std::string& fileName) {
     }
 }
 
-void AudioImpl::LoadMusic(const std::string& fileName) {
+void AudioImpl::loadMusic(const std::string& fileName) {
     try {
         _audio->storeMusic(fileName);
     } catch (const std::runtime_error& error) {
@@ -36,17 +36,17 @@ void AudioImpl::LoadMusic(const std::string& fileName) {
     }
 }
 
-void AudioImpl::PlaySample(const std::string& fileName) {
+void AudioImpl::playSample(const std::string& fileName) {
     const auto& sample = _audio->getSample(fileName);
     Mix_PlayChannel(-1, sample.audio(), 0);
 }
 
-void AudioImpl::PlayMusic(const std::string& fileName) {
+void AudioImpl::playMusic(const std::string& fileName) {
     const auto& music = _audio->getMusic(fileName);
     Mix_PlayMusic(music.audio(), -1);
 }
 
-void AudioImpl::ResetForNextScene() {
+void AudioImpl::resetForNextScene() {
     Mix_HaltMusic();
     Mix_HaltChannel(-1);
     _audio->resetForNextScene();

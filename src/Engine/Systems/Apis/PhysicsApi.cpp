@@ -2,24 +2,24 @@
 
 using namespace Engine;
 
-void PhysicsApi::CreateBody(const GameObject& gameObject)  {
-    physics.CreateBody(gameObject);
+void PhysicsApi::createBody(const GameObject& gameObject)  {
+    physics.createBody(gameObject);
 }
 
-void PhysicsApi::PerformPhysicsCalculationsForFrame() {
-    physics.PerformPhysicsCalculationsForFrame();
+void PhysicsApi::performPhysicsCalculationsForFrame() {
+    physics.performPhysicsCalculationsForFrame();
 }
 
-void PhysicsApi::UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
-    physics.UpdateGameObjectStateFromPhysicsTick(gameObject);
+void PhysicsApi::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
+    physics.updateGameObjectStateFromPhysicsTick(gameObject);
 }
 
 void PhysicsApi::runCollisionScripts() {
     physics.runCollisionScripts();
 }
 
-void PhysicsApi::ResetForNextScene() {
-    physics.ResetForNextScene();
+void PhysicsApi::resetForNextScene() {
+    physics.resetForNextScene();
 }
 
 

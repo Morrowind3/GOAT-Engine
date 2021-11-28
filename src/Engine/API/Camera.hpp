@@ -14,14 +14,14 @@ namespace Engine{
             Camera(): _camera({Point{0, 0}, 0, 0}), _zoomLevel(1){};
             //width and height unused until we need to crop.
             Camera(double x, double y, float zoom): _camera({Point{x, y}, 0, 0}), _zoomLevel(zoom){};
-            Engine::Transform AdjustForCamera(const Engine::Transform& transform);
+            Engine::Transform adjustForCamera(const Engine::Transform& transform);
 
-            void MoveCamera(double x, double y);
-            void InterpolateToNextWaypoint();
-            void TrackObject(std::shared_ptr<GameObject> object);
-            void SetZoomLevel(float zoom);
-            void AddWaypoint(Point waypoint, int seconds);
-            void AddWaypoint(Point waypoint, int seconds, float zoomLevel);
+            void moveCamera(double x, double y);
+            void interpolateToNextWaypoint();
+            void trackObject(std::shared_ptr<GameObject> object);
+            void setZoomLevel(float zoom);
+            void addWaypoint(Point waypoint, int seconds);
+            void addWaypoint(Point waypoint, int seconds, float zoomLevel);
 
         private:
             struct WaypointParams {
@@ -33,9 +33,9 @@ namespace Engine{
         //        std::function<bool()> endCondition; TODO: Scriptable end condition.
             };
 
-            void TrackObject();
-            void Reposition(Engine::Transform& t) const;
-            void Zoom(Engine::Transform& t) const;
+            void trackObject();
+            void reposition(Engine::Transform& t) const;
+            void zoom(Engine::Transform& t) const;
 
             std::shared_ptr<GameObject> _trackedObject = nullptr;
             std::queue<WaypointParams> _waypoints;

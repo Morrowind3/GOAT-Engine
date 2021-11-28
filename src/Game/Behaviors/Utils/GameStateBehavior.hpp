@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 27/11/2021.
-//
-
 #ifndef GOAT_ENGINE_GAMESTATEBEHAVIOR_HPP
 #define GOAT_ENGINE_GAMESTATEBEHAVIOR_HPP
 
@@ -11,10 +7,7 @@
 using namespace Engine;
 
 class GameStateBehavior: public Behavior {
-    public:
-        explicit GameStateBehavior(SceneManager& sceneManager, bool active);
-
+    public: explicit GameStateBehavior(SceneManager& sceneManager, bool active);
 };
-
 
 #endif //GOAT_ENGINE_GAMESTATEBEHAVIOR_HPP

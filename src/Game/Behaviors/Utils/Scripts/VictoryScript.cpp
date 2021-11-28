@@ -6,7 +6,7 @@ VictoryScript::VictoryScript(bool active) : Script(active) {
 }
 
 
-void VictoryScript::OnStart() {
+void VictoryScript::onStart() {
     std::cout << "A winner is you!" << std::endl;
 }
 

@@ -9,5 +9,4 @@ class LifeHeartBehavior : public Behavior {
     public: LifeHeartBehavior(int filledAtHp, LifeHeart& lifeHeart, bool active);
 };
 
-
 #endif //GOAT_ENGINE_LIFEHEARTBEHAVIOR_HPP

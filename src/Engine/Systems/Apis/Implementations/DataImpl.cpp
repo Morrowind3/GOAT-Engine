@@ -5,7 +5,7 @@
 
 using namespace Engine;
 
-void DataImpl::Insert(DataModel model) {
+void DataImpl::insert(DataModel model) {
     std::string query = "INSERT INTO " + model.getTableName() + "(";
     std::vector<std::string> columns = model.getColumns();
 
@@ -23,9 +23,9 @@ void DataImpl::Insert(DataModel model) {
         }
     }
     query += ")";
-    ExecuteQuery(query);
+    executeQuery(query);
 }
-void DataImpl::Update(DataModel model) {
+void DataImpl::update(DataModel model) {
     std::string query = "UPDATE " + model.getTableName() + " SET ";
     std::vector<std::string> columns = model.getColumns();
 
@@ -37,13 +37,13 @@ void DataImpl::Update(DataModel model) {
     }
     query += " WHERE id = " + model.getValue("id");
 
-    ExecuteQuery(query);
+    executeQuery(query);
 }
-void DataImpl::Delete(DataModel model) {
+void DataImpl::remove(DataModel model) {
     std::string query = "DELETE FROM " + model.getTableName() + " WHERE id = '" + model.getValue("id") +"';";
-    ExecuteQuery(query);
+    executeQuery(query);
 }
-DataModel DataImpl::Get(const std::string& table,const std::string& whereKey, const std::string& isValue ) {
+DataModel DataImpl::get(const std::string& table, const std::string& whereKey, const std::string& isValue ) {
     std::string query = "SELECT * FROM " + table;
     if(!whereKey.empty() && !isValue.empty()){
         query += " WHERE " + whereKey + " = '" + "'" + isValue + "'" + "';";
@@ -70,7 +70,7 @@ DataModel DataImpl::Get(const std::string& table,const std::string& whereKey, co
     return model;
 }
 
-std::vector<DataModel> DataImpl::GetAll(const std::string& table, const std::string& orderBy, bool descending) {
+std::vector<DataModel> DataImpl::getAll(const std::string& table, const std::string& orderBy, bool descending) {
     std::string direction;
     if(descending){
         direction = "DESC";
@@ -106,7 +106,7 @@ std::vector<DataModel> DataImpl::GetAll(const std::string& table, const std::str
     return results;
 }
 
-bool DataImpl::ExecuteQuery(const std::string& query) {
+bool DataImpl::executeQuery(const std::string& query) {
     sqlite3 *db;
     int rc = sqlite3_open(databaseName.c_str(), &db);
     char **zErr = 0;
@@ -143,15 +143,15 @@ int DataImpl::callback(void* data, int argc, char** argv, char** azColName) {
     return 0;
 }
 
-void DataImpl::RunMigrations(std::vector<std::basic_string<char>> migrationQueries) {
+void DataImpl::runMigrations(std::vector<std::basic_string<char>> migrationQueries) {
     for (int i = 0; i < migrationQueries.size(); ++i) {
-        if (!ExecuteQuery(migrationQueries.at(i))) {
+        if (!executeQuery(migrationQueries.at(i))) {
             std::cout << "Table failed to create" << std::endl;
         }
     }
 }
 
-bool DataImpl::DatabaseExists() {
+bool DataImpl::databaseExists() {
 //    return std::filesystem::exists(databaseName);
     return false;
 }

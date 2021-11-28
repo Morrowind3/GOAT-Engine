@@ -8,17 +8,16 @@
 using namespace Engine;
 
 class FlagScript : public Script {
-public:
-//    FlagScript(bool active, VictoryFlag& flag, Player& player);
-    FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player);
-
-    void OnUpdate(double deltaTime) override;
-private:
-    bool PlayerEntered();
-    void AnimateFlag();
-    VictoryFlag& _flag;
-    double animationTimer = 0;
-    const std::shared_ptr<Player>& _player;
+    public:
+    //    FlagScript(bool active, VictoryFlag& flag, Player& player);
+        FlagScript(bool active, VictoryFlag& flag, const std::shared_ptr<Player>& player);
+        void onUpdate(double deltaTime) override;
+    private:
+        bool playerEntered();
+        void animateFlag();
+        VictoryFlag& _flag;
+        double animationTimer = 0;
+        const std::shared_ptr<Player>& _player;
 };
 
 

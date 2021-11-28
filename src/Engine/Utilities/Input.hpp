@@ -16,31 +16,31 @@ namespace Engine {
             // TODO: Move constructor rule of five
             Input(Input const&) = delete;
             void operator=(Input const&) = delete;
-            static Input& GetInstance() {
+            static Input& getInstance() {
                 static Input instance;
                 return instance;
             }
 
             // Input
-            void Update();
+            void update();
             // Keyboard
-            [[nodiscard]] bool AnyKey() const;
-            [[nodiscard]] bool AnyKeyUp() const;
-            [[nodiscard]] bool AnyKeyDown() const;
-            [[nodiscard]] bool GetKey(KeyCode code) const;
-            [[nodiscard]] bool GetKeyUp(KeyCode code) const;
-            [[nodiscard]] bool GetKeyDown(KeyCode code) const;
+            [[nodiscard]] bool anyKey() const;
+            [[nodiscard]] bool anyKeyUp() const;
+            [[nodiscard]] bool anyKeyDown() const;
+            [[nodiscard]] bool getKey(KeyCode code) const;
+            [[nodiscard]] bool getKeyUp(KeyCode code) const;
+            [[nodiscard]] bool getKeyDown(KeyCode code) const;
             // Mouse
-            [[nodiscard]] Point MousePosition() const;
-            [[nodiscard]] bool AnyMouse() const;
-            [[nodiscard]] bool AnyMouseUp() const;
-            [[nodiscard]] bool AnyMouseDown() const;
-            [[nodiscard]] bool GetMouse(MouseButton button) const;
-            [[nodiscard]] bool GetMouseUp(MouseButton button) const;
-            [[nodiscard]] bool GetMouseDown(MouseButton button) const;
+            [[nodiscard]] Point mousePosition() const;
+            [[nodiscard]] bool anyMouse() const;
+            [[nodiscard]] bool anyMouseUp() const;
+            [[nodiscard]] bool anyMouseDown() const;
+            [[nodiscard]] bool getMouse(MouseButton button) const;
+            [[nodiscard]] bool getMouseUp(MouseButton button) const;
+            [[nodiscard]] bool getMouseDown(MouseButton button) const;
             // Special
-            void QueueQuitEvent();
-            [[nodiscard]] bool QuitEvent() const;
+            void queueQuitEvent();
+            [[nodiscard]] bool quitEvent() const;
 
         private:
             Input()= default;

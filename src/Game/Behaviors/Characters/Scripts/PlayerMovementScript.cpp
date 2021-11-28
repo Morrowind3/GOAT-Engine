@@ -4,13 +4,13 @@
 PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player} {
 }
 
-void PlayerMovementScript::OnUpdate(double deltaTime) {
+void PlayerMovementScript::onUpdate(double deltaTime) {
     //TODO remove this, this is no REAL pause, because box2d slides you further, and other entities must be taken accounted for
     if (_globals.sceneGet(Keys::PAUSE) == Keys::TRUE) return; // Don't allow when paused
 
-    bool moveLeft = _input.GetKey(KeyCode::A);
-    bool moveRight = _input.GetKey(KeyCode::D);
-    bool moveUp = _input.GetKeyDown(KeyCode::SPACE);
+    bool moveLeft = _input.getKey(KeyCode::A);
+    bool moveRight = _input.getKey(KeyCode::D);
+    bool moveUp = _input.getKeyDown(KeyCode::SPACE);
 
     // Decide flipping
     if (moveLeft) {
@@ -24,7 +24,7 @@ void PlayerMovementScript::OnUpdate(double deltaTime) {
 
     if(moveUp) {
         _player.rigidBody.forceY = 50000;
-        //TODO Player is in jumpstate, can only jump twice untill landed on ground
+        //TODO Player is in jumpstate, can only jump twice until landed on ground
         _player.sprites.at(Keys::IDLE).active = false;
         _player.sprites.at(Keys::JUMP).active = true;
         _player.sprites.at(Keys::MOVE1).active = false;

@@ -16,11 +16,11 @@ namespace Engine {
                 return instance;
             }
 
-            void CreateBody(const GameObject& gameObject);
-            void PerformPhysicsCalculationsForFrame();
-            void UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject);
+            void createBody(const GameObject& gameObject);
+            void performPhysicsCalculationsForFrame();
+            void updateGameObjectStateFromPhysicsTick(GameObject& gameObject);
             void runCollisionScripts();
-            void ResetForNextScene();
+            void resetForNextScene();
 
         private:
             PhysicsApi() : physics() {};

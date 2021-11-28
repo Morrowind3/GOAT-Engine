@@ -78,12 +78,12 @@ class b2Contact
 {
 public:
 
-	/// Get the contact manifold. Do not modify the manifold unless you understand the
+	/// get the contact manifold. Do not modify the manifold unless you understand the
 	/// internals of Box2D.
 	b2Manifold* GetManifold();
 	const b2Manifold* GetManifold() const;
 
-	/// Get the world manifold.
+	/// get the world manifold.
 	void GetWorldManifold(b2WorldManifold* worldManifold) const;
 
 	/// Is this contact touching?
@@ -97,29 +97,29 @@ public:
 	/// Has this contact been disabled?
 	bool IsEnabled() const;
 
-	/// Get the next contact in the world's contact list.
+	/// get the next contact in the world's contact list.
 	b2Contact* GetNext();
 	const b2Contact* GetNext() const;
 
-	/// Get fixture A in this contact.
+	/// get fixture A in this contact.
 	b2Fixture* GetFixtureA();
 	const b2Fixture* GetFixtureA() const;
 
-	/// Get the child primitive index for fixture A.
+	/// get the child primitive index for fixture A.
 	int32 GetChildIndexA() const;
 
-	/// Get fixture B in this contact.
+	/// get fixture B in this contact.
 	b2Fixture* GetFixtureB();
 	const b2Fixture* GetFixtureB() const;
 
-	/// Get the child primitive index for fixture B.
+	/// get the child primitive index for fixture B.
 	int32 GetChildIndexB() const;
 
 	/// Override the default friction mixture. You can call this in b2ContactListener::PreSolve.
 	/// This value persists until set or reset.
 	void SetFriction(float32 friction);
 
-	/// Get the friction.
+	/// get the friction.
 	float32 GetFriction() const;
 
 	/// Reset the friction mixture to the default value.
@@ -129,7 +129,7 @@ public:
 	/// The value persists until you set or reset.
 	void SetRestitution(float32 restitution);
 
-	/// Get the restitution.
+	/// get the restitution.
 	float32 GetRestitution() const;
 
 	/// Reset the restitution to the default value.
@@ -138,7 +138,7 @@ public:
 	/// Set the desired tangent speed for a conveyor belt behavior. In meters per second.
 	void SetTangentSpeed(float32 speed);
 
-	/// Get the desired tangent speed. In meters per second.
+	/// get the desired tangent speed. In meters per second.
 	float32 GetTangentSpeed() const;
 
 	/// Evaluate this contact with your own manifold and transforms.

@@ -19,9 +19,9 @@ public:
     std::vector<std::string> allTablesQueries;
     std::vector<std::basic_string<char>> getMigrationQueries();
 
-    void NewTable(std::string name);
-    void AddColumn(std::string name, std::string type, bool primaryKey, bool nullable, bool unique );
-    void AddForeignKey(const std::string& referenceColumn, const std::string& referenceTable);
+    void newTable(std::string name);
+    void addColumn(std::string name, std::string type, bool primaryKey, bool nullable, bool unique );
+    void addForeignKey(const std::string& referenceColumn, const std::string& referenceTable);
 };
 
 

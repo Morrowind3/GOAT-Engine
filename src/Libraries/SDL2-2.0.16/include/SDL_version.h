@@ -107,7 +107,7 @@ typedef struct SDL_version
     (SDL_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
 
 /**
- * Get the version of SDL that is linked against your program.
+ * get the version of SDL that is linked against your program.
  *
  * If you are linking to SDL dynamically, then it is possible that the current
  * version will be different than the version you compiled against. This
@@ -123,7 +123,7 @@ typedef struct SDL_version
 extern DECLSPEC void SDLCALL SDL_GetVersion(SDL_version * ver);
 
 /**
- * Get the code revision of SDL that is linked against your program.
+ * get the code revision of SDL that is linked against your program.
  *
  * This value is the revision of the code you are linked with and may be
  * different from the code you are compiling with, which is found in the

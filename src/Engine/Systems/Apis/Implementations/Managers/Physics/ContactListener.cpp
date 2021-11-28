@@ -78,19 +78,19 @@ void ContactListener::runCollisionScripts() {
 
             if (collision.second == State::START_COLLIDING) {
                 for (auto& behavior : gameObject.first->behaviors) {
-                    if (behavior.second->active) behavior.second->OnTriggerEnter2D(*collision.first);
+                    if (behavior.second->active) behavior.second->onTriggerEnter2D(*collision.first);
                 }
             }
 
             if (collision.second == State::KEEP_COLLIDING) {
                 for (auto& behavior : gameObject.first->behaviors) {
-                    if (behavior.second->active) behavior.second->OnTriggerStay2D(*collision.first);
+                    if (behavior.second->active) behavior.second->onTriggerStay2D(*collision.first);
                 }
             }
 
             if (collision.second == State::STOP_COLLIDING) {
                 for (auto& behavior : gameObject.first->behaviors) {
-                    if (behavior.second->active) behavior.second->OnTriggerExit2D(*collision.first);
+                    if (behavior.second->active) behavior.second->onTriggerExit2D(*collision.first);
                 }
             }
 

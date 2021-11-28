@@ -9,7 +9,7 @@ using namespace Engine;
 class SwitchSceneButtonScript : public Script {
     public:
         SwitchSceneButtonScript(std::string levelName, SceneManager& sceneManager, bool active);
-        void OnExternalEvent();
+        void onExternalEvent();
     private:
         SceneManager& _sceneManager;
         std::string _levelName;

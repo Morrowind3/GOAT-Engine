@@ -11,15 +11,15 @@ namespace Engine {
     class PhysicsImpl {
         public:
             PhysicsImpl();
-            void CreateBody(const GameObject& gameObject);
-            void PerformPhysicsCalculationsForFrame();
-            void UpdateGameObjectStateFromPhysicsTick(GameObject& gameObject);
+            void createBody(const GameObject& gameObject);
+            void performPhysicsCalculationsForFrame();
+            void updateGameObjectStateFromPhysicsTick(GameObject& gameObject);
             void runCollisionScripts();
-            void ResetForNextScene();
+            void resetForNextScene();
 
         private:
-            void AttachBoxCollider(b2Body *rigidBody, double width, double height, double density);
-            void AttachCircleCollider(b2Body *rigidBody, double radius, double density);
+            void attachBoxCollider(b2Body *rigidBody, double width, double height, double density);
+            void attachCircleCollider(b2Body *rigidBody, double radius, double density);
             std::unique_ptr<b2World> _world;
             std::unique_ptr<ContactListener> _contactListener;
     };

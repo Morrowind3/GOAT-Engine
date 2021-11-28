@@ -345,7 +345,7 @@ typedef struct SDL_PixelFormat
 } SDL_PixelFormat;
 
 /**
- * Get the human readable name of a pixel format.
+ * get the human readable name of a pixel format.
  *
  * \param format the pixel format to query
  * \returns the human readable name of the specified pixel format or
@@ -541,7 +541,7 @@ extern DECLSPEC Uint32 SDLCALL SDL_MapRGBA(const SDL_PixelFormat * format,
                                            Uint8 a);
 
 /**
- * Get RGB values from a pixel in the specified format.
+ * get RGB values from a pixel in the specified format.
  *
  * This function uses the entire 8-bit [0..255] range when converting color
  * components from pixel formats with less than 8-bits per RGB component
@@ -564,7 +564,7 @@ extern DECLSPEC void SDLCALL SDL_GetRGB(Uint32 pixel,
                                         Uint8 * r, Uint8 * g, Uint8 * b);
 
 /**
- * Get RGBA values from a pixel in the specified format.
+ * get RGBA values from a pixel in the specified format.
  *
  * This function uses the entire 8-bit [0..255] range when converting color
  * components from pixel formats with less than 8-bits per RGB component

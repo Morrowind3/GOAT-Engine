@@ -20,7 +20,7 @@ namespace Engine {
 
             ColliderType type{ColliderType::NONE};
 
-            [[nodiscard]] std::vector<double> GetData() const;
+            [[nodiscard]] std::vector<double> getData() const;
 
             // TODO: Only accessible by classes that explicitly need this
             std::vector<double> _data{};

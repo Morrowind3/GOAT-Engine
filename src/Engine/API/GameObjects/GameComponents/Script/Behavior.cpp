@@ -5,44 +5,44 @@ using namespace Engine;
 Behavior::Behavior(bool active) : GameComponent(active) {
 }
 
-void Behavior::OnStart() {
+void Behavior::onStart() {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnStart();
+        if(script.second->active) script.second->onStart();
     }
 }
 
-void Behavior::OnUpdate(double deltaTime) {
+void Behavior::onUpdate(double deltaTime) {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnUpdate(deltaTime);
+        if(script.second->active) script.second->onUpdate(deltaTime);
     }
 }
 
-void Behavior::OnExternalEvent() {
+void Behavior::onExternalEvent() {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnExternalEvent();
+        if(script.second->active) script.second->onExternalEvent();
     }
 }
 
-void Behavior::OnDestroy() {
+void Behavior::onDestroy() {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnDestroy();
+        if(script.second->active) script.second->onDestroy();
     }
 }
 
-void Behavior::OnTriggerEnter2D(GameObject& other) {
+void Behavior::onTriggerEnter2D(GameObject& other) {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnTriggerEnter2D(other);
+        if(script.second->active) script.second->onTriggerEnter2D(other);
     }
 }
 
-void Behavior::OnTriggerStay2D(GameObject& other) {
+void Behavior::onTriggerStay2D(GameObject& other) {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnTriggerStay2D(other);
+        if(script.second->active) script.second->onTriggerStay2D(other);
     }
 }
 
-void Behavior::OnTriggerExit2D(GameObject& other) {
+void Behavior::onTriggerExit2D(GameObject& other) {
     for(auto& script : scripts) {
-        if(script.second->active) script.second->OnTriggerExit2D(other);
+        if(script.second->active) script.second->onTriggerExit2D(other);
     }
 }

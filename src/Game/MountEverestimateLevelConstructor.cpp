@@ -16,7 +16,7 @@ MountEverestimateLevelConstructor::MountEverestimateLevelConstructor(SharedEtapp
     _etappe{etappe}, _fileLocation{fileLocation}, _tileSize{tileSize}, _columns{columns}, _rows{rows}, _scale{(double)scale} {
 }
 
-void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { try {
+void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { try {
     // Step 1: Read and clean input
     // Get file as string
     std::ifstream file(_fileLocation);
@@ -53,14 +53,14 @@ void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { tr
                 double posY{y * _tileSize * _scale};
                 double posX{x * _tileSize * _scale};
                 Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, _scale, _scale};
-                PlaceTile(index, transform);
+                placeTile(index, transform);
             }
         }
     } } catch (...) { throw std::runtime_error("Level " + _fileLocation + " is invalid"); }
 
     // Debug code to see where all tiles have been constructed
-    if (Globals::GetInstance().gameExists(Keys::LEVEL_DEBUG)) {
-        auto& debug = Debug::GetInstance();
+    if (Globals::getInstance().gameExists(Keys::LEVEL_DEBUG)) {
+        auto& debug = Debug::getInstance();
         for (auto& tile : _etappe.gameObjects) {
             debug.log(
                 "[SP: " + tile->sprites.at(Keys::SPRITE).path +             // Sprite Path
@@ -76,7 +76,7 @@ void MountEverestimateLevelConstructor::Construct(int xOffset, int yOffset) { tr
     }
 }
 
-void MountEverestimateLevelConstructor::PlaceTile(int index, Transform transform) {
+void MountEverestimateLevelConstructor::placeTile(int index, Transform transform) {
     std::string texturePath;
     switch (index) {
         // TILES GRASS

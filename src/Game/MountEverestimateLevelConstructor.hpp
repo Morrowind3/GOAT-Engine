@@ -10,11 +10,11 @@ class MountEverestimateLevelConstructor {
     public:
         MountEverestimateLevelConstructor(SharedEtappe& etappe, const std::string& fileLocation,
                                           int tileSize, int columns, int rows, int scale);
-        void Construct(int xOffset, int yOffset);
+        void construct(int xOffset, int yOffset);
     private:
         SharedEtappe& _etappe;
         const std::string& _fileLocation;
-        void PlaceTile(int index, Transform transform);
+        void placeTile(int index, Transform transform);
         const int _tileSize, _columns, _rows;
         const double _scale; // Essentially an int, but needs to be a double for proper calculations
 };

@@ -9,63 +9,63 @@ using namespace Engine;
 
 void setupDatabase() {
     MigrationBuilder migrations;
-    migrations.NewTable("settings");
-    migrations.AddColumn("fullscreen", "BOOLEAN", false, false, false);
-    migrations.AddColumn("difficulty", "INTEGER", false, false, false);
-    migrations.AddColumn("volume", "INTEGER", false, false, false);
+    migrations.newTable("settings");
+    migrations.addColumn("fullscreen", "BOOLEAN", false, false, false);
+    migrations.addColumn("difficulty", "INTEGER", false, false, false);
+    migrations.addColumn("volume", "INTEGER", false, false, false);
 
-    migrations.NewTable("level");
-    migrations.AddColumn("completed", "BOOLEAN", false, true, false);
-    migrations.AddColumn("all_garbage_collected", "BOOLEAN", false, false, false);
-    migrations.AddColumn("name", "TEXT", false, false, false);
+    migrations.newTable("level");
+    migrations.addColumn("completed", "BOOLEAN", false, true, false);
+    migrations.addColumn("all_garbage_collected", "BOOLEAN", false, false, false);
+    migrations.addColumn("name", "TEXT", false, false, false);
 
-    migrations.NewTable("leaderboard");
-    migrations.AddColumn("date", "TEXT", false, true, false);
-    migrations.AddColumn("game_time", "INTEGER", false, false, false);
-    migrations.AddColumn("score", "INTEGER", false, false, false);
-    migrations.AddColumn("level_id", "INTEGER", false, false, false);
-    migrations.AddForeignKey("id", "level");
+    migrations.newTable("leaderboard");
+    migrations.addColumn("date", "TEXT", false, true, false);
+    migrations.addColumn("game_time", "INTEGER", false, false, false);
+    migrations.addColumn("score", "INTEGER", false, false, false);
+    migrations.addColumn("level_id", "INTEGER", false, false, false);
+    migrations.addForeignKey("id", "level");
 
-    DataApi::getInstance().RunMigrations(migrations.getMigrationQueries());
+    DataApi::getInstance().runMigrations(migrations.getMigrationQueries());
 
     DataModel settings("settings");
     settings.setValue("fullscreen", "true");
     settings.setValue("volume", "100");
     settings.setValue("difficulty", "100");
-    DataApi::getInstance().Insert(settings);
+    DataApi::getInstance().insert(settings);
 }
 
 int main(int argc, char* args[]) {
     try {
         // Configure engine
         std::unique_ptr<SceneManager> sceneManager = std::make_unique<GameSceneManager>();
-        sceneManager->ChangeCurrentScene(Keys::MAIN_MENU);
+        sceneManager->changeCurrentScene(Keys::MAIN_MENU);
         std::string name{"Mount Everestimate"};
         std::string icon{"icon.png"};
         std::string cursor{"cursor.png"};
         // Unique pointer used to make sure the <i>potentially</i> memory-intensive Goat Engine is in the heap
         std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor);
-        Debug::GetInstance().toggle(true);
+        Debug::getInstance().toggle(true);
 
-        if(!DataApi::getInstance().DatabaseExists()) {
+        if(!DataApi::getInstance().databaseExists()) {
             setupDatabase();
         }
 
-        engine->Run(60);
+        engine->run(60);
         return 0;
     } catch (const std::runtime_error& error) {
         std::string message {error.what()};
-        Debug::GetInstance().log("Runtime error: " + message);
+        Debug::getInstance().log("Runtime error: " + message);
         return 1;
     } catch (const std::exception& error) {
         std::string message {error.what()};
-        Debug::GetInstance().log("Exception: " + message);
+        Debug::getInstance().log("Exception: " + message);
         return 2;
     } catch (const std::string& error) {
-        Debug::GetInstance().log("String: " + error);
+        Debug::getInstance().log("String: " + error);
         return 3;
     } catch (...) {
-        Debug::GetInstance().log("Fatal uncatchable error thrown!");
+        Debug::getInstance().log("Fatal uncatchable error thrown!");
         return 4;
     }
 }

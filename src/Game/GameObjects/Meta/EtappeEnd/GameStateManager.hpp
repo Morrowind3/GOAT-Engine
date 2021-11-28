@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 27/11/2021.
-//
-
 #ifndef GOAT_ENGINE_GAMESTATEMANAGER_HPP
 #define GOAT_ENGINE_GAMESTATEMANAGER_HPP
 
@@ -11,9 +7,7 @@
 using namespace Engine;
 
 class GameStateManager : public GameObject {
-public:
-    GameStateManager(SceneManager& sceneManager, bool active);
-private:
+    public: GameStateManager(SceneManager& sceneManager, bool active);
 };
 
 

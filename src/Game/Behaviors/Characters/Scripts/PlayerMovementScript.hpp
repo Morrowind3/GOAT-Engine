@@ -11,11 +11,11 @@ using namespace Engine;
 class PlayerMovementScript : public Script {
     public:
         PlayerMovementScript(Player& player, bool active);
-        void OnUpdate(double deltaTime);
+        void onUpdate(double deltaTime);
     private:
         // Globals
-        Input& _input = Input::GetInstance();
-        Globals& _globals = Globals::GetInstance();
+        Input& _input = Input::getInstance();
+        Globals& _globals = Globals::getInstance();
         // Variables
         Player& _player;
         int _counter{0};

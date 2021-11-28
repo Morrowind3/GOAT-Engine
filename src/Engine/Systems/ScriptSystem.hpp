@@ -8,10 +8,10 @@ namespace Engine {
     class ScriptSystem : public System  {
         public:
             ScriptSystem() = default;
-            void OnLaunchEngine() override;
-            void OnLoadScene(std::shared_ptr<Scene> scene) override;
-            void OnFrameTick(double deltaTime) override;
-            void OnCloseEngine() override;
+            void onLaunchEngine() override;
+            void onLoadScene(std::shared_ptr<Scene> scene) override;
+            void onFrameTick(double deltaTime) override;
+            void onCloseEngine() override;
         private:
             PhysicsApi& _physics = PhysicsApi::getInstance();
     };

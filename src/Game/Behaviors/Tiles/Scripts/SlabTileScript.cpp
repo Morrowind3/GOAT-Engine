@@ -1,8 +1,8 @@
 #include "SlabTileScript.hpp"
 
-SlabTileScript::SlabTileScript(SlabTile& self, bool active) : Script(active), _self{self}, _input{Input::GetInstance()} { }
+SlabTileScript::SlabTileScript(SlabTile& self, bool active) : Script(active), _self{self}, _input{Input::getInstance()} { }
 
-void SlabTileScript::OnUpdate(double deltaTime) {
+void SlabTileScript::onUpdate(double deltaTime) {
     //example usage of tilescript
 //    if(_input.GetKeyDown(KeyCode::A)) {
 //        //rotate left

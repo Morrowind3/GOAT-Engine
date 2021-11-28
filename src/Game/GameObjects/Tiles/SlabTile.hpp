@@ -9,5 +9,4 @@ class SlabTile : public Tile {
     public: explicit SlabTile(const std::string& sprite, Transform transform, bool active);
 };
 
-
 #endif //GOAT_ENGINE_SLABTILE_HPP
