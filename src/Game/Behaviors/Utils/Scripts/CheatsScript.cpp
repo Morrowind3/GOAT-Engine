@@ -1,16 +1,7 @@
-//
-// Created by Stijn van Loon on 27-11-2021.
-//
-
 #include "CheatsScript.hpp"
-
-#include <utility>
 
 CheatsScript::CheatsScript(std::map<std::string, Text>& textObjects, bool active) : Script(active),
                                                                                     _textObjects(textObjects) {}
-
-void CheatsScript::onStart() {
-}
 
 void CheatsScript::onUpdate(double deltaTime) {
     if (_input.getKeyDown(KeyCode::ESCAPE)) {
@@ -31,9 +22,3 @@ void CheatsScript::onUpdate(double deltaTime) {
         }
     }
 }
-
-void CheatsScript::onDestroy() {
-
-}
-
-void CheatsScript::onExternalEvent() {}

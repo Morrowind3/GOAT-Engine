@@ -7,6 +7,7 @@
 /// Keys to identify scenes/objects/components and the like
 namespace Keys {
 	//GENERICS
+	const std::string ERROR = "ERROR";
     const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
     const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
     const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
@@ -39,6 +40,7 @@ namespace Keys {
 
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
+	const std::string SPEED = "SPEED";
     const std::string HAWK = "HAWK"; // Usage: Hawk script ID
     const std::string GOAT = "GOAT"; // Usage: Hawk script ID
     const std::string PLAYER = "PLAYER"; // Usage: Player Object ID
@@ -55,10 +57,15 @@ namespace Keys {
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
 
-    const std::string CHEATS = "CHEATS";  // Usage: TODO
+    const std::string CHEATS = "CHEATS";
     const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
 	const std::string INPUT_DEBUG = "INPUT_DEBUG"; // Usage: game global flag to debug input
 
+	//SPEED
+	const std::string SPEED_UP = "SPEED_UP";
+	const std::string SLOW_DOWN = "SLOW_DOWN";
+	const std::string RESET_SPEED = "RESET_SPEED";
+	
     //BUTTONS
     const std::string START_GAME = "START_GAME"; // Usage: Start game button ID
     const std::string QUIT_GAME = "QUIT_GAME"; // Usage: Quit game button ID

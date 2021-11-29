@@ -15,6 +15,7 @@ class FpsScript : public Script {
         // Globals
         Input& _input = Input::getInstance();
         Debug& _debug = Debug::getInstance();
+        EngineCalls& _engineCalls = EngineCalls::getInstance();
         // Variables
         Text& _text;
 };

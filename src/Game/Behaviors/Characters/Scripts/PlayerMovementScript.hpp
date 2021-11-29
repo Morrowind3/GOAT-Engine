@@ -17,13 +17,14 @@ class PlayerMovementScript : public Script {
     private:
         // Globals
         Input& _input = Input::getInstance();
-        Globals& _globals = Globals::getInstance();
+        EngineCalls& _engineCalls = EngineCalls::getInstance();
 
         // Variables
         Player& _player;
         // Needed for walking
         int _walkingSwitchFrameCounter{0};
         int _walkingState{0};
+        unsigned short _sprintModifier {0};
         bool _walkingStepAltSfx = false;
         // Needed for jumping
         bool _jumpState = false;
@@ -31,19 +32,22 @@ class PlayerMovementScript : public Script {
         double _yPositionLastFrame = false;
 
         // Consts
-        static const int PLAYER_SPEED = 1000;
-        static const int JUMP_FORCE = 60000;
+        static const int PLAYER_SPEED = 15000;
+        static const unsigned short SPRINT_STEP = 15;
+        static const unsigned short MAX_SPRINT_MODIFIER = 400;
+        static const int JUMP_FORCE = 700000;
         constexpr static const double DOUBLE_JUMP_TRIGGER = 0.2;
         constexpr static const double DOUBLE_JUMP_MODIFIER = 1.4;
 
         // Methods
+        float calculateWalkSpeed(double deltaTime);
         // Movement
-        void moveLeft();
-        void moveRight();
+        void moveLeft(double deltaTime);
+        void moveRight(double deltaTime);
         [[nodiscard]] bool allowedToJump() const;
-        void jump();
+        void jump(double deltaTime);
         [[nodiscard]] bool allowedToDoubleJump(double deltaTime) const;
-        void doubleJump();
+        void doubleJump(double deltaTime);
         // Visual output
         void updateSpriteStateWhileWalking(bool moveLeft, bool moveRight);
         // Auditory output

@@ -6,17 +6,20 @@ PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script
 
 /// Movement
 void PlayerMovementScript::onUpdate(double deltaTime) {
-    bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A);
-    bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D);
-    bool moveUpKey = _input.getKey(KeyCode::UP) || _input.getKeyDown(KeyCode::W) || _input.getKeyDown(KeyCode::SPACE);
-    //bool moveDownKey = _input.getKey(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S); // Will be used to pick up trash
+    if (_engineCalls.isPaused()) return; // Disallow any changes in the movement state while paused
 
-    if (moveLeftKey) moveLeft();
-    if (moveRightKey) moveRight();
+    bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A); // Walk left
+    bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D); // Walk right
+    bool moveUpKey = _input.getKey(KeyCode::UP) || _input.getKeyDown(KeyCode::W) || _input.getKeyDown(KeyCode::SPACE); // Jump
+    bool moveDownKey = _input.getKey(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S); // Pick up trash
+
+    if (moveLeftKey) moveLeft(deltaTime);
+    if (moveRightKey) moveRight(deltaTime);
     if (moveUpKey) {
-        if (allowedToJump()) jump();
-        else if (allowedToDoubleJump(deltaTime)) doubleJump();
+        if (allowedToJump()) jump(deltaTime);
+        else if (allowedToDoubleJump(deltaTime)) doubleJump(deltaTime);
     }
+    if (!moveLeftKey && !moveRightKey) _sprintModifier = 0; // Stop sprinting if user stops walking
     if (allowedToJump()) updateSpriteStateWhileWalking(moveLeftKey, moveRightKey); // Only update in non-jump mode
     _yPositionLastFrame = _player.transform.position.y;
 }
@@ -29,13 +32,18 @@ void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
     }
 }
 
-void PlayerMovementScript::moveLeft() {
-    _player.rigidBody.forceX = -PLAYER_SPEED;
+float PlayerMovementScript::calculateWalkSpeed(double deltaTime) {
+    if(_sprintModifier+=SPRINT_STEP > MAX_SPRINT_MODIFIER) _sprintModifier = MAX_SPRINT_MODIFIER;
+    return (PLAYER_SPEED+_sprintModifier)/deltaTime;
+}
+
+void PlayerMovementScript::moveLeft(double deltaTime) {
+    _player.rigidBody.forceX = -calculateWalkSpeed(deltaTime);
     _player.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
 }
 
-void PlayerMovementScript::moveRight() {
-    _player.rigidBody.forceX = PLAYER_SPEED;
+void PlayerMovementScript::moveRight(double deltaTime) {
+    _player.rigidBody.forceX = calculateWalkSpeed(deltaTime);
     _player.transform.flip = Engine::FLIP::FLIP_NONE;
 }
 
@@ -43,9 +51,9 @@ bool PlayerMovementScript::allowedToJump() const {
     return !_jumpState;
 }
 
-void PlayerMovementScript::jump() {
+void PlayerMovementScript::jump(double deltaTime) {
     _jumpState = true;
-    _player.rigidBody.forceY = JUMP_FORCE;
+    _player.rigidBody.forceY = JUMP_FORCE/deltaTime;
     _player.sprites.at(Keys::IDLE).active = false;
     _player.sprites.at(Keys::JUMP).active = true;
     _player.sprites.at(Keys::MOVE1).active = false;
@@ -57,9 +65,9 @@ bool PlayerMovementScript::allowedToDoubleJump(double deltaTime) const {
     return !_doubleJumpState && _player.transform.position.y - _yPositionLastFrame < DOUBLE_JUMP_TRIGGER * deltaTime;
 }
 
-void PlayerMovementScript::doubleJump() {
+void PlayerMovementScript::doubleJump(double deltaTime) {
     _doubleJumpState = true;
-    jump();
+    jump(deltaTime);
     _player.rigidBody.forceY *= DOUBLE_JUMP_MODIFIER;
 }
 

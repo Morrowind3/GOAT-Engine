@@ -10,16 +10,13 @@ using namespace Engine;
 class CheatsScript : public Script {
     public:
         CheatsScript(std::map<std::string,Text>& textObjects, bool active);
-        void onStart();
         void onUpdate(double deltaTime);
-        void onExternalEvent();
-        void onDestroy();
 
     private:
-        bool _visible{false};
+        bool _visible {false};
         std::map<std::string,Text>& _textObjects;
         Input& _input = Input::getInstance();
-        std::string _filterKey{"CHEATS_"};
+        std::string _filterKey{"CHEATS"};
 };
 
 
