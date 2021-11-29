@@ -9,6 +9,7 @@
 namespace Keys {
 	//GENERICS
 	const std::string ERROR = "ERROR";
+	const std::string SCRIPT = "SCRIPT";
     const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
     const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
     const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects

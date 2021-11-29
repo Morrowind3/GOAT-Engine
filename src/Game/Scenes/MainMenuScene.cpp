@@ -8,19 +8,28 @@
 #include "../GameObjects/Enemies/Hawk.hpp"
 #include "../Keys.hpp"
 
+
 MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
     gameObjects.emplace_back(std::make_shared<Background>(
             manager, Transform{Point{0, -50}, 1, 0, 1, 1}, true));
+    gameObjects.emplace_back(std::make_shared<PlayButton>(
+            manager, Transform{Point{800, 350}, 100, 0, 5, 5}, true));
+    gameObjects.emplace_back(std::make_shared<DebugButton>( // Temporary placement so it looks nicer
+            manager, Transform{Point{825, 525}, 100, 0, 4, 4}, true));
+    gameObjects.emplace_back(std::make_shared<ExitButton>( // Temporary placement so it looks nicer
+            manager, Transform{Point{825, 600}, 100, 0, 4, 4}, true));
+    gameObjects.emplace_back(std::make_shared<Hawk>(
+            Transform{Point{200, 300}, 2, 0, 4, 4}, true));
+
+    // TODO: Re-enable buttons when they do what they're supposed to do
+    /*
+    gameObjects.emplace_back(std::make_shared<DebugButton>(
+            manager, Transform{Point{825, 800}, 100, 0, 4, 4}, true));
     gameObjects.emplace_back(std::make_shared<ExitButton>(
             manager, Transform{Point{20, 40}, 100, 0, 4, 4}, true));
     gameObjects.emplace_back(std::make_shared<SettingsButton>(
             manager, Transform{Point{1710, 40}, 100, 0, 4, 4}, true));
-    gameObjects.emplace_back(std::make_shared<PlayButton>(
-            manager, Transform{Point{800, 350}, 100, 0, 5, 5}, true));
     gameObjects.emplace_back(std::make_shared<ScoreboardButton>(
             manager, Transform{Point{800, 530}, 100, 0, 5, 5}, true));
-    gameObjects.emplace_back(std::make_shared<DebugButton>(
-            manager, Transform{Point{825, 800}, 100, 0, 4, 4}, true));
-    gameObjects.emplace_back(std::make_shared<Hawk>(
-            Transform{Point{200, 300}, 2, 0, 4, 4}, true));
+    */
 }
