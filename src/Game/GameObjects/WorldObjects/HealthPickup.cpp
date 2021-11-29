@@ -9,6 +9,6 @@
 HealthPickup::HealthPickup(Transform transform, bool active) : GameObject(transform, active) {
     behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<HealthPickupBehavior>(*this, true)));
     sprites.insert(std::make_pair(Keys::JAGERPLEISTER, Sprite{"Sprites/utils/items/Jägerpleister.png",true}));
-    collider = BoxCollider(3 * transform.scaleWidth, 3 * transform.scaleHeight, true);
+    collider = BoxCollider(20 * transform.scaleWidth, 3 * transform.scaleHeight, true);
     rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
 }

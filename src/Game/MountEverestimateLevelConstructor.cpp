@@ -126,7 +126,8 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, true));
             break;
         case 11:
-//            transform.layer = LAYER::TILES_FRONT;
+            transform.layer = LAYER::TILES_FRONT;
+            transform.rotation = transform.rotation - 45;
             _etappe.gameObjects.emplace_back(std::make_shared<HealthPickup>(transform, true));
             break;
         case 14:

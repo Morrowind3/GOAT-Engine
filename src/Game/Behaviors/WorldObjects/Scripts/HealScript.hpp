@@ -13,9 +13,14 @@ using namespace Engine;
 
 class HealScript : public Script {
 public:
-    HealScript(HealthPickup& pickup, bool active) : Script(active), _pickup(pickup){};
+    HealScript(HealthPickup& pickup, bool active);;
     void onTriggerEnter2D(GameObject &other) override;
+    void onUpdate(double deltaTime) override;
+
 private:
+    double _originalY;
+    double _animationtimer = 0;
+    bool _movingUp = true;
     HealthPickup& _pickup;
 };
 
