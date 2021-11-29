@@ -87,8 +87,11 @@ void PhysicsImpl::performPhysicsCalculationsForFrame(const double deltaTimeInMs)
 }
 
 void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
+    bool found {false};
+
     for (b2Body* body = _world->GetBodyList(); body; body = body->GetNext()) {
         if (body->GetUserData() == &gameObject) {
+            found = true;
 
             b2Vec2 force = {gameObject.rigidBody.forceX / PPM, gameObject.rigidBody.forceY * -1 / PPM};
             b2Vec2 pos = body->GetPosition();
@@ -101,6 +104,10 @@ void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
             gameObject.transform.position.x = body->GetPosition().x * PPM;
             gameObject.transform.position.y = body->GetPosition().y * PPM;
         }
+    }
+
+    if(!found) {
+        createBody(gameObject);
     }
 }
 

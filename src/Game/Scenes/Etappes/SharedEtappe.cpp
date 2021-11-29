@@ -28,5 +28,5 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.construct(xOffset, yOffset);
 
     // Cheats
-    gameObjects.emplace_back(std::make_shared<Cheats>(true));
+    gameObjects.emplace_back(std::make_shared<Cheats>(*this, *player, true));
 }
