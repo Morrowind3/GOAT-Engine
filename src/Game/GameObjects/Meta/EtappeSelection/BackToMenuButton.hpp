@@ -9,5 +9,4 @@ class BackToMenuButton: public GameObject {
     public: BackToMenuButton(SceneManager& sceneManager, Transform transform, bool active);
 };
 
-
 #endif //GOAT_ENGINE_BACKTOMENUBUTTON_HPP

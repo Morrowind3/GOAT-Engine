@@ -179,6 +179,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
 		Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp
 		Game/GameObjects/Meta/Hud/FpsMeter.cpp Game/GameObjects/Meta/Hud/FpsMeter.hpp
+		Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
@@ -194,6 +195,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Characters/GoatBehavior.cpp Game/Behaviors/Characters/GoatBehavior.hpp
 		Game/Behaviors/Buttons/ToggleDebugBehavior.cpp Game/Behaviors/Buttons/ToggleDebugBehavior.hpp
 		Game/Behaviors/Utils/FpsMeterBehavior.cpp Game/Behaviors/Utils/FpsMeterBehavior.hpp
+		Game/Behaviors/Utils/PauseActivationBehavior.cpp Game/Behaviors/Utils/PauseActivationBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -207,7 +209,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp  Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
+		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
 		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
 		Game/Behaviors/Utils/Scripts/DamageScript.cpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
@@ -228,6 +231,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.cpp Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.hpp
 		Game/Behaviors/Buttons/Scripts/DebugToggleScript.cpp Game/Behaviors/Buttons/Scripts/DebugToggleScript.hpp
+		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

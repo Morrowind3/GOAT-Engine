@@ -1,11 +1,9 @@
 #include "CheatsBehavior.hpp"
-#include "Scripts/Cheats/PauseScript.hpp."
-#include "Scripts/Cheats/FpsScript.hpp"
 #include "Scripts/CheatsScript.hpp"
 #include "Scripts/Cheats/SummonScript.hpp"
 #include "Scripts/Cheats/DamageCheatScript.hpp"
-#include "../../Keys.hpp"
 #include "Scripts/Cheats/SpeedScript.hpp"
+#include "../../Keys.hpp"
 
 CheatsBehavior::CheatsBehavior(Scene& scene, Player& player, std::map<std::string, Text>& textObjects,
                                AudioSource& speedUpSound, AudioSource& slowDownSound, AudioSource& resetSpeedSound,

@@ -42,6 +42,9 @@ void GoatEngine::run(const unsigned int maxFps) {
             }
         }
         _debug.log("Scene end: " + active->name);
+        // Reset speed and pause status
+        _engineCalls.modifySpeed(1.0);
+        _engineCalls.pause(false);
     }
 
     // Destroy systems

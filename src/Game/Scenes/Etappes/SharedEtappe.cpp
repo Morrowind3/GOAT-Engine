@@ -7,6 +7,7 @@
 #include "../../Layers.hpp"
 #include "../../GameObjects/Meta/EtappeEnd/GameStateManager.hpp"
 #include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
+#include "../../GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition, SceneManager& sceneManager,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){
@@ -28,8 +29,8 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     // Level constructor doing its magic
     MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.construct(xOffset, yOffset);
 
-    // Cheats
     gameObjects.emplace_back(std::make_shared<Cheats>(*this, *player, true));
-    // FPS
+    gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(sceneManager,  // A start of a pause menu
+    Transform{{1600,100},LAYER::UI, 0, 3, 3}, true));
     gameObjects.emplace_back(std::make_shared<FpsMeter>(true));
 }
