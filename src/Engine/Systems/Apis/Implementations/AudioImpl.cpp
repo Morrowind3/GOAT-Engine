@@ -52,3 +52,11 @@ void AudioImpl::resetForNextScene() {
     _audio->resetForNextScene();
     _audio = std::make_unique<AudioManager>();
 }
+
+void AudioImpl::pause() {
+    Mix_PauseMusic();
+}
+
+void AudioImpl::resume() {
+    Mix_ResumeMusic();
+}

@@ -17,7 +17,7 @@ void PlayerMovementScript::onUpdate(double deltaTime) {
         if (allowedToJump()) jump();
         else if (allowedToDoubleJump(deltaTime)) doubleJump();
     }
-    updateSpriteStateWhileWalking(moveLeftKey, moveRightKey);
+    if (allowedToJump()) updateSpriteStateWhileWalking(moveLeftKey, moveRightKey); // Only update in non-jump mode
     _yPositionLastFrame = _player.transform.position.y;
 }
 

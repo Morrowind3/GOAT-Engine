@@ -8,7 +8,7 @@ void Input::update() {
     _registry.flushForNextFrame();
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) { queueQuitEvent(); return; }
+        if (event.type == SDL_QUIT) { _engineCalls.queueQuitEvent(); return; }
         if (event.type == SDL_KEYDOWN) _registry.storeKeyDown(static_cast<KeyCode>(event.key.keysym.sym));
         if (event.type == SDL_KEYUP) _registry.storeKeyUp(static_cast<KeyCode>(event.key.keysym.sym));
         if (event.type == SDL_MOUSEBUTTONDOWN) _registry.storeMouseDown(static_cast<MouseButton>(event.button.button));
@@ -67,12 +67,4 @@ bool Input::getMouseUp(MouseButton button) const {
 
 bool Input::getMouseDown(MouseButton button) const {
     return _registry.mouseStatus(button) == PressState::PRESSED;
-}
-
-bool Input::quitEvent() const {
-    return _quitEvent;
-}
-
-void Input::queueQuitEvent() {
-    _quitEvent = true;
 }

@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 27/11/2021.
-//
-
 #include "DefeatScene.hpp"
 #include "../Keys.hpp"
 #include "../GameObjects/Meta/MainMenu/Background.hpp"

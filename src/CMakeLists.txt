@@ -123,7 +123,7 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
 		Engine/API/Camera.cpp Engine/API/Camera.hpp 
 		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
-        Engine/Utilities/InputRegistry.cpp Engine/Utilities/InputRegistry.hpp
+        Engine/Utilities/Input/InputRegistry.cpp Engine/Utilities/Input/InputRegistry.hpp
 		Engine/Utilities/Input/KeyCode.hpp
 		Engine/Utilities/Input/MouseButton.hpp
 		Engine/Utilities/Input/PressState.hpp
@@ -131,6 +131,8 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
         Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.cpp Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.hpp
 		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
+		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp
+		Engine/Utilities/EngineCalls.cpp Engine/Utilities/EngineCalls.hpp
 		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
@@ -188,6 +190,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
 		Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp
 		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
+		Game/Behaviors/Characters/GoatBehavior.cpp Game/Behaviors/Characters/GoatBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -217,7 +220,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
 		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp
 		Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp
-		Game/Behaviors/Characters/GoatBehavior.cpp Game/Behaviors/Characters/GoatBehavior.hpp Game/Behaviors/Characters/Scripts/GoatScript.cpp Game/Behaviors/Characters/Scripts/GoatScript.hpp)
+		Game/Behaviors/Characters/Scripts/GoatScript.cpp Game/Behaviors/Characters/Scripts/GoatScript.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

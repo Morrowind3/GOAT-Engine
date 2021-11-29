@@ -13,6 +13,8 @@ namespace Engine {
             void loadMusic(const std::string& fileName);
             void playSample(const std::string& fileName); // TODO: Loops
             void playMusic(const std::string& fileName);
+            void pause();
+            void resume();
             void resetForNextScene();
         private:
             int _sdlStatus;
