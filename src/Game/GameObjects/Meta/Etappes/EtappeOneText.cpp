@@ -2,7 +2,7 @@
 
 EtappeOneText::EtappeOneText(Transform transform, bool active) : GameObject(transform, active) {
     text.insert(std::make_pair("Welcome", Text{
-            "Welcome to the tutorial",
+            "Welcome to the tutorial, press ESC if you need a break",
             "Fonts/Kenney_Thick.ttf",
             20,
             {0,0,0,255},
@@ -36,9 +36,8 @@ EtappeOneText::EtappeOneText(Transform transform, bool active) : GameObject(tran
             {0,0,0,255},
             Transform{{5200,200},transform.layer,0,1,1},
             true}));
-
     text.insert(std::make_pair("Tutorial_5", Text{
-            "Finish",
+            "Welcome to the finish line, press the backtick button if you like cheats",
             "Fonts/Kenney_Thick.ttf",
             16,
             {0,0,0,255},

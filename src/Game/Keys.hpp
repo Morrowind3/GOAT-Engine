@@ -5,6 +5,7 @@
 #include <string>
 
 /// Keys to identify scenes/objects/components and the like
+/// (yes this got messy quickly, but this ensures all possible keys are in one place)
 namespace Keys {
 	//GENERICS
 	const std::string ERROR = "ERROR";

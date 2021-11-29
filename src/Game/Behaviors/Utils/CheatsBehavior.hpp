@@ -10,8 +10,7 @@
 using namespace Engine;
 
 class CheatsBehavior : public Behavior {
-    public: CheatsBehavior(Scene& scene, Player& player,
-                           std::map<std::string,Text>& textObjects, AudioSource& pauseSound, AudioSource& speedUpSound,
+    public: CheatsBehavior(Scene& scene, Player& player, std::map<std::string,Text>& textObjects, AudioSource& speedUpSound,
                            AudioSource& slowDownSound, AudioSource& resetSpeedSound, AudioSource& errorSound, bool active);
 };
 
