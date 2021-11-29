@@ -224,7 +224,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Utils/Scripts/Cheats/SummonScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SummonScript.hpp 
         Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.cpp Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.hpp
-		)
+		Game/GameObjects/WorldObjects/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup.hpp Game/Behaviors/WorldObjects/HealthPickupBehavior.cpp Game/Behaviors/WorldObjects/HealthPickupBehavior.hpp Game/Behaviors/WorldObjects/Scripts/HealScript.cpp Game/Behaviors/WorldObjects/Scripts/HealScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
