@@ -27,11 +27,6 @@ Cheats::Cheats(Scene& scene, Player& player, bool active) : GameObject(Transform
 
 
     // Components required for cheats
-    text.insert(std::make_pair(Keys::FPS, Text{"FPS", "Fonts/Fraps.ttf", 48,
-                Color{0,0,0,255},
-                Transform{Point{0,0},LAYER::FPS}, // ALWAYS on top!
-                false}));
-
     audioSources.insert(std::make_pair(Keys::SPEED_UP, AudioSource{"Sounds/SpeedUp.ogg",AudioSourceType::SAMPLE, true}));
     audioSources.insert(std::make_pair(Keys::SLOW_DOWN, AudioSource{"Sounds/SlowDown.ogg",AudioSourceType::SAMPLE, true}));
     audioSources.insert(std::make_pair(Keys::RESET_SPEED, AudioSource{"Sounds/Reset.ogg",AudioSourceType::SAMPLE, true}));

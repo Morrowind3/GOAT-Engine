@@ -7,6 +7,7 @@
 #include "../GameObjects/Meta/MainMenu/DebugButton.hpp"
 #include "../GameObjects/Enemies/Hawk.hpp"
 #include "../Keys.hpp"
+#include "../GameObjects/Meta/Hud/FpsMeter.hpp"
 
 
 MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
@@ -20,7 +21,7 @@ MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
             manager, Transform{Point{825, 600}, 100, 0, 4, 4}, true));
     gameObjects.emplace_back(std::make_shared<Hawk>(
             Transform{Point{200, 300}, 2, 0, 4, 4}, true));
-
+    gameObjects.emplace_back(std::make_shared<FpsMeter>(true));
     // TODO: Re-enable buttons when they do what they're supposed to do
     /*
     gameObjects.emplace_back(std::make_shared<DebugButton>(

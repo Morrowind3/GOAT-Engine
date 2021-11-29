@@ -6,10 +6,10 @@
 #include "../../Keys.hpp"
 #include "../../Layers.hpp"
 #include "../../GameObjects/Meta/EtappeEnd/GameStateManager.hpp"
+#include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition, SceneManager& sceneManager,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){
-    // Level
     Globals::getInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_DEFAULT);
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
 
@@ -25,8 +25,11 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     player = std::make_shared<Player>(playerStartPosition, true);
     gameObjects.emplace_back(player);
     _camera.trackObject(player);
+    // Level constructor doing its magic
     MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.construct(xOffset, yOffset);
 
     // Cheats
     gameObjects.emplace_back(std::make_shared<Cheats>(*this, *player, true));
+    // FPS
+    gameObjects.emplace_back(std::make_shared<FpsMeter>(true));
 }
