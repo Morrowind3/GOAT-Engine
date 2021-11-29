@@ -19,11 +19,11 @@ Cheats::Cheats(Scene& scene, Player& player, bool active) : GameObject(Transform
     text.insert(std::make_pair("CHEATS_3", Text{"2 - Show or hide FPS", font, size, color,
                                                 Transform{{10, 190}, transform.layer, 0, 1, 1},
                                                 false}));
-    text.insert(std::make_pair("CHEATS_4", Text{"3 - Summon Goat", font, size, color,
-                                                Transform{{10, 190}, transform.layer, 0, 1, 1},
+    text.insert(std::make_pair("CHEATS_4", Text{"3 - Damage Edmund", font, size, color,
+                                                Transform{{10, 210}, transform.layer, 0, 1, 1},
                                                 false}));
-    text.insert(std::make_pair("CHEATS_5", Text{"4 - Damage Edmund", font, size, color,
-                                                Transform{{10, 190}, transform.layer, 0, 1, 1},
+    text.insert(std::make_pair("CHEATS_5", Text{"4 - Summon Goat", font, size, color,
+                                                Transform{{10, 230}, transform.layer, 0, 1, 1},
                                                 false}));
 
     text.insert(std::make_pair("FPS", Text{"FPS", "Fonts/Fraps.ttf", 48,
