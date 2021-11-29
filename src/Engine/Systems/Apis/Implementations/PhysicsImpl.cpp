@@ -81,9 +81,9 @@ void PhysicsImpl::attachCircleCollider(b2Body* rigidBody, double radius, double 
     }
 }
 
-void PhysicsImpl::performPhysicsCalculationsForFrame() {
+void PhysicsImpl::performPhysicsCalculationsForFrame(const double deltaTimeInMs) {
     _contactListener->flushForNextFrame();
-    _world->Step(1.0f / 60.0f, 8, 6);
+    _world->Step(1.0f / deltaTimeInMs/3.0f , 8, 6);
 }
 
 void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
