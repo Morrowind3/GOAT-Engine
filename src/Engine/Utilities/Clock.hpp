@@ -9,18 +9,24 @@ namespace Engine {
     class Clock {
         friend class Engine::GoatEngine;
         public:
-            Clock() = delete;
+            Clock(Clock const&) = delete;
+            void operator=(Clock const&) = delete;
+            static Clock& getInstance() {
+                static Clock instance;
+                return instance;
+            }
+            [[nodiscard]] double lastRecordedUnmodifiedDeltaTime() const;
         private:
-            explicit Clock(unsigned int maxFps);
+            Clock(){};
+            void setFps(unsigned int maxFps);
             bool tickAndCheckIfNextFrameIsReady();
             [[maybe_unused]] [[nodiscard]] double actualDeltaTime() const;
             [[nodiscard]] double gameStateBasedDeltaTime() const;
             [[nodiscard]] static unsigned int getTicks();
 
             EngineCalls& _engineCalls = EngineCalls::getInstance();
-            const double _frameDelayInMs;
-            unsigned int _currentFrameTickInMs, _previousFrameTickInMs = getTicks();
-            double _deltaTimeInMs {0};
+            unsigned int _currentFrameTickInMs{0}, _previousFrameTickInMs = getTicks();
+            double _lastRecordedUnmodifiedDeltaTimeInMs{0}, _deltaTimeInMs {0}, _frameDelayInMs {1000.0/60.0}; // Default value for 60FPS
     };
 }
 

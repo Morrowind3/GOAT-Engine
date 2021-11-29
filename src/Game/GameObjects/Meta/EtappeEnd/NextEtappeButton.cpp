@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 28/11/2021.
-//
-
 #include "NextEtappeButton.hpp"
 #include "../../../Keys.hpp"
 #include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"

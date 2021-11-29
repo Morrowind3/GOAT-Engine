@@ -7,12 +7,13 @@
 
 using namespace Engine;
 
-GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor,
-                       const unsigned int maxFps) :
-        _sceneManager{sceneManager}, _name{name}, _iconPath{iconPath}, _cursor{cursor}, _clock{maxFps} {
+GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor) :
+        _sceneManager{sceneManager}, _name{name}, _iconPath{iconPath}, _cursor{cursor} {
 }
 
-void GoatEngine::run() {
+void GoatEngine::run(const unsigned int maxFps) {
+    _clock.setFps(maxFps);
+
     // Add systems
     _systems->emplace_back(std::make_unique<CollisionSystem>());
     _systems->emplace_back(std::make_unique<ScriptSystem>());

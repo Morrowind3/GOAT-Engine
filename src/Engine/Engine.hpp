@@ -14,10 +14,10 @@
 
 namespace Engine {
     class GoatEngine {
+        friend class Engine::EngineCalls;
         public:
-            explicit GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor,
-                                unsigned int maxFps);
-            void run();
+            explicit GoatEngine(SceneManager& sceneManager, std::string& name, std::string& iconPath, std::string& cursor);
+            void run(unsigned int maxFps);
         private:
             SceneManager& _sceneManager;
             std::string& _name;
@@ -27,7 +27,7 @@ namespace Engine {
                     std::make_unique<std::vector<std::unique_ptr<System>>>();
             std::string& _cursor;
             // Utilities
-            Clock _clock;
+            Clock& _clock = Clock::getInstance();
             Debug& _debug = Debug::getInstance();
             Input& _input = Input::getInstance();
             EngineCalls& _engineCalls = EngineCalls::getInstance();

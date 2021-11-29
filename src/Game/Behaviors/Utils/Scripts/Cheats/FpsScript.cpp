@@ -15,9 +15,8 @@ void FpsScript::onUpdate(double deltaTime) {
     }
 
     if (_text.active) {
-        int fps = 1+(int)std::round(1000/deltaTime); // One extra FPS needed because of SDL Tick rounding issues
-        if (fps <= 0) fps = 60; // TODO: Duct tape fix for when game is paused
-        _text.text = std::to_string(fps);
+        // One extra FPS needed because of SDL Tick rounding issues
+        _text.text = std::to_string(1+(int)std::round(1000/_clock.lastRecordedUnmodifiedDeltaTime()));
     }
 
 }

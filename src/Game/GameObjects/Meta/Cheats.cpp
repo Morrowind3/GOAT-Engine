@@ -8,9 +8,9 @@ Cheats::Cheats(Scene& scene, Player& player, bool active) : GameObject(Transform
     std::string font{"Fonts/Kenney_Thick.ttf"};
     uint8_t size{12};
     Color color{0, 0, 0, 255};
-    text.insert(std::make_pair(Keys::CHEATS, Text{"Cheats:", font, size, color,
+    text.insert(std::make_pair(Keys::CHEATS, Text{"Cheats", font, size, color,
         Transform{{10, 150}, transform.layer, 0, 1, 1}, false}));
-    text.insert(std::make_pair(Keys::CHEATS+Keys::CHEATS, Text{"~ - Show or hide this very menu", font, size, color,
+    text.insert(std::make_pair(Keys::CHEATS+Keys::CHEATS, Text{"Backtick - Show or hide this very menu", font, size, color,
         Transform{{10, 170}, transform.layer, 0, 1, 1}, false}));
     text.insert(std::make_pair(Keys::CHEATS+Keys::FPS, Text{"1 - Show or hide FPS", font, size, color,
         Transform{{10, 190}, transform.layer, 0, 1, 1}, false}));

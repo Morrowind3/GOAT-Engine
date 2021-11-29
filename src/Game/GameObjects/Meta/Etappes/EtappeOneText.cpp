@@ -37,10 +37,10 @@ EtappeOneText::EtappeOneText(Transform transform, bool active) : GameObject(tran
             Transform{{5200,200},transform.layer,0,1,1},
             true}));
     text.insert(std::make_pair("Tutorial_5", Text{
-            "Welcome to the finish line, press the backtick button if you like cheats",
+            "Welcome to the finish flag, press the backtick button if you like cheats",
             "Fonts/Kenney_Thick.ttf",
             16,
             {0,0,0,255},
-            Transform{{7200,0},transform.layer,0,1,1},
+            Transform{{6800,0},transform.layer,0,1,1},
             true}));
 }
