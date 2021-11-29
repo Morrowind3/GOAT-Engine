@@ -3,7 +3,7 @@
 #include "../../Keys.hpp"
 #include "../../Layers.hpp"
 
-Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
+Cheats::Cheats(Scene& scene, Player& player, bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
     // Too bad, you can't render on new line, so you have to make every line a text object
     std::string font{"Fonts/Kenney_Thick.ttf"};
     uint8_t size{12};
@@ -19,6 +19,12 @@ Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, acti
     text.insert(std::make_pair("CHEATS_3", Text{"2 - Show or hide FPS", font, size, color,
                                                 Transform{{10, 190}, transform.layer, 0, 1, 1},
                                                 false}));
+    text.insert(std::make_pair("CHEATS_4", Text{"3 - Summon Goat", font, size, color,
+                                                Transform{{10, 190}, transform.layer, 0, 1, 1},
+                                                false}));
+    text.insert(std::make_pair("CHEATS_5", Text{"4 - Damage Edmund", font, size, color,
+                                                Transform{{10, 190}, transform.layer, 0, 1, 1},
+                                                false}));
 
     text.insert(std::make_pair("FPS", Text{"FPS", "Fonts/Fraps.ttf", 48,
                 Color{0,0,0,255},
@@ -26,5 +32,5 @@ Cheats::Cheats(bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, acti
                 false}));
 
     audioSources.insert(std::make_pair(Keys::PAUSE_SFX, AudioSource{"Sounds/Pause.ogg",AudioSourceType::SAMPLE, true}));
-    behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(this->text, audioSources.at(Keys::PAUSE_SFX), true)));
+    behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(this->text, audioSources.at(Keys::PAUSE_SFX), scene, player, true)));
 }
