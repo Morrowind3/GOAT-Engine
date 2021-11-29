@@ -1,13 +1,12 @@
 #include "Camera.hpp"
-#include "../../Game/Layers.hpp"
+#include "../../Game/Layers.hpp" // TODO: Programmatically determine this, now we're referencing the game
 #include <iostream>
-#include <utility>
 
 using namespace Engine;
 
 Transform Camera::adjustForCamera(const Transform& transform) {
     if(_trackedObject != nullptr) trackObject();
-    if(transform.layer == LAYER::UI) return transform;
+    if(transform.layer == LAYER::UI || transform.layer == LAYER::FPS) return transform;
     Engine::Transform adjusted {transform};
     reposition(adjusted);
     zoom(adjusted);

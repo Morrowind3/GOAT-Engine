@@ -8,7 +8,8 @@
 using namespace Engine;
 
 class CheatsBehavior : public Behavior {
-    public: CheatsBehavior(std::map<std::string,Text>& textObjects, AudioSource& pauseSound, bool active);
+    public: CheatsBehavior(std::map<std::string,Text>& textObjects, AudioSource& pauseSound, AudioSource& speedUpSound,
+                           AudioSource& slowDownSound, AudioSource& resetSpeedSound, AudioSource& errorSound, bool active);
 };
 
 #endif //GOAT_ENGINE_CHEATSBEHAVIOR_HPP
