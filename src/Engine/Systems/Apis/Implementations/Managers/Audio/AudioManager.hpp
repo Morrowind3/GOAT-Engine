@@ -16,8 +16,8 @@ namespace Engine {
             AudioManager() = default;
             void storeSample(const std::string& fileName);
             void storeMusic(const std::string& fileName);
-            [[nodiscard]] const Sample& getSample(const std::string& fileName) const;
-            [[nodiscard]] const Music& getMusic(const std::string& fileName) const;
+            [[nodiscard]] const Sample& getSample(const std::string& fileName);
+            [[nodiscard]] const Music& getMusic(const std::string& fileName);
             [[maybe_unused]] void removeSample(const std::string& fileName);
             [[maybe_unused]] void removeMusic(const std::string& fileName);
             void resetForNextScene();

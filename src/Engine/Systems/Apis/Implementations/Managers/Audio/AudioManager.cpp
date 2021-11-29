@@ -19,12 +19,24 @@ void AudioManager::storeMusic(const std::string& fileName) {
     }
 }
 
-const Sample& Engine::AudioManager::getSample(const std::string& fileName) const {
-    return _samples->at(fileName);
+// Iterator instead of direct access in-case a new object gets spawned and its sample has not been loaded in
+const Sample& Engine::AudioManager::getSample(const std::string& fileName) {
+    auto iterator = _samples->find(fileName);
+    if (iterator == _samples->end()) {
+        storeSample(fileName);
+        return _samples->at(fileName);
+    }
+    return iterator->second;
 }
 
-const Music& Engine::AudioManager::getMusic(const std::string& fileName) const {
-    return _music->at(fileName);
+// Iterator instead of direct access in-case a new object gets spawned and its music has not been loaded in
+const Music& Engine::AudioManager::getMusic(const std::string& fileName) {
+    auto iterator = _music->find(fileName);
+    if (iterator == _music->end()) {
+        storeMusic(fileName);
+        return _music->at(fileName);
+    }
+    return iterator->second;
 }
 
 [[maybe_unused]] void AudioManager::removeSample(const std::string& fileName) {

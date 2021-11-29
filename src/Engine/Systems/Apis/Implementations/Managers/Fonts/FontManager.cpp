@@ -11,8 +11,14 @@ void FontManager::store(const std::string& fileName) {
     }
 }
 
-Font& FontManager::get(const std::string& fileName) const {
-    return _fonts->at(fileName);
+// Iterator instead of direct access in-case a new object gets spawned and its font has not been loaded in
+Font& FontManager::get(const std::string& fileName) {
+    auto iterator = _fonts->find(fileName);
+    if (iterator == _fonts->end()) {
+        store(fileName);
+        return _fonts->at(fileName);
+    }
+    return iterator->second;
 }
 
 [[maybe_unused]] void FontManager::remove(const std::string& name) {
