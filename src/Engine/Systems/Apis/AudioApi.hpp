@@ -18,6 +18,8 @@ namespace Engine {
             void loadMusic(const std::string& fileName);
             void playSample(const std::string& fileName);
             void playMusic(const std::string& fileName);
+            void pause();
+            void resume();
             void resetForNextScene();
         private:
             AudioApi();

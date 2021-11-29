@@ -14,6 +14,7 @@ namespace Engine {
             void onCloseEngine() override;
         private:
             AudioApi* _api = nullptr;
+            bool _pauseLock {false};
     };
 }
 

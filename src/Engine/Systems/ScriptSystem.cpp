@@ -19,7 +19,7 @@ void ScriptSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     }
 }
 
-void ScriptSystem::onFrameTick(double deltaTime) {
+void ScriptSystem::onFrameTick(const double deltaTime) {
     auto& input = Input::getInstance();
     input.update();
     _physics.runCollisionScripts();

@@ -24,3 +24,11 @@ void AudioApi::playMusic(const std::string& fileName) {
 void AudioApi::resetForNextScene() {
     _impl->resetForNextScene();
 }
+
+void AudioApi::pause() {
+    _impl->pause();
+}
+
+void AudioApi::resume() {
+    _impl->resume();
+}

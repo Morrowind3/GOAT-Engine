@@ -1,5 +1,4 @@
 #include "SharedEtappe.hpp"
-#include "../../GameObjects/Characters/Player.hpp"
 #include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
 #include "../../MountEverestimateLevelConstructor.hpp"
 #include "../../GameObjects/Meta/Cheats.hpp"
@@ -11,9 +10,9 @@
 SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition, SceneManager& sceneManager,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){
     // Level
-
     Globals::getInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_DEFAULT);
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
+
     // Hud
     // Hearts (hud)
     gameObjects.emplace_back(std::make_shared<LifeHeart>(1,

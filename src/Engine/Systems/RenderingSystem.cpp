@@ -29,7 +29,7 @@ void RenderingSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     }
 }
 
-void RenderingSystem::onFrameTick(double deltaTime) {
+void RenderingSystem::onFrameTick(const double deltaTime) {
     _api->beginRenderTick();
     for (auto& gameObject: activeObjects()) {
         if(!gameObject->transform.visible) continue;
