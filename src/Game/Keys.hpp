@@ -6,18 +6,14 @@
 
 /// Keys to identify scenes/objects/components and the like
 namespace Keys {
+	//GENERICS
     const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
-    // (Hawk, Player, Quit, SwitchScene SlabTile, Tile, FPS, etappemarker)
     const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
-
     const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
-	// (Tile)
 	const std::string TEXT = "TEXT"; // Usage: generic text ID for single text objects
-	// (EtappeMarker)
 	const std::string AUDIO = "AUDIO"; // Usage: generic text ID for single audio objects
-	// (EtappeSelectionBG)
 	const std::string BACKGROUND = "BACKGROUND"; // Usage: generic background ID 
-	// (EtappeOne, EtappeSelectionBG)
+
     const std::string TRUE = "TRUE"; // Usage: positive bool (pause, etappemarker green button, heart)
     const std::string FALSE = "FALSE"; // Usage: negative bool (pause, etappemarket gray button, heart)
 	const std::string ETAPPE = "ETAPPE"; // Usage: Etappe behavior ID on all etappe managers
@@ -59,7 +55,6 @@ namespace Keys {
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
 
-    // TODO: Enable these game flags with cheats
     const std::string CHEATS = "CHEATS";  // Usage: TODO
     const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
 	const std::string INPUT_DEBUG = "INPUT_DEBUG"; // Usage: game global flag to debug input
@@ -69,6 +64,7 @@ namespace Keys {
     const std::string QUIT_GAME = "QUIT_GAME"; // Usage: Quit game button ID
     const std::string RETRY_BUTTON = "RETRY"; // Usage: Start game button ID
     const std::string CONTINUE_BUTTON = "CONTINUE"; // Usage: Start game button ID
+	
     //SOUND EFFECTS
     const std::string PAUSE_SFX = "PAUSE_SFX"; // Usage: pause SFX ID
     const std::string WALK_SFX_A = "WALK_SFX_A"; // Usage: Player walk sfx, primary step
@@ -83,7 +79,12 @@ namespace Keys {
     const std::string GAMESTATE_DEFAULT = "DEFAULT";
     const std::string GAMESTATE_VICTORY = "VICTORY";
     const std::string GAMESTATE_DEFEAT = "DEFEAT";
-
+	
+	//TAGS
+	//TILES
+	const std::string TILE = "TILE";
+	const std::string SOLID = "SOLID";
+	const std::string SLAB = "SLAB";
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP

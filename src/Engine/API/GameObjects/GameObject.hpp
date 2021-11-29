@@ -20,6 +20,7 @@ namespace Engine {
         explicit GameObject(Transform transform, bool active);
         bool active;
         std::map<std::string,bool> tags{}; // True if tag should not be ignored
+        [[nodiscard]] bool hasTag(const std::string& tag) const; // Useful method to find an active tag
         Transform transform;
         Collider collider;
         RigidBody rigidBody;
