@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_INPUTREGISTRY_HPP
 #define GOAT_ENGINE_INPUTREGISTRY_HPP
 
-#include "Input/PressState.hpp"
-#include "Input/KeyCode.hpp"
-#include "Input/MouseButton.hpp"
+#include "PressState.hpp"
+#include "KeyCode.hpp"
+#include "MouseButton.hpp"
 #include <map>
 
 // Only callable by input

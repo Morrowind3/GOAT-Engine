@@ -8,7 +8,8 @@
 #include "../API/GameObjects/Point.hpp"
 #include "Input/KeyCode.hpp"
 #include "Input/MouseButton.hpp"
-#include "InputRegistry.hpp"
+#include "Input/InputRegistry.hpp"
+#include "EngineCalls.hpp"
 
 namespace Engine {
     class Input {
@@ -38,13 +39,11 @@ namespace Engine {
             [[nodiscard]] bool getMouse(MouseButton button) const;
             [[nodiscard]] bool getMouseUp(MouseButton button) const;
             [[nodiscard]] bool getMouseDown(MouseButton button) const;
-            // Special
-            void queueQuitEvent();
-            [[nodiscard]] bool quitEvent() const;
 
         private:
             Input()= default;
             InputRegistry _registry{};
+            EngineCalls& _engineCalls = EngineCalls::getInstance();
             // State
             bool _quitEvent = false;
             int _mousePositionX{}, _mousePositionY{};

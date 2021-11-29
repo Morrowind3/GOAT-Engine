@@ -44,14 +44,14 @@ int main(int argc, char* args[]) {
         std::string icon{"icon.png"};
         std::string cursor{"cursor.png"};
         // Unique pointer used to make sure the <i>potentially</i> memory-intensive Goat Engine is in the heap
-        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor);
+        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor, 60);
         Debug::getInstance().toggle(true);
 
         if(!DataApi::getInstance().databaseExists()) {
             setupDatabase();
         }
 
-        engine->run(60);
+        engine->run();
         return 0;
     } catch (const std::runtime_error& error) {
         std::string message {error.what()};
@@ -62,7 +62,7 @@ int main(int argc, char* args[]) {
         Debug::getInstance().log("Exception: " + message);
         return 2;
     } catch (const std::string& error) {
-        Debug::getInstance().log("String: " + error);
+        Debug::getInstance().log("String error: " + error);
         return 3;
     } catch (...) {
         Debug::getInstance().log("Fatal uncatchable error thrown!");
