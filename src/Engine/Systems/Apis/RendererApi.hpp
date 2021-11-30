@@ -8,7 +8,6 @@
 namespace Engine {
     class RendererApi {
         public:
-            // TODO: Rule of five
             RendererApi(RendererApi const&) = delete;
             void operator=(RendererApi const&) = delete;
             static RendererApi& getInstance(std::string& name, std::string& iconPath, std::string& cursor) {

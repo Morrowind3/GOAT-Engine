@@ -56,7 +56,7 @@ void Camera::addWaypoint(Point waypoint, int seconds) {
 }
 
 void Camera::addWaypoint(Point waypoint, int seconds, float _zoomLevel) {
-    //TODO: Better time calculation. I just pulled this out of my ass but it's close enough in present conditions.
+    //TODO: Better time calculation. I just figured this out on my own but it's close enough in present conditions.
     int time = seconds * 60;
 
     //Interpolation

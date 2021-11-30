@@ -14,7 +14,7 @@ namespace Engine {
             }
             void log(const std::string& message) const;
             void toggle(bool active);
-            bool isActive() const;
+            [[nodiscard]] bool isActive() const;
         private:
             Debug()= default;
             bool _active;

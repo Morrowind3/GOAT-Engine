@@ -7,7 +7,6 @@
 #include "GameObjects/GameObject.hpp"
 #include "GameObjects/Rectangle.hpp"
 
-
 namespace Engine{
     class Camera {
         public:

@@ -14,7 +14,6 @@
 namespace Engine {
     class Input {
         public:
-            // TODO: Move constructor rule of five
             Input(Input const&) = delete;
             void operator=(Input const&) = delete;
             static Input& getInstance() {
@@ -45,7 +44,6 @@ namespace Engine {
             InputRegistry _registry{};
             EngineCalls& _engineCalls = EngineCalls::getInstance();
             // State
-            bool _quitEvent = false;
             int _mousePositionX{}, _mousePositionY{};
         };
 }
