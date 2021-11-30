@@ -180,6 +180,8 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp
 		Game/GameObjects/Meta/Hud/FpsMeter.cpp Game/GameObjects/Meta/Hud/FpsMeter.hpp
 		Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp
+		Game/GameObjects/WorldObjects/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup.hpp
+		Game/GameObjects/Tiles/LavaTile.cpp Game/GameObjects/Tiles/LavaTile.hpp
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
@@ -195,7 +197,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/FpsMeterBehavior.cpp Game/Behaviors/Utils/FpsMeterBehavior.hpp
 		Game/Behaviors/Utils/PauseActivationBehavior.cpp Game/Behaviors/Utils/PauseActivationBehavior.hpp
 		Game/Behaviors/Utils/VictoryScreenBehavior.cpp Game/Behaviors/Utils/VictoryScreenBehavior.hpp
-		Game/GameObjects/Tiles/LavaTile.cpp Game/GameObjects/Tiles/LavaTile.hpp Game/Behaviors/Tiles/LavaTileBehavior.cpp Game/Behaviors/Tiles/LavaTileBehavior.hpp
+		Game/Behaviors/WorldObjects/HealthPickupBehavior.cpp Game/Behaviors/WorldObjects/HealthPickupBehavior.hpp
+		Game/Behaviors/Tiles/LavaTileBehavior.cpp Game/Behaviors/Tiles/LavaTileBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
@@ -229,6 +232,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Utils/Scripts/Cheats/SummonScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SummonScript.hpp 
         Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.cpp Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.hpp
+		Game/Behaviors/WorldObjects/Scripts/HealScript.cpp Game/Behaviors/WorldObjects/Scripts/HealScript.hpp
         Game/Behaviors/Tiles/Scripts/LavaTileScript.cpp Game/Behaviors/Tiles/Scripts/LavaTileScript.hpp
 		Game/Behaviors/Buttons/Scripts/DebugToggleScript.cpp Game/Behaviors/Buttons/Scripts/DebugToggleScript.hpp
 		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
