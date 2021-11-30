@@ -10,6 +10,7 @@ using namespace Engine;
 
 class Tile : public GameObject {
     public:
+        Tile(const std::string& sprite, Transform transform, bool active);
         Tile(const std::string& sprite, const std::shared_ptr<Behavior>& tileBehavior, Transform transform, bool active);
 };
 #endif //GOAT_ENGINE_TILE_HPP

@@ -3,7 +3,12 @@
 
 using namespace Engine;
 
-Clock::Clock(const unsigned int maxFps): _frameDelayInMs{1000.0/(double)maxFps} {
+double Clock::lastRecordedUnmodifiedDeltaTime() const {
+    return _lastRecordedUnmodifiedDeltaTimeInMs;
+}
+
+void Clock::setFps(unsigned int maxFps) {
+    _frameDelayInMs = 1000.0/(double)maxFps;
 }
 
 unsigned int Clock::getTicks() {
@@ -14,6 +19,7 @@ bool Clock::tickAndCheckIfNextFrameIsReady() {
     _currentFrameTickInMs = getTicks();
     _deltaTimeInMs = _currentFrameTickInMs - _previousFrameTickInMs;
     if (_deltaTimeInMs >= _frameDelayInMs) {
+        _lastRecordedUnmodifiedDeltaTimeInMs = _deltaTimeInMs;
         _previousFrameTickInMs = _currentFrameTickInMs;
         return true;
     }

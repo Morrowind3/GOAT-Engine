@@ -12,3 +12,7 @@ void Debug::toggle(bool active) {
     if (_active) std::cout << "Debug messaging enabled" << '\n';
     else std::cout << "Debug messaging disabled" << '\n';
 }
+
+bool Debug::isActive() const {
+    return _active;
+}

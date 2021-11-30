@@ -15,8 +15,14 @@ void TextureManager::store(const std::string& fileName) {
     }
 }
 
-const Texture& TextureManager::get(const std::string& fileName) const {
-    return _textures->at(fileName);
+// Iterator instead of direct access in-case a new object gets spawned and its texture has not been loaded in
+const Texture& TextureManager::get(const std::string& fileName) {
+    auto iterator = _textures->find(fileName);
+    if (iterator == _textures->end()) {
+        store(fileName);
+        return _textures->at(fileName);
+    }
+    return iterator->second;
 }
 
 [[maybe_unused]] void TextureManager::remove(const std::string& fileName) {

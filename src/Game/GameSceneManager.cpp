@@ -17,15 +17,15 @@ void GameSceneManager::changeCurrentScene(const std::string& name) {
 
     if(name == Keys::CURRENT_ETAPPE) setEtappeScene();
     else if (name == Keys::NEXT_ETAPPE) {
-        ++currentEtappe;
+        ++_currentEtappe;
         setEtappeScene();
     }
     else if (name == Keys::ETAPPE_ONE){
-        currentEtappe = 1;
+        _currentEtappe = 1;
         setEtappeScene();
     }
     else if (name == Keys::ETAPPE_TWO){
-        currentEtappe = 2;
+        _currentEtappe = 2;
         setEtappeScene();
     }
     else if (name == Keys::MAIN_MENU) _currentScene = std::make_shared<MainMenuScene>(sceneManager);
@@ -35,17 +35,17 @@ void GameSceneManager::changeCurrentScene(const std::string& name) {
     else if (name == Keys::DEFEAT_SCREEN) _currentScene = std::make_shared<DefeatScene>(sceneManager);
     else if (name == Keys::VICTORY_SCREEN) _currentScene = std::make_shared<VictoryScene>(sceneManager);
     else {
-        _currentScene = std::make_shared<MainMenuScene>(sceneManager);
         throw std::runtime_error("GameSceneManager: No valid scene loaded in! Attempted key: " + name);
     }
 }
 
-// TODO: Is this needed?
+// TODO: This should be a script and not a part of the scene manager
 void GameSceneManager::setEtappeScene() {
-    switch(currentEtappe){
-        case 1:  _currentScene = std::make_shared<EtappeOne>(*this);
+    switch(_currentEtappe){
+        case 1: _currentScene = std::make_shared<EtappeOne>(*this);
             break;
-        case 2:  _currentScene = std::make_shared<EtappeTwo>(*this);
+        case 2: _currentScene = std::make_shared<EtappeTwo>(*this);
             break;
+        default: throw std::runtime_error("GameSceneManager: No valid scene loaded in!");
     }
 }

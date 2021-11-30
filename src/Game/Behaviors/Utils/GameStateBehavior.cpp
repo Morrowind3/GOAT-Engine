@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 27/11/2021.
-//
-
 #include "GameStateBehavior.hpp"
 #include "../../Keys.hpp"
 #include "Scripts/GameStateScript.hpp"

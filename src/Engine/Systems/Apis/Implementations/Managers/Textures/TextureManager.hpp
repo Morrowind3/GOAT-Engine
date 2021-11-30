@@ -15,7 +15,7 @@ namespace Engine {
         public:
             explicit TextureManager(SDL_Renderer* renderer);
             void store(const std::string& fileName);
-            [[nodiscard]] const Texture& get(const std::string& fileName) const;
+            [[nodiscard]] const Texture& get(const std::string& fileName);
             [[maybe_unused]] void remove(const std::string& fileName);
             void resetForNextScene();
         private:

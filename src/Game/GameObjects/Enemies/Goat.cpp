@@ -4,7 +4,6 @@
 #include "../../Keys.hpp"
 #include "../../../Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp"
 
-
 Goat::Goat(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::IDLE, Sprite{"Sprites/enemies/goat/goat_idle_1.png", true}));
     sprites.insert(std::make_pair(Keys::IDLE2, Sprite{"Sprites/enemies/goat/goat_idle_2.png", false}));

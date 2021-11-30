@@ -4,8 +4,8 @@ PauseScript::PauseScript(AudioSource& pauseSound, bool active): Script(active), 
 }
 
 void PauseScript::onUpdate(double deltaTime) {
-    // 1 key pauses
-    if (_input.getKeyDown(KeyCode::NUMBER_1)) {
+    // ESC key pauses
+    if (_input.getKeyDown(KeyCode::ESCAPE)) {
         pauseLogic();
     }
 }

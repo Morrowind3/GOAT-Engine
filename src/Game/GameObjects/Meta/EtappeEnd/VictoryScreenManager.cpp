@@ -1,10 +1,8 @@
-//
-// Created by Morrowind3 on 27/11/2021.
-//
+#include "VictoryScreenManager.hpp"
+#include "../../../Keys.hpp"
+#include "../../../Behaviors/Utils/VictoryScreenBehavior.hpp"
 
-#include "VictoryBackground.hpp"
-
-VictoryBackground::VictoryBackground(Transform transform, bool active) : GameObject(transform, active) {
+VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair("Background", Sprite{"Sprites/backgrounds/background_victory.png", true}));
     text.insert(std::make_pair("Title", Text{
             "A winner is you",
@@ -39,5 +37,5 @@ VictoryBackground::VictoryBackground(Transform transform, bool active) : GameObj
             Transform{{670,740},transform.layer,0,1,1},
             true}));
     audioSources.insert(std::make_pair("Music",AudioSource{"Sounds/victory.mp3", AudioSourceType::SAMPLE, true, true}));
-
+    behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<VictoryScreenBehavior>(true)));
 }

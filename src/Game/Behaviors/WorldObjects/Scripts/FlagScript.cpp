@@ -4,11 +4,13 @@
 
 FlagScript::FlagScript(bool active, VictoryFlag& flag) : Script(active), _flag(flag) {
 }
+
 void FlagScript::onUpdate(double deltaTime) {
     animationTimer += deltaTime;
     if(animationTimer >= 800) animateFlag();
 }
 
+// TODO: Keys.hpp
 void FlagScript::animateFlag() {
     _flag.sprites.at("Default").active = !_flag.sprites.at("Default").active;
     _flag.sprites.at("Wave").active = !_flag.sprites.at("Wave").active;

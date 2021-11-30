@@ -44,14 +44,14 @@ int main(int argc, char* args[]) {
         std::string icon{"icon.png"};
         std::string cursor{"cursor.png"};
         // Unique pointer used to make sure the <i>potentially</i> memory-intensive Goat Engine is in the heap
-        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor, 60);
+        std::unique_ptr<GoatEngine> engine = std::make_unique<GoatEngine>(*sceneManager, name, icon, cursor);
         Debug::getInstance().toggle(true);
 
         if(!DataApi::getInstance().databaseExists()) {
             setupDatabase();
         }
 
-        engine->run();
+        engine->run(60);
         return 0;
     } catch (const std::runtime_error& error) {
         std::string message {error.what()};

@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 28/11/2021.
-//
-
 #include "RetryButton.hpp"
 #include "../../../Keys.hpp"
 #include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
@@ -13,9 +9,9 @@ RetryButton::RetryButton(SceneManager& sceneManager, Transform transform, bool a
             LAYER::UI, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::CURRENT_ETAPPE, Button{
-            Text{"Try Again", "Fonts/Kenney_Thick.ttf", 26, {255, 255, 255, 255}, textTransform, true},
+            Text{"   Try Again", "Fonts/Kenney_Thick.ttf", 26, {255, 255, 255, 255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/button_outline_white.png", active},
-            Rectangle{{transform.position.x, transform.position.y}, 200, 80},
+            Rectangle{{transform.position.x+30, transform.position.y}, 200, 80},
             std::make_shared<SwitchSceneButtonBehavior>(Keys::CURRENT_ETAPPE, sceneManager, true),
             true}));
 }

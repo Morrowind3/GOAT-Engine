@@ -178,12 +178,14 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag.hpp
 		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
 		Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp
+		Game/GameObjects/Meta/Hud/FpsMeter.cpp Game/GameObjects/Meta/Hud/FpsMeter.hpp
+		Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp
+		Game/GameObjects/WorldObjects/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup.hpp
+		Game/GameObjects/Tiles/LavaTile.cpp Game/GameObjects/Tiles/LavaTile.hpp
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
-		Game/Behaviors/Tiles/SolidTileBehavior.hpp Game/Behaviors/Tiles/SolidTileBehavior.cpp
-		Game/Behaviors/Tiles/SlabTileBehavior.hpp Game/Behaviors/Tiles/SlabTileBehavior.cpp
-		Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
+        Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
 		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
@@ -191,20 +193,26 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp
 		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
 		Game/Behaviors/Characters/GoatBehavior.cpp Game/Behaviors/Characters/GoatBehavior.hpp
+		Game/Behaviors/Buttons/ToggleDebugBehavior.cpp Game/Behaviors/Buttons/ToggleDebugBehavior.hpp
+		Game/Behaviors/Utils/FpsMeterBehavior.cpp Game/Behaviors/Utils/FpsMeterBehavior.hpp
+		Game/Behaviors/Utils/PauseActivationBehavior.cpp Game/Behaviors/Utils/PauseActivationBehavior.hpp
+		Game/Behaviors/Utils/VictoryScreenBehavior.cpp Game/Behaviors/Utils/VictoryScreenBehavior.hpp
+		Game/Behaviors/WorldObjects/HealthPickupBehavior.cpp Game/Behaviors/WorldObjects/HealthPickupBehavior.hpp
+		Game/Behaviors/Tiles/LavaTileBehavior.cpp Game/Behaviors/Tiles/LavaTileBehavior.hpp
         # Scripts
 		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
 		Game/Behaviors/Buttons/Scripts/EtappeProgress.cpp Game/Behaviors/Buttons/Scripts/EtappeProgress.hpp
 		Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.cpp Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.hpp
 		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
-		Game/Behaviors/Tiles/Scripts/SlabTileScript.cpp Game/Behaviors/Tiles/Scripts/SlabTileScript.hpp
-		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
+        Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/FpsScript.cpp Game/Behaviors/Utils/Scripts/Cheats/FpsScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp  Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
+        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
+		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
 		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
 		Game/Behaviors/Utils/Scripts/DamageScript.cpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
@@ -213,7 +221,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/WorldObjects/VictoryFlag.cpp
 		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
 		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
-		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryBackground.cpp
+		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryScreenManager.cpp
 		Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp
 		Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
@@ -224,6 +232,12 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Utils/Scripts/Cheats/SummonScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SummonScript.hpp 
         Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.cpp Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.hpp
+		Game/Behaviors/WorldObjects/Scripts/HealScript.cpp Game/Behaviors/WorldObjects/Scripts/HealScript.hpp
+        Game/Behaviors/Tiles/Scripts/LavaTileScript.cpp Game/Behaviors/Tiles/Scripts/LavaTileScript.hpp
+		Game/Behaviors/Buttons/Scripts/DebugToggleScript.cpp Game/Behaviors/Buttons/Scripts/DebugToggleScript.hpp
+		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
+        Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.cpp Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.hpp
+		Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.cpp Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

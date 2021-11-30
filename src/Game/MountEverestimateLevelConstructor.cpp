@@ -7,6 +7,8 @@
 #include "../Engine/Utilities/Globals.hpp"
 #include "Keys.hpp"
 #include "Layers.hpp"
+#include "GameObjects/Tiles/LavaTile.hpp"
+#include "GameObjects/WorldObjects/HealthPickup.hpp"
 
 #include <regex>
 #include <fstream>
@@ -120,6 +122,18 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/grass/grass_slab_normal.png", transform, true));
             break;
+        case 10:
+            transform.layer = LAYER::TILES_FRONT;
+            _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, true));
+            break;
+        case 11:
+            transform.layer = LAYER::TILES_FRONT;
+            transform.rotation = transform.rotation - 45;
+            _etappe.gameObjects.emplace_back(std::make_shared<HealthPickup>(transform, true));
+            break;
+        case 12:
+            _etappe.gameObjects.emplace_back(std::make_shared<LavaTile>(transform, true));
+            break;
         case 14:
             _etappe.gameObjects.emplace_back(std::make_shared<Goat>(transform, true));
             break;
@@ -133,10 +147,6 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             //TODO Snowball
             break;
         //TODO lava/stone/snow tiles
-        case 10:
-            transform.layer = LAYER::TILES_BACK;
-            _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, true));
-            break;
         default:
             break;
     }

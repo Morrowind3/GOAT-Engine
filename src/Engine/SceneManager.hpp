@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 
+// TODO: Make this callable by EngineCalls instead of parsing it as an argument
 namespace Engine {
     class SceneManager {
         public:

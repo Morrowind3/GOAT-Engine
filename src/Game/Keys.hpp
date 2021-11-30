@@ -5,9 +5,11 @@
 #include <string>
 
 /// Keys to identify scenes/objects/components and the like
+/// (yes this got messy quickly, but this ensures all possible keys are in one place)
 namespace Keys {
 	//GENERICS
 	const std::string ERROR = "ERROR";
+	const std::string SCRIPT = "SCRIPT";
     const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
     const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
     const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
@@ -56,6 +58,7 @@ namespace Keys {
 	const std::string FLAG = "FLAG"; // Usage: Flag sprite (etappemarker)
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
+    const std::string JAGERPLEISTER = "JAGERPLEISTER"; // Usage: For Jägerpleister sprite.
 
     const std::string CHEATS = "CHEATS";
     const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction

@@ -3,7 +3,9 @@
 
 /// Essentially system calls for the engine
 namespace Engine {
+    class GoatEngine; // Friend class
     class EngineCalls {
+        friend class Engine::GoatEngine;
         public:
             // TODO: Move constructor rule of five
             EngineCalls(EngineCalls const&) = delete;

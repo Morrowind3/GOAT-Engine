@@ -9,15 +9,15 @@
 using namespace Engine;
 
 class SummonScript : public Script {
-public:
-    SummonScript(Scene& scene, Player& player, bool active);
-    void onUpdate(double deltaTime);
+    public:
+        SummonScript(Scene& scene, Player& player, bool active);
+        void onUpdate(double deltaTime);
 
-private:
-    Scene& _scene;
-    Player& _player;
-    Input& _input = Input::getInstance();
-    Debug& _debug = Debug::getInstance();
+    private:
+        Scene& _scene;
+        Player& _player;
+        Input& _input = Input::getInstance();
+        Debug& _debug = Debug::getInstance();
 };
 
 

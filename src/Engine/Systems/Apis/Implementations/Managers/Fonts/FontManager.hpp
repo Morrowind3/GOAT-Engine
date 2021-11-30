@@ -13,7 +13,7 @@ namespace Engine {
         public:
             explicit FontManager(SDL_Renderer* renderer);
             void store(const std::string& fileName);
-            [[nodiscard]] Font& get(const std::string& fileName) const;
+            [[nodiscard]] Font& get(const std::string& fileName);
             [[maybe_unused]] void remove(const std::string& fileName);
             void resetForNextScene();
         private:
