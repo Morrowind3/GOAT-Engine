@@ -8,7 +8,7 @@ using namespace Engine;
 class GameSceneManager : public SceneManager {
     public: void changeCurrentScene(const std::string& name) override;
     private:
-        int currentEtappe;
+        int _currentEtappe{0};
         void setEtappeScene();
 };
 

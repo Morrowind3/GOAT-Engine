@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 27/11/2021.
-//
-
 #include "GameStateScript.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"

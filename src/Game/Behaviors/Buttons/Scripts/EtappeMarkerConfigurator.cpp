@@ -21,5 +21,5 @@ void EtappeMarkerConfigurator::onStart() {
         if (currentUnlockedLevel+1 == _levelNumber) {
             _etappeMarker.sprites.at(Keys::FLAG).active = true;
         }
-    } else _debug.log("(Etappe Marker Config) This shouldn't occur but key " + Keys::ETAPPE_SELECT + " wasn't loaded in world scope");
+    } else _debug.log("(Etappe Marker Config) This shouldn't occur but key " + Keys::ETAPPE_SELECT + " wasn't loaded in game scope");
 }

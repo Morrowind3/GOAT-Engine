@@ -7,7 +7,7 @@
 EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
                            Transform transform, bool active) : GameObject(transform, active) {
 
-    // Star/flag special indicators // TODO: Delegate this to other game object for correct possitioning
+    // Star/flag special indicators // TODO: Delegate this to other game object for correct positioning
     sprites.insert(std::make_pair(Keys::FLAG, Sprite{"Sprites/utils/flag/Flag.png", false}));
     sprites.insert(std::make_pair(Keys::STAR, Sprite{"Sprites/ui/rest/Star.png", false}));
 
@@ -29,11 +29,12 @@ EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigne
     }));
 
     // Enabled button
+    audioSources.insert(std::make_pair(Keys::FALSE, AudioSource{"Sounds/Nope.ogg",AudioSourceType::SAMPLE,true}));
     buttons.insert(std::make_pair(Keys::TRUE, Button {
             Text{std::to_string(levelNumber), "Fonts/Kenney_Thick.ttf", 36, {0,0,0,255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/Button_square_green.png", true},
             Rectangle{{transform.position.x, transform.position.y}, 200, 200},
-            std::make_shared<SwitchSceneButtonBehavior>(levelKey, sceneManager, true),
+            std::make_shared<SwitchSceneButtonBehavior>(levelKey, sceneManager, audioSources.at(Keys::FALSE), true),
             false
     }));
 
