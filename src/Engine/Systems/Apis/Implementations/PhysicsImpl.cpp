@@ -34,8 +34,7 @@ void PhysicsImpl::createBody(const GameObject& gameObject) {
     // Attaching collider
     try {
         if (gameObject.collider.active) {
-            double density;
-
+            double density, radius;
             switch(gameObject.collider.type){
                 case ColliderType::NONE:
                     break;
@@ -45,14 +44,17 @@ void PhysicsImpl::createBody(const GameObject& gameObject) {
                                       gameObject.collider.getData().at(1), density, false);
                     break;
                 case ColliderType::BOX_SENSOR:
-                    density = gameObject.rigidBody.mass / ((width / PPM) * (width / PPM));
                     attachBoxCollider(box2dRigidBody, gameObject.collider.getData().at(0),
-                                      gameObject.collider.getData().at(1), density, true);
+                                      gameObject.collider.getData().at(1), 0, true);
                     break;
                 case ColliderType::CIRCLE_COLLIDER:
-                    double radius  = gameObject.collider.getData().at(0);
+                    radius  = gameObject.collider.getData().at(0);
                     density = gameObject.rigidBody.mass / (M_PI * (radius / PPM * radius / PPM));
-                    attachCircleCollider(box2dRigidBody, radius, density);
+                    attachCircleCollider(box2dRigidBody, radius, density, false);
+                    break;
+                case ColliderType::CIRCLE_SENSOR:
+                    radius  = gameObject.collider.getData().at(0);
+                    attachCircleCollider(box2dRigidBody, radius, 0, true);
                     break;
             }
         }
@@ -66,13 +68,14 @@ void PhysicsImpl::attachBoxCollider(b2Body* rigidBody, double width, double heig
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
 
-    b2FixtureDef fixtureDef;
     if(isSensor){
+        b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.isSensor = isSensor;
         rigidBody->CreateFixture(&fixtureDef);
     } else
     if (rigidBody->GetType() != b2_staticBody) {
+        b2FixtureDef fixtureDef;
         fixtureDef.density = density;
         fixtureDef.friction = 1.0f;
         fixtureDef.shape = &collisionShape;
@@ -88,9 +91,14 @@ void PhysicsImpl::attachCircleCollider(b2Body* rigidBody, double radius, double 
     b2CircleShape collisionShape;
     collisionShape.m_radius = radius / PPM;
 
+    if(isSensor){
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &collisionShape;
+        fixtureDef.isSensor = isSensor;
+        rigidBody->CreateFixture(&fixtureDef);
+    } else
     if (rigidBody->GetType() != b2_staticBody) {
         b2FixtureDef fixtureDef;
-        fixtureDef.isSensor = false;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
         rigidBody->SetLinearDamping(1.0f);
