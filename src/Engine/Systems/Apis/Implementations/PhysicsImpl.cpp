@@ -84,6 +84,13 @@ void PhysicsImpl::attachCircleCollider(b2Body* rigidBody, double radius, double 
 void PhysicsImpl::performPhysicsCalculationsForFrame(const double deltaTimeInMs) {
     _contactListener->flushForNextFrame();
     _world->Step(1.0f / deltaTimeInMs/3.0f , 8, 6);
+    // Erase inactive bodies
+    for (b2Body* body = _world->GetBodyList(); body; body = body->GetNext()) {
+        auto* object = (GameObject*)body->GetUserData();
+        if (!object->active || !object->rigidBody.active) {
+            _world->DestroyBody(body);
+        }
+    }
 }
 
 void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
