@@ -10,6 +10,8 @@ namespace Engine {
         NONE = 0,
         BOX_COLLIDER = 1,
         CIRCLE_COLLIDER = 2,
+        BOX_SENSOR = 3,
+
     };
 
     class Collider : public GameComponent {

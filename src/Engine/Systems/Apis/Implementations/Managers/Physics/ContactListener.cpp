@@ -1,4 +1,5 @@
 #include "ContactListener.hpp"
+#include <iostream>
 
 using namespace Engine;
 using State = CollisionState;
@@ -44,6 +45,11 @@ static void insertStartCollision(GameObject* a, GameObject* b, std::map<GameObje
 
 void ContactListener::BeginContact(b2Contact* contact) {
     auto gameObjects = getGameObjects(contact);
+
+    if(!gameObjects.second->tags.empty() && gameObjects.first->collider.type == ColliderType::BOX_SENSOR){
+        std::cout << "Player collided with a sensor" << std::endl;
+    }
+
     insertStartCollision(gameObjects.first, gameObjects.second, _tracked); // A => B
     insertStartCollision(gameObjects.second, gameObjects.first, _tracked); // B => A
 }
