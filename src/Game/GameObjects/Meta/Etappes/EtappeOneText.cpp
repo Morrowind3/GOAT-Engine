@@ -39,6 +39,13 @@ EtappeOneText::EtappeOneText(Transform transform, bool active) : GameObject(tran
             Transform{{5200 + X, 200 + Y}, transform.layer, 0, 1, 1},
             true}));
     text.insert(std::make_pair("Tutorial_5", Text{
+            "If you are damaged you can heal with a Jagerpleister",
+            "Fonts/Kenney_Thick.ttf",
+            16,
+            {0,0,0,255},
+            Transform{{4400 + X, 100 + Y}, transform.layer, 0, 1, 1},
+            true}));
+    text.insert(std::make_pair("Tutorial_6", Text{
             "Welcome to the finish flag, press the backtick button if you like cheats",
             "Fonts/Kenney_Thick.ttf",
             16,
