@@ -181,9 +181,7 @@ add_executable(Mount_Everestimate
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
-		Game/Behaviors/Tiles/SolidTileBehavior.hpp Game/Behaviors/Tiles/SolidTileBehavior.cpp
-		Game/Behaviors/Tiles/SlabTileBehavior.hpp Game/Behaviors/Tiles/SlabTileBehavior.cpp
-		Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
+        Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
 		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
 		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
 		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
@@ -197,8 +195,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/Scripts/EtappeProgress.cpp Game/Behaviors/Buttons/Scripts/EtappeProgress.hpp
 		Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.cpp Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.hpp
 		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
-		Game/Behaviors/Tiles/Scripts/SlabTileScript.cpp Game/Behaviors/Tiles/Scripts/SlabTileScript.hpp
-		Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
+        Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/FpsScript.cpp Game/Behaviors/Utils/Scripts/Cheats/FpsScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
@@ -224,7 +221,7 @@ add_executable(Mount_Everestimate
         Game/Behaviors/Utils/Scripts/Cheats/SummonScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SummonScript.hpp 
         Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.cpp Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.hpp
-		)
+        Game/GameObjects/Tiles/LavaTile.cpp Game/GameObjects/Tiles/LavaTile.hpp Game/Behaviors/Tiles/LavaTileBehavior.cpp Game/Behaviors/Tiles/LavaTileBehavior.hpp Game/Behaviors/Tiles/Scripts/LavaTileScript.cpp Game/Behaviors/Tiles/Scripts/LavaTileScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
