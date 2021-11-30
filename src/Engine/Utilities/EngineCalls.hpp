@@ -7,7 +7,6 @@ namespace Engine {
     class EngineCalls {
         friend class Engine::GoatEngine;
         public:
-            // TODO: Move constructor rule of five
             EngineCalls(EngineCalls const&) = delete;
             void operator=(EngineCalls const&) = delete;
             static EngineCalls& getInstance() {

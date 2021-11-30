@@ -10,7 +10,6 @@ namespace Engine {
         public:
             PhysicsApi(PhysicsApi const&) = delete;
             void operator=(PhysicsApi const&) = delete;
-
             static PhysicsApi& getInstance(){
                 static PhysicsApi instance{};
                 return instance;
