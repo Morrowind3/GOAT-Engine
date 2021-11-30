@@ -29,7 +29,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     // Level constructor doing its magic
     MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.construct(xOffset, yOffset);
 
-    gameObjects.emplace_back(std::make_shared<Cheats>(*this, *player, true));
+    gameObjects.emplace_back(std::make_shared<Cheats>(sceneManager, *this, *player, true));
     gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(sceneManager,  // A start of a pause menu
     Transform{{1600,100},LAYER::UI, 0, 3, 3}, true));
     gameObjects.emplace_back(std::make_shared<FpsMeter>(true));

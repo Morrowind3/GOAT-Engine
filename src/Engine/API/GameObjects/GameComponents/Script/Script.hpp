@@ -6,6 +6,7 @@
 
 namespace Engine {
     class GameObject;
+    class Behavior; // Friend class
     struct Script : public GameComponent {
         explicit Script(bool active);
         virtual void onStart();

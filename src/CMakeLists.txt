@@ -234,6 +234,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/Scripts/DebugToggleScript.cpp Game/Behaviors/Buttons/Scripts/DebugToggleScript.hpp
 		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
         Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.cpp Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.hpp
+		Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.cpp Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

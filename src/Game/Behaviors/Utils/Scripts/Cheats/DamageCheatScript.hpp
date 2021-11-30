@@ -8,14 +8,14 @@
 using namespace Engine;
 
 class DamageCheatScript : public Script {
-public:
-    DamageCheatScript(Player& player, bool active);
-    void onUpdate(double deltaTime);
+    public:
+        DamageCheatScript(Player& player, bool active);
+        void onUpdate(double deltaTime);
 
-private:
-    Player& _player;
-    Input& _input = Input::getInstance();
-    Debug& _debug = Debug::getInstance();
+    private:
+        Player& _player;
+        Input& _input = Input::getInstance();
+        Debug& _debug = Debug::getInstance();
 };
 
 

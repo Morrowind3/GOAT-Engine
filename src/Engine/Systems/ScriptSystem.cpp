@@ -19,6 +19,7 @@ void ScriptSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     }
 }
 
+// TODO: Run newly activated scripts with onInit and run onDestroy at the correct time
 void ScriptSystem::onFrameTick(const double deltaTime) {
     auto& input = Input::getInstance();
     input.update();
