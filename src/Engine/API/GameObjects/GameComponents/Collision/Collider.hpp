@@ -9,7 +9,9 @@ namespace Engine {
     enum class ColliderType {
         NONE = 0,
         BOX_COLLIDER = 1,
-        CIRCLE_COLLIDER = 2,
+        BOX_SENSOR = 2,
+        CIRCLE_COLLIDER = 3,
+        CIRCLE_SENSOR = 4
     };
 
     class Collider : public GameComponent {

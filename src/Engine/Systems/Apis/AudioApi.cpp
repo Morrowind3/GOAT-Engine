@@ -13,12 +13,12 @@ void AudioApi::loadMusic(const std::string& fileName) {
     _impl->loadMusic(fileName);
 }
 
-void AudioApi::playSample(const std::string& fileName) {
-    _impl->playSample(fileName);
+void AudioApi::playSample(const std::string& fileName, uint16_t loops, uint8_t volume) {
+    _impl->playSample(fileName, loops, volume);
 }
 
-void AudioApi::playMusic(const std::string& fileName) {
-    _impl->playMusic(fileName);
+void AudioApi::playMusic(const std::string& fileName, uint16_t loops, uint8_t volume) {
+    _impl->playMusic(fileName, loops, volume);
 }
 
 void AudioApi::resetForNextScene() {

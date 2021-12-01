@@ -5,7 +5,12 @@
 
 namespace Engine {
     class BoxCollider : public Collider {
-        public: BoxCollider(double width, double height, bool active);
+        //Vrees niet, dit moet hacky omdat in c++ de superconstructor niet in de body kan.
+    public: BoxCollider(double width, double height, bool isSensor, bool active)
+                : BoxCollider(isSensor ? BoxCollider{true, width, height, active} : BoxCollider{width, height, active}){}
+    private:
+        BoxCollider(double width, double height, bool active);
+        BoxCollider(bool dummy, double width, double height, bool active);
     };
 }
 
