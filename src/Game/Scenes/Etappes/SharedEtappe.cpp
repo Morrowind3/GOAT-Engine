@@ -23,7 +23,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     gameObjects.emplace_back(std::make_shared<LifeHeart>(3,
         Transform{{210,0},LAYER::UI,0,5,5},true));
 
-    player = std::make_shared<Player>(playerStartPosition, true);
+    player = std::make_shared<Object_Player>(playerStartPosition, true);
     gameObjects.emplace_back(player);
     _camera.trackObject(player);
     // Level constructor doing its magic

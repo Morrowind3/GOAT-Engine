@@ -4,13 +4,13 @@
 #include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 #include "../../../Engine/API/GameObjects/GameComponents/Render/UI/Text.hpp"
 #include "../../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
-#include "../../GameObjects/Characters/Player.hpp"
+#include "../../GameObjects/Characters/Object_Player.hpp"
 #include "../../../Engine/SceneManager.hpp"
 
 using namespace Engine;
 
 class CheatsBehavior : public Behavior {
-    public: CheatsBehavior(SceneManager& sceneManager, Scene& scene, Player& player, std::map<std::string,Text>& textObjects,
+    public: CheatsBehavior(SceneManager& sceneManager, Scene& scene, Object_Player& player, std::map<std::string,Text>& textObjects,
                            AudioSource& speedUpSound, AudioSource& slowDownSound, AudioSource& resetSpeedSound,
                            AudioSource& errorSound, AudioSource& beatGameSound, bool active);
 };

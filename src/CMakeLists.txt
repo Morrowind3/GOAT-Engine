@@ -133,6 +133,7 @@ add_library(GOAT_Engine STATIC
 		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
 		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp
 		Engine/Utilities/EngineCalls.cpp Engine/Utilities/EngineCalls.hpp
+        Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
 		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
@@ -154,7 +155,7 @@ add_executable(Mount_Everestimate
 		Game/Scenes/SettingsMenuScene.cpp Game/Scenes/SettingsMenuScene.hpp
 		Game/Scenes/ScoreboardMenuScene.cpp Game/Scenes/ScoreboardMenuScene.hpp
         # Objects
-        Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
+		Game/GameObjects/Characters/Object_Player.hpp Game/GameObjects/Characters/Object_Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
 		Game/GameObjects/Meta/Etappes/EtappeOneManager.cpp Game/GameObjects/Meta/Etappes/EtappeOneManager.hpp
 		Game/GameObjects/Meta/Etappes/EtappeTwoManager.cpp Game/GameObjects/Meta/Etappes/EtappeTwoManager.hpp
@@ -238,6 +239,20 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
         Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.cpp Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.cpp Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.hpp
+		# Animators
+        Game/Animators/Animator_PlayerWalking.cpp Game/Animators/Animator_PlayerWalking.hpp
+		# Sprites
+		Game/Sprites/Player/Sprite_PlayerIdle.cpp Game/Sprites/Player/Sprite_PlayerIdle.hpp
+		Game/Sprites/Player/Sprite_PlayerMove1.cpp Game/Sprites/Player/Sprite_PlayerMove1.hpp
+		Game/Sprites/Player/Sprite_PlayerMove3.cpp Game/Sprites/Player/Sprite_PlayerMove3.hpp
+		Game/Sprites/Player/Sprite_PlayerJump.cpp Game/Sprites/Player/Sprite_PlayerJump.hpp
+		Game/Sprites/Player/Sprite_PlayerMove2.cpp Game/Sprites/Player/Sprite_PlayerMove2.hpp
+		# Sounds
+		Game/AudioSources/Sounds/Sound_Jump.cpp Game/AudioSources/Sounds/Sound_Jump.hpp
+		Game/AudioSources/Sounds/Sound_Walk.cpp Game/AudioSources/Sounds/Sound_Walk.hpp
+		Game/AudioSources/Sounds/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Sound_WalkAlt.hpp 
+		Game/AudioSources/Sounds/Sound_Oof.cpp Game/AudioSources/Sounds/Sound_Oof.hpp 
+		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

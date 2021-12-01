@@ -1,7 +1,7 @@
 #include "PlayerMovementScript.hpp"
 #include "../../../Keys.hpp"
 
-PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player} {
+PlayerMovementScript::PlayerMovementScript(Object_Player& player, bool active) : Script(active), _player{player} {
 }
 
 /// Movement

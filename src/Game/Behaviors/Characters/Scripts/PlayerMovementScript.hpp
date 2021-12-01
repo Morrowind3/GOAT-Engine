@@ -3,14 +3,14 @@
 
 #include "../../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../../Engine/Utilities/Input.hpp"
-#include "../../../GameObjects/Characters/Player.hpp"
+#include "../../../GameObjects/Characters/Object_Player.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 
 class PlayerMovementScript : public Script {
     public:
-        PlayerMovementScript(Player& player, bool active);
+        PlayerMovementScript(Object_Player& player, bool active);
         void onUpdate(double deltaTime);
         void onTriggerEnter2D(GameObject& other);
 
@@ -20,7 +20,7 @@ class PlayerMovementScript : public Script {
         EngineCalls& _engineCalls = EngineCalls::getInstance();
 
         // Variables
-        Player& _player;
+        Object_Player& _player;
         // Needed for walking
         int _walkingSwitchFrameCounter{0};
         int _walkingState{0};

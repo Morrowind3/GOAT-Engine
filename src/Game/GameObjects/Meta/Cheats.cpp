@@ -3,7 +3,7 @@
 #include "../../Keys.hpp"
 #include "../../Layers.hpp"
 
-Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Player& player, bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
+Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Object_Player& player, bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
     // Show text to inform user (every line is a component)
     std::string font{"Fonts/Kenney_Thick.ttf"};
     uint8_t size{12};

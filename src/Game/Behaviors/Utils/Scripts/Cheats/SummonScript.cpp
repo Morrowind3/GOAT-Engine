@@ -4,7 +4,7 @@
 
 using namespace Engine;
 
-SummonScript::SummonScript(Scene& scene, Player& player, bool active): Script(active), _scene(scene), _player(player) { }
+SummonScript::SummonScript(Scene& scene, Object_Player& player, bool active): Script(active), _scene(scene), _player(player) { }
 
 void SummonScript::onUpdate(double deltaTime) {
     // 3 key summons goat

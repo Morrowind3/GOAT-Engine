@@ -47,7 +47,7 @@ void ContactListener::BeginContact(b2Contact* contact) {
     auto gameObjects = getGameObjects(contact);
 
     if(!gameObjects.second->tags.empty() && gameObjects.first->collider.type == ColliderType::BOX_SENSOR){
-        std::cout << "Player collided with a sensor" << std::endl;
+        std::cout << "Object_Player collided with a sensor" << std::endl;
     }
 
     insertStartCollision(gameObjects.first, gameObjects.second, _tracked); // A => B
