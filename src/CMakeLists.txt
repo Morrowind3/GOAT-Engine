@@ -238,7 +238,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
         Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.cpp Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.cpp Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.hpp
-		)
+        Game/GameObjects/Meta/Hud/Timer.cpp Game/GameObjects/Meta/Hud/Timer.hpp Game/Behaviors/Utils/TimerBehavior.cpp Game/Behaviors/Utils/TimerBehavior.hpp Game/Behaviors/Utils/Scripts/TimerScript.cpp Game/Behaviors/Utils/Scripts/TimerScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

@@ -8,6 +8,7 @@
 #include "../../GameObjects/Meta/EtappeEnd/GameStateManager.hpp"
 #include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
 #include "../../GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp"
+#include "../../GameObjects/Meta/Hud/Timer.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPosition, SceneManager& sceneManager,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){
@@ -15,13 +16,15 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, Transform playerStartPo
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
 
     // Hud
-    // Hearts (hud)
+    // Hearts
     gameObjects.emplace_back(std::make_shared<LifeHeart>(1,
         Transform{{0,0},LAYER::UI,0,5,5},true));
     gameObjects.emplace_back(std::make_shared<LifeHeart>(2,
         Transform{{105,0},LAYER::UI,0,5,5},true));
     gameObjects.emplace_back(std::make_shared<LifeHeart>(3,
         Transform{{210,0},LAYER::UI,0,5,5},true));
+    //Timer
+    gameObjects.emplace_back(std::make_shared<Timer>(Transform{{0,0},0,5,2}, true));
 
     player = std::make_shared<Player>(playerStartPosition, true);
     gameObjects.emplace_back(player);

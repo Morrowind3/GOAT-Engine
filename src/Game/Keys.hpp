@@ -59,6 +59,8 @@ namespace Keys {
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
     const std::string JAGERPLEISTER = "JAGERPLEISTER"; // Usage: For Jägerpleister sprite.
+    const std::string TIMER = "TIMER"; // Usage: Used by the Timer.
+
 
     const std::string CHEATS = "CHEATS";
     const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
