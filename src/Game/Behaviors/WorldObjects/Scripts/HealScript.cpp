@@ -4,8 +4,6 @@
 
 HealScript::HealScript(HealthPickup& pickup, AudioSource& healSfx, bool active): Script(active),
     _pickup(pickup), _healSfx{healSfx}, _originalY(pickup.transform.position.y){
-    //TODO: This shouldn't be in the script but for some reason this doesn't work when I set it in the object.
-//    _pickup.transform.rotation = _pickup.transform.rotation - 45;
 }
 
 void HealScript::onTriggerEnter2D(GameObject& other) {

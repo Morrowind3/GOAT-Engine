@@ -5,3 +5,7 @@ using namespace Engine;
 CircleCollider::CircleCollider(double radius, bool active) : Collider{active, ColliderType::CIRCLE_COLLIDER} {
     _data.emplace_back(radius);
 }
+CircleCollider::CircleCollider(bool dummy, double radius, bool active) : Collider{active, ColliderType::CIRCLE_SENSOR} {
+    _data.emplace_back(radius);
+}
+
