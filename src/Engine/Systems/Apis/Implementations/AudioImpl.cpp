@@ -36,14 +36,24 @@ void AudioImpl::loadMusic(const std::string& fileName) {
     }
 }
 
-void AudioImpl::playSample(const std::string& fileName) {
-    const auto& sample = _audio->getSample(fileName);
-    Mix_PlayChannel(-1, sample.audio(), 0);
+static int sdlLoops(uint16_t componentLoops) {
+    return componentLoops-1;
 }
 
-void AudioImpl::playMusic(const std::string& fileName) {
+static int sdlVolume(uint8_t componentVolume) {
+    return componentVolume*1.28;
+}
+
+void AudioImpl::playSample(const std::string& fileName, uint16_t loops, uint8_t volume) {
+    const auto& sample = _audio->getSample(fileName);
+    int channelNumber = Mix_PlayChannel(-1, sample.audio(), sdlLoops(loops));
+    Mix_Volume(channelNumber, sdlVolume(volume));
+}
+
+void AudioImpl::playMusic(const std::string& fileName, uint16_t loops, uint8_t volume) {
     const auto& music = _audio->getMusic(fileName);
-    Mix_PlayMusic(music.audio(), -1);
+    Mix_PlayMusic(music.audio(), sdlLoops(loops));
+    Mix_VolumeMusic(sdlVolume(volume));
 }
 
 void AudioImpl::resetForNextScene() {
