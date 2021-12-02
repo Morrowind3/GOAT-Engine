@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class Animator_PlayerWalking : public Animator {
-    public: Animator_PlayerWalking(Sprite& move1, Sprite& move2, Sprite& move3, bool active);
+    public: Animator_PlayerWalking(Sprite& move1, Sprite& move2, Sprite& move3, Sprite& move4, bool active);
 };
 
 #endif //GOAT_ENGINE_ANIMATOR_PLAYERWALKING_HPP

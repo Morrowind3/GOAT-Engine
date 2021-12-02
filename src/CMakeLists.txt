@@ -134,7 +134,7 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp
 		Engine/Utilities/EngineCalls.cpp Engine/Utilities/EngineCalls.hpp
         Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
-		)
+		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -205,7 +205,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
 		Game/Behaviors/Buttons/Scripts/EtappeProgress.cpp Game/Behaviors/Buttons/Scripts/EtappeProgress.hpp
 		Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.cpp Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.hpp
-		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
+        Game/Behaviors/Characters/Scripts/Script_PlayerMovement.cpp Game/Behaviors/Characters/Scripts/Script_PlayerMovement.hpp
         Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/FpsScript.cpp Game/Behaviors/Utils/Scripts/Cheats/FpsScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
@@ -257,7 +257,7 @@ add_executable(Mount_Everestimate
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
-add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
+add_executable(engine_tests "Engine/Tests/_Test.cpp" Engine/Tests/AnimatorHelperTest.cpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")

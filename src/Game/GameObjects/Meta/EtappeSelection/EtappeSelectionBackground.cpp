@@ -7,5 +7,5 @@ EtappeSelectionBackground::EtappeSelectionBackground(Transform transform, bool a
     // Background
     sprites.insert(std::make_pair(Keys::BACKGROUND, Sprite{"Sprites/backgrounds/mountains.png", true}));
     // Music
-    audioSources.insert(std::make_pair(Keys::SNOWSTORM,AudioSource{"Music/Coconut_Run.mp3", AudioSourceType::MUSIC, true, true}));
+    audioSources.insert(std::make_pair(Keys::MUSIC,AudioSource{"Music/Coconut_Run.mp3", AudioSourceType::MUSIC, true, true}));
 }

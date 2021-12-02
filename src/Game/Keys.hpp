@@ -4,29 +4,29 @@
 
 #include <string>
 
-/// Keys to identify scenes/objects/components and the like
+/// Keys to identify scenes/objects/components and the like, please (re-)sort to the appropriate region
 /// (yes this got messy quickly, but this ensures all possible keys are in one place)
 namespace Keys {
-	//GENERICS
-	const std::string _ = ""; // Preferable "empty" key
-	const std::string ERROR = "ERROR";
+
+#pragma region Logic
+    const std::string TRUE = "TRUE"; // Usage: positive bool
+    const std::string FALSE = "FALSE"; // Usage: negative bool
+    const std::string ERROR = "ERROR"; // UsageL error identifier
+#pragma endregion
+
+#pragma region Generic Identifiers
+	const std::string _; // Preferable "empty" key
 	const std::string SCRIPT = "SCRIPT";
-    const std::string BEHAVIOR = "BEHAVIOR"; // Usage: generic behavior ID for single script behaviors
-    const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
-    const std::string SPRITE = "SPRITE"; // Usage: generic sprite ID for single sprite objects
+    const std::string BEHAVIOR = "BEHAVIOR";
+    const std::string SPRITE = "SPRITE";
 	const std::string ANIMATOR = "ANIMATOR";
-	const std::string TEXT = "TEXT"; // Usage: generic text ID for single text objects
-	const std::string AUDIO = "AUDIO"; // Usage: generic text ID for single audio objects
-	const std::string BACKGROUND = "BACKGROUND"; // Usage: generic background ID 
+	const std::string TEXT = "TEXT";
+	const std::string AUDIO = "AUDIO";
+    const std::string MUSIC = "MUSIC";
+	const std::string BACKGROUND = "BACKGROUND";
+#pragma endregion
 
-    const std::string TRUE = "TRUE"; // Usage: positive bool (pause, etappemarker green button, heart)
-    const std::string FALSE = "FALSE"; // Usage: negative bool (pause, etappemarket gray button, heart)
-	const std::string ETAPPE = "ETAPPE"; // Usage: Etappe behavior ID on all etappe managers
-	const std::string ETAPPE_PROGRESS = "ETAPPE_PROGRESS"; // Usage: Etappe progress script ID
-	const std::string ETAPPE_CONFIG = "ETAPPE_CONFIG"; // Usage: Etappe config script ID
-    const std::string SNOWSTORM = "SNOWSTORM"; // Usage: snowstorm ambient music
-
-    //SCENE IDS
+#pragma region Scene IDs
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
     const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
     const std::string SETTINGS_MENU =  "SETTINGS_MENU"; // Usage: Settings menu level ID
@@ -38,10 +38,21 @@ namespace Keys {
     const std::string VICTORY_SCREEN = "VICTORY_SCREEN"; //Usage: Victory screen level ID
     const std::string DEFEAT_SCREEN = "DEFEAT_SCREEN"; //Usage: Defeat screen level ID
     const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID,
-                                                       // key for global that stores unlocked levels
+#pragma endregion
+
+#pragma region Etappe Events
+    const std::string ETAPPE = "ETAPPE"; // Usage: Etappe behavior ID on all etappe managers
+    const std::string ETAPPE_PROGRESS = "ETAPPE_PROGRESS"; // Usage: Etappe progress script ID
+    const std::string ETAPPE_CONFIG = "ETAPPE_CONFIG"; // Usage: Etappe config script ID
     const std::string NEXT_ETAPPE = "NEXT_ETAPPE"; // Usage: Flag to request the next stage
     const std::string CURRENT_ETAPPE = "CURRENT_ETAPPE"; // Usage: Flag to request the current stage
+#pragma endregion
 
+#pragma region Player
+    const std::string WALKING_ANIMATOR = "WALKING_ANIMATOR";
+#pragma endregion
+
+#pragma region Unsorted
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
 	const std::string SPEED = "SPEED";
@@ -62,7 +73,7 @@ namespace Keys {
 	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
     const std::string JAGERPLEISTER = "JAGERPLEISTER"; // Usage: For Jägerpleister sprite.
-
+    const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
     const std::string CHEATS = "CHEATS";
     const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
 	const std::string INPUT_DEBUG = "INPUT_DEBUG"; // Usage: game global flag to debug input
@@ -98,6 +109,8 @@ namespace Keys {
 	const std::string TILE = "TILE";
 	const std::string SOLID = "SOLID";
 	const std::string SLAB = "SLAB";
+#pragma endregion
+
 }
 
 #endif //GOAT_ENGINE_KEYS_HPP

@@ -17,16 +17,9 @@ void RenderingSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     _api->resetForNextScene();
     _scene = scene;
     for (auto& gameObject: _scene->gameObjects) {
-        for (auto& sprite: gameObject->sprites) {
-            _api->loadTexture(sprite.second.path);
-        }
-        for (auto& text: gameObject->text) {
-            _api->loadFont(text.second.font);
-        }
-        for (auto& button: gameObject->buttons) {
-            _api->loadFont(button.second.text.font);
-            _api->loadTexture(button.second.sprite.path);
-        }
+        loadSpritesData(*gameObject);
+        loadTextData(*gameObject);
+        loadButtonsData(*gameObject);
     }
 }
 
@@ -46,6 +39,29 @@ void RenderingSystem::onCloseEngine() {
     _debug.log("Rendering system close");
     _api->end();
 }
+
+// Load scene helper methods
+
+void RenderingSystem::loadSpritesData(GameObject& gameObject) {
+    for (auto& sprite: gameObject.sprites) {
+        _api->loadTexture(sprite.second.path);
+    }
+}
+
+void RenderingSystem::loadTextData(GameObject& gameObject) {
+    for (auto& text: gameObject.text) {
+        _api->loadFont(text.second.font);
+    }
+}
+
+void RenderingSystem::loadButtonsData(GameObject& gameObject) {
+    for (auto& button: gameObject.buttons) {
+        _api->loadFont(button.second.text.font);
+        _api->loadTexture(button.second.sprite.path);
+    }
+}
+
+// Frame tick helper methods
 
 void RenderingSystem::handleAnimators(GameObject& gameObject, const double deltaTime) {
     for (auto& animator: gameObject.animators) {

@@ -6,7 +6,6 @@
 
 using namespace Engine;
 
-
 TEST_CASE("Game Loop"){
     Input& input = Input::getInstance();
     //universal-set up. Runs before every section.
