@@ -9,6 +9,7 @@
 #include "Layers.hpp"
 #include "GameObjects/Tiles/LavaTile.hpp"
 #include "GameObjects/WorldObjects/HealthPickup.hpp"
+#include "GameObjects/Enemies/Snake.hpp"
 
 #include <regex>
 #include <fstream>
@@ -257,9 +258,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<Goat>(transform, true));
             break;
         case 46:
-            //TODO snake GameObject
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
-                    "Sprites/enemies/snake/snake_popup.png", transform, true));
+            _etappe.gameObjects.emplace_back(std::make_shared<Snake>(transform, true));
             break;
         case 47:
             //TODO snowball GameObject
