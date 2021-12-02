@@ -253,7 +253,7 @@ add_executable(Mount_Everestimate
 		Game/AudioSources/Sounds/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Sound_WalkAlt.hpp 
 		Game/AudioSources/Sounds/Sound_Oof.cpp Game/AudioSources/Sounds/Sound_Oof.hpp 
 		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
-		)
+		Game/GameObjects/Enemies/Snake.cpp Game/GameObjects/Enemies/Snake.hpp Game/Behaviors/Characters/SnakeBehavior.cpp Game/Behaviors/Characters/SnakeBehavior.hpp Game/Behaviors/Characters/Scripts/SnakeScript.cpp Game/Behaviors/Characters/Scripts/SnakeScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
