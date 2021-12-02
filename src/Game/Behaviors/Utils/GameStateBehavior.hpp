@@ -3,11 +3,13 @@
 
 #include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 #include "../../../Engine/SceneManager.hpp"
+#include "../../GameObjects/Meta/Hud/Timer.hpp"
+#include "../../GameSceneManager.hpp"
 
 using namespace Engine;
 
 class GameStateBehavior: public Behavior {
-    public: explicit GameStateBehavior(SceneManager& sceneManager, bool active);
+    public:  GameStateBehavior(SceneManager& sceneManager, std::shared_ptr<Timer> timer, bool active);
 };
 
 #endif //GOAT_ENGINE_GAMESTATEBEHAVIOR_HPP

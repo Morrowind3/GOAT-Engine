@@ -16,11 +16,12 @@ class TimerScript : public Script {
 public:
     TimerScript(Text& timerText, bool active): Script(active), _text(timerText){};
     void onUpdate(double deltaTime) override;
+    void onExternalEvent() override; //write time to database and scene data..
 private:
     void addSecond();
     Text& _text;
-    double totalMs = 0;
-    int totalSeconds = 0;
+    double _totalMs = 0;
+    int _totalSeconds = 0;
     Clock& _clock = Clock::getInstance();
     EngineCalls& _engineCalls = EngineCalls::getInstance();
 };

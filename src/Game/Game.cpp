@@ -17,7 +17,6 @@ void setupDatabase() {
     migrations.newTable("level");
     migrations.addColumn("completed", "BOOLEAN", false, true, false);
     migrations.addColumn("all_garbage_collected", "BOOLEAN", false, false, false);
-    migrations.addColumn("name", "TEXT", false, false, false);
 
     migrations.newTable("leaderboard");
     migrations.addColumn("date", "TEXT", false, true, false);

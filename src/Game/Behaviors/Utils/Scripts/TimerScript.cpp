@@ -3,24 +3,26 @@
 //
 
 #include "TimerScript.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
+#include "../../../Keys.hpp"
 #include <iostream>
 
 
 void TimerScript::onUpdate(double deltaTime) {
-    totalMs += _clock.lastRecordedUnmodifiedDeltaTime();
-    if((int) totalMs * _engineCalls.speed() / 1000 >= 1){
+    _totalMs += _clock.lastRecordedUnmodifiedDeltaTime();
+    if((int) _totalMs * _engineCalls.speed() / 1000 >= 1){
         addSecond();    //minimize UI updates
-        totalMs = 0;
+        _totalMs = 0;
     };
 }
 
 void TimerScript::addSecond() {
-    ++totalSeconds;
+    ++_totalSeconds;
 
     std::string timeString;
     timeString.reserve(5);
-    int minutes = totalSeconds / 60;
-    int seconds = totalSeconds % 60;
+    int minutes = _totalSeconds / 60;
+    int seconds = _totalSeconds % 60;
 
     if(minutes < 10){
         timeString.insert(0, "0" + std::to_string(minutes));
@@ -36,4 +38,9 @@ void TimerScript::addSecond() {
     }
 
     _text.text = timeString;
+}
+
+void TimerScript::onExternalEvent() {
+    Globals::getInstance().sceneStore(Keys::TIMER, std::to_string(_totalMs));
+    Globals::getInstance().sceneStore(Keys::TEXT, _text.text);
 }
