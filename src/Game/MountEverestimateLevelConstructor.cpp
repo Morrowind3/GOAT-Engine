@@ -26,6 +26,7 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
         buffer << file.rdbuf();
         std::string text = buffer.str();
 
+
         // Remove all '\n' from string
         std::string toErase{"\n"};
         while (size_t removePosition = text.find(toErase) != std::string::npos) {
@@ -83,6 +84,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
     //NOTE index corresponts with tileset All_Tiles ID's + 1, so '0' in tileset = '1' as index
     //NOTE NEVER REMOVE TILES FROM TILESET
     //NOTE however, you can always add new tiles
+    //NOTE every etappe needs a player (edmund sprite)!
 
     switch (index) {
         // TILES GRASS
@@ -347,6 +349,13 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             //TODO Trash GameObject die een random afval sprite pakt
             _etappe.gameObjects.emplace_back(std::make_shared<Tile>(
                     "Sprites/waste/waste_pizzabox.png", transform, true));
+            break;
+        case 69:
+            transform.layer = LAYER::CHARACTER;
+            transform.scaleWidth = 5;
+            transform.scaleHeight = 5;
+            _etappe.player = std::make_shared<Player>(transform, true);
+            _etappe.gameObjects.emplace_back(_etappe.player);
             break;
         default:
             _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(

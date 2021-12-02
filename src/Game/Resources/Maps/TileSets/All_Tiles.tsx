@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.5" tiledversion="1.7.2" name="All_Tiles" tilewidth="21" tileheight="21" tilecount="61" columns="0">
+<tileset version="1.5" tiledversion="1.7.2" name="All_Tiles" tilewidth="21" tileheight="21" tilecount="62" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="21" height="21" source="../../Sprites/landscapes/grass/grass_slab_flat.png"/>
@@ -183,5 +183,8 @@
  </tile>
  <tile id="67">
   <image width="21" height="21" source="../../Sprites/waste/waste_pizzabox.png"/>
+ </tile>
+ <tile id="68">
+  <image width="21" height="21" source="../../Sprites/player/player_front.png"/>
  </tile>
 </tileset>
