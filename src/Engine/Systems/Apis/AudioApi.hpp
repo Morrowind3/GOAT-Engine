@@ -16,8 +16,8 @@ namespace Engine {
             }
             void loadSample(const std::string& fileName);
             void loadMusic(const std::string& fileName);
-            void playSample(const std::string& fileName);
-            void playMusic(const std::string& fileName);
+            void playSample(const std::string& fileName, uint16_t loops, uint8_t volume);
+            void playMusic(const std::string& fileName, uint16_t loops, uint8_t volume);
             void pause();
             void resume();
             void resetForNextScene();

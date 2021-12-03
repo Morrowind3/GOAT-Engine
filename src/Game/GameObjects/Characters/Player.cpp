@@ -10,7 +10,7 @@ Player::Player(Transform transform, bool active) : GameObject(transform, active)
     sprites.insert(std::make_pair(Keys::MOVE1, Sprite{"Sprites/player/player_move_1.png", false}));
     sprites.insert(std::make_pair(Keys::MOVE2, Sprite{"Sprites/player/player_move_3.png", false}));
     sprites.insert(std::make_pair(Keys::JUMP, Sprite{"Sprites/player/player_jump.png", false}));
-    audioSources.insert(std::make_pair(Keys::JUMP_SFX,AudioSource{"Sounds/Jump.wav",AudioSourceType::SAMPLE,false,true}));
+    audioSources.insert(std::make_pair(Keys::JUMP_SFX,AudioSource{"Sounds/Jump.ogg",AudioSourceType::SAMPLE,false,true}));
     audioSources.insert(std::make_pair(Keys::WALK_SFX_A,AudioSource{"Sounds/Walk.ogg",AudioSourceType::SAMPLE,false,true}));
     audioSources.insert(std::make_pair(Keys::WALK_SFX_B,AudioSource{"Sounds/WalkAlt.ogg",AudioSourceType::SAMPLE,false,true}));
     audioSources.insert(std::make_pair(Keys::DAMAGE_SFX,AudioSource{"Sounds/Oof.ogg",AudioSourceType::SAMPLE,false,true}));

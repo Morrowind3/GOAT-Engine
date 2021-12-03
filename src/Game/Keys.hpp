@@ -44,7 +44,8 @@ namespace Keys {
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
 	const std::string SPEED = "SPEED";
     const std::string HAWK = "HAWK"; // Usage: Hawk script ID
-    const std::string GOAT = "GOAT"; // Usage: Hawk script ID
+    const std::string GOAT = "GOAT"; // Usage: Goat script ID
+    const std::string SNAKE = "SNAKE"; // Usage: Snake script ID
     const std::string PLAYER = "PLAYER"; // Usage: Player Object ID
     const std::string MOVE1 = "MOVE1"; // Usage: Hawk sprite 1, Player walk sprite 1
     const std::string MOVE2 = "MOVE2"; // Usage: Hawk sprite 2
