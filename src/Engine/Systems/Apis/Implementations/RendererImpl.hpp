@@ -12,6 +12,7 @@
 #include "../../../API/GameObjects/Transform.hpp"
 #include "Managers/Textures/TextureManager.hpp"
 #include "Managers/Fonts/FontManager.hpp"
+#include "../../../Utilities/EngineCalls.hpp"
 
 namespace Engine {
     class RendererImpl {
@@ -28,6 +29,7 @@ namespace Engine {
             void resetForNextScene();
             void end();
         private:
+            EngineCalls& _engineCalls = EngineCalls::getInstance(); // Needed to inform the engine of the window size
             int _sdlStatus;
             bool _resizeForFirstSceneHasTakenPlace {false};
             std::string _name, _iconPath, _cursor; // Initialization parameters

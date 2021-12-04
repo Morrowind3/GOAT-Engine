@@ -4,8 +4,15 @@
 
 using namespace Engine;
 
+// Updates
+
 void Input::update() {
     _registry.flushForNextFrame();
+    registerEvents();
+    handleMouseLocation();
+}
+
+void Input::registerEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) { _engineCalls.queueQuitEvent(); return; }
@@ -14,8 +21,22 @@ void Input::update() {
         if (event.type == SDL_MOUSEBUTTONDOWN) _registry.storeMouseDown(static_cast<MouseButton>(event.button.button));
         if (event.type == SDL_MOUSEBUTTONUP) _registry.storeMouseUp(static_cast<MouseButton>(event.button.button));
     }
-    SDL_GetMouseState(&_mousePositionX, &_mousePositionY);
 }
+
+void Input::handleMouseLocation() {
+    SDL_GetMouseState(&_mousePositionX, &_mousePositionY); // This is based on window size and needs translation
+    // Adjust for state of the screen so that the actual mouse position translates to a logical mouse position
+    const Point viewPortSize = _engineCalls.viewPortSize();
+    const Point windowSize = _engineCalls.windowSize();
+    const double xAspectRatio = viewPortSize.x/windowSize.x;
+    const double yAspectRatio = viewPortSize.y/windowSize.y;
+    Point aspectRatioCorrections {0,0}; // TODO: Find the magical calculation that calculates this properly
+    // Correct for aspect ratio
+    _mousePositionX = (_mousePositionX * xAspectRatio) + aspectRatioCorrections.x;
+    _mousePositionY = (_mousePositionY * yAspectRatio) + aspectRatioCorrections.y;
+}
+
+// Gets
 
 bool Input::anyKey() const {
     return _registry.anyKeyRegistered();

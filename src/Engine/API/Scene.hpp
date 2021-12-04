@@ -11,6 +11,7 @@ namespace Engine {
         public:
             Scene(std::string name, Point dimensions, Rectangle viewPort);
             std::vector<std::shared_ptr<GameObject>> gameObjects{};
+            // TODO: Encapsulate these values
             Point dimensions;
             Rectangle viewPort;
             std::string name;

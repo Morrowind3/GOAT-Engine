@@ -30,6 +30,7 @@ void RendererImpl::setViewPort(Point dimensions) {
         _resizeForFirstSceneHasTakenPlace = true;
     }
     SDL_RenderSetLogicalSize(_renderer.get(), dimensions.x, dimensions.y);
+    _engineCalls.viewPortSize(dimensions);
 }
 
 void RendererImpl::loadTexture(const std::string& fileName) {
@@ -53,6 +54,11 @@ void RendererImpl::loadFont(const std::string& fileName) {
 void RendererImpl::beginRenderTick() {
     _tickTextureCache = {};
     SDL_RenderClear(_renderer.get());
+
+    // Window is resizable so engine must know the current size
+    int windowWidth, windowHeight;
+    SDL_GetWindowSize(_window.get(), &windowWidth, &windowHeight);
+    _engineCalls.windowSize({windowWidth,windowHeight});
 }
 
 void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
