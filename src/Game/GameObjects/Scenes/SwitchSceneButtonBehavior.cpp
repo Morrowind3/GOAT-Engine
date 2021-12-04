@@ -1,5 +1,5 @@
 #include "SwitchSceneButtonBehavior.hpp"
-#include "Scripts/SwitchSceneButtonScript.hpp"
+#include "SwitchSceneButtonScript.hpp"
 #include "../../Keys.hpp"
 
 SwitchSceneButtonBehavior::SwitchSceneButtonBehavior(const std::string& levelName, SceneManager& sceneManager, AudioSource& nopeSound, bool active): Behavior(active) {

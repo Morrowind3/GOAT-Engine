@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_PAUSEACTIVATIONBEHAVIOR_HPP
 #define GOAT_ENGINE_PAUSEACTIVATIONBEHAVIOR_HPP
 
-#include "../../GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.hpp"
+#include "../../../Scenes/Etappes/BackToEtappeSelectionButton.hpp"
 
 class PauseActivationBehavior : public Behavior {
     public: PauseActivationBehavior(GameObject& toggleObject, bool activeOnPause, bool active);

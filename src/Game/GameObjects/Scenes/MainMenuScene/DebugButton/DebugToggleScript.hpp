@@ -1,8 +1,8 @@
 #ifndef GOAT_ENGINE_DEBUGTOGGLESCRIPT_HPP
 #define GOAT_ENGINE_DEBUGTOGGLESCRIPT_HPP
 
-#include "../../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../../Engine/Utilities/Debug.hpp"
+#include "../../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
+#include "../../../../../Engine/Utilities/Debug.hpp"
 
 using namespace Engine;
 

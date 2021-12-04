@@ -1,6 +1,6 @@
 #include "LavaTile.hpp"
-#include "../../Keys.hpp"
-#include "../../Behaviors/Tiles/LavaTileBehavior.hpp"
+#include "../../../Keys.hpp"
+#include "LavaTileBehavior.hpp"
 
 LavaTile::LavaTile(Transform transform, bool active)
         : Tile("Sprites/utils/lakes/lake_lava.png", std::make_shared<LavaTileBehavior>(active), transform, active) {

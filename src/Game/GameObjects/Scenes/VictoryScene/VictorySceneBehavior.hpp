@@ -1,13 +1,13 @@
-#ifndef GOAT_ENGINE_VICTORYSCREENBEHAVIOR_HPP
-#define GOAT_ENGINE_VICTORYSCREENBEHAVIOR_HPP
+#ifndef GOAT_ENGINE_VICTORYSCENEBEHAVIOR_HPP
+#define GOAT_ENGINE_VICTORYSCENEBEHAVIOR_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 
 using namespace Engine;
 
-class VictoryScreenBehavior : public Behavior {
-    public: explicit VictoryScreenBehavior(bool active);
+class VictorySceneBehavior : public Behavior {
+    public: explicit VictorySceneBehavior(bool active);
 };
 
 
-#endif //GOAT_ENGINE_VICTORYSCREENBEHAVIOR_HPP
+#endif //GOAT_ENGINE_VICTORYSCENEBEHAVIOR_HPP

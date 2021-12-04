@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_LAVATILEBEHAVIOR_HPP
 #define GOAT_ENGINE_LAVATILEBEHAVIOR_HPP
 
-#include "../../GameObjects/Tiles/SlabTile.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 
 using namespace Engine;
 

@@ -1,6 +1,6 @@
 #include "EtappeTwo.hpp"
 #include "../../Layers.hpp"
-#include "../../GameObjects/Meta/Etappes/EtappeTwoManager.hpp"
+#include "../../GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoManager.hpp"
 #include "../../Keys.hpp"
 
 EtappeTwo::EtappeTwo(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_TWO, manager,

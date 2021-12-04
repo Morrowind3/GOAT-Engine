@@ -1,6 +1,6 @@
 #include "SolidTile.hpp"
-#include "../../../Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp"
-#include "../../Keys.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp"
+#include "../../../Keys.hpp"
 
 SolidTile::SolidTile(const std::string& sprite, Transform transform, bool active)
         : Tile(sprite, transform, active) {

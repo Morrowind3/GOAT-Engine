@@ -1,6 +1,6 @@
 #include "HealthPickup.hpp"
-#include "../../Keys.hpp"
-#include "../../Behaviors/WorldObjects/HealthPickupBehavior.hpp"
+#include "../../../Keys.hpp"
+#include "HealthPickupBehavior.hpp"
 
 HealthPickup::HealthPickup(Transform transform, bool active) : GameObject(transform, active) {
     audioSources.insert(std::make_pair(Keys::JAGERPLEISTER, AudioSource{"Sounds/Heal.ogg", AudioSourceType::SAMPLE, true}));

@@ -1,7 +1,7 @@
 #include "SwitchSceneButtonScript.hpp"
 
 #include <utility>
-#include "../../../../Engine/Utilities/Debug.hpp"
+#include "../../../Engine/Utilities/Debug.hpp"
 
 SwitchSceneButtonScript::SwitchSceneButtonScript(std::string levelName, SceneManager& sceneManager, AudioSource* nopeSound, bool active):
         Script(active), _levelName{std::move(levelName)}, _sceneManager{sceneManager}, _nopeSound{nopeSound} {

@@ -1,6 +1,6 @@
 #include "RetryButton.hpp"
 #include "../../../Keys.hpp"
-#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
+#include "../SwitchSceneButtonBehavior.hpp"
 #include "../../../Layers.hpp"
 
 RetryButton::RetryButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active)  {

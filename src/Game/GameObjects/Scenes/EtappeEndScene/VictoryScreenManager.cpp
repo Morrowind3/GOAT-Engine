@@ -1,6 +1,6 @@
 #include "VictoryScreenManager.hpp"
 #include "../../../Keys.hpp"
-#include "../../../Behaviors/Utils/VictoryScreenBehavior.hpp"
+#include "../VictoryScene/VictorySceneBehavior.hpp"
 
 VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair("Background", Sprite{"Sprites/backgrounds/background_victory.png", true}));
@@ -37,5 +37,5 @@ VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : G
             Transform{{670,740},transform.layer,0,1,1},
             true}));
     audioSources.insert(std::make_pair("Music",AudioSource{"Sounds/victory.mp3", AudioSourceType::SAMPLE, true, true}));
-    behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<VictoryScreenBehavior>(true)));
+    behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<VictorySceneBehavior>(true)));
 }

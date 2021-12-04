@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_GOATSCRIPT_HPP
 
 
-#include "../../../GameObjects/Enemies/Goat/Goat.hpp"
+#include "Goat.hpp"
 
 class GoatScript : public Script {
 public:

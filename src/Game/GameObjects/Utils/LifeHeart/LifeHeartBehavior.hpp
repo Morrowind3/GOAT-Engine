@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_LIFEHEARTBEHAVIOR_HPP
 #define GOAT_ENGINE_LIFEHEARTBEHAVIOR_HPP
 
-#include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
+#include "LifeHeart.hpp"
 
 using namespace Engine;
 

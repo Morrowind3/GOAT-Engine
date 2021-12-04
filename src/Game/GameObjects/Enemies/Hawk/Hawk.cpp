@@ -1,6 +1,6 @@
 #include "Hawk.hpp"
-#include "../../Behaviors/Characters/HawkBehavior.hpp"
-#include "../../Keys.hpp"
+#include "HawkBehavior.hpp"
+#include "../../../Keys.hpp"
 
 Hawk::Hawk(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::MOVE1, Sprite{"Sprites/enemies/bird/bird_idle_1.png", true}));

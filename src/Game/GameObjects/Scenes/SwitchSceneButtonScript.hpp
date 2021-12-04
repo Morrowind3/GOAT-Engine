@@ -3,7 +3,7 @@
 
 #include "../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../Engine/SceneManager.hpp"
-#include "../../../../Engine/Utilities/Debug.hpp"
+#include "../../../Engine/Utilities/Debug.hpp"
 
 using namespace Engine;
 

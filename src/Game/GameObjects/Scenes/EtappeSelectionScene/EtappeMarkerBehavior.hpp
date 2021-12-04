@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_ETAPPEMARKERBEHAVIOR_HPP
 #define GOAT_ENGINE_ETAPPEMARKERBEHAVIOR_HPP
 
-#include "../../GameObjects/Meta/EtappeSelection/EtappeMarker.hpp"
+#include "./EtappeMarker.hpp"
 
 using namespace Engine;
 

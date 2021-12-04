@@ -1,6 +1,6 @@
 #include "DamageScript.hpp"
-#include "../../../../Engine/Utilities/Globals.hpp"
-#include "../../../Keys.hpp"
+#include "../../../Engine/Utilities/Globals.hpp"
+#include "../../Keys.hpp"
 #include <iostream>
 
 //TODO: Find a way to connect this script with the health counter script and defeat menu to avoid polling.

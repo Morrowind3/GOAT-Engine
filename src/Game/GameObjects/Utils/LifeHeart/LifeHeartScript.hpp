@@ -3,7 +3,7 @@
 
 #include "../../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
-#include "../../../GameObjects/Meta/Hud/LifeHeart.hpp"
+#include "LifeHeart.hpp"
 
 using namespace Engine;
 

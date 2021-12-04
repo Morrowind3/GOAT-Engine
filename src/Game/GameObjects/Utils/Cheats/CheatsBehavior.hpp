@@ -1,11 +1,11 @@
 #ifndef GOAT_ENGINE_CHEATSBEHAVIOR_HPP
 #define GOAT_ENGINE_CHEATSBEHAVIOR_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "../../../Engine/API/GameObjects/GameComponents/Render/UI/Text.hpp"
-#include "../../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
-#include "../../GameObjects/Characters/Player.hpp"
-#include "../../../Engine/SceneManager.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Render/UI/Text.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
+#include "../../../../Engine/SceneManager.hpp"
+#include "../../Player/Player.hpp"
 
 using namespace Engine;
 

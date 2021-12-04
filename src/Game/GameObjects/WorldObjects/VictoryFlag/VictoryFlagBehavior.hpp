@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_VICTORYFLAGBEHAVIOR_HPP
 #define GOAT_ENGINE_VICTORYFLAGBEHAVIOR_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../GameObjects/WorldObjects/VictoryFlag.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "VictoryFlag.hpp"
 
 using namespace Engine;
 

@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "Scripts/HawkScript.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "HawkScript.hpp"
 
 using namespace Engine;
 

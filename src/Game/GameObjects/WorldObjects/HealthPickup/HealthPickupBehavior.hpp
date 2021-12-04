@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_HEALTHPICKUPBEHAVIOR_HPP
 
 
-#include "../../GameObjects/WorldObjects/HealthPickup.hpp"
+#include "HealthPickup.hpp"
 
 class HealthPickupBehavior : public Behavior {
     public: HealthPickupBehavior(HealthPickup& healthPickup, AudioSource& healSfx, bool active);

@@ -1,8 +1,8 @@
 #ifndef GOAT_ENGINE_ETAPPEPROGRESS_HPP
 #define GOAT_ENGINE_ETAPPEPROGRESS_HPP
 
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../Engine/Utilities/Globals.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 

@@ -1,10 +1,10 @@
 #include "CheatsBehavior.hpp"
-#include "Scripts/CheatsScript.hpp"
-#include "Scripts/Cheats/SummonScript.hpp"
-#include "Scripts/Cheats/DamageCheatScript.hpp"
-#include "Scripts/Cheats/SpeedScript.hpp"
-#include "../../Keys.hpp"
-#include "Scripts/Cheats/BeatLevelScript.hpp"
+#include "CheatsScript.hpp"
+#include "../../../Keys.hpp"
+#include "CheatsLibrary/SpeedScript.hpp"
+#include "CheatsLibrary/DamageCheatScript.hpp"
+#include "CheatsLibrary/SummonScript.hpp"
+#include "CheatsLibrary/BeatLevelScript.hpp"
 
 CheatsBehavior::CheatsBehavior(SceneManager& sceneManager, Scene& scene, Player& player, std::map<std::string,Text>& textObjects,
                                AudioSource& speedUpSound, AudioSource& slowDownSound, AudioSource& resetSpeedSound,

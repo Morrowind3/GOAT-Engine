@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_SLABTILE_HPP
 #define GOAT_ENGINE_SLABTILE_HPP
 
-#include "./Tile.hpp"
+#include "../Tile.hpp"
 
 using namespace Engine;
 

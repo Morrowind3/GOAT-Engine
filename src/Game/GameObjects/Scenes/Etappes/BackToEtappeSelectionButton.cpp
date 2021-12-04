@@ -1,7 +1,7 @@
 #include "BackToEtappeSelectionButton.hpp"
-#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
+#include "../SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
-#include "../../../Behaviors/Utils/PauseActivationBehavior.hpp"
+#include "../../Utils/Cheats/CheatsLibrary/PauseActivationBehavior.hpp"
 #include "../../../Layers.hpp"
 
 BackToEtappeSelectionButton::BackToEtappeSelectionButton(SceneManager& sceneManager, Transform transform, bool active): GameObject(transform,active) {

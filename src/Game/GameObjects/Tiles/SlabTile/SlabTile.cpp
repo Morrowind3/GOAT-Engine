@@ -1,5 +1,5 @@
 #include "SlabTile.hpp"
-#include "../../Keys.hpp"
+#include "../../../Keys.hpp"
 
 SlabTile::SlabTile(const std::string& sprite, Transform transform, bool active)
         : Tile(sprite, transform, active) {

@@ -3,7 +3,7 @@
 
 #include "../../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../../GameObjects/Enemies/Hawk.hpp"
+#include "Hawk.hpp"
 #include <ctime>
 
 using namespace Engine;

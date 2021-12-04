@@ -1,5 +1,5 @@
 #include "SnakeScript.hpp"
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../Keys.hpp"
 
 void SnakeScript::onTriggerEnter2D(GameObject& other) {

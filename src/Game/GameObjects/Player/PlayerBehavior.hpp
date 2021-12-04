@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_PLAYERBEHAVIOR_HPP
 
 #include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "../../GameObjects/Characters/Player.hpp"
+#include "./Player.hpp"
 
 using namespace Engine;
 

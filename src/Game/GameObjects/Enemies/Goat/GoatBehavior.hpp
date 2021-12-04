@@ -1,8 +1,8 @@
 #ifndef GOAT_ENGINE_GOATBEHAVIOR_HPP
 #define GOAT_ENGINE_GOATBEHAVIOR_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "../../GameObjects/Enemies/Goat/Goat.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "Goat.hpp"
 
 using namespace Engine;
 

@@ -2,8 +2,8 @@
 #define GOAT_ENGINE_SNAKESCRIPT_HPP
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../../GameObjects/Enemies/Snake.hpp"
-#include "../../../GameObjects/Characters/Player.hpp"
+#include "Snake.hpp"
+#include "../../Player/Player.hpp"
 #include "../../../Scenes/Etappes/SharedEtappe.hpp"
 
 

@@ -1,7 +1,7 @@
 #include "FpsMeter.hpp"
 #include "../../../Keys.hpp"
 #include "../../../Layers.hpp"
-#include "../../../Behaviors/Utils/FpsMeterBehavior.hpp"
+#include "FpsMeterBehavior.hpp"
 
 FpsMeter::FpsMeter(bool active): GameObject(Transform{{0,0}}, active) {
     text.insert(std::make_pair(Keys::FPS, Text{"FPS", "Fonts/Fraps.ttf", 48,

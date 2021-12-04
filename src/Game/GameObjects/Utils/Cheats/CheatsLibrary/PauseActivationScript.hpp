@@ -1,8 +1,8 @@
 #ifndef GOAT_ENGINE_PAUSEACTIVATIONSCRIPT_HPP
 #define GOAT_ENGINE_PAUSEACTIVATIONSCRIPT_HPP
 
-#include "../../../../Engine/Utilities/EngineCalls.hpp"
-#include "../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../../Engine/Utilities/EngineCalls.hpp"
+#include "../../../../../Engine/API/GameObjects/GameObject.hpp"
 
 using namespace Engine;
 

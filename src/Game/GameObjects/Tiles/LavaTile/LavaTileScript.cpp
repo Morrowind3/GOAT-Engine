@@ -1,6 +1,6 @@
 #include "LavaTileScript.hpp"
 #include "../../../Keys.hpp"
-#include "../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../Engine/API/GameObjects/GameObject.hpp"
 
 LavaTileScript::LavaTileScript(bool active) : Script(active) {}
 

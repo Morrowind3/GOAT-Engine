@@ -1,7 +1,7 @@
 #include "Cheats.hpp"
-#include "../../Behaviors/Utils/CheatsBehavior.hpp"
-#include "../../Keys.hpp"
-#include "../../Layers.hpp"
+#include "CheatsBehavior.hpp"
+#include "../../../Keys.hpp"
+#include "../../../Layers.hpp"
 
 Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Player& player, bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
     // Show text to inform user (every line is a component)

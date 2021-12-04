@@ -1,6 +1,6 @@
 #include "LifeHeart.hpp"
 #include "../../../Keys.hpp"
-#include "../../../Behaviors/Utils/LifeHeartBehavior.hpp"
+#include "LifeHeartBehavior.hpp"
 
 LifeHeart::LifeHeart(int filledAtHp, Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::TRUE, Sprite{"Sprites/ui/rest/Health_full.png",true}));

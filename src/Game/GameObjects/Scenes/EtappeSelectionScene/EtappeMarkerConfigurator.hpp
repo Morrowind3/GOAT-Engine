@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_ETAPPEMARKERCONFIGURATOR_HPP
 #define GOAT_ENGINE_ETAPPEMARKERCONFIGURATOR_HPP
 
-#include "../../../Engine/Utilities/Globals.hpp"
-#include "../../../Engine/Utilities/Debug.hpp"
-#include "../../../GameObjects/Meta/EtappeSelection/EtappeMarker.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
+#include "../../../../Engine/Utilities/Debug.hpp"
+#include "EtappeMarker.hpp"
 
 class EtappeMarkerConfigurator : public Script {
     public:

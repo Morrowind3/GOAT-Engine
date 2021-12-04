@@ -1,6 +1,6 @@
 #include "EtappeOneManager.hpp"
-#include "../../../Keys.hpp"
-#include "../../../Behaviors/Utils/EtappeBehavior.hpp"
+#include "../../../../Keys.hpp"
+#include "../EtappeBehavior.hpp"
 
 EtappeOneManager::EtappeOneManager(Transform transform, bool active) : GameObject(transform, active) {
     audioSources.insert(std::make_pair(Keys::SNOWSTORM,AudioSource{"Music/Busy_Schedule.mp3", AudioSourceType::MUSIC, true, true}));

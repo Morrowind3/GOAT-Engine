@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_LAVATILE_HPP
 
 
-#include "./Tile.hpp"
+#include "../Tile.hpp"
 
 using namespace Engine;
 

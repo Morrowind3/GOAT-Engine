@@ -1,6 +1,6 @@
 #include "BackToMenuButton.hpp"
 #include "../../../Keys.hpp"
-#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
+#include "../SwitchSceneButtonBehavior.hpp"
 
 BackToMenuButton::BackToMenuButton(SceneManager& sceneManager, Transform transform, bool active): GameObject(transform,active) {
 

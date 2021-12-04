@@ -1,5 +1,5 @@
 #include "PlayerMovementScript.hpp"
-#include "../../../Keys.hpp"
+#include "../../Keys.hpp"
 
 PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player} {
 }

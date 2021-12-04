@@ -1,6 +1,6 @@
 #include "Snake.hpp"
-#include "../../Keys.hpp"
-#include "../../Behaviors/Characters/SnakeBehavior.hpp"
+#include "../../../Keys.hpp"
+#include "SnakeBehavior.hpp"
 
 Snake::Snake(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::IDLE, Sprite{"Sprites/enemies/snake/snake_underground.png", true}));

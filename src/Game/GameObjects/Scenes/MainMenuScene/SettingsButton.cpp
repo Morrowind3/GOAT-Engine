@@ -1,5 +1,5 @@
 #include "SettingsButton.hpp"
-#include "../../../Behaviors/Buttons/SwitchSceneButtonBehavior.hpp"
+#include "../SwitchSceneButtonBehavior.hpp"
 #include "../../../Keys.hpp"
 #include "../../../Layers.hpp"
 

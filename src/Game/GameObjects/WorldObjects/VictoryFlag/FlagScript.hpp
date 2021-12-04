@@ -2,8 +2,8 @@
 #define GOAT_ENGINE_FLAGSCRIPT_HPP
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../../GameObjects/WorldObjects/VictoryFlag.hpp"
-#include "../../../GameObjects/Characters/Player.hpp"
+#include "VictoryFlag.hpp"
+#include "../../Player/Player.hpp"
 
 using namespace Engine;
 

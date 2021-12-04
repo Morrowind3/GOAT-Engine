@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_HEALSCRIPT_HPP
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
-#include "../../../GameObjects/WorldObjects/HealthPickup.hpp"
+#include "HealthPickup.hpp"
 
 using namespace Engine;
 

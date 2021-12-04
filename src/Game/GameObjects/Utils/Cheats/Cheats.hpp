@@ -1,8 +1,8 @@
 #ifndef GOAT_ENGINE_CHEATS_HPP
 #define GOAT_ENGINE_CHEATS_HPP
 
-#include "../Characters/Player.hpp"
-#include "../../../Engine/SceneManager.hpp"
+#include "../../Player/Player.hpp"
+#include "../../../../Engine/SceneManager.hpp"
 
 using namespace Engine;
 

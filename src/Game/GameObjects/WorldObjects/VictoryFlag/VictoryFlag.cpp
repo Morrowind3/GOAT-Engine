@@ -1,6 +1,6 @@
 #include "VictoryFlag.hpp"
-#include "../../Keys.hpp"
-#include "../../Behaviors/WorldObjects/VictoryFlagBehavior.hpp"
+#include "../../../Keys.hpp"
+#include "VictoryFlagBehavior.hpp"
 
 
 VictoryFlag::VictoryFlag(Transform transform, bool active) : GameObject(transform, active) {

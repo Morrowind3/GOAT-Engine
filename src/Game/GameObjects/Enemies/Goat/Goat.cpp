@@ -1,8 +1,8 @@
 #include "Goat.hpp"
-#include "../../Behaviors/Characters/Scripts/GoatScript.hpp"
-#include "../../Behaviors/Characters/GoatBehavior.hpp"
-#include "../../Keys.hpp"
-#include "../../../Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp"
+#include "GoatScript.hpp"
+#include "GoatBehavior.hpp"
+#include "../../../Keys.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp"
 
 Goat::Goat(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::IDLE, Sprite{"Sprites/enemies/goat/goat_idle_1.png", true}));
