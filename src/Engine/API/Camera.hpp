@@ -1,7 +1,6 @@
 #ifndef GOAT_ENGINE_CAMERA_HPP
 #define GOAT_ENGINE_CAMERA_HPP
 
-#include <SDL_rect.h>
 #include <queue>
 #include <functional>
 #include "GameObjects/GameObject.hpp"
@@ -10,10 +9,8 @@
 namespace Engine{
     class Camera {
         public:
-            Camera(): _camera({Point{0, 0}, 0, 0}), _zoomLevel(1){};
-            //width and height unused until we need to crop.
-            Camera(double x, double y, float zoom): _camera({Point{x, y}, 0, 0}), _zoomLevel(zoom){};
-            Engine::Transform adjustForCamera(const Engine::Transform& transform);
+            Camera(Rectangle& sceneViewPort, Point& sceneDimensions, float zoom);
+            Transform adjustForCamera(const Engine::Transform& transform);
 
             void moveCamera(double x, double y);
             void interpolateToNextWaypoint();
@@ -38,7 +35,8 @@ namespace Engine{
 
             std::shared_ptr<GameObject> _trackedObject = nullptr;
             std::queue<WaypointParams> _waypoints;
-            Engine::Rectangle _camera;
+            Rectangle& _sceneViewPort;
+            Point& _sceneDimensions;
             float _zoomLevel;
     };
 };

@@ -5,20 +5,27 @@
 
 using namespace Engine;
 
-RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor) :
+/// It usually isn't best practise to do this in the constructor, but else the smart pointers need to be hacked around with
+RendererImpl::RendererImpl(const std::string& name, const std::string& iconPath, const std::string& cursor) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
                                  SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0), SDL_DestroyRenderer}} {
-
     TTF_Init();
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
-    SDL_RenderSetLogicalSize(_renderer.get(), 1920, 985);
     auto cursorSurface = IMG_Load(cursor.c_str());
     auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
     SDL_SetCursor(sdlCursor);
+}
+
+void RendererImpl::initialize() {
+    // TODO: Move as much of the constructor into here as possible
+}
+
+void RendererImpl::setViewPort(Point dimensions) {
+    SDL_RenderSetLogicalSize(_renderer.get(), dimensions.x, dimensions.y);
 }
 
 void RendererImpl::loadTexture(const std::string& fileName) {

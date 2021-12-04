@@ -16,6 +16,7 @@ void RenderingSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     _animatorHelper.resetForNextScene();
     _api->resetForNextScene();
     _scene = scene;
+    _api->setViewPort(_scene->viewPort.widthHeightPoint());
     for (auto& gameObject: _scene->gameObjects) {
         loadSpritesData(*gameObject);
         loadTextData(*gameObject);

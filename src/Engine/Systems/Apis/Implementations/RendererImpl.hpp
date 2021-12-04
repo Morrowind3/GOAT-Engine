@@ -16,7 +16,9 @@
 namespace Engine {
     class RendererImpl {
         public:
-            RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor);
+            RendererImpl(const std::string& name, const std::string& iconPath, const std::string& cursor);
+            void initialize();
+            void setViewPort(Point dimensions);
             void loadTexture(const std::string& fileName);
             void loadFont(const std::string& fileName);
             void beginRenderTick();
@@ -25,9 +27,9 @@ namespace Engine {
             void endRenderTick();
             void resetForNextScene();
             void end();
-
         private:
             int _sdlStatus;
+            std::string _name, _iconPath, _cursor; // Initialization parameters
             std::unique_ptr<TextureManager> _textures = std::make_unique<TextureManager>(_renderer.get());
             std::unique_ptr<FontManager> _fonts = std::make_unique<FontManager>(_renderer.get());
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;

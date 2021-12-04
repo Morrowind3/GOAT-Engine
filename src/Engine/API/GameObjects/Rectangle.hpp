@@ -8,7 +8,12 @@ namespace Engine {
         Rectangle(Point topLeft, double width, double height);
         Point topLeft;
         double width, height;
+        // Reusable helper methods that are needed for most rectangle calculations
         [[nodiscard]] bool intersects(Point point) const;
+        [[nodiscard]] Point widthHeightPoint() const;
+        [[nodiscard]] Point topRight() const;
+        [[nodiscard]] Point bottomLeft() const;
+        [[nodiscard]] Point bottomRight() const;
     };
 }
 
