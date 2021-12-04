@@ -1,13 +1,13 @@
 #include "SharedEtappe.hpp"
-#include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
+#include "../../GameObjects/Utils/LifeHeart/LifeHeart.hpp"
 #include "../../MountEverestimateLevelConstructor.hpp"
-#include "../../GameObjects/Meta/Cheats.hpp"
+#include "../../GameObjects/Utils/Cheats/Cheats.hpp"
 #include "../../../Engine/Utilities/Globals.hpp"
 #include "../../Keys.hpp"
 #include "../../Layers.hpp"
-#include "../../GameObjects/Meta/EtappeEnd/GameStateManager.hpp"
-#include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
-#include "../../GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp"
+#include "../../GameObjects/Utils/FpsMeter/FpsMeter.hpp"
+#include "../../GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.hpp"
+#include "../../GameObjects/Scenes/GameStateManager.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){

@@ -154,93 +154,95 @@ add_executable(Mount_Everestimate
 		Game/Scenes/SettingsMenuScene.cpp Game/Scenes/SettingsMenuScene.hpp
 		Game/Scenes/ScoreboardMenuScene.cpp Game/Scenes/ScoreboardMenuScene.hpp
         # Objects
-        Game/GameObjects/Characters/Player.hpp Game/GameObjects/Characters/Player.cpp
-        Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
-		Game/GameObjects/Meta/Etappes/EtappeOneManager.cpp Game/GameObjects/Meta/Etappes/EtappeOneManager.hpp
-		Game/GameObjects/Meta/Etappes/EtappeTwoManager.cpp Game/GameObjects/Meta/Etappes/EtappeTwoManager.hpp
+		Game/GameObjects/Player/Player.hpp Game/GameObjects/Player/Player.cpp
+		Game/GameObjects/Enemies/Goat/Goat.cpp Game/GameObjects/Enemies/Goat/Goat.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.cpp Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoManager.cpp Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoManager.hpp
         Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
-        Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
-        Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
-        Game/GameObjects/Tiles/SolidTile.cpp Game/GameObjects/Tiles/SolidTile.hpp
-        Game/GameObjects/Tiles/SlabTile.cpp Game/GameObjects/Tiles/SlabTile.hpp
-        Game/GameObjects/Enemies/Hawk.cpp Game/GameObjects/Enemies/Hawk.hpp
-        Game/GameObjects/Meta/MainMenu/Background.cpp
-        Game/GameObjects/Meta/MainMenu/ExitButton.cpp
-        Game/GameObjects/Meta/MainMenu/PlayButton.cpp
-		Game/GameObjects/Meta/EtappeSelection/EtappeMarker.cpp Game/GameObjects/Meta/EtappeSelection/EtappeMarker.hpp
-		Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.cpp Game/GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.hpp
-		Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.cpp Game/GameObjects/Meta/EtappeSelection/BackToMenuButton.hpp
-		Game/GameObjects/Meta/Cheats.cpp Game/GameObjects/Meta/Cheats.hpp
-		Game/GameObjects/Meta/MainMenu/ScoreboardButton.cpp Game/GameObjects/Meta/MainMenu/ScoreboardButton.hpp
-		Game/GameObjects/Meta/MainMenu/SettingsButton.cpp Game/GameObjects/Meta/MainMenu/SettingsButton.hpp
-		Game/GameObjects/Meta/MainMenu/DebugButton.cpp Game/GameObjects/Meta/MainMenu/DebugButton.hpp
-		Game/GameObjects/Meta/Hud/LifeHeart.cpp Game/GameObjects/Meta/Hud/LifeHeart.hpp
-		Game/GameObjects/WorldObjects/VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag.hpp
-		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
-		Game/GameObjects/Meta/Etappes/EtappeOneText.cpp Game/GameObjects/Meta/Etappes/EtappeOneText.hpp
-		Game/GameObjects/Meta/Hud/FpsMeter.cpp Game/GameObjects/Meta/Hud/FpsMeter.hpp
-		Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp
-		Game/GameObjects/WorldObjects/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup.hpp
-		Game/GameObjects/Tiles/LavaTile.cpp Game/GameObjects/Tiles/LavaTile.hpp
+		Game/GameObjects/Tiles/SolidTile/SolidTile.cpp Game/GameObjects/Tiles/SolidTile/SolidTile.hpp
+		Game/GameObjects/Tiles/SlabTile/SlabTile.cpp Game/GameObjects/Tiles/SlabTile/SlabTile.hpp
+		Game/GameObjects/Tiles/SolidTile/SolidTile.cpp Game/GameObjects/Tiles/SolidTile/SolidTile.hpp
+		Game/GameObjects/Tiles/SlabTile/SlabTile.cpp Game/GameObjects/Tiles/SlabTile/SlabTile.hpp
+		Game/GameObjects/Enemies/Hawk/Hawk.cpp Game/GameObjects/Enemies/Hawk/Hawk.hpp
+		Game/GameObjects/Scenes/MainMenuScene/Background.cpp
+		Game/GameObjects/Scenes/MainMenuScene/ExitButton/ExitButton.cpp
+		Game/GameObjects/Scenes/MainMenuScene/PlayButton.cpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarker.hpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeSelectionBackground.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeSelectionBackground.hpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/BackToMenuButton.cpp Game/GameObjects/Scenes/EtappeSelectionScene/BackToMenuButton.hpp
+		Game/GameObjects/Utils/Cheats/Cheats.cpp Game/GameObjects/Utils/Cheats/Cheats.hpp
+		Game/GameObjects/Scenes/MainMenuScene/ScoreboardButton.cpp Game/GameObjects/Scenes/MainMenuScene/ScoreboardButton.hpp
+		Game/GameObjects/Scenes/MainMenuScene/SettingsButton.cpp Game/GameObjects/Scenes/MainMenuScene/SettingsButton.hpp
+		Game/GameObjects/Scenes/MainMenuScene/DebugButton/DebugButton.cpp Game/GameObjects/Scenes/MainMenuScene/DebugButton/DebugButton.hpp
+		Game/GameObjects/Utils/LifeHeart/LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/LifeHeart.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlag.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlagBehavior.cpp Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlagBehavior.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneText.cpp Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneText.hpp
+		Game/GameObjects/Utils/FpsMeter/FpsMeter.cpp Game/GameObjects/Utils/FpsMeter/FpsMeter.hpp
+		Game/GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.hpp
+		Game/GameObjects/WorldObjects/HealthPickup/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp
+        Game/GameObjects/Tiles/LavaTile/LavaTile.cpp Game/GameObjects/Tiles/LavaTile/LavaTile.hpp
 		# Behaviors
-		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
-		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
-        Game/Behaviors/Buttons/QuitGameBehavior.hpp Game/Behaviors/Buttons/QuitGameBehavior.cpp
-		Game/Behaviors/Buttons/EtappeMarkerBehavior.cpp Game/Behaviors/Buttons/EtappeMarkerBehavior.hpp
-		Game/Behaviors/Buttons/SwitchSceneButtonBehavior.hpp Game/Behaviors/Buttons/SwitchSceneButtonBehavior.cpp
-		Game/Behaviors/Characters/HawkBehavior.hpp Game/Behaviors/Characters/HawkBehavior.cpp
-        Game/Behaviors/Utils/LifeHeartBehavior.cpp Game/Behaviors/Utils/LifeHeartBehavior.hpp
-		Game/Behaviors/Utils/CheatsBehavior.cpp Game/Behaviors/Utils/CheatsBehavior.hpp
-		Game/Behaviors/WorldObjects/VictoryFlagBehavior.cpp Game/Behaviors/WorldObjects/VictoryFlagBehavior.hpp
-		Game/Behaviors/Characters/GoatBehavior.cpp Game/Behaviors/Characters/GoatBehavior.hpp
-		Game/Behaviors/Buttons/ToggleDebugBehavior.cpp Game/Behaviors/Buttons/ToggleDebugBehavior.hpp
-		Game/Behaviors/Utils/FpsMeterBehavior.cpp Game/Behaviors/Utils/FpsMeterBehavior.hpp
-		Game/Behaviors/Utils/PauseActivationBehavior.cpp Game/Behaviors/Utils/PauseActivationBehavior.hpp
-		Game/Behaviors/Utils/VictoryScreenBehavior.cpp Game/Behaviors/Utils/VictoryScreenBehavior.hpp
-		Game/Behaviors/WorldObjects/HealthPickupBehavior.cpp Game/Behaviors/WorldObjects/HealthPickupBehavior.hpp
-		Game/Behaviors/Tiles/LavaTileBehavior.cpp Game/Behaviors/Tiles/LavaTileBehavior.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeBehavior.cpp Game/GameObjects/Scenes/Etappes/EtappeBehavior.hpp
+		Game/GameObjects/Player/PlayerBehavior.hpp Game/GameObjects/Player/PlayerBehavior.cpp
+		Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameBehavior.hpp Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameBehavior.cpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerBehavior.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerBehavior.hpp
+		Game/GameObjects/Scenes/SwitchSceneButtonBehavior.hpp Game/GameObjects/Scenes/SwitchSceneButtonBehavior.cpp
+		Game/GameObjects/Enemies/Hawk/HawkBehavior.hpp Game/GameObjects/Enemies/Hawk/HawkBehavior.cpp
+		Game/GameObjects/Utils/LifeHeart/LifeHeartBehavior.cpp Game/GameObjects/Utils/LifeHeart/LifeHeartBehavior.hpp
+		Game/GameObjects/Utils/Cheats/CheatsBehavior.cpp Game/GameObjects/Utils/Cheats/CheatsBehavior.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlagBehavior.cpp Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlagBehavior.hpp
+		Game/GameObjects/Enemies/Goat/GoatBehavior.cpp Game/GameObjects/Enemies/Goat/GoatBehavior.hpp
+		Game/GameObjects/Scenes/MainMenuScene/DebugButton/ToggleDebugBehavior.cpp Game/GameObjects/Scenes/MainMenuScene/DebugButton/ToggleDebugBehavior.hpp
+		Game/GameObjects/Utils/FpsMeter/FpsMeterBehavior.cpp Game/GameObjects/Utils/FpsMeter/FpsMeterBehavior.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseActivationBehavior.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseActivationBehavior.hpp
+		Game/GameObjects/Scenes/VictoryScene/VictorySceneBehavior.cpp Game/GameObjects/Scenes/VictoryScene/VictorySceneBehavior.hpp
+		Game/GameObjects/WorldObjects/HealthPickup/HealthPickupBehavior.cpp Game/GameObjects/WorldObjects/HealthPickup/HealthPickupBehavior.hpp
+        Game/GameObjects/Tiles/LavaTile/LavaTileBehavior.cpp Game/GameObjects/Tiles/LavaTile/LavaTileBehavior.hpp
         # Scripts
-		Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.cpp Game/Behaviors/Buttons/Scripts/SwitchSceneButtonScript.hpp
-		Game/Behaviors/Buttons/Scripts/QuitGameScript.cpp Game/Behaviors/Buttons/Scripts/QuitGameScript.hpp
-		Game/Behaviors/Buttons/Scripts/EtappeProgress.cpp Game/Behaviors/Buttons/Scripts/EtappeProgress.hpp
-		Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.cpp Game/Behaviors/Buttons/Scripts/EtappeMarkerConfigurator.hpp
-		Game/Behaviors/Characters/Scripts/PlayerMovementScript.cpp Game/Behaviors/Characters/Scripts/PlayerMovementScript.hpp
-        Game/Behaviors/Characters/Scripts/HawkScript.cpp Game/Behaviors/Characters/Scripts/HawkScript.hpp
-		Game/Behaviors/Utils/Scripts/Cheats/FpsScript.cpp Game/Behaviors/Utils/Scripts/Cheats/FpsScript.hpp
-		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
-		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
-		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
+		Game/GameObjects/Scenes/SwitchSceneButtonScript.cpp Game/GameObjects/Scenes/SwitchSceneButtonScript.hpp
+		Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameScript.cpp Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameScript.hpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.hpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.hpp
+		Game/GameObjects/Player/PlayerMovementScript.cpp Game/GameObjects/Player/PlayerMovementScript.hpp
+		Game/GameObjects/Enemies/Hawk/HawkScript.cpp Game/GameObjects/Enemies/Hawk/HawkScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/FpsScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/FpsScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseScript.hpp
+		Game/GameObjects/Utils/LifeHeart/LifeHeartScript.cpp Game/GameObjects/Utils/LifeHeart/LifeHeartScript.hpp
+		Game/GameObjects/Scenes/Etappes/LifeInitScript.cpp Game/GameObjects/Scenes/Etappes/LifeInitScript.hpp
 		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
-		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
-		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
-		Game/Behaviors/Utils/Scripts/DamageScript.cpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp
-		Game/Behaviors/Utils/CheatsBehavior.cpp
-		Game/Behaviors/Utils/Scripts/CheatsScript.cpp
-		Game/GameObjects/WorldObjects/VictoryFlag.cpp
-		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
-		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
-		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryScreenManager.cpp
-		Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp
-		Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp
-        Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
-		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
-		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp Game/Behaviors/WorldObjects/Scripts/FlagScript.hpp
-		Game/Behaviors/Utils/Scripts/DamageScript.cpp Game/Behaviors/Utils/Scripts/DamageScript.hpp
-		Game/Behaviors/Characters/Scripts/GoatScript.cpp Game/Behaviors/Characters/Scripts/GoatScript.hpp
-        Game/Behaviors/Utils/Scripts/Cheats/SummonScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SummonScript.hpp 
-        Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.cpp Game/Behaviors/Utils/Scripts/Cheats/DamageCheatScript.hpp
-		Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.cpp Game/Behaviors/Utils/Scripts/Cheats/SpeedScript.hpp
-		Game/Behaviors/WorldObjects/Scripts/HealScript.cpp Game/Behaviors/WorldObjects/Scripts/HealScript.hpp
-        Game/Behaviors/Tiles/Scripts/LavaTileScript.cpp Game/Behaviors/Tiles/Scripts/LavaTileScript.hpp
-		Game/Behaviors/Buttons/Scripts/DebugToggleScript.cpp Game/Behaviors/Buttons/Scripts/DebugToggleScript.hpp
-		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
-        Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.cpp Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.hpp
-		Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.cpp Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.hpp
-        Game/GameObjects/Meta/Hud/Timer.cpp Game/Behaviors/Utils/TimerBehavior.cpp Game/Behaviors/Utils/TimerBehavior.hpp Game/Behaviors/Utils/Scripts/TimerScript.cpp
-		Game/GameObjects/Enemies/Snake.cpp Game/GameObjects/Enemies/Snake.hpp Game/Behaviors/Characters/SnakeBehavior.cpp Game/Behaviors/Characters/SnakeBehavior.hpp
-		Game/Behaviors/Characters/Scripts/SnakeScript.cpp Game/Behaviors/Characters/Scripts/SnakeScript.hpp Game/GameObjects/Meta/TimerLine.cpp Game/GameObjects/Meta/TimerLine.hpp Game/Behaviors/Utils/TimerLineBehavior.cpp Game/Behaviors/Utils/TimerLineBehavior.hpp Game/Behaviors/Utils/Scripts/TimerLineScript.cpp Game/Behaviors/Utils/Scripts/TimerLineScript.hpp Game/GameObjects/Meta/Etappes/EtappeTwoText.cpp Game/GameObjects/Meta/Etappes/EtappeTwoText.hpp)
+		Game/GameObjects/Utils/Cheats/CheatsScript.cpp Game/GameObjects/Utils/Cheats/CheatsScript.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag/FlagScript.cpp
+		Game/GameObjects/Player/DamageScript.cpp
+		Game/GameObjects/Utils/Cheats/CheatsBehavior.cpp
+		Game/GameObjects/Utils/Cheats/CheatsScript.cpp
+		Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlag.cpp
+		Game/GameObjects/Scenes/GameStateBehavior.cpp Game/GameObjects/Scenes/EtappeEndScene/GameStateScript.cpp
+		Game/GameObjects/Scenes/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
+		Game/Scenes/DefeatScene.cpp Game/GameObjects/Scenes/EtappeEndScene/VictoryScreenManager.cpp
+		Game/GameObjects/Scenes/EtappeEndScene/DefeatBackground.cpp Game/GameObjects/Scenes/EtappeEndScene/SelectEtappeButton.cpp
+		Game/GameObjects/Scenes/EtappeEndScene/NextEtappeButton.cpp Game/GameObjects/Scenes/EtappeEndScene/RetryButton.cpp
+		Game/GameObjects/Utils/Cheats/CheatsScript.cpp Game/GameObjects/Utils/Cheats/CheatsScript.hpp
+		Game/GameObjects/WorldObjects/VictoryFlag/FlagScript.cpp Game/GameObjects/WorldObjects/VictoryFlag/FlagScript.hpp
+		Game/GameObjects/Player/DamageScript.cpp Game/GameObjects/Player/DamageScript.hpp
+		Game/GameObjects/Enemies/Goat/GoatScript.cpp Game/GameObjects/Enemies/Goat/GoatScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/SummonScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/SummonScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/DamageCheatScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/DamageCheatScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/SpeedScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/SpeedScript.hpp
+		Game/GameObjects/WorldObjects/HealthPickup/HealScript.cpp Game/GameObjects/WorldObjects/HealthPickup/HealScript.hpp
+        Game/GameObjects/Tiles/LavaTile/LavaTileScript.cpp Game/GameObjects/Tiles/LavaTile/LavaTileScript.hpp
+		Game/GameObjects/Scenes/MainMenuScene/DebugButton/DebugToggleScript.cpp Game/GameObjects/Scenes/MainMenuScene/DebugButton/DebugToggleScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseActivationScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseActivationScript.hpp
+		Game/GameObjects/Scenes/VictoryScene/IncreaseEtappeCountScript.cpp Game/GameObjects/Scenes/VictoryScene/IncreaseEtappeCountScript.hpp
+		Game/GameObjects/Utils/Cheats/CheatsLibrary/BeatLevelScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/BeatLevelScript.hpp
+		Game/GameObjects/Enemies/Snake/Snake.cpp Game/GameObjects/Enemies/Snake/Snake.hpp Game/GameObjects/Enemies/Snake/SnakeBehavior.cpp Game/GameObjects/Enemies/Snake/SnakeBehavior.hpp Game/GameObjects/Enemies/Snake/SnakeScript.cpp Game/GameObjects/Enemies/Snake/SnakeScript.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoText.cpp Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoText.hpp
+		Game/GameObjects/Utils/Timer/Timer.cpp Game/GameObjects/Utils/Timer/Timer.hpp
+		Game/GameObjects/Utils/Timer/TimerBehavior.cpp Game/GameObjects/Utils/Timer/TimerBehavior.hpp
+		Game/GameObjects/Utils/Timer/TimerLine.cpp Game/GameObjects/Utils/Timer/TimerLine.hpp
+		Game/GameObjects/Utils/Timer/TimerLineBehavior.cpp Game/GameObjects/Utils/Timer/TimerLineBehavior.hpp
+		Game/GameObjects/Utils/Timer/TimerLineScript.cpp Game/GameObjects/Utils/Timer/TimerLineScript.hpp
+		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

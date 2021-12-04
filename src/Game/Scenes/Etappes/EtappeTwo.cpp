@@ -1,9 +1,9 @@
 #include "EtappeTwo.hpp"
 #include "../../Layers.hpp"
-#include "../../GameObjects/Meta/Etappes/EtappeTwoManager.hpp"
+#include "../../GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoManager.hpp"
 #include "../../Keys.hpp"
-#include "../../GameObjects/Meta/TimerLine.hpp"
-#include "../../GameObjects/Meta/Etappes/EtappeTwoText.hpp"
+#include "../../GameObjects/Utils/Timer/TimerLine.hpp"
+#include "../../GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoText.hpp"
 
 EtappeTwo::EtappeTwo(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_TWO, manager,
         "Maps/Etappe2.map", 21, 50, 250, 4, 0, -3000) {

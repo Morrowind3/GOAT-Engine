@@ -1,15 +1,15 @@
 #include "MountEverestimateLevelConstructor.hpp"
-#include "GameObjects/Tiles/SolidTile.hpp"
-#include "GameObjects/Tiles/SlabTile.hpp"
-#include "GameObjects/Enemies/Goat.hpp"
-#include "GameObjects/WorldObjects/VictoryFlag.hpp"
+#include "GameObjects/Tiles/SolidTile/SolidTile.hpp"
+#include "GameObjects/Tiles/SlabTile/SlabTile.hpp"
+#include "GameObjects/Enemies/Goat/Goat.hpp"
+#include "GameObjects/WorldObjects/VictoryFlag/VictoryFlag.hpp"
 #include "../Engine/Utilities/Debug.hpp"
 #include "../Engine/Utilities/Globals.hpp"
 #include "Keys.hpp"
 #include "Layers.hpp"
-#include "GameObjects/Tiles/LavaTile.hpp"
-#include "GameObjects/WorldObjects/HealthPickup.hpp"
-#include "GameObjects/Enemies/Snake.hpp"
+#include "GameObjects/Tiles/LavaTile/LavaTile.hpp"
+#include "GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp"
+#include "GameObjects/Enemies/Snake/Snake.hpp"
 
 #include <regex>
 #include <fstream>

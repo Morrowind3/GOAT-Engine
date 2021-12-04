@@ -1,9 +1,9 @@
 #include "EtappeSelection.hpp"
 #include "../Keys.hpp"
-#include "../GameObjects/Meta/EtappeSelection/EtappeMarker.hpp"
-#include "../GameObjects/Meta/EtappeSelection/EtappeSelectionBackground.hpp"
-#include "../GameObjects/Meta/EtappeSelection/BackToMenuButton.hpp"
-#include "../GameObjects/Meta/Hud/FpsMeter.hpp"
+#include "../GameObjects/Utils/FpsMeter/FpsMeter.hpp"
+#include "../GameObjects/Scenes/EtappeSelectionScene/EtappeMarker.hpp"
+#include "../GameObjects/Scenes/EtappeSelectionScene/BackToMenuButton.hpp"
+#include "../GameObjects/Scenes/EtappeSelectionScene/EtappeSelectionBackground.hpp"
 
 EtappeSelection::EtappeSelection(SceneManager& manager): Scene(Keys::ETAPPE_SELECT) {
     // Etappe buttons (ordered from the base to the summit of the mountain)
