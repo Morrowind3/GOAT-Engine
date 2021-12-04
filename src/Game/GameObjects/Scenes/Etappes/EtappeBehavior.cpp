@@ -1,6 +1,6 @@
 #include "EtappeBehavior.hpp"
 #include "../../Keys.hpp"
-#include "Scripts/Cheats/PauseScript.hpp"
+#include "../../GameObjects/Utils/Cheats/CheatObjects/PauseScript.hpp"
 #include "Scripts/LifeInitScript.hpp"
 
 EtappeBehavior::EtappeBehavior(int startHpAmount, AudioSource& pauseSound, bool active): Behavior(active) {

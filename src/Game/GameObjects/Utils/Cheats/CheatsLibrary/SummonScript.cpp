@@ -1,5 +1,5 @@
 #include "SummonScript.hpp"
-#include "../../../../GameObjects/Enemies/Goat.hpp"
+#include "../../../../GameObjects/Enemies/Goat/Goat.hpp"
 #include "../../../../Layers.hpp"
 
 using namespace Engine;
