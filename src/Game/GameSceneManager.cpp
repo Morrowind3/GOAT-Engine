@@ -1,14 +1,14 @@
 #include "GameSceneManager.hpp"
 #include "Keys.hpp"
-#include "Scenes/MainMenuScene.hpp"
+#include "Scenes/Menus/MainMenuScene.hpp"
 #include "Scenes/Etappes/EtappeOne.hpp"
 #include "Scenes/Etappes/EtappeTwo.hpp"
 #include "../Engine/Utilities/Debug.hpp"
-#include "Scenes/EtappeSelection.hpp"
-#include "Scenes/ScoreboardMenuScene.hpp"
-#include "Scenes/SettingsMenuScene.hpp"
-#include "Scenes/DefeatScene.hpp"
-#include "Scenes/VictoryScene.hpp"
+#include "Scenes/Menus/EtappeSelection.hpp"
+#include "Scenes/Menus/ScoreboardMenuScene.hpp"
+#include "Scenes/Menus/SettingsMenuScene.hpp"
+#include "Scenes/Menus/DefeatScene.hpp"
+#include "Scenes/Menus/VictoryScene.hpp"
 #include <stdexcept>
 
 void GameSceneManager::changeCurrentScene(const std::string& name) {

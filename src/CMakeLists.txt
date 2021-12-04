@@ -146,14 +146,16 @@ add_executable(Mount_Everestimate
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
 		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
 		Game/Layers.hpp
+		# Scene templates
+		Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
         # Scenes
-		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
+        Game/Scenes/Templates/SceneTemplate_StaticScreen.cpp Game/Scenes/Templates/SceneTemplate_StaticScreen.hpp
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
-        Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
-        Game/Scenes/EtappeSelection.cpp Game/Scenes/EtappeSelection.hpp
-		Game/Scenes/SettingsMenuScene.cpp Game/Scenes/SettingsMenuScene.hpp
-		Game/Scenes/ScoreboardMenuScene.cpp Game/Scenes/ScoreboardMenuScene.hpp
+		Game/Scenes/Menus/MainMenuScene.hpp Game/Scenes/Menus/MainMenuScene.cpp
+		Game/Scenes/Menus/EtappeSelection.cpp Game/Scenes/Menus/EtappeSelection.hpp
+		Game/Scenes/Menus/SettingsMenuScene.cpp Game/Scenes/Menus/SettingsMenuScene.hpp
+		Game/Scenes/Menus/ScoreboardMenuScene.cpp Game/Scenes/Menus/ScoreboardMenuScene.hpp
         # Objects
 		Game/GameObjects/Characters/Object_Player.hpp Game/GameObjects/Characters/Object_Player.cpp
         Game/GameObjects/Enemies/Goat.cpp Game/GameObjects/Enemies/Goat.hpp
@@ -183,6 +185,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp
 		Game/GameObjects/WorldObjects/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup.hpp
 		Game/GameObjects/Tiles/LavaTile.cpp Game/GameObjects/Tiles/LavaTile.hpp
+		Game/GameObjects/Enemies/Snake.cpp Game/GameObjects/Enemies/Snake.hpp 
 		# Behaviors
 		Game/Behaviors/Utils/EtappeBehavior.cpp Game/Behaviors/Utils/EtappeBehavior.hpp
 		Game/Behaviors/Characters/PlayerBehavior.hpp Game/Behaviors/Characters/PlayerBehavior.cpp
@@ -211,7 +214,7 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/Cheats/PauseScript.cpp Game/Behaviors/Utils/Scripts/Cheats/PauseScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeHeartScript.cpp Game/Behaviors/Utils/Scripts/LifeHeartScript.hpp
 		Game/Behaviors/Utils/Scripts/LifeInitScript.cpp Game/Behaviors/Utils/Scripts/LifeInitScript.hpp
-		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
+        Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
 		Game/Behaviors/Utils/Scripts/CheatsScript.cpp Game/Behaviors/Utils/Scripts/CheatsScript.hpp
 		Game/Behaviors/WorldObjects/Scripts/FlagScript.cpp
@@ -221,8 +224,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/CheatsScript.cpp
 		Game/GameObjects/WorldObjects/VictoryFlag.cpp
 		Game/Behaviors/Utils/GameStateBehavior.cpp	Game/Behaviors/Utils/Scripts/GameStateScript.cpp
-		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
-		Game/Scenes/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryScreenManager.cpp
+		Game/GameObjects/Meta/EtappeEnd/GameStateManager.cpp Game/Scenes/Menus/VictoryScene.cpp
+		Game/Scenes/Menus/DefeatScene.cpp Game/GameObjects/Meta/EtappeEnd/VictoryScreenManager.cpp
 		Game/GameObjects/Meta/EtappeEnd/DefeatBackground.cpp Game/GameObjects/Meta/EtappeEnd/SelectEtappeButton.cpp
 		Game/GameObjects/Meta/EtappeEnd/NextEtappeButton.cpp Game/GameObjects/Meta/EtappeEnd/RetryButton.cpp
         Game/Behaviors/Utils/Scripts/InputPrintScript.cpp Game/Behaviors/Utils/Scripts/InputPrintScript.hpp
@@ -239,6 +242,8 @@ add_executable(Mount_Everestimate
 		Game/Behaviors/Utils/Scripts/PauseActivationScript.cpp Game/Behaviors/Utils/Scripts/PauseActivationScript.hpp
         Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.cpp Game/Behaviors/Utils/Scripts/IncreaseEtappeCountScript.hpp
 		Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.cpp Game/Behaviors/Utils/Scripts/Cheats/BeatLevelScript.hpp
+		Game/Behaviors/Characters/SnakeBehavior.cpp Game/Behaviors/Characters/SnakeBehavior.hpp 
+		Game/Behaviors/Characters/Scripts/SnakeScript.cpp Game/Behaviors/Characters/Scripts/SnakeScript.hpp 
 		# Animators
         Game/Animators/Animator_PlayerWalking.cpp Game/Animators/Animator_PlayerWalking.hpp
 		# Sprites
@@ -253,7 +258,7 @@ add_executable(Mount_Everestimate
 		Game/AudioSources/Sounds/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Sound_WalkAlt.hpp 
 		Game/AudioSources/Sounds/Sound_Oof.cpp Game/AudioSources/Sounds/Sound_Oof.hpp 
 		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
-		Game/GameObjects/Enemies/Snake.cpp Game/GameObjects/Enemies/Snake.hpp Game/Behaviors/Characters/SnakeBehavior.cpp Game/Behaviors/Characters/SnakeBehavior.hpp Game/Behaviors/Characters/Scripts/SnakeScript.cpp Game/Behaviors/Characters/Scripts/SnakeScript.hpp)
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

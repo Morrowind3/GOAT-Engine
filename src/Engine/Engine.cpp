@@ -38,7 +38,6 @@ void GoatEngine::run(const unsigned int maxFps) {
                 // Perform frame logic
                 for (auto& system: *_systems) system->onFrameTick(_clock.gameStateBasedDeltaTime());
                 if (_engineCalls.quitEventQueued()) _isRunning = false; // Quit game event
-                _sceneManager.currentScene()->moveCameraToNextWaypoint();
             }
         }
         _debug.log("Scene end: " + active->name);

@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_ETAPPEONE_HPP
 #define GOAT_ENGINE_ETAPPEONE_HPP
 
-#include "SharedEtappe.hpp"
+#include "../Templates/SharedEtappe.hpp"
 #include "../../../Engine/SceneManager.hpp"
 
 using namespace Engine;

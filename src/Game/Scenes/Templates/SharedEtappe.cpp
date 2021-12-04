@@ -9,8 +9,8 @@
 #include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
 #include "../../GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp"
 
-SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager,
-    const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){
+SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager, Point dimensions,
+    const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey,dimensions,{{0,0},1440,765}){
     Globals::getInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_DEFAULT);
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
 

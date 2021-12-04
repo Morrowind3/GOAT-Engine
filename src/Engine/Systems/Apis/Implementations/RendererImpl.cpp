@@ -25,6 +25,10 @@ void RendererImpl::initialize() {
 }
 
 void RendererImpl::setViewPort(Point dimensions) {
+    if (!_resizeForFirstSceneHasTakenPlace) {
+        SDL_SetWindowSize(_window.get(), dimensions.x, dimensions.y);
+        _resizeForFirstSceneHasTakenPlace = true;
+    }
     SDL_RenderSetLogicalSize(_renderer.get(), dimensions.x, dimensions.y);
 }
 

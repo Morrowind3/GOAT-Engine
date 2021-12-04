@@ -1,16 +1,16 @@
 #include "MainMenuScene.hpp"
-#include "../GameObjects/Meta/MainMenu/Background.hpp"
-#include "../GameObjects/Meta/MainMenu/ExitButton.hpp"
-#include "../GameObjects/Meta/MainMenu/PlayButton.hpp"
-#include "../GameObjects/Meta/MainMenu/ScoreboardButton.hpp"
-#include "../GameObjects/Meta/MainMenu/SettingsButton.hpp"
-#include "../GameObjects/Meta/MainMenu/DebugButton.hpp"
-#include "../GameObjects/Enemies/Hawk.hpp"
-#include "../Keys.hpp"
-#include "../GameObjects/Meta/Hud/FpsMeter.hpp"
+#include "../../GameObjects/Meta/MainMenu/Background.hpp"
+#include "../../GameObjects/Meta/MainMenu/ExitButton.hpp"
+#include "../../GameObjects/Meta/MainMenu/PlayButton.hpp"
+#include "../../GameObjects/Meta/MainMenu/ScoreboardButton.hpp"
+#include "../../GameObjects/Meta/MainMenu/SettingsButton.hpp"
+#include "../../GameObjects/Meta/MainMenu/DebugButton.hpp"
+#include "../../GameObjects/Enemies/Hawk.hpp"
+#include "../../Keys.hpp"
+#include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
 
 
-MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
+MainMenuScene::MainMenuScene(SceneManager& manager) : SceneTemplate_StaticScreen(Keys::MAIN_MENU) {
     gameObjects.emplace_back(std::make_shared<Background>(
             manager, Transform{Point{0, -50}, 1, 0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<PlayButton>(
@@ -21,7 +21,6 @@ MainMenuScene::MainMenuScene(SceneManager& manager) : Scene(Keys::MAIN_MENU) {
             manager, Transform{Point{825, 600}, 100, 0, 4, 4}, true));
     gameObjects.emplace_back(std::make_shared<Hawk>(
             Transform{Point{200, 300}, 2, 0, 4, 4}, true));
-    gameObjects.emplace_back(std::make_shared<FpsMeter>(true));
     // TODO: Re-enable buttons when they do what they're supposed to do
     /*
     gameObjects.emplace_back(std::make_shared<DebugButton>(

@@ -45,7 +45,6 @@ void Camera::reposition(Transform& t) const {
 //        t.position.x -= _sceneViewPort.topLeft.x;
 //        t.position.y -= _sceneViewPort.topLeft.y;
 //    }
-
     t.position.x -= _sceneViewPort.topLeft.x;
     t.position.y -= _sceneViewPort.topLeft.y;
 }
@@ -107,14 +106,10 @@ void Camera::interpolateToNextWaypoint() {
 }
 
 void Camera::trackObject() {
-    //TODO: More reliable way to get screen centre.
-    SDL_DisplayMode DM;
-    SDL_GetCurrentDisplayMode(0, &DM);
-    auto displayWidth = DM.w;
-    auto displayHeight = DM.h;
-
-    _sceneViewPort.topLeft.x = _trackedObject->transform.position.x - _sceneViewPort.width/2;
-    _sceneViewPort.topLeft.y = _trackedObject->transform.position.y - _sceneViewPort.height/2;
+    // TODO: Find some way to do this properly
+    auto& transform = _trackedObject->transform;
+    _sceneViewPort.topLeft.x = transform.position.x - _sceneViewPort.width/3;
+    _sceneViewPort.topLeft.y = transform.position.y - _sceneViewPort.height/2;
 }
 
 void Camera::trackObject(std::shared_ptr<GameObject> object) {

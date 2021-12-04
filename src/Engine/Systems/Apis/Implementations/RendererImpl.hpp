@@ -29,6 +29,7 @@ namespace Engine {
             void end();
         private:
             int _sdlStatus;
+            bool _resizeForFirstSceneHasTakenPlace {false};
             std::string _name, _iconPath, _cursor; // Initialization parameters
             std::unique_ptr<TextureManager> _textures = std::make_unique<TextureManager>(_renderer.get());
             std::unique_ptr<FontManager> _fonts = std::make_unique<FontManager>(_renderer.get());

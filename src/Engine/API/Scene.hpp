@@ -9,11 +9,10 @@
 namespace Engine {
     class Scene {
         public:
-            explicit Scene(std::string name);
+            Scene(std::string name, Point dimensions, Rectangle viewPort);
             std::vector<std::shared_ptr<GameObject>> gameObjects{};
-            // TODO: These two values mandatory in the constructor
-            Point dimensions = {1920,985};
-            Rectangle viewPort = {{0,0},960,493};
+            Point dimensions;
+            Rectangle viewPort;
             std::string name;
 
             [[maybe_unused]] void moveCamera(double x, double y);

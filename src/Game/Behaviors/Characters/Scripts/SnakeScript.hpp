@@ -4,7 +4,7 @@
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "../../../GameObjects/Enemies/Snake.hpp"
 #include "../../../GameObjects/Characters/Object_Player.hpp"
-#include "../../../Scenes/Etappes/SharedEtappe.hpp"
+#include "../../../Scenes/Templates/SharedEtappe.hpp"
 
 using namespace Engine;
 
