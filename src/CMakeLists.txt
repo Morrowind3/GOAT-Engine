@@ -235,7 +235,14 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseActivationScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseActivationScript.hpp
 		Game/GameObjects/Scenes/VictoryScene/IncreaseEtappeCountScript.cpp Game/GameObjects/Scenes/VictoryScene/IncreaseEtappeCountScript.hpp
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/BeatLevelScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/BeatLevelScript.hpp
-		Game/GameObjects/Enemies/Snake/Snake.cpp Game/GameObjects/Enemies/Snake/Snake.hpp Game/GameObjects/Enemies/Snake/SnakeBehavior.cpp Game/GameObjects/Enemies/Snake/SnakeBehavior.hpp Game/GameObjects/Enemies/Snake/SnakeScript.cpp Game/GameObjects/Enemies/Snake/SnakeScript.hpp)
+		Game/GameObjects/Enemies/Snake/Snake.cpp Game/GameObjects/Enemies/Snake/Snake.hpp Game/GameObjects/Enemies/Snake/SnakeBehavior.cpp Game/GameObjects/Enemies/Snake/SnakeBehavior.hpp Game/GameObjects/Enemies/Snake/SnakeScript.cpp Game/GameObjects/Enemies/Snake/SnakeScript.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoText.cpp Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoText.hpp
+		Game/GameObjects/Utils/Timer/Timer.cpp Game/GameObjects/Utils/Timer/Timer.hpp
+		Game/GameObjects/Utils/Timer/TimerBehavior.cpp Game/GameObjects/Utils/Timer/TimerBehavior.hpp
+		Game/GameObjects/Utils/Timer/TimerLine.cpp Game/GameObjects/Utils/Timer/TimerLine.hpp
+		Game/GameObjects/Utils/Timer/TimerLineBehavior.cpp Game/GameObjects/Utils/Timer/TimerLineBehavior.hpp
+		Game/GameObjects/Utils/Timer/TimerLineScript.cpp Game/GameObjects/Utils/Timer/TimerLineScript.hpp
+		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

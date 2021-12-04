@@ -12,16 +12,20 @@
 SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey){
     Globals::getInstance().gameStore(Keys::GAMESTATE, Keys::GAMESTATE_DEFAULT);
-    gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
+
+    std::shared_ptr<Timer> timer = std::make_shared<Timer>(Transform{{0,0},0,5,2}, true);
+    gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, timer, true));
 
     // Hud
-    // Hearts (hud)
+    // Hearts
     gameObjects.emplace_back(std::make_shared<LifeHeart>(1,
         Transform{{0,0},LAYER::UI,0,5,5},true));
     gameObjects.emplace_back(std::make_shared<LifeHeart>(2,
         Transform{{105,0},LAYER::UI,0,5,5},true));
     gameObjects.emplace_back(std::make_shared<LifeHeart>(3,
         Transform{{210,0},LAYER::UI,0,5,5},true));
+    //Timer
+    gameObjects.emplace_back(timer);
 
     // Level constructor doing its magic
     MountEverestimateLevelConstructor{*this, fileLocation, tileSize, columns, rows, scale}.construct(xOffset, yOffset);

@@ -107,7 +107,7 @@ void Camera::trackObject() {
     double xPos{_trackedObject->transform.position.x};
 
     _camera.topLeft.x = _trackedObject->transform.position.x - displayWidth / 3;
-    _camera.topLeft.y = _trackedObject->transform.position.y - (displayHeight / 2);
+    _camera.topLeft.y = _trackedObject->transform.position.y - (displayHeight / 2.4);
 }
 
 void Camera::trackObject(std::shared_ptr<GameObject> object) {

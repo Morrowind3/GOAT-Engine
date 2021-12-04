@@ -3,11 +3,12 @@
 
 #include "../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../Engine/SceneManager.hpp"
+#include "../Utils/Timer/Timer.hpp"
 
 using namespace Engine;
 
 class GameStateManager : public GameObject {
-    public: GameStateManager(SceneManager& sceneManager, bool active);
+    public: GameStateManager(SceneManager& sceneManager, const std::shared_ptr<Timer>& timer, bool active);
 };
 
 

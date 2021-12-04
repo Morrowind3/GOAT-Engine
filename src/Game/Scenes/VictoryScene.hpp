@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class VictoryScene : public Scene {
-    public: explicit VictoryScene(SceneManager& manager);
+public: VictoryScene(SceneManager& manager);
 };
 
 #endif //GOAT_ENGINE_VICTORYSCENE_HPP
