@@ -242,7 +242,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Timer/TimerLine.cpp Game/GameObjects/Utils/Timer/TimerLine.hpp
 		Game/GameObjects/Utils/Timer/TimerLineBehavior.cpp Game/GameObjects/Utils/Timer/TimerLineBehavior.hpp
 		Game/GameObjects/Utils/Timer/TimerLineScript.cpp Game/GameObjects/Utils/Timer/TimerLineScript.hpp
-		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp)
+		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/WorldObjects/Trash/Trash.cpp Game/GameObjects/WorldObjects/Trash/Trash.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
