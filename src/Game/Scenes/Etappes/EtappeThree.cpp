@@ -1,0 +1,12 @@
+#include "EtappeThree.hpp"
+#include "../../Keys.hpp"
+#include "../../Layers.hpp"
+#include "../../GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp"
+#include "../../GameObjects/Utils/Timer/TimerLine.hpp"
+
+EtappeThree::EtappeThree(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_ONE,manager,
+                                                           "Maps/Etappe3.map", 21, 50, 250, 4, 0, -3000) {
+    gameObjects.emplace_back(std::make_shared<EtappeThreeManager>(
+            Transform{Point{0, -242}, LAYER::PARALLAX_BACKGROUND, 0, 20, 20}, true));
+    gameObjects.emplace_back(std::make_shared<TimerLine>(5,Transform{{0,-3500},LAYER::TILES_FRONT+1, 0, 3, 80}, true ));
+}

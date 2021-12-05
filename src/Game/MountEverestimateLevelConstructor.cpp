@@ -212,7 +212,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
         case 28:
             transform.layer = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
-                    "Sprites/landscapes/stone/stone_slab_end_right.png", transform, true));
+                    "Sprites/landscapes/stone/stone_slab_flat.png", transform, true));
             break;
         case 29:
             transform.layer = LAYER::TILES_BACK;
