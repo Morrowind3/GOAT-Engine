@@ -4,11 +4,20 @@
 
 #include "Trash.hpp"
 #include "../../../Keys.hpp"
+#include "TrashBehavior.hpp"
 #include <random>
 #include <iostream>
 #include <chrono>
 
 Trash::Trash(Transform transform, bool active) : GameObject(transform, active) {
+    behaviors.insert(std::make_pair(Keys::TRASH, std::make_shared<TrashBehavior>(*this, true)));
+    tags.emplace(Keys::TRASH, true);
+    rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
+    collider = BoxCollider(3 * transform.scaleWidth, 3 * transform.scaleHeight, true, true);
+    audioSources.insert(std::make_pair(Keys::TRASH, AudioSource{"Sounds/PickUp.ogg", AudioSourceType::SAMPLE, true}));
+
+
+
     const static std::vector<std::string> SPRITE_OPTIONS = {
         "aluminiumcan",
         "beerbottle",
@@ -23,13 +32,8 @@ Trash::Trash(Transform transform, bool active) : GameObject(transform, active) {
         "tunacan",
         "waterbottle"
     };
-
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::default_random_engine generator(seed);
     std::uniform_int_distribution<int> random(0,SPRITE_OPTIONS.size()-1);
-
-
-
-    std::cout << "Sprites/utils/waste/waste_" + SPRITE_OPTIONS[random(generator)] + ".png" <<  std::endl;
     sprites.insert(std::make_pair(Keys::TRASH, Sprite{"Sprites/waste/waste_" + SPRITE_OPTIONS[random(generator)] + ".png",true}));
 }

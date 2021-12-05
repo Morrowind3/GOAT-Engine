@@ -1,5 +1,6 @@
 #include "PlayerMovementScript.hpp"
 #include "../../Keys.hpp"
+#include <iostream>
 
 PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player} {
 }
@@ -11,7 +12,6 @@ void PlayerMovementScript::onUpdate(double deltaTime) {
     bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A); // Walk left
     bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D); // Walk right
     bool moveUpKey = _input.getKeyDown(KeyCode::UP) || _input.getKeyDown(KeyCode::W) || _input.getKeyDown(KeyCode::SPACE); // Jump
-    bool moveDownKey = _input.getKey(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S); // Pick up trash
 
     if (moveLeftKey) moveLeft(deltaTime);
     if (moveRightKey) moveRight(deltaTime);
@@ -30,7 +30,14 @@ void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
     if (other.hasTag(Keys::TILE)) {
         _doubleJumpState = _jumpState = false;
     }
+
 }
+void PlayerMovementScript::onTriggerStay2D(GameObject& other) {
+    if (other.hasTag(Keys::TRASH) && (_input.getKeyDown(KeyCode::S) || _input.getKeyDown(KeyCode::DOWN))) {
+        pickupTrash(other);
+    }
+}
+
 
 float PlayerMovementScript::calculateWalkSpeed(double deltaTime) {
     if(_sprintModifier+=SPRINT_STEP > MAX_SPRINT_MODIFIER) _sprintModifier = MAX_SPRINT_MODIFIER;
@@ -54,10 +61,7 @@ bool PlayerMovementScript::allowedToJump() const {
 void PlayerMovementScript::jump(double deltaTime) {
     _jumpState = true;
     _player.rigidBody.forceY = JUMP_FORCE/deltaTime;
-    _player.sprites.at(Keys::IDLE).active = false;
-    _player.sprites.at(Keys::JUMP).active = true;
-    _player.sprites.at(Keys::MOVE1).active = false;
-    _player.sprites.at(Keys::MOVE2).active = false;
+    switchSprite(Keys::JUMP);
     playJumpSound();
 }
 
@@ -72,40 +76,26 @@ void PlayerMovementScript::doubleJump(double deltaTime) {
 }
 
 void PlayerMovementScript::updateSpriteStateWhileWalking(bool moveLeft, bool moveRight) {
-    if (!moveRight && !moveLeft) { // Idle
-        _player.sprites.at(Keys::IDLE).active = true;
-        _player.sprites.at(Keys::JUMP).active = false;
-        _player.sprites.at(Keys::MOVE1).active = false;
-        _player.sprites.at(Keys::MOVE2).active = false;
+    if (!moveRight && !moveLeft  && !_player.sprites.at(Keys::TRASH).active) { // Idle
+        switchSprite(Keys::IDLE);
     }
     if ((moveLeft || moveRight) && _walkingSwitchFrameCounter % 20 == 1) { // Walking
+        if(_player.sprites.at(Keys::TRASH).active) switchSprite(Keys::IDLE);
         switch (_walkingState) {
             case 0:
-                _player.sprites.at(Keys::IDLE).active = true;
-                _player.sprites.at(Keys::JUMP).active = false;
-                _player.sprites.at(Keys::MOVE1).active = false;
-                _player.sprites.at(Keys::MOVE2).active = false;
+                switchSprite(Keys::IDLE);
                 _walkingState++;
                 break;
             case 1:
-                _player.sprites.at(Keys::IDLE).active = false;
-                _player.sprites.at(Keys::JUMP).active = false;
-                _player.sprites.at(Keys::MOVE1).active = true;
-                _player.sprites.at(Keys::MOVE2).active = false;
+                switchSprite(Keys::MOVE1);
                 _walkingState++;
                 break;
             case 2:
-                _player.sprites.at(Keys::IDLE).active = true;
-                _player.sprites.at(Keys::JUMP).active = false;
-                _player.sprites.at(Keys::MOVE1).active = false;
-                _player.sprites.at(Keys::MOVE2).active = false;
+                switchSprite(Keys::IDLE);
                 _walkingState++;
                 break;
             case 3:
-                _player.sprites.at(Keys::IDLE).active = false;
-                _player.sprites.at(Keys::JUMP).active = false;
-                _player.sprites.at(Keys::MOVE1).active = false;
-                _player.sprites.at(Keys::MOVE2).active = true;
+                switchSprite(Keys::MOVE2);
                 _walkingState = 0;
                 break;
         }
@@ -127,3 +117,17 @@ void PlayerMovementScript::playWalkSound() {
 void PlayerMovementScript::playJumpSound() {
     _player.audioSources.at(Keys::JUMP_SFX).queueForPlay = true;
 }
+
+void PlayerMovementScript::pickupTrash(GameObject& other) {
+    switchSprite(Keys::TRASH);
+    other.behaviors.at(Keys::TRASH)->scripts.at(Keys::TRASH)->onExternalEvent();
+}
+
+void PlayerMovementScript::switchSprite(const std::string& key) {
+    _player.sprites.at(Keys::IDLE).active = key == Keys::IDLE;
+    _player.sprites.at(Keys::MOVE1).active = key == Keys::MOVE1;
+    _player.sprites.at(Keys::MOVE2).active = key == Keys::MOVE2;
+    _player.sprites.at(Keys::TRASH).active = key == Keys::TRASH;
+    _player.sprites.at(Keys::JUMP).active = key == Keys::JUMP;
+}
+
