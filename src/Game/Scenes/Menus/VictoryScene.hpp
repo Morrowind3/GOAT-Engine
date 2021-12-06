@@ -2,11 +2,11 @@
 #define GOAT_ENGINE_VICTORYSCENE_HPP
 
 #include "../../../Engine/SceneManager.hpp"
-#include "../Templates/SceneTemplate_StaticScreen.hpp"
+#include "../Templates/SceneTemplate_Menu.hpp"
 
 using namespace Engine;
 
-class VictoryScene : public SceneTemplate_StaticScreen {
+class VictoryScene : public SceneTemplate_Menu {
     public: explicit VictoryScene(SceneManager& manager);
 };
 

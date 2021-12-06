@@ -8,13 +8,13 @@ EtappeTwoText::EtappeTwoText(Transform transform, bool active) : GameObject(tran
             "Fonts/Kenney_Thick.ttf",
             20,
             {0,0,0,255},
-            Transform{{800 + X, 500 + Y}, transform.layer, 0, 1, 1},
+            Transform{{800 + X, 500 + Y}, transform.layerGroup, 0, 1, 1},
             true}));
     text.insert(std::make_pair("timer_2", Text{
             "Stay ahead of the line if you want a shot at the high score",
             "Fonts/Kenney_Thick.ttf",
             20,
             {0,0,0,255},
-            Transform{{1700 + X, 200+Y}, transform.layer, 0, 1, 1},
+            Transform{{1700 + X, 200+Y}, transform.layerGroup, 0, 1, 1},
             true}));
 }

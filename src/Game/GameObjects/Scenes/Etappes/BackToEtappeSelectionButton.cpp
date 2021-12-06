@@ -6,9 +6,10 @@
 
 BackToEtappeSelectionButton::BackToEtappeSelectionButton(SceneManager& sceneManager, Transform transform, bool active): GameObject(transform,active) {
 
+    // TODO: layer 0xffffffff
     Transform textTransform{
             Point{transform.position.x + 10, transform.position.y + 20},
-            LAYER::FPS, 0, 1, 1};
+            LAYER::UI, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::MAIN_MENU, Button{
             Text{" Leave level", "Fonts/Kenney_Thick.ttf", 16, {0, 0, 0, 255}, textTransform, true},

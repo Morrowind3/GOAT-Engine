@@ -6,7 +6,7 @@
 #include "../../GameObjects/Scenes/MainMenuScene/DebugButton/DebugButton.hpp"
 #include "../../GameObjects/Scenes/MainMenuScene/ExitButton/ExitButton.hpp"
 
-MainMenuScene::MainMenuScene(SceneManager& manager) : SceneTemplate_StaticScreen(Keys::MAIN_MENU) {
+MainMenuScene::MainMenuScene(SceneManager& manager) : SceneTemplate_Menu(Keys::MAIN_MENU) {
     gameObjects.emplace_back(std::make_shared<Background>(
             manager, Transform{Point{0, -50}, 1, 0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<PlayButton>(

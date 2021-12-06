@@ -151,7 +151,7 @@ add_executable(Mount_Everestimate
 		# Scene templates
 		Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
         # Scenes
-        Game/Scenes/Templates/SceneTemplate_StaticScreen.cpp Game/Scenes/Templates/SceneTemplate_StaticScreen.hpp
+		Game/Scenes/Templates/SceneTemplate_Menu.cpp Game/Scenes/Templates/SceneTemplate_Menu.hpp
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
 		Game/Scenes/Menus/MainMenuScene.hpp Game/Scenes/Menus/MainMenuScene.cpp

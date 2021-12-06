@@ -2,11 +2,11 @@
 #define GOAT_ENGINE_SCOREBOARDMENUSCENE_HPP
 
 #include "../../../Engine/SceneManager.hpp"
-#include "../Templates/SceneTemplate_StaticScreen.hpp"
+#include "../Templates/SceneTemplate_Menu.hpp"
 
 using namespace Engine;
 
-class ScoreboardMenuScene : public SceneTemplate_StaticScreen {
+class ScoreboardMenuScene : public SceneTemplate_Menu {
     public: explicit ScoreboardMenuScene(SceneManager& manager);
 };
 

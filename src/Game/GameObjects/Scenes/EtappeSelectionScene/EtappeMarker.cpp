@@ -11,9 +11,10 @@ EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigne
     sprites.insert(std::make_pair(Keys::FLAG, Sprite{"Sprites/utils/flag/Flag.png", false}));
     sprites.insert(std::make_pair(Keys::STAR, Sprite{"Sprites/ui/rest/Star.png", false}));
 
+    // TODO: Layer 1
     Transform textTransform{
             Point{transform.position.x+20, transform.position.y+20},
-            transform.layer+1, 0, 1, 1};
+            transform.layerGroup, 0, 1, 1};
 
     // Etappe height
     text.insert(std::make_pair(Keys::TEXT, Text{std::to_string(height)+"m", "Fonts/Kenney_Thick.ttf", 16,

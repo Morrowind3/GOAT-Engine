@@ -2,11 +2,11 @@
 #define GOAT_ENGINE_MAINMENUSCENE_HPP
 
 #include "../../../Engine/SceneManager.hpp"
-#include "../Templates/SceneTemplate_StaticScreen.hpp"
+#include "../Templates/SceneTemplate_Menu.hpp"
 
 using namespace Engine;
 
-class MainMenuScene : public SceneTemplate_StaticScreen {
+class MainMenuScene : public SceneTemplate_Menu {
     public: explicit MainMenuScene(SceneManager& manager);
 };
 

@@ -1,5 +1,5 @@
 #include "SettingsMenuScene.hpp"
 #include "../../Keys.hpp"
 
-SettingsMenuScene::SettingsMenuScene(SceneManager& manager) : SceneTemplate_StaticScreen(Keys::MAIN_MENU) {
+SettingsMenuScene::SettingsMenuScene(SceneManager& manager) : SceneTemplate_Menu(Keys::MAIN_MENU) {
 }

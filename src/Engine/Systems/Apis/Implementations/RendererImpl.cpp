@@ -72,9 +72,10 @@ void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, 
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
 }
 
+// TODO: Sort on layer as well
 bool tickTextureCacheSort(const std::pair<const Transform, const Texture*>& a,
                           const std::pair<const Transform, const Texture*>& b) {
-    return a.first.layer < b.first.layer;
+    return a.first.layerGroup < b.first.layerGroup;
 }
 
 void RendererImpl::endRenderTick() {

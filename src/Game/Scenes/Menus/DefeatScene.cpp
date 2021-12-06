@@ -5,7 +5,7 @@
 #include "../../GameObjects/Scenes/EtappeEndScene/RetryButton.hpp"
 
 
-DefeatScene::DefeatScene(SceneManager& manager) : SceneTemplate_StaticScreen(Keys::DEFEAT_SCREEN) {
+DefeatScene::DefeatScene(SceneManager& manager) : SceneTemplate_Menu(Keys::DEFEAT_SCREEN) {
     gameObjects.emplace_back(std::make_shared<DefeatBackground>(Transform{Point{0, 0}, 1, 0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<SelectEtappeButton>(
             manager, Transform{Point{560, 830}, 100, 0, 6, 5}, true));
