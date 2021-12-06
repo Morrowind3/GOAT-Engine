@@ -6,7 +6,7 @@
 NextEtappeButton::NextEtappeButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
     Transform textTransform{
             Point{transform.position.x + 95, transform.position.y + 40},
-            LAYER::UI, 0, 1, 1};
+            LAYER::UI, 1,0, 1, 1};
 
     audioSources.insert(std::make_pair(Keys::FALSE, AudioSource{"Sounds/Nope.ogg",AudioSourceType::SAMPLE,true}));
     buttons.insert(std::make_pair(Keys::NEXT_ETAPPE, Button{

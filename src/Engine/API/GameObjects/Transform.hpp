@@ -13,11 +13,10 @@ namespace Engine {
     };
 
     struct Transform {
-        // TODO: During refactor, add layer group inside constructor
-        explicit Transform(Point position, unsigned int layerGroup = 0, double rotation = 0.0, double scaleWidth = 1.0,
-                           double scaleHeight = 1.0, FLIP flip = FLIP::FLIP_NONE, unsigned int layer = 0);
+        explicit Transform(Point position, unsigned int layerGroup = 0, unsigned int layerInsideGroup = 0, double rotation = 0.0,
+                           double scaleWidth = 1.0, double scaleHeight = 1.0, FLIP flip = FLIP::FLIP_NONE);
         Point position;
-        unsigned int layerGroup, layer;
+        unsigned int layerGroup, layerInsideGroup;
         double rotation, scaleWidth, scaleHeight;
         FLIP flip;
         bool visible = true;

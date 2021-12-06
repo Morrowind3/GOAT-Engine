@@ -38,6 +38,9 @@ namespace Engine {
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
             std::vector<std::pair<Transform, const Texture*>> _tickTextureCache;
+            // Helper methods
+            void sortTextureCache();
+            void draw(std::pair<Transform, const Texture*>& drawable);
     };
 }
 

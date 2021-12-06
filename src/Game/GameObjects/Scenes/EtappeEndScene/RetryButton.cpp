@@ -6,7 +6,7 @@
 RetryButton::RetryButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active)  {
     Transform textTransform{
             Point{transform.position.x + 40, transform.position.y + 40},
-            LAYER::UI, 0, 1, 1};
+            LAYER::UI, 1, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::CURRENT_ETAPPE, Button{
             Text{"   Try Again", "Fonts/Kenney_Thick.ttf", 26, {255, 255, 255, 255}, textTransform, true},

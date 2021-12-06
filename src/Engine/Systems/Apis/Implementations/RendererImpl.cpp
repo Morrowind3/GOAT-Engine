@@ -72,44 +72,11 @@ void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, 
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
 }
 
-// TODO: Sort on layer as well
-bool tickTextureCacheSort(const std::pair<const Transform, const Texture*>& a,
-                          const std::pair<const Transform, const Texture*>& b) {
-    return a.first.layerGroup < b.first.layerGroup;
-}
 
 void RendererImpl::endRenderTick() {
-    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
-
+    sortTextureCache();
     for (auto& drawable: _tickTextureCache) {
-        auto& transform = drawable.first;
-        auto& texture = drawable.second;
-
-        SDL_Rect sourceRect{}, destinationRect{};
-
-        // Do NOT cast transform to a static int because of rounding errors!!
-        sourceRect.w = transform.scaleWidth * texture->width();
-        sourceRect.h = transform.scaleHeight * texture->height();
-
-        destinationRect.x = transform.position.x;
-        destinationRect.y = transform.position.y;
-        destinationRect.w = transform.scaleWidth * texture->width();
-        destinationRect.h = transform.scaleWidth * texture->height();
-
-        SDL_RendererFlip flip;
-        switch (transform.flip) {
-            case FLIP::FLIP_NONE:
-                flip = SDL_FLIP_NONE;
-                break;
-            case FLIP::FLIP_HORIZONTAL:
-                flip = SDL_FLIP_HORIZONTAL;
-                break;
-            case FLIP::FLIP_VERTICAL:
-                flip = SDL_FLIP_VERTICAL;
-                break;
-        }
-
-        SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform.rotation, nullptr, flip);
+        draw(drawable);
     }
     SDL_RenderPresent(_renderer.get());
 }
@@ -124,4 +91,76 @@ void RendererImpl::resetForNextScene() {
 void RendererImpl::end() {
     TTF_Quit();
     SDL_Quit();
+}
+
+// Private:
+
+// std::sort lambda
+static bool tickTextureCacheSortLayerGroup(const std::pair<const Transform, const Texture*>& a,
+                                           const std::pair<const Transform, const Texture*>& b) {
+    return a.first.layerGroup < b.first.layerGroup;
+}
+// std::sort lambda
+static bool tickTextureCacheSortLayerInsideGroup(const std::pair<const Transform, const Texture*>& a,
+                                                 const std::pair<const Transform, const Texture*>& b) {
+    return a.first.layerInsideGroup < b.first.layerInsideGroup;
+}
+
+/// Determines the correct ordering to draw textures
+void RendererImpl::sortTextureCache() {
+    if (_tickTextureCache.empty()) return; // Out of range on empty cache
+
+    // First everything gets sorted on layer group
+    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSortLayerGroup);
+
+    // Then everything gets sorted on layer inside group
+    unsigned int currentLayerGroup = _tickTextureCache.begin()->first.layerGroup;
+    int beginPositionLayerGroup = 0, endPositionLayerGroup = -1;
+    for (auto& drawable: _tickTextureCache) {
+        // Same layer group, so continue to count how big this layer group is
+        if (drawable.first.layerGroup == currentLayerGroup) {
+            ++endPositionLayerGroup;
+            continue;
+        }
+        // New layer group! So sort everything before the start of this layer group
+        std::sort(_tickTextureCache.begin()+beginPositionLayerGroup, _tickTextureCache.begin()+endPositionLayerGroup, tickTextureCacheSortLayerInsideGroup);
+        // Update variables so they work for the next texture group
+        currentLayerGroup = drawable.first.layerGroup;
+        ++endPositionLayerGroup;
+        beginPositionLayerGroup = endPositionLayerGroup;
+    }
+    // Sort the last layer group
+    std::sort(_tickTextureCache.begin()+beginPositionLayerGroup, _tickTextureCache.begin()+endPositionLayerGroup, tickTextureCacheSortLayerInsideGroup);
+}
+
+/// Draws texture to the screen
+void RendererImpl::draw(std::pair<Transform, const Texture*>& drawable) {
+    auto& transform = drawable.first;
+    auto& texture = drawable.second;
+
+    SDL_Rect sourceRect{}, destinationRect{};
+
+    // Do NOT cast transform to a static int because of rounding errors!!
+    sourceRect.w = transform.scaleWidth * texture->width();
+    sourceRect.h = transform.scaleHeight * texture->height();
+
+    destinationRect.x = transform.position.x;
+    destinationRect.y = transform.position.y;
+    destinationRect.w = transform.scaleWidth * texture->width();
+    destinationRect.h = transform.scaleWidth * texture->height();
+
+    SDL_RendererFlip flip;
+    switch (transform.flip) {
+        case FLIP::FLIP_NONE:
+            flip = SDL_FLIP_NONE;
+            break;
+        case FLIP::FLIP_HORIZONTAL:
+            flip = SDL_FLIP_HORIZONTAL;
+            break;
+        case FLIP::FLIP_VERTICAL:
+            flip = SDL_FLIP_VERTICAL;
+            break;
+    }
+
+    SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform.rotation, nullptr, flip);
 }

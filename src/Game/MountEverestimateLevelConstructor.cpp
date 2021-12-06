@@ -27,7 +27,6 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
         buffer << file.rdbuf();
         std::string text = buffer.str();
 
-
         // Remove all '\n' from string
         std::string toErase{"\n"};
         while (size_t removePosition = text.find(toErase) != std::string::npos) {
@@ -56,7 +55,7 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
                 if (index != 0) {
                     double posY{y * _tileSize * _scale};
                     double posX{x * _tileSize * _scale};
-                    Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, _scale, _scale};
+                    Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, 0, _scale, _scale};
                     placeTile(index, transform);
                 }
             }
@@ -67,13 +66,13 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
         auto& debug = Debug::getInstance();
         for (auto& tile : _etappe.gameObjects) {
             debug.log(
-                    "[SP: " + tile->sprites.at(Keys::SPRITE).path +             // Sprite Path
+                    "[SP: " + tile->sprites.at(Keys::SPRITE).path +                     // Sprite Path
                     ", SA: " + std::to_string(tile->sprites.at(Keys::SPRITE).active) +  // Sprite Active
                     ", A: " + std::to_string(tile->active) +                            // Active
                     ", X: " + std::to_string(tile->transform.position.x) +              // X
                     ", Y: " + std::to_string(tile->transform.position.y) +              // Y
                     ", LG: " + std::to_string(tile->transform.layerGroup) +             // Layer group
-                    ", L: " + std::to_string(tile->transform.layer) +                   // Layer
+                    ", LIG: " + std::to_string(tile->transform.layerInsideGroup) +      // Layer inside group
                     ", SW: " + std::to_string(tile->transform.scaleWidth) +             // Scale Width
                     ", SH: " + std::to_string(tile->transform.scaleHeight) +            // Scale Height
                     "]");

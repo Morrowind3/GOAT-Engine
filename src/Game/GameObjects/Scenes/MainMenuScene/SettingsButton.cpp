@@ -7,7 +7,7 @@ SettingsButton::SettingsButton(SceneManager& sceneManager, Transform transform, 
 
     Transform textTransform{
             Point{transform.position.x + 40, transform.position.y + 25},
-            LAYER::UI, 0, 1, 1};
+            LAYER::UI, 1, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::QUIT_GAME, Button{
             Text{"Settings", "Fonts/Kenney_Thick.ttf", 12, {0, 0, 0, 255}, textTransform, true},
