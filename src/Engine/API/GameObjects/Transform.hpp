@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GOAT_ENGINE_TRANSFORM_HPP
+#define GOAT_ENGINE_TRANSFORM_HPP
 
 #include "Point.hpp"
 #include "SDL.h"
@@ -12,13 +13,16 @@ namespace Engine {
     };
 
     struct Transform {
+        // TODO: During refactor, add layer group inside constructor
         explicit Transform(Point position, unsigned int layer = 0, double rotation = 0.0, double scaleWidth = 1.0,
                            double scaleHeight = 1.0, FLIP flip = FLIP::FLIP_NONE);
         Point position;
-        unsigned int layer;
+        unsigned int layerGroup, layer;
         double rotation, scaleWidth, scaleHeight;
         FLIP flip;
         bool visible = true;
     };
 
 }
+
+#endif //GOAT_ENGINE_TRANSFORM_HPP

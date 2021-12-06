@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GOAT_ENGINE_SCENEMANAGER_HPP
+#define GOAT_ENGINE_SCENEMANAGER_HPP
 
 #include "API/Scene.hpp"
 
@@ -15,3 +16,5 @@ namespace Engine {
             std::shared_ptr<Scene> _currentScene;
     };
 }
+
+#endif //GOAT_ENGINE_SCENEMANAGER_HPP

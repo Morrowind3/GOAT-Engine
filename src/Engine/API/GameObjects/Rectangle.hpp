@@ -17,5 +17,4 @@ namespace Engine {
     };
 }
 
-
 #endif //GOAT_ENGINE_RECTANGLE_HPP

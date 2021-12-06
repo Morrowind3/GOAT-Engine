@@ -5,12 +5,16 @@
 
 #include "GameObjects/GameObject.hpp"
 #include "Camera.hpp"
+#include "LayerGroup.hpp"
 
 namespace Engine {
     class Scene {
         public:
             Scene(std::string name, Point dimensions, Rectangle viewPort);
             std::vector<std::shared_ptr<GameObject>> gameObjects{};
+            // Key determines which layer group gets rendered first (0 = bottom/first, 0xffffffff = on top/last)
+            std::map<unsigned int, LayerGroup> layerGroups{};
+
             // TODO: Encapsulate these values
             Point dimensions;
             Rectangle viewPort;

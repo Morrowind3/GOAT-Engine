@@ -4,49 +4,42 @@
 
 using namespace Engine;
 
-Camera::Camera(Rectangle& sceneViewPort, Point& sceneDimensions, float zoomLevel):
-        _sceneViewPort{sceneViewPort}, _sceneDimensions{sceneDimensions}, _zoomLevel{zoomLevel} {
+Camera::Camera(Rectangle& sceneViewPort, Point& sceneDimensions, std::map<unsigned int,LayerGroup>& layerGroups, float zoomLevel):
+    _sceneViewPort{sceneViewPort}, _sceneDimensions{sceneDimensions}, _layerGroups{layerGroups}, _zoomLevel{zoomLevel} {
 }
 
-Transform Camera::adjustForCamera(const Transform& transform) {
+Transform Camera::adjustForCamera(const Transform& logicalPosition) {
     if(_trackedObject != nullptr) trackObject();
-    if(transform.layer == LAYER::UI || transform.layer == LAYER::FPS) return transform;
-    Engine::Transform adjusted {transform};
-    reposition(adjusted);
-    zoom(adjusted);
-    return adjusted;
+    Transform renderPosition {logicalPosition};
+    reposition(renderPosition);
+    zoom(renderPosition);
+    return renderPosition;
 }
 
 void Camera::moveCamera(double x, double y) {
     _sceneViewPort.topLeft.x += x;
     _sceneViewPort.topLeft.y += y;
 }
+
 void Camera::setZoomLevel(float zoom) {
     _zoomLevel = zoom;
 }
 
 /// Adjust render position (NOT LOGICAL POSITION) of object based on the viewport
-void Camera::reposition(Transform& t) const {
-    //TODO: Reprogram this into layer group
-    //the lower from 100, the lower the speed (higher diff)
-    //layer 100 = 1
-    //layer 0 = 100
-//    if(t.layer <= 100) {
-//        double diff{101 - static_cast<double>(t.layer)};
-//
-//
-//        double diff{static_cast<double>(t.layer) / 100};
-//        diff *= 10;
-//        diff = 100 - diff;
-//
-//        t.position.x -= (_sceneViewPort.topLeft.x / diff);
-//        t.position.y -= (_sceneViewPort.topLeft.y / diff);
-//    } else {
-//        t.position.x -= _sceneViewPort.topLeft.x;
-//        t.position.y -= _sceneViewPort.topLeft.y;
-//    }
-    t.position.x -= _sceneViewPort.topLeft.x;
-    t.position.y -= _sceneViewPort.topLeft.y;
+void Camera::reposition(Transform& transform) const {
+    // Find layer group associated with transform
+    auto layerGroupRef = _layerGroups.find(transform.layerGroup);
+    if (layerGroupRef == _layerGroups.end()) { // Layer group not found, so defaulting to the default layer group
+        layerGroupRef = _layerGroups.find(0);
+    }
+    LayerGroup& layerGroup = layerGroupRef->second;
+
+    // UI layer group needs no repositioning
+    if (layerGroup.ui) return;
+
+    // Adjust for parallax scrolling amount and position of the object relative to the viewport
+    transform.position.x -= _sceneViewPort.topLeft.x * layerGroup.parallax;
+    transform.position.y -= _sceneViewPort.topLeft.y * layerGroup.parallax;
 }
 
 void Camera::zoom(Engine::Transform& t) const {
@@ -106,7 +99,7 @@ void Camera::interpolateToNextWaypoint() {
 }
 
 void Camera::trackObject() {
-    // TODO: Find some way to do this properly
+    // TODO: Find some way to do this properly (now it's off-center), base this off engine call values?
     auto& transform = _trackedObject->transform;
     _sceneViewPort.topLeft.x = transform.position.x - _sceneViewPort.width/3;
     _sceneViewPort.topLeft.y = transform.position.y - _sceneViewPort.height/2;

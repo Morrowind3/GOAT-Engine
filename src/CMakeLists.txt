@@ -134,7 +134,9 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp
 		Engine/Utilities/EngineCalls.cpp Engine/Utilities/EngineCalls.hpp
         Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
-		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp)
+		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
+		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
+		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)

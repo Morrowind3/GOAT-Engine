@@ -3,9 +3,10 @@
 using namespace Engine;
 
 // Underscore suffixes because else it would save the memory address of whichever code constructed this scene
-// And then it would read out garbage code and draw sprites at positions such as -1.7E^55
+// TODO: But this will be fixed as soon as these members are encapsulated
 Scene::Scene(std::string name, Point dimensions_, Rectangle viewPort_): name(std::move(name)),
-    dimensions{dimensions_}, viewPort{viewPort_}, _camera{viewPort,dimensions,1} {
+    dimensions{dimensions_}, viewPort{viewPort_}, _camera{viewPort,dimensions,layerGroups,1} {
+    layerGroups.insert(std::make_pair(0,LayerGroup{})); // Reserved "default" group without special UI or parallax settings
 }
 
 std::shared_ptr<Camera> Scene::getCamera() const {

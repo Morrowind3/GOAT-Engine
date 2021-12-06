@@ -5,12 +5,13 @@
 #include <functional>
 #include "GameObjects/GameObject.hpp"
 #include "GameObjects/Rectangle.hpp"
+#include "LayerGroup.hpp"
 
-namespace Engine{
+namespace Engine {
     class Camera {
         public:
-            Camera(Rectangle& sceneViewPort, Point& sceneDimensions, float zoom);
-            Transform adjustForCamera(const Engine::Transform& transform);
+            Camera(Rectangle& sceneViewPort, Point& sceneDimensions, std::map<unsigned int,LayerGroup>& layerGroups, float zoom);
+            Transform adjustForCamera(const Transform& logicalPosition);
 
             void moveCamera(double x, double y);
             void interpolateToNextWaypoint();
@@ -30,11 +31,12 @@ namespace Engine{
             };
 
             void trackObject();
-            void reposition(Engine::Transform& t) const;
-            void zoom(Engine::Transform& t) const;
+            void reposition(Transform& transform) const;
+            void zoom(Transform& t) const;
 
             std::shared_ptr<GameObject> _trackedObject = nullptr;
             std::queue<WaypointParams> _waypoints;
+            std::map<unsigned int,LayerGroup>& _layerGroups;
             Rectangle& _sceneViewPort;
             Point& _sceneDimensions;
             float _zoomLevel;
