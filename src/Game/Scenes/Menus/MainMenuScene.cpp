@@ -1,14 +1,10 @@
 #include "MainMenuScene.hpp"
-#include "../../GameObjects/Meta/MainMenu/Background.hpp"
-#include "../../GameObjects/Meta/MainMenu/ExitButton.hpp"
-#include "../../GameObjects/Meta/MainMenu/PlayButton.hpp"
-#include "../../GameObjects/Meta/MainMenu/ScoreboardButton.hpp"
-#include "../../GameObjects/Meta/MainMenu/SettingsButton.hpp"
-#include "../../GameObjects/Meta/MainMenu/DebugButton.hpp"
-#include "../../GameObjects/Enemies/Hawk.hpp"
+#include "../../GameObjects/Enemies/Hawk/Hawk.hpp"
 #include "../../Keys.hpp"
-#include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
-
+#include "../../GameObjects/Scenes/MainMenuScene/Background.hpp"
+#include "../../GameObjects/Scenes/MainMenuScene/PlayButton.hpp"
+#include "../../GameObjects/Scenes/MainMenuScene/DebugButton/DebugButton.hpp"
+#include "../../GameObjects/Scenes/MainMenuScene/ExitButton/ExitButton.hpp"
 
 MainMenuScene::MainMenuScene(SceneManager& manager) : SceneTemplate_StaticScreen(Keys::MAIN_MENU) {
     gameObjects.emplace_back(std::make_shared<Background>(

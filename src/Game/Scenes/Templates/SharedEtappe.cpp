@@ -1,13 +1,13 @@
 #include "SharedEtappe.hpp"
-#include "../../GameObjects/Meta/Hud/LifeHeart.hpp"
 #include "../../MountEverestimateLevelConstructor.hpp"
-#include "../../GameObjects/Meta/Cheats.hpp"
 #include "../../../Engine/Utilities/Globals.hpp"
 #include "../../Keys.hpp"
 #include "../../Layers.hpp"
-#include "../../GameObjects/Meta/EtappeEnd/GameStateManager.hpp"
-#include "../../GameObjects/Meta/Hud/FpsMeter.hpp"
-#include "../../GameObjects/Meta/Etappes/BackToEtappeSelectionButton.hpp"
+#include "../../GameObjects/Utils/LifeHeart/LifeHeart.hpp"
+#include "../../GameObjects/Scenes/GameStateManager.hpp"
+#include "../../GameObjects/Utils/Cheats/Cheats.hpp"
+#include "../../GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.hpp"
+#include "../../GameObjects/Utils/FpsMeter/FpsMeter.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager, Point dimensions,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey,dimensions,{{0,0},1440,765}){
@@ -44,7 +44,8 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneMana
     _camera.trackObject(player);
 
     // Objects needed to have a functional etappe
-    gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, true));
+    std::shared_ptr<Timer> timer = std::make_shared<Timer>(Transform{{0,0},0,5,2}, true);
+    gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, timer, true));
     gameObjects.emplace_back(std::make_shared<Cheats>(sceneManager, *this, *player, true));
     gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(sceneManager,  // A start of a pause menu
     Transform{{1600,100},LAYER::UI, 0, 3, 3}, true));

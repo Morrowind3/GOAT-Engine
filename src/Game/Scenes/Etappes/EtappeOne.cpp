@@ -1,8 +1,8 @@
 #include "EtappeOne.hpp"
 #include "../../Keys.hpp"
-#include "../../GameObjects/Meta/Etappes/EtappeOneManager.hpp"
+#include "../../GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.hpp"
 #include "../../Layers.hpp"
-#include "../../GameObjects/Meta/Etappes/EtappeOneText.hpp"
+#include "../../GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneText.hpp"
 
 EtappeOne::EtappeOne(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_ONE,manager, {999999,999999}, // TODO: Dimensions
                                                            "Maps/Etappe1.map", 21, 50, 250, 4, 0, -3000) {

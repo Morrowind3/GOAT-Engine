@@ -1,15 +1,15 @@
 #include "MountEverestimateLevelConstructor.hpp"
-#include "GameObjects/Tiles/SolidTile.hpp"
-#include "GameObjects/Tiles/SlabTile.hpp"
-#include "GameObjects/Enemies/Goat.hpp"
-#include "GameObjects/WorldObjects/VictoryFlag.hpp"
+#include "GameObjects/Tiles/SolidTile/SolidTile.hpp"
+#include "GameObjects/Tiles/SlabTile/SlabTile.hpp"
+#include "GameObjects/Enemies/Goat/Goat.hpp"
+#include "GameObjects/WorldObjects/VictoryFlag/VictoryFlag.hpp"
 #include "../Engine/Utilities/Debug.hpp"
 #include "../Engine/Utilities/Globals.hpp"
 #include "Keys.hpp"
 #include "Layers.hpp"
-#include "GameObjects/Tiles/LavaTile.hpp"
-#include "GameObjects/WorldObjects/HealthPickup.hpp"
-#include "GameObjects/Enemies/Snake.hpp"
+#include "GameObjects/Tiles/LavaTile/LavaTile.hpp"
+#include "GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp"
+#include "GameObjects/Enemies/Snake/Snake.hpp"
 
 #include <regex>
 #include <fstream>
@@ -212,7 +212,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
         case 28:
             transform.layer = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
-                    "Sprites/landscapes/stone/stone_slab_end_right.png", transform, true));
+                    "Sprites/landscapes/stone/stone_slab_flat.png", transform, true));
             break;
         case 29:
             transform.layer = LAYER::TILES_BACK;
