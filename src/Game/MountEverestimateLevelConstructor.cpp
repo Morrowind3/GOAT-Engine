@@ -10,6 +10,7 @@
 #include "GameObjects/Tiles/LavaTile/LavaTile.hpp"
 #include "GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp"
 #include "GameObjects/Enemies/Snake/Snake.hpp"
+#include "GameObjects/Enemies/Snowball/Snowball.hpp"
 
 #include <regex>
 #include <fstream>
@@ -261,9 +262,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<Snake>(transform, true));
             break;
         case 47:
-            //TODO snowball GameObject
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
-                    "Sprites/enemies/snowball/snowball.png", transform, true));
+            _etappe.gameObjects.emplace_back(std::make_shared<Snowball>(transform, true));
             break;
         case 48:
             _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, true));

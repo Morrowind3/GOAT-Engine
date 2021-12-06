@@ -243,7 +243,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Timer/TimerLineBehavior.cpp Game/GameObjects/Utils/Timer/TimerLineBehavior.hpp
 		Game/GameObjects/Utils/Timer/TimerLineScript.cpp Game/GameObjects/Utils/Timer/TimerLineScript.hpp
 		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp Game/Scenes/Etappes/EtappeThree.cpp Game/Scenes/Etappes/EtappeThree.hpp
-		Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.cpp Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp Game/Scenes/Etappes/EtappeFour.cpp Game/Scenes/Etappes/EtappeFour.hpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.hpp)
+		Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.cpp Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp Game/Scenes/Etappes/EtappeFour.cpp Game/Scenes/Etappes/EtappeFour.hpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.hpp Game/GameObjects/Enemies/Snowball/Snowball.cpp Game/GameObjects/Enemies/Snowball/Snowball.hpp Game/GameObjects/Enemies/Snowball/SnowballBehavior.cpp Game/GameObjects/Enemies/Snowball/SnowballBehavior.hpp Game/GameObjects/Enemies/Snowball/SnowballScript.cpp Game/GameObjects/Enemies/Snowball/SnowballScript.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
