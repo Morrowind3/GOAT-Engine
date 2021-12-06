@@ -10,6 +10,7 @@
 #include "Scenes/DefeatScene.hpp"
 #include "Scenes/VictoryScene.hpp"
 #include "Scenes/Etappes/EtappeThree.hpp"
+#include "Scenes/Etappes/EtappeFour.hpp"
 #include <stdexcept>
 
 void GameSceneManager::changeCurrentScene(const std::string& name) {
@@ -32,6 +33,9 @@ void GameSceneManager::changeCurrentScene(const std::string& name) {
     else if (name == Keys::ETAPPE_THREE){
         _currentEtappe = 3;
         setEtappeScene();
+    } else if (name == Keys::ETAPPE_FOUR) {
+        _currentEtappe = 4;
+        setEtappeScene();
     }
     else if (name == Keys::MAIN_MENU) _currentScene = std::make_shared<MainMenuScene>(sceneManager);
     else if (name == Keys::SCOREBOARD_MENU) _currentScene = std::make_shared<ScoreboardMenuScene>(sceneManager);
@@ -52,6 +56,8 @@ void GameSceneManager::setEtappeScene() {
         case 2: _currentScene = std::make_shared<EtappeTwo>(*this);
             break;
         case 3: _currentScene = std::make_shared<EtappeThree>(*this);
+            break;
+        case 4: _currentScene = std::make_shared<EtappeFour>(*this);
             break;
         default: throw std::runtime_error("GameSceneManager: No valid scene loaded in!");
     }
