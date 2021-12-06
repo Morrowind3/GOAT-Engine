@@ -5,6 +5,7 @@
 #include "Trash.hpp"
 #include "../../../Keys.hpp"
 #include "TrashBehavior.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 #include <random>
 #include <iostream>
 #include <chrono>
@@ -15,8 +16,7 @@ Trash::Trash(Transform transform, bool active) : GameObject(transform, active) {
     rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
     collider = BoxCollider(3 * transform.scaleWidth, 3 * transform.scaleHeight, true, true);
     audioSources.insert(std::make_pair(Keys::TRASH, AudioSource{"Sounds/PickUp.ogg", AudioSourceType::SAMPLE, true}));
-
-
+    Globals::getInstance().gameStore(Keys::TRASH_MAX, Globals::getInstance().gameExists(Keys::TRASH_MAX) ? std::to_string(std::stoi(Globals::getInstance().gameGet(Keys::TRASH_MAX))+1) : "1");
 
     const static std::vector<std::string> SPRITE_OPTIONS = {
         "aluminiumcan",
