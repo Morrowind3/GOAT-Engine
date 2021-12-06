@@ -5,6 +5,7 @@
 
 VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : GameObject(transform, active) {
     std::string time = Globals::getInstance().sceneExists(Keys::TEXT) ? Globals::getInstance().sceneGet(Keys::TEXT) : "";
+    std::string trash = Globals::getInstance().sceneExists(Keys::TRASH) ? Globals::getInstance().sceneGet(Keys::TRASH) : "";
 
     sprites.insert(std::make_pair("Background", Sprite{"Sprites/backgrounds/background_victory.png", true}));
     text.insert(std::make_pair("Title", Text{
@@ -14,12 +15,19 @@ VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : G
             {255,255,255,255},
             Transform{{530,40},transform.layer,0,1,1},
             true}));
-    text.insert(std::make_pair("Garbage", Text{
+    text.insert(std::make_pair("GarbageLabel", Text{
             "Garbage collected",
             "Fonts/Kenney_Thick.ttf",
             40,
             {255,255,255,255},
             Transform{{210,580},transform.layer,0,1,1},
+            true}));
+    text.insert(std::make_pair("GarbageCount", Text{
+            trash,
+            "Fonts/pixeled.ttf",
+            40,
+            {255,255,255,255},
+            Transform{{920,540},transform.layer,0,1,1},
             true}));
     text.insert(std::make_pair("Timelabel", Text{
             "Time",
