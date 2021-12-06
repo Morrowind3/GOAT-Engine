@@ -6,7 +6,7 @@ BackToMenuButton::BackToMenuButton(SceneManager& sceneManager, Transform transfo
 
     Transform textTransform{
             Point{transform.position.x + 10, transform.position.y + 20},
-            transform.layerGroup, 1, 0, 1, 1};
+            transform.layerGroup, transform.layerInsideGroup+1, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::MAIN_MENU, Button{
             Text{"Back to menu", "Fonts/Kenney_Thick.ttf", 16, {0, 0, 0, 255}, textTransform, true},

@@ -72,7 +72,6 @@ void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, 
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
 }
 
-
 void RendererImpl::endRenderTick() {
     sortTextureCache();
     for (auto& drawable: _tickTextureCache) {
