@@ -1,5 +1,6 @@
 #include "PlayerMovementScript.hpp"
 #include "../../Keys.hpp"
+#include <iostream>
 
 PlayerMovementScript::PlayerMovementScript(Object_Player& player, bool active) : Script(active), _player{player} {
 }
@@ -11,7 +12,6 @@ void PlayerMovementScript::onUpdate(double deltaTime) {
     bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A); // Walk left
     bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D); // Walk right
     bool moveUpKey = _input.getKeyDown(KeyCode::UP) || _input.getKeyDown(KeyCode::W) || _input.getKeyDown(KeyCode::SPACE); // Jump
-    bool moveDownKey = _input.getKey(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S); // Pick up trash TODO: Make this do stuff!
 
     _walkState = false;
     if (moveLeftKey) moveLeft(deltaTime);
@@ -31,7 +31,14 @@ void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
     if (other.hasTag(Keys::TILE)) {
         _doubleJumpState = _jumpState = false;
     }
+
 }
+void PlayerMovementScript::onTriggerStay2D(GameObject& other) {
+    if (other.hasTag(Keys::TRASH) && (_input.getKeyDown(KeyCode::S) || _input.getKeyDown(KeyCode::DOWN))) {
+        pickupTrash(other);
+    }
+}
+
 
 float PlayerMovementScript::calculateWalkSpeed(double deltaTime) {
     if(_sprintModifier+=SPRINT_STEP > MAX_SPRINT_MODIFIER) _sprintModifier = MAX_SPRINT_MODIFIER;
@@ -130,4 +137,9 @@ void PlayerMovementScript::playJumpSound() {
 void PlayerMovementScript::resetAtNonWalkingState() {
     _sprintModifier = 0; // Stop sprinting if user stops walking
     _walkingSoundCounter = WALK_SOUND_PER_MS_AMOUNT; // Make sure next walking sound plays
+}
+
+void PlayerMovementScript::pickupTrash(GameObject& other) {
+    switchSprite(Keys::TRASH);
+    other.behaviors.at(Keys::TRASH)->scripts.at(Keys::TRASH)->onExternalEvent();
 }

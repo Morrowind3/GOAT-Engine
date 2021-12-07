@@ -25,6 +25,7 @@ Object_Player::Object_Player(Transform transform, bool active) : GameObject(tran
     auto& moveSprite2 = sprites.insert(std::make_pair(Keys::MOVE2, Sprite_PlayerMove2{false})).first->second;
     auto& moveSprite3 = sprites.insert(std::make_pair(Keys::MOVE3, Sprite_PlayerMove3{false})).first->second;
     auto& jumpSprite = sprites.insert(std::make_pair(Keys::JUMP, Sprite_PlayerJump{false})).first->second;
+	auto& pickupSprite = sprites.insert(std::make_pair(Keys::TRASH, Sprite{"Sprites/player/player_pickup.png", false})).first->second;
     auto& walkingAnimator = animators.insert(std::make_pair(Keys::WALKING_ANIMATOR, Animator_PlayerWalking{moveSprite1, moveSprite2, moveSprite3, moveSprite2, false})).first->second;
     // Audio
     auto& jumpSound = audioSources.insert(std::make_pair(Keys::JUMP_SFX,Sound_Jump{1,100,false,true})).first->second;

@@ -13,6 +13,7 @@ class PlayerMovementScript : public Script {
         PlayerMovementScript(Object_Player& player, bool active);
         void onUpdate(double deltaTime);
         void onTriggerEnter2D(GameObject& other);
+        void onTriggerStay2D(GameObject& other);
 
     private:
         // Globals
@@ -57,7 +58,8 @@ class PlayerMovementScript : public Script {
         // Auditory output
         void playWalkSound(double deltaTime);
         void playJumpSound();
-        // TODO: Pickup trash
+        void pickupTrash(GameObject& other);
+        void switchSprite(const std::string& key);
 };
 
 

@@ -29,6 +29,8 @@ Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Object_Player& player, 
     text.insert(std::make_pair(Keys::CHEATS+Keys::RESET_SPEED, Text{"HOME - Reset game speed", font, size, color,
         Transform{{10, 310}, transform.layerGroup, 1,0, 1, 1}, false}));
 
+//    text.insert(std::make_pair(Keys::CHEATS+Keys::PLAYER, Text{"5 - Heal Edmund", font, size, color,
+//                                                               Transform{{10, 270}, transform.layer, 0, 1, 1}, false}));
 
     // Components required for cheats
     audioSources.insert(std::make_pair(Keys::SPEED_UP, AudioSource{"Sounds/SpeedUp.ogg",AudioSourceType::SAMPLE, true}));

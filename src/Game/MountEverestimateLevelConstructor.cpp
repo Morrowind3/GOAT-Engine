@@ -11,6 +11,7 @@
 #include "GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp"
 #include "GameObjects/Enemies/Snake/Snake.hpp"
 #include "GameObjects/Enemies/Snowball/Snowball.hpp"
+#include "GameObjects/WorldObjects/Trash/Trash.hpp"
 
 #include <regex>
 #include <fstream>
@@ -344,9 +345,8 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/utils/tree/tree_leaves_side_right_1.png", transform, true));
             break;
         case 68:
-            //TODO Trash GameObject die een random afval sprite pakt (Dutch comments are a felony)
-            _etappe.gameObjects.emplace_back(std::make_shared<Tile>(
-                    "Sprites/waste/waste_pizzabox.png", transform, true));
+            transform.layer = LAYER::TILES_BACK;
+            _etappe.gameObjects.emplace_back(std::make_shared<Trash>(transform, true));
             break;
         case 69:
             transform.layerGroup = LAYER::CHARACTER;
