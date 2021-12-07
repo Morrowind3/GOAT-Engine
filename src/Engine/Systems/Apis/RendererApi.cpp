@@ -2,6 +2,14 @@
 
 using namespace Engine;
 
+void RendererApi::initialize() {
+    renderer.initialize();
+}
+
+void RendererApi::setViewPort(Point dimensions) {
+    renderer.setViewPort(dimensions);
+}
+
 void RendererApi::RendererApi::loadTexture(const std::string& fileName) {
     renderer.loadTexture(fileName);
 }
@@ -33,5 +41,3 @@ void RendererApi::resetForNextScene() {
 void RendererApi::RendererApi::end() {
     renderer.end();
 }
-
-

@@ -1,5 +1,6 @@
 #include "EngineCalls.hpp"
 
+
 using namespace Engine;
 
 bool EngineCalls::isPaused() const {
@@ -24,4 +25,20 @@ bool EngineCalls::quitEventQueued() const {
 
 void EngineCalls::queueQuitEvent() {
     _quit = true;
+}
+
+Point EngineCalls::viewPortSize() const {
+    return _viewPortSize;
+}
+
+void EngineCalls::viewPortSize(Point viewPortSize) {
+    _viewPortSize = viewPortSize;
+}
+
+Point EngineCalls::windowSize() const {
+    return _windowSize;
+}
+
+void EngineCalls::windowSize(Point windowSize) {
+    _windowSize = windowSize;
 }

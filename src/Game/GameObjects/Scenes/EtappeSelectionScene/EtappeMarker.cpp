@@ -7,17 +7,13 @@
 EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
                            Transform transform, bool active) : GameObject(transform, active) {
 
-    // Star/flag special indicators // TODO: Delegate this to other game object for correct positioning
-    sprites.insert(std::make_pair(Keys::FLAG, Sprite{"Sprites/utils/flag/Flag.png", false}));
-    sprites.insert(std::make_pair(Keys::STAR, Sprite{"Sprites/ui/rest/Star.png", false}));
-
     Transform textTransform{
             Point{transform.position.x+20, transform.position.y+20},
-            transform.layer+1, 0, 1, 1};
+            transform.layerGroup, transform.layerInsideGroup+1, 0, 1, 1};
 
     // Etappe height
     text.insert(std::make_pair(Keys::TEXT, Text{std::to_string(height)+"m", "Fonts/Kenney_Thick.ttf", 16,
-        {0,0,0,255}, Transform{Point{transform.position.x+80,transform.position.y+25},LAYER::UI}, true}));
+        {0,0,0,255}, Transform{Point{transform.position.x+80,transform.position.y+25},LAYER::UI, 1}, true}));
 
     // Disabled button
     buttons.insert(std::make_pair(Keys::FALSE, Button {

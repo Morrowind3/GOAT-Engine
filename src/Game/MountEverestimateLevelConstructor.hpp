@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_MOUNTEVERESTIMATELEVELCONSTRUCTOR_HPP
 
 #include "../Engine/API/Scene.hpp"
-#include "Scenes/Etappes/SharedEtappe.hpp"
+#include "Scenes/Templates/SharedEtappe.hpp"
 
 using namespace Engine;
 

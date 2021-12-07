@@ -2,7 +2,6 @@
 #define GOAT_ENGINE_VICTORYFLAG_HPP
 
 #include "../../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../Player/Player.hpp"
 
 using namespace Engine;
 

@@ -3,9 +3,6 @@
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "Snake.hpp"
-#include "../../Player/Player.hpp"
-#include "../../../Scenes/Etappes/SharedEtappe.hpp"
-
 
 using namespace Engine;
 

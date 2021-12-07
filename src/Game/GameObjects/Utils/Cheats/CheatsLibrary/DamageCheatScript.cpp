@@ -2,7 +2,7 @@
 #include "../../../../Keys.hpp"
 #include "../../../../../Engine/Utilities/Globals.hpp"
 
-DamageCheatScript::DamageCheatScript(Player& player, bool active): Script(active), _player(player) {}
+DamageCheatScript::DamageCheatScript(Object_Player& player, bool active): Script(active), _player(player) {}
 
 void DamageCheatScript::onUpdate(double deltaTime) {
     // 2 damages player

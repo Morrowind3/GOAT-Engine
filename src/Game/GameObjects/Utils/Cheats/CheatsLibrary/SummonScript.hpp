@@ -3,19 +3,19 @@
 
 #include "../../../../../Engine/Utilities/Input.hpp"
 #include "../../../../../Engine/Utilities/Debug.hpp"
-#include "../../../Player/Player.hpp"
 #include "../../../../../Engine/API/Scene.hpp"
+#include "../../../Player/Object_Player.hpp"
 
 using namespace Engine;
 
 class SummonScript : public Script {
     public:
-        SummonScript(Scene& scene, Player& player, bool active);
+        SummonScript(Scene& scene, Object_Player& player, bool active);
         void onUpdate(double deltaTime);
 
     private:
         Scene& _scene;
-        Player& _player;
+        Object_Player& _player;
         Input& _input = Input::getInstance();
         Debug& _debug = Debug::getInstance();
 };

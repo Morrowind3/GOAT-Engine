@@ -10,6 +10,7 @@
 #include "GameObjects/Tiles/LavaTile/LavaTile.hpp"
 #include "GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp"
 #include "GameObjects/Enemies/Snake/Snake.hpp"
+#include "GameObjects/Enemies/Snowball/Snowball.hpp"
 #include "GameObjects/WorldObjects/Trash/Trash.hpp"
 
 #include <regex>
@@ -27,7 +28,6 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
         std::stringstream buffer;
         buffer << file.rdbuf();
         std::string text = buffer.str();
-
 
         // Remove all '\n' from string
         std::string toErase{"\n"};
@@ -57,7 +57,7 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
                 if (index != 0) {
                     double posY{y * _tileSize * _scale};
                     double posX{x * _tileSize * _scale};
-                    Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, _scale, _scale};
+                    Transform transform{Point{posX+xOffset, posY+yOffset}, LAYER::TILES_FRONT, 0, 0, _scale, _scale};
                     placeTile(index, transform);
                 }
             }
@@ -68,12 +68,13 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
         auto& debug = Debug::getInstance();
         for (auto& tile : _etappe.gameObjects) {
             debug.log(
-                    "[SP: " + tile->sprites.at(Keys::SPRITE).path +             // Sprite Path
+                    "[SP: " + tile->sprites.at(Keys::SPRITE).path +                     // Sprite Path
                     ", SA: " + std::to_string(tile->sprites.at(Keys::SPRITE).active) +  // Sprite Active
                     ", A: " + std::to_string(tile->active) +                            // Active
                     ", X: " + std::to_string(tile->transform.position.x) +              // X
                     ", Y: " + std::to_string(tile->transform.position.y) +              // Y
-                    ", L: " + std::to_string(tile->transform.layer) +                   // Layer
+                    ", LG: " + std::to_string(tile->transform.layerGroup) +             // Layer group
+                    ", LIG: " + std::to_string(tile->transform.layerInsideGroup) +      // Layer inside group
                     ", SW: " + std::to_string(tile->transform.scaleWidth) +             // Scale Width
                     ", SH: " + std::to_string(tile->transform.scaleHeight) +            // Scale Height
                     "]");
@@ -91,12 +92,12 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
     switch (index) {
         // TILES GRASS
         case 1:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/grass/grass_slab_flat.png", transform, true));
             break;
         case 2:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/grass/grass_slab_normal.png", transform, true));
             break;
@@ -121,22 +122,22 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/grass/grass_ground_normal.png", transform, true));
             break;
         case 8:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/grass/grass_slab_end_left.png", transform, true));
             break;
         case 9:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/grass/grass_slab_end_right.png", transform, true));
             break;
         case 10:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/lava/lava_slab_end_right.png", transform, true));
             break;
         case 11:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/lava/lava_slab_normal.png", transform, true));
             break;
@@ -161,22 +162,22 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/lava/lava_ground_normal.png", transform, true));
             break;
         case 17:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/lava/lava_slab_end_left.png", transform, true));
             break;
         case 18:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/lava/lava_slab_end_right.png", transform, true));
             break;
         case 19:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/snow/snow_slab_end_right.png", transform, true));
             break;
         case 20:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/snow/snow_slab_normal.png", transform, true));
             break;
@@ -201,22 +202,22 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/snow/snow_ground_normal.png", transform, true));
             break;
         case 26:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/snow/snow_slab_end_left.png", transform, true));
             break;
         case 27:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/snow/snow_slab_end_right.png", transform, true));
             break;
         case 28:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
-                    "Sprites/landscapes/stone/stone_slab_end_right.png", transform, true));
+                    "Sprites/landscapes/stone/stone_slab_flat.png", transform, true));
             break;
         case 29:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/stone/stone_slab_normal.png", transform, true));
             break;
@@ -241,12 +242,12 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/stone/stone_ground_normal.png", transform, true));
             break;
         case 35:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/stone/stone_slab_end_left.png", transform, true));
             break;
         case 36:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<SlabTile>(
                     "Sprites/landscapes/stone/stone_slab_end_right.png", transform, true));
             break;
@@ -262,9 +263,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<Snake>(transform, true));
             break;
         case 47:
-            //TODO snowball GameObject
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
-                    "Sprites/enemies/snowball/snowball.png", transform, true));
+            _etappe.gameObjects.emplace_back(std::make_shared<Snowball>(transform, true));
             break;
         case 48:
             _etappe.gameObjects.emplace_back(std::make_shared<VictoryFlag>(transform, true));
@@ -346,14 +345,14 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/utils/tree/tree_leaves_side_right_1.png", transform, true));
             break;
         case 68:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<Trash>(transform, true));
             break;
         case 69:
-            transform.layer = LAYER::CHARACTER;
+            transform.layerGroup = LAYER::CHARACTER;
             transform.scaleWidth = 5;
             transform.scaleHeight = 5;
-            _etappe.player = std::make_shared<Player>(transform, true);
+            _etappe.player = std::make_shared<Object_Player>(transform, true);
             _etappe.gameObjects.emplace_back(_etappe.player);
             break;
         default:

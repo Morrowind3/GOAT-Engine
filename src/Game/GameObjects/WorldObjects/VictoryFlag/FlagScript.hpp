@@ -3,7 +3,6 @@
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "VictoryFlag.hpp"
-#include "../../Player/Player.hpp"
 
 using namespace Engine;
 

@@ -7,7 +7,7 @@ using namespace Engine;
 
 class Timer : public GameObject {
 public:
-    Timer(bool active);;
+    Timer(bool active);
 };
 
 

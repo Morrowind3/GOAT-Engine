@@ -14,11 +14,13 @@ namespace Engine {
                 static RendererApi instance{name, iconPath, cursor};
                 return instance;
             }
-
+            void initialize();
+            void setViewPort(Point dimensions);
             void loadTexture(const std::string& fileName);
             void loadFont(const std::string& fileName);
             void beginRenderTick();
             void drawTexture(const std::string& texture, const std::shared_ptr<Transform>& location);
+            // TODO: Game objects parameter when possible instead of looooooooooooooong constructors for the APIs (and the same of course for the impls)
             void drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform);
             void endRenderTick();
             void resetForNextScene();

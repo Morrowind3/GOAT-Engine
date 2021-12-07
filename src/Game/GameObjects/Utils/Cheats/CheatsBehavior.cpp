@@ -6,7 +6,7 @@
 #include "CheatsLibrary/SummonScript.hpp"
 #include "CheatsLibrary/BeatLevelScript.hpp"
 
-CheatsBehavior::CheatsBehavior(SceneManager& sceneManager, Scene& scene, Player& player, std::map<std::string,Text>& textObjects,
+CheatsBehavior::CheatsBehavior(SceneManager& sceneManager, Scene& scene, Object_Player& player, std::map<std::string,Text>& textObjects,
                                AudioSource& speedUpSound, AudioSource& slowDownSound, AudioSource& resetSpeedSound,
                                AudioSource& errorSound, AudioSource& beatGameSound, bool active): Behavior(active) {
     scripts.insert(std::make_pair(Keys::SPEED, std::make_shared<SpeedScript>(speedUpSound,slowDownSound,resetSpeedSound,errorSound,true)));

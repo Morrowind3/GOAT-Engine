@@ -7,7 +7,7 @@ ScoreboardButton::ScoreboardButton(SceneManager& sceneManager, Transform transfo
 
     Transform textTransform{
             Point{transform.position.x + 40, transform.position.y + 30},
-            LAYER::UI, 0, 1, 1};
+            LAYER::UI, 1, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::QUIT_GAME, Button{
             Text{"Scoreboard", "Fonts/Kenney_Thick.ttf", 16, {0, 0, 0, 255}, textTransform, true},

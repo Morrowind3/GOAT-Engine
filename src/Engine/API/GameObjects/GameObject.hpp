@@ -4,9 +4,8 @@
 #include <map>
 #include <memory>
 
-#include "GameComponents/GameComponent.hpp"
 #include "Transform.hpp"
-#include "GameComponents/Render/Sprite.hpp"
+#include "GameComponents/Render/Animator.hpp"
 #include "GameComponents/Script/Behavior.hpp"
 #include "GameComponents/Audio/AudioSource.hpp"
 #include "GameComponents/Render/UI/Button.hpp"
@@ -28,6 +27,7 @@ namespace Engine {
         std::map<std::string,Text> text{};
         std::map<std::string,Button> buttons{};
         std::map<std::string,Sprite> sprites{};
+        std::map<std::string,Animator> animators{};
         std::map<std::string,AudioSource> audioSources{};
     };
 }

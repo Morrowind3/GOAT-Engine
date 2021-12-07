@@ -3,17 +3,17 @@
 
 #include "../../../../../Engine/Utilities/Input.hpp"
 #include "../../../../../Engine/Utilities/Debug.hpp"
-#include "../../../Player/Player.hpp"
+#include "../../../Player/Object_Player.hpp"
 
 using namespace Engine;
 
 class DamageCheatScript : public Script {
     public:
-        DamageCheatScript(Player& player, bool active);
+        DamageCheatScript(Object_Player& player, bool active);
         void onUpdate(double deltaTime);
 
     private:
-        Player& _player;
+        Object_Player& _player;
         Input& _input = Input::getInstance();
         Debug& _debug = Debug::getInstance();
 };

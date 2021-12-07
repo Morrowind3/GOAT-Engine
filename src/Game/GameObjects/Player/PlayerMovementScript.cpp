@@ -2,30 +2,32 @@
 #include "../../Keys.hpp"
 #include <iostream>
 
-PlayerMovementScript::PlayerMovementScript(Player& player, bool active) : Script(active), _player{player} {
+PlayerMovementScript::PlayerMovementScript(Object_Player& player, bool active) : Script(active), _player{player} {
 }
 
 /// Movement
 void PlayerMovementScript::onUpdate(double deltaTime) {
     if (_engineCalls.isPaused()) return; // Disallow any changes in the movement state while paused
+    if (_pickUpTrashTimer > 0) _pickUpTrashTimer -= deltaTime; // Trash timer
 
     bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A); // Walk left
     bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D); // Walk right
     bool moveUpKey = _input.getKeyDown(KeyCode::UP) || _input.getKeyDown(KeyCode::W) || _input.getKeyDown(KeyCode::SPACE); // Jump
 
+    _walkState = false;
     if (moveLeftKey) moveLeft(deltaTime);
     if (moveRightKey) moveRight(deltaTime);
     if (moveUpKey) {
         if (allowedToJump()) jump(deltaTime);
         else if (allowedToDoubleJump(deltaTime)) doubleJump(deltaTime);
     }
-    if (!moveLeftKey && !moveRightKey) _sprintModifier = 0; // Stop sprinting if user stops walking
-    if (allowedToJump()) updateSpriteStateWhileWalking(moveLeftKey, moveRightKey); // Only update in non-jump mode
+    if (!_walkState) resetAtNonWalkingState();
+    updateSpriteState();
     _yPositionLastFrame = _player.transform.position.y;
 }
 
 /// When colliding with a tile, Edmund has stopped jumping
-/// Indirectly allows him to climb a steep wall by colliding with the side of the wall
+/// Indirectly allows him to climb a steep wall by colliding with the side of the wall TODO: Only allow this for climbing a wall
 void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
     if (other.hasTag(Keys::TILE)) {
         _doubleJumpState = _jumpState = false;
@@ -33,11 +35,10 @@ void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
 
 }
 void PlayerMovementScript::onTriggerStay2D(GameObject& other) {
-    if (other.hasTag(Keys::TRASH) && (_input.getKeyDown(KeyCode::S) || _input.getKeyDown(KeyCode::DOWN))) {
+    if (other.hasTag(Keys::TRASH) && allowedToPickupTrash()) {
         pickupTrash(other);
     }
 }
-
 
 float PlayerMovementScript::calculateWalkSpeed(double deltaTime) {
     if(_sprintModifier+=SPRINT_STEP > MAX_SPRINT_MODIFIER) _sprintModifier = MAX_SPRINT_MODIFIER;
@@ -45,13 +46,17 @@ float PlayerMovementScript::calculateWalkSpeed(double deltaTime) {
 }
 
 void PlayerMovementScript::moveLeft(double deltaTime) {
+    _walkState = true;
     _player.rigidBody.forceX = -calculateWalkSpeed(deltaTime);
     _player.transform.flip = Engine::FLIP::FLIP_HORIZONTAL;
+    playWalkSound(deltaTime);
 }
 
 void PlayerMovementScript::moveRight(double deltaTime) {
+    _walkState = true;
     _player.rigidBody.forceX = calculateWalkSpeed(deltaTime);
     _player.transform.flip = Engine::FLIP::FLIP_NONE;
+    playWalkSound(deltaTime);
 }
 
 bool PlayerMovementScript::allowedToJump() const {
@@ -61,8 +66,17 @@ bool PlayerMovementScript::allowedToJump() const {
 void PlayerMovementScript::jump(double deltaTime) {
     _jumpState = true;
     _player.rigidBody.forceY = JUMP_FORCE/deltaTime;
-    switchSprite(Keys::JUMP);
     playJumpSound();
+}
+
+bool PlayerMovementScript::allowedToPickupTrash() const {
+    bool pickUpTrashKey = _input.getKeyDown(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S);
+    return pickUpTrashKey && _pickUpTrashTimer <= 0.0;
+}
+
+void PlayerMovementScript::pickupTrash(GameObject& other) {
+    other.behaviors.at(Keys::TRASH)->scripts.at(Keys::TRASH)->onExternalEvent();
+    _pickUpTrashTimer = PICKUP_TRASH_GRACE_IN_MS;
 }
 
 bool PlayerMovementScript::allowedToDoubleJump(double deltaTime) const {
@@ -75,42 +89,58 @@ void PlayerMovementScript::doubleJump(double deltaTime) {
     _player.rigidBody.forceY *= DOUBLE_JUMP_MODIFIER;
 }
 
-void PlayerMovementScript::updateSpriteStateWhileWalking(bool moveLeft, bool moveRight) {
-    if (!moveRight && !moveLeft  && !_player.sprites.at(Keys::TRASH).active) { // Idle
-        switchSprite(Keys::IDLE);
+/// First disables everything and then enables the correct sprites based on the state of the player
+void PlayerMovementScript::updateSpriteState() {
+    _player.sprites.at(Keys::JUMP).active = false;
+    _player.sprites.at(Keys::IDLE).active = false;
+    _player.sprites.at(Keys::TRASH).active = false;
+    _player.animators.at(Keys::WALKING_ANIMATOR).active = false;
+    if (_jumpState) {
+        hideWalkingSprites();
+        _player.sprites.at(Keys::JUMP).active = true;
     }
-    if ((moveLeft || moveRight) && _walkingSwitchFrameCounter % 20 == 1) { // Walking
-        if(_player.sprites.at(Keys::TRASH).active) switchSprite(Keys::IDLE);
-        switch (_walkingState) {
-            case 0:
-                switchSprite(Keys::IDLE);
-                _walkingState++;
-                break;
-            case 1:
-                switchSprite(Keys::MOVE1);
-                _walkingState++;
-                break;
-            case 2:
-                switchSprite(Keys::IDLE);
-                _walkingState++;
-                break;
-            case 3:
-                switchSprite(Keys::MOVE2);
-                _walkingState = 0;
-                break;
-        }
-        playWalkSound();
+    else if (_pickUpTrashTimer > 0.0) {
+        hideWalkingSprites();
+        _player.sprites.at(Keys::TRASH).active = true;
     }
-    _walkingSwitchFrameCounter++;
+    else if (_walkState) {
+        _player.animators.at(Keys::WALKING_ANIMATOR).active = true;
+    } else {
+        hideWalkingSprites();
+        _player.sprites.at(Keys::IDLE).active = true;
+    }
+    makeSurePlayerIsVisible();
 }
 
-void PlayerMovementScript::playWalkSound() {
-    if (_walkingStepAltSfx) {
-        _player.audioSources.at(Keys::WALK_SFX_A).queueForPlay = true;
-        _walkingStepAltSfx = false;
-    } else {
-        _player.audioSources.at(Keys::WALK_SFX_B).queueForPlay = true;
-        _walkingStepAltSfx = true;
+void PlayerMovementScript::makeSurePlayerIsVisible() {
+    bool playerIsVisible = false;
+    for (auto& sprite : _player.sprites) {
+        if (sprite.second.active) {
+            playerIsVisible = true;
+            break;
+        }
+    }
+    if (!playerIsVisible) _player.sprites.at(Keys::IDLE).active = true; // Player must be visible
+}
+
+void PlayerMovementScript::hideWalkingSprites() {
+    for (auto& walkingSprite: _player.animators.at(Keys::WALKING_ANIMATOR).sprites) {
+        walkingSprite->active = false;
+    }
+}
+
+/// Play the set amount of walking sounds per second
+void PlayerMovementScript::playWalkSound(double deltaTime) {
+    _walkingSoundCounter+=deltaTime;
+    if (!_jumpState && _walkingSoundCounter >= WALK_SOUND_PER_MS_AMOUNT) {
+        _walkingSoundCounter = 0;
+        if (_walkingStepAltSfx) {
+            _player.audioSources.at(Keys::WALK_SFX_A).queueForPlay = true;
+            _walkingStepAltSfx = false;
+        } else {
+            _player.audioSources.at(Keys::WALK_SFX_B).queueForPlay = true;
+            _walkingStepAltSfx = true;
+        }
     }
 }
 
@@ -118,16 +148,8 @@ void PlayerMovementScript::playJumpSound() {
     _player.audioSources.at(Keys::JUMP_SFX).queueForPlay = true;
 }
 
-void PlayerMovementScript::pickupTrash(GameObject& other) {
-    switchSprite(Keys::TRASH);
-    other.behaviors.at(Keys::TRASH)->scripts.at(Keys::TRASH)->onExternalEvent();
+/// Reset variables that are changed if the player is walking
+void PlayerMovementScript::resetAtNonWalkingState() {
+    _sprintModifier = 0; // Stop sprinting if user stops walking
+    _walkingSoundCounter = WALK_SOUND_PER_MS_AMOUNT; // Make sure next walking sound plays
 }
-
-void PlayerMovementScript::switchSprite(const std::string& key) {
-    _player.sprites.at(Keys::IDLE).active = key == Keys::IDLE;
-    _player.sprites.at(Keys::MOVE1).active = key == Keys::MOVE1;
-    _player.sprites.at(Keys::MOVE2).active = key == Keys::MOVE2;
-    _player.sprites.at(Keys::TRASH).active = key == Keys::TRASH;
-    _player.sprites.at(Keys::JUMP).active = key == Keys::JUMP;
-}
-

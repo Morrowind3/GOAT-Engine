@@ -133,6 +133,9 @@ add_library(GOAT_Engine STATIC
 		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
 		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp
 		Engine/Utilities/EngineCalls.cpp Engine/Utilities/EngineCalls.hpp
+        Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
+		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
+		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
 		)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
@@ -145,20 +148,22 @@ add_executable(Mount_Everestimate
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
 		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
 		Game/Layers.hpp
+		# Scene templates
+		Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
         # Scenes
-		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
+		Game/Scenes/Templates/SceneTemplate_Menu.cpp Game/Scenes/Templates/SceneTemplate_Menu.hpp
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
-        Game/Scenes/MainMenuScene.hpp Game/Scenes/MainMenuScene.cpp
-        Game/Scenes/EtappeSelection.cpp Game/Scenes/EtappeSelection.hpp
-		Game/Scenes/SettingsMenuScene.cpp Game/Scenes/SettingsMenuScene.hpp
-		Game/Scenes/ScoreboardMenuScene.cpp Game/Scenes/ScoreboardMenuScene.hpp
+		Game/Scenes/Menus/MainMenuScene.hpp Game/Scenes/Menus/MainMenuScene.cpp
+		Game/Scenes/Menus/EtappeSelection.cpp Game/Scenes/Menus/EtappeSelection.hpp
+		Game/Scenes/Menus/SettingsMenuScene.cpp Game/Scenes/Menus/SettingsMenuScene.hpp
+		Game/Scenes/Menus/ScoreboardMenuScene.cpp Game/Scenes/Menus/ScoreboardMenuScene.hpp
+		Game/Scenes/Menus/VictoryScene.cpp Game/Scenes/Menus/VictoryScene.hpp
         # Objects
-		Game/GameObjects/Player/Player.hpp Game/GameObjects/Player/Player.cpp
-		Game/GameObjects/Enemies/Goat/Goat.cpp Game/GameObjects/Enemies/Goat/Goat.hpp
+		Game/GameObjects/Player/Object_Player.hpp Game/GameObjects/Player/Object_Player.cpp
+        Game/GameObjects/Enemies/Goat/Goat.cpp Game/GameObjects/Enemies/Goat/Goat.hpp
 		Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.cpp Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.hpp
 		Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoManager.cpp Game/GameObjects/Scenes/Etappes/EtappeTwoScene/EtappeTwoManager.hpp
-        Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
 		Game/GameObjects/Tiles/SolidTile/SolidTile.cpp Game/GameObjects/Tiles/SolidTile/SolidTile.hpp
 		Game/GameObjects/Tiles/SlabTile/SlabTile.cpp Game/GameObjects/Tiles/SlabTile/SlabTile.hpp
 		Game/GameObjects/Tiles/SolidTile/SolidTile.cpp Game/GameObjects/Tiles/SolidTile/SolidTile.hpp
@@ -199,7 +204,23 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/VictoryScene/VictorySceneBehavior.cpp Game/GameObjects/Scenes/VictoryScene/VictorySceneBehavior.hpp
 		Game/GameObjects/WorldObjects/HealthPickup/HealthPickupBehavior.cpp Game/GameObjects/WorldObjects/HealthPickup/HealthPickupBehavior.hpp
         Game/GameObjects/Tiles/LavaTile/LavaTileBehavior.cpp Game/GameObjects/Tiles/LavaTile/LavaTileBehavior.hpp
-        # Scripts
+		Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
+        Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
+		Game/Scenes/Menus/DefeatScene.cpp
+
+        Game/Animators/Animator_PlayerWalking.cpp Game/Animators/Animator_PlayerWalking.hpp
+
+		Game/Sprites/Player/Sprite_PlayerIdle.cpp Game/Sprites/Player/Sprite_PlayerIdle.hpp
+		Game/Sprites/Player/Sprite_PlayerMove1.cpp Game/Sprites/Player/Sprite_PlayerMove1.hpp
+		Game/Sprites/Player/Sprite_PlayerMove3.cpp Game/Sprites/Player/Sprite_PlayerMove3.hpp
+		Game/Sprites/Player/Sprite_PlayerJump.cpp Game/Sprites/Player/Sprite_PlayerJump.hpp
+		Game/Sprites/Player/Sprite_PlayerMove2.cpp Game/Sprites/Player/Sprite_PlayerMove2.hpp
+
+		Game/AudioSources/Sounds/Sound_Jump.cpp Game/AudioSources/Sounds/Sound_Jump.hpp
+		Game/AudioSources/Sounds/Sound_Walk.cpp Game/AudioSources/Sounds/Sound_Walk.hpp
+		Game/AudioSources/Sounds/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Sound_WalkAlt.hpp 
+		Game/AudioSources/Sounds/Sound_Oof.cpp Game/AudioSources/Sounds/Sound_Oof.hpp 
+		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
 		Game/GameObjects/Scenes/SwitchSceneButtonScript.cpp Game/GameObjects/Scenes/SwitchSceneButtonScript.hpp
 		Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameScript.cpp Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameScript.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.hpp
@@ -210,7 +231,6 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseScript.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/PauseScript.hpp
 		Game/GameObjects/Utils/LifeHeart/LifeHeartScript.cpp Game/GameObjects/Utils/LifeHeart/LifeHeartScript.hpp
 		Game/GameObjects/Scenes/Etappes/LifeInitScript.cpp Game/GameObjects/Scenes/Etappes/LifeInitScript.hpp
-		Game/Scenes/Etappes/SharedEtappe.cpp Game/Scenes/Etappes/SharedEtappe.hpp
 		Game/GameObjects/Utils/Cheats/CheatsScript.cpp Game/GameObjects/Utils/Cheats/CheatsScript.hpp
 		Game/GameObjects/WorldObjects/VictoryFlag/FlagScript.cpp
 		Game/GameObjects/Player/DamageScript.cpp
@@ -218,8 +238,8 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Cheats/CheatsScript.cpp
 		Game/GameObjects/WorldObjects/VictoryFlag/VictoryFlag.cpp
 		Game/GameObjects/Scenes/GameStateBehavior.cpp Game/GameObjects/Scenes/EtappeEndScene/GameStateScript.cpp
-		Game/GameObjects/Scenes/GameStateManager.cpp Game/Scenes/VictoryScene.cpp
-		Game/Scenes/DefeatScene.cpp Game/GameObjects/Scenes/EtappeEndScene/VictoryScreenManager.cpp
+		Game/GameObjects/Scenes/GameStateManager.cpp
+		Game/GameObjects/Scenes/EtappeEndScene/VictoryScreenManager.cpp
 		Game/GameObjects/Scenes/EtappeEndScene/DefeatBackground.cpp Game/GameObjects/Scenes/EtappeEndScene/SelectEtappeButton.cpp
 		Game/GameObjects/Scenes/EtappeEndScene/NextEtappeButton.cpp Game/GameObjects/Scenes/EtappeEndScene/RetryButton.cpp
 		Game/GameObjects/Utils/Cheats/CheatsScript.cpp Game/GameObjects/Utils/Cheats/CheatsScript.hpp
@@ -242,11 +262,15 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Timer/TimerLine.cpp Game/GameObjects/Utils/Timer/TimerLine.hpp
 		Game/GameObjects/Utils/Timer/TimerLineBehavior.cpp Game/GameObjects/Utils/Timer/TimerLineBehavior.hpp
 		Game/GameObjects/Utils/Timer/TimerLineScript.cpp Game/GameObjects/Utils/Timer/TimerLineScript.hpp
-		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/WorldObjects/Trash/Trash.cpp Game/GameObjects/WorldObjects/Trash/Trash.hpp Game/GameObjects/WorldObjects/Trash/TrashBehavior.cpp Game/GameObjects/WorldObjects/Trash/TrashBehavior.hpp Game/GameObjects/WorldObjects/Trash/TrashScript.cpp Game/GameObjects/WorldObjects/Trash/TrashScript.hpp Game/GameObjects/Utils/TrashCounter/TrashCounter.cpp Game/GameObjects/Utils/TrashCounter/TrashCounter.hpp Game/GameObjects/Utils/TrashCounter/TrashCounterBehavior.cpp Game/GameObjects/Utils/TrashCounter/TrashCounterBehavior.hpp Game/GameObjects/Utils/TrashCounter/TrashCounterScript.cpp Game/GameObjects/Utils/TrashCounter/TrashCounterScript.hpp)
+		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/WorldObjects/Trash/Trash.cpp Game/GameObjects/WorldObjects/Trash/Trash.hpp Game/GameObjects/WorldObjects/Trash/TrashBehavior.cpp Game/GameObjects/WorldObjects/Trash/TrashBehavior.hpp Game/GameObjects/WorldObjects/Trash/TrashScript.cpp Game/GameObjects/WorldObjects/Trash/TrashScript.hpp Game/GameObjects/Utils/TrashCounter/TrashCounter.cpp Game/GameObjects/Utils/TrashCounter/TrashCounter.hpp Game/GameObjects/Utils/TrashCounter/TrashCounterBehavior.cpp Game/GameObjects/Utils/TrashCounter/TrashCounterBehavior.hpp Game/GameObjects/Utils/TrashCounter/TrashCounterScript.cpp Game/GameObjects/Utils/TrashCounter/TrashCounterScript.hpp
+		Game/GameObjects/Utils/Timer/TimerScript.cpp Game/GameObjects/Utils/Timer/TimerScript.cpp Game/Scenes/Etappes/EtappeThree.cpp Game/Scenes/Etappes/EtappeThree.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.cpp Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp Game/Scenes/Etappes/EtappeFour.cpp Game/Scenes/Etappes/EtappeFour.hpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.hpp Game/GameObjects/Enemies/Snowball/Snowball.cpp Game/GameObjects/Enemies/Snowball/Snowball.hpp Game/GameObjects/Enemies/Snowball/SnowballBehavior.cpp Game/GameObjects/Enemies/Snowball/SnowballBehavior.hpp Game/GameObjects/Enemies/Snowball/SnowballScript.cpp Game/GameObjects/Enemies/Snowball/SnowballScript.hpp
+		Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.cpp Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
-add_executable(engine_tests "Engine/Tests/SampleTest.cpp")
+add_executable(engine_tests "Engine/Tests/_Test.cpp" Engine/Tests/AnimatorHelperTest.cpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
 add_executable(game_tests "Game/Tests/PlayerTest.cpp")

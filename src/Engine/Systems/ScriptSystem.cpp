@@ -29,7 +29,7 @@ void ScriptSystem::onFrameTick(const double deltaTime) {
             if(behavior.second->active) behavior.second->onUpdate(deltaTime);
         }
         for (auto& button : gameObject->buttons) {
-            // Detect if mouse clicked on button
+            // Detect if mouse clicked on button TODO: Fix this for other resolutions
             if(button.second.active && input.getMouseDown(MouseButton::LEFT) && button.second.dimensions.intersects(
                     input.mousePosition())) {
                 button.second.onClick->onExternalEvent();

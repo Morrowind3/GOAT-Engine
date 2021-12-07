@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GOAT_ENGINE_GAMECOMPONENT_HPP
+#define GOAT_ENGINE_GAMECOMPONENT_HPP
 
 namespace Engine {
     struct GameComponent {
@@ -6,3 +7,5 @@ namespace Engine {
         bool active;
     };
 }
+
+#endif //GOAT_ENGINE_GAMECOMPONENT_HPP

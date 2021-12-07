@@ -5,20 +5,38 @@
 
 using namespace Engine;
 
-RendererImpl::RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor) :
+/// It usually isn't best practise to do this in the constructor, but else the smart pointers need to be hacked around with
+RendererImpl::RendererImpl(const std::string& name, const std::string& iconPath, const std::string& cursor) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
                 SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
                                  SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0), SDL_DestroyRenderer}} {
-
     TTF_Init();
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
     SDL_SetRenderDrawColor(_renderer.get(), 255, 255, 255, 255);
-    SDL_RenderSetLogicalSize(_renderer.get(), 1920, 985);
     auto cursorSurface = IMG_Load(cursor.c_str());
     auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
     SDL_SetCursor(sdlCursor);
+}
+
+void RendererImpl::initialize() {
+    // TODO: Move as much of the constructor into here as possible
+}
+
+void RendererImpl::setViewPort(Point dimensions) {
+    if (!_resizeForFirstSceneHasTakenPlace) {
+        SDL_DisplayMode DM;
+        SDL_GetCurrentDisplayMode(0, &DM);
+        auto width = DM.w;
+        auto height = DM.h;
+
+        SDL_SetWindowSize(_window.get(), width, height);
+        SDL_MaximizeWindow(_window.get());
+        _resizeForFirstSceneHasTakenPlace = true;
+    }
+    SDL_RenderSetLogicalSize(_renderer.get(), dimensions.x, dimensions.y);
+    _engineCalls.viewPortSize(dimensions);
 }
 
 void RendererImpl::loadTexture(const std::string& fileName) {
@@ -42,6 +60,11 @@ void RendererImpl::loadFont(const std::string& fileName) {
 void RendererImpl::beginRenderTick() {
     _tickTextureCache = {};
     SDL_RenderClear(_renderer.get());
+
+    // Window is resizable so engine must know the current size
+    int windowWidth, windowHeight;
+    SDL_GetWindowSize(_window.get(), &windowWidth, &windowHeight);
+    _engineCalls.windowSize({windowWidth,windowHeight});
 }
 
 void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
@@ -55,43 +78,10 @@ void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, 
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
 }
 
-bool tickTextureCacheSort(const std::pair<const Transform, const Texture*>& a,
-                          const std::pair<const Transform, const Texture*>& b) {
-    return a.first.layer < b.first.layer;
-}
-
 void RendererImpl::endRenderTick() {
-    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSort);
-
+    sortTextureCache();
     for (auto& drawable: _tickTextureCache) {
-        auto& transform = drawable.first;
-        auto& texture = drawable.second;
-
-        SDL_Rect sourceRect{}, destinationRect{};
-
-        // Do NOT cast transform to a static int because of rounding errors!!
-        sourceRect.w = transform.scaleWidth * texture->width();
-        sourceRect.h = transform.scaleHeight * texture->height();
-
-        destinationRect.x = transform.position.x;
-        destinationRect.y = transform.position.y;
-        destinationRect.w = transform.scaleWidth * texture->width();
-        destinationRect.h = transform.scaleWidth * texture->height();
-
-        SDL_RendererFlip flip;
-        switch (transform.flip) {
-            case FLIP::FLIP_NONE:
-                flip = SDL_FLIP_NONE;
-                break;
-            case FLIP::FLIP_HORIZONTAL:
-                flip = SDL_FLIP_HORIZONTAL;
-                break;
-            case FLIP::FLIP_VERTICAL:
-                flip = SDL_FLIP_VERTICAL;
-                break;
-        }
-
-        SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform.rotation, nullptr, flip);
+        draw(drawable);
     }
     SDL_RenderPresent(_renderer.get());
 }
@@ -106,4 +96,76 @@ void RendererImpl::resetForNextScene() {
 void RendererImpl::end() {
     TTF_Quit();
     SDL_Quit();
+}
+
+// Private:
+
+// std::sort lambda
+static bool tickTextureCacheSortLayerGroup(const std::pair<const Transform, const Texture*>& a,
+                                           const std::pair<const Transform, const Texture*>& b) {
+    return a.first.layerGroup < b.first.layerGroup;
+}
+// std::sort lambda
+static bool tickTextureCacheSortLayerInsideGroup(const std::pair<const Transform, const Texture*>& a,
+                                                 const std::pair<const Transform, const Texture*>& b) {
+    return a.first.layerInsideGroup < b.first.layerInsideGroup;
+}
+
+/// Determines the correct ordering to draw textures
+void RendererImpl::sortTextureCache() {
+    if (_tickTextureCache.empty()) return; // Out of range on empty cache
+
+    // First everything gets sorted on layer group
+    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSortLayerGroup);
+
+    // Then everything gets sorted on layer inside group
+    unsigned int currentLayerGroup = _tickTextureCache.begin()->first.layerGroup;
+    int beginPositionLayerGroup = 0, endPositionLayerGroup = -1;
+    for (auto& drawable: _tickTextureCache) {
+        // Same layer group, so continue to count how big this layer group is
+        if (drawable.first.layerGroup == currentLayerGroup) {
+            ++endPositionLayerGroup;
+            continue;
+        }
+        // New layer group! So sort everything before the start of this layer group
+        std::sort(_tickTextureCache.begin()+beginPositionLayerGroup, _tickTextureCache.begin()+endPositionLayerGroup, tickTextureCacheSortLayerInsideGroup);
+        // Update variables so they work for the next texture group
+        currentLayerGroup = drawable.first.layerGroup;
+        ++endPositionLayerGroup;
+        beginPositionLayerGroup = endPositionLayerGroup;
+    }
+    // Sort the last layer group
+    std::sort(_tickTextureCache.begin()+beginPositionLayerGroup, _tickTextureCache.begin()+endPositionLayerGroup, tickTextureCacheSortLayerInsideGroup);
+}
+
+/// Draws texture to the screen
+void RendererImpl::draw(std::pair<Transform, const Texture*>& drawable) {
+    auto& transform = drawable.first;
+    auto& texture = drawable.second;
+
+    SDL_Rect sourceRect{}, destinationRect{};
+
+    // Do NOT cast transform to a static int because of rounding errors!!
+    sourceRect.w = transform.scaleWidth * texture->width();
+    sourceRect.h = transform.scaleHeight * texture->height();
+
+    destinationRect.x = transform.position.x;
+    destinationRect.y = transform.position.y;
+    destinationRect.w = transform.scaleWidth * texture->width();
+    destinationRect.h = transform.scaleWidth * texture->height();
+
+    SDL_RendererFlip flip;
+    switch (transform.flip) {
+        case FLIP::FLIP_NONE:
+            flip = SDL_FLIP_NONE;
+            break;
+        case FLIP::FLIP_HORIZONTAL:
+            flip = SDL_FLIP_HORIZONTAL;
+            break;
+        case FLIP::FLIP_VERTICAL:
+            flip = SDL_FLIP_VERTICAL;
+            break;
+    }
+
+    SDL_RenderCopyEx(_renderer.get(), texture->texture(), &sourceRect, &destinationRect, transform.rotation, nullptr, flip);
 }

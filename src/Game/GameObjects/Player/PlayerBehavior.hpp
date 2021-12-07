@@ -2,12 +2,12 @@
 #define GOAT_ENGINE_PLAYERBEHAVIOR_HPP
 
 #include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
-#include "./Player.hpp"
+#include "Object_Player.hpp"
 
 using namespace Engine;
 
 class PlayerBehavior : public Behavior {
-    public: PlayerBehavior(Player& player, bool active);
+    public: PlayerBehavior(Object_Player& player, bool active);
 };
 
 
