@@ -31,7 +31,7 @@ VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : G
             "Fonts/pixeled.ttf",
             40,
             {255,255,255,255},
-            Transform{{920,540},transform.layer,0,1,1},
+            Transform{{920,540},transform.layerGroup,0, 0,1,1},
             true}));
     text.insert(std::make_pair("Timelabel", Text{
             "Time",
@@ -59,7 +59,7 @@ VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : G
             "Fonts/pixeled.ttf",
             40,
             {255,255,255,255},
-            Transform{{920,700},transform.layer,0,1,1},
+            Transform{{920,700},transform.layerGroup,0, 0,1,1},
             true}));
     audioSources.insert(std::make_pair("Music",AudioSource{"Sounds/victory.mp3", AudioSourceType::SAMPLE, true, true}));
     behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<VictorySceneBehavior>(true)));

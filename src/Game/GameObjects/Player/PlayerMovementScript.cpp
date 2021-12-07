@@ -8,6 +8,7 @@ PlayerMovementScript::PlayerMovementScript(Object_Player& player, bool active) :
 /// Movement
 void PlayerMovementScript::onUpdate(double deltaTime) {
     if (_engineCalls.isPaused()) return; // Disallow any changes in the movement state while paused
+    if (_pickUpTrashTimer > 0) _pickUpTrashTimer -= deltaTime; // Trash timer
 
     bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A); // Walk left
     bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D); // Walk right
@@ -34,11 +35,10 @@ void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
 
 }
 void PlayerMovementScript::onTriggerStay2D(GameObject& other) {
-    if (other.hasTag(Keys::TRASH) && (_input.getKeyDown(KeyCode::S) || _input.getKeyDown(KeyCode::DOWN))) {
+    if (other.hasTag(Keys::TRASH) && allowedToPickupTrash()) {
         pickupTrash(other);
     }
 }
-
 
 float PlayerMovementScript::calculateWalkSpeed(double deltaTime) {
     if(_sprintModifier+=SPRINT_STEP > MAX_SPRINT_MODIFIER) _sprintModifier = MAX_SPRINT_MODIFIER;
@@ -69,6 +69,16 @@ void PlayerMovementScript::jump(double deltaTime) {
     playJumpSound();
 }
 
+bool PlayerMovementScript::allowedToPickupTrash() const {
+    bool pickUpTrashKey = _input.getKeyDown(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S);
+    return pickUpTrashKey && _pickUpTrashTimer <= 0.0 && !_jumpState;
+}
+
+void PlayerMovementScript::pickupTrash(GameObject& other) {
+    other.behaviors.at(Keys::TRASH)->scripts.at(Keys::TRASH)->onExternalEvent();
+    _pickUpTrashTimer = PICKUP_TRASH_GRACE_IN_MS;
+}
+
 bool PlayerMovementScript::allowedToDoubleJump(double deltaTime) const {
     return !_doubleJumpState && _player.transform.position.y - _yPositionLastFrame < DOUBLE_JUMP_TRIGGER * deltaTime;
 }
@@ -83,10 +93,15 @@ void PlayerMovementScript::doubleJump(double deltaTime) {
 void PlayerMovementScript::updateSpriteState() {
     _player.sprites.at(Keys::JUMP).active = false;
     _player.sprites.at(Keys::IDLE).active = false;
+    _player.sprites.at(Keys::TRASH).active = false;
     _player.animators.at(Keys::WALKING_ANIMATOR).active = false;
     if (_jumpState) {
         hideWalkingSprites();
         _player.sprites.at(Keys::JUMP).active = true;
+    }
+    else if (_pickUpTrashTimer > 0.0) {
+        hideWalkingSprites();
+        _player.sprites.at(Keys::TRASH).active = true;
     }
     else if (_walkState) {
         _player.animators.at(Keys::WALKING_ANIMATOR).active = true;
@@ -137,9 +152,4 @@ void PlayerMovementScript::playJumpSound() {
 void PlayerMovementScript::resetAtNonWalkingState() {
     _sprintModifier = 0; // Stop sprinting if user stops walking
     _walkingSoundCounter = WALK_SOUND_PER_MS_AMOUNT; // Make sure next walking sound plays
-}
-
-void PlayerMovementScript::pickupTrash(GameObject& other) {
-    switchSprite(Keys::TRASH);
-    other.behaviors.at(Keys::TRASH)->scripts.at(Keys::TRASH)->onExternalEvent();
 }

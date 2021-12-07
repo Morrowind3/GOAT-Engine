@@ -36,7 +36,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneMana
     _camera.trackObject(player);
 
     // Objects needed to have a functional etappe
-    std::shared_ptr<Timer> timer = std::make_shared<Timer>(Transform{{0,0}}, true);
+    std::shared_ptr<Timer> timer = std::make_shared<Timer>(true);
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, timer, true));
     gameObjects.emplace_back(std::make_shared<Cheats>(sceneManager, *this, *player, true));
     gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(sceneManager,  // A start of a pause menu

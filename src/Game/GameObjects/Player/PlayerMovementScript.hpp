@@ -31,6 +31,8 @@ class PlayerMovementScript : public Script {
         bool _jumpState {false};
         bool _doubleJumpState {false};
         double _yPositionLastFrame {false};
+        // Needed to pickup trash
+        double _pickUpTrashTimer {0.0};
 
         // Consts
         static const int PLAYER_SPEED = 15000;
@@ -40,6 +42,7 @@ class PlayerMovementScript : public Script {
         constexpr static const double DOUBLE_JUMP_TRIGGER = 0.2;
         constexpr static const double DOUBLE_JUMP_MODIFIER = 1.15;
         constexpr static const double WALK_SOUND_PER_MS_AMOUNT = 1000.0/3.0;
+        constexpr static const double PICKUP_TRASH_GRACE_IN_MS = 1000.0/4.0;
 
         // Methods
         // Movement logic
@@ -50,6 +53,8 @@ class PlayerMovementScript : public Script {
         void jump(double deltaTime);
         [[nodiscard]] bool allowedToDoubleJump(double deltaTime) const;
         void doubleJump(double deltaTime);
+        [[nodiscard]] bool allowedToPickupTrash() const;
+        void pickupTrash(GameObject& other);
         void resetAtNonWalkingState();
         // Visual output
         void updateSpriteState();
@@ -58,8 +63,6 @@ class PlayerMovementScript : public Script {
         // Auditory output
         void playWalkSound(double deltaTime);
         void playJumpSound();
-        void pickupTrash(GameObject& other);
-        void switchSprite(const std::string& key);
 };
 
 

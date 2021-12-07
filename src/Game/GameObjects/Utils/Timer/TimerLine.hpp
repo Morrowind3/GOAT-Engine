@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class TimerLine : public GameObject {
-public: TimerLine(double speed, Transform transform, bool active);
+    public: TimerLine(double speed, Transform transform, bool active);
 };
 
 

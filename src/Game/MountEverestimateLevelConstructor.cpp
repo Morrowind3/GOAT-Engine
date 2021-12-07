@@ -345,7 +345,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/utils/tree/tree_leaves_side_right_1.png", transform, true));
             break;
         case 68:
-            transform.layer = LAYER::TILES_BACK;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<Trash>(transform, true));
             break;
         case 69:
