@@ -71,7 +71,7 @@ void PlayerMovementScript::jump(double deltaTime) {
 
 bool PlayerMovementScript::allowedToPickupTrash() const {
     bool pickUpTrashKey = _input.getKeyDown(KeyCode::DOWN) || _input.getKeyDown(KeyCode::S);
-    return pickUpTrashKey && _pickUpTrashTimer <= 0.0 && !_jumpState;
+    return pickUpTrashKey && _pickUpTrashTimer <= 0.0;
 }
 
 void PlayerMovementScript::pickupTrash(GameObject& other) {

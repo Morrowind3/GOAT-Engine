@@ -8,11 +8,12 @@
 #include "../../GameObjects/Utils/Cheats/Cheats.hpp"
 #include "../../GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.hpp"
 #include "../../GameObjects/Utils/FpsMeter/FpsMeter.hpp"
+#include "../../GameObjects/Utils/TrashCounter/TrashCounter.hpp"
 
 SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager, Point dimensions,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey,dimensions,{{0,0},1440,765}){
     // Etappe layer groups
-    layerGroups.insert(std::make_pair(LAYER::PARALLAX_BACKGROUND, LayerGroup{false, 0.2})); // Parallax background
+    layerGroups.insert(std::make_pair(LAYER::PARALLAX_BACKGROUND, LayerGroup{false, 0.08})); // Parallax background
     layerGroups.insert(std::make_pair(LAYER::ETAPPE_TEXT, LayerGroup{false, 0.5})); // Etappe text
     layerGroups.insert(std::make_pair(LAYER::TILES_BACK, LayerGroup{})); // Tiles back
     layerGroups.insert(std::make_pair(LAYER::CHARACTER, LayerGroup{})); // Characters
@@ -37,6 +38,8 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneMana
 
     // Objects needed to have a functional etappe
     std::shared_ptr<Timer> timer = std::make_shared<Timer>(true);
+    gameObjects.emplace_back(timer);
+    gameObjects.emplace_back(std::make_shared<TrashCounter>(true));
     gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, timer, true));
     gameObjects.emplace_back(std::make_shared<Cheats>(sceneManager, *this, *player, true));
     gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(sceneManager,  // A start of a pause menu

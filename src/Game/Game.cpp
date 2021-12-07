@@ -38,7 +38,7 @@ int main(int argc, char* args[]) {
     try {
         // Configure engine
         std::unique_ptr<SceneManager> sceneManager = std::make_unique<GameSceneManager>();
-        sceneManager->changeCurrentScene(Keys::MAIN_MENU);
+        sceneManager->changeCurrentScene(Keys::ETAPPE_SELECT);
         std::string name{"Mount Everestimate"};
         std::string icon{"icon.png"};
         std::string cursor{"cursor.png"};
