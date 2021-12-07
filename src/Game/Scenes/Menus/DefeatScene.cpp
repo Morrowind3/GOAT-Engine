@@ -9,7 +9,7 @@
 DefeatScene::DefeatScene(SceneManager& manager) : SceneTemplate_Menu(Keys::DEFEAT_SCREEN) {
     gameObjects.emplace_back(std::make_shared<DefeatBackground>(Transform{Point{0, 0}, 0, 0,0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<SelectEtappeButton>(
-            manager, Transform{Point{560, 830}, LAYER::UI, 0, 6, 5}, true));
+            manager, Transform{Point{560, 830}, LAYER::UI, 0,0, 6, 5}, true));
     gameObjects.emplace_back(std::make_shared<RetryButton>(
-            manager, Transform{Point{970, 830}, LAYER::UI, 0, 6, 5}, true));
+            manager, Transform{Point{970, 830}, LAYER::UI, 0, 0, 6, 5}, true));
 }

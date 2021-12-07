@@ -4,6 +4,7 @@
 #include "EtappeMarkerBehavior.hpp"
 #include "../../../Layers.hpp"
 
+// TODO: The text of the first etappe marker is invisible if five are on screen: I'm afraid this will have to be fixed TF2 coconut style if we can't find the root cause
 EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
                            Transform transform, bool active) : GameObject(transform, active) {
 
