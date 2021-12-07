@@ -114,7 +114,8 @@ namespace Keys {
 	//TILES
 	const std::string TILE = "TILE";
 	const std::string SOLID = "SOLID";
-	const std::string SLAB = "SLAB";
+    const std::string SLAB = "SLAB";
+    const std::string WALL = "WALL";
 #pragma endregion
 
 }

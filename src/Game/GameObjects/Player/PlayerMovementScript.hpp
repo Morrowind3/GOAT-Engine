@@ -39,7 +39,6 @@ class PlayerMovementScript : public Script {
         static const unsigned short SPRINT_STEP = 15;
         static const unsigned short MAX_SPRINT_MODIFIER = 400;
         static const int JUMP_FORCE = 1000000;
-        constexpr static const double DOUBLE_JUMP_TRIGGER = 0.2;
         constexpr static const double DOUBLE_JUMP_MODIFIER = 1.15;
         constexpr static const double WALK_SOUND_PER_MS_AMOUNT = 1000.0/3.0;
         constexpr static const double PICKUP_TRASH_GRACE_IN_MS = 1000.0/4.0;

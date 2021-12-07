@@ -15,6 +15,10 @@ static uint16_t defaultLoopValue(AudioSourceType type) {
     return type == AudioSourceType::MUSIC ? 0 : 1;
 }
 
+AudioSource::AudioSource(std::string path, AudioSourceType type, uint8_t volume, bool queueForPlay, bool active):
+        AudioSource(std::move(path), type, defaultLoopValue(type), volume, queueForPlay, active) {
+}
+
 AudioSource::AudioSource(std::string path, AudioSourceType type, bool queueForPlay, bool active) :
     AudioSource(std::move(path), type, defaultLoopValue(type), 100, queueForPlay, active) {
 }
