@@ -20,6 +20,7 @@ namespace Engine {
         private:
             static void attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor);
             static void attachCircleCollider(b2Body *rigidBody, double radius, double density, bool isSensor, b2Vec2 offset);
+            static void attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet);
             std::unique_ptr<b2World> _world;
             std::unique_ptr<ContactListener> _contactListener;
     };

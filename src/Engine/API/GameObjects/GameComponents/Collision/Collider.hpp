@@ -11,7 +11,8 @@ namespace Engine {
         BOX_COLLIDER = 1,
         BOX_SENSOR = 2,
         CIRCLE_COLLIDER = 3,
-        CIRCLE_SENSOR = 4
+        CIRCLE_SENSOR = 4,
+        OVAL_COLLIDER = 5
     };
 
     class Collider : public GameComponent {
