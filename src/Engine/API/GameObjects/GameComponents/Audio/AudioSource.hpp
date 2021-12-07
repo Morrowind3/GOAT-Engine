@@ -11,6 +11,7 @@ namespace Engine {
     struct AudioSource : public GameComponent {
         AudioSource(std::string path, AudioSourceType type, uint16_t loops, uint8_t volume, bool queueForPlay, bool active);
         AudioSource(std::string path, AudioSourceType type, uint16_t loops, uint8_t volume, bool active);
+        AudioSource(std::string path, AudioSourceType type, uint8_t volume, bool queueForPlay, bool active);
         AudioSource(std::string path, AudioSourceType type, bool queueForPlay, bool active);
         AudioSource(std::string path, AudioSourceType type, bool active);
         std::string path;
