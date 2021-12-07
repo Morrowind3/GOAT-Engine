@@ -16,7 +16,8 @@
 Object_Player::Object_Player(Transform transform, bool active) : GameObject(transform, active) {
     tags.emplace(Keys::PLAYER, true);
     rigidBody = RigidBody(75.0f, 8.5f, BodyType::DYNAMIC, true);
-    collider = CircleCollider(52.5,  false,true);
+    collider = CircleCollider(18.5f, 0.0f, 1.8f, false, true);
+//    collider = BoxCollider(105, 105, false, true);
     // Logic
     auto& playerBehavior = behaviors.insert(std::make_pair(Keys::BEHAVIOR,std::make_shared<PlayerBehavior>(*this, true))).first->second;
     // Render
