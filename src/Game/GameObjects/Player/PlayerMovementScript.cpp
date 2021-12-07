@@ -1,6 +1,5 @@
 #include "PlayerMovementScript.hpp"
 #include "../../Keys.hpp"
-#include <iostream>
 
 PlayerMovementScript::PlayerMovementScript(Object_Player& player, bool active) : Script(active), _player{player} {
 }
@@ -80,7 +79,7 @@ void PlayerMovementScript::pickupTrash(GameObject& other) {
 }
 
 bool PlayerMovementScript::allowedToDoubleJump(double deltaTime) const {
-    return !_doubleJumpState && _player.transform.position.y - _yPositionLastFrame < DOUBLE_JUMP_TRIGGER * deltaTime;
+    return !_doubleJumpState;
 }
 
 void PlayerMovementScript::doubleJump(double deltaTime) {
