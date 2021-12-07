@@ -20,8 +20,7 @@ Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Player& player, bool ac
         Transform{{10, 230}, transform.layer, 0, 1, 1}, false}));
     text.insert(std::make_pair(Keys::CHEATS+Keys::VICTORY_SCREEN, Text{"4 - Beat level", font, size, color,
         Transform{{10, 250}, transform.layer, 0, 1, 1}, false}));
-    text.insert(std::make_pair(Keys::CHEATS+Keys::PLAYER, Text{"5 - Heal Edmund", font, size, color,
-                                                               Transform{{10, 210}, transform.layer, 0, 1, 1}, false}));
+
     text.insert(std::make_pair(Keys::CHEATS+Keys::SPEED_UP, Text{"PAGE UP - Speed up game speed", font, size, color,
         Transform{{10, 270}, transform.layer, 0, 1, 1}, false}));
     text.insert(std::make_pair(Keys::CHEATS+Keys::SLOW_DOWN, Text{"PAGE DOWN - Slow down game speed", font, size, color,
@@ -29,6 +28,8 @@ Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Player& player, bool ac
     text.insert(std::make_pair(Keys::CHEATS+Keys::RESET_SPEED, Text{"HOME - Reset game speed", font, size, color,
         Transform{{10, 310}, transform.layer, 0, 1, 1}, false}));
 
+//    text.insert(std::make_pair(Keys::CHEATS+Keys::PLAYER, Text{"5 - Heal Edmund", font, size, color,
+//                                                               Transform{{10, 270}, transform.layer, 0, 1, 1}, false}));
 
     // Components required for cheats
     audioSources.insert(std::make_pair(Keys::SPEED_UP, AudioSource{"Sounds/SpeedUp.ogg",AudioSourceType::SAMPLE, true}));

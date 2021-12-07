@@ -8,7 +8,7 @@ using namespace Engine;
 
 class HealScript : public Script {
     public:
-        HealScript(HealthPickup& pickup, AudioSource& healSfx, bool active);;
+        HealScript(HealthPickup& pickup, AudioSource& healSfx, bool active);
         void onTriggerEnter2D(GameObject &other) override;
         void onUpdate(double deltaTime) override;
     private:

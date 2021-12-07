@@ -11,8 +11,9 @@ using namespace Engine;
 class PlayerMovementScript : public Script {
     public:
         PlayerMovementScript(Player& player, bool active);
-        void onUpdate(double deltaTime);
-        void onTriggerEnter2D(GameObject& other);
+        void onUpdate(double deltaTime) override;
+        void onTriggerEnter2D(GameObject& other) override;
+        void onTriggerStay2D(GameObject& other) override ;
 
     private:
         // Globals
@@ -53,7 +54,8 @@ class PlayerMovementScript : public Script {
         // Auditory output
         void playWalkSound();
         void playJumpSound();
-        // TODO: Pickup trash
+        void pickupTrash(GameObject& other);
+        void switchSprite(const std::string& key);
 };
 
 
