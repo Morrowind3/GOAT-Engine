@@ -27,17 +27,20 @@ namespace Keys {
 #pragma endregion
 
 #pragma region Scene IDs
-    const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
-    const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
-    const std::string SETTINGS_MENU =  "SETTINGS_MENU"; // Usage: Settings menu level ID
+    // Etappes
     const std::string ETAPPE_ONE = "ETAPPE_1"; // Usage: Etappe 1 level ID
     const std::string ETAPPE_TWO = "ETAPPE_2"; // Usage: Etappe 2 level ID
 	const std::string ETAPPE_THREE = "ETAPPE_3"; // Usage: Etappe 3 level ID
 	const std::string ETAPPE_FOUR = "ETAPPE_4"; // Usage: Etappe 4 level ID
 	const std::string ETAPPE_FIVE = "ETAPPE_5"; // Usage: Etappe 5 level ID
+    // Menus
     const std::string VICTORY_SCREEN = "VICTORY_SCREEN"; //Usage: Victory screen level ID
     const std::string DEFEAT_SCREEN = "DEFEAT_SCREEN"; //Usage: Defeat screen level ID
-    const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID,
+    const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID
+    const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
+    const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
+    const std::string SETTINGS_MENU = "SETTINGS_MENU"; // Usage: Settings menu level ID
+    const std::string SAVE_MENU = "SAVE_MENU"; // Usage: Save menu level ID
 #pragma endregion
 
 #pragma region Etappe Events

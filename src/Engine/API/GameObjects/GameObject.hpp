@@ -15,9 +15,13 @@
 #include "GameComponents/Collision/CircleCollider.hpp"
 
 namespace Engine {
+
     struct GameObject {
         explicit GameObject(Transform transform, bool active);
         bool active;
+        // When set to true, this game object will be removed from the scene
+        // If the game object is active, the onDestroy scripts will also run
+        bool queueForDestruction {false};
         std::map<std::string,bool> tags{}; // True if tag should not be ignored
         [[nodiscard]] bool hasTag(const std::string& tag) const; // Useful method to find an active tag
         Transform transform;

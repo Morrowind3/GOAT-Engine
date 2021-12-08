@@ -14,6 +14,7 @@ void setupDatabase() {
 
     MigrationBuilder builder;
     builder.newTable("Players"); // Used to identify saves and store settings per player
+    builder.addColumn("EtappesUnlocked", "INTEGER", false, false, false);
     builder.addColumn("Difficulty", "INTEGER", false, false, false);
     builder.addColumn("Volume", "INTEGER", false, false, false);
 
@@ -23,11 +24,6 @@ void setupDatabase() {
     builder.addForeignKey("Players", "id", "INTEGER", false, false);
 
     api.runMigrations(builder.getMigrationQueries());
-
-    DataModel settings("Players");
-    settings.setValue("Difficulty", "100");
-    settings.setValue("Volume", "100");
-    api.insert(settings);
 }
 
 int main(int argc, char* args[]) {
