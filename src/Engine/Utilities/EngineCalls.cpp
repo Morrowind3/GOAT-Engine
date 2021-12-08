@@ -1,7 +1,18 @@
 #include "EngineCalls.hpp"
 
-
 using namespace Engine;
+
+std::shared_ptr<Scene> EngineCalls::getScene() const {
+    return _sceneManager->currentScene();
+}
+
+[[maybe_unused]] std::string EngineCalls::getSceneKey() const {
+    return _sceneManager->currentScene()->name;
+}
+
+void EngineCalls::changeScene(const std::string& sceneKey) {
+    _sceneManager->changeCurrentScene(sceneKey);
+}
 
 bool EngineCalls::isPaused() const {
     return _paused;

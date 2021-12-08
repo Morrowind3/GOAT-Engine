@@ -4,12 +4,13 @@
 #include "../VictoryScene/VictorySceneBehavior.hpp"
 
 VictoryScreenManager::VictoryScreenManager(Transform transform, bool active) : GameObject(transform, active) {
-    std::string time = Globals::getInstance().sceneExists(Keys::TEXT) ? Globals::getInstance().sceneGet(Keys::TEXT) : "0";
-    std::string trash = Globals::getInstance().sceneExists(Keys::TRASH) ? Globals::getInstance().sceneGet(Keys::TRASH) : "0";
-    int seconds = Globals::getInstance().sceneExists(Keys::TIMER) ? std::stoi(Globals::getInstance().sceneGet(Keys::TIMER))/1000 : 0;
+    Globals& globals = Globals::getInstance();
+    // TODO: This can't exist in scene scope AFAIK
+    std::string time = globals.sceneExists(Keys::TEXT) ? globals.sceneGet(Keys::TEXT) : "0";
+    std::string trash = globals.sceneExists(Keys::TRASH) ? globals.sceneGet(Keys::TRASH) : "0";
+    int seconds = globals.sceneExists(Keys::TIMER) ? std::stoi(globals.sceneGet(Keys::TIMER))/1000 : 0;
 
-    int score = 1000 + (std::stoi(trash) * 150) - (seconds / 20 * 200) -  ((3 - std::stoi(Globals::getInstance().sceneGet(Keys::HP))) * 300);
-
+    int score = 1000 + (std::stoi(trash) * 150) - (seconds / 20 * 200) -  ((3 - std::stoi(globals.sceneGet(Keys::HP))) * 300);
 
     sprites.insert(std::make_pair("Background", Sprite{"Sprites/backgrounds/background_victory.png", true}));
     text.insert(std::make_pair("Title", Text{
