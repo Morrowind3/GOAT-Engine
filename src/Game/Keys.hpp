@@ -55,6 +55,15 @@ namespace Keys {
     const std::string WALKING_ANIMATOR = "WALKING_ANIMATOR";
 #pragma endregion
 
+#pragma region SaveMenu
+	const std::string SAVE_ID = "SAVE_ID";
+	const std::string SAVE_AVATAR = "SAVE_AVATAR";
+	const std::string SAVE_UNLOCKED = "SAVE_UNLOCKED";
+	const std::string SAVE_SCORE = "SAVE_SCORE";
+	const std::string SAVE_PLAY = "SAVE_PLAY";
+	const std::string SAVE_ERASE = "SAVE_ERASE";
+#pragma endregion
+
 #pragma region Unsorted
     const std::string SNOWSTORM = "SNOWSTORM";
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID

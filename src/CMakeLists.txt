@@ -269,6 +269,7 @@ add_executable(Mount_Everestimate
 		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
         Game/Scenes/Menus/SaveScene.cpp Game/Scenes/Menus/SaveScene.hpp
         Game/GameObjects/Scenes/SaveScene/SavesManager.cpp Game/GameObjects/Scenes/SaveScene/SavesManager.hpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.cpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.hpp
+		Game/GameObjects/Scenes/SaveScene/LoadSavesScript.cpp Game/GameObjects/Scenes/SaveScene/LoadSavesScript.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.hpp Game/Sprites/Player/Sprite_PlayerWin.cpp Game/Sprites/Player/Sprite_PlayerWin.hpp Game/Sprites/Player/Sprite_PlayerFront.cpp Game/Sprites/Player/Sprite_PlayerFront.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
