@@ -7,6 +7,6 @@ Snake::Snake(Transform transform, bool active) : GameObject(transform, active) {
     behaviors.insert(std::make_pair(Keys::SNAKE, std::make_shared<SnakeBehavior>(*this, true)));
     sprites.insert(std::make_pair(Keys::ATTACK1, Sprite{"Sprites/enemies/snake/snake_popup.png", false}));
     rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
-    collider = CircleCollider(10.0f,0,0, true,true);
+    collider = CircleCollider(10.0f,0,0,0 ,true,true);
     audioSources.insert(std::make_pair(Keys::BLEATHING, AudioSource{"Sounds/Snake_Hiss.ogg",AudioSourceType::SAMPLE,false,true}));
 }

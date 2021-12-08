@@ -10,7 +10,7 @@
 namespace Engine {
     class OvalCollider: public Collider {
     public:
-        OvalCollider(double radius, double offSetX, double offSetY, bool active);
+        OvalCollider(double radius, double offSetX, double offSetY, double  friction, bool active);
 
     };
 }
