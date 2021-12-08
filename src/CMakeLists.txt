@@ -169,6 +169,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Tiles/SolidTile/SolidTile.cpp Game/GameObjects/Tiles/SolidTile/SolidTile.hpp
 		Game/GameObjects/Tiles/SlabTile/SlabTile.cpp Game/GameObjects/Tiles/SlabTile/SlabTile.hpp
 		Game/GameObjects/Tiles/SolidTile/SolidTile.cpp Game/GameObjects/Tiles/SolidTile/SolidTile.hpp
+		Game/GameObjects/Tiles/SolidTile/EmptySolidTile.hpp Game/GameObjects/Tiles/SolidTile/EmptySolidTile.cpp
 		Game/GameObjects/Tiles/SlabTile/SlabTile.cpp Game/GameObjects/Tiles/SlabTile/SlabTile.hpp
 		Game/GameObjects/Enemies/Hawk/Hawk.cpp Game/GameObjects/Enemies/Hawk/Hawk.hpp
 		Game/GameObjects/Scenes/MainMenuScene/Background.cpp
