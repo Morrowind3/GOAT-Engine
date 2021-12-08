@@ -223,7 +223,6 @@ add_executable(Mount_Everestimate
 		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
 		Game/GameObjects/Scenes/SwitchSceneButtonScript.cpp Game/GameObjects/Scenes/SwitchSceneButtonScript.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameScript.hpp
-		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.hpp
 		Game/GameObjects/Player/PlayerMovementScript.cpp Game/GameObjects/Player/PlayerMovementScript.hpp
 		Game/GameObjects/Enemies/Hawk/HawkScript.cpp Game/GameObjects/Enemies/Hawk/HawkScript.hpp
@@ -272,6 +271,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/LoadSavesScript.cpp Game/GameObjects/Scenes/SaveScene/LoadSavesScript.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.hpp Game/Sprites/Player/Sprite_PlayerWin.cpp Game/Sprites/Player/Sprite_PlayerWin.hpp Game/Sprites/Player/Sprite_PlayerFront.cpp Game/Sprites/Player/Sprite_PlayerFront.hpp
 		Game/Sprites/Buttons/Sprite_PlayButton.cpp Game/Sprites/Buttons/Sprite_PlayButton.hpp Game/Sprites/Buttons/Sprite_DeleteButton.cpp Game/Sprites/Buttons/Sprite_DeleteButton.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.hpp Game/AudioSources/Music/Music_SmoothGroove.cpp Game/AudioSources/Music/Music_SmoothGroove.hpp
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

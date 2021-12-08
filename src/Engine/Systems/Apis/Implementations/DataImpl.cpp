@@ -122,10 +122,10 @@ std::vector<DataModel> DataImpl::getAll(const std::string& table, const std::str
     return results;
 }
 
-DataModel DataImpl::get(const std::string& table, const std::string& whereKey, const std::string& isValue ) {
+DataModel DataImpl::get(const std::string& table, const std::string& whereKey, const std::string& isValue) {
     std::string query = "SELECT * FROM " + table;
     if(!whereKey.empty() && !isValue.empty()){
-        query += " WHERE " + whereKey + " = '" + "'" + isValue + "'" + "';";
+        query += " WHERE " + whereKey + " = '" + isValue + "';";
     }
     sqlite3 *db;
     sqlite3_stmt* statement;

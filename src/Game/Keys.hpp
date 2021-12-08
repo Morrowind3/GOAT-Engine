@@ -43,6 +43,13 @@ namespace Keys {
     const std::string SAVE_MENU = "SAVE_MENU"; // Usage: Save menu level ID
 #pragma endregion
 
+#pragma region PlayerData
+	const std::string CURRENT_PLAYER_ID = "CURRENT_PLAYER_ID"; // Usage: ID of the player currently playing
+	const std::string ETAPPES_UNLOCKED = "ETAPPES_UNLOCKED"; // Usage: Amount of etappes unlocked
+	const std::string DIFFICULTY = "DIFFICULTY"; // Usage: Difficulty, which adjusts how quick the line goes
+	const std::string VOLUME = "VOLUME"; // Usage: Volume level
+#pragma endregion
+
 #pragma region Etappe Events
     const std::string ETAPPE = "ETAPPE"; // Usage: Etappe behavior ID on all etappe managers
     const std::string ETAPPE_PROGRESS = "ETAPPE_PROGRESS"; // Usage: Etappe progress script ID

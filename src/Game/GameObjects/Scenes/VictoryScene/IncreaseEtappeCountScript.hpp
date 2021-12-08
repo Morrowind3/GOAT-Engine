@@ -3,6 +3,7 @@
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
+#include "../../../../Engine/Systems/Apis/DataApi.hpp"
 
 using namespace Engine;
 
@@ -11,6 +12,8 @@ class IncreaseEtappeCountScript : public Script {
         explicit IncreaseEtappeCountScript(bool active);
         void onStart();
     private:
+        // Utilities
+        DataApi& _dataApi = DataApi::getInstance();
         Globals& _globals = Globals::getInstance();
 };
 
