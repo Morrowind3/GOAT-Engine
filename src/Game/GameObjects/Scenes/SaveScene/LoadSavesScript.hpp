@@ -21,6 +21,8 @@ class LoadSavesScript: public Script {
         // Constants
         const int HIGHEST_POSSIBLE_ETAPPE_UNLOCKED {6};
         const int SAVE_FILE_HEIGHT {120};
+        const int SAVE_FILE_TEXT_WIDTH {900};
+        const int SAVE_FILE_BUTTON_WIDTH {110};
 };
 
 

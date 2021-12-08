@@ -3,7 +3,7 @@
 #include "../../../../Sprites/Player/Sprite_PlayerWin.hpp"
 #include "../../../../Sprites/Player/Sprite_PlayerFront.hpp"
 
-SaveFile::SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, Transform transform, bool active): GameObject(transform,active) {
+SaveFile::SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, const Transform& transform, bool active): GameObject(transform,active) {
     // Save file avatar (Edmund)
     if (currentHeight >= mountEverestHeight) { // All etappes unlocked avatar
         sprites.insert(std::make_pair(Keys::SAVE_AVATAR, Sprite_PlayerWin(true)));
@@ -20,19 +20,15 @@ SaveFile::SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, in
         "Fonts/Kenney_Thick.ttf",24, Color{0,0,0,255}, saveFileIdTransform, true}));
 
     // Unlocked text
-    Transform unlockedTransform {saveFileIdTransform};
-    unlockedTransform.position.x += 100;
-    text.insert(std::make_pair(Keys::SAVE_ID, Text {"Ascended " + std::to_string(currentHeight) + "m",
-        "Fonts/Kenney_Thick.ttf",12, Color{0,0,0,255}, unlockedTransform, true}));
+    Transform unlockedTransform {transform};
+    unlockedTransform.scaleWidth = unlockedTransform.scaleHeight /= 3.0;
+    unlockedTransform.position.x += 450;
+    text.insert(std::make_pair(Keys::SAVE_UNLOCKED, Text {"Ascended " + std::to_string(currentHeight) + "m",
+        "Fonts/Kenney_Thick.ttf",24, Color{0,0,0,255}, unlockedTransform, true}));
 
     // Score text
     Transform scoreTransform {unlockedTransform};
     scoreTransform.position.y += 50;
-    text.insert(std::make_pair(Keys::SAVE_ID, Text {"Total score " + std::to_string(score),
-        "Fonts/Kenney_Thick.ttf",12, Color{0,0,0,255}, scoreTransform, true}));
-
-    // Play button
-
-    // Delete button
-
+    text.insert(std::make_pair(Keys::SAVE_SCORE, Text {"Total score " + std::to_string(score),
+        "Fonts/Kenney_Thick.ttf",24, Color{0,0,0,255}, scoreTransform, true}));
 }

@@ -7,7 +7,6 @@ Background::Background(Transform transform, bool active) : GameObject(transform,
             "Fonts/Kenney_Thick.ttf",
             60,
             {0,0,0,255},
-            //Transform{{250,150},LAYER::UI,0,1,1},
             Transform{{425,150},transform.layerGroup,1,0,1,1},
             true}));
     audioSources.insert(std::make_pair("Music",AudioSource{"Music/Journey.mp3", AudioSourceType::MUSIC, true, true}));

@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_EXITBUTTON_HPP
 #define GOAT_ENGINE_EXITBUTTON_HPP
 
-#include "../../../../../Engine/SceneManager.hpp"
+#include "../../../../../Engine/API/GameObjects/GameObject.hpp"
 
 using namespace Engine;
 

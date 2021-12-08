@@ -49,6 +49,7 @@ void RendererImpl::loadTexture(const std::string& fileName) {
 }
 
 void RendererImpl::loadFont(const std::string& fileName) {
+    if (fileName.empty()) return; // Ignore an invalid font
     try {
         _fonts->store(fileName);
     } catch (const std::runtime_error& error) {
@@ -73,6 +74,7 @@ void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Tr
 }
 
 void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
+    if (fontName.empty()) return; // Ignore text with an invalid font
     auto& font = _fonts->get(fontName);
     std::shared_ptr<Texture> texture = font.text(text,size,color);
     _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});

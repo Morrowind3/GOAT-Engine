@@ -270,7 +270,8 @@ add_executable(Mount_Everestimate
         Game/Scenes/Menus/SaveScene.cpp Game/Scenes/Menus/SaveScene.hpp
         Game/GameObjects/Scenes/SaveScene/SavesManager.cpp Game/GameObjects/Scenes/SaveScene/SavesManager.hpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.cpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.hpp
 		Game/GameObjects/Scenes/SaveScene/LoadSavesScript.cpp Game/GameObjects/Scenes/SaveScene/LoadSavesScript.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.hpp Game/Sprites/Player/Sprite_PlayerWin.cpp Game/Sprites/Player/Sprite_PlayerWin.hpp Game/Sprites/Player/Sprite_PlayerFront.cpp Game/Sprites/Player/Sprite_PlayerFront.hpp
-		)
+		Game/Sprites/Buttons/Sprite_PlayButton.cpp Game/Sprites/Buttons/Sprite_PlayButton.hpp Game/Sprites/Buttons/Sprite_DeleteButton.cpp Game/Sprites/Buttons/Sprite_DeleteButton.hpp
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton.hpp Game/AudioSources/Music/Music_SmoothGroove.cpp Game/AudioSources/Music/Music_SmoothGroove.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

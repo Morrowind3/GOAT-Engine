@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class SaveFile: public GameObject {
-    public: SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, Transform transform, bool active);
+    public: SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, const Transform& transform, bool active);
 };
 
 

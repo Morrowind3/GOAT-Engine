@@ -2,6 +2,8 @@
 
 #include "../../../Layers.hpp"
 #include "SaveFile/SaveFile.hpp"
+#include "SaveFile/Buttons/PlaySaveButton.hpp"
+#include "SaveFile/Buttons/DeleteSaveButton.hpp"
 
 LoadSavesScript::LoadSavesScript(Scene& scene, bool active): Script(active), _scene{scene} {
 }
@@ -20,7 +22,7 @@ static int etappesUnlockedToAltitude(int etappesUnlocked) {
 
 /// Get all saves and display them on screen
 void LoadSavesScript::onStart() {
-    Transform saveFilePosition {{50,50}, LAYER::UI, 0, 0, 4, 4};
+    Transform saveFilePosition {{50,150}, LAYER::UI, 0, 0, 4, 4};
     auto saves = _data.getAll("Players", "id", false);
     for(auto& save: saves) {
         // Extract information from column
@@ -30,8 +32,15 @@ void LoadSavesScript::onStart() {
         int maxAltitude = etappesUnlockedToAltitude(HIGHEST_POSSIBLE_ETAPPE_UNLOCKED);
         int score = 0; // TODO: Score from the high score table
 
-        // Add save file to scene
+        // Add save file and associated buttons to scene
         _scene.gameObjects.emplace_back(std::make_shared<SaveFile>(saveId, altitude, maxAltitude, score, saveFilePosition, true));
+        saveFilePosition.position.x += SAVE_FILE_TEXT_WIDTH;
+        saveFilePosition.scaleWidth = saveFilePosition.scaleHeight -= 1;
+        _scene.gameObjects.emplace_back(std::make_shared<PlaySaveButton>(saveId,saveFilePosition,true));
+        saveFilePosition.position.x += SAVE_FILE_BUTTON_WIDTH;
+        _scene.gameObjects.emplace_back(std::make_shared<DeleteSaveButton>(saveId,saveFilePosition,true));
+        saveFilePosition.position.x -= SAVE_FILE_TEXT_WIDTH + SAVE_FILE_BUTTON_WIDTH;
         saveFilePosition.position.y += SAVE_FILE_HEIGHT;
+        saveFilePosition.scaleWidth = saveFilePosition.scaleHeight += 1;
     }
 }
