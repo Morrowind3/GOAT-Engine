@@ -258,7 +258,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/enemies/bird/bird_idle_2.png", transform, true));
             break;
         case 45:
-            _etappe.gameObjects.emplace_back(std::make_shared<Goat>(transform, true));
+            this->makeGoat(transform);
             break;
         case 46:
             _etappe.gameObjects.emplace_back(std::make_shared<Snake>(transform, true));
@@ -361,4 +361,14 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/tile_not_found.png", transform, true));
             break;
     }
+}
+
+void MountEverestimateLevelConstructor::makeGoat(Transform& transform) {
+
+//    std::shared_ptr<GameObject> goat = _etappe.gameObjects.emplace_back(std::make_shared<Goat>(transform, true));
+//    _etappe.gameObjects.emplace_back(std::make_shared<GoatSensor>(*goat, transform, true));
+
+//    std::shared_ptr<Goat> goat = std::make_shared<Goat>(transform, true);
+//    _etappe.gameObjects.emplace_back(goat);
+//    _etappe.gameObjects.emplace_back(std::make_shared<GoatSensor>(*goat, transform, true));
 }

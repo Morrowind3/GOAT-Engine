@@ -17,6 +17,8 @@ class MountEverestimateLevelConstructor {
         void placeTile(int index, Transform transform);
         const int _tileSize, _columns, _rows;
         const double _scale; // Essentially an int, but needs to be a double for proper calculations
+
+        void makeGoat(Transform& transform);
 };
 
 
