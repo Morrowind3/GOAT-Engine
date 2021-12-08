@@ -2,8 +2,8 @@
 
 #include "../../../Layers.hpp"
 #include "SaveFile/SaveFile.hpp"
-#include "SaveFile/Buttons/PlaySaveButton.hpp"
-#include "SaveFile/Buttons/DeleteSaveButton.hpp"
+#include "SaveFile/Buttons/PlaySaveButton/PlaySaveButton.hpp"
+#include "SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.hpp"
 
 LoadSavesScript::LoadSavesScript(Scene& scene, bool active): Script(active), _scene{scene} {
 }

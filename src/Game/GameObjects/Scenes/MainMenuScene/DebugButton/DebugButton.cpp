@@ -1,5 +1,4 @@
 #include "DebugButton.hpp"
-#include "../ExitButton/QuitGameBehavior.hpp"
 #include "../../../../Keys.hpp"
 #include "../../../../Layers.hpp"
 #include "ToggleDebugBehavior.hpp"

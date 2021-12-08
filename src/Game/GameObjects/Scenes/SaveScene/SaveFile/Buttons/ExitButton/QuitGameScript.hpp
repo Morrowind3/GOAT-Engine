@@ -1,9 +1,9 @@
 #ifndef GOAT_ENGINE_QUITGAMESCRIPT_HPP
 #define GOAT_ENGINE_QUITGAMESCRIPT_HPP
 
-#include "../../../../../Engine/API/GameObjects/GameObject.hpp"
-#include "../../../../../Engine/Utilities/EngineCalls.hpp"
-#include "../../../../../Engine/Utilities/Debug.hpp"
+#include "../../../../../../../Engine/API/GameObjects/GameObject.hpp"
+#include "../../../../../../../Engine/Utilities/EngineCalls.hpp"
+#include "../../../../../../../Engine/Utilities/Debug.hpp"
 
 using namespace Engine;
 

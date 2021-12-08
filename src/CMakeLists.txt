@@ -136,7 +136,7 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
 		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
-		)
+        Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -170,7 +170,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Tiles/SlabTile/SlabTile.cpp Game/GameObjects/Tiles/SlabTile/SlabTile.hpp
 		Game/GameObjects/Enemies/Hawk/Hawk.cpp Game/GameObjects/Enemies/Hawk/Hawk.hpp
 		Game/GameObjects/Scenes/MainMenuScene/Background.cpp
-		Game/GameObjects/Scenes/MainMenuScene/ExitButton/ExitButton.cpp
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/ExitButton.cpp
 		Game/GameObjects/Scenes/MainMenuScene/PlayButton.cpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarker.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeSelectionBackground.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeSelectionBackground.hpp
@@ -190,7 +190,7 @@ add_executable(Mount_Everestimate
 		# Behaviors
 		Game/GameObjects/Scenes/Etappes/EtappeBehavior.cpp Game/GameObjects/Scenes/Etappes/EtappeBehavior.hpp
 		Game/GameObjects/Player/PlayerBehavior.hpp Game/GameObjects/Player/PlayerBehavior.cpp
-		Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameBehavior.hpp Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameBehavior.cpp
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameBehavior.cpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerBehavior.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerBehavior.hpp
 		Game/GameObjects/Scenes/SwitchSceneButtonBehavior.hpp Game/GameObjects/Scenes/SwitchSceneButtonBehavior.cpp
 		Game/GameObjects/Enemies/Hawk/HawkBehavior.hpp Game/GameObjects/Enemies/Hawk/HawkBehavior.cpp
@@ -222,7 +222,7 @@ add_executable(Mount_Everestimate
 		Game/AudioSources/Sounds/Sound_Oof.cpp Game/AudioSources/Sounds/Sound_Oof.hpp 
 		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
 		Game/GameObjects/Scenes/SwitchSceneButtonScript.cpp Game/GameObjects/Scenes/SwitchSceneButtonScript.hpp
-		Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameScript.cpp Game/GameObjects/Scenes/MainMenuScene/ExitButton/QuitGameScript.hpp
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameScript.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeProgress.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.hpp
 		Game/GameObjects/Player/PlayerMovementScript.cpp Game/GameObjects/Player/PlayerMovementScript.hpp
@@ -271,7 +271,8 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Scenes/SaveScene/SavesManager.cpp Game/GameObjects/Scenes/SaveScene/SavesManager.hpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.cpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.hpp
 		Game/GameObjects/Scenes/SaveScene/LoadSavesScript.cpp Game/GameObjects/Scenes/SaveScene/LoadSavesScript.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.hpp Game/Sprites/Player/Sprite_PlayerWin.cpp Game/Sprites/Player/Sprite_PlayerWin.hpp Game/Sprites/Player/Sprite_PlayerFront.cpp Game/Sprites/Player/Sprite_PlayerFront.hpp
 		Game/Sprites/Buttons/Sprite_PlayButton.cpp Game/Sprites/Buttons/Sprite_PlayButton.hpp Game/Sprites/Buttons/Sprite_DeleteButton.cpp Game/Sprites/Buttons/Sprite_DeleteButton.hpp
-		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton.hpp Game/AudioSources/Music/Music_SmoothGroove.cpp Game/AudioSources/Music/Music_SmoothGroove.hpp)
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.hpp Game/AudioSources/Music/Music_SmoothGroove.cpp Game/AudioSources/Music/Music_SmoothGroove.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
