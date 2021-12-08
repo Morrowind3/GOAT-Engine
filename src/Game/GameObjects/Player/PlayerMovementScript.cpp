@@ -1,6 +1,5 @@
 #include "PlayerMovementScript.hpp"
 #include "../../Keys.hpp"
-#include <iostream>
 
 PlayerMovementScript::PlayerMovementScript(Object_Player& player, bool active) : Script(active), _player{player} {
 }
@@ -29,7 +28,7 @@ void PlayerMovementScript::onUpdate(double deltaTime) {
 /// When colliding with a tile, Edmund has stopped jumping
 /// Indirectly allows him to climb a steep wall by colliding with the side of the wall TODO: Only allow this for climbing a wall
 void PlayerMovementScript::onTriggerEnter2D(GameObject& other) {
-    if (other.hasTag(Keys::TILE)) {
+    if (other.hasTag(Keys::TILE) && !other.hasTag(Keys::WALL)) {
         _doubleJumpState = _jumpState = false;
     }
 
@@ -80,7 +79,7 @@ void PlayerMovementScript::pickupTrash(GameObject& other) {
 }
 
 bool PlayerMovementScript::allowedToDoubleJump(double deltaTime) const {
-    return !_doubleJumpState && _player.transform.position.y - _yPositionLastFrame < DOUBLE_JUMP_TRIGGER * deltaTime;
+    return !_doubleJumpState;
 }
 
 void PlayerMovementScript::doubleJump(double deltaTime) {

@@ -12,6 +12,7 @@
 #include "GameObjects/Enemies/Snake/Snake.hpp"
 #include "GameObjects/Enemies/Snowball/Snowball.hpp"
 #include "GameObjects/WorldObjects/Trash/Trash.hpp"
+#include "GameObjects/Tiles/WallTile/WallTile.hpp"
 
 #include <regex>
 #include <fstream>
@@ -102,7 +103,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/grass/grass_slab_normal.png", transform, true));
             break;
         case 3:
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+            _etappe.gameObjects.emplace_back(std::make_shared<WallTile>(
                     "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
             break;
         case 4:
@@ -142,7 +143,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/lava/lava_slab_normal.png", transform, true));
             break;
         case 12:
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+            _etappe.gameObjects.emplace_back(std::make_shared<WallTile>(
                     "Sprites/landscapes/lava/lava_ground_empty.png", transform, true));
             break;
         case 13:
@@ -182,7 +183,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/snow/snow_slab_normal.png", transform, true));
             break;
         case 21:
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+            _etappe.gameObjects.emplace_back(std::make_shared<WallTile>(
                     "Sprites/landscapes/snow/snow_ground_empty.png", transform, true));
             break;
         case 22:
@@ -222,7 +223,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/stone/stone_slab_normal.png", transform, true));
             break;
         case 30:
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
+            _etappe.gameObjects.emplace_back(std::make_shared<WallTile>(
                     "Sprites/landscapes/stone/stone_ground_empty.png", transform, true));
             break;
         case 31:
