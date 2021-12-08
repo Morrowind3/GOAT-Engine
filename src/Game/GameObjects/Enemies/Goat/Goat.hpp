@@ -2,7 +2,6 @@
 #define GOAT_ENGINE_GOAT_HPP
 
 #include "../../../../Engine/API/GameObjects/GameObject.hpp"
-#include "GoatSensor/GoatSensor.hpp"
 
 using namespace Engine;
 
