@@ -8,7 +8,7 @@
 using namespace Engine;
 
 class GameStateManager : public GameObject {
-    public: GameStateManager(SceneManager& sceneManager, const std::shared_ptr<Timer>& timer, bool active);
+    public: GameStateManager(const std::shared_ptr<Timer>& timer, bool active);
 };
 
 

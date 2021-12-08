@@ -7,17 +7,21 @@
 #include "../../GameObjects/Scenes/MainMenuScene/ExitButton/ExitButton.hpp"
 #include "../../Layers.hpp"
 
-MainMenuScene::MainMenuScene(SceneManager& manager) : SceneTemplate_Menu(Keys::MAIN_MENU) {
+MainMenuScene::MainMenuScene() : SceneTemplate_Menu(Keys::MAIN_MENU) {
+    // Cosmetics
     gameObjects.emplace_back(std::make_shared<Background>(
-            manager, Transform{Point{0, -50}, 0, 0,0, 1, 1}, true));
-    gameObjects.emplace_back(std::make_shared<PlayButton>(
-            manager, Transform{Point{800, 350}, LAYER::UI, 0, 0, 5, 5}, true));
-    gameObjects.emplace_back(std::make_shared<DebugButton>( // Temporary placement so it looks nicer
-            manager, Transform{Point{825, 525}, LAYER::UI, 0,0, 4, 4}, true));
-    gameObjects.emplace_back(std::make_shared<ExitButton>( // Temporary placement so it looks nicer
-            manager, Transform{Point{825, 600}, LAYER::UI, 0,0, 4, 4}, true));
+            Transform{Point{0, -50}, 0, 0,0, 1, 1}, true));
     gameObjects.emplace_back(std::make_shared<Hawk>(
             Transform{Point{200, 300}, LAYER::CHARACTER, 0, 0, 4, 4}, true));
+
+    // Buttons
+    gameObjects.emplace_back(std::make_shared<PlayButton>(
+            Transform{Point{800, 350}, LAYER::UI, 0, 0, 5, 5}, true));
+    gameObjects.emplace_back(std::make_shared<DebugButton>(
+            Transform{Point{825, 525}, LAYER::UI, 0,0, 4, 4}, true));
+    gameObjects.emplace_back(std::make_shared<ExitButton>(
+            Transform{Point{825, 600}, LAYER::UI, 0,0, 4, 4}, true));
+
     // TODO: Re-enable buttons when they do what they're supposed to do
     /*
     gameObjects.emplace_back(std::make_shared<DebugButton>(

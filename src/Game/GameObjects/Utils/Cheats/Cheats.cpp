@@ -3,7 +3,7 @@
 #include "../../../Keys.hpp"
 #include "../../../Layers.hpp"
 
-Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Object_Player& player, bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
+Cheats::Cheats(Scene& scene, Object_Player& player, bool active) : GameObject(Transform{Point{0, 0}, LAYER::UI}, active) {
     // Show text to inform user (every line is a component)
     std::string font{"Fonts/Kenney_Thick.ttf"};
     uint8_t size{12};
@@ -40,7 +40,7 @@ Cheats::Cheats(SceneManager& sceneManager, Scene& scene, Object_Player& player, 
     audioSources.insert(std::make_pair(Keys::VICTORY_SCREEN, AudioSource{"Sounds/BeatGame.ogg",AudioSourceType::SAMPLE, true}));
 
     // Cheats
-    behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(sceneManager, scene, player, this->text,
+    behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<CheatsBehavior>(scene, player, this->text,
      audioSources.at(Keys::SPEED_UP), audioSources.at(Keys::SLOW_DOWN), audioSources.at(Keys::RESET_SPEED), audioSources.at(Keys::ERROR),
      audioSources.at(Keys::VICTORY_SCREEN), true)));
 }

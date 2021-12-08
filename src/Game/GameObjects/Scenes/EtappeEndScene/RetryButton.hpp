@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class RetryButton : public GameObject {
-    public: RetryButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: RetryButton(Transform transform, bool active);
 };
 
 

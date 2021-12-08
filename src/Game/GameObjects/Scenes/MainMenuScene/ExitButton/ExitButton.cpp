@@ -3,7 +3,7 @@
 #include "../../../../Keys.hpp"
 #include "../../../../Layers.hpp"
 
-ExitButton::ExitButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
+ExitButton::ExitButton(Transform transform, bool active) : GameObject(transform, active) {
 
     Transform textTransform{
             Point{transform.position.x + 60, transform.position.y + 20},

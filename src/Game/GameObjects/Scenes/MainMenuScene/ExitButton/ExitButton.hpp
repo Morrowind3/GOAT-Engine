@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class ExitButton : public GameObject {
-    public: ExitButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: ExitButton(Transform transform, bool active);
 };
 
 

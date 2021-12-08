@@ -1,6 +1,6 @@
 #include "Background.hpp"
 
-Background::Background(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
+Background::Background(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair("Background", Sprite{"Sprites/backgrounds/background_mainmenu.png", true}));
     text.insert(std::make_pair("Title", Text{
             "Mount Everestimate",

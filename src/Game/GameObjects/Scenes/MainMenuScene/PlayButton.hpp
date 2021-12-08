@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class PlayButton : public GameObject {
-    public: PlayButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: PlayButton(Transform transform, bool active);
 };
 
 #endif //GOAT_ENGINE_PLAYBUTTON_HPP

@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class ScoreboardButton : public GameObject {
-    public: ScoreboardButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: ScoreboardButton(Transform transform, bool active);
 };
 
 #endif //GOAT_ENGINE_SCOREBOARDBUTTON_HPP

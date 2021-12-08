@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class BackToEtappeSelectionButton: public GameObject {
-    public: BackToEtappeSelectionButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: BackToEtappeSelectionButton(Transform transform, bool active);
 };
 
 

@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class SelectEtappeButton : public GameObject {
-    public: SelectEtappeButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: SelectEtappeButton(Transform transform, bool active);
 };
 
 

@@ -4,7 +4,7 @@
 #include "../../../../Layers.hpp"
 #include "ToggleDebugBehavior.hpp"
 
-DebugButton::DebugButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active) {
+DebugButton::DebugButton(Transform transform, bool active) : GameObject(transform, active) {
 
     Transform textTransform{
             Point{transform.position.x + 60, transform.position.y + 20},

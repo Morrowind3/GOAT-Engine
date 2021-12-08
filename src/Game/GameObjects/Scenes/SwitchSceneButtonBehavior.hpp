@@ -7,8 +7,8 @@ using namespace Engine;
 
 class SwitchSceneButtonBehavior : public Behavior {
     public:
-        SwitchSceneButtonBehavior(const std::string& levelName, SceneManager& sceneManager, AudioSource& nopeSound, bool active);
-        SwitchSceneButtonBehavior(const std::string& levelName, SceneManager& sceneManager, bool active);
+        SwitchSceneButtonBehavior(const std::string& levelName, AudioSource& nopeSound, bool active);
+        SwitchSceneButtonBehavior(const std::string& levelName, bool active);
 };
 
 

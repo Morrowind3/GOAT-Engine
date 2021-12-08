@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class SettingsButton : public GameObject {
-    public: SettingsButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: SettingsButton(Transform transform, bool active);
 };
 
 #endif //GOAT_ENGINE_SETTINGSBUTTON_HPP

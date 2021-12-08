@@ -7,8 +7,7 @@
 using namespace Engine;
 
 class EtappeFour : public SharedEtappe {
-public:
-    explicit EtappeFour(SceneManager& manager);
+    public: EtappeFour();
 };
 
 

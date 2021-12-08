@@ -4,7 +4,7 @@
 #include "../../Layers.hpp"
 #include "../../GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneText.hpp"
 
-EtappeOne::EtappeOne(SceneManager& manager) : SharedEtappe(Keys::ETAPPE_ONE,manager, {999999,999999}, // TODO: Dimensions
+EtappeOne::EtappeOne() : SharedEtappe(Keys::ETAPPE_ONE, {999999,999999}, // TODO: Dimensions
                                                            "Maps/Etappe1.map", 21, 50, 250, 4, 0, -3000) {
     gameObjects.emplace_back(std::make_shared<EtappeOneManager>(
             Transform{Point{0, -242}, LAYER::PARALLAX_BACKGROUND, 0,0, 20, 20}, true));

@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class MainMenuScene : public SceneTemplate_Menu {
-    public: explicit MainMenuScene(SceneManager& manager);
+    public: MainMenuScene();
 };
 
 #endif //GOAT_ENGINE_MAINMENUSCENE_HPP
