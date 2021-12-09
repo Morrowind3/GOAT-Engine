@@ -20,16 +20,16 @@ void HawkScript::onUpdate(double deltaTime) {
 void HawkScript::updateDirection() {
 
     //if going up, and reaching original height, resume idling
-    if(_direction == UP && _self.transform.position.y <= _startingPos.y) {
+    if (_direction == UP && _self.transform.position.y <= _startingPos.y) {
         _direction = RIGHT;
         _circledAfterDiveCounter = 0;
         //safeguard so hawk cant dive too deep
-    } else if(_direction == DOWN && (_self.transform.position.y - _startingPos.y > MAX_DIVE_DEPTH)) {
+    } else if (_direction == DOWN && (_self.transform.position.y - _startingPos.y > MAX_DIVE_DEPTH)) {
         _direction = UP;
     };
 
     //if idling and has circled x times, DIVE_CHANGE change to dive
-    if((_direction == LEFT || _direction == RIGHT) && _circledAfterDiveCounter >= CIRCLES_BEFORE_DIVE) {
+    if ((_direction == LEFT || _direction == RIGHT) && _circledAfterDiveCounter >= CIRCLES_BEFORE_DIVE) {
         if (HawkScript::getRandomBetween(0, 1000) < DIVE_CHANGE) {
             //TODO Play sound when diving
             _direction = DOWN;
@@ -69,10 +69,10 @@ void HawkScript::updateSprite() {
 
     //TODO Animator objects
 
-    if(_direction == LEFT) _self.transform.flip = FLIP::FLIP_NONE;
-    if(_direction == RIGHT) _self.transform.flip = FLIP::FLIP_HORIZONTAL;
+    if (_direction == LEFT) _self.transform.flip = FLIP::FLIP_NONE;
+    if (_direction == RIGHT) _self.transform.flip = FLIP::FLIP_HORIZONTAL;
 
-    if(_direction == LEFT || _direction == RIGHT) {
+    if (_direction == LEFT || _direction == RIGHT) {
         _self.sprites.at(Keys::ATTACK1).active = false;
 
         if (_updateCounter % 40 == 1) {
@@ -85,12 +85,12 @@ void HawkScript::updateSprite() {
             }
         }
     }
-    if(_direction == DOWN) {
+    if (_direction == DOWN) {
         _self.sprites.at(Keys::MOVE1).active = false;
         _self.sprites.at(Keys::MOVE2).active = false;
         _self.sprites.at(Keys::ATTACK1).active = true;
     }
-    if(_direction == UP) {
+    if (_direction == UP) {
         _self.sprites.at(Keys::ATTACK1).active = false;
 
         if (_updateCounter % 10 == 1) {
