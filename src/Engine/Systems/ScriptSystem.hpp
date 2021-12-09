@@ -24,6 +24,8 @@ namespace Engine {
             [[nodiscard]] bool buttonPressed(const Rectangle& buttonDimensions);
             void runPressedButtons(std::vector<std::shared_ptr<GameObject>>& activeObjects);
             static void runOnDestroys(std::vector<std::shared_ptr<GameObject>>& activeObjects);
+            void markObjectsForDestruction();
+            void destroyObjectsMarkedForDestruction();
     };
 }
 

@@ -24,25 +24,6 @@ void setupDatabase() {
     builder.addForeignKey("Players", "id", "INTEGER", false, false);
 
     api.runMigrations(builder.getMigrationQueries());
-
-    // TODO: Delete this: this is debug info
-    DataModel settings1("Players");
-    settings1.setValue("EtappesUnlocked", "1");
-    settings1.setValue("Difficulty", "100");
-    settings1.setValue("Volume", "100");
-    api.insert(settings1);
-
-    DataModel settings2("Players");
-    settings2.setValue("EtappesUnlocked", "5");
-    settings2.setValue("Difficulty", "100");
-    settings2.setValue("Volume", "100");
-    api.insert(settings2);
-
-    DataModel settings3("Players");
-    settings3.setValue("EtappesUnlocked", "6");
-    settings3.setValue("Difficulty", "100");
-    settings3.setValue("Volume", "100");
-    api.insert(settings3);
 }
 
 int main(int argc, char* args[]) {

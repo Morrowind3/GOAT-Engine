@@ -4,6 +4,8 @@
 #include "../../../../Sprites/Player/Sprite_PlayerFront.hpp"
 
 SaveFile::SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, const Transform& transform, bool active): GameObject(transform,active) {
+    tags.insert(std::make_pair(Keys::SAVE_FILE,true)); // Identifiable as save file
+
     // Save file avatar (Edmund)
     if (currentHeight >= mountEverestHeight) { // All etappes unlocked avatar
         sprites.insert(std::make_pair(Keys::SAVE_AVATAR, Sprite_PlayerWin(true)));

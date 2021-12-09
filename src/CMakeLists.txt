@@ -216,11 +216,11 @@ add_executable(Mount_Everestimate
 		Game/Sprites/Player/Sprite_PlayerJump.cpp Game/Sprites/Player/Sprite_PlayerJump.hpp
 		Game/Sprites/Player/Sprite_PlayerMove2.cpp Game/Sprites/Player/Sprite_PlayerMove2.hpp
 
-		Game/AudioSources/Sounds/Sound_Jump.cpp Game/AudioSources/Sounds/Sound_Jump.hpp
-		Game/AudioSources/Sounds/Sound_Walk.cpp Game/AudioSources/Sounds/Sound_Walk.hpp
-		Game/AudioSources/Sounds/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Sound_WalkAlt.hpp 
-		Game/AudioSources/Sounds/Sound_Oof.cpp Game/AudioSources/Sounds/Sound_Oof.hpp 
-		Game/AudioSources/Sounds/Sound_Death.cpp Game/AudioSources/Sounds/Sound_Death.hpp
+		Game/AudioSources/Sounds/Player/Sound_Jump.cpp Game/AudioSources/Sounds/Player/Sound_Jump.hpp
+		Game/AudioSources/Sounds/Player/Sound_Walk.cpp Game/AudioSources/Sounds/Player/Sound_Walk.hpp
+		Game/AudioSources/Sounds/Player/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Player/Sound_WalkAlt.hpp
+		Game/AudioSources/Sounds/Player/Sound_Oof.cpp Game/AudioSources/Sounds/Player/Sound_Oof.hpp
+		Game/AudioSources/Sounds/Player/Sound_Death.cpp Game/AudioSources/Sounds/Player/Sound_Death.hpp
 		Game/GameObjects/Scenes/SwitchSceneButtonScript.cpp Game/GameObjects/Scenes/SwitchSceneButtonScript.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/ExitButton/QuitGameScript.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.cpp Game/GameObjects/Scenes/EtappeSelectionScene/EtappeMarkerConfigurator.hpp
@@ -272,6 +272,7 @@ add_executable(Mount_Everestimate
 		Game/Sprites/Buttons/Sprite_PlayButton.cpp Game/Sprites/Buttons/Sprite_PlayButton.hpp Game/Sprites/Buttons/Sprite_DeleteButton.cpp Game/Sprites/Buttons/Sprite_DeleteButton.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.hpp Game/AudioSources/Music/Music_SmoothGroove.cpp Game/AudioSources/Music/Music_SmoothGroove.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.hpp
+        Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Sprites/Buttons/Sprite_UndoButton.cpp Game/Sprites/Buttons/Sprite_UndoButton.hpp Game/AudioSources/Sounds/Menus/Sound_Delete.cpp Game/AudioSources/Sounds/Menus/Sound_Delete.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

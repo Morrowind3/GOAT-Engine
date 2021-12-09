@@ -63,6 +63,7 @@ namespace Keys {
 #pragma endregion
 
 #pragma region SaveMenu
+	const std::string SAVE_FILE = "SAVE_FILE";
 	const std::string SAVE_ID = "SAVE_ID";
 	const std::string SAVE_AVATAR = "SAVE_AVATAR";
 	const std::string SAVE_UNLOCKED = "SAVE_UNLOCKED";

@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_SOUND_DEATH_HPP
 #define GOAT_ENGINE_SOUND_DEATH_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
+#include "../../../../Engine/API/GameObjects/GameComponents/Audio/AudioSource.hpp"
 
 using namespace Engine;
 

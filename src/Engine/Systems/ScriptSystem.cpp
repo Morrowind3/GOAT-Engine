@@ -17,12 +17,14 @@ void ScriptSystem::onLoadScene(std::shared_ptr<Scene> scene) {
 
 void ScriptSystem::onFrameTick(const double deltaTime) {
     _input.update();
+    destroyObjectsMarkedForDestruction();
     _physics.runCollisionScripts();
     auto active = activeObjects();
     runOnStarts(active);
     runPressedButtons(active);
     runOnDestroys(active);
     runOnUpdates(active, deltaTime);
+    markObjectsForDestruction();
 }
 
 void ScriptSystem::onCloseEngine() {
@@ -65,9 +67,24 @@ void ScriptSystem::runPressedButtons(std::vector<std::shared_ptr<GameObject>>& a
 
 void ScriptSystem::runOnDestroys(std::vector<std::shared_ptr<GameObject>>& activeObjects) {
     for (auto& gameObject: activeObjects) {
-        for (auto& behavior: gameObject->behaviors) {
-            if(behavior.second->active) behavior.second->onDestroy();
+        if (gameObject->queueForDestruction) {
+            for (auto& behavior: gameObject->behaviors) {
+                if(behavior.second->active) behavior.second->onDestroy();
+            }
         }
+    }
+}
+
+void ScriptSystem::markObjectsForDestruction() {
+    for (auto& gameObject: _scene->gameObjects) {
+        if (gameObject->queueForDestruction) gameObject->_destroyNextTick = true;
+    }
+}
+
+void ScriptSystem::destroyObjectsMarkedForDestruction() {
+    for (int position = 0; position < _scene->gameObjects.size(); ++position) {
+        auto& gameObject = _scene->gameObjects.at(position);
+        if (gameObject->_destroyNextTick) _scene->gameObjects.erase(_scene->gameObjects.begin()+position);
     }
 }
 

@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class DeleteSaveButton: public GameObject {
-    public: DeleteSaveButton(int saveNumber, const Transform& transform, bool active);
+    public: DeleteSaveButton(int saveNumber, Script& loadSavesScript, const Transform& transform, bool active);
 };
 
 

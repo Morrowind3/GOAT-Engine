@@ -15,7 +15,7 @@
 #include "GameComponents/Collision/CircleCollider.hpp"
 
 namespace Engine {
-
+    class ScriptSystem; // Friend class link
     struct GameObject {
         explicit GameObject(Transform transform, bool active);
         bool active;
@@ -33,6 +33,9 @@ namespace Engine {
         std::map<std::string,Sprite> sprites{};
         std::map<std::string,Animator> animators{};
         std::map<std::string,AudioSource> audioSources{};
+        private:
+            friend class Engine::ScriptSystem;
+            bool _destroyNextTick {false}; // Set by the script system so that onDestroy code runs properly
     };
 }
 
