@@ -1,6 +1,6 @@
 #include "ExitButton.hpp"
 #include "QuitGameBehavior.hpp"
-#include "../../../../../../Keys.hpp"
+#include "../../../../../Keys.hpp"
 
 ExitButton::ExitButton(Transform transform, bool active) : GameObject(transform, active) {
 
@@ -11,7 +11,7 @@ ExitButton::ExitButton(Transform transform, bool active) : GameObject(transform,
     buttons.insert(std::make_pair(Keys::QUIT_GAME, Button{
             Text{"Exit", "Fonts/Kenney_Thick.ttf", 16, {255, 255, 255, 255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/button_small_red.png", active},
-            Rectangle{{transform.position.x, transform.position.y}, 200, 80},
+            Rectangle{{transform.position.x, transform.position.y}, 195, 65},
             std::make_shared<QuitGameBehavior>(true),
             true}));
 };

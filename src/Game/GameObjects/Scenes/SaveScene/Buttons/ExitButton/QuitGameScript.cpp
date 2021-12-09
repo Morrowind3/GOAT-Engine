@@ -1,6 +1,6 @@
 #include "QuitGameScript.hpp"
-#include "../../../../../../../Engine/Utilities/Input.hpp"
-#include "../../../../../../../Engine/Utilities/Debug.hpp"
+#include "../../../../../../Engine/Utilities/Input.hpp"
+#include "../../../../../../Engine/Utilities/Debug.hpp"
 
 QuitGameScript::QuitGameScript(bool active) : Script(active) {
 }

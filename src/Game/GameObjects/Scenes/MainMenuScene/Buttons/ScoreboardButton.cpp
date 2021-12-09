@@ -1,7 +1,7 @@
 #include "ScoreboardButton.hpp"
-#include "../SwitchSceneButtonBehavior.hpp"
-#include "../../../Keys.hpp"
-#include "../../../Layers.hpp"
+#include "../../SwitchSceneButtonBehavior.hpp"
+#include "../../../../Keys.hpp"
+#include "../../../../Layers.hpp"
 
 ScoreboardButton::ScoreboardButton(Transform transform, bool active) : GameObject(transform, active) {
 

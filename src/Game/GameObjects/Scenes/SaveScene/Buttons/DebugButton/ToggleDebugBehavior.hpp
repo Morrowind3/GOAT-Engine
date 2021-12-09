@@ -2,7 +2,7 @@
 #define GOAT_ENGINE_TOGGLEDEBUGBEHAVIOR_HPP
 
 
-#include "../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "../../../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 
 using namespace Engine;
 

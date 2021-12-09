@@ -1,5 +1,5 @@
 #include "ToggleDebugBehavior.hpp"
-#include "../../../../Keys.hpp"
+#include "../../../../../Keys.hpp"
 #include "DebugToggleScript.hpp"
 
 ToggleDebugBehavior::ToggleDebugBehavior(bool active) : Behavior(active) {

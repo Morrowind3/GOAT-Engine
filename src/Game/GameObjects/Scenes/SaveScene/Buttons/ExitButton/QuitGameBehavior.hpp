@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_QUITGAMEBEHAVIOR_HPP
 #define GOAT_ENGINE_QUITGAMEBEHAVIOR_HPP
 
-#include "../../../../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
+#include "../../../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 
 using namespace Engine;
 
