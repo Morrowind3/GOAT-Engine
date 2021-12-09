@@ -4,6 +4,7 @@
 #include "Box2D.h"
 #include "../../../API/GameObjects/GameObject.hpp"
 #include "Managers/Physics/ContactListener.hpp"
+#include "../../../Utilities/Debug.hpp"
 #include <memory>
 #include <iostream>
 
@@ -23,6 +24,7 @@ namespace Engine {
             static void attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction);
             std::unique_ptr<b2World> _world;
             std::unique_ptr<ContactListener> _contactListener;
+            Debug& _debug = Debug::getInstance();
     };
 }
 

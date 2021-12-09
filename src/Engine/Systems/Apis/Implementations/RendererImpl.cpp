@@ -49,6 +49,7 @@ void RendererImpl::loadTexture(const std::string& fileName) {
 }
 
 void RendererImpl::loadFont(const std::string& fileName) {
+    if (fileName.empty()) return; // Ignore an invalid font
     try {
         _fonts->store(fileName);
     } catch (const std::runtime_error& error) {
@@ -58,7 +59,7 @@ void RendererImpl::loadFont(const std::string& fileName) {
 }
 
 void RendererImpl::beginRenderTick() {
-    _tickTextureCache = {};
+    _tickTextureCache.clear();
     SDL_RenderClear(_renderer.get());
 
     // Window is resizable so engine must know the current size
@@ -69,17 +70,18 @@ void RendererImpl::beginRenderTick() {
 
 void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
     const auto& texture = _textures->get(name);
-    _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, &texture});
+    _tickTextureCache.emplace_back(TickTextureCacheData{*transform, &texture});
 }
 
 void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
+    if (fontName.empty()) return; // Ignore text with an invalid font
     auto& font = _fonts->get(fontName);
     std::shared_ptr<Texture> texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(std::pair<const Transform, const Texture*>{*transform, texture.get()});
+    _tickTextureCache.emplace_back(TickTextureCacheData{*transform, texture.get()});
 }
 
 void RendererImpl::endRenderTick() {
-    sortTextureCache();
+    std::sort(_tickTextureCache.begin(), _tickTextureCache.end());
     for (auto& drawable: _tickTextureCache) {
         draw(drawable);
     }
@@ -98,50 +100,10 @@ void RendererImpl::end() {
     SDL_Quit();
 }
 
-// Private:
-
-// std::sort lambda
-static bool tickTextureCacheSortLayerGroup(const std::pair<const Transform, const Texture*>& a,
-                                           const std::pair<const Transform, const Texture*>& b) {
-    return a.first.layerGroup < b.first.layerGroup;
-}
-// std::sort lambda
-static bool tickTextureCacheSortLayerInsideGroup(const std::pair<const Transform, const Texture*>& a,
-                                                 const std::pair<const Transform, const Texture*>& b) {
-    return a.first.layerInsideGroup < b.first.layerInsideGroup;
-}
-
-/// Determines the correct ordering to draw textures
-void RendererImpl::sortTextureCache() {
-    if (_tickTextureCache.empty()) return; // Out of range on empty cache
-
-    // First everything gets sorted on layer group
-    std::sort(_tickTextureCache.begin(), _tickTextureCache.end(), tickTextureCacheSortLayerGroup);
-
-    // Then everything gets sorted on layer inside group
-    unsigned int currentLayerGroup = _tickTextureCache.begin()->first.layerGroup;
-    int beginPositionLayerGroup = 0, endPositionLayerGroup = -1;
-    for (auto& drawable: _tickTextureCache) {
-        // Same layer group, so continue to count how big this layer group is
-        if (drawable.first.layerGroup == currentLayerGroup) {
-            ++endPositionLayerGroup;
-            continue;
-        }
-        // New layer group! So sort everything before the start of this layer group
-        std::sort(_tickTextureCache.begin()+beginPositionLayerGroup, _tickTextureCache.begin()+endPositionLayerGroup, tickTextureCacheSortLayerInsideGroup);
-        // Update variables so they work for the next texture group
-        currentLayerGroup = drawable.first.layerGroup;
-        ++endPositionLayerGroup;
-        beginPositionLayerGroup = endPositionLayerGroup;
-    }
-    // Sort the last layer group
-    std::sort(_tickTextureCache.begin()+beginPositionLayerGroup, _tickTextureCache.begin()+endPositionLayerGroup, tickTextureCacheSortLayerInsideGroup);
-}
-
 /// Draws texture to the screen
-void RendererImpl::draw(std::pair<Transform, const Texture*>& drawable) {
-    auto& transform = drawable.first;
-    auto& texture = drawable.second;
+void RendererImpl::draw(TickTextureCacheData& drawable) {
+    auto& transform = drawable.transform;
+    auto& texture = drawable.data;
 
     SDL_Rect sourceRect{}, destinationRect{};
 

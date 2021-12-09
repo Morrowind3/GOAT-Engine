@@ -13,6 +13,7 @@
 #include "Managers/Textures/TextureManager.hpp"
 #include "Managers/Fonts/FontManager.hpp"
 #include "../../../Utilities/EngineCalls.hpp"
+#include "Managers/Textures/TickTextureCacheData.hpp"
 
 namespace Engine {
     class RendererImpl {
@@ -37,10 +38,9 @@ namespace Engine {
             std::unique_ptr<FontManager> _fonts = std::make_unique<FontManager>(_renderer.get());
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
-            std::vector<std::pair<Transform, const Texture*>> _tickTextureCache;
+            std::vector<TickTextureCacheData> _tickTextureCache;
             // Helper methods
-            void sortTextureCache();
-            void draw(std::pair<Transform, const Texture*>& drawable);
+            void draw(TickTextureCacheData& drawable);
     };
 }
 

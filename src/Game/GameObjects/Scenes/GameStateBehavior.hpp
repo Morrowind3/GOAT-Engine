@@ -9,7 +9,7 @@
 using namespace Engine;
 
 class GameStateBehavior: public Behavior {
-    public:  GameStateBehavior(SceneManager& sceneManager, std::shared_ptr<Timer> timer, bool active);
+    public: GameStateBehavior(std::shared_ptr<Timer> timer, bool active);
 };
 
 #endif //GOAT_ENGINE_GAMESTATEBEHAVIOR_HPP

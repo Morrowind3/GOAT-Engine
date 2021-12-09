@@ -2,7 +2,7 @@
 #include "../../../Keys.hpp"
 #include "../SwitchSceneButtonBehavior.hpp"
 
-BackToMenuButton::BackToMenuButton(SceneManager& sceneManager, Transform transform, bool active): GameObject(transform,active) {
+BackToMenuButton::BackToMenuButton(Transform transform, bool active): GameObject(transform,active) {
 
     Transform textTransform{
             Point{transform.position.x + 10, transform.position.y + 20},
@@ -12,7 +12,7 @@ BackToMenuButton::BackToMenuButton(SceneManager& sceneManager, Transform transfo
             Text{"Back to menu", "Fonts/Kenney_Thick.ttf", 16, {255, 255, 255, 255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/button_small_red.png", active},
             Rectangle{{transform.position.x, transform.position.y}, 200, 80},
-            std::make_shared<SwitchSceneButtonBehavior>(Keys::MAIN_MENU, sceneManager, active),
+            std::make_shared<SwitchSceneButtonBehavior>(Keys::MAIN_MENU, active),
             true}));
 
 }

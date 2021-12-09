@@ -27,17 +27,27 @@ namespace Keys {
 #pragma endregion
 
 #pragma region Scene IDs
-    const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
-    const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
-    const std::string SETTINGS_MENU =  "SETTINGS_MENU"; // Usage: Settings menu level ID
+    // Etappes
     const std::string ETAPPE_ONE = "ETAPPE_1"; // Usage: Etappe 1 level ID
     const std::string ETAPPE_TWO = "ETAPPE_2"; // Usage: Etappe 2 level ID
 	const std::string ETAPPE_THREE = "ETAPPE_3"; // Usage: Etappe 3 level ID
 	const std::string ETAPPE_FOUR = "ETAPPE_4"; // Usage: Etappe 4 level ID
 	const std::string ETAPPE_FIVE = "ETAPPE_5"; // Usage: Etappe 5 level ID
+    // Menus
     const std::string VICTORY_SCREEN = "VICTORY_SCREEN"; //Usage: Victory screen level ID
     const std::string DEFEAT_SCREEN = "DEFEAT_SCREEN"; //Usage: Defeat screen level ID
-    const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID,
+    const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID
+    const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
+    const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
+    const std::string SETTINGS_MENU = "SETTINGS_MENU"; // Usage: Settings menu level ID
+    const std::string SAVE_MENU = "SAVE_MENU"; // Usage: Save menu level ID
+#pragma endregion
+
+#pragma region PlayerData
+	const std::string CURRENT_PLAYER_ID = "CURRENT_PLAYER_ID"; // Usage: ID of the player currently playing
+	const std::string ETAPPES_UNLOCKED = "ETAPPES_UNLOCKED"; // Usage: Amount of etappes unlocked
+	const std::string DIFFICULTY = "DIFFICULTY"; // Usage: Difficulty, which adjusts how quick the line goes
+	const std::string VOLUME = "VOLUME"; // Usage: Volume level
 #pragma endregion
 
 #pragma region Etappe Events
@@ -50,6 +60,16 @@ namespace Keys {
 
 #pragma region Player
     const std::string WALKING_ANIMATOR = "WALKING_ANIMATOR";
+#pragma endregion
+
+#pragma region SaveMenu
+	const std::string SAVE_FILE = "SAVE_FILE";
+	const std::string SAVE_ID = "SAVE_ID";
+	const std::string SAVE_AVATAR = "SAVE_AVATAR";
+	const std::string SAVE_UNLOCKED = "SAVE_UNLOCKED";
+	const std::string SAVE_SCORE = "SAVE_SCORE";
+	const std::string SAVE_PLAY = "SAVE_PLAY";
+	const std::string SAVE_ERASE = "SAVE_ERASE";
 #pragma endregion
 
 #pragma region Unsorted

@@ -4,8 +4,7 @@
 #include "EtappeMarkerBehavior.hpp"
 #include "../../../Layers.hpp"
 
-EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
-                           Transform transform, bool active) : GameObject(transform, active) {
+EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, Transform transform, bool active) : GameObject(transform, active) {
 
     Transform textTransform{
             Point{transform.position.x+20, transform.position.y+20},
@@ -30,7 +29,7 @@ EtappeMarker::EtappeMarker(const std::string& levelKey, int levelNumber, unsigne
             Text{std::to_string(levelNumber), "Fonts/Kenney_Thick.ttf", 36, {0,0,0,255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/Button_square_green.png", true},
             Rectangle{{transform.position.x, transform.position.y}, 200, 200},
-            std::make_shared<SwitchSceneButtonBehavior>(levelKey, sceneManager, audioSources.at(Keys::FALSE), true),
+            std::make_shared<SwitchSceneButtonBehavior>(levelKey, audioSources.at(Keys::FALSE), true),
             false
     }));
 

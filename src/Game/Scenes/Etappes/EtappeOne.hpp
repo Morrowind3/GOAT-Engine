@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class EtappeOne : public SharedEtappe {
-    public: explicit EtappeOne(SceneManager& manager);
+    public: EtappeOne();
 };
 
 #endif //GOAT_ENGINE_ETAPPEONE_HPP

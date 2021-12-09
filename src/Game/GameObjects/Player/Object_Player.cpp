@@ -6,11 +6,11 @@
 #include "../../Sprites/Player/Sprite_PlayerMove3.hpp"
 #include "../../Sprites/Player/Sprite_PlayerJump.hpp"
 #include "../../Animators/Animator_PlayerWalking.hpp"
-#include "../../AudioSources/Sounds/Sound_Jump.hpp"
-#include "../../AudioSources/Sounds/Sound_Walk.hpp"
-#include "../../AudioSources/Sounds/Sound_WalkAlt.hpp"
-#include "../../AudioSources/Sounds/Sound_Oof.hpp"
-#include "../../AudioSources/Sounds/Sound_Death.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Jump.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Walk.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_WalkAlt.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Oof.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Death.hpp"
 #include "PlayerBehavior.hpp"
 
 Object_Player::Object_Player(Transform transform, bool active) : GameObject(transform, active) {

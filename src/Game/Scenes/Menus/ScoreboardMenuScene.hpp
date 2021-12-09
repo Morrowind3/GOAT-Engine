@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class ScoreboardMenuScene : public SceneTemplate_Menu {
-    public: explicit ScoreboardMenuScene(SceneManager& manager);
+    public: ScoreboardMenuScene();
 };
 
 #endif //GOAT_ENGINE_SCOREBOARDMENUSCENE_HPP

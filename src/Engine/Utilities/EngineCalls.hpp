@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_ENGINECALLS_HPP
 #define GOAT_ENGINE_ENGINECALLS_HPP
 
-#include "../API/GameObjects/Point.hpp"
+#include "../SceneManager.hpp"
 
 /// Essentially system calls for the engine
 namespace Engine {
@@ -12,12 +12,17 @@ namespace Engine {
         friend class Engine::GoatEngine;
         friend class Engine::RendererImpl;
         public:
+            // Singleton
             EngineCalls(EngineCalls const&) = delete;
             void operator=(EngineCalls const&) = delete;
             static EngineCalls& getInstance() {
                 static EngineCalls instance{};
                 return instance;
             }
+            // Scene
+            [[nodiscard]] std::shared_ptr<Scene> getScene() const;
+            [[maybe_unused]] [[nodiscard]] std::string getSceneKey() const;
+            void changeScene(const std::string& sceneKey);
             // Quit engine
             [[nodiscard]] bool quitEventQueued() const;
             void queueQuitEvent();
@@ -30,7 +35,7 @@ namespace Engine {
             // Screen sizes
             [[nodiscard]] Point viewPortSize() const;
             [[nodiscard]] Point windowSize() const;
-            // TODO: Scene manager change scene
+            // TODO: Global volume
         private:
             // Singleton
             EngineCalls() = default;
@@ -41,6 +46,7 @@ namespace Engine {
             bool _paused {false}, _quit {false};
             double _speed {1.0};
             Point _viewPortSize, _windowSize;
+            SceneManager* _sceneManager {nullptr}; // Fed by the engine
     };
 }
 

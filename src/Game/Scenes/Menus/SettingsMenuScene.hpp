@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class SettingsMenuScene : public SceneTemplate_Menu {
-    public: explicit SettingsMenuScene(SceneManager& manager);
+    public: SettingsMenuScene();
 };
 
 #endif //GOAT_ENGINE_SETTINGSMENUSCENE_HPP

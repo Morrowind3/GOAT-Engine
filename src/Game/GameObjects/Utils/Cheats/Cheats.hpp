@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class Cheats : public GameObject {
-    public: explicit Cheats(SceneManager& sceneManager, Scene& scene, Object_Player& player, bool active);
+    public: explicit Cheats(Scene& scene, Object_Player& player, bool active);
 };
 
 #endif //GOAT_ENGINE_CHEATS_HPP

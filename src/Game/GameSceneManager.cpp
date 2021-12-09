@@ -1,9 +1,9 @@
 #include "GameSceneManager.hpp"
 #include "Keys.hpp"
+#include "../Engine/Utilities/Debug.hpp"
 #include "Scenes/Menus/MainMenuScene.hpp"
 #include "Scenes/Etappes/EtappeOne.hpp"
 #include "Scenes/Etappes/EtappeTwo.hpp"
-#include "../Engine/Utilities/Debug.hpp"
 #include "Scenes/Menus/EtappeSelection.hpp"
 #include "Scenes/Menus/ScoreboardMenuScene.hpp"
 #include "Scenes/Menus/SettingsMenuScene.hpp"
@@ -12,12 +12,13 @@
 #include "Scenes/Etappes/EtappeThree.hpp"
 #include "Scenes/Etappes/EtappeFour.hpp"
 #include "Scenes/Etappes/EtappeFive.hpp"
+#include "Scenes/Menus/SaveScene.hpp"
 #include <stdexcept>
 
 void GameSceneManager::changeCurrentScene(const std::string& name) {
     Debug::getInstance().log("Game scene manager will attempt to switch to scene: " + name);
-    SceneManager& sceneManager = *this;
 
+    // Etappes
     if(name == Keys::CURRENT_ETAPPE) setEtappeScene();
     else if (name == Keys::NEXT_ETAPPE) {
         ++_currentEtappe;
@@ -41,30 +42,31 @@ void GameSceneManager::changeCurrentScene(const std::string& name) {
         _currentEtappe = 5;
         setEtappeScene();
     }
-    else if (name == Keys::MAIN_MENU) _currentScene = std::make_shared<MainMenuScene>(sceneManager);
-    else if (name == Keys::SCOREBOARD_MENU) _currentScene = std::make_shared<ScoreboardMenuScene>(sceneManager);
-    else if (name == Keys::SETTINGS_MENU) _currentScene = std::make_shared<SettingsMenuScene>(sceneManager);
-    else if (name == Keys::ETAPPE_SELECT) _currentScene = std::make_shared<EtappeSelection>(sceneManager);
-    else if (name == Keys::DEFEAT_SCREEN) _currentScene = std::make_shared<DefeatScene>(sceneManager);
-    else if (name == Keys::VICTORY_SCREEN) _currentScene = std::make_shared<VictoryScene>(sceneManager);
+    // Menus
+    else if (name == Keys::SAVE_MENU) _currentScene = std::make_shared<SaveScene>();
+    else if (name == Keys::MAIN_MENU) _currentScene = std::make_shared<MainMenuScene>();
+    else if (name == Keys::SCOREBOARD_MENU) _currentScene = std::make_shared<ScoreboardMenuScene>();
+    else if (name == Keys::SETTINGS_MENU) _currentScene = std::make_shared<SettingsMenuScene>();
+    else if (name == Keys::ETAPPE_SELECT) _currentScene = std::make_shared<EtappeSelection>();
+    else if (name == Keys::DEFEAT_SCREEN) _currentScene = std::make_shared<DefeatScene>();
+    else if (name == Keys::VICTORY_SCREEN) _currentScene = std::make_shared<VictoryScene>();
     else {
         throw std::runtime_error("GameSceneManager: No valid scene loaded in! Attempted key: " + name);
     }
 }
 
-// TODO: This should be a script and not a part of the scene manager
 void GameSceneManager::setEtappeScene() {
     switch(_currentEtappe){
-        case 1: _currentScene = std::make_shared<EtappeOne>(*this);
+        case 1: _currentScene = std::make_shared<EtappeOne>();
             break;
-        case 2: _currentScene = std::make_shared<EtappeTwo>(*this);
+        case 2: _currentScene = std::make_shared<EtappeTwo>();
             break;
-        case 3: _currentScene = std::make_shared<EtappeThree>(*this);
+        case 3: _currentScene = std::make_shared<EtappeThree>();
             break;
-        case 4: _currentScene = std::make_shared<EtappeFour>(*this);
+        case 4: _currentScene = std::make_shared<EtappeFour>();
             break;
-        case 5: _currentScene = std::make_shared<EtappeFive>(*this);
+        case 5: _currentScene = std::make_shared<EtappeFive>();
             break;
-        default: throw std::runtime_error("GameSceneManager: No valid scene loaded in!");
+        default: throw std::runtime_error("GameSceneManager: No valid scene loaded in! Attempted etappe number: " + std::to_string(_currentEtappe));
     }
 }

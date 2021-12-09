@@ -5,16 +5,21 @@
 #include <utility>
 #include "../../../../Engine/SceneManager.hpp"
 #include "../../Utils/Timer/Timer.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
+#include "../../../../Engine/Utilities/EngineCalls.hpp"
 
 using namespace Engine;
 
 class GameStateScript : public Script {
     public:
-        GameStateScript(SceneManager& sceneManager, std::shared_ptr<Timer> timer, bool active) : Script(active), _sceneManager(sceneManager), _timer(std::move(timer)){};
+        GameStateScript(std::shared_ptr<Timer> timer, bool active);
         void onUpdate(double deltaTime) override;
     private:
         std::shared_ptr<Timer> _timer;
-        SceneManager& _sceneManager;
+        // Utilities
+        Globals& _globals = Globals::getInstance();
+        EngineCalls& _engineCalls = EngineCalls::getInstance();
+        // Helper methods
         void gameLost();
         void gameWon();
 };

@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class NextEtappeButton : public GameObject {
-    public: NextEtappeButton(SceneManager& sceneManager, Transform transform, bool active);
+    public: NextEtappeButton(Transform transform, bool active);
 };
 
 

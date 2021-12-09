@@ -76,9 +76,9 @@ void PhysicsImpl::createBody(const GameObject &gameObject) {
                     break;
             }
         }
-    } catch (const std::exception &error) {
-        std::string message{error.what()};
-        SDL_LogWarn(SDL_LOG_CATEGORY_APPLICATION, "%s", (message + "Couldn't construct collider: ").c_str());
+    } catch (const std::exception& error) {
+        std::string message { error.what() };
+        _debug.log("Couldn't construct collider: " + message);
     }
 }
 
