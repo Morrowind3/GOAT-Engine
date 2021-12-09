@@ -13,6 +13,7 @@
 #include "GameObjects/Enemies/Snowball/Snowball.hpp"
 #include "GameObjects/WorldObjects/Trash/Trash.hpp"
 #include "GameObjects/Tiles/WallTile/WallTile.hpp"
+#include "GameObjects/Utils/decor/Cloud.hpp"
 
 #include <regex>
 #include <fstream>
@@ -355,6 +356,15 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             transform.scaleHeight = 5;
             _etappe.player = std::make_shared<Object_Player>(transform, true);
             _etappe.gameObjects.emplace_back(_etappe.player);
+            break;
+        case 73:
+            _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::BIG, transform, true));
+            break;
+        case 74:
+            _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::SMALL, transform, true));
+            break;
+        case 75:
+            _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::WIDE, transform, true));
             break;
         default:
             _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(

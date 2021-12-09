@@ -14,6 +14,7 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneMana
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey,dimensions,{{0,0},1440,765}){
     // Etappe layer groups
     layerGroups.insert(std::make_pair(LAYER::PARALLAX_BACKGROUND, LayerGroup{false, 0.08})); // Parallax background
+//    layerGroups.insert(std::make_pair(LAYER::PARALLAX_SKYDECOR, LayerGroup{false, 0.2})); // Parallax sky decoration
     layerGroups.insert(std::make_pair(LAYER::ETAPPE_TEXT, LayerGroup{false, 0.5})); // Etappe text
     layerGroups.insert(std::make_pair(LAYER::TILES_BACK, LayerGroup{})); // Tiles back
     layerGroups.insert(std::make_pair(LAYER::CHARACTER, LayerGroup{})); // Characters

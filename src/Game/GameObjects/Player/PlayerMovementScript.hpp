@@ -11,7 +11,7 @@ using namespace Engine;
 class PlayerMovementScript : public Script {
     public:
         PlayerMovementScript(Object_Player& player, bool active);
-        void onUpdate(double deltaTime);
+        void onUpdate(double deltaTime) override;
         void onTriggerEnter2D(GameObject& other);
         void onTriggerStay2D(GameObject& other);
 
