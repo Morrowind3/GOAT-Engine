@@ -57,6 +57,8 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
 		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
 		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
+		Engine/API/GameObjects/GameComponents/Collision/OvalCollider.hpp
+		Engine/API/GameObjects/GameComponents/Collision/OvalCollider.cpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
