@@ -57,6 +57,8 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
 		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
 		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
+		Engine/API/GameObjects/GameComponents/Collision/OvalCollider.hpp
+		Engine/API/GameObjects/GameComponents/Collision/OvalCollider.cpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
@@ -274,7 +276,8 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.hpp
         Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Sprites/Buttons/Sprite_UndoButton.cpp Game/Sprites/Buttons/Sprite_UndoButton.hpp Game/AudioSources/Sounds/Menus/Sound_Delete.cpp Game/AudioSources/Sounds/Menus/Sound_Delete.hpp
         Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.hpp
-		)
+		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
+        )
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

@@ -13,6 +13,8 @@
 #include "GameComponents/Collision/RigidBody.hpp"
 #include "GameComponents/Collision/BoxCollider.hpp"
 #include "GameComponents/Collision/CircleCollider.hpp"
+#include "GameComponents/Collision/OvalCollider.hpp"
+
 
 namespace Engine {
     class ScriptSystem; // Friend class link
