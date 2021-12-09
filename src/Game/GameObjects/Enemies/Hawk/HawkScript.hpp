@@ -4,8 +4,6 @@
 #include "../../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "Hawk.hpp"
-#include "../../../../Engine/Utilities/Debug.hpp"
-#include <ctime>
 
 using namespace Engine;
 
@@ -27,14 +25,15 @@ private:
     Point _startingPos;
     HawkDirection _direction = RIGHT;
     int _updateCounter{0};
+    int _circledAfterDiveCounter{0};
 
-    int FLYING_SCOPE{400};  //amount of pixels
-    int DIVE_CHANGE{1}; //number between 0-100
-    float SPEED_IDLE{0.4};
-    float SPEED_DIVING{0.2};   //2.6
-    float SPEED_RISING{1.4};
-
-    Debug& _debug = Debug::getInstance();
+    int FLYING_SCOPE{400};      //amount of pixels
+    int CIRCLES_BEFORE_DIVE{2}; //amount of circles the hawk has to fly between each dive
+    int DIVE_CHANGE{1};         //number between 1-1000, the higher, the more dive change
+    int MAX_DIVE_DEPTH{600};    //amount of pixels before going back up
+    float SPEED_IDLE{1.4};      //circling speed
+    float SPEED_DIVING{5.0};    //diving speed
+    float SPEED_RISING{2.0};    //rising speed
 
     void updateDirection();
     void updatePosition();
