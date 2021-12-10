@@ -136,7 +136,7 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
 		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
-		)
+        Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp)
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -267,7 +267,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.cpp Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp Game/Scenes/Etappes/EtappeFour.cpp Game/Scenes/Etappes/EtappeFour.hpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFourScene/EtappeFourManager.hpp Game/GameObjects/Enemies/Snowball/Snowball.cpp Game/GameObjects/Enemies/Snowball/Snowball.hpp Game/GameObjects/Enemies/Snowball/SnowballBehavior.cpp Game/GameObjects/Enemies/Snowball/SnowballBehavior.hpp Game/GameObjects/Enemies/Snowball/SnowballScript.cpp Game/GameObjects/Enemies/Snowball/SnowballScript.hpp
 		Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.cpp Game/GameObjects/Scenes/Etappes/EtappeThreeScene/EtappeThreeManager.hpp
 		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
-        Game/GameObjects/Utils/decor/Cloud.cpp Game/GameObjects/Utils/decor/Cloud.hpp Game/GameObjects/Utils/decor/CloudBehavior.cpp Game/GameObjects/Utils/decor/CloudBehavior.hpp Game/GameObjects/Utils/decor/CloudScript.cpp Game/GameObjects/Utils/decor/CloudScript.hpp)
+        Game/GameObjects/Utils/decor/Cloud.cpp Game/GameObjects/Utils/decor/Cloud.hpp Game/GameObjects/Utils/decor/CloudBehavior.cpp Game/GameObjects/Utils/decor/CloudBehavior.hpp Game/GameObjects/Utils/decor/CloudScript.cpp Game/GameObjects/Utils/decor/CloudScript.hpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.cpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.hpp Game/GameObjects/Utils/decor/Advertising/Banner.cpp Game/GameObjects/Utils/decor/Advertising/Banner.hpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.cpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.hpp)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

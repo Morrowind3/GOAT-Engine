@@ -83,6 +83,9 @@ namespace Keys {
     const std::string CHEATS = "CHEATS";
     const std::string LEVEL_DEBUG = "LEVEL_DEBUG"; // Usage: game global flag to debug level construction
 	const std::string INPUT_DEBUG = "INPUT_DEBUG"; // Usage: game global flag to debug input
+    const std::string AEROPLANE = "AEROPLANE"; // Usage: For the Airplane object;
+    const std::string BANNER = "BANNER"; // Usage: For the banner that can be attached to the Airplane object.
+    const std::string ADVERTISEMENT = "ADVERTISEMENT"; //Usage: For the web-based advertisement object
 
 	//SPEED
 	const std::string SPEED_UP = "SPEED_UP";
@@ -109,8 +112,9 @@ namespace Keys {
     const std::string GAMESTATE_DEFAULT = "DEFAULT";
     const std::string GAMESTATE_VICTORY = "VICTORY";
     const std::string GAMESTATE_DEFEAT = "DEFEAT";
-	
-	//TAGS
+
+
+    //TAGS
 	//TILES
 	const std::string TILE = "TILE";
 	const std::string SOLID = "SOLID";

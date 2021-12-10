@@ -14,6 +14,9 @@
 #include "GameObjects/WorldObjects/Trash/Trash.hpp"
 #include "GameObjects/Tiles/WallTile/WallTile.hpp"
 #include "GameObjects/Utils/decor/Cloud.hpp"
+#include "GameObjects/Utils/decor/Advertising/Aeroplane.hpp"
+#include "GameObjects/Utils/decor/Advertising/Banner.hpp"
+#include "GameObjects/Utils/decor/Advertising/AdvertisingPane.hpp"
 
 #include <regex>
 #include <fstream>
@@ -90,6 +93,9 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
     //NOTE NEVER REMOVE TILES FROM TILESET
     //NOTE however, you can always add new tiles
     //NOTE every etappe needs a player (edmund sprite)!
+
+    Transform bannerPos = transform, advertPos = transform;
+    std::shared_ptr<Aeroplane> plane;
 
     switch (index) {
         // TILES GRASS
@@ -357,14 +363,29 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.player = std::make_shared<Object_Player>(transform, true);
             _etappe.gameObjects.emplace_back(_etappe.player);
             break;
-        case 73:
+        case 74:
             _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::BIG, transform, true));
             break;
-        case 74:
+        case 75:
             _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::SMALL, transform, true));
             break;
-        case 75:
+        case 76:
+            transform.layerGroup = LAYER::TILES_FRONT;
             _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::WIDE, transform, true));
+            break;
+        case 77:
+            transform.layerGroup = LAYER::TILES_FRONT;
+            bannerPos.layerGroup = LAYER::TILES_BACK;
+            plane = std::make_shared<Aeroplane>(transform, true);
+            _etappe.gameObjects.emplace_back(plane);
+            bannerPos.position.x = bannerPos.position.x + 370;
+            bannerPos.position.y = bannerPos.position.y - 20;
+            _etappe.gameObjects.emplace_back(std::make_shared<Banner>(bannerPos, true));
+            advertPos = bannerPos;
+            advertPos.layerGroup = LAYER::TILES_FRONT;
+            _etappe.gameObjects.emplace_back(std::make_shared<AdvertisingPane>(advertPos, true));
+            plane->followPlaneMovement(std::make_shared<Transform>(bannerPos));
+            plane->followPlaneMovement(std::make_shared<Transform>(advertPos));
             break;
         default:
             _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
