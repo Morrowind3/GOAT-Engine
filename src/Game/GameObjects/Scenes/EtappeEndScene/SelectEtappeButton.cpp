@@ -11,7 +11,7 @@ SelectEtappeButton::SelectEtappeButton(Transform transform, bool active) : GameO
     buttons.insert(std::make_pair(Keys::ETAPPE_SELECT, Button{
             Text{" Level Select", "Fonts/Kenney_Thick.ttf", 26, {255, 255, 255, 255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/button_outline_white.png", active},
-            Rectangle{{transform.position.x, transform.position.y}, 200, 80},
+            Rectangle{{transform.position.x, transform.position.y}, 360, 150},
             std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_SELECT, true),
             true}));
 }

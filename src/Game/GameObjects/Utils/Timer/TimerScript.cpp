@@ -1,10 +1,9 @@
 #include "TimerScript.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"
-#include <iostream>
-
 
 void TimerScript::onUpdate(double deltaTime) {
+    if (_engineCalls.isPaused()) return; // Do not count when game is paused
     _totalMs += _clock.lastRecordedUnmodifiedDeltaTime();
     if((int) _totalMs * _engineCalls.speed() / 1000 >= 1){
         addSecond();    //minimize UI updates

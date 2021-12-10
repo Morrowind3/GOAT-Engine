@@ -10,7 +10,7 @@ Cheats::Cheats(Scene& scene, Object_Player& player, bool active) : GameObject(Tr
     Color color{0, 0, 0, 255};
     text.insert(std::make_pair(Keys::CHEATS, Text{"Cheats", font, size, color,
         Transform{{10, 150}, transform.layerGroup, 1,0, 1, 1}, false}));
-    text.insert(std::make_pair(Keys::CHEATS+Keys::CHEATS, Text{"Backtick/Tilde - Show or hide this very menu", font, size, color,
+    text.insert(std::make_pair(Keys::CHEATS+Keys::CHEATS, Text{"Tilde - Show or hide this very menu", font, size, color,
         Transform{{10, 170}, transform.layerGroup, 1,0, 1, 1}, false}));
     text.insert(std::make_pair(Keys::CHEATS+Keys::FPS, Text{"1 - Show or hide FPS", font, size, color,
         Transform{{10, 190}, transform.layerGroup, 1,0, 1, 1}, false}));

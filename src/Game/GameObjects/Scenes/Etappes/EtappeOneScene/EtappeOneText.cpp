@@ -8,7 +8,7 @@ EtappeOneText::EtappeOneText(Transform transform, bool active) : GameObject(tran
             "Fonts/Kenney_Thick.ttf",
             20,
             {0,0,0,255},
-            Transform{{800 + X, 200 + Y}, transform.layerGroup, 1, 0, 1, 1},
+            Transform{{600 + X, 350 + Y}, transform.layerGroup, 1, 0, 1, 1},
             true}));
     text.insert(std::make_pair("Tutorial_1", Text{
             "Use D to move forwards and A to move backwards",
@@ -60,10 +60,10 @@ EtappeOneText::EtappeOneText(Transform transform, bool active) : GameObject(tran
             Transform{{7700 + X, 0 + Y}, transform.layerGroup,1, 0, 1, 1},
             true}));
     text.insert(std::make_pair("Tutorial_8", Text{
-            "press the backtick button if you like cheats",
+            "Press the tilde button if you like cheats",
             "Fonts/Kenney_Thick.ttf",
             16,
             {0,0,0,255},
-            Transform{{7600 + X, 40 + Y}, transform.layerGroup,1, 0, 1, 1},
+            Transform{{700 + X, 450 + Y}, transform.layerGroup,1, 0, 1, 1},
             true}));
 }
