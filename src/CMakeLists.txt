@@ -57,6 +57,8 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Collision/Collider.cpp
 		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.hpp
 		Engine/API/GameObjects/GameComponents/Collision/BoxCollider.cpp
+		Engine/API/GameObjects/GameComponents/Collision/OvalCollider.hpp
+		Engine/API/GameObjects/GameComponents/Collision/OvalCollider.cpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp
         Engine/API/GameObjects/GameComponents/Collision/CircleCollider.cpp
         Engine/Systems/Apis/Implementations/RendererImpl.cpp
@@ -136,7 +138,8 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/GameComponents/Render/Animator.cpp Engine/API/GameObjects/GameComponents/Render/Animator.hpp
 		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
-        Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp)
+        Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp
+        )
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -274,7 +277,8 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.hpp
         Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Sprites/Buttons/Sprite_UndoButton.cpp Game/Sprites/Buttons/Sprite_UndoButton.hpp Game/AudioSources/Sounds/Menus/Sound_Delete.cpp Game/AudioSources/Sounds/Menus/Sound_Delete.hpp
         Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.hpp
-		)
+		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
+        )
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

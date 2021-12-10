@@ -14,7 +14,7 @@ Trash::Trash(Transform transform, bool active) : GameObject(transform, active) {
     behaviors.insert(std::make_pair(Keys::TRASH, std::make_shared<TrashBehavior>(*this, true)));
     tags.emplace(Keys::TRASH, true);
     rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
-    collider = BoxCollider(3 * transform.scaleWidth, 3 * transform.scaleHeight, true, true);
+    collider = BoxCollider(3 * transform.scaleWidth, 3 * transform.scaleHeight, 0,true, true);
     audioSources.insert(std::make_pair(Keys::TRASH, AudioSource{"Sounds/PickUp.ogg", AudioSourceType::SAMPLE, true}));
     Globals::getInstance().gameStore(Keys::TRASH_MAX, Globals::getInstance().gameExists(Keys::TRASH_MAX) ? std::to_string(std::stoi(Globals::getInstance().gameGet(Keys::TRASH_MAX))+1) : "1");
 
