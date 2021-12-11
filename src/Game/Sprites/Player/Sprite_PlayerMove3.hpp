@@ -9,5 +9,4 @@ class Sprite_PlayerMove3 : public Sprite {
     public: explicit Sprite_PlayerMove3(bool active);
 };
 
-
 #endif //GOAT_ENGINE_SPRITE_PLAYERMOVE3_HPP

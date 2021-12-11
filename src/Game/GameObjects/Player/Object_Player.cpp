@@ -6,17 +6,17 @@
 #include "../../Sprites/Player/Sprite_PlayerMove3.hpp"
 #include "../../Sprites/Player/Sprite_PlayerJump.hpp"
 #include "../../Animators/Animator_PlayerWalking.hpp"
-#include "../../AudioSources/Sounds/Sound_Jump.hpp"
-#include "../../AudioSources/Sounds/Sound_Walk.hpp"
-#include "../../AudioSources/Sounds/Sound_WalkAlt.hpp"
-#include "../../AudioSources/Sounds/Sound_Oof.hpp"
-#include "../../AudioSources/Sounds/Sound_Death.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Jump.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Walk.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_WalkAlt.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Oof.hpp"
+#include "../../AudioSources/Sounds/Player/Sound_Death.hpp"
 #include "PlayerBehavior.hpp"
 
 Object_Player::Object_Player(Transform transform, bool active) : GameObject(transform, active) {
     tags.emplace(Keys::PLAYER, true);
     rigidBody = RigidBody(75.0f, 8.5f, BodyType::DYNAMIC, true);
-    collider = CircleCollider(52.5,  false,true);
+    collider = OvalCollider(18.5f, 0.8f, 1.55f,0.2f, true);
     // Logic
     auto& playerBehavior = behaviors.insert(std::make_pair(Keys::BEHAVIOR,std::make_shared<PlayerBehavior>(*this, true))).first->second;
     // Render

@@ -10,7 +10,7 @@
 #include "../../GameObjects/Utils/FpsMeter/FpsMeter.hpp"
 #include "../../GameObjects/Utils/TrashCounter/TrashCounter.hpp"
 
-SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneManager, Point dimensions,
+SharedEtappe::SharedEtappe(const std::string& etappeKey, Point dimensions,
     const std::string& fileLocation, int tileSize, int columns, int rows, int scale, int xOffset, int yOffset): Scene(etappeKey,dimensions,{{0,0},1440,765}){
     // Etappe layer groups
     layerGroups.insert(std::make_pair(LAYER::PARALLAX_BACKGROUND, LayerGroup{false, 0.08})); // Parallax background
@@ -41,9 +41,9 @@ SharedEtappe::SharedEtappe(const std::string& etappeKey, SceneManager& sceneMana
     std::shared_ptr<Timer> timer = std::make_shared<Timer>(true);
     gameObjects.emplace_back(timer);
     gameObjects.emplace_back(std::make_shared<TrashCounter>(true));
-    gameObjects.emplace_back(std::make_shared<GameStateManager>(sceneManager, timer, true));
-    gameObjects.emplace_back(std::make_shared<Cheats>(sceneManager, *this, *player, true));
-    gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(sceneManager,  // A start of a pause menu
+    gameObjects.emplace_back(std::make_shared<GameStateManager>(timer, true));
+    gameObjects.emplace_back(std::make_shared<Cheats>(*this, *player, true));
+    gameObjects.emplace_back(std::make_shared<BackToEtappeSelectionButton>(
     Transform{{1100,100},LAYER::UI, 0,0, 3, 3}, true));
     gameObjects.emplace_back(std::make_shared<FpsMeter>(true));
 }

@@ -21,7 +21,8 @@ public:
 
     void newTable(std::string name);
     void addColumn(std::string name, std::string type, bool primaryKey, bool nullable, bool unique );
-    void addForeignKey(const std::string& referenceColumn, const std::string& referenceTable);
+    void addForeignKey(const std::string& referenceTable, const std::string& referenceColumn,
+                       const std::string& referenceColumnType, bool thisColumnNullable, bool thisColumnUnique);
 };
 
 

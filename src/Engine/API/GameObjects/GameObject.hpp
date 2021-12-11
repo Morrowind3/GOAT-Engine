@@ -13,11 +13,17 @@
 #include "GameComponents/Collision/RigidBody.hpp"
 #include "GameComponents/Collision/BoxCollider.hpp"
 #include "GameComponents/Collision/CircleCollider.hpp"
+#include "GameComponents/Collision/OvalCollider.hpp"
+
 
 namespace Engine {
+    class ScriptSystem; // Friend class link
     struct GameObject {
         explicit GameObject(Transform transform, bool active);
         bool active;
+        // When set to true, this game object will be removed from the scene
+        // If the game object is active, the onDestroy scripts will also run
+        bool queueForDestruction {false};
         std::map<std::string,bool> tags{}; // True if tag should not be ignored
         [[nodiscard]] bool hasTag(const std::string& tag) const; // Useful method to find an active tag
         Transform transform;
@@ -29,6 +35,9 @@ namespace Engine {
         std::map<std::string,Sprite> sprites{};
         std::map<std::string,Animator> animators{};
         std::map<std::string,AudioSource> audioSources{};
+        private:
+            friend class Engine::ScriptSystem;
+            bool _destroyNextTick {false}; // Set by the script system so that onDestroy code runs properly
     };
 }
 

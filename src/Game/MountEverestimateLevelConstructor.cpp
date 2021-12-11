@@ -13,6 +13,7 @@
 #include "GameObjects/Enemies/Snowball/Snowball.hpp"
 #include "GameObjects/WorldObjects/Trash/Trash.hpp"
 #include "GameObjects/Tiles/WallTile/WallTile.hpp"
+#include "GameObjects/Enemies/Hawk/Hawk.hpp"
 #include "GameObjects/Utils/decor/Cloud.hpp"
 #include "GameObjects/Utils/decor/Advertising/Aeroplane.hpp"
 #include "GameObjects/Utils/decor/Advertising/Banner.hpp"
@@ -88,16 +89,15 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) { tr
 }
 
 void MountEverestimateLevelConstructor::placeTile(int index, Transform transform) {
+    std::shared_ptr<Aeroplane> plane;
+    std::shared_ptr<Banner> banner;
+    std::shared_ptr<AdvertisingPane> bannerAdvert;
 
-    //NOTE index corresponts with tileset All_Tiles ID's + 1, so '0' in tileset = '1' as index
+    //NOTE index corresponds with tileset All_Tiles ID's + 1, so '0' in tileset = '1' as index
     //NOTE NEVER REMOVE TILES FROM TILESET
     //NOTE however, you can always add new tiles
     //NOTE every etappe needs a player (edmund sprite)!
 
-//    Transform bannerPos = transform, advertPos = transform;
-    std::shared_ptr<Aeroplane> plane;
-    std::shared_ptr<Banner> banner;
-    std::shared_ptr<AdvertisingPane> bannerAdvert;
 
     switch (index) {
         // TILES GRASS
@@ -262,9 +262,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
                     "Sprites/landscapes/stone/stone_slab_end_right.png", transform, true));
             break;
         case 37:
-            //TODO hawk GameObject
-            _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
-                    "Sprites/enemies/bird/bird_idle_2.png", transform, true));
+            _etappe.gameObjects.emplace_back(std::make_shared<Hawk>(transform, true));
             break;
         case 45:
             _etappe.gameObjects.emplace_back(std::make_shared<Goat>(transform, true));
@@ -390,7 +388,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(banner);
             bannerAdvert->transform = banner->transform;
             bannerAdvert->transform.position.x = bannerAdvert->transform.position.x + 32;
-            bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 13;
+            bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 15;
             bannerAdvert->transform.layerGroup = LAYER::TILES_BACK+1;
             _etappe.gameObjects.emplace_back(bannerAdvert);
             plane->followPlaneMovement(bannerAdvert);

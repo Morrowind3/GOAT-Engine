@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class DefeatScene : public SceneTemplate_Menu {
-    public: explicit DefeatScene(Engine::SceneManager& manager);
+    public: DefeatScene();
 };
 
 #endif //GOAT_ENGINE_DEFEATSCENE_HPP

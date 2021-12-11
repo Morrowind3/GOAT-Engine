@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class VictoryScreenManager : public GameObject {
-public: VictoryScreenManager(Transform transform, bool active);
+    public: VictoryScreenManager(Transform transform, bool active);
 };
 
 

@@ -3,7 +3,7 @@
 #include "../../../Keys.hpp"
 #include "../../../Layers.hpp"
 
-SelectEtappeButton::SelectEtappeButton(SceneManager& sceneManager, Transform transform, bool active) : GameObject(transform, active){
+SelectEtappeButton::SelectEtappeButton(Transform transform, bool active) : GameObject(transform, active){
     Transform textTransform{
             Point{transform.position.x + 25, transform.position.y + 40},
             LAYER::UI, 1, 0, 1, 1};
@@ -12,6 +12,6 @@ SelectEtappeButton::SelectEtappeButton(SceneManager& sceneManager, Transform tra
             Text{" Level Select", "Fonts/Kenney_Thick.ttf", 26, {255, 255, 255, 255}, textTransform, true},
             Sprite{"Sprites/ui/buttons/button_outline_white.png", active},
             Rectangle{{transform.position.x, transform.position.y}, 200, 80},
-            std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_SELECT, sceneManager, true),
+            std::make_shared<SwitchSceneButtonBehavior>(Keys::ETAPPE_SELECT, true),
             true}));
 }

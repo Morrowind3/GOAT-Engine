@@ -11,12 +11,13 @@ namespace Engine {
         BOX_COLLIDER = 1,
         BOX_SENSOR = 2,
         CIRCLE_COLLIDER = 3,
-        CIRCLE_SENSOR = 4
+        CIRCLE_SENSOR = 4,
+        OVAL_COLLIDER = 5
     };
 
     class Collider : public GameComponent {
         public:
-            Collider(bool active, ColliderType type);
+            Collider(bool active, double friction, ColliderType type);
             Collider(); // Default constructor for objects that don't need an active collider
             virtual ~Collider(); // Enforce C++ polymorphism
 

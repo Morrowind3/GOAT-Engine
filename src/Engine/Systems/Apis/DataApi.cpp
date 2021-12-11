@@ -2,34 +2,38 @@
 
 using namespace Engine;
 
-void DataApi::insert(DataModel model) {
-    impl->insert(std::move(model));
-}
-
-void DataApi::update(DataModel model) {
-    impl->update(std::move(model));
-}
-
-DataModel DataApi::get(const std::string& table, const std::string& whereKey, const std::string& isValue) {
-    return impl->get(table, whereKey, isValue);
-}
-
-void DataApi::remove(DataModel model) {
-    impl->remove(std::move(model));
-}
-
 DataApi::DataApi() {
-    impl = std::make_unique<DataImpl>("StoredData.db");
+    impl = std::make_unique<DataImpl>();
 }
 
-void DataApi::runMigrations(std::vector<std::basic_string<char>> migrationQueries) {
-    impl->runMigrations(std::move(migrationQueries));
+void DataApi::setDatabaseName(const std::string& databaseName) {
+    impl->setDatabaseName(databaseName);
 }
 
 bool DataApi::databaseExists() {
     return impl->databaseExists();
 }
 
-std::vector<DataModel> DataApi::getAll(std::string table, std::string orderBy, bool descending) {
-    return impl->getAll(std::move(table), std::move(orderBy), descending);
+void DataApi::runMigrations(std::vector<std::basic_string<char>> migrationQueries) {
+    impl->runMigrations(std::move(migrationQueries));
+}
+
+void DataApi::insert(DataModel model) {
+    impl->insert(std::move(model));
+}
+
+std::vector<DataModel> DataApi::getAll(const std::string& table, const std::string& orderBy, bool descending) {
+    return impl->getAll(table, orderBy, descending);
+}
+
+DataModel DataApi::get(const std::string& table, const std::string& whereKey, const std::string& isValue) {
+    return impl->get(table, whereKey, isValue);
+}
+
+void DataApi::update(DataModel model) {
+    impl->update(std::move(model));
+}
+
+void DataApi::remove(DataModel model) {
+    impl->remove(std::move(model));
 }

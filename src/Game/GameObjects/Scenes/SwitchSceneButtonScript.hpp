@@ -4,19 +4,20 @@
 #include "../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../Engine/SceneManager.hpp"
 #include "../../../Engine/Utilities/Debug.hpp"
+#include "../../../Engine/Utilities/EngineCalls.hpp"
 
 using namespace Engine;
 
 class SwitchSceneButtonScript : public Script {
     public:
-        SwitchSceneButtonScript(std::string levelName, SceneManager& sceneManager, AudioSource* nopeSound, bool active);
-        SwitchSceneButtonScript(std::string levelName, SceneManager& sceneManager, bool active);
+        SwitchSceneButtonScript(std::string levelName, AudioSource* nopeSound, bool active);
+        SwitchSceneButtonScript(std::string levelName, bool active);
         void onExternalEvent();
     private:
         // Globals
         Debug& _debug = Debug::getInstance();
+        EngineCalls& _engineCalls = EngineCalls::getInstance();
         // Variables
-        SceneManager& _sceneManager;
         AudioSource* _nopeSound;
         std::string _levelName;
 };

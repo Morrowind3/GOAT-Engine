@@ -80,6 +80,7 @@ void ContactListener::EndContact(b2Contact* contact) {
 // This gets called by the scripting system
 void ContactListener::runCollisionScripts() {
     for (auto& gameObject : _tracked) {
+        if (!gameObject.first->active) continue; // Scripts only ran when game object is active
         for (auto& collision : gameObject.second) {
 
             if (collision.second == State::START_COLLIDING) {

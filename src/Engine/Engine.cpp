@@ -12,7 +12,9 @@ GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::strin
 }
 
 void GoatEngine::run(const unsigned int maxFps) {
+    // Configure utilities
     _clock.setFps(maxFps);
+    _engineCalls._sceneManager = &_sceneManager;
 
     // Add systems
     _systems->emplace_back(std::make_unique<CollisionSystem>());

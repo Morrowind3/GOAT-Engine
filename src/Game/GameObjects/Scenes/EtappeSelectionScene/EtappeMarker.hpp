@@ -6,8 +6,7 @@
 using namespace Engine;
 
 class EtappeMarker: public GameObject {
-    public: EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, SceneManager& sceneManager,
-                         Transform transform, bool active);
+    public: EtappeMarker(const std::string& levelKey, int levelNumber, unsigned short height, Transform transform, bool active);
 };
 
 

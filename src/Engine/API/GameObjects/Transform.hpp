@@ -2,7 +2,6 @@
 #define GOAT_ENGINE_TRANSFORM_HPP
 
 #include "Point.hpp"
-#include "SDL.h"
 
 namespace Engine {
 

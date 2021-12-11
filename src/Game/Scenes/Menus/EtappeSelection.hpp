@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class EtappeSelection : public SceneTemplate_Menu {
-    public: explicit EtappeSelection(SceneManager& manager);
+    public: EtappeSelection();
 };
 
 #endif //GOAT_ENGINE_ETAPPESELECTION_HPP

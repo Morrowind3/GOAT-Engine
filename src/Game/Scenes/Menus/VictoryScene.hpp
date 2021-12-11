@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class VictoryScene : public SceneTemplate_Menu {
-    public: explicit VictoryScene(SceneManager& manager);
+    public: VictoryScene();
 };
 
 #endif //GOAT_ENGINE_VICTORYSCENE_HPP

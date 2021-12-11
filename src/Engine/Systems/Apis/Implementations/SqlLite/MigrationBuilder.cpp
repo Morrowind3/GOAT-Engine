@@ -2,11 +2,10 @@
 
 std::vector<std::basic_string<char>> MigrationBuilder::getMigrationQueries() {
     while (!tables.empty()) {
-        allTablesQueries.push_back(CreateTable(tables.back()));
-        delete tables.back();
-        tables.pop_back();
+        allTablesQueries.push_back(CreateTable(tables.front()));
+        delete tables.front();
+        tables.erase(tables.begin());
     }
-
     return allTablesQueries;
 }
 
@@ -16,15 +15,17 @@ void MigrationBuilder::newTable(std::string name) {
     tables.back()->setTableName(name);
     addColumn("id", "INTEGER", true, false, true);
 }
+
 void MigrationBuilder::addColumn(std::string name, std::string type, bool primaryKey, bool nullable, bool unique) {
     tables.back()->columns.push_back(new SqlColumn(primaryKey, std::move(name),  std::move(type), !nullable, unique));
 }
 
-void MigrationBuilder::addForeignKey(const std::string& referenceColumn, const std::string& referenceTable) {
+void MigrationBuilder::addForeignKey(const std::string& referenceTable, const std::string& referenceColumn,
+                                     const std::string& referenceColumnType, bool thisColumnNullable, bool thisColumnUnique) {
     std::string keyName = referenceTable + "_" + referenceColumn;
+    addColumn(keyName, referenceColumnType, false, thisColumnNullable, thisColumnUnique);
     ForeignKey *level_id_fk = new ForeignKey(keyName, referenceTable, referenceColumn);
     tables.at(currentTable)->foreignKeys.push_back(level_id_fk);
-
 }
 
 std::string MigrationBuilder::CreateTable(SqlTable* table) {
