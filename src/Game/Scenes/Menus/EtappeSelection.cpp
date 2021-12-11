@@ -4,6 +4,7 @@
 #include "../../GameObjects/Scenes/EtappeSelectionScene/BackToMenuButton.hpp"
 #include "../../GameObjects/Scenes/EtappeSelectionScene/EtappeSelectionBackground.hpp"
 #include "../../Layers.hpp"
+#include "../../GameObjects/Utils/decor/Cloud.hpp"
 
 EtappeSelection::EtappeSelection(SceneManager& manager): SceneTemplate_Menu(Keys::ETAPPE_SELECT) {
     // Etappe buttons (ordered from the base to the summit of the mountain)
@@ -21,6 +22,22 @@ EtappeSelection::EtappeSelection(SceneManager& manager): SceneTemplate_Menu(Keys
     gameObjects.emplace_back(std::make_shared<EtappeMarker>(Keys::ETAPPE_FIVE,5,8848,manager,
         Transform{{880,140},LAYER::UI,0,0,2.25,2.25},true));
 
+
+    //Decorative clouds
+    //TODO: Spawner? If the player stares at this screen for a few minutes it'll run out of clouds.
+    gameObjects.emplace_back(std::make_shared<Cloud>(Cloud::Shape::BIG,
+                                                            Transform{{630,140},LAYER::TILES_FRONT, 0, 0, 3, 3},true));
+    gameObjects.emplace_back(std::make_shared<Cloud>(Cloud::Shape::WIDE,
+                                                     Transform{{30,20},LAYER::TILES_FRONT, 0, 0, 3, 3},true));
+    gameObjects.emplace_back(std::make_shared<Cloud>(Cloud::Shape::BIG,
+                                                     Transform{{280,310},LAYER::TILES_FRONT, 0, 0, 3, 3},true));
+    gameObjects.emplace_back(std::make_shared<Cloud>(Cloud::Shape::WIDE,
+                                                     Transform{{0,500},LAYER::TILES_FRONT, 0, 0, 3, 3},true));
+    gameObjects.emplace_back(std::make_shared<Cloud>(Cloud::Shape::SMALL,
+                                                     Transform{{830,420},LAYER::TILES_FRONT, 0,0,3,3},true));
+
+    std::shared_ptr<Cloud> d = std::make_shared<Cloud>(Cloud::Shape::SMALL,
+    Transform{{830,420},LAYER::TILES_FRONT, 0,0,3,3},true);
 
     gameObjects.emplace_back(std::make_shared<BackToMenuButton>(
             manager, Transform{Point{20, 40}, LAYER::UI,0, 0, 4, 4}, true));

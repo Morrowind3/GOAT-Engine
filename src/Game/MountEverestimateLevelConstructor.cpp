@@ -366,18 +366,21 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(_etappe.player);
             break;
         case 74:
+            //TODO: These (and the airplane) should use a Parallax layer, but that makes them dissapear somehow.
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::BIG, transform, true));
             break;
         case 75:
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::SMALL, transform, true));
             break;
         case 76:
-            transform.layerGroup = LAYER::TILES_FRONT;
+            transform.layerGroup = LAYER::TILES_BACK;
             _etappe.gameObjects.emplace_back(std::make_shared<Cloud>( Cloud::Shape::WIDE, transform, true));
             break;
         case 77:
-             banner = std::make_shared<Banner>(transform, true);
-             bannerAdvert = std::make_shared<AdvertisingPane>(transform, true);
+            banner = std::make_shared<Banner>(transform, true);
+            bannerAdvert = std::make_shared<AdvertisingPane>(transform, true);
 
             banner->transform.layerGroup = LAYER::TILES_BACK;
             plane = std::make_shared<Aeroplane>(transform, 3000, true);
