@@ -5,6 +5,7 @@
 
 
 void TimerScript::onUpdate(double deltaTime) {
+    if(deltaTime == 0) return;
     _totalMs += _clock.lastRecordedUnmodifiedDeltaTime();
     if((int) _totalMs * _engineCalls.speed() / 1000 >= 1){
         addSecond();    //minimize UI updates

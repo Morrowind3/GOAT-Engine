@@ -11,7 +11,7 @@ using namespace Engine;
 
 class Banner : public GameObject {
 public:
-    Banner(Transform tranform, bool active);
+    Banner(Transform& tranform, bool active);
 };
 
 

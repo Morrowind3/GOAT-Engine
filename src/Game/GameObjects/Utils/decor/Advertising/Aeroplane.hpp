@@ -11,10 +11,12 @@ using namespace Engine;
 
 class Aeroplane : public GameObject {
     public:
-        Aeroplane(Transform transform, bool active);
-        void followPlaneMovement(const std::shared_ptr<Transform>& transform);
+        Aeroplane(Transform transform, double maxDistance, bool active);
+        void followPlaneMovement(const std::shared_ptr<GameObject>& following);
+        std::vector<std::shared_ptr<GameObject>> getAttachedObjects();
+        const double maxDist;
     private:
-        std::vector<std::shared_ptr<Transform>> _attachedObjects;
+        std::vector<std::shared_ptr<GameObject>> _attachedObjects;
 };
 
 

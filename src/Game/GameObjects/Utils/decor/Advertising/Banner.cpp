@@ -5,7 +5,7 @@
 #include "Banner.hpp"
 #include "../../../../Keys.hpp"
 
-Banner::Banner(Transform tranform, bool active) : GameObject(tranform, active) {
+Banner::Banner(Transform& transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::BANNER, Sprite{"Sprites/utils/skydecor/airplane_banner.png", true}));
     sprites.insert(std::make_pair(Keys::ANIMATOR, Sprite{"Sprites/utils/skydecor/airplane_banner_wind.png", false}));
 

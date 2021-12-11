@@ -11,7 +11,9 @@ namespace Keys {
 #pragma region Logic
     const std::string TRUE = "TRUE"; // Usage: positive bool
     const std::string FALSE = "FALSE"; // Usage: negative bool
-    const std::string ERROR = "ERROR"; // UsageL error identifier
+    const std::string ERROR = "ERROR"; // Usage: error identifier
+    const std::string NO_FLIP = "ERROR"; // Usage: Indicate that this sprite shouldn't be flipped. e.g. You want text to remain legible.
+
 #pragma endregion
 
 #pragma region Generic Identifiers
