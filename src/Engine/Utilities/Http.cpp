@@ -80,7 +80,7 @@ Http::~Http(){
 }
 
 bool Http::isSupportedFormat(const std::string &url) {
-    std::string formats[1] {".png"};
+    std::string formats[3] {".png", ".jpg", ".jpeg"};
 
     for(const auto& format : formats){
         if(url.size() >= format.size() &&
