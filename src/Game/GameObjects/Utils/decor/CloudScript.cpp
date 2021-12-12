@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 08/12/2021.
-//
-
 #include "CloudScript.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"

@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 10/12/2021.
-//
-
 #include "Aeroplane.hpp"
 #include "../../../../Keys.hpp"
 #include "AeroplaneBehavior.hpp"

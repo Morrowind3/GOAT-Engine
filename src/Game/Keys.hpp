@@ -74,6 +74,15 @@ namespace Keys {
 	const std::string SAVE_ERASE = "SAVE_ERASE";
 #pragma endregion
 
+#pragma region Trash
+    const std::string TRASH = "TRASH"; // Usage: Trash Object ID and for counting collected trash
+    const std::string TRASH_MAX = "TRASH_MAX"; // Usage: Trash Object ID and for the total trash in a scene.
+    const std::string TRASH_0 = "TRASH_0";
+    const std::string TRASH_1 = "TRASH_1";
+    const std::string TRASH_2 = "TRASH_2";
+    const std::string TRASH_3 = "TRASH_3";
+#pragma endregion
+
 #pragma region Unsorted
     const std::string SNOWSTORM = "SNOWSTORM";
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
@@ -84,8 +93,7 @@ namespace Keys {
     const std::string SNAKE = "SNAKE"; // Usage: Snake script ID
     const std::string SNOWBALL = "SNOWBALL"; // Usage: Snowball script ID
     const std::string PLAYER = "PLAYER"; // Usage: Player Object ID
-    const std::string TRASH = "TRASH"; // Usage: Trash Object ID and for counting collected trash
-    const std::string TRASH_MAX = "TRASH_MAX"; // Usage: Trash Object ID and for the total trash in a scene.
+
     const std::string MOVE1 = "MOVE1"; // Usage: Hawk sprite 1, Player walk sprite 1
     const std::string MOVE2 = "MOVE2"; // Usage: Hawk sprite 2
     const std::string MOVE3 = "MOVE3";

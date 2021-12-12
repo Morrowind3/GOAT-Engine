@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 05/12/2021.
-//
-
 #include "TrashScript.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"
