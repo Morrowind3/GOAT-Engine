@@ -139,7 +139,8 @@ add_library(GOAT_Engine STATIC
 		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp
-        )
+		Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp)
+
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
@@ -270,6 +271,7 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Sprites/Buttons/Sprite_UndoButton.cpp Game/Sprites/Buttons/Sprite_UndoButton.hpp Game/AudioSources/Sounds/Menus/Sound_Delete.cpp Game/AudioSources/Sounds/Menus/Sound_Delete.hpp
         Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.hpp
 		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
+        Game/GameObjects/Utils/decor/Cloud.cpp Game/GameObjects/Utils/decor/Cloud.hpp Game/GameObjects/Utils/decor/CloudBehavior.cpp Game/GameObjects/Utils/decor/CloudBehavior.hpp Game/GameObjects/Utils/decor/CloudScript.cpp Game/GameObjects/Utils/decor/CloudScript.hpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.cpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.hpp Game/GameObjects/Utils/decor/Advertising/Banner.cpp Game/GameObjects/Utils/decor/Advertising/Banner.hpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.cpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.hpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.cpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.hpp
 		Game/Sprites/Backgrounds/Sprite_SaveBackground.cpp Game/Sprites/Backgrounds/Sprite_SaveBackground.hpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.cpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.hpp Game/Animators/Animator_CoolGoat.cpp Game/Animators/Animator_CoolGoat.hpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat1.cpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat1.hpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat2.cpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat2.hpp
 		)
 
