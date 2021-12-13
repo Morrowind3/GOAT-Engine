@@ -5,12 +5,12 @@
 #include "../../Sprites/Player/Sprite_PlayerMove2.hpp"
 #include "../../Sprites/Player/Sprite_PlayerMove3.hpp"
 #include "../../Sprites/Player/Sprite_PlayerJump.hpp"
-#include "../../Animators/Animator_PlayerWalking.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Jump.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Walk.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_WalkAlt.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Oof.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Death.hpp"
+#include "PlayerAnimator_Walking.hpp"
+#include "Sounds/Sound_Jump.hpp"
+#include "Sounds/Sound_Walk.hpp"
+#include "Sounds/Sound_WalkAlt.hpp"
+#include "Sounds/Sound_Oof.hpp"
+#include "Sounds/Sound_Death.hpp"
 #include "PlayerBehavior.hpp"
 
 Object_Player::Object_Player(Transform transform, bool active) : GameObject(transform, active) {
@@ -26,7 +26,7 @@ Object_Player::Object_Player(Transform transform, bool active) : GameObject(tran
     auto& moveSprite3 = sprites.insert(std::make_pair(Keys::MOVE3, Sprite_PlayerMove3{false})).first->second;
     auto& jumpSprite = sprites.insert(std::make_pair(Keys::JUMP, Sprite_PlayerJump{false})).first->second;
 	auto& pickupSprite = sprites.insert(std::make_pair(Keys::TRASH, Sprite{"Sprites/player/player_pickup.png", false})).first->second;
-    auto& walkingAnimator = animators.insert(std::make_pair(Keys::WALKING_ANIMATOR, Animator_PlayerWalking{moveSprite1, moveSprite2, moveSprite3, moveSprite2, false})).first->second;
+    auto& walkingAnimator = animators.insert(std::make_pair(Keys::WALKING_ANIMATOR, PlayerAnimator_Walking{moveSprite1, moveSprite2, moveSprite3, moveSprite2, false})).first->second;
     // Audio
     auto& jumpSound = audioSources.insert(std::make_pair(Keys::JUMP_SFX,Sound_Jump{1,100,false,true})).first->second;
     auto& walkSound = audioSources.insert(std::make_pair(Keys::WALK_SFX_A,Sound_Walk{1,100,false,true})).first->second;

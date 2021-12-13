@@ -8,14 +8,14 @@
 #include "../../../Sprites/UI/Trash/Sprite_Trash1.hpp"
 #include "../../../Sprites/UI/Trash/Sprite_Trash2.hpp"
 #include "../../../Sprites/UI/Trash/Sprite_Trash3.hpp"
-#include "../../../Animators/Animator_Trash.hpp"
+#include "../../WorldObjects/Trash/TrashAnimator.hpp"
 
 TrashCounter::TrashCounter(bool active) : GameObject(Transform{{1150, 12}, LAYER::UI, 1, 2, 2}, active) {
     auto& trash0 = sprites.insert(std::make_pair(Keys::TRASH_0, Sprite_Trash0{true})).first->second;
     auto& trash1 = sprites.insert(std::make_pair(Keys::TRASH_1, Sprite_Trash1{false})).first->second;
     auto& trash2 = sprites.insert(std::make_pair(Keys::TRASH_2, Sprite_Trash2{false})).first->second;
     auto& trash3 = sprites.insert(std::make_pair(Keys::TRASH_3, Sprite_Trash3{false})).first->second;
-    animators.insert(std::make_pair(Keys::ANIMATOR, Animator_Trash{trash0,trash1,trash2,trash3,true}));
+    animators.insert(std::make_pair(Keys::ANIMATOR, TrashAnimator{trash0,trash1,trash2,trash3,true}));
 
     Point textPos = transform.position;
     textPos.y -= 2;
