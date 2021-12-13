@@ -18,6 +18,7 @@
 #include "GameObjects/Utils/decor/Advertising/Object_Aeroplane.hpp"
 #include "GameObjects/Utils/decor/Advertising/Object_Banner.hpp"
 #include "GameObjects/Utils/decor/Advertising/Object_AdvertisingPane.hpp"
+#include "GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp"
 
 #include <regex>
 #include <fstream>
@@ -115,10 +116,6 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<Object_WallTile>(
                     "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
             break;
-//            case 666:
-//            _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
-//                    "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
-//            break;
         case 4:
             _etappe.gameObjects.emplace_back(std::make_shared<Object_SolidTile>(
                     "Sprites/landscapes/grass/grass_ground_end_left.png", transform, true));
@@ -397,6 +394,10 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(bannerAdvert);
             plane->followPlaneMovement(bannerAdvert);
             plane->followPlaneMovement(banner);
+            break;
+            case 78:
+            _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
+                    "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
             break;
         default:
             _etappe.gameObjects.emplace_back(std::make_shared<Object_SolidTile>(
