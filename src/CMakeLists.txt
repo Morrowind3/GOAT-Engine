@@ -146,15 +146,12 @@ target_include_directories(GOAT_Engine PUBLIC "Box2D")
 target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3)
 
 add_executable(Mount_Everestimate
-        # Core
         Game/Keys.hpp
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
 		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
 		Game/Layers.hpp
-		# Scene templates
 		Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
-        # Scenes
 		Game/Scenes/Templates/SceneTemplate_Menu.cpp Game/Scenes/Templates/SceneTemplate_Menu.hpp
         Game/Scenes/Etappes/EtappeOne.hpp Game/Scenes/Etappes/EtappeOne.cpp
         Game/Scenes/Etappes/EtappeTwo.hpp Game/Scenes/Etappes/EtappeTwo.cpp
@@ -163,7 +160,6 @@ add_executable(Mount_Everestimate
 		Game/Scenes/Menus/SettingsMenuScene.cpp Game/Scenes/Menus/SettingsMenuScene.hpp
 		Game/Scenes/Menus/ScoreboardMenuScene.cpp Game/Scenes/Menus/ScoreboardMenuScene.hpp
 		Game/Scenes/Menus/VictoryScene.cpp Game/Scenes/Menus/VictoryScene.hpp
-        # Objects
 		Game/GameObjects/Player/Object_Player.hpp Game/GameObjects/Player/Object_Player.cpp
         Game/GameObjects/Enemies/Goat/Goat.cpp Game/GameObjects/Enemies/Goat/Goat.hpp
 		Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.cpp Game/GameObjects/Scenes/Etappes/EtappeOneScene/EtappeOneManager.hpp
@@ -191,7 +187,6 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.cpp Game/GameObjects/Scenes/Etappes/BackToEtappeSelectionButton.hpp
 		Game/GameObjects/WorldObjects/HealthPickup/HealthPickup.cpp Game/GameObjects/WorldObjects/HealthPickup/HealthPickup.hpp
         Game/GameObjects/Tiles/LavaTile/LavaTile.cpp Game/GameObjects/Tiles/LavaTile/LavaTile.hpp
-		# Behaviors
 		Game/GameObjects/Scenes/Etappes/EtappeBehavior.cpp Game/GameObjects/Scenes/Etappes/EtappeBehavior.hpp
 		Game/GameObjects/Player/PlayerBehavior.hpp Game/GameObjects/Player/PlayerBehavior.cpp
         Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/QuitGameBehavior.hpp Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/QuitGameBehavior.cpp
@@ -211,15 +206,12 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Tiles/Tile.hpp Game/GameObjects/Tiles/Tile.cpp
         Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
 		Game/Scenes/Menus/DefeatScene.cpp
-
         Game/Animators/Animator_PlayerWalking.cpp Game/Animators/Animator_PlayerWalking.hpp
-
 		Game/Sprites/Player/Sprite_PlayerIdle.cpp Game/Sprites/Player/Sprite_PlayerIdle.hpp
 		Game/Sprites/Player/Sprite_PlayerMove1.cpp Game/Sprites/Player/Sprite_PlayerMove1.hpp
 		Game/Sprites/Player/Sprite_PlayerMove3.cpp Game/Sprites/Player/Sprite_PlayerMove3.hpp
 		Game/Sprites/Player/Sprite_PlayerJump.cpp Game/Sprites/Player/Sprite_PlayerJump.hpp
 		Game/Sprites/Player/Sprite_PlayerMove2.cpp Game/Sprites/Player/Sprite_PlayerMove2.hpp
-
 		Game/AudioSources/Sounds/Player/Sound_Jump.cpp Game/AudioSources/Sounds/Player/Sound_Jump.hpp
 		Game/AudioSources/Sounds/Player/Sound_Walk.cpp Game/AudioSources/Sounds/Player/Sound_Walk.hpp
 		Game/AudioSources/Sounds/Player/Sound_WalkAlt.cpp Game/AudioSources/Sounds/Player/Sound_WalkAlt.hpp
@@ -279,7 +271,9 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Sprites/Buttons/Sprite_UndoButton.cpp Game/Sprites/Buttons/Sprite_UndoButton.hpp Game/AudioSources/Sounds/Menus/Sound_Delete.cpp Game/AudioSources/Sounds/Menus/Sound_Delete.hpp
         Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.hpp
 		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
-        Game/GameObjects/Utils/decor/Cloud.cpp Game/GameObjects/Utils/decor/Cloud.hpp Game/GameObjects/Utils/decor/CloudBehavior.cpp Game/GameObjects/Utils/decor/CloudBehavior.hpp Game/GameObjects/Utils/decor/CloudScript.cpp Game/GameObjects/Utils/decor/CloudScript.hpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.cpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.hpp Game/GameObjects/Utils/decor/Advertising/Banner.cpp Game/GameObjects/Utils/decor/Advertising/Banner.hpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.cpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.hpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.cpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.hpp)
+        Game/GameObjects/Utils/decor/Cloud.cpp Game/GameObjects/Utils/decor/Cloud.hpp Game/GameObjects/Utils/decor/CloudBehavior.cpp Game/GameObjects/Utils/decor/CloudBehavior.hpp Game/GameObjects/Utils/decor/CloudScript.cpp Game/GameObjects/Utils/decor/CloudScript.hpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.cpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.hpp Game/GameObjects/Utils/decor/Advertising/Banner.cpp Game/GameObjects/Utils/decor/Advertising/Banner.hpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.cpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.hpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.cpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.hpp
+		Game/Sprites/Backgrounds/Sprite_SaveBackground.cpp Game/Sprites/Backgrounds/Sprite_SaveBackground.hpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.cpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.hpp Game/Animators/Animator_CoolGoat.cpp Game/Animators/Animator_CoolGoat.hpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat1.cpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat1.hpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat2.cpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat2.hpp
+		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 

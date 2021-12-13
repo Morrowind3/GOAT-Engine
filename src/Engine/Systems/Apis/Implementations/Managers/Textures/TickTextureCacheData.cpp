@@ -3,7 +3,11 @@
 
 TickTextureCacheData::TickTextureCacheData(const Transform transform, const Texture* data): transform{transform}, data{data} {
     std::string concatenated = std::to_string(transform.layerGroup)+std::to_string(transform.layerInsideGroup);
-    sortingKey = (unsigned long long)std::stoll(concatenated);
+    try {
+        sortingKey = (unsigned long long)std::stoll(concatenated);
+    } catch (...) { // Edge case: sorting key overflows when both layerGroup and layerInsideGroup are 0xFFFFFFFFFFFFFFFF
+        sortingKey = 0xFFFFFFFFFFFFFFFF;
+    }
 }
 
 TickTextureCacheData& TickTextureCacheData::operator=(const TickTextureCacheData& other) {
