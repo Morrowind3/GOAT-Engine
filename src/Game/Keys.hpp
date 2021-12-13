@@ -75,8 +75,8 @@ namespace Keys {
 #pragma endregion
 
 #pragma region Trash
-    const std::string TRASH = "TRASH"; // Usage: Trash Object ID and for counting collected trash
-    const std::string TRASH_MAX = "TRASH_MAX"; // Usage: Trash Object ID and for the total trash in a scene.
+    const std::string TRASH = "TRASH"; // Usage: Object_Trash Object ID and for counting collected trash
+    const std::string TRASH_MAX = "TRASH_MAX"; // Usage: Object_Trash Object ID and for the total trash in a scene.
     const std::string TRASH_0 = "TRASH_0";
     const std::string TRASH_1 = "TRASH_1";
     const std::string TRASH_2 = "TRASH_2";
@@ -88,24 +88,24 @@ namespace Keys {
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
 	const std::string SPEED = "SPEED";
-    const std::string HAWK = "HAWK"; // Usage: Hawk script ID
-    const std::string GOAT = "GOAT"; // Usage: Goat script ID
-    const std::string SNAKE = "SNAKE"; // Usage: Snake script ID
-    const std::string SNOWBALL = "SNOWBALL"; // Usage: Snowball script ID
+    const std::string HAWK = "HAWK"; // Usage: Object_Hawk script ID
+    const std::string GOAT = "GOAT"; // Usage: Object_Goat script ID
+    const std::string SNAKE = "SNAKE"; // Usage: Object_Snake script ID
+    const std::string SNOWBALL = "SNOWBALL"; // Usage: Object_Snowball script ID
     const std::string PLAYER = "PLAYER"; // Usage: Player Object ID
 
-    const std::string MOVE1 = "MOVE1"; // Usage: Hawk sprite 1, Player walk sprite 1
-    const std::string MOVE2 = "MOVE2"; // Usage: Hawk sprite 2
+    const std::string MOVE1 = "MOVE1"; // Usage: Object_Hawk sprite 1, Player walk sprite 1
+    const std::string MOVE2 = "MOVE2"; // Usage: Object_Hawk sprite 2
     const std::string MOVE3 = "MOVE3";
-	const std::string IDLE = "IDLE"; // Usage: Object_Player/Goat idle sprite
-	const std::string IDLE2 = "IDLE2"; // Usage: Goat idle sprite 2
+	const std::string IDLE = "IDLE"; // Usage: Object_Player/Object_Goat idle sprite
+	const std::string IDLE2 = "IDLE2"; // Usage: Object_Goat idle sprite 2
     const std::string JUMP = "JUMP"; // Usage: Object_Player jump sprite
-    const std::string ATTACK_STANCE = "ATTACK_STANCE"; // Usage: Goat attack ready sprite
-    const std::string ATTACK1 = "ATTACK1"; // Usage: Goat attack sprite
-    const std::string ATTACK2 = "ATTACK2"; // Usage: Goat attack sprite 2
+    const std::string ATTACK_STANCE = "ATTACK_STANCE"; // Usage: Object_Goat attack ready sprite
+    const std::string ATTACK1 = "ATTACK1"; // Usage: Object_Goat attack sprite
+    const std::string ATTACK2 = "ATTACK2"; // Usage: Object_Goat attack sprite 2
 	const std::string STAR = "STAR"; // Usage: Star sprite (etappemarker)
 	const std::string FLAG = "FLAG"; // Usage: Flag sprite (etappemarker)
-	const std::string CLOUDS = "CLOUDS"; // Usage: Cloud sprite (EtappeSelectionBG)
+	const std::string CLOUDS = "CLOUDS"; // Usage: Object_Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
     const std::string JAGERPLEISTER = "JAGERPLEISTER"; // Usage: For Jägerpleister sprite.
     const std::string DAMAGE = "DAMAGE"; // Usage: Use for the damage script, which you attach to objects that can receive damage.
@@ -135,9 +135,9 @@ namespace Keys {
     const std::string DAMAGE_SFX = "DAMAGE_SFX"; // For damage sound effects
     const std::string DEATH_SFX = "DEATH_SFX"; // For death sound effects
     const std::string JUMP_SFX = "JUMP_SFX"; // Usage: Object_Player jump sfx
-    const std::string BLEATHING = "BLEATHING"; // Usage: Goat bleathing SFX
+    const std::string BLEATHING = "BLEATHING"; // Usage: Object_Goat bleathing SFX
 
-    //GAME STATES, flags used by GameStateScript.
+    //GAME STATES, flags used by Script_GameState.
     const std::string GAMESTATE = "GAMESTATE";
     const std::string GAMESTATE_DEFAULT = "DEFAULT";
     const std::string GAMESTATE_VICTORY = "VICTORY";
