@@ -4,11 +4,13 @@
 #include "../../../Keys.hpp"
 
 void HawkScript::onTriggerEnter2D(GameObject& other) {
+    //damage player
+    if(other.hasTag(Keys::PLAYER)) {
+        other.behaviors.at(Keys::BEHAVIOR)->scripts.at(Keys::DAMAGE)->onExternalEvent();
+    }
+
     //if going down and touching a tile or player, go back up
     if (_direction == DOWN && (other.hasTag(Keys::SOLID) || other.hasTag(Keys::WALL) || other.hasTag(Keys::PLAYER))) {
-        if(other.hasTag(Keys::PLAYER)) {
-            other.behaviors.at(Keys::BEHAVIOR)->scripts.at(Keys::DAMAGE)->onExternalEvent();
-        }
         _direction = UP;
     }
 }
