@@ -4,6 +4,8 @@
 // Not an "enum class" because these are essentially named integers
 enum LAYER {
     PARALLAX_BACKGROUND = 80,
+    PARALLAX_SKYDECOR = 85,
+
     ETAPPE_TEXT = 99,
     TILES_BACK = 140,
     CHARACTER = 150,
