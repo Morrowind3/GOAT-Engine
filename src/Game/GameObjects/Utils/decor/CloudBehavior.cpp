@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 08/12/2021.
-//
-
 #include "CloudBehavior.hpp"
 #include "CloudScript.hpp"
 #include "../../../Keys.hpp"

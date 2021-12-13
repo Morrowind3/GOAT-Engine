@@ -115,6 +115,10 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             _etappe.gameObjects.emplace_back(std::make_shared<WallTile>(
                     "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
             break;
+//            case 666:
+//            _etappe.gameObjects.emplace_back(std::make_shared<EmptySolidTile>(
+//                    "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
+//            break;
         case 4:
             _etappe.gameObjects.emplace_back(std::make_shared<SolidTile>(
                     "Sprites/landscapes/grass/grass_ground_end_left.png", transform, true));

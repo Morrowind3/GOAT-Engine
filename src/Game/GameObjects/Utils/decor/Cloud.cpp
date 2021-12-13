@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 08/12/2021.
-//
-
 #include "Cloud.hpp"
 #include "../../../Keys.hpp"
 #include "CloudBehavior.hpp"
@@ -19,6 +15,4 @@ Cloud::Cloud(Cloud::Shape shape, Transform transform, bool active) : GameObject(
     }
     sprites.insert(std::make_pair(Keys::CLOUDS, Sprite{sprite, true}));
     behaviors.insert(std::make_pair(Keys::CLOUDS, std::make_shared<CloudBehavior>(*this, true)));
-
-
 }

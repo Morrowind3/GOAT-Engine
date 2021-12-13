@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 11/12/2021.
-//
-
 #include "AeroplaneFlightScript.hpp"
 #include "../../../../Keys.hpp"
 

@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 10/12/2021.
-//
-
 #ifndef GOAT_ENGINE_HTTP_HPP
 #define GOAT_ENGINE_HTTP_HPP
 

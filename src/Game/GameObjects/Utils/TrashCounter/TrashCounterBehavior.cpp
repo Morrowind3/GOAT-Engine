@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 06/12/2021.
-//
-
 #include "TrashCounterBehavior.hpp"
 #include "../../../Keys.hpp"
 #include "../Timer/TimerScript.hpp"
