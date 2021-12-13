@@ -4,10 +4,10 @@
 #include "../Timer/TimerBehavior.hpp"
 #include "TrashCounterBehavior.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
-#include "../../../Sprites/UI/Trash/Sprite_Trash0.hpp"
-#include "../../../Sprites/UI/Trash/Sprite_Trash1.hpp"
-#include "../../../Sprites/UI/Trash/Sprite_Trash2.hpp"
-#include "../../../Sprites/UI/Trash/Sprite_Trash3.hpp"
+#include "Sprites/Sprite_Trash0.hpp"
+#include "Sprites/Sprite_Trash1.hpp"
+#include "Sprites/Sprite_Trash2.hpp"
+#include "Sprites/Sprite_Trash3.hpp"
 #include "../../WorldObjects/Trash/TrashAnimator.hpp"
 
 TrashCounter::TrashCounter(bool active) : GameObject(Transform{{1150, 12}, LAYER::UI, 1, 2, 2}, active) {

@@ -1,6 +1,6 @@
 #include "PlaySaveButton.hpp"
 #include "../../../../../../Keys.hpp"
-#include "../../../../../../Sprites/Buttons/Sprite_PlayButton.hpp"
+#include "Sprite_PlayButton.hpp"
 #include "PlaySaveBehavior.hpp"
 
 PlaySaveButton::PlaySaveButton(int saveNumber, const Transform& transform, bool active): GameObject(transform, active) {

@@ -3,7 +3,7 @@
 #include "SavesManagerBehavior.hpp"
 #include "../../../Scenes/Music/Music_SmoothGroove.hpp"
 #include "../../../Layers.hpp"
-#include "../../../Sprites/Backgrounds/Sprite_SaveBackground.hpp"
+#include "Decor/Sprite_SaveBackground.hpp"
 
 SavesManager::SavesManager(Scene& scene, bool active): GameObject(Transform{{0,0}}, active) {
     behaviors.insert(std::make_pair(Keys::_, std::make_shared<SavesManagerBehavior>(scene,true)));

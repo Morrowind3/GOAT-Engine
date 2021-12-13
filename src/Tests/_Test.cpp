@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN //Only needed once! Don't copy to other tests within this project.
 #include <Windows.h>
-#include "../../catch.hpp"
-#include "../Engine.hpp"
-#include "../Utilities/Input.hpp"
+#include "../Libraries/catch.hpp"
+#include "../Engine/Engine.hpp"
+#include "../Engine/Utilities/Input.hpp"
 
 using namespace Engine;
 

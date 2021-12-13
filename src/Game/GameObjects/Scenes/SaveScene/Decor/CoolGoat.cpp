@@ -1,7 +1,7 @@
 #include "CoolGoat.hpp"
 #include "../../../../Keys.hpp"
-#include "../../../../Sprites/Enemies/Goat/Sprite_CoolGoat1.hpp"
-#include "../../../../Sprites/Enemies/Goat/Sprite_CoolGoat2.hpp"
+#include "Sprite_CoolGoat1.hpp"
+#include "Sprite_CoolGoat2.hpp"
 #include "../../../../Scenes/Menus/Utils/Animator_CoolGoat.hpp"
 
 CoolGoat::CoolGoat(Transform transform, bool active) : GameObject(transform, active) {

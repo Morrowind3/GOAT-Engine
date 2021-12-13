@@ -1,6 +1,6 @@
 #include "DeleteSaveButton.hpp"
 #include "../../../../../../Keys.hpp"
-#include "../../../../../../Sprites/Buttons/Sprite_DeleteButton.hpp"
+#include "Sprite_DeleteButton.hpp"
 #include "DeleteSaveBehavior.hpp"
 #include "../../../../../../Scenes/Menus/Sounds/Sound_Delete.hpp"
 

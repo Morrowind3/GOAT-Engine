@@ -1,5 +1,5 @@
-#include "../../catch.hpp"
-#include "../Systems/SystemHelpers/AnimatorHelper.hpp"
+#include "../Libraries/catch.hpp"
+#include "../Engine/Systems/SystemHelpers/AnimatorHelper.hpp"
 
 using namespace Engine;
 

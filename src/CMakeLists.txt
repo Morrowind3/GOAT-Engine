@@ -208,11 +208,11 @@ add_executable(Mount_Everestimate
         Game/Scenes/Templates/SharedEtappe.cpp Game/Scenes/Templates/SharedEtappe.hpp
 		Game/Scenes/Menus/DefeatScene.cpp
 		Game/GameObjects/Player/PlayerAnimator_Walking.cpp Game/GameObjects/Player/PlayerAnimator_Walking.hpp
-		Game/Sprites/Player/Sprite_PlayerIdle.cpp Game/Sprites/Player/Sprite_PlayerIdle.hpp
-		Game/Sprites/Player/Sprite_PlayerMove1.cpp Game/Sprites/Player/Sprite_PlayerMove1.hpp
-		Game/Sprites/Player/Sprite_PlayerMove3.cpp Game/Sprites/Player/Sprite_PlayerMove3.hpp
-		Game/Sprites/Player/Sprite_PlayerJump.cpp Game/Sprites/Player/Sprite_PlayerJump.hpp
-		Game/Sprites/Player/Sprite_PlayerMove2.cpp Game/Sprites/Player/Sprite_PlayerMove2.hpp
+		Game/GameObjects/Player/Sprites/Sprite_PlayerIdle.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerIdle.hpp
+		Game/GameObjects/Player/Sprites/Sprite_PlayerMove1.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerMove1.hpp
+		Game/GameObjects/Player/Sprites/Sprite_PlayerMove3.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerMove3.hpp
+		Game/GameObjects/Player/Sprites/Sprite_PlayerJump.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerJump.hpp
+		Game/GameObjects/Player/Sprites/Sprite_PlayerMove2.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerMove2.hpp
 		Game/GameObjects/Player/Sounds/Sound_Jump.cpp Game/GameObjects/Player/Sounds/Sound_Jump.hpp
 		Game/GameObjects/Player/Sounds/Sound_Walk.cpp Game/GameObjects/Player/Sounds/Sound_Walk.hpp
 		Game/GameObjects/Player/Sounds/Sound_WalkAlt.cpp Game/GameObjects/Player/Sounds/Sound_WalkAlt.hpp
@@ -265,25 +265,23 @@ add_executable(Mount_Everestimate
 		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
         Game/Scenes/Menus/SaveScene.cpp Game/Scenes/Menus/SaveScene.hpp
         Game/GameObjects/Scenes/SaveScene/SavesManager.cpp Game/GameObjects/Scenes/SaveScene/SavesManager.hpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.cpp Game/GameObjects/Scenes/SaveScene/SavesManagerBehavior.hpp
-		Game/GameObjects/Scenes/SaveScene/LoadSavesScript.cpp Game/GameObjects/Scenes/SaveScene/LoadSavesScript.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.hpp Game/Sprites/Player/Sprite_PlayerWin.cpp Game/Sprites/Player/Sprite_PlayerWin.hpp Game/Sprites/Player/Sprite_PlayerFront.cpp Game/Sprites/Player/Sprite_PlayerFront.hpp
-		Game/Sprites/Buttons/Sprite_PlayButton.cpp Game/Sprites/Buttons/Sprite_PlayButton.hpp Game/Sprites/Buttons/Sprite_DeleteButton.cpp Game/Sprites/Buttons/Sprite_DeleteButton.hpp
+		Game/GameObjects/Scenes/SaveScene/LoadSavesScript.cpp Game/GameObjects/Scenes/SaveScene/LoadSavesScript.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/SaveFile.hpp Game/GameObjects/Player/Sprites/Sprite_PlayerWin.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerWin.hpp Game/GameObjects/Player/Sprites/Sprite_PlayerFront.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerFront.hpp
+		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/Sprite_PlayButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/Sprite_PlayButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/Sprite_DeleteButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/Sprite_DeleteButton.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveButton.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveButton.hpp Game/Scenes/Music/Music_SmoothGroove.cpp Game/Scenes/Music/Music_SmoothGroove.hpp
 		Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/PlaySaveButton/PlaySaveScript.hpp
-        Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Sprites/Buttons/Sprite_UndoButton.cpp Game/Sprites/Buttons/Sprite_UndoButton.hpp Game/Scenes/Menus/Sounds/Sound_Delete.cpp Game/Scenes/Menus/Sounds/Sound_Delete.hpp
+        Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveBehavior.hpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.cpp Game/GameObjects/Scenes/SaveScene/SaveFile/Buttons/DeleteSaveButton/DeleteSaveScript.hpp Game/Scenes/Menus/Sounds/Sound_Delete.cpp Game/Scenes/Menus/Sounds/Sound_Delete.hpp
         Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/BackToSaveScreenButton.hpp
 		Game/Scenes/Etappes/EtappeFive.cpp Game/Scenes/Etappes/EtappeFive.hpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.cpp Game/GameObjects/Scenes/Etappes/EtappeFiveScene/EtappeFiveManager.hpp Game/GameObjects/Tiles/WallTile/WallTile.cpp Game/GameObjects/Tiles/WallTile/WallTile.hpp
         Game/GameObjects/Utils/decor/Cloud.cpp Game/GameObjects/Utils/decor/Cloud.hpp Game/GameObjects/Utils/decor/CloudBehavior.cpp Game/GameObjects/Utils/decor/CloudBehavior.hpp Game/GameObjects/Utils/decor/CloudScript.cpp Game/GameObjects/Utils/decor/CloudScript.hpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.cpp Game/GameObjects/Utils/decor/Advertising/Aeroplane.hpp Game/GameObjects/Utils/decor/Advertising/Banner.cpp Game/GameObjects/Utils/decor/Advertising/Banner.hpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.cpp Game/GameObjects/Utils/decor/Advertising/AdvertisingPane.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneFlightScript.hpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.cpp Game/GameObjects/Utils/decor/Advertising/AeroplaneBehavior.hpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.cpp Game/GameObjects/Utils/decor/Advertising/Animator_BannerFlutter.hpp
-		Game/Sprites/Backgrounds/Sprite_SaveBackground.cpp Game/Sprites/Backgrounds/Sprite_SaveBackground.hpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.cpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.hpp Game/Scenes/Menus/Utils/Animator_CoolGoat.cpp Game/Scenes/Menus/Utils/Animator_CoolGoat.hpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat1.cpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat1.hpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat2.cpp Game/Sprites/Enemies/Goat/Sprite_CoolGoat2.hpp
-		Game/GameObjects/WorldObjects/Trash/TrashAnimator.cpp Game/GameObjects/WorldObjects/Trash/TrashAnimator.hpp Game/Sprites/UI/Trash/Sprite_Trash0.cpp Game/Sprites/UI/Trash/Sprite_Trash0.hpp Game/Sprites/UI/Trash/Sprite_Trash1.cpp Game/Sprites/UI/Trash/Sprite_Trash1.hpp Game/Sprites/UI/Trash/Sprite_Trash2.cpp Game/Sprites/UI/Trash/Sprite_Trash2.hpp Game/Sprites/UI/Trash/Sprite_Trash3.cpp Game/Sprites/UI/Trash/Sprite_Trash3.hpp
+		Game/GameObjects/Scenes/SaveScene/Decor/Sprite_SaveBackground.cpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_SaveBackground.hpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.cpp Game/GameObjects/Scenes/SaveScene/Decor/CoolGoat.hpp Game/Scenes/Menus/Utils/Animator_CoolGoat.cpp Game/Scenes/Menus/Utils/Animator_CoolGoat.hpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat1.cpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat1.hpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat2.cpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat2.hpp
+		Game/GameObjects/WorldObjects/Trash/TrashAnimator.cpp Game/GameObjects/WorldObjects/Trash/TrashAnimator.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash0.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash0.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash1.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash1.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash2.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash2.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash3.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash3.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
-add_executable(engine_tests "Engine/Tests/_Test.cpp" Engine/Tests/AnimatorHelperTest.cpp)
+add_executable(engine_tests "Tests/_Test.cpp" Tests/AnimatorHelperTest.cpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
-add_executable(game_tests "Game/Tests/PlayerTest.cpp")
-target_link_libraries(engine_tests GOAT_Engine)
 enable_testing()
 # Place all necessary dlls and assets in build folder
 add_custom_command(TARGET Mount_Everestimate POST_BUILD

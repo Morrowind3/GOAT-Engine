@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_SPRITE_DELETEBUTTON_HPP
 #define GOAT_ENGINE_SPRITE_DELETEBUTTON_HPP
 
-#include "../../../Engine/API/GameObjects/GameComponents/Render/Sprite.hpp"
+#include "../../../../../../../Engine/API/GameObjects/GameComponents/Render/Sprite.hpp"
 
 using namespace Engine;
 

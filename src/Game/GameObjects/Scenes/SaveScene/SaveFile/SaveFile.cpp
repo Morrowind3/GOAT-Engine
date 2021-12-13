@@ -1,7 +1,7 @@
 #include "SaveFile.hpp"
 #include "../../../../Keys.hpp"
-#include "../../../../Sprites/Player/Sprite_PlayerWin.hpp"
-#include "../../../../Sprites/Player/Sprite_PlayerFront.hpp"
+#include "../../../Player/Sprites/Sprite_PlayerWin.hpp"
+#include "../../../Player/Sprites/Sprite_PlayerFront.hpp"
 
 SaveFile::SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, const Transform& transform, bool active): GameObject(transform,active) {
     tags.insert(std::make_pair(Keys::SAVE_FILE,true)); // Identifiable as save file
