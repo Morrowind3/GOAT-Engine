@@ -1,24 +1,24 @@
 #include "Object_Player.hpp"
 #include "../../Keys.hpp"
-#include "../../Sprites/Player/Sprite_PlayerIdle.hpp"
-#include "../../Sprites/Player/Sprite_PlayerMove1.hpp"
-#include "../../Sprites/Player/Sprite_PlayerMove2.hpp"
-#include "../../Sprites/Player/Sprite_PlayerMove3.hpp"
-#include "../../Sprites/Player/Sprite_PlayerJump.hpp"
-#include "../../Animators/Animator_PlayerWalking.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Jump.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Walk.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_WalkAlt.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Oof.hpp"
-#include "../../AudioSources/Sounds/Player/Sound_Death.hpp"
-#include "PlayerBehavior.hpp"
+#include "Sprites/Sprite_PlayerIdle.hpp"
+#include "Sprites/Sprite_PlayerMove1.hpp"
+#include "Sprites/Sprite_PlayerMove2.hpp"
+#include "Sprites/Sprite_PlayerMove3.hpp"
+#include "Sprites/Sprite_PlayerJump.hpp"
+#include "Animator_PlayerWalking.hpp"
+#include "Sounds/Sound_Jump.hpp"
+#include "Sounds/Sound_Walk.hpp"
+#include "Sounds/Sound_WalkAlt.hpp"
+#include "Sounds/Sound_Oof.hpp"
+#include "Sounds/Sound_Death.hpp"
+#include "Behavior_Player.hpp"
 
 Object_Player::Object_Player(Transform transform, bool active) : GameObject(transform, active) {
     tags.emplace(Keys::PLAYER, true);
     rigidBody = RigidBody(75.0f, 8.5f, BodyType::DYNAMIC, true);
     collider = OvalCollider(18.5f, 0.8f, 1.55f,0.2f, true);
     // Logic
-    auto& playerBehavior = behaviors.insert(std::make_pair(Keys::BEHAVIOR,std::make_shared<PlayerBehavior>(*this, true))).first->second;
+    auto& playerBehavior = behaviors.insert(std::make_pair(Keys::BEHAVIOR,std::make_shared<Behavior_Player>(*this, true))).first->second;
     // Render
     auto& idleSprite = sprites.insert(std::make_pair(Keys::IDLE, Sprite_PlayerIdle{false})).first->second;
     auto& moveSprite1 = sprites.insert(std::make_pair(Keys::MOVE1, Sprite_PlayerMove1{false})).first->second;
