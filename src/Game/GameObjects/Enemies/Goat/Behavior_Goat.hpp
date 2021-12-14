@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class Behavior_Goat : public Behavior {
-    public: Behavior_Goat(Object_Goat& goat, bool active);
+    public: Behavior_Goat(Object_Player& player, Object_Goat& goat, bool active);
 };
 
 #endif //GOAT_ENGINE_BEHAVIOR_GOAT_HPP

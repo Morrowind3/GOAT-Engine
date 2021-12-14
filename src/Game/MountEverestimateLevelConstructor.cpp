@@ -385,7 +385,8 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
                                 std::make_shared<Object_Hawk>(*_etappe.player, transform, true));
                         break;
                     case 45:
-                        _etappe.gameObjects.emplace_back(std::make_shared<Object_Goat>(transform, true));
+                        _etappe.gameObjects.emplace_back(
+                                std::make_shared<Object_Goat>(*_etappe.player, transform, true));
                         break;
                     case 46:
                         _etappe.gameObjects.emplace_back(std::make_shared<Object_Snake>(transform, true));
