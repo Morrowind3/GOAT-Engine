@@ -173,10 +173,10 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/MainMenuScene/Object_MainMenuBackground.cpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Object_ExitButton.cpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_PlayButton.cpp
-		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeSelectionBackground.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeSelectionBackground.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Object_BackToMenuButton.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_BackToMenuButton.hpp
 		Game/GameObjects/Utils/Cheats/Object_Cheats.cpp Game/GameObjects/Utils/Cheats/Object_Cheats.hpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.hpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_ScoreboardButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_ScoreboardButton.hpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_SettingsButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_SettingsButton.hpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Object_DebugButton.cpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Object_DebugButton.hpp
