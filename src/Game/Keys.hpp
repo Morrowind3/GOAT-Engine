@@ -79,6 +79,13 @@ namespace Keys {
 	const std::string SCOREBOARD_INITIAL_LOAD = "SCOREBOARD_INITIAL_LOAD";
 #pragma endregion
 
+#pragma region Scoreboard Rain
+    const std::string RAIN = "RAIN";
+    const std::string RAIN2 = "RAIN2";
+	const std::string RAIN3 = "RAIN3";
+	const std::string RAIN4 = "RAIN4";
+#pragma endregion
+
 #pragma region Trash
     const std::string TRASH = "TRASH"; // Usage: Object_Trash Object ID and for counting collected trash
     const std::string TRASH_MAX = "TRASH_MAX"; // Usage: Object_Trash Object ID and for the total trash in a scene.

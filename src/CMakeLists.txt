@@ -281,6 +281,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardSpecificEtappeButton.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardSpecificEtappeButton.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardAllEtappesButton.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardAllEtappesButton.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Sound_Navigate.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Sound_Navigate.hpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Script_OnClickSound.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Script_OnClickSound.hpp Game/GameObjects/Scenes/ScoreboardScene/Behavior_ScoreboardManager.cpp Game/GameObjects/Scenes/ScoreboardScene/Behavior_ScoreboardManager.hpp
+		Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Animator_Rain.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Animator_Rain.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardForeground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardForeground.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

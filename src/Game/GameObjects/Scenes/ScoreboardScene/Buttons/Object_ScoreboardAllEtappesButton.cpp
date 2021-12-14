@@ -7,7 +7,7 @@ Object_ScoreboardAllEtappesButton::Object_ScoreboardAllEtappesButton(Text& score
 GameObject(transform,active) {
 
     Transform textTransform{
-            Point{transform.position.x+8, transform.position.y+25},
+            Point{transform.position.x+7, transform.position.y+25},
             transform.layerGroup, transform.layerInsideGroup+1, 0, 1, 1};
     auto& clickSound = audioSources.insert(std::make_pair(Keys::_, Sound_Navigate{1,70,false,true})).first->second;
     buttons.insert(std::make_pair(Keys::_, Button {

@@ -5,6 +5,8 @@
 #include "../../GameObjects/Scenes/ScoreboardScene/Object_ScoreboardManager.hpp"
 #include "../../GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardSpecificEtappeButton.hpp"
 #include "../../GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardAllEtappesButton.hpp"
+#include "../../GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.hpp"
+#include "../../GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.hpp"
 
 Scene_ScoreboardMenu::Scene_ScoreboardMenu() : SceneTemplate_Menu(Keys::SCOREBOARD_MENU) {
     this->viewPort = Rectangle{{0,0}, 1280, 680}; // Zoom-in
@@ -30,4 +32,8 @@ Scene_ScoreboardMenu::Scene_ScoreboardMenu() : SceneTemplate_Menu(Keys::SCOREBOA
     // Back to save screen
     gameObjects.emplace_back(std::make_shared<Object_BackToSaveScreenButton>(
             Transform{Point{1000, 615}, LAYER::UI, 0,0, 3, 2}, true));
+
+    // Decor
+    gameObjects.emplace_back(std::make_shared<Object_Rain>(Transform{{}, 1,0,0,5,5}, true));
+    gameObjects.emplace_back(std::make_shared<Object_ScoreboardForeground>(Transform{{}, 2},true));
 }
