@@ -68,7 +68,7 @@ void Script_LoadScoreboard::resetScoreboardScene() {
 }
 
 HighScoreKeeper Script_LoadScoreboard::loadScoreboardSpecificEtappe(unsigned short etappeNumber) {
-    _scoreboardHeader.text = " Scoreboard etappe " + std::to_string(etappeNumber);
+    _scoreboardHeader.text = "  Scoreboard etappe " + std::to_string(etappeNumber);
 
     HighScoreKeeper highScoreKeeper {SCOREBOARD_ENTRY_AMOUNT};
     auto highScores = _data.getAll("HighScores", "EtappeNumber", false);
