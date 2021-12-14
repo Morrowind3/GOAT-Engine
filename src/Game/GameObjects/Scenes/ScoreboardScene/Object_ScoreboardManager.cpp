@@ -2,8 +2,8 @@
 #include "../../../Keys.hpp"
 #include "../../../Music/Music_WoodWhistles.hpp"
 #include "../../../Layers.hpp"
-#include "Behavior_LoadScoreboard.hpp"
 #include "Decor/Sprite_ScoreboardBackground.hpp"
+#include "Behavior_ScoreboardManager.hpp"
 
 Object_ScoreboardManager::Object_ScoreboardManager(bool active) : GameObject(Transform{{0,0}}, active) {
     // Background stuff
@@ -16,5 +16,5 @@ Object_ScoreboardManager::Object_ScoreboardManager(bool active) : GameObject(Tra
     audioSources.insert(std::make_pair(Keys::_, Music_WoodWhistles{0,100,true,true}));
 
     // Logic
-    behaviors.insert(std::make_pair(Keys::_, std::make_shared<Behavior_LoadScoreboard>(scoreboardHeader,true)));
+    behaviors.insert(std::make_pair(Keys::_, std::make_shared<Behavior_ScoreboardManager>(scoreboardHeader,true)));
 }

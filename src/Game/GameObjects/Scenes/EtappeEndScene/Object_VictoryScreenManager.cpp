@@ -62,6 +62,6 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
             {255,255,255,255},
             Transform{{920,700},transform.layerGroup,0, 0,1,1},
             true}));
-    audioSources.insert(std::make_pair("Music",AudioSource{"Sounds/victory.mp3", AudioSourceType::SAMPLE, true, true}));
+    audioSources.insert(std::make_pair("Music",AudioSource{"Sounds/Victory.ogg", AudioSourceType::SAMPLE, 70,true, true}));
     behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<Behavior_VictoryScreen>(true)));
 }
