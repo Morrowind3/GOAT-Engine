@@ -395,7 +395,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             plane->followPlaneMovement(bannerAdvert);
             plane->followPlaneMovement(banner);
             break;
-            case 78:
+            case 79:
             _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
                     "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
             break;
