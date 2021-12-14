@@ -1,8 +1,6 @@
 #include "Object_Goat.hpp"
-#include "Script_Goat.hpp"
 #include "Behavior_Goat.hpp"
 #include "../../../Keys.hpp"
-#include "../../../../Engine/API/GameObjects/GameComponents/Collision/CircleCollider.hpp"
 
 Object_Goat::Object_Goat(Object_Player& player, Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(std::make_pair(Keys::IDLE, Sprite{"Sprites/enemies/goat/goat_idle_1.png", true}));
@@ -13,5 +11,5 @@ Object_Goat::Object_Goat(Object_Player& player, Transform transform, bool active
     rigidBody = RigidBody(40.0f, 2.0f, BodyType::DYNAMIC, true);
     collider = CircleCollider(42.5f, 0,0, 0.2,false,true);
     behaviors.insert(std::make_pair(Keys::GOAT, std::make_shared<Behavior_Goat>(player, *this, true)));
-    audioSources.insert(std::make_pair(Keys::BLEATHING, AudioSource{"Sounds/Bleathing.ogg",AudioSourceType::SAMPLE,false,true}));
+    audioSources.insert(std::make_pair(Keys::BLEATHING, AudioSource{"Sounds/Bleathing.ogg",AudioSourceType::SAMPLE,80,false,true}));
 }
