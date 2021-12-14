@@ -1,11 +1,11 @@
 #include <chrono>
 #include <random>
-#include "Script_Hawk.hpp"
-#include "../../../Keys.hpp"
+#include "Script_Predator_Hawk.hpp"
+#include "../../../../Keys.hpp"
 
-void Script_Hawk::onTriggerEnter2D(GameObject& other) {
+void Script_Predator_Hawk::onTriggerEnter2D(GameObject& other) {
     //damage player
-    if(other.hasTag(Keys::PLAYER)) {
+    if (other.hasTag(Keys::PLAYER)) {
         other.behaviors.at(Keys::BEHAVIOR)->scripts.at(Keys::DAMAGE)->onExternalEvent();
     }
 
@@ -15,13 +15,13 @@ void Script_Hawk::onTriggerEnter2D(GameObject& other) {
     }
 }
 
-void Script_Hawk::onUpdate(double deltaTime) {
+void Script_Predator_Hawk::onUpdate(double deltaTime) {
     this->updateDirection();
     this->updatePosition();
     this->updateSprite();
 }
 
-void Script_Hawk::updateDirection() {
+void Script_Predator_Hawk::updateDirection() {
 
     //if going up, and reaching original height, resume idling
     if (_direction == UP && _self.transform.position.y <= _startingPos.y) {
@@ -32,10 +32,9 @@ void Script_Hawk::updateDirection() {
         _direction = UP;
     };
 
-    //if idling and has circled x times, DIVE_CHANGE change to dive
-    if ((_direction == LEFT || _direction == RIGHT) && _circledAfterDiveCounter >= CIRCLES_BEFORE_DIVE) {
-        if (Script_Hawk::getRandomBetween(0, 1000) < DIVE_CHANGE) {
-            //TODO Play sound when diving
+    //if idling and has circled x times, dive when player detected
+    if ((_direction == LEFT || _direction == RIGHT) && _circledAfterDiveCounter >= CIRCLES_BETWEEN_DIVES) {
+        if (this->detectsPlayer()) {
             _direction = DOWN;
         }
     }
@@ -51,7 +50,7 @@ void Script_Hawk::updateDirection() {
     }
 }
 
-void Script_Hawk::updatePosition() {
+void Script_Predator_Hawk::updatePosition() {
 
     switch (_direction) {
         case RIGHT:
@@ -69,10 +68,7 @@ void Script_Hawk::updatePosition() {
     }
 }
 
-void Script_Hawk::updateSprite() {
-
-    //TODO Animator objects
-
+void Script_Predator_Hawk::updateSprite() {
     if (_direction == LEFT) _self.transform.flip = FLIP::FLIP_NONE;
     if (_direction == RIGHT) _self.transform.flip = FLIP::FLIP_HORIZONTAL;
 
@@ -111,9 +107,7 @@ void Script_Hawk::updateSprite() {
     _updateCounter++;
 }
 
-int Script_Hawk::getRandomBetween(int from, int to) {
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine generator(seed);
-    std::uniform_int_distribution<int> random(from, to);
-    return random(generator);
+bool Script_Predator_Hawk::detectsPlayer() {
+    return _player.transform.position.x >= _self.transform.position.x - SENSOR_WIDTH/2 &&
+           _player.transform.position.x <= _self.transform.position.x + SENSOR_WIDTH/2;
 }

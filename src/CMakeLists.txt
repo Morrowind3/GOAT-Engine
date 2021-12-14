@@ -193,7 +193,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Behavior_QuitGame.hpp Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Behavior_QuitGame.cpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Behavior_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Behavior_EtappeMarker.hpp
 		Game/GameObjects/Scenes/Behavior_SwitchSceneButton.hpp Game/GameObjects/Scenes/Behavior_SwitchSceneButton.cpp
-		Game/GameObjects/Enemies/Hawk/Behavior_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Hawk.cpp
+		Game/GameObjects/Enemies/Hawk/Behavior_Predator/Behavior_Predator_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Predator/Behavior_Predator_Hawk.cpp
 		Game/GameObjects/Utils/LifeHeart/Behavior_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Behavior_LifeHeart.hpp
 		Game/GameObjects/Utils/Cheats/Behavior_Cheats.cpp Game/GameObjects/Utils/Cheats/Behavior_Cheats.hpp
 		Game/GameObjects/WorldObjects/VictoryFlag/Behavior_VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag/Behavior_VictoryFlag.hpp
@@ -222,7 +222,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Script_QuitGame.cpp Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Script_QuitGame.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Script_EtappeMarkerConfigurator.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Script_EtappeMarkerConfigurator.hpp
 		Game/GameObjects/Player/Script_PlayerMovement.cpp Game/GameObjects/Player/Script_PlayerMovement.hpp
-		Game/GameObjects/Enemies/Hawk/Script_Hawk.cpp Game/GameObjects/Enemies/Hawk/Script_Hawk.hpp
+		Game/GameObjects/Enemies/Hawk/Behavior_Predator/Script_Predator_Hawk.cpp Game/GameObjects/Enemies/Hawk/Behavior_Predator/Script_Predator_Hawk.hpp
 		Game/GameObjects/Utils/FpsMeter/Script_FpsMeter.cpp Game/GameObjects/Utils/FpsMeter/Script_FpsMeter.hpp
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_Pause.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_Pause.hpp
 		Game/GameObjects/Utils/LifeHeart/Script_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Script_LifeHeart.hpp
