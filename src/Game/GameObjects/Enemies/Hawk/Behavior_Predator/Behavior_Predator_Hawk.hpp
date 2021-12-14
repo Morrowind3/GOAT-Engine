@@ -1,8 +1,6 @@
 #ifndef GOAT_ENGINE_BEHAVIOR_PREDATOR_HAWK_HPP
 #define GOAT_ENGINE_BEHAVIOR_PREDATOR_HAWK_HPP
 
-#include <memory>
-
 #include "../../../../../Engine/API/GameObjects/GameComponents/Script/Behavior.hpp"
 #include "Script_Predator_Hawk.hpp"
 

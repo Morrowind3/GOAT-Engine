@@ -1,5 +1,3 @@
-#include <chrono>
-#include <random>
 #include "Script_Predator_Hawk.hpp"
 #include "../../../../Keys.hpp"
 
@@ -39,7 +37,7 @@ void Script_Predator_Hawk::updateDirection() {
         }
     }
 
-    //if flying furter than scope, change direction
+    //if flying further than scope, change direction
     if (_direction == RIGHT && (_self.transform.position.x - _startingPos.x >= FLYING_SCOPE)) {
         _direction = LEFT;
         _circledAfterDiveCounter++;

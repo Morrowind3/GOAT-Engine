@@ -8,13 +8,6 @@
 
 using namespace Engine;
 
-enum HawkDirection {
-    LEFT,
-    RIGHT,
-    DOWN,
-    UP
-};
-
 class Script_Predator_Hawk : public Script {
 public:
     Script_Predator_Hawk(Object_Player& player, Object_Hawk& self, bool active) : Script(active), _self(self),
@@ -23,6 +16,13 @@ public:
     void onTriggerEnter2D(GameObject &other);
 
 private:
+    enum HawkDirection {
+        LEFT,
+        RIGHT,
+        DOWN,
+        UP
+    };
+
     Object_Hawk& _self;
     Object_Player& _player;
     Point _startingPos;
