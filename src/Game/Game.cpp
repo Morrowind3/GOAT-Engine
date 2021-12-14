@@ -6,6 +6,21 @@
 
 using namespace Engine;
 
+// TODO: DELETE, this is testdata
+void temp() {
+    DataApi& api = DataApi::getInstance();
+
+    for (int etappe = 1; etappe <= 5; ++etappe) {
+        for (int player = 1; player <= 3; ++player) {
+            DataModel model {"HighScores"};
+            model.setValue("EtappeNumber", std::to_string(etappe));
+            model.setValue("Score", std::to_string(etappe*player*100));
+            model.setValue("Players_id", std::to_string(player));
+            api.insert(model);
+        }
+    }
+}
+
 /// Database needs to be set up in order to be able to save
 void setupDatabase() {
     DataApi& api = DataApi::getInstance();
@@ -24,6 +39,7 @@ void setupDatabase() {
     builder.addForeignKey("Players", "id", "INTEGER", false, false);
 
     api.runMigrations(builder.getMigrationQueries());
+    temp();
 }
 
 int main(int argc, char* args[]) {

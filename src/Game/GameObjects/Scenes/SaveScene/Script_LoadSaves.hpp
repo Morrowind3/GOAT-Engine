@@ -4,19 +4,21 @@
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "../../../../Engine/API/Scene.hpp"
 #include "../../../../Engine/Systems/Apis/DataApi.hpp"
+#include "../../../../Engine/Utilities/EngineCalls.hpp"
 
 using namespace Engine;
 
 class Script_LoadSaves: public Script {
     public:
-        Script_LoadSaves(Scene& scene, bool active);
+        explicit Script_LoadSaves(bool active);
         void onStart();
         void onExternalEvent();
     private:
         // Utilities
+        EngineCalls& _engine = EngineCalls::getInstance();
         DataApi& _data = DataApi::getInstance();
         // Variables
-        Scene& _scene;
+        std::shared_ptr<Scene> _scene;
         // Constants
         const unsigned int EXPECTED_SAVE_FILE_AMOUNT {3};
         const int HIGHEST_POSSIBLE_ETAPPE_UNLOCKED {6};
@@ -24,6 +26,7 @@ class Script_LoadSaves: public Script {
         const int SAVE_FILE_TEXT_WIDTH {900};
         const int SAVE_FILE_BUTTON_WIDTH {110};
         // Helper methods
+        void getActiveScene();
         void loadSaves();
         void resetSaveScreen();
         void createSaveFiles(unsigned int currentCount);

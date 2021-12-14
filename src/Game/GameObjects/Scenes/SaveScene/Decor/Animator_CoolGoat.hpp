@@ -1,7 +1,7 @@
 #ifndef GOAT_ENGINE_ANIMATOR_COOLGOAT_HPP
 #define GOAT_ENGINE_ANIMATOR_COOLGOAT_HPP
 
-#include "../../../../Engine/API/GameObjects/GameComponents/Render/Animator.hpp"
+#include "../../../../../Engine/API/GameObjects/GameComponents/Render/Animator.hpp"
 
 using namespace Engine;
 
