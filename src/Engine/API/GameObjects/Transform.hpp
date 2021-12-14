@@ -17,6 +17,7 @@ namespace Engine {
         Point position;
         unsigned int layerGroup, layerInsideGroup;
         double rotation, scaleWidth, scaleHeight;
+        double forcedWidth = 0, forcedHeight = 0;
         FLIP flip;
         bool visible = true;
     };

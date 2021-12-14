@@ -387,8 +387,11 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             banner->transform.position.y =  banner->transform.position.y - 25;
             _etappe.gameObjects.emplace_back(banner);
             bannerAdvert->transform = banner->transform;
+            //User-defined image, so force dimensions
+            bannerAdvert->transform.forcedWidth = 250;
+            bannerAdvert->transform.forcedHeight = 130;
             bannerAdvert->transform.position.x = bannerAdvert->transform.position.x + 32;
-            bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 15;
+            bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 40;
             bannerAdvert->transform.layerGroup = LAYER::TILES_BACK+1;
             _etappe.gameObjects.emplace_back(bannerAdvert);
             plane->followPlaneMovement(bannerAdvert);
