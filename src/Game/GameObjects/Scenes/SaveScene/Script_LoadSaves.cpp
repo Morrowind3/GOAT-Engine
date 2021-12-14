@@ -39,10 +39,11 @@ void Script_LoadSaves::onExternalEvent() {
 
 /// Get all saves and display them on screen, with the save file position moving around to correctly place each object
 void Script_LoadSaves::loadSaves() {
-    Transform saveFilePosition {{50,150}, LAYER::UI, 0, 0, 4, 4};
     createSaveFiles(_data.getAll("Players").size());
     auto saves = _data.getAll("Players", "id", false);
+
     // Place saves in scene
+    Transform saveFilePosition {{50,150}, LAYER::UI, 0, 0, 4, 4};
     for(auto& save: saves) {
         // Extract information from column
         int saveId = std::stoi(save.getValue("id"));

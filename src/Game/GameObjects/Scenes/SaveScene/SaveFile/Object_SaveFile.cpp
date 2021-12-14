@@ -3,7 +3,8 @@
 #include "../../../Player/Sprites/Sprite_PlayerWin.hpp"
 #include "../../../Player/Sprites/Sprite_PlayerFront.hpp"
 
-Object_SaveFile::Object_SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, const Transform& transform, bool active): GameObject(transform,active) {
+Object_SaveFile::Object_SaveFile(int saveNumber, int currentHeight, int mountEverestHeight, int score, const Transform& transform, bool active):
+GameObject(transform,active) {
     tags.insert(std::make_pair(Keys::SAVE_FILE,true)); // Identifiable as save file
 
     // Save file avatar (Edmund)

@@ -1,5 +1,7 @@
 #include "Script_LoadScoreboard.hpp"
 #include "../../../Keys.hpp"
+#include "../../../Layers.hpp"
+#include "ScoreboardEntry/Object_ScoreboardEntry.hpp"
 
 Script_LoadScoreboard::Script_LoadScoreboard(unsigned short etappeNumber, Text& scoreboardHeader, bool active):
         Script(active), _etappeNumber{etappeNumber}, _scoreboardHeader{scoreboardHeader} {
@@ -43,9 +45,19 @@ void Script_LoadScoreboard::loadScoreboard() {
             ? loadScoreboardAllEtappes()
             : loadScoreboardSpecificEtappe(_etappeNumber);
     auto topHighScores = highScores.getTopScores();
-    // TODO: Place high scores in scene
+
+    // Place high scores in scene
+    Transform highScorePosition {{50,150}, LAYER::UI, 0, 0, 4, 4};
+    bool isHighScore {true}; // Only for first save
     for (auto& highScore: topHighScores) {
-        Debug::getInstance().log(std::to_string(highScore.first) + "|" + std::to_string(highScore.second));
+        // Extract information
+        unsigned int saveFileId = highScore.first;
+        unsigned int score = highScore.second;
+        // Place object
+        _scene->gameObjects.emplace_back(std::make_shared<Object_ScoreboardEntry>(saveFileId, score, isHighScore, highScorePosition, true));
+        // Adjust position for next object
+        highScorePosition.position.y += SCOREBOARD_ENTRY_HEIGHT;
+        isHighScore = false;
     }
 }
 
@@ -73,7 +85,7 @@ HighScoreKeeper Script_LoadScoreboard::loadScoreboardSpecificEtappe(unsigned sho
 }
 
 HighScoreKeeper Script_LoadScoreboard::loadScoreboardAllEtappes() {
-    _scoreboardHeader.text = "Scoreboard all ettapes";
+    _scoreboardHeader.text = "Scoreboard all etappes";
 
     HighScoreKeeper highScoreKeeper {SCOREBOARD_ENTRY_AMOUNT};
     auto highScores = _data.getAll("HighScores");
