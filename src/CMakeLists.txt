@@ -170,9 +170,9 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp Game/GameObjects/Tiles/SolidTile/Object_EmptySolidTile.cpp
 		Game/GameObjects/Tiles/SlabTile/Object_SlabTile.cpp Game/GameObjects/Tiles/SlabTile/Object_SlabTile.hpp
 		Game/GameObjects/Enemies/Hawk/Object_Hawk.cpp Game/GameObjects/Enemies/Hawk/Object_Hawk.hpp
-		Game/GameObjects/Scenes/MainMenuScene/Object_MainMenuBackground.cpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Object_ExitButton.cpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_PlayButton.cpp
+		Game/GameObjects/Scenes/MainMenuScene/Object_MainMenuBackground.cpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeSelectionBackground.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeSelectionBackground.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Object_BackToMenuButton.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_BackToMenuButton.hpp
 		Game/GameObjects/Utils/Cheats/Object_Cheats.cpp Game/GameObjects/Utils/Cheats/Object_Cheats.hpp
