@@ -28,7 +28,7 @@ void RenderingSystem::onFrameTick(const double deltaTime) {
     _api->beginRenderTick();
     _scene->moveCameraToNextWaypoint();
     for (auto& gameObject: activeObjects()) {
-        handleAnimators(*gameObject,deltaTime);
+        handleAnimators(*gameObject,deltaTime); // TODO: Feed correct deltatime for animator
         if(!gameObject->transform.visible) continue;
         drawSprites(*gameObject);
         drawText(*gameObject);

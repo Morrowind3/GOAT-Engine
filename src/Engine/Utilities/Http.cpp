@@ -1,8 +1,3 @@
-//
-// Created by Morrowind3 on 10/12/2021.
-//
-
-#include <iostream>
 #include "Http.hpp"
 #include <regex>
 #include <string>
