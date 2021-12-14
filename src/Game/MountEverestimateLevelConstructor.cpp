@@ -18,6 +18,7 @@
 #include "GameObjects/Utils/decor/Advertising/Object_Aeroplane.hpp"
 #include "GameObjects/Utils/decor/Advertising/Object_Banner.hpp"
 #include "GameObjects/Utils/decor/Advertising/Object_AdvertisingPane.hpp"
+#include "GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp"
 
 #include <regex>
 #include <fstream>
@@ -327,6 +328,22 @@ void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std:
                     case 67:
                         _etappe.gameObjects.emplace_back(std::make_shared<Object_Tile>(
                                 "Sprites/utils/tree/tree_leaves_side_right_1.png", transform, true));
+                        break;
+                    case 79:
+                        _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
+                                "Sprites/landscapes/grass/grass_ground_empty.png", transform, true));
+                        break;
+                    case 80:
+                        _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
+                                "Sprites/landscapes/stone/stone_ground_empty.png", transform, true));
+                        break;
+                    case 81:
+                        _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
+                                "Sprites/landscapes/snow/snow_ground_empty.png", transform, true));
+                        break;
+                    case 82:
+                        _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
+                                "Sprites/landscapes/lava/lava_ground_empty.png", transform, true));
                         break;
                     default:
                         break;
