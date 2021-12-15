@@ -247,6 +247,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_AdjustSpeed.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_AdjustSpeed.hpp
 		Game/GameObjects/WorldObjects/HealthPickup/Script_Heal.cpp Game/GameObjects/WorldObjects/HealthPickup/Script_Heal.hpp
 		Game/GameObjects/Tiles/LavaTile/Script_LavaTile.cpp Game/GameObjects/Tiles/LavaTile/Script_LavaTile.hpp
+		Game/GameObjects/Tiles/IceTile/Object_IceTile.cpp 		Game/GameObjects/Tiles/IceTile/Object_IceTile.hpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Script_DebugToggle.cpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Script_DebugToggle.hpp
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_PauseActivation.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_PauseActivation.hpp
 		Game/GameObjects/Scenes/VictoryScene/Script_IncreaseEtappeCount.cpp Game/GameObjects/Scenes/VictoryScene/Script_IncreaseEtappeCount.hpp
