@@ -1,7 +1,3 @@
-//
-// Created by MDstu on 15/12/2021.
-//
-
 #ifndef GOAT_ENGINE_OBJECT_ICETILE_HPP
 #define GOAT_ENGINE_OBJECT_ICETILE_HPP
 
