@@ -8,5 +8,5 @@ Object_Hawk::Object_Hawk(Transform transform, bool active) : GameObject(transfor
     sprites.insert(std::make_pair(Keys::ATTACK1, Sprite{"Sprites/enemies/bird/bird_attack.png", false}));
     behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<Behavior_Hawk>(*this, true)));
     rigidBody = RigidBody(-1, 0, BodyType::DYNAMIC, true);
-    collider = CircleCollider(20.0f, 0.0f, 0.0f, 0.2f, false,true);
+    collider = CircleCollider(20.0f, 0.0f, 0.0f, 0.2f, 0,false,true);
 }

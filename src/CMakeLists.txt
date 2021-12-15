@@ -194,6 +194,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/EtappeSelectionScene/Behavior_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Behavior_EtappeMarker.hpp
 		Game/GameObjects/Scenes/Behavior_SwitchSceneButton.hpp Game/GameObjects/Scenes/Behavior_SwitchSceneButton.cpp
 		Game/GameObjects/Enemies/Hawk/Behavior_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Hawk.cpp
+
 		Game/GameObjects/Utils/LifeHeart/Behavior_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Behavior_LifeHeart.hpp
 		Game/GameObjects/Utils/Cheats/Behavior_Cheats.cpp Game/GameObjects/Utils/Cheats/Behavior_Cheats.hpp
 		Game/GameObjects/WorldObjects/VictoryFlag/Behavior_VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag/Behavior_VictoryFlag.hpp
@@ -207,6 +208,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Tiles/Object_Tile.hpp Game/GameObjects/Tiles/Object_Tile.cpp
 		Game/Scenes/Templates/SceneTemplate_Etappe.cpp Game/Scenes/Templates/SceneTemplate_Etappe.hpp
 		Game/Scenes/Menus/Scene_GameOverMenu.cpp
+		Game/GameObjects/Tiles/IceTile/Object_IceTile.cpp Game/GameObjects/Tiles/IceTile/Object_IceTile.hpp
 		Game/GameObjects/Player/Animator_PlayerWalking.cpp Game/GameObjects/Player/Animator_PlayerWalking.hpp
 		Game/GameObjects/Player/Sprites/Sprite_PlayerIdle.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerIdle.hpp
 		Game/GameObjects/Player/Sprites/Sprite_PlayerMove1.cpp Game/GameObjects/Player/Sprites/Sprite_PlayerMove1.hpp

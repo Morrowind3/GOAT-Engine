@@ -19,6 +19,7 @@
 #include "GameObjects/Utils/decor/Advertising/Object_Banner.hpp"
 #include "GameObjects/Utils/decor/Advertising/Object_AdvertisingPane.hpp"
 #include "GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp"
+#include "GameObjects/Tiles/IceTile/Object_IceTile.hpp"
 
 #include <regex>
 #include <fstream>
@@ -286,7 +287,7 @@ void MountEverestimateLevelConstructor::placeTile(int index, Transform transform
             break;
         case 51:
             //TODO iceTile GameObject
-            _etappe.gameObjects.emplace_back(std::make_shared<Object_SolidTile>(
+            _etappe.gameObjects.emplace_back(std::make_shared<Object_IceTile>(
                     "Sprites/utils/lakes/lake_ice.png", transform, true));
             break;
         case 52:

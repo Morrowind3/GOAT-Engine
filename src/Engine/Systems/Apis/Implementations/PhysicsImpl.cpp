@@ -38,7 +38,7 @@ void PhysicsImpl::createBody(const GameObject &gameObject) {
     // Attaching collider
     try {
         if (gameObject.collider.active) {
-            double density, radius, friction;
+            double density, radius, friction, restitution;
             b2Vec2 offSet;
             switch (gameObject.collider.type) {
                 case ColliderType::NONE:
@@ -46,33 +46,38 @@ void PhysicsImpl::createBody(const GameObject &gameObject) {
                 case ColliderType::BOX_COLLIDER:
                     friction = gameObject.collider.getData().at(2);
                     density = gameObject.rigidBody.mass / ((width / PPM) * (height / PPM));
+                    restitution = gameObject.collider.getData().at(3);
                     attachBoxCollider(box2dRigidBody, gameObject.collider.getData().at(0),
-                                      gameObject.collider.getData().at(1), density, false, friction);
+                                      gameObject.collider.getData().at(1), density, false, friction, restitution);
                     break;
                 case ColliderType::BOX_SENSOR:
                     friction = gameObject.collider.getData().at(2);
+                    restitution = gameObject.collider.getData().at(3);
                     attachBoxCollider(box2dRigidBody, gameObject.collider.getData().at(0),
-                                      gameObject.collider.getData().at(1), 0, true, friction);
+                                      gameObject.collider.getData().at(1), 0, true, friction, restitution);
                     break;
                 case ColliderType::CIRCLE_COLLIDER:
                     radius = gameObject.collider.getData().at(0);
                     density = gameObject.rigidBody.mass / (M_PI * ((radius / PPM) * (radius / PPM)));
                     friction = gameObject.collider.getData().at(3);
+                    restitution = gameObject.collider.getData().at(4);
                     offSet = b2Vec2(gameObject.collider.getData().at(1), gameObject.collider.getData().at(2));
-                    attachCircleCollider(box2dRigidBody, radius, density, false, offSet, friction);
+                    attachCircleCollider(box2dRigidBody, radius, density, false, offSet, friction, restitution);
                     break;
                 case ColliderType::CIRCLE_SENSOR:
                     friction = gameObject.collider.getData().at(3);
                     radius = gameObject.collider.getData().at(0);
+                    restitution = gameObject.collider.getData().at(4);
                     offSet = b2Vec2(gameObject.collider.getData().at(1), gameObject.collider.getData().at(2));
-                    attachCircleCollider(box2dRigidBody, radius, 0, true, offSet, friction);
+                    attachCircleCollider(box2dRigidBody, radius, 0, true, offSet, friction, restitution);
                     break;
                 case ColliderType::OVAL_COLLIDER:
                     radius = gameObject.collider.getData().at(0);
                     friction = gameObject.collider.getData().at(3);
+                    restitution = gameObject.collider.getData().at(4);
                     offSet = b2Vec2(gameObject.collider.getData().at(1), gameObject.collider.getData().at(2));
                     density = gameObject.rigidBody.mass / (M_PI * ((radius / PPM) * (radius / PPM)));
-                    attachOvalCollider(box2dRigidBody, radius, density, offSet, friction);
+                    attachOvalCollider(box2dRigidBody, radius, density, offSet, friction, restitution);
                     break;
             }
         }
@@ -82,7 +87,7 @@ void PhysicsImpl::createBody(const GameObject &gameObject) {
     }
 }
 
-void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor, double friction) {
+void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor, double friction,  double restitution) {
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
     if (isSensor) {
@@ -95,6 +100,7 @@ void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double heig
         fixtureDef.density = density;
         fixtureDef.friction = friction;
         fixtureDef.shape = &collisionShape;
+        fixtureDef.restitution = restitution;
         rigidBody->CreateFixture(&fixtureDef);
     } else {
         b2FixtureDef staticDef;
@@ -106,7 +112,7 @@ void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double heig
 }
 
 
-void PhysicsImpl::attachCircleCollider(b2Body *rigidBody, double radius, double density, bool isSensor, b2Vec2 offset, double friction) {
+void PhysicsImpl::attachCircleCollider(b2Body *rigidBody, double radius, double density, bool isSensor, b2Vec2 offset, double friction,  double restitution) {
     b2CircleShape collisionShape;
     collisionShape.m_radius = radius / PPM;
     collisionShape.m_p = offset;
@@ -114,30 +120,29 @@ void PhysicsImpl::attachCircleCollider(b2Body *rigidBody, double radius, double 
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.isSensor = isSensor;
-        fixtureDef.friction = friction;
         rigidBody->CreateFixture(&fixtureDef);
     } else if (rigidBody->GetType() != b2_staticBody) {
         b2FixtureDef fixtureDef;
         fixtureDef.shape = &collisionShape;
         fixtureDef.density = density;
         fixtureDef.friction = friction;
-        fixtureDef.restitution = 0.0f;
+        fixtureDef.restitution = restitution;
         rigidBody->CreateFixture(&fixtureDef);
     } else {
         rigidBody->CreateFixture(&collisionShape, 0.0f);
     }
 }
 
-void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction) {
+void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction, double restitution ) {
     // Feet collision shape
     b2CircleShape feetCollisionShape;
     feetCollisionShape.m_radius = radius / PPM;
     feetCollisionShape.m_p = offSet;
     b2FixtureDef feetDef;
     feetDef.shape = &feetCollisionShape;
-    feetDef.restitution = 0.0f;
     feetDef.density = density;
     feetDef.friction = friction;
+    feetDef.restitution = restitution;
     rigidBody->CreateFixture(&feetDef);
 
     // Head collision shape
@@ -146,7 +151,6 @@ void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double de
     headCollisionShape.m_p = b2Vec2(0.0f, offSet.y * -1);
     b2FixtureDef headDef;
     headDef.shape = &headCollisionShape;
-    headDef.restitution = 0.0f;
     headDef.density = 0;
     headDef.friction = friction;
     rigidBody->CreateFixture(&headDef);

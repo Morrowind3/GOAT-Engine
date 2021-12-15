@@ -11,7 +11,7 @@ Object_Goat::Object_Goat(Transform transform, bool active) : GameObject(transfor
     sprites.insert(std::make_pair(Keys::ATTACK1, Sprite{"Sprites/enemies/goat/goat_attack_1.png", false}));
     sprites.insert(std::make_pair(Keys::ATTACK2, Sprite{"Sprites/enemies/goat/goat_attack_2.png", false}));
     rigidBody = RigidBody(40.0f, 2.0f, BodyType::DYNAMIC, true);
-    collider = CircleCollider(42.5f, 0,0, 0.2,false,true);
+    collider = CircleCollider(42.5f, 0,0, 0.2,0,false,true);
     behaviors.insert(std::make_pair(Keys::GOAT, std::make_shared<Behavior_Goat>(*this, true)));
     audioSources.insert(std::make_pair(Keys::BLEATHING, AudioSource{"Sounds/Bleathing.ogg",AudioSourceType::SAMPLE,false,true}));
 }
