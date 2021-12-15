@@ -95,7 +95,9 @@ namespace Keys {
     const std::string TRASH_3 = "TRASH_3";
 #pragma endregion
 
-#pragma region Game States
+#pragma region Game State
+	const std::string FLAG_LOCATION = "FLAG_LOCATION";
+	const std::string LINE_LOCATION = "LINE_LOCATION";
     const std::string GAMESTATE = "GAMESTATE";
     const std::string GAMESTATE_DEFAULT = "DEFAULT";
     const std::string GAMESTATE_VICTORY = "VICTORY";

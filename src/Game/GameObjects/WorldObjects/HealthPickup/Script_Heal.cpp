@@ -9,7 +9,7 @@ Script_Heal::Script_Heal(Object_HealthPickup& pickup, AudioSource& healSfx, bool
 void Script_Heal::onTriggerEnter2D(GameObject& other) {
     if(!other.hasTag(Keys::PLAYER)) return;
     int currentHealth = std::stoi(_globals.gameGet(Keys::HP));
-    if(currentHealth == 3) currentHealth = 2; // Make sure to not exceed the maximum health //TODO: Max health based on difficulty?
+    if(currentHealth == 3) currentHealth = 2; // Make sure to not exceed the maximum health
     _globals.gameStore(Keys::HP, std::to_string(++currentHealth));
     _healSfx.queueForPlay = true;
     _pickup.queueForDestruction = true;

@@ -5,7 +5,6 @@ Script_SaveHighScore::Script_SaveHighScore(Text& trashText, Text& timeText, Text
     _trashText{trashText}, _timeText{timeText}, _scoreText{scoreText} {
 }
 
-// TODO: Edmund passing the line or not should have an impact on the score (finish flag location and line location X)
 void Script_SaveHighScore::onStart() {
     // Get required data from globals
     const int saveId = std::stoi(_globals.gameGet(Keys::CURRENT_PLAYER_ID));
@@ -14,7 +13,8 @@ void Script_SaveHighScore::onStart() {
     const int millisecondsElapsed = std::stoi(_globals.gameGet(Keys::TIMER));
     const int remainingHp = std::stoi(_globals.gameGet(Keys::HP));
     const int difficulty = std::stoi(_globals.gameGet(Keys::DIFFICULTY));
-    const int finishLocationX = 0, lineLocationX = 0; // TODO: Store and read this
+    const int finishLocationX = std::stoi(_globals.gameGet(Keys::FLAG_LOCATION));
+    const int lineLocationX = std::stoi(_globals.gameGet(Keys::LINE_LOCATION));
 
     // Calculate score from data
     const int score = calculateScore(collectedTrash, millisecondsElapsed, remainingHp,
@@ -35,7 +35,7 @@ int Script_SaveHighScore::calculateScore(const int collectedTrash, const int mil
                                          const int difficulty, const int finishLocationX, const int lineLocationX) const {
     const int trashScore = collectedTrash * 150;
     const int difficultyScore = difficulty * 10;
-    const int locationScore = finishLocationX - lineLocationX;
+    const int locationScore = (finishLocationX - lineLocationX) / 2;
     const double timePenalty = (double)millisecondsElapsed / 100.0;
     const int healthPenalty = (3 - remainingHp) * 300;
     _debug.log("Trash score: " + std::to_string(collectedTrash));
@@ -43,7 +43,8 @@ int Script_SaveHighScore::calculateScore(const int collectedTrash, const int mil
     _debug.log("Location score: " + std::to_string(locationScore));
     _debug.log("Time penalty: " + std::to_string(timePenalty));
     _debug.log("Health penalty: " + std::to_string(healthPenalty));
-    return trashScore + difficultyScore + locationScore - timePenalty - healthPenalty;
+    const int score = trashScore + difficultyScore + locationScore - timePenalty - healthPenalty;
+    return score > 0 ? score : 0; // Only return a positive score
 }
 
 DataModel Script_SaveHighScore::getHighScore(const int saveId, const int etappeId) const {

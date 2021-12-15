@@ -14,11 +14,11 @@ class Script_PlayerMovement : public Script {
         void onUpdate(double deltaTime) override;
         void onTriggerEnter2D(GameObject& other);
         void onTriggerStay2D(GameObject& other);
-
     private:
-        // Globals
+        // Utilities
         Input& _input = Input::getInstance();
         EngineCalls& _engineCalls = EngineCalls::getInstance();
+        Globals& _globals = Globals::getInstance();
 
         // Variables
         Object_Player& _player;

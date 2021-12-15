@@ -19,6 +19,7 @@ SceneTemplate_Etappe::SceneTemplate_Etappe(const std::string& etappeKey, Point d
     layerGroups.insert(std::make_pair(LAYER::TILES_BACK, LayerGroup{})); // Tiles back
     layerGroups.insert(std::make_pair(LAYER::CHARACTER, LayerGroup{})); // Characters
     layerGroups.insert(std::make_pair(LAYER::TILES_FRONT, LayerGroup{})); // Tiles front
+    layerGroups.insert(std::make_pair(LAYER::TIMER_LINE, LayerGroup{})); // Timer line
     layerGroups.insert(std::make_pair(LAYER::UI, LayerGroup{true})); // UI
 
     // Reset game state: Edmund no longer won or lost the level

@@ -32,8 +32,6 @@ void Script_Goat::updateSprite() {
     if (_direction == LEFT) _goat.transform.flip = FLIP::FLIP_NONE;
     if (_direction == RIGHT) _goat.transform.flip = FLIP::FLIP_HORIZONTAL;
 
-    //TODO Animators
-
     switch (_direction) {
         case LEFT:
             if(_walkingSwitchFrameCounter % 10 == 1) {

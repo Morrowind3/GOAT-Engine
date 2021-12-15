@@ -3,16 +3,22 @@
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "Object_VictoryFlag.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 
 class Script_VictoryFlag : public Script {
     public:
         Script_VictoryFlag(bool active, Object_VictoryFlag& flag);
+        void onStart() override;
         void onUpdate(double deltaTime) override;
         void onTriggerEnter2D(GameObject &other) override;
-private:
+    private:
+        // Utilities
+        Globals& _globals = Globals::getInstance();
+        // Methods
         void animateFlag();
+        // Variables
         Object_VictoryFlag& _flag;
         double animationTimer = 0;
 };
