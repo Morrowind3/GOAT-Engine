@@ -5,7 +5,7 @@
 Object_BackToSaveScreenButton::Object_BackToSaveScreenButton(Transform transform, bool active) : GameObject(transform, active) {
 
     Transform textTransform{
-            Point{transform.position.x + (5 * transform.scaleWidth), transform.position.y + (6 * transform.scaleHeight)},
+            Point{transform.position.x + (5 * transform.scaleWidth), transform.position.y + (5 * transform.scaleHeight)},
             transform.layerGroup, transform.layerInsideGroup+1, 0, 1, 1};
 
     buttons.insert(std::make_pair(Keys::_, Button{
