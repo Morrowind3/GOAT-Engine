@@ -2,7 +2,7 @@
 
 using namespace Engine;
 
-Collider::Collider(bool active, double friction, ColliderType type) : GameComponent(active), type(type) {}
+Collider::Collider(bool active, double friction, double bounciness, ColliderType type) : GameComponent(active), type(type) {}
 
 Collider::Collider() : GameComponent(false){}
 
