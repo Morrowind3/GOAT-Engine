@@ -4,6 +4,7 @@
 #include "../../../../../Engine/Utilities/Input.hpp"
 #include "../../../../../Engine/Utilities/Debug.hpp"
 #include "../../../Player/Object_Player.hpp"
+#include "../../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 
@@ -13,9 +14,12 @@ class Script_DamageCheat : public Script {
         void onUpdate(double deltaTime);
 
     private:
-        Object_Player& _player;
+        // Utilities
         Input& _input = Input::getInstance();
         Debug& _debug = Debug::getInstance();
+        Globals& _globals = Globals::getInstance();
+        // Variables
+        Object_Player& _player;
 };
 
 

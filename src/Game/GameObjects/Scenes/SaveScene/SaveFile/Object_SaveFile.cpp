@@ -31,7 +31,7 @@ GameObject(transform,active) {
 
     // Score text
     Transform scoreTransform {unlockedTransform};
-    scoreTransform.position.y += 50;
+    scoreTransform.position.y += 40;
     text.insert(std::make_pair(Keys::SAVE_SCORE, Text {"Total score " + std::to_string(score),
-        "Fonts/Kenney_Thick.ttf",24, Color{0,0,0,255}, scoreTransform, true}));
+        "Fonts/Kenney_Thick.ttf",16, Color{0,0,0,255}, scoreTransform, true}));
 }

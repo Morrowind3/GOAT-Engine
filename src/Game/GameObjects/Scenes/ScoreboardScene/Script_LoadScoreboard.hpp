@@ -3,9 +3,9 @@
 
 #include "../../../../Engine/API/Scene.hpp"
 #include "../../../../Engine/Systems/Apis/DataApi.hpp"
-#include "Helpers/HighScoreKeeper.hpp"
 #include "../../../../Engine/Utilities/EngineCalls.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
+#include "../../../Helpers/HighScoreKeeper.hpp"
 
 using namespace Engine;
 

@@ -109,6 +109,7 @@ namespace Keys {
 #pragma endregion
 
 #pragma region Unsorted
+	const std::string TIMER_TEXT = "TIMER_TEXT";
     const std::string SNOWSTORM = "SNOWSTORM";
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID

@@ -3,18 +3,19 @@
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "Object_Trash.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 
 class Script_Trash : public Script {
-public:
-    explicit Script_Trash(Object_Trash& trash, bool active): Script(active), _trash(trash){};
-    void onExternalEvent() override;
-    void onUpdate(double deltaTime) override;
-private:
-    Object_Trash& _trash;
-    bool _queueForDeactivation = false;
-    double _deactivationTimer = 0;
+    public:
+        Script_Trash(Object_Trash& trash, bool active);;
+        void onExternalEvent() override;
+    private:
+        // Utilities
+        Globals& _globals = Globals::getInstance();
+        // Variables
+        Object_Trash& _trash;
 };
 
 

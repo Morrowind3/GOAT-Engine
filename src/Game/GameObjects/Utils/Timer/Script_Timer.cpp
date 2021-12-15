@@ -1,14 +1,16 @@
 #include "Script_Timer.hpp"
-#include "../../../../Engine/Utilities/Globals.hpp"
 #include "../../../Keys.hpp"
 
+Script_Timer::Script_Timer(Text& timerText, bool active) : Script(active), _text(timerText){}
+
 void Script_Timer::onUpdate(double deltaTime) {
+    storeState();
     if (_engineCalls.isPaused()) return; // Do not count when game is paused
     _totalMs += _clock.lastRecordedUnmodifiedDeltaTime();
     if((int) _totalMs * _engineCalls.speed() / 1000 >= 1){
-        addSecond();    //minimize UI updates
+        addSecond();    // Minimize UI updates
         _totalMs = 0;
-    };
+    }
 }
 
 void Script_Timer::addSecond() {
@@ -35,7 +37,7 @@ void Script_Timer::addSecond() {
     _text.text = timeString;
 }
 
-void Script_Timer::onExternalEvent() {
-    Globals::getInstance().sceneStore(Keys::TIMER, std::to_string(_totalMs));
-    Globals::getInstance().sceneStore(Keys::TEXT, _text.text);
+void Script_Timer::storeState() {
+    _globals.gameStore(Keys::TIMER, std::to_string(_totalSeconds*1000+(int)_totalMs));
+    _globals.gameStore(Keys::TIMER_TEXT, _text.text);
 }

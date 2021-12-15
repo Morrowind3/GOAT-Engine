@@ -6,8 +6,7 @@ Script_LifeHeart::Script_LifeHeart(int filledAtHp, Object_LifeHeart& lifeHeart, 
 }
 
 void Script_LifeHeart::onUpdate(double deltaTime) {
-    //TODO: It's more efficient to move this to OnExternalEvent and letting Script_Damage call it.
-    int queryValue = std::stoi(_globals.sceneGet(Keys::HP));
+    int queryValue = std::stoi(_globals.gameGet(Keys::HP));
     if (_lastQueryValue != queryValue) {
         _lastQueryValue = queryValue;
         if (_lastQueryValue >= _filledAtHp) { // Check if heart should be filled

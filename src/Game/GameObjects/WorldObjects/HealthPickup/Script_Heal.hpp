@@ -3,6 +3,7 @@
 
 #include "../../../../Engine/API/GameObjects/GameComponents/Script/Script.hpp"
 #include "Object_HealthPickup.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 
 using namespace Engine;
 
@@ -10,8 +11,11 @@ class Script_Heal : public Script {
     public:
         Script_Heal(Object_HealthPickup& pickup, AudioSource& healSfx, bool active);
         void onTriggerEnter2D(GameObject &other) override;
-        void onUpdate(double deltaTime) override;
+        void onUpdate(double deltaTime) override;;
     private:
+        // Utilities
+        Globals& _globals = Globals::getInstance();
+        // Variables
         double _originalY;
         double _animationtimer = 0;
         bool _movingUp = true;

@@ -7,12 +7,12 @@ Script_Heal::Script_Heal(Object_HealthPickup& pickup, AudioSource& healSfx, bool
 }
 
 void Script_Heal::onTriggerEnter2D(GameObject& other) {
-    if(_queueForDeactivation > 0 || other.tags.find(Keys::PLAYER) == other.tags.end()) return;
-    int currentHealth = std::stoi(Globals::getInstance().sceneGet(Keys::HP));
+    if(!other.hasTag(Keys::PLAYER)) return;
+    int currentHealth = std::stoi(_globals.gameGet(Keys::HP));
     if(currentHealth == 3) currentHealth = 2; // Make sure to not exceed the maximum health //TODO: Max health based on difficulty?
-    Globals::getInstance().sceneStore(Keys::HP, std::to_string(++currentHealth));
+    _globals.gameStore(Keys::HP, std::to_string(++currentHealth));
     _healSfx.queueForPlay = true;
-    _queueForDeactivation = 1;
+    _pickup.queueForDestruction = true;
 }
 
 
@@ -27,10 +27,4 @@ void Script_Heal::onUpdate(double deltaTime) {
             if(y > _originalY + 20) _movingUp = true;
         _animationtimer = 0;
     }
-    // TODO: Play sound with onDestroy instead of this hacky method
-    if (_queueForDeactivation == 2) {
-        _pickup.active = false;
-        return;
-    }
-    if (_queueForDeactivation == 1) _queueForDeactivation++;
 }

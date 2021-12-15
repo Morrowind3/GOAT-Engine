@@ -149,7 +149,7 @@ add_executable(Mount_Everestimate
         Game/Keys.hpp
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
-		Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
+		Game/Helpers/MountEverestimateLevelConstructor.cpp Game/Helpers/MountEverestimateLevelConstructor.hpp
 		Game/Layers.hpp
 		Game/Scenes/Templates/SceneTemplate_Etappe.cpp Game/Scenes/Templates/SceneTemplate_Etappe.hpp
 		Game/Scenes/Templates/SceneTemplate_Menu.cpp Game/Scenes/Templates/SceneTemplate_Menu.hpp
@@ -226,7 +226,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/FpsMeter/Script_FpsMeter.cpp Game/GameObjects/Utils/FpsMeter/Script_FpsMeter.hpp
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_Pause.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_Pause.hpp
 		Game/GameObjects/Utils/LifeHeart/Script_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Script_LifeHeart.hpp
-		Game/GameObjects/Scenes/Etappes/Script_LifeInit.cpp Game/GameObjects/Scenes/Etappes/Script_LifeInit.hpp
+		Game/GameObjects/Scenes/Etappes/Script_SceneInit.cpp Game/GameObjects/Scenes/Etappes/Script_SceneInit.hpp
 		Game/GameObjects/Utils/Cheats/Script_Cheats.cpp Game/GameObjects/Utils/Cheats/Script_Cheats.hpp
 		Game/GameObjects/WorldObjects/VictoryFlag/Script_VictoryFlag.cpp
 		Game/GameObjects/Player/Script_Damage.cpp
@@ -235,7 +235,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/WorldObjects/VictoryFlag/Object_VictoryFlag.cpp
 		Game/GameObjects/Scenes/Behavior_GameState.cpp Game/GameObjects/Scenes/EtappeEndScene/Script_GameState.cpp
 		Game/GameObjects/Scenes/Object_GameStateManager.cpp
-		Game/GameObjects/Scenes/EtappeEndScene/Object_VictoryScreenManager.cpp
+		Game/GameObjects/Scenes/VictoryScene/Object_VictoryScreenManager.cpp
 		Game/GameObjects/Scenes/EtappeEndScene/Object_DefeatBackground.cpp Game/GameObjects/Scenes/EtappeEndScene/Object_SelectEtappeButton.cpp
 		Game/GameObjects/Scenes/EtappeEndScene/Object_NextEtappeButton.cpp Game/GameObjects/Scenes/EtappeEndScene/Object_RetryButton.cpp
 		Game/GameObjects/Utils/Cheats/Script_Cheats.cpp Game/GameObjects/Utils/Cheats/Script_Cheats.hpp
@@ -275,13 +275,14 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Decor/Object_Cloud.cpp Game/GameObjects/Utils/Decor/Object_Cloud.hpp Game/GameObjects/Utils/Decor/Behavior_Cloud.cpp Game/GameObjects/Utils/Decor/Behavior_Cloud.hpp Game/GameObjects/Utils/Decor/Script_Cloud.cpp Game/GameObjects/Utils/Decor/Script_Cloud.hpp Game/GameObjects/Utils/Decor/Advertising/Object_Aeroplane.cpp Game/GameObjects/Utils/Decor/Advertising/Object_Aeroplane.hpp Game/GameObjects/Utils/Decor/Advertising/Object_Banner.cpp Game/GameObjects/Utils/Decor/Advertising/Object_Banner.hpp Game/GameObjects/Utils/Decor/Advertising/Object_AdvertisingPane.cpp Game/GameObjects/Utils/Decor/Advertising/Object_AdvertisingPane.hpp Game/GameObjects/Utils/Decor/Advertising/Script_AeroplaneFlight.cpp Game/GameObjects/Utils/Decor/Advertising/Script_AeroplaneFlight.hpp Game/GameObjects/Utils/Decor/Advertising/Behavior_Aeroplane.cpp Game/GameObjects/Utils/Decor/Advertising/Behavior_Aeroplane.hpp Game/GameObjects/Utils/Decor/Advertising/Animator_BannerFlutter.cpp Game/GameObjects/Utils/Decor/Advertising/Animator_BannerFlutter.hpp
 		Game/GameObjects/Scenes/SaveScene/Decor/Sprite_SaveBackground.cpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_SaveBackground.hpp Game/GameObjects/Scenes/SaveScene/Decor/Object_CoolGoat.cpp Game/GameObjects/Scenes/SaveScene/Decor/Object_CoolGoat.hpp Game/GameObjects/Scenes/SaveScene/Decor/Animator_CoolGoat.cpp Game/GameObjects/Scenes/SaveScene/Decor/Animator_CoolGoat.hpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat1.cpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat1.hpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat2.cpp Game/GameObjects/Scenes/SaveScene/Decor/Sprite_CoolGoat2.hpp
 		Game/GameObjects/WorldObjects/Trash/Animator_Trash.cpp Game/GameObjects/WorldObjects/Trash/Animator_Trash.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash0.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash0.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash1.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash1.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash2.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash2.hpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash3.cpp Game/GameObjects/Utils/TrashCounter/Sprites/Sprite_Trash3.hpp
-        Game/Music/Music_WoodWhistles.cpp Game/Music/Music_WoodWhistles.hpp Game/GameObjects/Scenes/ScoreboardScene/Object_ScoreboardManager.cpp Game/GameObjects/Scenes/ScoreboardScene/Object_ScoreboardManager.hpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Behavior_LoadScoreboardButton.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Behavior_LoadScoreboardButton.hpp Game/GameObjects/Scenes/ScoreboardScene/Script_LoadScoreboard.cpp Game/GameObjects/Scenes/ScoreboardScene/Script_LoadScoreboard.hpp Game/GameObjects/Scenes/ScoreboardScene/Helpers/HighScoreKeeper.cpp Game/GameObjects/Scenes/ScoreboardScene/Helpers/HighScoreKeeper.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardBackground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardBackground.hpp
+        Game/Music/Music_WoodWhistles.cpp Game/Music/Music_WoodWhistles.hpp Game/GameObjects/Scenes/ScoreboardScene/Object_ScoreboardManager.cpp Game/GameObjects/Scenes/ScoreboardScene/Object_ScoreboardManager.hpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Behavior_LoadScoreboardButton.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Behavior_LoadScoreboardButton.hpp Game/GameObjects/Scenes/ScoreboardScene/Script_LoadScoreboard.cpp Game/GameObjects/Scenes/ScoreboardScene/Script_LoadScoreboard.hpp Game/Helpers/HighScoreKeeper.cpp Game/Helpers/HighScoreKeeper.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardBackground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardBackground.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/ScoreboardEntry/Object_ScoreboardEntry.cpp Game/GameObjects/Scenes/ScoreboardScene/ScoreboardEntry/Object_ScoreboardEntry.hpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Sounds/Sound_DebugEnable.cpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Sounds/Sound_DebugEnable.hpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Sounds/Sound_DebugDisable.cpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Sounds/Sound_DebugDisable.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardSpecificEtappeButton.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardSpecificEtappeButton.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardAllEtappesButton.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Object_ScoreboardAllEtappesButton.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Sound_Navigate.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Sound_Navigate.hpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Script_OnClickSound.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Script_OnClickSound.hpp Game/GameObjects/Scenes/ScoreboardScene/Behavior_ScoreboardManager.cpp Game/GameObjects/Scenes/ScoreboardScene/Behavior_ScoreboardManager.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Animator_Rain.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Animator_Rain.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardForeground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardForeground.hpp
+        Game/GameObjects/Scenes/VictoryScene/Script_SaveHighScore.cpp Game/GameObjects/Scenes/VictoryScene/Script_SaveHighScore.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

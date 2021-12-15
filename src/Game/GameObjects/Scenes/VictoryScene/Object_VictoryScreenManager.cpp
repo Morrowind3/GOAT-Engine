@@ -1,17 +1,9 @@
 #include "Object_VictoryScreenManager.hpp"
 #include "../../../Keys.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
-#include "../VictoryScene/Behavior_VictoryScreen.hpp"
+#include "Behavior_VictoryScreen.hpp"
 
 Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bool active) : GameObject(transform, active) {
-    Globals& globals = Globals::getInstance();
-    // TODO: This can't exist in scene scope AFAIK
-    std::string time = globals.sceneExists(Keys::TEXT) ? globals.sceneGet(Keys::TEXT) : "0";
-    std::string trash = globals.sceneExists(Keys::TRASH) ? globals.sceneGet(Keys::TRASH) : "0";
-    int seconds = globals.sceneExists(Keys::TIMER) ? std::stoi(globals.sceneGet(Keys::TIMER))/1000 : 0;
-
-    int score = 1000 + (std::stoi(trash) * 150) - (seconds / 20 * 200) -  ((3 - std::stoi(globals.sceneGet(Keys::HP))) * 300);
-
     sprites.insert(std::make_pair("Object_MainMenuBackground", Sprite{"Sprites/backgrounds/background_victory.png", true}));
     text.insert(std::make_pair("Title", Text{
             "A winner is you",
@@ -27,13 +19,13 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
             {255,255,255,255},
             Transform{{210,580},transform.layerGroup,1, 0,1,1},
             true}));
-    text.insert(std::make_pair("GarbageCount", Text{
-            trash,
+    Text& trashText = text.insert(std::make_pair("GarbageCount", Text{
+            std::string{},
             "Fonts/pixeled.ttf",
             40,
             {255,255,255,255},
-            Transform{{920,540},transform.layerGroup,0, 0,1,1},
-            true}));
+            Transform{{920,540},transform.layerGroup,1, 0,1,1},
+            true})).first->second;
     text.insert(std::make_pair("Timelabel", Text{
             "Time",
             "Fonts/Kenney_Thick.ttf",
@@ -41,13 +33,13 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
             {255,255,255,255},
             Transform{{705,660},transform.layerGroup,1, 0,1,1},
             true}));
-    text.insert(std::make_pair("Timestamp", Text{
-            time,
+    Text& timeText = text.insert(std::make_pair("Timestamp", Text{
+            std::string{},
             "Fonts/pixeled.ttf",
             40,
             {255,255,255,255},
             Transform{{920,620},transform.layerGroup,1, 0,1,1},
-            true}));
+            true})).first->second;
     text.insert(std::make_pair("ScoreLabel", Text{
             "Score",
             "Fonts/Kenney_Thick.ttf",
@@ -55,13 +47,13 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
             {255,255,255,255},
             Transform{{670,740},transform.layerGroup,1, 0,1,1},
             true}));
-    text.insert(std::make_pair("Score", Text{
-            std::to_string(score),
+    Text& scoreText = text.insert(std::make_pair("Score", Text{
+            std::string{},
             "Fonts/pixeled.ttf",
             40,
             {255,255,255,255},
-            Transform{{920,700},transform.layerGroup,0, 0,1,1},
-            true}));
-    audioSources.insert(std::make_pair("Music",AudioSource{"Sounds/Victory.ogg", AudioSourceType::SAMPLE, 35,true, true}));
-    behaviors.insert(std::make_pair(Keys::BEHAVIOR, std::make_shared<Behavior_VictoryScreen>(true)));
+            Transform{{920,700},transform.layerGroup,1, 0,1,1},
+            true})).first->second;
+    audioSources.insert(std::make_pair(Keys::_,AudioSource{"Sounds/Victory.ogg", AudioSourceType::SAMPLE, 35,true, true}));
+    behaviors.insert(std::make_pair(Keys::_, std::make_shared<Behavior_VictoryScreen>(trashText,timeText,scoreText,true)));
 }

@@ -50,7 +50,7 @@ void Script_LoadSaves::loadSaves() {
         int etappesUnlocked = std::stoi(save.getValue("EtappesUnlocked"));
         int altitude = etappesUnlockedToAltitude(etappesUnlocked);
         int maxAltitude = etappesUnlockedToAltitude(HIGHEST_POSSIBLE_ETAPPE_UNLOCKED);
-        int score = 0; // TODO: Score from the high score table
+        int score = getTotalScoreForSave(saveId);
 
         // Add save file and associated buttons to scene
         _scene->gameObjects.emplace_back(std::make_shared<Object_SaveFile>(saveId, altitude, maxAltitude, score, saveFilePosition, true));
@@ -80,10 +80,34 @@ void Script_LoadSaves::resetSaveScreen() {
 void Script_LoadSaves::createSaveFiles(unsigned int currentCount) {
     // For eg: if three save files are expected, and two exist, make one additional save file
     for (unsigned int saveFileNumber = EXPECTED_SAVE_FILE_AMOUNT-currentCount; saveFileNumber > 0; --saveFileNumber) {
+        // Profile
         DataModel saveFile("Players");
         saveFile.setValue("EtappesUnlocked", "1");
         saveFile.setValue("Difficulty", "100");
         saveFile.setValue("Volume", "100");
         _data.insert(saveFile);
+
+        // Empty high scores
+        for (unsigned short etappe = 1; etappe <= ETAPPE_AMOUNT; ++etappe) {
+            DataModel model {"HighScores"};
+            model.setValue("EtappeNumber", std::to_string(etappe));
+            model.setValue("Score", std::to_string(0));
+            model.setValue("Players_id", std::to_string(saveFileNumber));
+            _data.insert(model);
+        }
     }
+}
+
+/// Gets total score for one save
+int Script_LoadSaves::getTotalScoreForSave(int saveId) {
+    auto highScores = _data.getAll("HighScores", "Players_id", false);
+    int score {0};
+    for (auto& highScore: highScores) {
+        // Only work with the specified save
+        unsigned short databaseSaveId = std::stoi(highScore.getValue("Players_id"));
+        if (databaseSaveId != saveId) continue;
+
+        score += std::stoi(highScore.getValue("Score"));
+    }
+    return score;
 }
