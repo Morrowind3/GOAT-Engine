@@ -1,5 +1,4 @@
 #include "Camera.hpp"
-#include "../../Game/Layers.hpp" // TODO: Programmatically determine this, now we're referencing the game
 #include <iostream>
 
 using namespace Engine;
@@ -34,6 +33,10 @@ void Camera::reposition(Transform& transform) const {
     }
     LayerGroup& layerGroup = layerGroupRef->second;
 
+    // TODO: I hastly made this, make this better
+    transform._isGui = layerGroup.ui;
+    transform._isParallax = abs(layerGroup.parallax-1.0) > 0.00000001;
+
     // UI layer group needs no repositioning
     if (layerGroup.ui) return;
 
@@ -49,7 +52,7 @@ void Camera::zoom(Engine::Transform& t) const {
 }
 
 void Camera::addWaypoint(Point waypoint, int seconds) {
-    if(_waypoints.empty()){
+    if(_waypoints.empty()) {
         addWaypoint(waypoint, seconds, _zoomLevel);
     } else {
         addWaypoint(waypoint, seconds, _waypoints.front().zoomTarget);

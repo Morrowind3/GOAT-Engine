@@ -15,7 +15,6 @@
 #include "GameComponents/Collision/CircleCollider.hpp"
 #include "GameComponents/Collision/OvalCollider.hpp"
 
-
 namespace Engine {
     class ScriptSystem; // Friend class link
     struct GameObject {
