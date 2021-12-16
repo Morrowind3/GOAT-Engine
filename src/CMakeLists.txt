@@ -149,7 +149,7 @@ add_executable(Mount_Everestimate
         Game/Keys.hpp
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
-		Game/Helpers/MountEverestimateLevelConstructor.cpp Game/Helpers/MountEverestimateLevelConstructor.hpp
+        Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
 		Game/Layers.hpp
 		Game/Scenes/Templates/SceneTemplate_Etappe.cpp Game/Scenes/Templates/SceneTemplate_Etappe.hpp
 		Game/Scenes/Templates/SceneTemplate_Menu.cpp Game/Scenes/Templates/SceneTemplate_Menu.hpp
