@@ -42,6 +42,7 @@ namespace Keys {
     const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
     const std::string SETTINGS_MENU = "SETTINGS_MENU"; // Usage: Settings menu level ID
     const std::string SAVE_MENU = "SAVE_MENU"; // Usage: Save menu level ID
+    const std::string CREDITS_MENU = "CREDITS_MENU"; // Usage: Credits menu level ID
 #pragma endregion
 
 #pragma region Player Data

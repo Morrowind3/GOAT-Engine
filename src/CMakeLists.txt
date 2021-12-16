@@ -173,11 +173,11 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/MainMenuScene/Object_MainMenuBackground.cpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Object_ExitButton.cpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_PlayButton.cpp
-		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeSelectionBackground.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeSelectionBackground.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Object_BackToMenuButton.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_BackToMenuButton.hpp
 		Game/GameObjects/Utils/Cheats/Object_Cheats.cpp Game/GameObjects/Utils/Cheats/Object_Cheats.hpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/Object_ScoreboardButton.cpp Game/GameObjects/Scenes/SaveScene/Buttons/Object_ScoreboardButton.hpp
+		Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Object_EtappeMarker.hpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_SettingsButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_SettingsButton.hpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Object_DebugButton.cpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Object_DebugButton.hpp
 		Game/GameObjects/Utils/LifeHeart/Object_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Object_LifeHeart.hpp
@@ -193,7 +193,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Behavior_QuitGame.hpp Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Behavior_QuitGame.cpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Behavior_EtappeMarker.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Behavior_EtappeMarker.hpp
 		Game/GameObjects/Scenes/Behavior_SwitchSceneButton.hpp Game/GameObjects/Scenes/Behavior_SwitchSceneButton.cpp
-		Game/GameObjects/Enemies/Hawk/Behavior_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Hawk.cpp
+		Game/GameObjects/Enemies/Hawk/Behavior_Predator/Behavior_Predator_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Predator/Behavior_Predator_Hawk.cpp
 		Game/GameObjects/Utils/LifeHeart/Behavior_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Behavior_LifeHeart.hpp
 		Game/GameObjects/Utils/Cheats/Behavior_Cheats.cpp Game/GameObjects/Utils/Cheats/Behavior_Cheats.hpp
 		Game/GameObjects/WorldObjects/VictoryFlag/Behavior_VictoryFlag.cpp Game/GameObjects/WorldObjects/VictoryFlag/Behavior_VictoryFlag.hpp
@@ -222,7 +222,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Script_QuitGame.cpp Game/GameObjects/Scenes/SaveScene/Buttons/ExitButton/Script_QuitGame.hpp
 		Game/GameObjects/Scenes/EtappeSelectionScene/Script_EtappeMarkerConfigurator.cpp Game/GameObjects/Scenes/EtappeSelectionScene/Script_EtappeMarkerConfigurator.hpp
 		Game/GameObjects/Player/Script_PlayerMovement.cpp Game/GameObjects/Player/Script_PlayerMovement.hpp
-		Game/GameObjects/Enemies/Hawk/Script_Hawk.cpp Game/GameObjects/Enemies/Hawk/Script_Hawk.hpp
+		Game/GameObjects/Enemies/Hawk/Behavior_Predator/Script_Predator_Hawk.cpp Game/GameObjects/Enemies/Hawk/Behavior_Predator/Script_Predator_Hawk.hpp
 		Game/GameObjects/Utils/FpsMeter/Script_FpsMeter.cpp Game/GameObjects/Utils/FpsMeter/Script_FpsMeter.hpp
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_Pause.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_Pause.hpp
 		Game/GameObjects/Utils/LifeHeart/Script_LifeHeart.cpp Game/GameObjects/Utils/LifeHeart/Script_LifeHeart.hpp
@@ -247,6 +247,7 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_AdjustSpeed.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_AdjustSpeed.hpp
 		Game/GameObjects/WorldObjects/HealthPickup/Script_Heal.cpp Game/GameObjects/WorldObjects/HealthPickup/Script_Heal.hpp
 		Game/GameObjects/Tiles/LavaTile/Script_LavaTile.cpp Game/GameObjects/Tiles/LavaTile/Script_LavaTile.hpp
+		Game/GameObjects/Tiles/IceTile/Object_IceTile.cpp 		Game/GameObjects/Tiles/IceTile/Object_IceTile.hpp
 		Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Script_DebugToggle.cpp Game/GameObjects/Scenes/SaveScene/Buttons/DebugButton/Script_DebugToggle.hpp
 		Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_PauseActivation.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_PauseActivation.hpp
 		Game/GameObjects/Scenes/VictoryScene/Script_IncreaseEtappeCount.cpp Game/GameObjects/Scenes/VictoryScene/Script_IncreaseEtappeCount.hpp
@@ -283,6 +284,9 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/ScoreboardScene/Buttons/Sound_Navigate.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Sound_Navigate.hpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Script_OnClickSound.cpp Game/GameObjects/Scenes/ScoreboardScene/Buttons/Script_OnClickSound.hpp Game/GameObjects/Scenes/ScoreboardScene/Behavior_ScoreboardManager.cpp Game/GameObjects/Scenes/ScoreboardScene/Behavior_ScoreboardManager.hpp
 		Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Object_Rain.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Animator_Rain.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Rain/Animator_Rain.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.hpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardForeground.cpp Game/GameObjects/Scenes/ScoreboardScene/Decor/Sprite_ScoreboardForeground.hpp
         Game/GameObjects/Scenes/VictoryScene/Script_SaveHighScore.cpp Game/GameObjects/Scenes/VictoryScene/Script_SaveHighScore.hpp
+        Game/GameObjects/Enemies/Hawk/Behavior_Idle/Behavior_Idle_Hawk.cpp Game/GameObjects/Enemies/Hawk/Behavior_Idle/Behavior_Idle_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Idle/Script_Idle_Hawk.cpp Game/GameObjects/Enemies/Hawk/Behavior_Idle/Script_Idle_Hawk.hpp Game/Scenes/Menus/Scene_CreditsMenu.cpp Game/Scenes/Menus/Scene_CreditsMenu.hpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_CreditsButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_CreditsButton.hpp
+		Game/GameObjects/Scenes/CreditsMenuScene/Object_CreditsMenuBackground.cpp Game/GameObjects/Scenes/CreditsMenuScene/Object_CreditsMenuBackground.hpp
+		Game/GameObjects/Scenes/CreditsMenuScene/Behavior_Credits.cpp Game/GameObjects/Scenes/CreditsMenuScene/Behavior_Credits.hpp Game/GameObjects/Scenes/CreditsMenuScene/Script_AnimateCreditsText.cpp Game/GameObjects/Scenes/CreditsMenuScene/Script_AnimateCreditsText.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

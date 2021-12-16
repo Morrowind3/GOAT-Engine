@@ -5,6 +5,7 @@
 #include "../../GameObjects/Scenes/MainMenuScene/Buttons/Object_PlayButton.hpp"
 #include "../../Layers.hpp"
 #include "../../GameObjects/Scenes/MainMenuScene/Buttons/Object_BackToSaveScreenButton.hpp"
+#include "../../GameObjects/Scenes/MainMenuScene/Buttons/Object_CreditsButton.hpp"
 
 Scene_MainMenu::Scene_MainMenu() : SceneTemplate_Menu(Keys::MAIN_MENU) {
     // Cosmetics
@@ -18,6 +19,8 @@ Scene_MainMenu::Scene_MainMenu() : SceneTemplate_Menu(Keys::MAIN_MENU) {
             Transform{Point{800, 350}, LAYER::UI, 0, 0, 5, 5}, true));
     gameObjects.emplace_back(std::make_shared<Object_BackToSaveScreenButton>(
             Transform{Point{675, 575}, LAYER::UI, 0,0, 6, 4}, true));
+    gameObjects.emplace_back(std::make_shared<Object_CreditsButton>(
+            Transform{Point{725, 700}, LAYER::UI, 0, 0, 5, 5}, true));
 
     // TODO: Re-enable buttons when they do what they're supposed to do
     /*;

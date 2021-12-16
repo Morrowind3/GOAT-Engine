@@ -14,9 +14,12 @@ class MountEverestimateLevelConstructor {
     private:
         SceneTemplate_Etappe& _etappe;
         const std::string& _fileLocation;
-        void placeTile(int index, Transform transform);
         const int _tileSize, _columns, _rows;
         const double _scale; // Essentially an int, but needs to be a double for proper calculations
+
+        void loadTiles(int xOffset, int yOffset, std::vector<std::string> indexes);
+        void loadPlayer(int xOffset, int yOffset, std::vector<std::string> indexes);
+        void loadEnemies(int xOffset, int yOffset, std::vector<std::string> indexes);
 };
 
 
