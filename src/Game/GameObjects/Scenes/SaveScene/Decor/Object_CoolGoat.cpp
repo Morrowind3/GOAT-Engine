@@ -2,7 +2,7 @@
 #include "../../../../Keys.hpp"
 #include "Sprite_CoolGoat1.hpp"
 #include "Sprite_CoolGoat2.hpp"
-#include "../../../../Scenes/Menus/Utils/Animator_CoolGoat.hpp"
+#include "Animator_CoolGoat.hpp"
 
 Object_CoolGoat::Object_CoolGoat(Transform transform, bool active) : GameObject(transform, active) {
     auto& idle1 = sprites.insert(std::make_pair(Keys::IDLE, Sprite_CoolGoat1{true})).first->second;

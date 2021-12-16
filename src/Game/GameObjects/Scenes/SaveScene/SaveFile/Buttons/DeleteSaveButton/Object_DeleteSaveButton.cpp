@@ -2,7 +2,7 @@
 #include "../../../../../../Keys.hpp"
 #include "Sprite_DeleteButton.hpp"
 #include "Behavior_DeleteSave.hpp"
-#include "../../../../../../Scenes/Menus/Sounds/Sound_Delete.hpp"
+#include "Sound_Delete.hpp"
 
 Object_DeleteSaveButton::Object_DeleteSaveButton(int saveNumber, Script& loadSavesScript, const Transform& transform, bool active): GameObject(transform, active) {
     tags.insert(std::make_pair(Keys::SAVE_FILE,true)); // Identifiable as part of a save file

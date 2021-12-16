@@ -26,7 +26,6 @@ void Script_PlayerMovement::onUpdate(double deltaTime) {
 }
 
 /// When colliding with a tile, Edmund has stopped jumping
-/// Indirectly allows him to climb a steep wall by colliding with the side of the wall TODO: Only allow this for climbing a wall
 void Script_PlayerMovement::onTriggerEnter2D(GameObject& other) {
     if (other.hasTag(Keys::TILE) && !other.hasTag(Keys::WALL)) {
         _doubleJumpState = _jumpState = false;

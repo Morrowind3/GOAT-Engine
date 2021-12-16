@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class Behavior_Etappe : public Behavior {
-    public: Behavior_Etappe(int startHpAmount, AudioSource& pauseSound, bool active);
+    public: Behavior_Etappe(unsigned short currentEtappe, unsigned short startHpAmount, AudioSource& pauseSound, bool active);
 };
 
 #endif //GOAT_ENGINE_BEHAVIOR_ETAPPE_HPP
