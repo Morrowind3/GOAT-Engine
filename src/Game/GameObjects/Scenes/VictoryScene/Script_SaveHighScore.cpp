@@ -35,7 +35,7 @@ int Script_SaveHighScore::calculateScore(const int collectedTrash, const int mil
                                          const int difficulty, const int finishLocationX, const int lineLocationX) const {
     const int trashScore = collectedTrash * 150;
     const int difficultyScore = difficulty * 10;
-    const int locationScore = (finishLocationX - lineLocationX) / 2;
+    const int locationScore = (finishLocationX - lineLocationX) / 10;
     const double timePenalty = (double)millisecondsElapsed / 100.0;
     const int healthPenalty = (3 - remainingHp) * 300;
     _debug.log("Trash score: " + std::to_string(collectedTrash));
