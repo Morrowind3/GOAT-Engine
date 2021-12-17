@@ -8,7 +8,7 @@
 #include "../../GameObjects/Scenes/SaveScene/Buttons/Object_ScoreboardButton.hpp"
 
 Scene_SaveFileMenu::Scene_SaveFileMenu(): SceneTemplate_Menu(Keys::SAVE_MENU) {
-    this->viewPort = Rectangle{{0,0}, 1280, 680}; // Zoom-in
+    this->_viewPort = Rectangle{{0, 0}, 1280, 680}; // Zoom-in
 
     // Logic
     gameObjects.emplace_back(std::make_shared<Object_SavesManager>(true));

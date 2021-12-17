@@ -16,6 +16,7 @@ void Input::registerEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) { _engineCalls.queueQuitEvent(); return; }
+        if (event.window.event == SDL_WINDOWEVENT_RESTORED) _engineCalls.queueWindowRestoreEvent();
         if (event.type == SDL_KEYDOWN) _registry.storeKeyDown(static_cast<KeyCode>(event.key.keysym.sym));
         if (event.type == SDL_KEYUP) _registry.storeKeyUp(static_cast<KeyCode>(event.key.keysym.sym));
         if (event.type == SDL_MOUSEBUTTONDOWN) _registry.storeMouseDown(static_cast<MouseButton>(event.button.button));
@@ -30,10 +31,9 @@ void Input::handleMouseLocation() {
     const Point windowSize = _engineCalls.windowSize();
     const double xAspectRatio = viewPortSize.x/windowSize.x;
     const double yAspectRatio = viewPortSize.y/windowSize.y;
-    Point aspectRatioCorrections {0,0}; // TODO: Find the magical calculation that calculates this properly
     // Correct for aspect ratio
-    _mousePositionX = (_mousePositionX * xAspectRatio) + aspectRatioCorrections.x;
-    _mousePositionY = (_mousePositionY * yAspectRatio) + aspectRatioCorrections.y;
+    _mousePositionX = _mousePositionX * xAspectRatio;
+    _mousePositionY = _mousePositionY * yAspectRatio;
 }
 
 // Gets

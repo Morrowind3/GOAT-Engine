@@ -15,7 +15,7 @@ GoatEngine::GoatEngine(SceneManager& sceneManager, std::string& name, std::strin
 
 void GoatEngine::run(const unsigned int maxFps) {
     // Configure utilities
-    _clock.setFps(maxFps);
+    _clock.setMaxFps(maxFps);
     _engineCalls._sceneManager = &_sceneManager;
 
     // Add systems
@@ -31,9 +31,9 @@ void GoatEngine::run(const unsigned int maxFps) {
     while (_isRunning) {
         // Load scene
         std::shared_ptr<Scene> active = _sceneManager.currentScene();
-        _debug.log("Scene start: " + active->name);
+        _debug.log("Scene start: " + active->getName());
         for (auto& system: *_systems) system->onLoadScene(active);
-        _debug.log("Scene started: " + active->name);
+        _debug.log("Scene started: " + active->getName());
 
         // Update systems until scene change
         while (_isRunning && _sceneManager.currentScene() == active) {
@@ -44,7 +44,7 @@ void GoatEngine::run(const unsigned int maxFps) {
                 if (_engineCalls.quitEventQueued()) _isRunning = false; // Quit game event
             }
         }
-        _debug.log("Scene end: " + active->name);
+        _debug.log("Scene end: " + active->getName());
         // Reset speed and pause status
         _engineCalls.modifySpeed(1.0);
         _engineCalls.pause(false);

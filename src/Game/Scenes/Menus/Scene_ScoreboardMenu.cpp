@@ -9,7 +9,7 @@
 #include "../../GameObjects/Scenes/ScoreboardScene/Decor/Object_ScoreboardForeground.hpp"
 
 Scene_ScoreboardMenu::Scene_ScoreboardMenu() : SceneTemplate_Menu(Keys::SCOREBOARD_MENU) {
-    this->viewPort = Rectangle{{0,0}, 1280, 680}; // Zoom-in
+    this->_viewPort = Rectangle{{0, 0}, 1280, 680}; // Zoom-in
 
     // Places scoreboard manager and extracts the scoreboard header text to feed to the buttons
     auto& scoreboardHeader = gameObjects.emplace_back(std::make_shared<Object_ScoreboardManager>(true))->text.at(Keys::TEXT);

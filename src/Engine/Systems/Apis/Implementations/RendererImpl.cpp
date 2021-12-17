@@ -9,8 +9,8 @@ using namespace Engine;
 RendererImpl::RendererImpl(const std::string& name, const std::string& iconPath, const std::string& cursor) :
         _sdlStatus{SDL_Init(SDL_INIT_EVERYTHING)},
         _window{std::unique_ptr<SDL_Window, void (*)(SDL_Window*)>{
-                SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 800,
-                                 SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
+                SDL_CreateWindow(name.c_str(), 0, 0, 0, 0,
+                    SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED), SDL_DestroyWindow}},
         _renderer{std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>{SDL_CreateRenderer(_window.get(), -1, 0), SDL_DestroyRenderer}} {
     TTF_Init();
     SDL_SetWindowIcon(_window.get(), IMG_Load(iconPath.c_str()));
@@ -18,10 +18,6 @@ RendererImpl::RendererImpl(const std::string& name, const std::string& iconPath,
     auto cursorSurface = IMG_Load(cursor.c_str());
     auto sdlCursor = SDL_CreateColorCursor(cursorSurface, 8, 8);
     SDL_SetCursor(sdlCursor);
-}
-
-void RendererImpl::initialize() {
-    // TODO: Move as much of the constructor into here as possible
 }
 
 void RendererImpl::setViewPort(Point dimensions) {
@@ -73,17 +69,22 @@ void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Tr
     _tickTextureCache.emplace_back(TickTextureCacheData{*transform, &texture});
 }
 
-void RendererImpl::drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
-    if (fontName.empty()) return; // Ignore text with an invalid font
-    auto& font = _fonts->get(fontName);
-    std::shared_ptr<Texture> texture = font.text(text,size,color);
-    _tickTextureCache.emplace_back(TickTextureCacheData{*transform, texture.get()});
+void RendererImpl::drawText(const Text& text, const std::shared_ptr<Transform>& location) {
+    if (text.font.empty()) return; // Ignore text with an invalid font
+    auto& font = _fonts->get(text.font);
+    std::shared_ptr<Texture> texture = font.text(text.text,text.size,text.color);
+    _tickTextureCache.emplace_back(TickTextureCacheData{*location, texture.get()});
 }
 
 void RendererImpl::endRenderTick() {
     std::sort(_tickTextureCache.begin(), _tickTextureCache.end());
     for (auto& drawable: _tickTextureCache) {
         draw(drawable);
+    }
+    // Restore window (otherwise it's unable to restore from a minimized state)
+    if (_engineCalls._restoreWindow) {
+        _engineCalls._restoreWindow = false;
+        SDL_MaximizeWindow(_window.get());
     }
     SDL_RenderPresent(_renderer.get());
 }

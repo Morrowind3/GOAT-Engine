@@ -7,7 +7,7 @@ std::shared_ptr<Scene> EngineCalls::getScene() const {
 }
 
 [[maybe_unused]] std::string EngineCalls::getSceneKey() const {
-    return _sceneManager->currentScene()->name;
+    return _sceneManager->currentScene()->getName();
 }
 
 void EngineCalls::changeScene(const std::string& sceneKey) {
@@ -36,6 +36,10 @@ bool EngineCalls::quitEventQueued() const {
 
 void EngineCalls::queueQuitEvent() {
     _quit = true;
+}
+
+void EngineCalls::queueWindowRestoreEvent() {
+    _restoreWindow = true;
 }
 
 Point EngineCalls::viewPortSize() const {

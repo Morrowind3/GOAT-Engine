@@ -445,7 +445,7 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
                         banner->transform.position.y = banner->transform.position.y - 25;
                         _etappe.gameObjects.emplace_back(banner);
                         bannerAdvert->transform = banner->transform;
-                        //User-defined image, so force dimensions
+                        //User-defined image, so force _dimensions
                         bannerAdvert->transform.forcedWidth = 250;
                         bannerAdvert->transform.forcedHeight = 130;
                         bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 40;
