@@ -9,7 +9,8 @@ using namespace Engine;
 
 class Script_Trash : public Script {
     public:
-        Script_Trash(Object_Trash& trash, bool active);;
+        Script_Trash(Object_Trash& trash, bool active);
+        void onStart() override;
         void onExternalEvent() override;
     private:
         // Utilities

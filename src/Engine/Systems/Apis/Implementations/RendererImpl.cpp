@@ -120,8 +120,8 @@ void RendererImpl::draw(TickTextureCacheData& drawable) {
 
     destinationRect.x = transform.position.x;
     destinationRect.y = transform.position.y;
-    destinationRect.w = transform.scaleWidth * texture->width();
-    destinationRect.h = transform.scaleWidth * texture->height();
+    destinationRect.w = transform.forcedWidth != 0 ? transform.forcedWidth : transform.scaleWidth * texture->width();
+    destinationRect.h = transform.forcedHeight != 0 ? transform.forcedHeight : transform.scaleWidth * texture->height();
 
     SDL_RendererFlip flip;
     switch (transform.flip) {

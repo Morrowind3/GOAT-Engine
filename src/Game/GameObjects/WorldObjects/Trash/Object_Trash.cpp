@@ -12,7 +12,6 @@ Object_Trash::Object_Trash(Transform transform, bool active) : GameObject(transf
     rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
     collider = BoxCollider(20 * transform.scaleWidth, 25 * transform.scaleHeight, 0,0,true, true);
     audioSources.insert(std::make_pair(Keys::TRASH, AudioSource{"Sounds/PickUp.ogg", AudioSourceType::SAMPLE, true}));
-    Globals::getInstance().gameStore(Keys::TRASH_MAX, Globals::getInstance().gameExists(Keys::TRASH_MAX) ? std::to_string(std::stoi(Globals::getInstance().gameGet(Keys::TRASH_MAX))+1) : "1");
 
     // Pick random sprite for trash object
     const static std::vector<std::string> SPRITE_OPTIONS = {

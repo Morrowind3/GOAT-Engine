@@ -12,6 +12,7 @@ void Script_BeatLevel::onUpdate(double deltaTime) {
         }
         _activationTimer += deltaTime;
         if (_activationTimer >= BEAT_GAME_SFX_DURATION) {
+            _globals.gameRemove(Keys::TRASH_MAX);
             _engineCalls.changeScene(Keys::VICTORY_SCREEN);
         }
     } else _activated = _input.getKeyDown(KeyCode::NUMBER_4);

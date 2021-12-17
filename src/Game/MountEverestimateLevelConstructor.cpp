@@ -14,10 +14,10 @@
 #include "GameObjects/WorldObjects/Trash/Object_Trash.hpp"
 #include "GameObjects/Tiles/WallTile/Object_WallTile.hpp"
 #include "GameObjects/Enemies/Hawk/Object_Hawk.hpp"
-#include "GameObjects/Utils/decor/Object_Cloud.hpp"
-#include "GameObjects/Utils/decor/Advertising/Object_Aeroplane.hpp"
-#include "GameObjects/Utils/decor/Advertising/Object_Banner.hpp"
-#include "GameObjects/Utils/decor/Advertising/Object_AdvertisingPane.hpp"
+#include "GameObjects/Utils/Decor/Object_Cloud.hpp"
+#include "GameObjects/Utils/Decor/Advertising/Object_Aeroplane.hpp"
+#include "GameObjects/Utils/Decor/Advertising/Object_Banner.hpp"
+#include "GameObjects/Utils/Decor/Advertising/Object_AdvertisingPane.hpp"
 #include "GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp"
 #include "GameObjects/Tiles/IceTile/Object_IceTile.hpp"
 
@@ -65,10 +65,9 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) {
     } catch (...) { throw std::runtime_error("Level " + _fileLocation + " is invalid"); }
 
     // Debug code to see where all tiles have been constructed
-    if (Globals::getInstance().gameExists(Keys::LEVEL_DEBUG)) {
-        auto& debug = Debug::getInstance();
+    if (_globals.gameExists(Keys::LEVEL_DEBUG)) {
         for (auto& tile: _etappe.gameObjects) {
-            debug.log(
+            _debug.log(
                     "[SP: " + tile->sprites.at(Keys::SPRITE).path +                     // Sprite Path
                     ", SA: " + std::to_string(tile->sprites.at(Keys::SPRITE).active) +  // Sprite Active
                     ", A: " + std::to_string(tile->active) +                            // Active
@@ -90,6 +89,7 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) {
 
 
 void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std::vector<std::string> indexes) {
+    _debug.log("Constructing tiles");
     size_t counter{0};
     for (int y = 0; y < _columns; y++) {
         for (int x = 0; x < _rows; x++) {
@@ -354,34 +354,29 @@ void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std:
 }
 
 void MountEverestimateLevelConstructor::loadPlayer(int xOffset, int yOffset, std::vector<std::string> indexes) {
-
+    _debug.log("Constructing player");
     size_t counter{0};
     for (int y = 0; y < _columns; y++) {
         for (int x = 0; x < _rows; x++) {
             int index{std::stoi(indexes.at(counter++))};
-
-            // Skip if index = 0 (empty tile)
-            if (index != 0) {
+            if (index == 69) {
                 double posY{y * _tileSize * _scale};
                 double posX{x * _tileSize * _scale};
                 Transform transform{Point{posX + xOffset, posY + yOffset}, LAYER::TILES_FRONT, 0, 0, _scale, _scale};
-                switch (index) {
-                    case 69:
-                        transform.layerGroup = LAYER::CHARACTER;
-                        transform.scaleWidth = 5;
-                        transform.scaleHeight = 5;
-                        _etappe.player = std::make_shared<Object_Player>(transform, true);
-                        _etappe.gameObjects.emplace_back(_etappe.player);
-                        break;
-                    default:
-                        break;
-                }
+                transform.layerGroup = LAYER::CHARACTER;
+                transform.scaleWidth = 5;
+                transform.scaleHeight = 5;
+                _etappe.player = std::make_shared<Object_Player>(transform, true);
+                _etappe.gameObjects.emplace_back(_etappe.player);
+                return;
             }
         }
     }
 }
 
 void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, std::vector<std::string> indexes) {
+    _debug.log("Constructing enemies");
+
     std::shared_ptr<Object_Aeroplane> plane;
     std::shared_ptr<Object_Banner> banner;
     std::shared_ptr<Object_AdvertisingPane> bannerAdvert;
@@ -426,7 +421,6 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
                         _etappe.gameObjects.emplace_back(std::make_shared<Object_Trash>(transform, true));
                         break;
                     case 74:
-                        //TODO: These (and the airplane) should use a Parallax layer, but that makes them dissapear somehow.
                         transform.layerGroup = LAYER::TILES_BACK;
                         _etappe.gameObjects.emplace_back(
                                 std::make_shared<Object_Cloud>(Object_Cloud::CloudShape::BIG, transform, true));
@@ -444,7 +438,6 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
                     case 77:
                         banner = std::make_shared<Object_Banner>(transform, true);
                         bannerAdvert = std::make_shared<Object_AdvertisingPane>(transform, true);
-
                         banner->transform.layerGroup = LAYER::TILES_BACK;
                         plane = std::make_shared<Object_Aeroplane>(transform, 3000, true);
                         _etappe.gameObjects.emplace_back(plane);
@@ -452,14 +445,15 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
                         banner->transform.position.y = banner->transform.position.y - 25;
                         _etappe.gameObjects.emplace_back(banner);
                         bannerAdvert->transform = banner->transform;
+                        //User-defined image, so force dimensions
+                        bannerAdvert->transform.forcedWidth = 250;
+                        bannerAdvert->transform.forcedHeight = 130;
+                        bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 40;
                         bannerAdvert->transform.position.x = bannerAdvert->transform.position.x + 32;
-                        bannerAdvert->transform.position.y = bannerAdvert->transform.position.y + 15;
                         bannerAdvert->transform.layerGroup = LAYER::TILES_BACK + 1;
                         _etappe.gameObjects.emplace_back(bannerAdvert);
                         plane->followPlaneMovement(bannerAdvert);
                         plane->followPlaneMovement(banner);
-                        break;
-                    default:
                         break;
                 }
             }

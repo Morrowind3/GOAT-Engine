@@ -9,7 +9,7 @@ using namespace Engine;
 class Script_SceneInit : public Script {
     public:
         Script_SceneInit(unsigned short currentEtappe, unsigned short startHp, bool active);
-        void onStart();
+        void onStart() override;
     private:
         // Globals
         Globals& _globals = Globals::getInstance();

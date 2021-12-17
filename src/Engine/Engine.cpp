@@ -1,3 +1,5 @@
+#define CURL_STATICLIB
+
 #include "Engine.hpp"
 
 #include "Systems/RenderingSystem.hpp"

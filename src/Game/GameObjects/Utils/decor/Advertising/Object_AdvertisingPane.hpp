@@ -6,7 +6,7 @@
 using namespace Engine;
 
 class Object_AdvertisingPane : public GameObject {
-public: Object_AdvertisingPane(Transform transform, bool active);
+    public: Object_AdvertisingPane(Transform transform, bool active);
 };
 
 

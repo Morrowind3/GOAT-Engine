@@ -3,6 +3,8 @@
 
 #include "../Engine/API/Scene.hpp"
 #include "Scenes/Templates/SceneTemplate_Etappe.hpp"
+#include "../Engine/Utilities/Globals.hpp"
+#include "../Engine/Utilities/Debug.hpp"
 
 using namespace Engine;
 
@@ -12,6 +14,8 @@ class MountEverestimateLevelConstructor {
                                           int tileSize, int columns, int rows, int scale);
         void construct(int xOffset, int yOffset);
     private:
+        Debug& _debug = Debug::getInstance();
+        Globals& _globals = Globals::getInstance();
         SceneTemplate_Etappe& _etappe;
         const std::string& _fileLocation;
         const int _tileSize, _columns, _rows;

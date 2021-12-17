@@ -6,6 +6,7 @@ Script_EtappeMarkerConfigurator::Script_EtappeMarkerConfigurator(Object_EtappeMa
 }
 
 void Script_EtappeMarkerConfigurator::onStart() {
+    _globals.gameRemove(Keys::TRASH_MAX);
     if (_globals.gameExists(Keys::ETAPPES_UNLOCKED)) {
         int currentUnlockedLevel = std::stoi(_globals.gameGet(Keys::ETAPPES_UNLOCKED));
         // Current level is unlocked
