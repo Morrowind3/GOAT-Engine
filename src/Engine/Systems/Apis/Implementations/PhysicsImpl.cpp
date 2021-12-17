@@ -87,6 +87,54 @@ void PhysicsImpl::createBody(const GameObject &gameObject) {
     }
 }
 
+void PhysicsImpl::performPhysicsCalculationsForFrame() {
+    _contactListener->flushForNextFrame();
+    _world->Step(_engineCalls.speed() / 50.0f, 8 * _engineCalls.speed(), 6 * _engineCalls.speed());
+    // Erase inactive bodies
+    for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
+        auto *object = (GameObject *) body->GetUserData();
+        if (!object->active || !object->rigidBody.active) {
+            _world->DestroyBody(body);
+        }
+    }
+}
+
+void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject &gameObject) {
+    bool found{false};
+
+    for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
+        if (body->GetUserData() == &gameObject) {
+            found = true;
+
+            b2Vec2 force = {gameObject.rigidBody.forceX / PPM, gameObject.rigidBody.forceY * -1 / PPM};
+            b2Vec2 pos = body->GetPosition();
+
+            body->ApplyLinearImpulse(force, pos, true);
+
+            gameObject.rigidBody.forceY = 0;
+            gameObject.rigidBody.forceX = 0;
+
+            gameObject.transform.position.x = body->GetPosition().x * PPM;
+            gameObject.transform.position.y = body->GetPosition().y * PPM;
+        }
+    }
+
+    if (!found) {
+        createBody(gameObject);
+    }
+}
+
+void PhysicsImpl::runCollisionScripts() {
+    _contactListener->runCollisionScripts();
+}
+
+void PhysicsImpl::resetForNextScene() {
+    _world = std::make_unique<b2World>(b2Vec2{0.0f, 10.0f});
+    _contactListener = std::make_unique<ContactListener>();
+    _world->SetContactListener(_contactListener.get());
+}
+
+#pragma region Collider Constructors
 void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor, double friction,  double restitution) {
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
@@ -133,72 +181,53 @@ void PhysicsImpl::attachCircleCollider(b2Body *rigidBody, double radius, double 
     }
 }
 
-void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction, double restitution ) {
-    // Feet collision shape
-    b2CircleShape feetCollisionShape;
-    feetCollisionShape.m_radius = radius / PPM;
-    feetCollisionShape.m_p = offSet;
-    b2FixtureDef feetDef;
-    feetDef.shape = &feetCollisionShape;
-    feetDef.density = density;
-    feetDef.friction = friction;
-    feetDef.restitution = restitution;
-    rigidBody->CreateFixture(&feetDef);
+/// Approximation of an oval consisting of smaller circles
+void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction, double restitution) {
+    b2CircleShape bottomShape;
+    bottomShape.m_radius = radius / PPM;
+    bottomShape.m_p = offSet;
+    b2FixtureDef bottomDef;
+    bottomDef.shape = &bottomShape;
+    bottomDef.density = density;
+    bottomDef.friction = friction;
+    bottomDef.restitution = restitution;
+    rigidBody->CreateFixture(&bottomDef);
 
-    // Head collision shape
-    b2CircleShape headCollisionShape;
-    headCollisionShape.m_radius = radius / PPM;
-    headCollisionShape.m_p = b2Vec2(0.0f, offSet.y * -1);
-    b2FixtureDef headDef;
-    headDef.shape = &headCollisionShape;
-    headDef.density = 0;
-    headDef.friction = friction;
-    rigidBody->CreateFixture(&headDef);
+    b2CircleShape bottomMiddleShape;
+    bottomMiddleShape.m_radius = radius / PPM;
+    bottomMiddleShape.m_p = b2Vec2(0.0f, offSet.y * -0.25);
+    b2FixtureDef bottomMiddleDef;
+    bottomMiddleDef.shape = &bottomMiddleShape;
+    bottomMiddleDef.density = 0;
+    bottomMiddleDef.friction = friction;
+    rigidBody->CreateFixture(&bottomMiddleDef);
+
+    b2CircleShape middleShape;
+    middleShape.m_radius = radius / PPM;
+    middleShape.m_p = b2Vec2(0.0f, offSet.y * -0.5);
+    b2FixtureDef middleDef;
+    middleDef.shape = &middleShape;
+    middleDef.density = 0;
+    middleDef.friction = friction;
+    rigidBody->CreateFixture(&middleDef);
+
+    b2CircleShape topMiddleShape;
+    topMiddleShape.m_radius = radius / PPM;
+    topMiddleShape.m_p = b2Vec2(0.0f, offSet.y * -0.75);
+    b2FixtureDef topMiddleDef;
+    topMiddleDef.shape = &topMiddleShape;
+    topMiddleDef.density = 0;
+    topMiddleDef.friction = friction;
+    rigidBody->CreateFixture(&topMiddleDef);
+
+    b2CircleShape topShape;
+    topShape.m_radius = radius / PPM;
+    topShape.m_p = b2Vec2(0.0f, offSet.y * -1);
+    b2FixtureDef topDef;
+    topDef.shape = &topShape;
+    topDef.density = 0;
+    topDef.friction = friction;
+    rigidBody->CreateFixture(&topDef);
 }
 
-void PhysicsImpl::performPhysicsCalculationsForFrame(const double deltaTimeInMs) {
-    _contactListener->flushForNextFrame();
-    _world->Step(_engineCalls.speed() / 50.0f, 8 * _engineCalls.speed(), 6 * _engineCalls.speed());
-    // Erase inactive bodies
-    for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
-        auto *object = (GameObject *) body->GetUserData();
-        if (!object->active || !object->rigidBody.active) {
-            _world->DestroyBody(body);
-        }
-    }
-}
-
-void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject &gameObject) {
-    bool found{false};
-
-    for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
-        if (body->GetUserData() == &gameObject) {
-            found = true;
-
-            b2Vec2 force = {gameObject.rigidBody.forceX / PPM, gameObject.rigidBody.forceY * -1 / PPM};
-            b2Vec2 pos = body->GetPosition();
-
-            body->ApplyLinearImpulse(force, pos, true);
-
-            gameObject.rigidBody.forceY = 0;
-            gameObject.rigidBody.forceX = 0;
-
-            gameObject.transform.position.x = body->GetPosition().x * PPM;
-            gameObject.transform.position.y = body->GetPosition().y * PPM;
-        }
-    }
-
-    if (!found) {
-        createBody(gameObject);
-    }
-}
-
-void PhysicsImpl::runCollisionScripts() {
-    _contactListener->runCollisionScripts();
-}
-
-void PhysicsImpl::resetForNextScene() {
-    _world = std::make_unique<b2World>(b2Vec2{0.0f, 10.0f});
-    _contactListener = std::make_unique<ContactListener>();
-    _world->SetContactListener(_contactListener.get());
-}
+#pragma endregion

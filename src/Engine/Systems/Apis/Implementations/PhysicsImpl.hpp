@@ -14,7 +14,7 @@ namespace Engine {
         public:
             PhysicsImpl();
             void createBody(const GameObject& gameObject);
-            void performPhysicsCalculationsForFrame(double deltaTimeInMs);
+            void performPhysicsCalculationsForFrame();
             void updateGameObjectStateFromPhysicsTick(GameObject& gameObject);
             void runCollisionScripts();
             void resetForNextScene();
