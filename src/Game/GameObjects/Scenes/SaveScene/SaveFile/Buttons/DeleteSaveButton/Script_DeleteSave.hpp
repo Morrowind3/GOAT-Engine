@@ -24,7 +24,6 @@ class Script_DeleteSave: public Script {
         bool _deletionState {false};
         Script& _loadSavesScript;
         AudioSource& _deleteSound;
-        // TODO: Store data here temporarily for undo functionality
 };
 
 

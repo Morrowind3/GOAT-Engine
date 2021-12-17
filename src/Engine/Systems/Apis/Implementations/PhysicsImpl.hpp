@@ -5,6 +5,7 @@
 #include "../../../API/GameObjects/GameObject.hpp"
 #include "Managers/Physics/ContactListener.hpp"
 #include "../../../Utilities/Debug.hpp"
+#include "../../../Utilities/EngineCalls.hpp"
 #include <memory>
 #include <iostream>
 
@@ -25,6 +26,7 @@ namespace Engine {
             std::unique_ptr<b2World> _world;
             std::unique_ptr<ContactListener> _contactListener;
             Debug& _debug = Debug::getInstance();
+            EngineCalls& _engineCalls = EngineCalls::getInstance();
     };
 }
 

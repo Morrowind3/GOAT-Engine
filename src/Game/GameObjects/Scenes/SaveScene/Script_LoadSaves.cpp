@@ -83,8 +83,6 @@ void Script_LoadSaves::createSaveFiles(unsigned int currentCount) {
         // Profile
         DataModel saveFile("Players");
         saveFile.setValue("EtappesUnlocked", "1");
-        saveFile.setValue("Difficulty", "100");
-        saveFile.setValue("Volume", "100");
         _data.insert(saveFile);
 
         // Empty high scores

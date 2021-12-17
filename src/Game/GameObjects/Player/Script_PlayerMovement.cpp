@@ -7,7 +7,7 @@ Script_PlayerMovement::Script_PlayerMovement(Object_Player& player, bool active)
 /// Movement
 void Script_PlayerMovement::onUpdate(double deltaTime) {
     if (_engineCalls.isPaused()) return; // Disallow any changes in the movement state while paused
-    if (_pickUpTrashTimer > 0) _pickUpTrashTimer -= deltaTime; // Object_Trash timer
+    if (_pickUpTrashTimer > 0) _pickUpTrashTimer -= deltaTime; // Trash timer
 
     bool moveLeftKey = _input.getKey(KeyCode::LEFT) || _input.getKey(KeyCode::A); // Walk left
     bool moveRightKey = _input.getKey(KeyCode::RIGHT) || _input.getKey(KeyCode::D); // Walk right
@@ -17,12 +17,11 @@ void Script_PlayerMovement::onUpdate(double deltaTime) {
     if (moveLeftKey) moveLeft(deltaTime);
     if (moveRightKey) moveRight(deltaTime);
     if (moveUpKey) {
-        if (allowedToJump()) jump(deltaTime);
-        else if (allowedToDoubleJump(deltaTime)) doubleJump(deltaTime);
+        if (allowedToJump()) jump();
+        else if (allowedToDoubleJump()) doubleJump();
     }
     if (!_walkState) resetAtNonWalkingState();
     updateSpriteState();
-    _yPositionLastFrame = _player.transform.position.y;
 }
 
 /// When colliding with a tile, Edmund has stopped jumping
@@ -30,8 +29,8 @@ void Script_PlayerMovement::onTriggerEnter2D(GameObject& other) {
     if (other.hasTag(Keys::TILE) && !other.hasTag(Keys::WALL)) {
         _doubleJumpState = _jumpState = false;
     }
-
 }
+
 void Script_PlayerMovement::onTriggerStay2D(GameObject& other) {
     if (other.hasTag(Keys::TRASH) && allowedToPickupTrash()) {
         pickupTrash(other);
@@ -40,7 +39,7 @@ void Script_PlayerMovement::onTriggerStay2D(GameObject& other) {
 
 float Script_PlayerMovement::calculateWalkSpeed(double deltaTime) {
     if(_sprintModifier+=SPRINT_STEP > MAX_SPRINT_MODIFIER) _sprintModifier = MAX_SPRINT_MODIFIER;
-    return (PLAYER_SPEED+_sprintModifier)/deltaTime;
+    return (PLAYER_SPEED+_sprintModifier)*deltaTime;
 }
 
 void Script_PlayerMovement::moveLeft(double deltaTime) {
@@ -61,9 +60,9 @@ bool Script_PlayerMovement::allowedToJump() const {
     return !_jumpState;
 }
 
-void Script_PlayerMovement::jump(double deltaTime) {
+void Script_PlayerMovement::jump() {
     _jumpState = true;
-    _player.rigidBody.forceY = JUMP_FORCE/deltaTime;
+    _player.rigidBody.forceY = JUMP_FORCE;
     playJumpSound();
 }
 
@@ -77,14 +76,14 @@ void Script_PlayerMovement::pickupTrash(GameObject& other) {
     _pickUpTrashTimer = PICKUP_TRASH_GRACE_IN_MS;
 }
 
-bool Script_PlayerMovement::allowedToDoubleJump(double deltaTime) const {
+bool Script_PlayerMovement::allowedToDoubleJump() const {
     return !_doubleJumpState;
 }
 
-void Script_PlayerMovement::doubleJump(double deltaTime) {
+void Script_PlayerMovement::doubleJump() {
     _doubleJumpState = true;
-    jump(deltaTime);
-    _player.rigidBody.forceY *= DOUBLE_JUMP_MODIFIER;
+    jump();
+    _player.rigidBody.forceY = DOUBLE_JUMP_FORCE;
 }
 
 /// First disables everything and then enables the correct sprites based on the state of the player

@@ -3,10 +3,7 @@
 
 Script_TimerLine::Script_TimerLine(Object_TimerLine& timerLine, double speed, bool active) : Script(active), _speed(speed), _timerLine(timerLine){}
 
-/// Difficulty adjusts line
 void Script_TimerLine::onStart() {
-    int difficulty = std::stoi(_globals.gameGet(Keys::DIFFICULTY));
-    _speed *= (difficulty/100.0);
     storePosition();
 }
 

@@ -1,10 +1,8 @@
 #include "Object_AdvertisingPane.hpp"
 #include "../../../../Keys.hpp"
 #include "../../../../../Engine/Utilities/Http.hpp"
-#include "../../../../../Engine/Utilities/Debug.hpp"
 #include <random>
 #include <chrono>
-#include <iostream>
 
 Object_AdvertisingPane::Object_AdvertisingPane(Transform transform, bool active) : GameObject(transform,active){
     std::vector<std::string> adverts = {
@@ -16,15 +14,11 @@ Object_AdvertisingPane::Object_AdvertisingPane(Transform transform, bool active)
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::uniform_int_distribution<int> dist(0, adverts.size()-1);
     std::default_random_engine random(seed);
-
     std::string advert = adverts[dist(random)];
-    std::cout << advert <<std::endl;
 
-    Debug::getInstance().log("E");
     auto image = Http::getInstance().imageFromWeb(advert);
     if (image.empty()) image = "Sprites/utils/skydecor/placeholder_advert.png";
 
-    Debug::getInstance().log("F");
     sprites.insert(std::make_pair(Keys::ADVERTISEMENT, Sprite{image, true}));
     tags.insert(std::make_pair(Keys::NO_FLIP, true));
 }

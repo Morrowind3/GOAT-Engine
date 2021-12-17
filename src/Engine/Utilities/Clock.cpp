@@ -36,5 +36,5 @@ bool Clock::tickAndCheckIfNextFrameIsReady() {
 
 // Will be zero in paused state
 double Clock::gameStateBasedDeltaTime() const {
-    return (!_engineCalls.isPaused() * _deltaTimeInMs) / _engineCalls.speed();
+    return (!_engineCalls.isPaused() * _deltaTimeInMs) * _engineCalls.speed();
 }

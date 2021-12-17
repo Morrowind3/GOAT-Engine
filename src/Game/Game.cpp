@@ -15,8 +15,6 @@ void setupDatabase() {
     MigrationBuilder builder;
     builder.newTable("Players"); // Used to identify saves and store settings per player
     builder.addColumn("EtappesUnlocked", "INTEGER", false, false, false);
-    builder.addColumn("Difficulty", "INTEGER", false, false, false);
-    builder.addColumn("Volume", "INTEGER", false, false, false);
 
     builder.newTable("HighScores"); // Stores high scores per etappe, linked to a player
     builder.addColumn("EtappeNumber", "INTEGER", false, false, false);
