@@ -10,8 +10,8 @@ PhysicsImpl::PhysicsImpl() {
 }
 
 void PhysicsImpl::createBody(const GameObject &gameObject) {
-    float width = 21 * gameObject.transform.scaleWidth;
-    float height = 21 * gameObject.transform.scaleHeight;
+    float width = PPM * gameObject.transform.scaleWidth;
+    float height = PPM * gameObject.transform.scaleHeight;
 
     // Making the box2d rigidbody
     b2BodyDef bodyDef;
@@ -158,7 +158,7 @@ void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double de
 
 void PhysicsImpl::performPhysicsCalculationsForFrame(const double deltaTimeInMs) {
     _contactListener->flushForNextFrame();
-    _world->Step(1.0f / deltaTimeInMs / 3.0f, 8, 6);
+    _world->Step(_engineCalls.speed() / 50.0f, 8 * _engineCalls.speed(), 6 * _engineCalls.speed());
     // Erase inactive bodies
     for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
         auto *object = (GameObject *) body->GetUserData();

@@ -3,14 +3,13 @@
 #include "Behavior_Trash.hpp"
 #include "../../../../Engine/Utilities/Globals.hpp"
 #include <random>
-#include <iostream>
 #include <chrono>
 
 Object_Trash::Object_Trash(Transform transform, bool active) : GameObject(transform, active) {
     behaviors.insert(std::make_pair(Keys::TRASH, std::make_shared<Behavior_Trash>(*this, true)));
     tags.emplace(Keys::TRASH, true);
     rigidBody = RigidBody(0, 0, BodyType::STATIC, true);
-    collider = BoxCollider(20 * transform.scaleWidth, 25 * transform.scaleHeight, 0,0,true, true);
+    collider = BoxCollider(30 * transform.scaleWidth, 30 * transform.scaleHeight, 0,0,true, true);
     audioSources.insert(std::make_pair(Keys::TRASH, AudioSource{"Sounds/PickUp.ogg", AudioSourceType::SAMPLE, true}));
 
     // Pick random sprite for trash object

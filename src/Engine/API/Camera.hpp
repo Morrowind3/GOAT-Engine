@@ -11,14 +11,14 @@ namespace Engine {
     class Camera {
         public:
             Camera(Rectangle& sceneViewPort, Point& sceneDimensions, std::map<unsigned int,LayerGroup>& layerGroups, float zoom);
-            Transform adjustForCamera(const Transform& logicalPosition);
 
-            void moveCamera(double x, double y);
-            void interpolateToNextWaypoint();
+            Transform adjustForCamera(const Transform& logicalPosition);
             void trackObject(std::shared_ptr<GameObject> object);
-            void setZoomLevel(float zoom);
-            void addWaypoint(Point waypoint, int seconds);
-            void addWaypoint(Point waypoint, int seconds, float zoomLevel);
+            [[maybe_unused]] void moveCamera(double x, double y);
+            [[maybe_unused]] void setZoomLevel(float zoom);
+            [[maybe_unused]] void addWaypoint(Point waypoint, int seconds);
+            [[maybe_unused]] void addWaypoint(Point waypoint, int seconds, float zoomLevel);
+            [[maybe_unused]] void interpolateToNextWaypoint();
 
         private:
             struct WaypointParams {
@@ -27,13 +27,12 @@ namespace Engine {
                 float zoomPerMs;
                 Point destination;
                 float zoomTarget;
-        //        std::function<bool()> endCondition; TODO: Scriptable end condition.
             };
-
+            // Methods
             void trackObject();
             void reposition(Transform& transform) const;
             void zoom(Transform& t) const;
-
+            // Variables
             std::shared_ptr<GameObject> _trackedObject = nullptr;
             std::queue<WaypointParams> _waypoints;
             std::map<unsigned int,LayerGroup>& _layerGroups;

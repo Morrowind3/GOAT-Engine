@@ -21,7 +21,7 @@ class Script_SaveHighScore: public Script {
         Debug& _debug = Debug::getInstance();
         // Helper methods
         [[nodiscard]] int calculateScore(int collectedTrash, int millisecondsElapsed, int remainingHp,
-                                         int difficulty, int finishLocationX, int lineLocationX) const;
+                                         int finishLocationX, int lineLocationX) const;
         [[nodiscard]] DataModel getHighScore(int saveId, int etappeId) const;
 };
 

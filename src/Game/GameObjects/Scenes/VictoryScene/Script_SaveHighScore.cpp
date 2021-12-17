@@ -12,13 +12,11 @@ void Script_SaveHighScore::onStart() {
     const int collectedTrash = std::stoi(_globals.gameGet(Keys::TRASH));
     const int millisecondsElapsed = std::stoi(_globals.gameGet(Keys::TIMER));
     const int remainingHp = std::stoi(_globals.gameGet(Keys::HP));
-    const int difficulty = std::stoi(_globals.gameGet(Keys::DIFFICULTY));
     const int finishLocationX = std::stoi(_globals.gameGet(Keys::FLAG_LOCATION));
     const int lineLocationX = std::stoi(_globals.gameGet(Keys::LINE_LOCATION));
 
     // Calculate score from data
-    const int score = calculateScore(collectedTrash, millisecondsElapsed, remainingHp,
-                                     difficulty, finishLocationX, lineLocationX);
+    const int score = calculateScore(collectedTrash, millisecondsElapsed, remainingHp, finishLocationX, lineLocationX);
 
     // Update text
     _trashText.text = std::to_string(collectedTrash);
@@ -32,18 +30,16 @@ void Script_SaveHighScore::onStart() {
 }
 
 int Script_SaveHighScore::calculateScore(const int collectedTrash, const int millisecondsElapsed, const int remainingHp,
-                                         const int difficulty, const int finishLocationX, const int lineLocationX) const {
+                                         const int finishLocationX, const int lineLocationX) const {
     const int trashScore = collectedTrash * 150;
-    const int difficultyScore = difficulty * 10;
     const int locationScore = (finishLocationX - lineLocationX) / 10;
     const double timePenalty = (double)millisecondsElapsed / 100.0;
     const int healthPenalty = (3 - remainingHp) * 300;
     _debug.log("Trash score: " + std::to_string(collectedTrash));
-    _debug.log("Difficulty score: " + std::to_string(difficultyScore));
     _debug.log("Location score: " + std::to_string(locationScore));
     _debug.log("Time penalty: " + std::to_string(timePenalty));
     _debug.log("Health penalty: " + std::to_string(healthPenalty));
-    const int score = trashScore + difficultyScore + locationScore - timePenalty - healthPenalty;
+    const int score = 1000 + trashScore + locationScore - timePenalty - healthPenalty;
     return score > 0 ? score : 0; // Only return a positive score
 }
 

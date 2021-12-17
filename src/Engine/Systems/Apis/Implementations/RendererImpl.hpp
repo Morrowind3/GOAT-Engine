@@ -19,13 +19,12 @@ namespace Engine {
     class RendererImpl {
         public:
             RendererImpl(const std::string& name, const std::string& iconPath, const std::string& cursor);
-            void initialize();
             void setViewPort(Point dimensions);
             void loadTexture(const std::string& fileName);
             void loadFont(const std::string& fileName);
             void beginRenderTick();
             void drawTexture(const std::string& texture, const std::shared_ptr<Transform>& location);
-            void drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform);
+            void drawText(const Text& text, const std::shared_ptr<Transform>& location);
             void endRenderTick();
             void resetForNextScene();
             void end();

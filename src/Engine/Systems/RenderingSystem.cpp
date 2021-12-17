@@ -16,7 +16,7 @@ void RenderingSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     _animatorHelper.resetForNextScene();
     _api->resetForNextScene();
     _scene = scene;
-    _api->setViewPort(_scene->viewPort.widthHeightPoint());
+    _api->setViewPort(_scene->getViewPort().widthHeightPoint());
     for (auto& gameObject: _scene->gameObjects) {
         loadSpritesData(*gameObject);
         loadTextData(*gameObject);
@@ -26,9 +26,9 @@ void RenderingSystem::onLoadScene(std::shared_ptr<Scene> scene) {
 
 void RenderingSystem::onFrameTick(const double deltaTime) {
     _api->beginRenderTick();
-    _scene->moveCameraToNextWaypoint();
+    _scene->getCamera()->interpolateToNextWaypoint();
     for (auto& gameObject: activeObjects()) {
-        handleAnimators(*gameObject,deltaTime); // TODO: Feed correct deltatime for animator
+        handleAnimators(*gameObject,deltaTime);
         if(!gameObject->transform.visible) continue;
         drawSprites(*gameObject);
         drawText(*gameObject);
@@ -84,9 +84,9 @@ void RenderingSystem::drawSprites(GameObject& gameObject) {
 void RenderingSystem::drawText(GameObject& gameObject) {
     for (auto& text: gameObject.text) {
         if (!text.second.active) continue;
-        std::shared_ptr  camAdjustedText = std::make_shared<Transform>(
+        std::shared_ptr camAdjustedText = std::make_shared<Transform>(
                 _scene->getCamera()->adjustForCamera(text.second.location));
-        _api->drawText(text.second.text, text.second.size, text.second.color, text.second.font, camAdjustedText);
+        _api->drawText(text.second, camAdjustedText);
     }
 }
 
@@ -98,7 +98,6 @@ void RenderingSystem::drawButtons(GameObject& gameObject) {
         std::shared_ptr txtPointer = std::make_shared<Transform>(
                 _scene->getCamera()->adjustForCamera(button.second.text.location));
         _api->drawTexture(button.second.sprite.path, btnPointer);
-        _api->drawText(button.second.text.text, button.second.text.size, button.second.text.color,
-                       button.second.text.font, txtPointer);
+        _api->drawText(button.second.text, txtPointer);
     }
 }

@@ -7,7 +7,11 @@ double Clock::lastRecordedUnmodifiedDeltaTime() const {
     return _lastRecordedUnmodifiedDeltaTimeInMs;
 }
 
-void Clock::setFps(unsigned int maxFps) {
+double Clock::getMaxFps() const {
+    return 1000.0/_frameDelayInMs;
+}
+
+void Clock::setMaxFps(unsigned int maxFps) {
     _frameDelayInMs = 1000.0/(double)maxFps;
 }
 
@@ -32,5 +36,5 @@ bool Clock::tickAndCheckIfNextFrameIsReady() {
 
 // Will be zero in paused state
 double Clock::gameStateBasedDeltaTime() const {
-    return (!_engineCalls.isPaused() * _deltaTimeInMs) / _engineCalls.speed();
+    return (!_engineCalls.isPaused() * _deltaTimeInMs) * _engineCalls.speed();
 }

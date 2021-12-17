@@ -20,12 +20,10 @@ namespace Engine {
             Collider(bool active, double friction, double bounciness, ColliderType type);
             Collider(); // Default constructor for objects that don't need an active collider
             virtual ~Collider(); // Enforce C++ polymorphism
-
             ColliderType type{ColliderType::NONE};
-
             [[nodiscard]] std::vector<double> getData() const;
 
-            // TODO: Only accessible by classes that explicitly need this
+        protected:
             std::vector<double> _data{};
     };
 }

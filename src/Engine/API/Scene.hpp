@@ -3,9 +3,7 @@
 
 #include <vector>
 
-#include "GameObjects/GameObject.hpp"
 #include "Camera.hpp"
-#include "LayerGroup.hpp"
 
 namespace Engine {
     class Scene {
@@ -15,16 +13,14 @@ namespace Engine {
             // Key determines which layer group gets rendered first (0 = bottom/first, 0xffffffff = on top/last)
             std::map<unsigned int, LayerGroup> layerGroups{};
 
-            // TODO: Encapsulate these values
-            Point dimensions;
-            Rectangle viewPort;
-            std::string name;
-
-            [[maybe_unused]] void moveCamera(double x, double y);
-            void moveCameraToNextWaypoint();
             [[nodiscard]] std::shared_ptr<Camera> getCamera() const;
+            [[nodiscard]] const std::string& getName() const;
+            [[nodiscard]] const Rectangle& getViewPort() const;
         protected:
             Camera _camera;
+            Point _dimensions;
+            Rectangle _viewPort;
+            std::string _name;
     };
 }
 

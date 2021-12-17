@@ -1,5 +1,5 @@
 #include "Camera.hpp"
-#include <iostream>
+#include "../Utilities/Clock.hpp"
 
 using namespace Engine;
 
@@ -15,25 +15,25 @@ Transform Camera::adjustForCamera(const Transform& logicalPosition) {
     return renderPosition;
 }
 
-void Camera::moveCamera(double x, double y) {
+[[maybe_unused]] void Camera::moveCamera(double x, double y) {
     _sceneViewPort.topLeft.x += x;
     _sceneViewPort.topLeft.y += y;
 }
 
-void Camera::setZoomLevel(float zoom) {
+[[maybe_unused]] void Camera::setZoomLevel(float zoom) {
     _zoomLevel = zoom;
 }
 
 /// Adjust render position (NOT LOGICAL POSITION) of object based on the viewport
 void Camera::reposition(Transform& transform) const {
     // Find layer group associated with transform
-    auto layerGroupRef = _layerGroups.find(transform.layerGroup);
-    if (layerGroupRef == _layerGroups.end()) { // Layer group not found, so defaulting to the default layer group
-        layerGroupRef = _layerGroups.find(0);
+    auto layerGroupIterator = _layerGroups.find(transform.layerGroup);
+    if (layerGroupIterator == _layerGroups.end()) { // Layer group not found, so defaulting to the default layer group
+        layerGroupIterator = _layerGroups.find(0);
     }
-    LayerGroup& layerGroup = layerGroupRef->second;
+    LayerGroup& layerGroup = layerGroupIterator->second;
 
-    // TODO: I hastly made this, make this better
+    // Communicate what the layer group state is of the transform
     transform._isGui = layerGroup.ui;
     transform._isParallax = abs(layerGroup.parallax-1.0) > 0.00000001;
 
@@ -46,12 +46,11 @@ void Camera::reposition(Transform& transform) const {
 }
 
 void Camera::zoom(Engine::Transform& t) const {
-    //TODO: Text gets broken when zooming out. Zooming in works fine.
     t.scaleHeight *= _zoomLevel;
     t.scaleWidth *= _zoomLevel;
 }
 
-void Camera::addWaypoint(Point waypoint, int seconds) {
+[[maybe_unused]] void Camera::addWaypoint(Point waypoint, int seconds) {
     if(_waypoints.empty()) {
         addWaypoint(waypoint, seconds, _zoomLevel);
     } else {
@@ -59,11 +58,10 @@ void Camera::addWaypoint(Point waypoint, int seconds) {
     }
 }
 
-void Camera::addWaypoint(Point waypoint, int seconds, float zoomLevel) {
-    //TODO: Better time calculation. I just figured this out on my own but it's close enough in present conditions.
-    int time = seconds * 60;
+[[maybe_unused]] void Camera::addWaypoint(Point waypoint, int seconds, float zoomLevel) {
+    double time = seconds * Clock::getInstance().getMaxFps();
 
-    //Interpolation
+    // Interpolation
     double xDistance, yDistance, xPerMs, yPerMs;
     xDistance = yDistance = xPerMs = yPerMs = 0;
 
@@ -86,13 +84,12 @@ void Camera::addWaypoint(Point waypoint, int seconds, float zoomLevel) {
         zoomPerMs = (zoomLevel * 100 - zoomLevel * 100) / time / 100;
     } else {
         zoomPerMs = (zoomLevel * 100 - _waypoints.back().zoomTarget * 100) / time / 100;
-    };
+    }
 
-//    _waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, zoomLevel, [&]{  }});
     _waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, zoomLevel});
 }
 
-void Camera::interpolateToNextWaypoint() {
+[[maybe_unused]] void Camera::interpolateToNextWaypoint() {
     if(_waypoints.empty()) return;
     WaypointParams& next = _waypoints.front();
     _sceneViewPort.topLeft.x += next.xPerMs;
@@ -102,9 +99,8 @@ void Camera::interpolateToNextWaypoint() {
 }
 
 void Camera::trackObject() {
-    // TODO: Find some way to do this properly (now it's off-center), base this off engine call values?
     auto& transform = _trackedObject->transform;
-    _sceneViewPort.topLeft.x = transform.position.x - _sceneViewPort.width/3;
+    _sceneViewPort.topLeft.x = transform.position.x - _sceneViewPort.width/2.6;
     _sceneViewPort.topLeft.y = transform.position.y - _sceneViewPort.height/2;
 }
 

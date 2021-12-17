@@ -8,9 +8,11 @@ namespace Engine {
     // Friend class links
     class GoatEngine;
     class RendererImpl;
+    class Input;
     class EngineCalls {
         friend class Engine::GoatEngine;
         friend class Engine::RendererImpl;
+        friend class Engine::Input;
         public:
             // Singleton
             EngineCalls(EngineCalls const&) = delete;
@@ -35,15 +37,15 @@ namespace Engine {
             // Screen sizes
             [[nodiscard]] Point viewPortSize() const;
             [[nodiscard]] Point windowSize() const;
-            // TODO: Global volume
         private:
             // Singleton
             EngineCalls() = default;
             // Friend class methods for methods that are too destructive for the game programmer
+            void queueWindowRestoreEvent();
             void viewPortSize(Point viewPortSize);
             void windowSize(Point windowSize);
             // State
-            bool _paused {false}, _quit {false};
+            bool _paused {false}, _quit {false}, _restoreWindow {false};
             double _speed {1.0};
             Point _viewPortSize, _windowSize;
             SceneManager* _sceneManager {nullptr}; // Fed by the engine
