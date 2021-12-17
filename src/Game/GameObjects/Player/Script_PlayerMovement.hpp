@@ -35,10 +35,10 @@ class Script_PlayerMovement : public Script {
         double _pickUpTrashTimer {0.0};
 
         // Consts
-        static const int PLAYER_SPEED = 75;
+        static const int PLAYER_SPEED = 55;
         static const unsigned short SPRINT_STEP = 1;
         static const unsigned short MAX_SPRINT_MODIFIER = SPRINT_STEP * 10;
-        static const int JUMP_FORCE = 90000;
+        static const int JUMP_FORCE = 60000;
         constexpr static const double DOUBLE_JUMP_FORCE = JUMP_FORCE * 1.2;
         constexpr static const double WALK_SOUND_PER_MS_AMOUNT = 1000.0/3.0;
         constexpr static const double PICKUP_TRASH_GRACE_IN_MS = 1000.0/4.0;
