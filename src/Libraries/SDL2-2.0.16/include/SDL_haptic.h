@@ -510,7 +510,7 @@ typedef struct SDL_HapticConstant
  *
  *  A periodic effect consists in a wave-shaped effect that repeats itself
  *  over time.  The type determines the shape of the wave and the parameters
- *  determine the _dimensions of the wave.
+ *  determine the dimensions of the wave.
  *
  *  Phase is given by hundredth of a degree meaning that giving the phase a value
  *  of 9000 will displace it 25% of its period.  Here are sample values:

@@ -159,7 +159,7 @@ extern DECLSPEC char * SDLCALL TTF_FontFaceStyleName(const TTF_Font *font);
 /* Check wether a glyph is provided by the font or not */
 extern DECLSPEC int SDLCALL TTF_GlyphIsProvided(const TTF_Font *font, Uint16 ch);
 
-/* Get the metrics (_dimensions) of a glyph
+/* Get the metrics (dimensions) of a glyph
    To understand what these metrics mean, here is a useful link:
     http://freetype.sourceforge.net/freetype2/docs/tutorial/step2.html
  */
@@ -167,7 +167,7 @@ extern DECLSPEC int SDLCALL TTF_GlyphMetrics(TTF_Font *font, Uint16 ch,
                      int *minx, int *maxx,
                                      int *miny, int *maxy, int *advance);
 
-/* Get the _dimensions of a rendered string of text */
+/* Get the dimensions of a rendered string of text */
 extern DECLSPEC int SDLCALL TTF_SizeText(TTF_Font *font, const char *text, int *w, int *h);
 extern DECLSPEC int SDLCALL TTF_SizeUTF8(TTF_Font *font, const char *text, int *w, int *h);
 extern DECLSPEC int SDLCALL TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h);

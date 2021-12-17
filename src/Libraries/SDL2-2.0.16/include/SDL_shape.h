@@ -44,7 +44,7 @@ extern "C" {
 #define SDL_WINDOW_LACKS_SHAPE -3
 
 /**
- * Create a window that can be shaped with the specified position, _dimensions,
+ * Create a window that can be shaped with the specified position, dimensions,
  * and flags.
  *
  * \param title The title of the window, in UTF-8 encoding.

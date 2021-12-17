@@ -587,7 +587,7 @@ extern DECLSPEC int SDLCALL SDL_GetWindowDisplayIndex(SDL_Window * window);
  *
  * \param window the window to affect
  * \param mode the SDL_DisplayMode structure representing the mode to use, or
- *             NULL to use the window's _dimensions and the desktop's format
+ *             NULL to use the window's dimensions and the desktop's format
  *             and refresh rate
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
@@ -624,7 +624,7 @@ extern DECLSPEC int SDLCALL SDL_GetWindowDisplayMode(SDL_Window * window,
 extern DECLSPEC Uint32 SDLCALL SDL_GetWindowPixelFormat(SDL_Window * window);
 
 /**
- * Create a window with the specified position, _dimensions, and flags.
+ * Create a window with the specified position, dimensions, and flags.
  *
  * `flags` may be any of the following OR'd together:
  *
@@ -911,7 +911,7 @@ extern DECLSPEC void SDLCALL SDL_GetWindowSize(SDL_Window * window, int *w,
  * decorated by the display server (for example, immediately after calling
  * SDL_CreateWindow). It is recommended that you wait at least until the
  * window has been presented and composited, so that the window system has a
- * chance to decorate the window and provide the border _dimensions to SDL.
+ * chance to decorate the window and provide the border dimensions to SDL.
  *
  * This function also returns -1 if getting the information is not supported.
  *

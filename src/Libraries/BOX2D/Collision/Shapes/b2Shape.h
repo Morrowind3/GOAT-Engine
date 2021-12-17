@@ -83,7 +83,7 @@ public:
 	/// @param childIndex the child shape
 	virtual void ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const = 0;
 
-	/// Compute the mass properties of this shape using its _dimensions and density.
+	/// Compute the mass properties of this shape using its dimensions and density.
 	/// The inertia tensor is computed about the local origin.
 	/// @param massData returns the mass data for this shape.
 	/// @param density the density in kilograms per meter squared.
