@@ -3,7 +3,7 @@
 using namespace Engine;
 
 // Underscore suffixes because else it would save the memory address of whichever code constructed this scene
-Scene::Scene(std::string name, Point dimensions, Rectangle viewPort): _name{std::move(name)}, _dimensions{dimensions}, _viewPort{viewPort}, _camera{_viewPort, _dimensions, layerGroups, 1} {
+Scene::Scene(std::string name, Rectangle viewPort): _name{std::move(name)}, _viewPort{viewPort}, _camera{_viewPort, layerGroups, 1} {
     layerGroups.insert(std::make_pair(0,LayerGroup{})); // Reserved "default" group without special UI or parallax settings
 }
 
