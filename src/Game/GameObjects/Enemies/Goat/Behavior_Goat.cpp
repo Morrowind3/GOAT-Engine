@@ -7,6 +7,6 @@
 // - when walking to the left, go into angry mode (walk faster + different sprites)
 // - on player collision, damage & push player, switch direction goat
 
-Behavior_Goat::Behavior_Goat(Object_Goat& goat, bool active) : Behavior(active) {
-    scripts.insert(std::make_pair(Keys::GOAT, std::make_shared<Script_Goat>(goat, true)));
+Behavior_Goat::Behavior_Goat(Object_Player& player, Object_Goat& goat, bool active) : Behavior(active) {
+    scripts.insert(std::make_pair(Keys::GOAT, std::make_shared<Script_Goat>(player, goat, true)));
 }

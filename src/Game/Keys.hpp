@@ -13,7 +13,6 @@ namespace Keys {
     const std::string FALSE = "FALSE"; // Usage: negative bool
     const std::string ERROR = "ERROR"; // Usage: error identifier
     const std::string NO_FLIP = "ERROR"; // Usage: Indicate that this sprite shouldn't be flipped. e.g. You want text to remain legible.
-
 #pragma endregion
 
 #pragma region Generic Identifiers
@@ -43,9 +42,10 @@ namespace Keys {
     const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
     const std::string SETTINGS_MENU = "SETTINGS_MENU"; // Usage: Settings menu level ID
     const std::string SAVE_MENU = "SAVE_MENU"; // Usage: Save menu level ID
+    const std::string CREDITS_MENU = "CREDITS_MENU"; // Usage: Credits menu level ID
 #pragma endregion
 
-#pragma region PlayerData
+#pragma region Player Data
 	const std::string CURRENT_PLAYER_ID = "CURRENT_PLAYER_ID"; // Usage: ID of the player currently playing
 	const std::string ETAPPES_UNLOCKED = "ETAPPES_UNLOCKED"; // Usage: Amount of etappes unlocked
 	const std::string DIFFICULTY = "DIFFICULTY"; // Usage: Difficulty, which adjusts how quick the line goes
@@ -64,7 +64,7 @@ namespace Keys {
     const std::string WALKING_ANIMATOR = "WALKING_ANIMATOR";
 #pragma endregion
 
-#pragma region SaveMenu
+#pragma region Save Menu
 	const std::string SAVE_FILE = "SAVE_FILE";
 	const std::string SAVE_ID = "SAVE_ID";
 	const std::string SAVE_AVATAR = "SAVE_AVATAR";
@@ -72,6 +72,19 @@ namespace Keys {
 	const std::string SAVE_SCORE = "SAVE_SCORE";
 	const std::string SAVE_PLAY = "SAVE_PLAY";
 	const std::string SAVE_ERASE = "SAVE_ERASE";
+#pragma endregion
+
+#pragma region Scoreboard
+    const std::string ALL_ETAPPES = "ALL_ETAPPES";
+    const std::string SCOREBOARD_ENTRY = "SCOREBOARD_ENTRY";
+	const std::string SCOREBOARD_INITIAL_LOAD = "SCOREBOARD_INITIAL_LOAD";
+#pragma endregion
+
+#pragma region Scoreboard Rain
+    const std::string RAIN = "RAIN";
+    const std::string RAIN2 = "RAIN2";
+	const std::string RAIN3 = "RAIN3";
+	const std::string RAIN4 = "RAIN4";
 #pragma endregion
 
 #pragma region Trash
@@ -83,7 +96,23 @@ namespace Keys {
     const std::string TRASH_3 = "TRASH_3";
 #pragma endregion
 
+#pragma region Game State
+	const std::string FLAG_LOCATION = "FLAG_LOCATION";
+	const std::string LINE_LOCATION = "LINE_LOCATION";
+    const std::string GAMESTATE = "GAMESTATE";
+    const std::string GAMESTATE_DEFAULT = "DEFAULT";
+    const std::string GAMESTATE_VICTORY = "VICTORY";
+    const std::string GAMESTATE_DEFEAT = "DEFEAT";
+#pragma endregion
+
+#pragma region Game Speed
+    const std::string SPEED_UP = "SPEED_UP";
+    const std::string SLOW_DOWN = "SLOW_DOWN";
+    const std::string RESET_SPEED = "RESET_SPEED";
+#pragma endregion
+
 #pragma region Unsorted
+	const std::string TIMER_TEXT = "TIMER_TEXT";
     const std::string SNOWSTORM = "SNOWSTORM";
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID
     const std::string PAUSE = "PAUSE"; // Usage: global scene key to check if game is paused, pause script ID
@@ -103,8 +132,6 @@ namespace Keys {
     const std::string ATTACK_STANCE = "ATTACK_STANCE"; // Usage: Object_Goat attack ready sprite
     const std::string ATTACK1 = "ATTACK1"; // Usage: Object_Goat attack sprite
     const std::string ATTACK2 = "ATTACK2"; // Usage: Object_Goat attack sprite 2
-	const std::string STAR = "STAR"; // Usage: Star sprite (etappemarker)
-	const std::string FLAG = "FLAG"; // Usage: Flag sprite (etappemarker)
 	const std::string CLOUDS = "CLOUDS"; // Usage: Object_Cloud sprite (EtappeSelectionBG)
 	const std::string HP = "HP"; // Usage: Health scene-global-var key, HP script (etappe behavior)
     const std::string JAGERPLEISTER = "JAGERPLEISTER"; // Usage: For Jägerpleister sprite.
@@ -117,11 +144,6 @@ namespace Keys {
     const std::string BANNER = "BANNER"; // Usage: For the banner that can be attached to the Airplane object.
     const std::string ADVERTISEMENT = "ADVERTISEMENT"; //Usage: For the web-based advertisement object
 
-	//SPEED
-	const std::string SPEED_UP = "SPEED_UP";
-	const std::string SLOW_DOWN = "SLOW_DOWN";
-	const std::string RESET_SPEED = "RESET_SPEED";
-	
     //BUTTONS
     const std::string START_GAME = "START_GAME"; // Usage: Start game button ID
     const std::string QUIT_GAME = "QUIT_GAME"; // Usage: Quit game button ID
@@ -138,10 +160,7 @@ namespace Keys {
     const std::string BLEATHING = "BLEATHING"; // Usage: Object_Goat bleathing SFX
 
     //GAME STATES, flags used by Script_GameState.
-    const std::string GAMESTATE = "GAMESTATE";
-    const std::string GAMESTATE_DEFAULT = "DEFAULT";
-    const std::string GAMESTATE_VICTORY = "VICTORY";
-    const std::string GAMESTATE_DEFEAT = "DEFEAT";
+
 
 
     //TAGS

@@ -2,15 +2,17 @@
 
 using namespace Engine;
 
-BoxCollider::BoxCollider(double width, double height, double friction, bool active) : Collider(active, friction, ColliderType::BOX_COLLIDER) {
+BoxCollider::BoxCollider(double width, double height, double friction, double bounciness, bool active) : Collider(active, friction, bounciness, ColliderType::BOX_COLLIDER) {
     _data.emplace_back(width);
     _data.emplace_back(height);
     _data.emplace_back(friction);
+    _data.emplace_back(bounciness);
 }
 
-BoxCollider::BoxCollider(bool dummy, double width, double height, double friction, bool active) : Collider(active, friction, ColliderType::BOX_SENSOR){
+BoxCollider::BoxCollider(bool dummy, double width, double height, double friction, double bounciness, bool active) : Collider(active, friction, bounciness, ColliderType::BOX_SENSOR){
     _data.emplace_back(width);
     _data.emplace_back(height);
     _data.emplace_back(friction);
+    _data.emplace_back(bounciness);
 }
 

@@ -1,5 +1,4 @@
 #include "ScriptSystem.hpp"
-#include "../Utilities/Globals.hpp"
 
 using namespace Engine;
 
@@ -9,7 +8,7 @@ void ScriptSystem::onLaunchEngine() {
 
 void ScriptSystem::onLoadScene(std::shared_ptr<Scene> scene) {
     _debug.log("Script system load");
-    Globals::getInstance().sceneReset();
+    _globals.sceneReset();
     _scene = scene;
     auto active = activeObjects();
     runOnStarts(active);
@@ -83,8 +82,12 @@ void ScriptSystem::markObjectsForDestruction() {
 
 void ScriptSystem::destroyObjectsMarkedForDestruction() {
     for (int position = 0; position < _scene->gameObjects.size(); ++position) {
-        auto& gameObject = _scene->gameObjects.at(position);
-        if (gameObject->_destroyNextTick) _scene->gameObjects.erase(_scene->gameObjects.begin()+position);
+        auto gameObject = _scene->gameObjects.at(position);
+        if (gameObject->_destroyNextTick) {
+            gameObject->active = false;
+            _graveyard.emplace_back(gameObject);
+            _scene->gameObjects.erase(_scene->gameObjects.begin()+position);
+        }
     }
 }
 

@@ -10,6 +10,6 @@ void Script_SummonGoat::onUpdate(double deltaTime) {
     // 3 key summons goat
     if (_input.getKeyDown(KeyCode::NUMBER_3)) {
         Transform transform{Point{_player.transform.position.x + 200, _player.transform.position.y - 200}, LAYER::TILES_FRONT, 1, 0, 4, 4};
-        _scene.gameObjects.emplace_back(std::make_shared<Object_Goat>(transform, true));
+        _scene.gameObjects.emplace_back(std::make_shared<Object_Goat>(_player, transform, true));
     }
 }

@@ -9,5 +9,4 @@ class Sprite_SaveBackground: public Sprite {
     public: explicit Sprite_SaveBackground(bool active);
 };
 
-
 #endif //GOAT_ENGINE_SPRITE_SAVEBACKGROUND_HPP

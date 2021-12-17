@@ -26,7 +26,7 @@ std::string Globals::sceneGet(const std::string& key) const {
     throw std::runtime_error("The following key was not found in scene globals: " + key);
 }
 
-[[maybe_unused]] void Globals::sceneRemove(const std::string& key) {
+void Globals::sceneRemove(const std::string& key) {
     _sceneGlobals->erase(key);
 }
 
@@ -52,6 +52,6 @@ std::string Globals::gameGet(const std::string& key) const {
     throw std::runtime_error("The following key was not found in game globals: " + key);
 }
 
-[[maybe_unused]] void Globals::gameRemove(const std::string& key) {
+void Globals::gameRemove(const std::string& key) {
     _gameGlobals->erase(key);
 }

@@ -19,9 +19,9 @@ namespace Engine {
             void resetForNextScene();
 
         private:
-            static void attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor, double friction);
-            static void attachCircleCollider(b2Body *rigidBody, double radius, double density, bool isSensor, b2Vec2 offset, double friction);
-            static void attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction);
+            static void attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor, double friction, double restitution );
+            static void attachCircleCollider(b2Body *rigidBody, double radius, double density, bool isSensor, b2Vec2 offset, double friction, double restitution );
+            static void attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction, double restitution );
             std::unique_ptr<b2World> _world;
             std::unique_ptr<ContactListener> _contactListener;
             Debug& _debug = Debug::getInstance();

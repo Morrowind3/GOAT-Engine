@@ -1,6 +1,6 @@
 #include "Scene_VictoryMenu.hpp"
 #include "../../Keys.hpp"
-#include "../../GameObjects/Scenes/EtappeEndScene/Object_VictoryScreenManager.hpp"
+#include "../../GameObjects/Scenes/VictoryScene/Object_VictoryScreenManager.hpp"
 #include "../../GameObjects/Scenes/EtappeEndScene/Object_SelectEtappeButton.hpp"
 #include "../../GameObjects/Scenes/EtappeEndScene/Object_NextEtappeButton.hpp"
 #include "../../Layers.hpp"

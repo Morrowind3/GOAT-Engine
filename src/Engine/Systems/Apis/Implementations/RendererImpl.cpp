@@ -104,6 +104,13 @@ void RendererImpl::end() {
 void RendererImpl::draw(TickTextureCacheData& drawable) {
     auto& transform = drawable.transform;
     auto& texture = drawable.data;
+    auto viewPortSize = _engineCalls.viewPortSize();
+
+    // Don't render off-screen
+    if (!transform._isGui && !transform._isParallax) {
+        if (transform.position.x > viewPortSize.x && transform.position.y > viewPortSize.y) return;
+        if (transform.position.x < -400 && transform.position.y < -400) return;
+    }
 
     SDL_Rect sourceRect{}, destinationRect{};
 

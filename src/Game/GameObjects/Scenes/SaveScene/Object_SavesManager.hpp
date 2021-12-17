@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class Object_SavesManager: public GameObject {
-    public: Object_SavesManager(Scene& scene, bool active);
+    public: explicit Object_SavesManager(bool active);
 };
 
 

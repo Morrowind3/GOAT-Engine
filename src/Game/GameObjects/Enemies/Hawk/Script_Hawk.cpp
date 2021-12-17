@@ -71,8 +71,6 @@ void Script_Hawk::updatePosition() {
 
 void Script_Hawk::updateSprite() {
 
-    //TODO Animator objects
-
     if (_direction == LEFT) _self.transform.flip = FLIP::FLIP_NONE;
     if (_direction == RIGHT) _self.transform.flip = FLIP::FLIP_HORIZONTAL;
 

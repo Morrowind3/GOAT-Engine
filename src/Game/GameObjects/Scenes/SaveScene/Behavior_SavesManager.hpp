@@ -7,7 +7,7 @@
 using namespace Engine;
 
 class Behavior_SavesManager: public Behavior {
-    public: Behavior_SavesManager(Scene& scene, bool active);
+    public: explicit Behavior_SavesManager(bool active);
 };
 
 
