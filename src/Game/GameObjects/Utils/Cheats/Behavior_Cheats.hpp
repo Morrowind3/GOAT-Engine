@@ -12,7 +12,7 @@ using namespace Engine;
 class Behavior_Cheats : public Behavior {
     public: Behavior_Cheats(Scene& scene, Object_Player& player, std::map<std::string,Text>& textObjects,
                            AudioSource& speedUpSound, AudioSource& slowDownSound, AudioSource& resetSpeedSound,
-                           AudioSource& errorSound, AudioSource& beatGameSound, bool active);
+                           AudioSource& errorSound, AudioSource& beatGameSound, AudioSource& healSound, bool active);
 };
 
 #endif //GOAT_ENGINE_BEHAVIOR_CHEATS_HPP
