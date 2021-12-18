@@ -10,7 +10,7 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
             "Fonts/Kenney_Thick.ttf",
             60,
             {255,255,255,255},
-            Transform{{530,40},transform.layerGroup,1, 0,1,1},
+            Transform{{550,40},transform.layerGroup,1, 0,1,1},
             true}));
     text.insert(std::make_pair("GarbageLabel", Text{
             "Garbage collected",
