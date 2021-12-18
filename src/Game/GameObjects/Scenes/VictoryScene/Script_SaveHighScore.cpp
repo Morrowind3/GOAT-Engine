@@ -23,10 +23,13 @@ void Script_SaveHighScore::onStart() {
     _timeText.text = _globals.gameGet(Keys::TIMER_TEXT);
     _scoreText.text = std::to_string(score);
 
-    // Update database
+    // Update database if current score is higher than the high score
     DataModel save = getHighScore(saveId, etappeId);
-    save.setValue("Score", std::to_string(score));
-    _dataApi.update(save);
+    const int currentHighScore = std::stoi(save.getValue("Score"));
+    if (score > currentHighScore) {
+        save.setValue("Score", std::to_string(score));
+        _dataApi.update(save);
+    }
 }
 
 int Script_SaveHighScore::calculateScore(const int collectedTrash, const int millisecondsElapsed, const int remainingHp,
@@ -39,7 +42,7 @@ int Script_SaveHighScore::calculateScore(const int collectedTrash, const int mil
     _debug.log("Location score: " + std::to_string(locationScore));
     _debug.log("Time penalty: " + std::to_string(timePenalty));
     _debug.log("Health penalty: " + std::to_string(healthPenalty));
-    const int score = 1000 + trashScore + locationScore - timePenalty - healthPenalty;
+    const int score = INITIAL_HIGH_SCORE + trashScore + locationScore - timePenalty - healthPenalty;
     return score > 0 ? score : 0; // Only return a positive score
 }
 

@@ -13,12 +13,14 @@ class Script_SaveHighScore: public Script {
         explicit Script_SaveHighScore(Text& trashText, Text& timeText, Text& scoreText, bool active);
         void onStart() override;
     private:
-        // Variables
-        Text& _trashText,& _timeText,& _scoreText;
         // Utilities
         DataApi& _dataApi = DataApi::getInstance();
         Globals& _globals = Globals::getInstance();
         Debug& _debug = Debug::getInstance();
+        // Variables
+        Text& _trashText,& _timeText,& _scoreText;
+        // Constants
+        const int INITIAL_HIGH_SCORE {1000};
         // Helper methods
         [[nodiscard]] int calculateScore(int collectedTrash, int millisecondsElapsed, int remainingHp,
                                          int finishLocationX, int lineLocationX) const;
