@@ -12,12 +12,12 @@ Script_LoadSaves::Script_LoadSaves(bool active): Script(active) {
 // Show the altitude to the user
 static int etappesUnlockedToAltitude(int etappesUnlocked) {
     switch (etappesUnlocked) {
+        case 0: case 1: return 0;
         case 2: return 1800;
         case 3: return 3700;
         case 4: return 5000;
         case 5: return 6640;
-        case 6: return 8848;
-        default: return 0;
+        default: return 8848;
     }
 }
 

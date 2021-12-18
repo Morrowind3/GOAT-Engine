@@ -36,9 +36,11 @@ namespace Keys {
 	const std::string ETAPPE_FIVE = "ETAPPE_5"; // Usage: Etappe 5 level ID
     // Menus
     const std::string VICTORY_SCREEN = "VICTORY_SCREEN"; //Usage: Victory screen level ID
+    const std::string GAME_WON_SCREEN = "GAME_WON_SCREEN"; //Usage: Game won screen level ID
     const std::string DEFEAT_SCREEN = "DEFEAT_SCREEN"; //Usage: Defeat screen level ID
     const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
+    const std::string HELP_MENU = "HELP_MENU"; // Usage: Help menu level ID
     const std::string SCOREBOARD_MENU = "SCOREBOARD_MENU"; // Usage: Scoreboard menu level ID
     const std::string SETTINGS_MENU = "SETTINGS_MENU"; // Usage: Settings menu level ID
     const std::string SAVE_MENU = "SAVE_MENU"; // Usage: Save menu level ID
@@ -60,6 +62,12 @@ namespace Keys {
 
 #pragma region Player
     const std::string WALKING_ANIMATOR = "WALKING_ANIMATOR";
+#pragma endregion
+
+#pragma region HelpMenu
+    const std::string HELP_KEY_SPRITE = "HELP_KEY_SPRITE";
+    const std::string HELP_KEY_DESCRIPTION = "HELP_KEY_DESCRIPTION";
+
 #pragma endregion
 
 #pragma region Save Menu
