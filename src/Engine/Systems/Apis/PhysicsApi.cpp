@@ -6,8 +6,8 @@ void PhysicsApi::createBody(const GameObject& gameObject)  {
     physics.createBody(gameObject);
 }
 
-void PhysicsApi::performPhysicsCalculationsForFrame(const double deltaTimeInMs) {
-    physics.performPhysicsCalculationsForFrame(deltaTimeInMs);
+void PhysicsApi::performPhysicsCalculationsForFrame() {
+    physics.performPhysicsCalculationsForFrame();
 }
 
 void PhysicsApi::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {

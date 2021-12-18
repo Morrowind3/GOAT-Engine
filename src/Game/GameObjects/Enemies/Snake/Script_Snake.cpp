@@ -1,5 +1,4 @@
 #include "Script_Snake.hpp"
-#include "../../../../Engine/API/GameObjects/GameObject.hpp"
 #include "../../../Keys.hpp"
 
 void Script_Snake::onTriggerEnter2D(GameObject& other) {
@@ -27,11 +26,11 @@ void Script_Snake::onTriggerEnter2D(GameObject& other) {
 void Script_Snake::onUpdate(double deltaTime) {
     if(_paralyzedObject == nullptr) return;
 
-    _paralyzedDuration++;
+    _paralyzedTimerInMs+=deltaTime;
 
-    //enable movement again when PARALYZE_DURATION ends
-    if(_paralyzedDuration > PARALYZE_DURATION) {
-        _paralyzedDuration = 0;
+    // Enable movement again when timer is done
+    if(_paralyzedTimerInMs > PARALYZE_DURATION_IN_MS) {
+        _paralyzedTimerInMs = 0;
         _paralyzedObject->active = true;
         _paralyzedObject.reset();
         _snake.sprites.at(Keys::IDLE).active = true;

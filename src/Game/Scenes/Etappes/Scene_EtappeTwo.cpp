@@ -5,7 +5,7 @@
 #include "../../GameObjects/Utils/Timer/Object_TimerLine.hpp"
 #include "../../GameObjects/Scenes/Etappes/EtappeTwoScene/Object_EtappeTwoText.hpp"
 
-Scene_EtappeTwo::Scene_EtappeTwo() : SceneTemplate_Etappe(Keys::ETAPPE_TWO, {999999,999999}, // TODO: Dimensions
+Scene_EtappeTwo::Scene_EtappeTwo() : SceneTemplate_Etappe(Keys::ETAPPE_TWO,
         "Maps/Etappe2.map", 21, 50, 256, 4, 0, -3000) {
     gameObjects.emplace_back(std::make_shared<Object_EtappeTwoManager>(
             Transform{Point{0, -242}, LAYER::PARALLAX_BACKGROUND, 0,0, 20, 20}, true));

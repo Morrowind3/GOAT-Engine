@@ -21,11 +21,4 @@ Scene_MainMenu::Scene_MainMenu() : SceneTemplate_Menu(Keys::MAIN_MENU) {
             Transform{Point{675, 575}, LAYER::UI, 0,0, 6, 4}, true));
     gameObjects.emplace_back(std::make_shared<Object_CreditsButton>(
             Transform{Point{725, 700}, LAYER::UI, 0, 0, 5, 5}, true));
-
-    // TODO: Re-enable buttons when they do what they're supposed to do
-    /*;
-    gameObjects.emplace_back(std::make_shared<Object_SettingsButton>(
-            Transform{Point{1710, 40}, 100, 0, 4, 4}, true));
-
-    */
 }

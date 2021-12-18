@@ -1,18 +1,18 @@
 #include "Script_DamageCheat.hpp"
 #include "../../../../Keys.hpp"
-#include "../../../../../Engine/Utilities/Globals.hpp"
 
-Script_DamageCheat::Script_DamageCheat(Object_Player& player, bool active): Script(active), _player(player) {}
+Script_DamageCheat::Script_DamageCheat(Object_Player& player, AudioSource& healSound, bool active):
+    Script(active), _player{player}, _healSound{healSound} {
+}
 
 void Script_DamageCheat::onUpdate(double deltaTime) {
-    // 2 damages player
-    if (_input.getKeyDown(KeyCode::NUMBER_2)) {
+    // 3 damages player
+    if (_input.getKeyDown(KeyCode::NUMBER_3)) {
         _player.behaviors.at(Keys::BEHAVIOR)->scripts.at(Keys::DAMAGE)->onExternalEvent();
     }
-    // TODO: Document in cheats menu and play Jägerpleister heal sfx
-    // 5 heals player
-    if (_input.getKeyDown(KeyCode::NUMBER_5)) {
-        int currentHealth = std::stoi(_globals.gameGet(Keys::HP));
-        _globals.gameStore(Keys::HP, std::to_string(++currentHealth));
+    // 4 heals player
+    if (_input.getKeyDown(KeyCode::NUMBER_4)) {
+        _globals.gameStore(Keys::HP, "3");
+        _healSound.queueForPlay = true;
     }
 }

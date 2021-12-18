@@ -3,8 +3,8 @@
 
 using namespace Engine;
 
-Camera::Camera(Rectangle& sceneViewPort, Point& sceneDimensions, std::map<unsigned int,LayerGroup>& layerGroups, float zoomLevel):
-    _sceneViewPort{sceneViewPort}, _sceneDimensions{sceneDimensions}, _layerGroups{layerGroups}, _zoomLevel{zoomLevel} {
+Camera::Camera(Rectangle& sceneViewPort, std::map<unsigned int,LayerGroup>& layerGroups, float zoomLevel):
+    _sceneViewPort{sceneViewPort}, _layerGroups{layerGroups}, _zoomLevel{zoomLevel} {
 }
 
 Transform Camera::adjustForCamera(const Transform& logicalPosition) {

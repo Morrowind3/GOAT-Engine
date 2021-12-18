@@ -15,5 +15,5 @@ void Script_BeatLevel::onUpdate(double deltaTime) {
             _globals.gameRemove(Keys::TRASH_MAX);
             _engineCalls.changeScene(Keys::VICTORY_SCREEN);
         }
-    } else _activated = _input.getKeyDown(KeyCode::NUMBER_4);
+    } else _activated = _input.getKeyDown(KeyCode::NUMBER_5);
 }

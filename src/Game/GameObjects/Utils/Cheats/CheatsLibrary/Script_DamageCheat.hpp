@@ -10,7 +10,7 @@ using namespace Engine;
 
 class Script_DamageCheat : public Script {
     public:
-        Script_DamageCheat(Object_Player& player, bool active);
+        Script_DamageCheat(Object_Player& player, AudioSource& healSound, bool active);
         void onUpdate(double deltaTime);
 
     private:
@@ -20,6 +20,7 @@ class Script_DamageCheat : public Script {
         Globals& _globals = Globals::getInstance();
         // Variables
         Object_Player& _player;
+        AudioSource& _healSound;
 };
 
 

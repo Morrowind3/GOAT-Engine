@@ -10,7 +10,7 @@
 namespace Engine {
     class Camera {
         public:
-            Camera(Rectangle& sceneViewPort, Point& sceneDimensions, std::map<unsigned int,LayerGroup>& layerGroups, float zoom);
+            Camera(Rectangle& sceneViewPort, std::map<unsigned int,LayerGroup>& layerGroups, float zoom);
 
             Transform adjustForCamera(const Transform& logicalPosition);
             void trackObject(std::shared_ptr<GameObject> object);
@@ -37,7 +37,6 @@ namespace Engine {
             std::queue<WaypointParams> _waypoints;
             std::map<unsigned int,LayerGroup>& _layerGroups;
             Rectangle& _sceneViewPort;
-            Point& _sceneDimensions;
             float _zoomLevel;
     };
 };
