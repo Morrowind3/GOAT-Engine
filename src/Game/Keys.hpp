@@ -36,6 +36,7 @@ namespace Keys {
 	const std::string ETAPPE_FIVE = "ETAPPE_5"; // Usage: Etappe 5 level ID
     // Menus
     const std::string VICTORY_SCREEN = "VICTORY_SCREEN"; //Usage: Victory screen level ID
+    const std::string GAME_WON_SCREEN = "GAME_WON_SCREEN"; //Usage: Game won screen level ID
     const std::string DEFEAT_SCREEN = "DEFEAT_SCREEN"; //Usage: Defeat screen level ID
     const std::string ETAPPE_SELECT = "ETAPPE_SELECT"; // Usage: Etappe selection level ID
     const std::string MAIN_MENU = "MAIN_MENU"; // Usage: Main menu level ID
