@@ -5,7 +5,7 @@
 Object_CreditsMenuBackground::Object_CreditsMenuBackground(Transform transform, bool active) : GameObject(transform, active) {
     sprites.insert(
             std::make_pair("Object_CreditsMenuBackground", Sprite{"Sprites/backgrounds/background_mainmenu.png", true}));
-    audioSources.insert(std::make_pair("Music", AudioSource{"Music/Harp_Harmony.mp3", AudioSourceType::MUSIC, 20,true, true}));
+    audioSources.insert(std::make_pair("Music", AudioSource{"Music/Harp_Harmony.mp3", AudioSourceType::MUSIC, 100,true, true}));
 
     std::string font{"Fonts/Kenney_Thick.ttf"};
     Color color{0, 0, 0, 255};

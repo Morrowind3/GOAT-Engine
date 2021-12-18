@@ -17,8 +17,10 @@ void Script_DeleteSave::onExternalEvent() {
     // Reset save file's high scores
     auto highScores = _dataApi.getAll("HighScores");
     for (auto& highScore: highScores) {
-        highScore.setValue("Score", "0");
-        _dataApi.update(highScore);
+        if (highScore.getValue("Players_id") == playerIdString) {
+            highScore.setValue("Score", "0");
+            _dataApi.update(highScore);
+        }
     }
 
     // Reload saves

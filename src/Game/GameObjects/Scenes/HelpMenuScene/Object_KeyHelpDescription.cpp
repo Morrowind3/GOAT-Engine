@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 18/12/2021.
-//
-
 #include "Object_KeyHelpDescription.hpp"
 #include "../../../Keys.hpp"
 

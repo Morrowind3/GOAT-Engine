@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 18/12/2021.
-//
-
 #ifndef GOAT_ENGINE_SCENE_GAMEWONMENU_HPP
 #define GOAT_ENGINE_SCENE_GAMEWONMENU_HPP
 

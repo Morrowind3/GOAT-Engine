@@ -1,15 +1,10 @@
-//
-// Created by Morrowind3 on 18/12/2021.
-//
-
 #include "Object_KeyHelpKey.hpp"
 #include "../../../Keys.hpp"
 
 using namespace Engine;
 
 Object_KeyHelpKey::Object_KeyHelpKey(const std::string& key,  Transform transform, bool active) : GameObject(transform, active){
-    uint8_t fontSize = key.size() > 2 ? 14 : 40;
-//    short yOffset = key.size() > 1 ? 24 : 40;
+    uint8_t fontSize = key.size() > 1 ? 14 : 40;
 
     sprites.insert(std::make_pair(Keys::HELP_KEY_SPRITE + key, Sprite{"Sprites/ui/buttons/Button_square_white.png",true}));
     text.insert(std::make_pair(Keys::HELP_KEY_SPRITE + key, Text{

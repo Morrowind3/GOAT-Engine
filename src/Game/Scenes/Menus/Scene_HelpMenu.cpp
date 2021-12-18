@@ -1,7 +1,3 @@
-//
-// Created by Morrowind3 on 18/12/2021.
-//
-
 #include "Scene_HelpMenu.hpp"
 #include "../../Keys.hpp"
 #include "../../GameObjects/Scenes/HelpMenuScene/Object_KeyHelpEntry.hpp"
@@ -33,17 +29,17 @@ Scene_HelpMenu::Scene_HelpMenu() : SceneTemplate_Menu(Keys::HELP_MENU) {
     transform.position.y = transform.position.y + 100;
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpKey>("A", Transform{{transform.position.x, transform.position.y}, LAYER::UI, 0, 0, 3,3 }, true));
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpKey>("LEFT", Transform{{transform.position.x + 100, transform.position.y}, LAYER::UI, 0, 0, 3, 3}, true));
-    gameObjects.emplace_back(std::make_shared<Object_KeyHelpEntry>("Move left", transform, true));
+    gameObjects.emplace_back(std::make_shared<Object_KeyHelpEntry>("Move left.", transform, true));
 
     transform.position.y = transform.position.y + 100;
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpKey>("S", Transform{{transform.position.x, transform.position.y}, LAYER::UI, 0, 0, 3, 3}, true));
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpKey>("DOWN", Transform{{transform.position.x + 100, transform.position.y}, LAYER::UI, 0, 0, 3, 3}, true));
-    gameObjects.emplace_back(std::make_shared<Object_KeyHelpEntry>( "Collect Trash", transform, true));
+    gameObjects.emplace_back(std::make_shared<Object_KeyHelpEntry>( "Collect Trash.", transform, true));
 
     transform.position.y = transform.position.y + 100;
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpKey>("D", Transform{{transform.position.x, transform.position.y}, LAYER::UI, 0, 0, 3, 3}, true));
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpKey>("RIGHT", Transform{{transform.position.x + 100, transform.position.y}, LAYER::UI, 0, 0, 3, 3}, true));
-    gameObjects.emplace_back(std::make_shared<Object_KeyHelpEntry>( "Move right", transform, true));
+    gameObjects.emplace_back(std::make_shared<Object_KeyHelpEntry>( "Move right.", transform, true));
 
     transform.position.y = transform.position.y + 300;
     transform.position.x = transform.position.x + 800;

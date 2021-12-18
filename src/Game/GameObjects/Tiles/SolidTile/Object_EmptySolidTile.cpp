@@ -1,7 +1,3 @@
-//
-// Created by MDstu on 08/12/2021.
-//
-
 #include "Object_EmptySolidTile.hpp"
 #include "../../../Keys.hpp"
 
