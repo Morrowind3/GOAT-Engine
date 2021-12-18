@@ -18,7 +18,7 @@ namespace Engine {
             [[nodiscard]] double getMaxFps() const;
             [[nodiscard]] double lastRecordedUnmodifiedDeltaTime() const;
         private:
-            Clock(){};
+            Clock()= default;
             void setMaxFps(unsigned int maxFps);
             bool tickAndCheckIfNextFrameIsReady();
             [[maybe_unused]] [[nodiscard]] double actualDeltaTime() const;

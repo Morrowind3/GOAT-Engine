@@ -1,7 +1,3 @@
-//
-// Created by MDstu on 07/12/2021.
-//
-
 #ifndef GOAT_ENGINE_OVALCOLLIDER_HPP
 #define GOAT_ENGINE_OVALCOLLIDER_HPP
 
@@ -11,7 +7,6 @@ namespace Engine {
     class OvalCollider: public Collider {
     public:
         OvalCollider(double radius, double offSetX, double offSetY, double  friction, double bounciness, bool active);
-
     };
 }
 

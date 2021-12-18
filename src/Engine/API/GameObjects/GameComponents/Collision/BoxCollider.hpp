@@ -5,7 +5,7 @@
 
 namespace Engine {
     class BoxCollider : public Collider {
-        //Vrees niet, dit moet hacky omdat in c++ de superconstructor niet in de body kan.
+        // Fear not, this has to be this way because in C++ this kind of constructor cannot go into the body
     public: BoxCollider(double width, double height, double friction, double  bounciness, bool isSensor, bool active)
                 : BoxCollider(isSensor ? BoxCollider{true, width, height,friction, bounciness, active} : BoxCollider{width, height, friction,bounciness, active}){}
     private:
