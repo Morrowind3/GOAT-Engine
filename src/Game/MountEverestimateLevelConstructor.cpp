@@ -262,7 +262,7 @@ void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std:
                                 "Sprites/landscapes/stone/stone_slab_end_right.png", transform, true));
                         break;
                     case 51:
-                        _etappe.gameObjects.emplace_back(std::make_shared<Object_IceTile>(
+                        _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
                                 "Sprites/utils/lakes/lake_ice.png", transform, true));
                         break;
                     case 52:
@@ -345,6 +345,9 @@ void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std:
                         _etappe.gameObjects.emplace_back(std::make_shared<Object_EmptySolidTile>(
                                 "Sprites/landscapes/lava/lava_ground_empty.png", transform, true));
                         break;
+                    case 83:
+                        _etappe.gameObjects.emplace_back(std::make_shared<Object_IceTile>(
+                                "Sprites/utils/lakes/lake_ice_top.png", transform, true));
                     default:
                         break;
                 }
