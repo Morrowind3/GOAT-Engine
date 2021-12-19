@@ -140,7 +140,8 @@ add_library(GOAT_Engine STATIC
 		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp
-		Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp)
+		Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp
+		)
 
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
@@ -288,6 +289,7 @@ add_executable(Mount_Everestimate
         Game/GameObjects/Enemies/Hawk/Behavior_Idle/Behavior_Idle_Hawk.cpp Game/GameObjects/Enemies/Hawk/Behavior_Idle/Behavior_Idle_Hawk.hpp Game/GameObjects/Enemies/Hawk/Behavior_Idle/Script_Idle_Hawk.cpp Game/GameObjects/Enemies/Hawk/Behavior_Idle/Script_Idle_Hawk.hpp Game/Scenes/Menus/Scene_CreditsMenu.cpp Game/Scenes/Menus/Scene_CreditsMenu.hpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_CreditsButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_CreditsButton.hpp
 		Game/GameObjects/Scenes/CreditsMenuScene/Object_CreditsMenuBackground.cpp Game/GameObjects/Scenes/CreditsMenuScene/Object_CreditsMenuBackground.hpp
 		Game/GameObjects/Scenes/CreditsMenuScene/Behavior_Credits.cpp Game/GameObjects/Scenes/CreditsMenuScene/Behavior_Credits.hpp Game/GameObjects/Scenes/CreditsMenuScene/Script_AnimateCreditsText.cpp Game/GameObjects/Scenes/CreditsMenuScene/Script_AnimateCreditsText.hpp
+		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_HelpScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_HelpScreenButton.hpp Game/Scenes/Menus/Scene_HelpMenu.cpp Game/Scenes/Menus/Scene_HelpMenu.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpEntry.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpEntry.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_HelpBackground.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_HelpBackground.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpKey.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpKey.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpDescription.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpDescription.hpp Game/Scenes/Menus/Scene_GameWonMenu.cpp Game/Scenes/Menus/Scene_GameWonMenu.hpp Game/GameObjects/Scenes/GameWonScene/Object_GameWonSceneManager.cpp Game/GameObjects/Scenes/GameWonScene/Object_GameWonSceneManager.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)

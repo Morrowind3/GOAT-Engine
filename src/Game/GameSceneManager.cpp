@@ -14,6 +14,8 @@
 #include "Scenes/Etappes/Scene_EtappeFive.hpp"
 #include "Scenes/Menus/Scene_SaveFileMenu.hpp"
 #include "Scenes/Menus/Scene_CreditsMenu.hpp"
+#include "Scenes/Menus/Scene_HelpMenu.hpp"
+#include "Scenes/Menus/Scene_GameWonMenu.hpp"
 #include <stdexcept>
 
 void GameSceneManager::changeCurrentScene(const std::string& name) {
@@ -50,8 +52,15 @@ void GameSceneManager::changeCurrentScene(const std::string& name) {
     else if (name == Keys::SETTINGS_MENU) _currentScene = std::make_shared<Scene_SettingsMenu>();
     else if (name == Keys::ETAPPE_SELECT) _currentScene = std::make_shared<Scene_EtappeSelectionMenu>();
     else if (name == Keys::DEFEAT_SCREEN) _currentScene = std::make_shared<Scene_GameOverMenu>();
-    else if (name == Keys::VICTORY_SCREEN) _currentScene = std::make_shared<Scene_VictoryMenu>();
+    else if (name == Keys::VICTORY_SCREEN){
+        if(_currentEtappe == 5){
+            _currentScene = std::make_shared<Scene_GameWonMenu>();
+        } else {
+            _currentScene = std::make_shared<Scene_VictoryMenu>();
+        }
+    }
     else if (name == Keys::CREDITS_MENU) _currentScene = std::make_shared<Scene_CreditsMenu>();
+    else if (name == Keys::HELP_MENU) _currentScene = std::make_shared<Scene_HelpMenu>();
     else {
         throw std::runtime_error("GameSceneManager: No valid scene loaded in! Attempted key: " + name);
     }
