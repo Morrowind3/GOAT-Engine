@@ -1,13 +1,13 @@
-#ifndef GOAT_ENGINE_COLLISIONSYSTEM_HPP
-#define GOAT_ENGINE_COLLISIONSYSTEM_HPP
+#ifndef GOAT_ENGINE_PHYSICSSYSTEM_HPP
+#define GOAT_ENGINE_PHYSICSSYSTEM_HPP
 
 #include "System.hpp"
 #include "Apis/PhysicsApi.hpp"
 
 namespace Engine {
-    class CollisionSystem : public System {
+    class PhysicsSystem : public System {
         public:
-            CollisionSystem() = default;
+            PhysicsSystem() = default;
             void onLaunchEngine() override;
             void onLoadScene(std::shared_ptr<Scene> scene) override;
             void onFrameTick(double deltaTime) override;
@@ -18,4 +18,4 @@ namespace Engine {
 }
 
 
-#endif //GOAT_ENGINE_COLLISIONSYSTEM_HPP
+#endif //GOAT_ENGINE_PHYSICSSYSTEM_HPP

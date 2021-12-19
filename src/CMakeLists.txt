@@ -72,8 +72,8 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
         Engine/Systems/ScriptSystem.cpp
         Engine/Systems/ScriptSystem.hpp
-        Engine/Systems/CollisionSystem.cpp
-        Engine/Systems/CollisionSystem.hpp
+        Engine/Systems/PhysicsSystem.cpp
+        Engine/Systems/PhysicsSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.hpp
         Engine/Systems/Apis/Implementations/AudioImpl.cpp
         Engine/Systems/Apis/Implementations/AudioImpl.hpp

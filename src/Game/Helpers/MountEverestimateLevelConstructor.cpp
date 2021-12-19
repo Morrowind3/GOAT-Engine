@@ -91,8 +91,8 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) {
 void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std::vector<std::string> indexes) {
     _debug.log("Constructing tiles");
     size_t counter{0};
-    for (int y = 0; y < _columns; y++) {
-        for (int x = 0; x < _rows; x++) {
+    for (int y = 0; y < _columns; ++y) {
+        for (int x = 0; x < _rows; ++x) {
             int index{std::stoi(indexes.at(counter++))};
 
             // Skip if index = 0 (empty tile)
@@ -359,8 +359,8 @@ void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std:
 void MountEverestimateLevelConstructor::loadPlayer(int xOffset, int yOffset, std::vector<std::string> indexes) {
     _debug.log("Constructing player");
     size_t counter{0};
-    for (int y = 0; y < _columns; y++) {
-        for (int x = 0; x < _rows; x++) {
+    for (int y = 0; y < _columns; ++y) {
+        for (int x = 0; x < _rows; ++x) {
             int index{std::stoi(indexes.at(counter++))};
             if (index == 69) {
                 double posY{y * _tileSize * _scale};
@@ -385,8 +385,8 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
     std::shared_ptr<Object_AdvertisingPane> bannerAdvert;
 
     size_t counter{0};
-    for (int y = 0; y < _columns; y++) {
-        for (int x = 0; x < _rows; x++) {
+    for (int y = 0; y < _columns; ++y) {
+        for (int x = 0; x < _rows; ++x) {
             int index{std::stoi(indexes.at(counter++))};
 
             // Skip if index = 0 (empty tile)
