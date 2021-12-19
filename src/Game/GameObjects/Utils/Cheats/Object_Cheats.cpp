@@ -39,7 +39,7 @@ Object_Cheats::Object_Cheats(Scene& scene, Object_Player& player, bool active) :
     auto& beatAGameButton = audioSources.insert(std::make_pair(Keys::VICTORY_SCREEN, AudioSource{"Sounds/BeatGame.ogg",AudioSourceType::SAMPLE, true})).first->second;
     auto& heal = audioSources.insert(std::make_pair(Keys::HP, AudioSource{"Sounds/Heal.ogg",AudioSourceType::SAMPLE, true})).first->second;
 
-    // Object_Cheats
+    // Cheat behavior
     behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<Behavior_Cheats>(scene, player, this->text,
         speedUp, slowDown, reset, error, beatAGameButton, heal, true)));
 }

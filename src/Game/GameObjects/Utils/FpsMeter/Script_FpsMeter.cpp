@@ -34,7 +34,8 @@ void Script_FpsMeter::onUpdate(double deltaTime) {
 
     if (_text.active) {
         // One extra FPS needed because of SDL Tick rounding issues
-        _text.text = std::to_string(1+(int)std::round(1000/_clock.lastRecordedUnmodifiedDeltaTime()));
+        const int fps = 1 + (int)std::round(1000/_clock.lastRecordedUnmodifiedDeltaTime());
+        _text.text = std::to_string(fps);
     }
 }
 

@@ -5,7 +5,7 @@
 #include "Systems/RenderingSystem.hpp"
 #include "Systems/ScriptSystem.hpp"
 #include "Systems/AudioSystem.hpp"
-#include "Systems/CollisionSystem.hpp"
+#include "Systems/PhysicsSystem.hpp"
 
 using namespace Engine;
 
@@ -19,7 +19,7 @@ void GoatEngine::run(const unsigned int maxFps) {
     _engineCalls._sceneManager = &_sceneManager;
 
     // Add systems
-    _systems->emplace_back(std::make_unique<CollisionSystem>());
+    _systems->emplace_back(std::make_unique<PhysicsSystem>());
     _systems->emplace_back(std::make_unique<ScriptSystem>());
     _systems->emplace_back(std::make_unique<AudioSystem>());
     _systems->emplace_back(std::make_unique<RenderingSystem>(_name, _iconPath, _cursor));
