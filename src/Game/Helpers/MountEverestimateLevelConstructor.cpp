@@ -1,25 +1,25 @@
 #include "MountEverestimateLevelConstructor.hpp"
-#include "GameObjects/Tiles/SolidTile/Object_SolidTile.hpp"
-#include "GameObjects/Tiles/SlabTile/Object_SlabTile.hpp"
-#include "GameObjects/Enemies/Goat/Object_Goat.hpp"
-#include "GameObjects/WorldObjects/VictoryFlag/Object_VictoryFlag.hpp"
-#include "../Engine/Utilities/Debug.hpp"
-#include "../Engine/Utilities/Globals.hpp"
-#include "Keys.hpp"
-#include "Layers.hpp"
-#include "GameObjects/Tiles/LavaTile/Object_LavaTile.hpp"
-#include "GameObjects/WorldObjects/HealthPickup/Object_HealthPickup.hpp"
-#include "GameObjects/Enemies/Snake/Object_Snake.hpp"
-#include "GameObjects/Enemies/Snowball/Object_Snowball.hpp"
-#include "GameObjects/WorldObjects/Trash/Object_Trash.hpp"
-#include "GameObjects/Tiles/WallTile/Object_WallTile.hpp"
-#include "GameObjects/Enemies/Hawk/Object_Hawk.hpp"
-#include "GameObjects/Utils/Decor/Object_Cloud.hpp"
-#include "GameObjects/Utils/Decor/Advertising/Object_Aeroplane.hpp"
-#include "GameObjects/Utils/Decor/Advertising/Object_Banner.hpp"
-#include "GameObjects/Utils/Decor/Advertising/Object_AdvertisingPane.hpp"
-#include "GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp"
-#include "GameObjects/Tiles/IceTile/Object_IceTile.hpp"
+#include "../GameObjects/Tiles/SolidTile/Object_SolidTile.hpp"
+#include "../GameObjects/Tiles/SlabTile/Object_SlabTile.hpp"
+#include "../GameObjects/Enemies/Goat/Object_Goat.hpp"
+#include "../GameObjects/WorldObjects/VictoryFlag/Object_VictoryFlag.hpp"
+#include "../../Engine/Utilities/Debug.hpp"
+#include "../../Engine/Utilities/Globals.hpp"
+#include "../Keys.hpp"
+#include "../Layers.hpp"
+#include "../GameObjects/Tiles/LavaTile/Object_LavaTile.hpp"
+#include "../GameObjects/WorldObjects/HealthPickup/Object_HealthPickup.hpp"
+#include "../GameObjects/Enemies/Snake/Object_Snake.hpp"
+#include "../GameObjects/Enemies/Snowball/Object_Snowball.hpp"
+#include "../GameObjects/WorldObjects/Trash/Object_Trash.hpp"
+#include "../GameObjects/Tiles/WallTile/Object_WallTile.hpp"
+#include "../GameObjects/Enemies/Hawk/Object_Hawk.hpp"
+#include "../GameObjects/Utils/Decor/Object_Cloud.hpp"
+#include "../GameObjects/Utils/Decor/Advertising/Object_Aeroplane.hpp"
+#include "../GameObjects/Utils/Decor/Advertising/Object_Banner.hpp"
+#include "../GameObjects/Utils/Decor/Advertising/Object_AdvertisingPane.hpp"
+#include "../GameObjects/Tiles/SolidTile/Object_EmptySolidTile.hpp"
+#include "../GameObjects/Tiles/IceTile/Object_IceTile.hpp"
 
 #include <regex>
 #include <fstream>
@@ -91,8 +91,8 @@ void MountEverestimateLevelConstructor::construct(int xOffset, int yOffset) {
 void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std::vector<std::string> indexes) {
     _debug.log("Constructing tiles");
     size_t counter{0};
-    for (int y = 0; y < _columns; y++) {
-        for (int x = 0; x < _rows; x++) {
+    for (int y = 0; y < _columns; ++y) {
+        for (int x = 0; x < _rows; ++x) {
             int index{std::stoi(indexes.at(counter++))};
 
             // Skip if index = 0 (empty tile)
@@ -359,8 +359,8 @@ void MountEverestimateLevelConstructor::loadTiles(int xOffset, int yOffset, std:
 void MountEverestimateLevelConstructor::loadPlayer(int xOffset, int yOffset, std::vector<std::string> indexes) {
     _debug.log("Constructing player");
     size_t counter{0};
-    for (int y = 0; y < _columns; y++) {
-        for (int x = 0; x < _rows; x++) {
+    for (int y = 0; y < _columns; ++y) {
+        for (int x = 0; x < _rows; ++x) {
             int index{std::stoi(indexes.at(counter++))};
             if (index == 69) {
                 double posY{y * _tileSize * _scale};
@@ -385,8 +385,8 @@ void MountEverestimateLevelConstructor::loadEnemies(int xOffset, int yOffset, st
     std::shared_ptr<Object_AdvertisingPane> bannerAdvert;
 
     size_t counter{0};
-    for (int y = 0; y < _columns; y++) {
-        for (int x = 0; x < _rows; x++) {
+    for (int y = 0; y < _columns; ++y) {
+        for (int x = 0; x < _rows; ++x) {
             int index{std::stoi(indexes.at(counter++))};
 
             // Skip if index = 0 (empty tile)

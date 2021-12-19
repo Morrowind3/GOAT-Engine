@@ -58,13 +58,19 @@ void RendererImpl::beginRenderTick() {
     _tickTextureCache.clear();
     SDL_RenderClear(_renderer.get());
 
-    // Window is resizable so engine must know the current size
     int windowWidth, windowHeight;
     SDL_GetWindowSize(_window.get(), &windowWidth, &windowHeight);
     _engineCalls.windowSize({windowWidth,windowHeight});
 }
 
 void RendererImpl::drawTexture(const std::string& name, const std::shared_ptr<Transform>& transform) {
+    // Don't render off-screen
+    auto viewPortSize = _engineCalls.viewPortSize();
+    if (!transform->_isGui && !transform->_isParallax) {
+        if (transform->position.x > viewPortSize.x && transform->position.y > viewPortSize.y) return;
+        if (transform->position.x < -400 && transform->position.y < -400) return;
+    }
+    
     const auto& texture = _textures->get(name);
     _tickTextureCache.emplace_back(TickTextureCacheData{*transform, &texture});
 }
@@ -105,13 +111,6 @@ void RendererImpl::end() {
 void RendererImpl::draw(TickTextureCacheData& drawable) {
     auto& transform = drawable.transform;
     auto& texture = drawable.data;
-    auto viewPortSize = _engineCalls.viewPortSize();
-
-    // Don't render off-screen
-    if (!transform._isGui && !transform._isParallax) {
-        if (transform.position.x > viewPortSize.x && transform.position.y > viewPortSize.y) return;
-        if (transform.position.x < -400 && transform.position.y < -400) return;
-    }
 
     SDL_Rect sourceRect{}, destinationRect{};
 

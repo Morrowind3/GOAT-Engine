@@ -1,28 +1,27 @@
-#include "CollisionSystem.hpp"
+#include "PhysicsSystem.hpp"
 
 using namespace Engine;
 
-void CollisionSystem::onLaunchEngine() {
-    _debug.log("Collision system launch");
+void PhysicsSystem::onLaunchEngine() {
+    _debug.log("Physics system launch");
     _api = &PhysicsApi::getInstance();
 }
 
-void CollisionSystem::onLoadScene(std::shared_ptr<Scene> scene) {
-    _debug.log("Collision system load");
+void PhysicsSystem::onLoadScene(std::shared_ptr<Scene> scene) {
+    _debug.log("Physics system load");
     _api->resetForNextScene();
     _scene = scene;
-    int count = 0;
+    unsigned int createdBodies = 0;
     for (auto& gameObject: _scene->gameObjects) {
         if(gameObject->rigidBody.active) {
             _api->createBody(*gameObject);
-            count++;
+            ++createdBodies;
         }
     }
-
-    std::cout << "Bodies created: " << count << std::endl;
+    _debug.log("Bodies created: " + std::to_string(createdBodies));
 }
 
-void CollisionSystem::onFrameTick(const double deltaTime) {
+void PhysicsSystem::onFrameTick(const double deltaTime) {
     if (deltaTime == 0) return; // Increase performance by not calculating physics on pause
     _api->performPhysicsCalculationsForFrame();
     for (auto &gameObject: activeObjects()) {
@@ -32,6 +31,6 @@ void CollisionSystem::onFrameTick(const double deltaTime) {
     }
 }
 
-void CollisionSystem::onCloseEngine() {
-    _debug.log("Collision system close"); // Empty
+void PhysicsSystem::onCloseEngine() {
+    _debug.log("Physics system close"); // Empty
 }

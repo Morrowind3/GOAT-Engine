@@ -72,8 +72,8 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/Managers/Textures/TextureManager.hpp
         Engine/Systems/ScriptSystem.cpp
         Engine/Systems/ScriptSystem.hpp
-        Engine/Systems/CollisionSystem.cpp
-        Engine/Systems/CollisionSystem.hpp
+        Engine/Systems/PhysicsSystem.cpp
+        Engine/Systems/PhysicsSystem.hpp
         Engine/API/GameObjects/GameComponents/Script/Script.hpp
         Engine/Systems/Apis/Implementations/AudioImpl.cpp
         Engine/Systems/Apis/Implementations/AudioImpl.hpp
@@ -151,7 +151,7 @@ add_executable(Mount_Everestimate
         Game/Keys.hpp
         Game/Game.cpp
         Game/GameSceneManager.cpp Game/GameSceneManager.hpp
-        Game/MountEverestimateLevelConstructor.cpp Game/MountEverestimateLevelConstructor.hpp
+        Game/Helpers/MountEverestimateLevelConstructor.cpp Game/Helpers/MountEverestimateLevelConstructor.hpp
 		Game/Layers.hpp
 		Game/Scenes/Templates/SceneTemplate_Etappe.cpp Game/Scenes/Templates/SceneTemplate_Etappe.hpp
 		Game/Scenes/Templates/SceneTemplate_Menu.cpp Game/Scenes/Templates/SceneTemplate_Menu.hpp

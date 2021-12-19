@@ -6,5 +6,5 @@ Object_SolidTile::Object_SolidTile(const std::string& sprite, Transform transfor
         : Object_Tile(sprite, transform, active) {
     tags.insert(std::make_pair(Keys::SOLID, true));
     rigidBody = {0.0f, 0.0f, BodyType::STATIC, true};
-    collider = BoxCollider(21 * transform.scaleWidth,21 * transform.scaleHeight, 0.07f ,0,false, true);
+    collider = BoxCollider(21 * transform.scaleWidth,21 * transform.scaleHeight, 0.07f ,0,0,0,false, true);
 }

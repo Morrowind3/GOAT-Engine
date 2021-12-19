@@ -4,5 +4,5 @@
 Object_IceTile::Object_IceTile(const std::string &sprite, Transform transform, bool active) : Object_Tile(sprite,transform,active) {
     tags.insert(std::make_pair(Keys::SOLID, true));
     rigidBody = {0.0f, 0.0f, BodyType::STATIC, true};
-    collider = BoxCollider(21 * transform.scaleWidth,21 * transform.scaleHeight, 0.002f ,0,false, true);
+    collider = BoxCollider(21 * transform.scaleWidth,21 * transform.scaleHeight, 0.002f ,0,0,0,false, true);
 }

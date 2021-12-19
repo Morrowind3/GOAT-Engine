@@ -7,7 +7,6 @@ namespace Engine {
     class OvalCollider: public Collider {
     public:
         OvalCollider(double radius, double offSetX, double offSetY, double  friction, double bounciness, bool active);
-
     };
 }
 
