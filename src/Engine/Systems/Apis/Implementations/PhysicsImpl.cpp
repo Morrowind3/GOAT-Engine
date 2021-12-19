@@ -9,7 +9,7 @@ PhysicsImpl::PhysicsImpl() {
     resetForNextScene();
 }
 
-void PhysicsImpl::createBody(const GameObject &gameObject) {
+void PhysicsImpl::createBody(const GameObject& gameObject) {
     float width = PPM * gameObject.transform.scaleWidth;
     float height = PPM * gameObject.transform.scaleHeight;
 
@@ -99,7 +99,7 @@ void PhysicsImpl::performPhysicsCalculationsForFrame() {
     }
 }
 
-void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject &gameObject) {
+void PhysicsImpl::updateGameObjectStateFromPhysicsTick(GameObject& gameObject) {
     bool found{false};
 
     for (b2Body *body = _world->GetBodyList(); body; body = body->GetNext()) {
@@ -135,7 +135,7 @@ void PhysicsImpl::resetForNextScene() {
 }
 
 #pragma region Collider Constructors
-void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double height, double density, bool isSensor, double friction,  double restitution) {
+void PhysicsImpl::attachBoxCollider(b2Body* rigidBody, double width, double height, double density, bool isSensor, double friction,  double restitution) {
     b2PolygonShape collisionShape;
     collisionShape.SetAsBox(width / 2 / PPM, height / 2 / PPM);
     if (isSensor) {
@@ -160,7 +160,7 @@ void PhysicsImpl::attachBoxCollider(b2Body *rigidBody, double width, double heig
 }
 
 
-void PhysicsImpl::attachCircleCollider(b2Body *rigidBody, double radius, double density, bool isSensor, b2Vec2 offset, double friction,  double restitution) {
+void PhysicsImpl::attachCircleCollider(b2Body* rigidBody, double radius, double density, bool isSensor, b2Vec2 offset, double friction,  double restitution) {
     b2CircleShape collisionShape;
     collisionShape.m_radius = radius / PPM;
     collisionShape.m_p = offset;
@@ -182,7 +182,7 @@ void PhysicsImpl::attachCircleCollider(b2Body *rigidBody, double radius, double 
 }
 
 /// Approximation of an oval consisting of smaller circles
-void PhysicsImpl::attachOvalCollider(b2Body *rigidBody, double radius, double density, b2Vec2 offSet, double friction, double restitution) {
+void PhysicsImpl::attachOvalCollider(b2Body* rigidBody, double radius, double density, b2Vec2 offSet, double friction, double restitution) {
     b2CircleShape bottomShape;
     bottomShape.m_radius = radius / PPM;
     bottomShape.m_p = offSet;
