@@ -14,7 +14,7 @@ Scene_HelpMenu::Scene_HelpMenu() : SceneTemplate_Menu(Keys::HELP_MENU) {
 
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpDescription>("You play as Edmund Hillary on his quest be the first to climb the Mount Everest.", transform, true));
     transform.position.y = transform.position.y + 40;
-    gameObjects.emplace_back(std::make_shared<Object_KeyHelpDescription>("To score points, be quick, pick up trash left others left behind, and avoid taking damage.", transform, true));
+    gameObjects.emplace_back(std::make_shared<Object_KeyHelpDescription>("To score points, be quick, pick up trash others left behind, and avoid taking damage.", transform, true));
     transform.position.y = transform.position.y + 40;
     gameObjects.emplace_back(std::make_shared<Object_KeyHelpDescription>("Collect Jagerpleisters to heal. In contrary to trash, these are collected automatically.", transform, true));
     transform.position.y = transform.position.y + 40;
