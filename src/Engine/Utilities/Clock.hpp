@@ -15,10 +15,11 @@ namespace Engine {
                 static Clock instance;
                 return instance;
             }
+            [[nodiscard]] double getMaxFps() const;
             [[nodiscard]] double lastRecordedUnmodifiedDeltaTime() const;
         private:
             Clock(){};
-            void setFps(unsigned int maxFps);
+            void setMaxFps(unsigned int maxFps);
             bool tickAndCheckIfNextFrameIsReady();
             [[maybe_unused]] [[nodiscard]] double actualDeltaTime() const;
             [[nodiscard]] double gameStateBasedDeltaTime() const;

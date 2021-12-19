@@ -1,71 +1,73 @@
 #include "Camera.hpp"
-#include "../../Game/Layers.hpp" // TODO: Programmatically determine this, now we're referencing the game
-#include <iostream>
+#include "../Utilities/Clock.hpp"
 
 using namespace Engine;
 
-Transform Camera::adjustForCamera(const Transform& transform) {
-    if(_trackedObject != nullptr) trackObject();
-    if(transform.layer == LAYER::UI || transform.layer == LAYER::FPS) return transform;
-    Engine::Transform adjusted {transform};
-    reposition(adjusted);
-    zoom(adjusted);
-    return adjusted;
+Camera::Camera(Rectangle& sceneViewPort, std::map<unsigned int,LayerGroup>& layerGroups, float zoomLevel):
+    _sceneViewPort{sceneViewPort}, _layerGroups{layerGroups}, _zoomLevel{zoomLevel} {
 }
 
-void Camera::moveCamera(double x, double y) {
-    _camera.topLeft.x += x;
-    _camera.topLeft.y += y;
+Transform Camera::adjustForCamera(const Transform& logicalPosition) {
+    if(_trackedObject != nullptr) trackObject();
+    Transform renderPosition {logicalPosition};
+    reposition(renderPosition);
+    zoom(renderPosition);
+    return renderPosition;
 }
-void Camera::setZoomLevel(float zoom) {
+
+[[maybe_unused]] void Camera::moveCamera(double x, double y) {
+    _sceneViewPort.topLeft.x += x;
+    _sceneViewPort.topLeft.y += y;
+}
+
+[[maybe_unused]] void Camera::setZoomLevel(float zoom) {
     _zoomLevel = zoom;
 }
 
-void Camera::reposition(Transform& t) const {
-    //the lower from 100, the lower the speed (higher diff)
-    //layer 100 = 1
-    //layer 0 = 100
-    if(t.layer <= 100) {
-        double diff{101 - static_cast<double>(t.layer)};
-
-
-//        double diff{static_cast<double>(t.layer) / 100};
-//        diff *= 10;
-//        diff = 100 - diff;
-
-        t.position.x -= (_camera.topLeft.x / diff);
-        t.position.y -= (_camera.topLeft.y / diff);
-    } else {
-        t.position.x -= _camera.topLeft.x;
-        t.position.y -= _camera.topLeft.y;
+/// Adjust render position (NOT LOGICAL POSITION) of object based on the viewport
+void Camera::reposition(Transform& transform) const {
+    // Find layer group associated with transform
+    auto layerGroupIterator = _layerGroups.find(transform.layerGroup);
+    if (layerGroupIterator == _layerGroups.end()) { // Layer group not found, so defaulting to the default layer group
+        layerGroupIterator = _layerGroups.find(0);
     }
+    LayerGroup& layerGroup = layerGroupIterator->second;
+
+    // Communicate what the layer group state is of the transform
+    transform._isGui = layerGroup.ui;
+    transform._isParallax = abs(layerGroup.parallax-1.0) > 0.00000001;
+
+    // UI layer group needs no repositioning
+    if (layerGroup.ui) return;
+
+    // Adjust for parallax scrolling amount and position of the object relative to the viewport
+    transform.position.x -= _sceneViewPort.topLeft.x * layerGroup.parallax;
+    transform.position.y -= _sceneViewPort.topLeft.y * layerGroup.parallax;
 }
 
 void Camera::zoom(Engine::Transform& t) const {
-    //TODO: Text gets broken when zooming out. Zooming in works fine.
     t.scaleHeight *= _zoomLevel;
     t.scaleWidth *= _zoomLevel;
 }
 
-void Camera::addWaypoint(Point waypoint, int seconds) {
-    if(_waypoints.empty()){
+[[maybe_unused]] void Camera::addWaypoint(Point waypoint, int seconds) {
+    if(_waypoints.empty()) {
         addWaypoint(waypoint, seconds, _zoomLevel);
     } else {
         addWaypoint(waypoint, seconds, _waypoints.front().zoomTarget);
     }
 }
 
-void Camera::addWaypoint(Point waypoint, int seconds, float _zoomLevel) {
-    //TODO: Better time calculation. I just figured this out on my own but it's close enough in present conditions.
-    int time = seconds * 60;
+[[maybe_unused]] void Camera::addWaypoint(Point waypoint, int seconds, float zoomLevel) {
+    double time = seconds * Clock::getInstance().getMaxFps();
 
-    //Interpolation
+    // Interpolation
     double xDistance, yDistance, xPerMs, yPerMs;
     xDistance = yDistance = xPerMs = yPerMs = 0;
 
     if(_waypoints.empty()){
-        xDistance = waypoint.x - _camera.topLeft.x;
-        yDistance = waypoint.y - _camera.topLeft.y;
+        xDistance = waypoint.x - _sceneViewPort.topLeft.x;
+        yDistance = waypoint.y - _sceneViewPort.topLeft.y;
     } else {
         xDistance = waypoint.x - _waypoints.back().destination.x;
         yDistance = waypoint.y - _waypoints.back().destination.y;
@@ -79,38 +81,29 @@ void Camera::addWaypoint(Point waypoint, int seconds, float _zoomLevel) {
 
     float zoomPerMs;
     if(_waypoints.empty()){
-        zoomPerMs = (_zoomLevel*100 - _zoomLevel * 100) / time / 100;
+        zoomPerMs = (zoomLevel * 100 - zoomLevel * 100) / time / 100;
     } else {
-        zoomPerMs = (_zoomLevel*100 - _waypoints.back().zoomTarget * 100) / time / 100;
-    };
+        zoomPerMs = (zoomLevel * 100 - _waypoints.back().zoomTarget * 100) / time / 100;
+    }
 
-//    _waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, _zoomLevel, [&]{  }});
-    _waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, _zoomLevel});
+    _waypoints.emplace(WaypointParams{xPerMs, yPerMs, zoomPerMs, waypoint, zoomLevel});
 }
 
-void Camera::interpolateToNextWaypoint() {
+[[maybe_unused]] void Camera::interpolateToNextWaypoint() {
     if(_waypoints.empty()) return;
     WaypointParams& next = _waypoints.front();
-    _camera.topLeft.x += next.xPerMs;
-    _camera.topLeft.y += next.yPerMs;
+    _sceneViewPort.topLeft.x += next.xPerMs;
+    _sceneViewPort.topLeft.y += next.yPerMs;
     _zoomLevel += next.zoomPerMs;
-    if(std::abs(_camera.topLeft.x) >= std::abs(next.destination.x) && std::abs(_camera.topLeft.y) >= std::abs(next.destination.y)) _waypoints.pop();
+    if(std::abs(_sceneViewPort.topLeft.x) >= std::abs(next.destination.x) && std::abs(_sceneViewPort.topLeft.y) >= std::abs(next.destination.y)) _waypoints.pop();
 }
 
 void Camera::trackObject() {
-    //TODO: More reliable way to get screen centre.
-    SDL_DisplayMode DM;
-    SDL_GetCurrentDisplayMode(0, &DM);
-    auto displayWidth = DM.w;
-    auto displayHeight = DM.h;
-
-    double xPos{_trackedObject->transform.position.x};
-
-    _camera.topLeft.x = _trackedObject->transform.position.x - displayWidth / 3;
-    _camera.topLeft.y = _trackedObject->transform.position.y - (displayHeight / 2);
+    auto& transform = _trackedObject->transform;
+    _sceneViewPort.topLeft.x = transform.position.x - _sceneViewPort.width/2.6;
+    _sceneViewPort.topLeft.y = transform.position.y - _sceneViewPort.height/2;
 }
 
 void Camera::trackObject(std::shared_ptr<GameObject> object) {
     _trackedObject = std::move(object);
 }
-

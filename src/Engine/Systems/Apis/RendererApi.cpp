@@ -2,6 +2,10 @@
 
 using namespace Engine;
 
+void RendererApi::setViewPort(Point dimensions) {
+    renderer.setViewPort(dimensions);
+}
+
 void RendererApi::RendererApi::loadTexture(const std::string& fileName) {
     renderer.loadTexture(fileName);
 }
@@ -18,8 +22,8 @@ void RendererApi::RendererApi::drawTexture(const std::string& texture, const std
     renderer.drawTexture(texture, location);
 }
 
-void RendererApi::RendererApi::drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform) {
-    renderer.drawText(text, size, color, fontName, transform);
+void RendererApi::RendererApi::drawText(const Text& text, const std::shared_ptr<Transform>& location) {
+    renderer.drawText(text, location);
 }
 
 void RendererApi::RendererApi::endRenderTick() {
@@ -33,5 +37,3 @@ void RendererApi::resetForNextScene() {
 void RendererApi::RendererApi::end() {
     renderer.end();
 }
-
-

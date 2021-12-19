@@ -5,11 +5,11 @@
 
 namespace Engine{
     class CircleCollider : public Collider {
-    public: CircleCollider(double radius, bool isSensor, bool active)
-                : CircleCollider(isSensor ? CircleCollider{true, radius, active} : CircleCollider{radius, active}){};
+    public: CircleCollider(double radius, double offSetX, double offSetY, double friction, double bounciness,bool isSensor, bool active)
+                : CircleCollider(isSensor ? CircleCollider{true, radius, active, offSetX, offSetY, friction, bounciness} : CircleCollider{radius, active, offSetX, offSetY, friction, bounciness}){};
     private:
-        CircleCollider(double radius, bool active);
-        CircleCollider(bool dummy, double radius, bool active);
+        CircleCollider(double radius, bool active, double offSetX, double offSetY,double friction ,double bounciness);
+        CircleCollider(bool dummy, double radius, bool active, double offSetX, double offSetY, double friction, double bounciness);
     };
 }
 

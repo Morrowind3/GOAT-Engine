@@ -40,11 +40,16 @@ namespace Engine {
             [[nodiscard]] bool getMouseDown(MouseButton button) const;
 
         private:
+            // Singleton
             Input()= default;
-            InputRegistry _registry{};
+            // Globals
             EngineCalls& _engineCalls = EngineCalls::getInstance();
-            // State
+            // Input state
+            InputRegistry _registry{};
             int _mousePositionX{}, _mousePositionY{};
+            // Helper methods
+            void registerEvents();
+            void handleMouseLocation();
         };
 }
 

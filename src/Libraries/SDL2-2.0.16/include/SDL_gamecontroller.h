@@ -397,7 +397,7 @@ extern DECLSPEC int SDLCALL SDL_GameControllerGetPlayerIndex(SDL_GameController 
  * Set the player index of an opened game controller.
  *
  * \param gamecontroller the game controller object to adjust.
- * \param player_index Player index to assign to this controller.
+ * \param player_index Object_Player index to assign to this controller.
  */
 extern DECLSPEC void SDLCALL SDL_GameControllerSetPlayerIndex(SDL_GameController *gamecontroller, int player_index);
 

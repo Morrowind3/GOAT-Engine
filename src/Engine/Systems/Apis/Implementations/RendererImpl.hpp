@@ -12,27 +12,34 @@
 #include "../../../API/GameObjects/Transform.hpp"
 #include "Managers/Textures/TextureManager.hpp"
 #include "Managers/Fonts/FontManager.hpp"
+#include "../../../Utilities/EngineCalls.hpp"
+#include "Managers/Textures/TickTextureCacheData.hpp"
 
 namespace Engine {
     class RendererImpl {
         public:
-            RendererImpl(const std::string& name, std::string& iconPath, std::string& cursor);
+            RendererImpl(const std::string& name, const std::string& iconPath, const std::string& cursor);
+            void setViewPort(Point dimensions);
             void loadTexture(const std::string& fileName);
             void loadFont(const std::string& fileName);
             void beginRenderTick();
             void drawTexture(const std::string& texture, const std::shared_ptr<Transform>& location);
-            void drawText(const std::string& text, uint8_t size, Color color, const std::string& fontName, const std::shared_ptr<Transform>& transform);
+            void drawText(const Text& text, const std::shared_ptr<Transform>& location);
             void endRenderTick();
             void resetForNextScene();
             void end();
-
         private:
+            EngineCalls& _engineCalls = EngineCalls::getInstance(); // Needed to inform the engine of the window size
             int _sdlStatus;
+            bool _resizeForFirstSceneHasTakenPlace {false};
+            std::string _name, _iconPath, _cursor; // Initialization parameters
             std::unique_ptr<TextureManager> _textures = std::make_unique<TextureManager>(_renderer.get());
             std::unique_ptr<FontManager> _fonts = std::make_unique<FontManager>(_renderer.get());
             std::unique_ptr<SDL_Window, void (*)(SDL_Window*)> _window;
             std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> _renderer;
-            std::vector<std::pair<Transform, const Texture*>> _tickTextureCache;
+            std::vector<TickTextureCacheData> _tickTextureCache;
+            // Helper methods
+            void draw(TickTextureCacheData& drawable);
     };
 }
 

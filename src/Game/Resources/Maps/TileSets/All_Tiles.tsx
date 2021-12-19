@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.5" tiledversion="1.7.2" name="All_Tiles" tilewidth="21" tileheight="21" tilecount="61" columns="0">
+<tileset version="1.5" tiledversion="1.7.2" name="All_Tiles" tilewidth="198" tileheight="66" tilecount="71" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="21" height="21" source="../../Sprites/landscapes/grass/grass_slab_flat.png"/>
@@ -183,5 +183,35 @@
  </tile>
  <tile id="67">
   <image width="21" height="21" source="../../Sprites/waste/waste_pizzabox.png"/>
+ </tile>
+ <tile id="68">
+  <image width="21" height="21" source="../../Sprites/player/player_front.png"/>
+ </tile>
+ <tile id="73">
+  <image width="198" height="66" source="../../Sprites/utils/skydecor/cloud_big.png"/>
+ </tile>
+ <tile id="74">
+  <image width="98" height="32" source="../../Sprites/utils/skydecor/cloud_small.png"/>
+ </tile>
+ <tile id="75">
+  <image width="184" height="46" source="../../Sprites/utils/skydecor/cloud_wide.png"/>
+ </tile>
+ <tile id="76">
+  <image width="65" height="40" source="../../Sprites/utils/skydecor/airplane.png"/>
+ </tile>
+ <tile id="78">
+  <image width="21" height="21" source="../../Sprites/landscapes/grass/grass_ground_empty.png"/>
+ </tile>
+ <tile id="79">
+  <image width="21" height="21" source="../../Sprites/landscapes/stone/stone_ground_empty.png"/>
+ </tile>
+ <tile id="80">
+  <image width="21" height="21" source="../../Sprites/landscapes/snow/snow_ground_empty.png"/>
+ </tile>
+ <tile id="81">
+  <image width="21" height="21" source="../../Sprites/landscapes/lava/lava_ground_empty.png"/>
+ </tile>
+ <tile id="82">
+  <image width="21" height="21" source="../../Sprites/utils/lakes/lake_ice_top.png"/>
  </tile>
 </tileset>

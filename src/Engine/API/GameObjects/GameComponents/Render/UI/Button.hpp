@@ -8,7 +8,10 @@
 
 namespace Engine {
     struct Button : public GameComponent {
+        // Button with text
         Button(Text text, Sprite sprite, Rectangle dimensions, std::shared_ptr<Behavior> onClick, bool active);
+        // Button without text
+        Button(Sprite sprite, Rectangle dimensions, std::shared_ptr<Behavior> onClick, bool active);
         Text text;
         Sprite sprite;
         Rectangle dimensions;
