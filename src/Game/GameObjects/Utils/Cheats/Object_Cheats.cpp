@@ -23,13 +23,15 @@ Object_Cheats::Object_Cheats(Scene& scene, Object_Player& player, bool active) :
         Transform{{10, 270}, transform.layerGroup, 1,0, 1, 1}, false}));
     text.insert(std::make_pair(Keys::CHEATS+Keys::VICTORY_SCREEN, Text{"5 - Beat etappe", font, size, color,
         Transform{{10, 290}, transform.layerGroup, 1,0, 1, 1}, false}));
+    text.insert(std::make_pair(Keys::CHEATS+Keys::GOAT_FLIP, Text{"H - Flip goats", font, size, color,
+        Transform{{10, 310}, transform.layerGroup, 1,0, 1, 1}, false}));
 
     text.insert(std::make_pair(Keys::CHEATS+Keys::SPEED_UP, Text{"PAGE UP - Speed up game speed", font, size, color,
-        Transform{{10, 330}, transform.layerGroup, 1,0, 1, 1}, false}));
-    text.insert(std::make_pair(Keys::CHEATS+Keys::SLOW_DOWN, Text{"PAGE DOWN - Slow down game speed", font, size, color,
         Transform{{10, 350}, transform.layerGroup, 1,0, 1, 1}, false}));
-    text.insert(std::make_pair(Keys::CHEATS+Keys::RESET_SPEED, Text{"HOME - Reset game speed", font, size, color,
+    text.insert(std::make_pair(Keys::CHEATS+Keys::SLOW_DOWN, Text{"PAGE DOWN - Slow down game speed", font, size, color,
         Transform{{10, 370}, transform.layerGroup, 1,0, 1, 1}, false}));
+    text.insert(std::make_pair(Keys::CHEATS+Keys::RESET_SPEED, Text{"HOME - Reset game speed", font, size, color,
+        Transform{{10, 390}, transform.layerGroup, 1,0, 1, 1}, false}));
 
     // Components required for cheats
     auto& speedUp = audioSources.insert(std::make_pair(Keys::SPEED_UP, AudioSource{"Sounds/SpeedUp.ogg",AudioSourceType::SAMPLE, true})).first->second;
@@ -38,8 +40,9 @@ Object_Cheats::Object_Cheats(Scene& scene, Object_Player& player, bool active) :
     auto& error = audioSources.insert(std::make_pair(Keys::ERROR, AudioSource{"Sounds/Error.ogg",AudioSourceType::SAMPLE, true})).first->second;
     auto& beatAGameButton = audioSources.insert(std::make_pair(Keys::VICTORY_SCREEN, AudioSource{"Sounds/BeatGame.ogg",AudioSourceType::SAMPLE, true})).first->second;
     auto& heal = audioSources.insert(std::make_pair(Keys::HP, AudioSource{"Sounds/Heal.ogg",AudioSourceType::SAMPLE, true})).first->second;
+    auto& flip = audioSources.insert(std::make_pair(Keys::GOAT_FLIP, AudioSource{"Sounds/Flip.ogg",AudioSourceType::SAMPLE, true})).first->second;
 
     // Cheat behavior
     behaviors.insert(std::make_pair(Keys::CHEATS, std::make_shared<Behavior_Cheats>(scene, player, this->text,
-        speedUp, slowDown, reset, error, beatAGameButton, heal, true)));
+        speedUp, slowDown, reset, error, beatAGameButton, heal, flip, true)));
 }

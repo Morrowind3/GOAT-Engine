@@ -118,6 +118,7 @@ namespace Keys {
 #pragma endregion
 
 #pragma region Unsorted
+    const std::string GOAT_FLIP = "GOAT_FLIP";
 	const std::string TIMER_TEXT = "TIMER_TEXT";
     const std::string SNOWSTORM = "SNOWSTORM";
     const std::string FPS = "FPS"; // Usage: FPS text ID, FPS object ID, FPS script ID

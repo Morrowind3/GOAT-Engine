@@ -4,6 +4,7 @@
 #include <string>
 #include "../../../NoCopyNoMove.hpp"
 #include "Managers/Audio/AudioManager.hpp"
+#include "../../../Utilities/Debug.hpp"
 
 namespace Engine {
     class AudioImpl: NoCopyNoMove {
@@ -18,6 +19,7 @@ namespace Engine {
             void resetForNextScene();
         private:
             int _sdlStatus;
+            Debug& _debug = Debug::getInstance();
             std::unique_ptr<AudioManager> _audio = std::make_unique<AudioManager>();
         };
 }

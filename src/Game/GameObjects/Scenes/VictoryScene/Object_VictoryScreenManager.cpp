@@ -8,16 +8,16 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
     text.insert(std::make_pair("Title", Text{
             "A winner is you",
             "Fonts/Kenney_Thick.ttf",
-            60,
+            TextAlignment::CENTER, 60,
             {255,255,255,255},
-            Transform{{550,40},transform.layerGroup,1, 0,1,1},
+            Transform{{960,40},transform.layerGroup,1, 0,1,1},
             true}));
     text.insert(std::make_pair("GarbageLabel", Text{
             "Garbage collected",
             "Fonts/Kenney_Thick.ttf",
-            40,
+            TextAlignment::RIGHT, 40,
             {255,255,255,255},
-            Transform{{210,580},transform.layerGroup,1, 0,1,1},
+            Transform{{900,580},transform.layerGroup,1, 0,1,1},
             true}));
     Text& trashText = text.insert(std::make_pair("GarbageCount", Text{
             std::string{},
@@ -29,9 +29,9 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
     text.insert(std::make_pair("Timelabel", Text{
             "Time",
             "Fonts/Kenney_Thick.ttf",
-            40,
+            TextAlignment::RIGHT, 40,
             {255,255,255,255},
-            Transform{{705,660},transform.layerGroup,1, 0,1,1},
+            Transform{{900,660},transform.layerGroup,1, 0,1,1},
             true}));
     Text& timeText = text.insert(std::make_pair("Timestamp", Text{
             std::string{},
@@ -43,9 +43,9 @@ Object_VictoryScreenManager::Object_VictoryScreenManager(Transform transform, bo
     text.insert(std::make_pair("ScoreLabel", Text{
             "Score",
             "Fonts/Kenney_Thick.ttf",
-            40,
+            TextAlignment::RIGHT,40,
             {255,255,255,255},
-            Transform{{670,740},transform.layerGroup,1, 0,1,1},
+            Transform{{900,740},transform.layerGroup,1, 0,1,1},
             true}));
     Text& scoreText = text.insert(std::make_pair("Score", Text{
             std::string{},

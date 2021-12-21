@@ -8,7 +8,8 @@ namespace Engine {
     enum class FLIP {
         FLIP_NONE,
         FLIP_HORIZONTAL,
-        FLIP_VERTICAL
+        FLIP_VERTICAL,
+        FLIP_HORIZONTAL_VERTICAL
     };
 
     class RendererImpl; // Friend class link

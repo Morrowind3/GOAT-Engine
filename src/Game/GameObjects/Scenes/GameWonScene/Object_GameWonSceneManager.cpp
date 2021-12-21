@@ -14,9 +14,9 @@ Object_GameWonSceneManager::Object_GameWonSceneManager(Transform transform, bool
     text.insert(std::make_pair("GarbageLabel", Text{
             "Garbage collected",
             "Fonts/Kenney_Thick.ttf",
-            60,
+            TextAlignment::RIGHT, 60,
             {12,90,30,255},
-            Transform{{70,400},transform.layerGroup,1, 0,1,1},
+            Transform{{1080,400},transform.layerGroup,1, 0,1,1},
             true}));
     Text& trashText = text.insert(std::make_pair("GarbageCount", Text{
             std::string{},
@@ -28,9 +28,9 @@ Object_GameWonSceneManager::Object_GameWonSceneManager(Transform transform, bool
     text.insert(std::make_pair("Timelabel", Text{
             "Time",
             "Fonts/Kenney_Thick.ttf",
-            60,
+            TextAlignment::RIGHT, 60,
             {18,135,45,255},
-            Transform{{825,520},transform.layerGroup,1, 0,1,1},
+            Transform{{1080,520},transform.layerGroup,1, 0,1,1},
             true}));
     Text& timeText = text.insert(std::make_pair("Timestamp", Text{
             std::string{},
@@ -42,9 +42,9 @@ Object_GameWonSceneManager::Object_GameWonSceneManager(Transform transform, bool
     text.insert(std::make_pair("ScoreLabel", Text{
             "Score",
             "Fonts/Kenney_Thick.ttf",
-            60,
+            TextAlignment::RIGHT, 60,
             {24,180,60,255},
-            Transform{{770,640},transform.layerGroup,1, 0,1,1},
+            Transform{{1080,640},transform.layerGroup,1, 0,1,1},
             true}));
     Text& scoreText = text.insert(std::make_pair("Score", Text{
             std::string{},

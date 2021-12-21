@@ -1,5 +1,4 @@
 #include "AudioImpl.hpp"
-#include <iostream>
 #include "SDL.h"
 #include "SDL_mixer.h"
 
@@ -13,7 +12,7 @@ AudioImpl::AudioImpl(): _sdlStatus{SDL_Init(SDL_INIT_AUDIO)} {
 
     if (_sdlStatus == 0) _sdlStatus = Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers);
     if (_sdlStatus != 0) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Could not initialise audio: %s", Mix_GetError());
+        _debug.log(std::string{Mix_GetError()});
         exit(_sdlStatus);
     }
 }
@@ -22,7 +21,7 @@ void AudioImpl::loadSample(const std::string& fileName) {
     try {
         _audio->storeSample(fileName);
     } catch (const std::runtime_error& error) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        _debug.log(error.what());
         exit(111);
     }
 }
@@ -31,7 +30,7 @@ void AudioImpl::loadMusic(const std::string& fileName) {
     try {
         _audio->storeMusic(fileName);
     } catch (const std::runtime_error& error) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        _debug.log(error.what());
         exit(112);
     }
 }
