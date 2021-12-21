@@ -17,14 +17,14 @@ namespace Engine {
             }
             // Setup
             void setDatabaseName(const std::string& databaseName);
-            void runMigrations(std::vector<std::basic_string<char>> migrationQueries);
+            void runMigrations(const std::vector<std::string>& migrationQueries);
             bool databaseExists();
             // CRUD
-            void insert(DataModel model);
+            void insert(const DataModel& model);
             std::vector<DataModel> getAll(const std::string& table, const std::string& orderBy = "", bool descending = false);
             DataModel get(const std::string& table, const std::string& whereKey, const std::string& isValue);
-            void update(DataModel model);
-            void remove(DataModel model);
+            void update(const DataModel& model);
+            void remove(const DataModel& model);
 
         private:
             DataApi();

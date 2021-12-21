@@ -117,11 +117,11 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/Rectangle.hpp
         Engine/Systems/Apis/DataApi.cpp
         Engine/Systems/Apis/Implementations/DataImpl.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/SqlColumn.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+        Engine/Systems/Apis/Implementations/Sqlite/MigrationBuilder.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/SqlColumn.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/SqlTable.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/ForeignKey.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/DataModel.cpp Engine/Systems/Apis/Implementations/Sqlite/DataModel.hpp
         Engine/API/GameObjects/Rectangle.hpp 
 		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
 		Engine/API/Camera.cpp Engine/API/Camera.hpp 
@@ -130,8 +130,8 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Input/KeyCode.hpp
 		Engine/Utilities/Input/MouseButton.hpp
 		Engine/Utilities/Input/PressState.hpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+        Engine/Systems/Apis/Implementations/Sqlite/DataModel.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/DataModel.hpp
         Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.cpp Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.hpp
 		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
 		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp

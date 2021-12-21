@@ -14,12 +14,12 @@ bool DataApi::databaseExists() {
     return impl->databaseExists();
 }
 
-void DataApi::runMigrations(std::vector<std::basic_string<char>> migrationQueries) {
-    impl->runMigrations(std::move(migrationQueries));
+void DataApi::runMigrations(const std::vector<std::string>& migrationQueries) {
+    impl->runMigrations(migrationQueries);
 }
 
-void DataApi::insert(DataModel model) {
-    impl->insert(std::move(model));
+void DataApi::insert(const DataModel& model) {
+    impl->insert(model);
 }
 
 std::vector<DataModel> DataApi::getAll(const std::string& table, const std::string& orderBy, bool descending) {
@@ -30,10 +30,10 @@ DataModel DataApi::get(const std::string& table, const std::string& whereKey, co
     return impl->get(table, whereKey, isValue);
 }
 
-void DataApi::update(DataModel model) {
-    impl->update(std::move(model));
+void DataApi::update(const DataModel& model) {
+    impl->update(model);
 }
 
-void DataApi::remove(DataModel model) {
-    impl->remove(std::move(model));
+void DataApi::remove(const DataModel& model) {
+    impl->remove(model);
 }
