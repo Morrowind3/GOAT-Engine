@@ -141,6 +141,7 @@ add_library(GOAT_Engine STATIC
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp
 		Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp
+		Engine/Utilities/Http/HttpClient.cpp Engine/Utilities/Http/HttpClient.hpp
 		)
 
 
