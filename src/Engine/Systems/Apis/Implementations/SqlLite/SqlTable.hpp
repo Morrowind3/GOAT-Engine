@@ -1,40 +1,27 @@
+#ifndef GOAT_ENGINE_SQLTABLE_HPP
+#define GOAT_ENGINE_SQLTABLE_HPP
 
-#ifndef SQLITEPOC_SQLTABLE_H
-#define SQLITEPOC_SQLTABLE_H
-
-#include <iostream>
 #include <utility>
 #include <vector>
 #include <map>
 #include "SqlColumn.hpp"
 #include "ForeignKey.hpp"
 
-class SqlTable {
-
-public:
-    std::vector<SqlColumn*> columns;
-    std::vector<ForeignKey *> foreignKeys;
-
-    std::vector<SqlColumn*> getColumns() const {
-        return columns;
+namespace Engine {
+    class MigrationBuilder; // Friend class link
+    class SqlTable {
+        public:
+            explicit SqlTable(std::string tableName);
+            [[nodiscard]] std::vector<SqlColumn> getColumns() const;
+            [[nodiscard]] std::vector<ForeignKey> getForeignKeys() const;
+            [[nodiscard]] std::string getTableName() const;
+            void setTableName(std::string tableName);
+        private:
+            friend class Engine::MigrationBuilder;
+            std::string _tableName;
+            std::vector<SqlColumn> _columns;
+            std::vector<ForeignKey> _foreignKeys;
     };
+}
 
-    std::vector<ForeignKey *> getForeignKeys() const {
-        return foreignKeys;
-    };
-
-    std::string getTableName() {
-        return tableName;
-    }
-
-    void setTableName(std::string name) {
-        tableName = std::move(name);
-    }
-
-
-private:
-    std::string tableName;
-};
-
-
-#endif //SQLITEPOC_SQLTABLE_H
+#endif //GOAT_ENGINE_SQLTABLE_HPP

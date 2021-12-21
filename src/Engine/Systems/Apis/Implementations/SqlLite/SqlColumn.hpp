@@ -1,47 +1,25 @@
-#ifndef SQLITEPOC_SQLCOLUMN_H
-#define SQLITEPOC_SQLCOLUMN_H
+#ifndef GOATENGINE_SQLCOLUMN_HPP
+#define GOATENGINE_SQLCOLUMN_HPP
 
 #include <iostream>
 #include <utility>
 
-class SqlColumn {
+namespace Engine {
+    class SqlColumn {
+        public:
+            SqlColumn(bool isPrimaryKey, std::string columnName, std::string type, bool nullable, bool isUnique);
+            [[nodiscard]] std::string getName() const;
+            [[nodiscard]] std::string getType() const;
+            [[nodiscard]] bool isPrimaryKey() const;
+            [[nodiscard]] bool isUnique() const;
+            [[nodiscard]] bool isNullable() const;
+        private:
+            std::string _columnName;
+            std::string _type;
+            bool _isPrimaryKey;
+            bool _isUnique;
+            bool _isNullable;
+    };
+}
 
-private:
-    std::string name;
-    bool isPrimaryKey;
-    std::string type;
-    bool nullable;
-    bool isUnique;
-
-public:
-    SqlColumn(const bool isPrimaryKey, std::string columnName, std::string type, bool NotNull, bool isUnique) {
-        this->isPrimaryKey = isPrimaryKey;
-        this->name = std::move(columnName);
-        this->type = std::move(type);
-        this->nullable = NotNull;
-        this->isUnique = isUnique;
-    }
-
-    std::string getName() {
-        return name;
-    }
-
-    std::string getType(){
-        return type;
-    }
-
-    bool getPrimaryKey() const {
-        return isPrimaryKey;
-    }
-
-    bool getUnique() const {
-        return isUnique;
-    }
-
-    bool isNullable() const {
-        return nullable;
-    }
-};
-
-
-#endif //SQLITEPOC_SQLCOLUMN_H
+#endif //GOATENGINE_SQLCOLUMN_HPP

@@ -1,23 +1,28 @@
 #include "DataModel.hpp"
 
-std::string DataModel::getTableName() {
-    return tableName;
+DataModel::DataModel(std::string tableName) : _tableName(std::move(tableName)) {
 }
 
-std::vector<std::string> DataModel::getColumns() {
+std::string DataModel::getTableName() const {
+    return _tableName;
+}
+
+std::vector<std::string> DataModel::getColumns() const {
     std::vector<std::string> columns;
-    columns.reserve(data.size());
-    for(auto& it : data) {
-        columns.push_back(it.first);
+    columns.reserve(_data.size());
+    for(auto& data : _data) {
+        columns.push_back(data.first);
     }
     return columns;
 }
 
-std::string DataModel::getValue(std::string key) {
-    return data[key];
+std::string DataModel::getValue(const std::string& key) const {
+    return _data.at(key);
 }
 
-void DataModel::setValue(std::string key, std::string value) {
-    data[key] = value;
+void DataModel::setValue(const std::string& key, std::string value) {
+    _data[key] = std::move(value);
 }
+
+
 

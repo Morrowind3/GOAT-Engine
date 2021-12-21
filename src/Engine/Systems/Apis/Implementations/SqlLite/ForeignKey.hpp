@@ -1,33 +1,20 @@
-#ifndef SQLITEPOC_FOREIGNKEY_H
-#define SQLITEPOC_FOREIGNKEY_H
-
+#ifndef GOATENGINE_FOREIGNKEY_HPP
+#define GOATENGINE_FOREIGNKEY_HPP
 
 #include <string>
 
-class ForeignKey {
-public:
-    ForeignKey(std::string foreignKeyName, std::string referenceTable, std::string referenceName) {
-        this->foreignKeyName = foreignKeyName;
-        this->referenceName = referenceName;
-        this->referenceTable = referenceTable;
-    }
+namespace Engine {
+    class ForeignKey {
+        public:
+            ForeignKey(std::string foreignKeyName, std::string referenceTable, std::string referenceName);
+            [[nodiscard]] std::string getForeignKeyName() const;
+            [[nodiscard]] std::string getReferenceTable() const;
+            [[nodiscard]] std::string getReferenceName() const;
+        private:
+            std::string _foreignKeyName;
+            std::string _referenceTable;
+            std::string _referenceName;
+    };
+}
 
-    std::string getForeignKeyName(){
-        return foreignKeyName;
-    }
-
-    std::string getReferenceTable(){
-        return referenceTable;
-    }
-    std::string getReferenceName(){
-        return referenceName;
-    }
-
-private:
-    std::string foreignKeyName;
-    std::string referenceTable;
-    std::string referenceName;
-};
-
-
-#endif //SQLITEPOC_FOREIGNKEY_H
+#endif //GOATENGINE_FOREIGNKEY_HPP

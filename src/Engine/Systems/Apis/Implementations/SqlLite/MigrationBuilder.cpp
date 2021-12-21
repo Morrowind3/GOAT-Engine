@@ -1,67 +1,69 @@
 #include "MigrationBuilder.hpp"
 
-std::vector<std::basic_string<char>> MigrationBuilder::getMigrationQueries() {
-    while (!tables.empty()) {
-        allTablesQueries.push_back(CreateTable(tables.front()));
-        delete tables.front();
-        tables.erase(tables.begin());
+using namespace Engine;
+
+/// Add all tables to the migration query list
+std::vector<std::string> MigrationBuilder::getMigrationQueries() {
+    while (!_tables.empty()) {
+        _allTablesQueries.push_back(CreateTableCreationQuery(_tables.front()));
+        _tables.erase(_tables.begin());
     }
-    return allTablesQueries;
+    return _allTablesQueries;
 }
 
+/// Adds new table with ID column as primary key
 void MigrationBuilder::newTable(std::string name) {
     ++currentTable;
-    tables.push_back(new SqlTable());
-    tables.back()->setTableName(name);
+    _tables.emplace_back(SqlTable{std::move(name)});
     addColumn("id", "INTEGER", true, false, true);
 }
 
+/// Adds column to current table
 void MigrationBuilder::addColumn(std::string name, std::string type, bool primaryKey, bool nullable, bool unique) {
-    tables.back()->columns.push_back(new SqlColumn(primaryKey, std::move(name),  std::move(type), !nullable, unique));
+    _tables.back()._columns.emplace_back(SqlColumn{primaryKey, std::move(name), std::move(type), nullable, unique});
 }
 
+/// Adds foreign key to current table
 void MigrationBuilder::addForeignKey(const std::string& referenceTable, const std::string& referenceColumn,
                                      const std::string& referenceColumnType, bool thisColumnNullable, bool thisColumnUnique) {
     std::string keyName = referenceTable + "_" + referenceColumn;
     addColumn(keyName, referenceColumnType, false, thisColumnNullable, thisColumnUnique);
-    ForeignKey *level_id_fk = new ForeignKey(keyName, referenceTable, referenceColumn);
-    tables.at(currentTable)->foreignKeys.push_back(level_id_fk);
+    _tables.at(currentTable)._foreignKeys.emplace_back(ForeignKey{keyName, referenceTable, referenceColumn});
 }
 
-std::string MigrationBuilder::CreateTable(SqlTable* table) {
-    std::string sqlQuery = "CREATE TABLE IF NOT EXISTS " + table->getTableName() + "(";
-    std::vector<SqlColumn *> columns = table->getColumns();
+/// Turn table into table creation query
+std::string MigrationBuilder::CreateTableCreationQuery(const SqlTable& table) {
+    std::string sqlQuery = "CREATE TABLE IF NOT EXISTS " + table.getTableName() + "(";
+    std::vector<SqlColumn> columns = table.getColumns();
 
+    /// Add columns
     for (int i = 0; i < columns.size(); ++i) {
         std::string column;
         if (i == 0) {
-            column = columns[i]->getName() + " " + columns[i]->getType() + " ";
+            column = columns[i].getName() + " " + columns[i].getType() + " ";
         } else {
-            column = "," + columns[i]->getName() + " " + columns[i]->getType() + " ";
+            column = "," + columns[i].getName() + " " + columns[i].getType() + " ";
         }
 
-        if (columns[i]->getPrimaryKey()) {
+        if (columns[i].isPrimaryKey()) {
             column += "PRIMARY KEY ";
         }
-        if (!columns[i]->isNullable()) {
+        if (!columns[i].isNullable()) {
             column += "NOT NULL ";
         }
-        if (columns[i]->getUnique()) {
+        if (columns[i].isUnique()) {
             column += "UNIQUE ";
         }
         sqlQuery += column;
     }
 
-    if (!table->getForeignKeys().empty()) {
-        std::vector<ForeignKey *> foreignKeys = table->getForeignKeys();
-
-        for (int j = 0; j < foreignKeys.size(); ++j) {
-            sqlQuery += ", FOREIGN KEY (" + foreignKeys.at(j)->getForeignKeyName() + ") REFERENCES " +
-                        foreignKeys.at(j)->getReferenceTable() + "(" + foreignKeys.at(j)->getReferenceName() + ")";
-        }
+    /// Add foreign keys
+    for (auto & foreignKey : table.getForeignKeys()) {
+        sqlQuery += ", FOREIGN KEY (" + foreignKey.getForeignKeyName() + ") REFERENCES " +
+                    foreignKey.getReferenceTable() + "(" + foreignKey.getReferenceName() + ")";
     }
-    sqlQuery += ");";
 
+    sqlQuery += ");";
     return sqlQuery;
 }
 
