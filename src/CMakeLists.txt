@@ -296,7 +296,7 @@ add_executable(Mount_Everestimate
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
-add_executable(engine_tests "Tests/_Test.cpp" Tests/AnimatorHelperTest.cpp)
+add_executable(engine_tests "Tests/_GlobalsTests.cpp" Tests/AnimatorHelperTest.cpp Tests/InputRegistryTests.cpp Tests/HttpTests.cpp Tests/ClockTests.cpp Tests/ScriptSystemTests.cpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
 enable_testing()
