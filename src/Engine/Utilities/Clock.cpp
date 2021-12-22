@@ -16,7 +16,11 @@ void Clock::setMaxFps(unsigned int maxFps) {
 }
 
 unsigned int Clock::getTicks() {
-    return SDL_GetTicks();
+    #ifndef TEST_ENVIRONMENT
+        return SDL_GetTicks();
+    #else // If inside a testing environment, simulate a ticking clock instead of being dependent on SDL running
+        return _currentFrameTickInMs+1;
+    #endif
 }
 
 bool Clock::tickAndCheckIfNextFrameIsReady() {

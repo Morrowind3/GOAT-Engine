@@ -55,13 +55,19 @@ void Script_Goat::updatePosition() {
 
     if (_direction == GoatDirection::LEFT) _goat.rigidBody.forceX = -speed;
     if (_direction == GoatDirection::RIGHT) _goat.rigidBody.forceX = speed;
+    if (_globals.sceneExists(Keys::GOAT_FLIP)) _goat.rigidBody.forceY = FLIP_FORCE;
 
     _previousPos = _goat.transform.position;
 }
 
 void Script_Goat::updateSprite() {
-    if (_direction == GoatDirection::LEFT) _goat.transform.flip = FLIP::FLIP_NONE;
-    if (_direction == GoatDirection::RIGHT) _goat.transform.flip = FLIP::FLIP_HORIZONTAL;
+    if (_globals.sceneExists(Keys::GOAT_FLIP)) {
+        if (_direction == GoatDirection::LEFT) _goat.transform.flip = FLIP::FLIP_VERTICAL;
+        if (_direction == GoatDirection::RIGHT) _goat.transform.flip = FLIP::FLIP_HORIZONTAL_VERTICAL;
+    } else {
+        if (_direction == GoatDirection::LEFT) _goat.transform.flip = FLIP::FLIP_NONE;
+        if (_direction == GoatDirection::RIGHT) _goat.transform.flip = FLIP::FLIP_HORIZONTAL;
+    }
 
     int spriteChangeSpeed = _isAngry ? 10 : 50;
 

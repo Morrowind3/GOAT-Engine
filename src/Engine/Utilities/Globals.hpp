@@ -26,7 +26,9 @@ namespace Engine {
             [[nodiscard]] bool gameExists(const std::string& key) const;
             [[nodiscard]] std::string gameGet(const std::string& key) const;
             void gameRemove(const std::string& key);
+#ifndef TEST_ENVIRONMENT
         private:
+#endif
             Globals()= default;
             void sceneReset(); // Should only be called by Engine::ScriptSystem on scene switch
             // Put on heap so that a lot of globals can be supported

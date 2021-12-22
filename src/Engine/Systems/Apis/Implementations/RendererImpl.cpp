@@ -39,7 +39,7 @@ void RendererImpl::loadTexture(const std::string& fileName) {
     try {
         _textures->store(fileName);
     } catch (const std::runtime_error& error) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        _debug.log(error.what());
         exit(101);
     }
 }
@@ -49,7 +49,7 @@ void RendererImpl::loadFont(const std::string& fileName) {
     try {
         _fonts->store(fileName);
     } catch (const std::runtime_error& error) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", error.what());
+        _debug.log(error.what());
         exit(102);
     }
 }
@@ -79,6 +79,14 @@ void RendererImpl::drawText(const Text& text, const std::shared_ptr<Transform>& 
     if (text.font.empty()) return; // Ignore text with an invalid font
     auto& font = _fonts->get(text.font);
     std::shared_ptr<Texture> texture = font.text(text.text,text.size,text.color);
+    // Reposition text based on alignment
+    // E.g.: A right-alignment will have its transform moved based on the text's texture size,
+    //       meaning its end-position will be the start-position of left-aligned text
+    switch (text.alignment) {
+        case TextAlignment::LEFT: break;
+        case TextAlignment::CENTER: location->position.x -= location->scaleWidth * (texture->width()/2.0); break;
+        case TextAlignment::RIGHT: location->position.x -= location->scaleWidth * texture->width(); break;
+    }
     _tickTextureCache.emplace_back(TickTextureCacheData{*location, texture.get()});
 }
 
@@ -133,6 +141,9 @@ void RendererImpl::draw(TickTextureCacheData& drawable) {
             break;
         case FLIP::FLIP_VERTICAL:
             flip = SDL_FLIP_VERTICAL;
+            break;
+        case FLIP::FLIP_HORIZONTAL_VERTICAL:
+            flip = static_cast<SDL_RendererFlip>(SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL);
             break;
     }
 

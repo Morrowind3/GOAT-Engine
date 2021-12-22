@@ -14,6 +14,7 @@
 #include "Managers/Fonts/FontManager.hpp"
 #include "../../../Utilities/EngineCalls.hpp"
 #include "Managers/Textures/TickTextureCacheData.hpp"
+#include "../../../Utilities/Debug.hpp"
 
 namespace Engine {
     class RendererImpl {
@@ -29,7 +30,9 @@ namespace Engine {
             void resetForNextScene();
             void end();
         private:
+            // Utilities
             EngineCalls& _engineCalls = EngineCalls::getInstance(); // Needed to inform the engine of the window size
+            Debug& _debug = Debug::getInstance();
             int _sdlStatus;
             bool _resizeForFirstSceneHasTakenPlace {false};
             std::string _name, _iconPath, _cursor; // Initialization parameters

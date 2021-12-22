@@ -17,7 +17,9 @@ namespace Engine {
             }
             [[nodiscard]] double getMaxFps() const;
             [[nodiscard]] double lastRecordedUnmodifiedDeltaTime() const;
+#ifndef TEST_ENVIRONMENT
         private:
+#endif
             Clock()= default;
             void setMaxFps(unsigned int maxFps);
             bool tickAndCheckIfNextFrameIsReady();

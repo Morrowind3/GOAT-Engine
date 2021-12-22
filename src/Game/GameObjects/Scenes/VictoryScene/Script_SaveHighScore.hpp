@@ -20,7 +20,7 @@ class Script_SaveHighScore: public Script {
         // Variables
         Text& _trashText,& _timeText,& _scoreText;
         // Constants
-        const int INITIAL_HIGH_SCORE {1000};
+        const int INITIAL_HIGH_SCORE {7000};
         // Helper methods
         [[nodiscard]] int calculateScore(int collectedTrash, int millisecondsElapsed, int remainingHp,
                                          int finishLocationX, int lineLocationX) const;

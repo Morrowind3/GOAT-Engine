@@ -1,8 +1,8 @@
 #ifndef GOAT_ENGINE_SCRIPT_GOAT_HPP
 #define GOAT_ENGINE_SCRIPT_GOAT_HPP
 
-
 #include "Object_Goat.hpp"
+#include "../../../../Engine/Utilities/Globals.hpp"
 
 class Script_Goat : public Script {
     public:
@@ -11,7 +11,7 @@ class Script_Goat : public Script {
                                                                              _previousPos(goat.transform.position),
                                                                              _player(player) {};
         void onTriggerEnter2D(GameObject& object) override;
-        void onUpdate(double deltaTime);
+        void onUpdate(double deltaTime) override;
 
     private:
 
@@ -19,6 +19,8 @@ class Script_Goat : public Script {
             LEFT,
             RIGHT
         };
+        // Utilities
+        Globals& _globals = Globals::getInstance();
         // Variables
         Object_Goat& _goat;
         Object_Player& _player;
@@ -34,6 +36,7 @@ class Script_Goat : public Script {
         const float SPEED_IDLE{200};       // Normal walk speed
         const float SPEED_ANGRY{450};      // Angry walk speed
         const float SENSOR_WIDTH {600};
+        const float FLIP_FORCE {700};
         // Helper methods
         void updateDirection();
         void updatePosition();

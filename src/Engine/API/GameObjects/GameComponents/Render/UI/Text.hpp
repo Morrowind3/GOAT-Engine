@@ -7,11 +7,16 @@
 #include <string>
 
 namespace Engine {
+
+    enum class TextAlignment { LEFT, CENTER, RIGHT };
+
     class Button; // Friend class link
     struct Text : public GameComponent {
+        Text(std::string text, std::string font, TextAlignment alignment, uint8_t size, Color color, Transform location, bool active);
         Text(std::string text, std::string font, uint8_t size, Color color, Transform location, bool active);
         std::string text;
         std::string font;
+        TextAlignment alignment;
         uint8_t size;
         Color color;
         Transform location;

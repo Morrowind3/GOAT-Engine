@@ -9,6 +9,9 @@
 // Only callable by input
 namespace Engine {
     class InputRegistry {
+#ifdef TEST_ENVIRONMENT
+        public:
+#endif
         friend class Input;
         InputRegistry() = default;
         void flushForNextFrame();

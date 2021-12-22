@@ -117,11 +117,11 @@ add_library(GOAT_Engine STATIC
         Engine/API/GameObjects/Rectangle.hpp
         Engine/Systems/Apis/DataApi.cpp
         Engine/Systems/Apis/Implementations/DataImpl.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/MigrationBuilder.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/SqlColumn.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/SqlTable.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/ForeignKey.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+        Engine/Systems/Apis/Implementations/Sqlite/MigrationBuilder.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/SqlColumn.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/SqlTable.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/ForeignKey.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/DataModel.cpp Engine/Systems/Apis/Implementations/Sqlite/DataModel.hpp
         Engine/API/GameObjects/Rectangle.hpp 
 		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
 		Engine/API/Camera.cpp Engine/API/Camera.hpp 
@@ -130,8 +130,8 @@ add_library(GOAT_Engine STATIC
 		Engine/Utilities/Input/KeyCode.hpp
 		Engine/Utilities/Input/MouseButton.hpp
 		Engine/Utilities/Input/PressState.hpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.cpp
-        Engine/Systems/Apis/Implementations/SqlLite/DataModel.hpp
+        Engine/Systems/Apis/Implementations/Sqlite/DataModel.cpp
+        Engine/Systems/Apis/Implementations/Sqlite/DataModel.hpp
         Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.cpp Engine/Systems/Apis/Implementations/Managers/Physics/ContactListener.hpp
 		Engine/Systems/Apis/Implementations/Managers/Physics/CollisionState.hpp
 		Engine/Utilities/Clock.cpp Engine/Utilities/Clock.hpp
@@ -141,6 +141,7 @@ add_library(GOAT_Engine STATIC
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp
 		Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp
+		Engine/Utilities/Http/HttpClient.cpp Engine/Utilities/Http/HttpClient.hpp
 		)
 
 
@@ -290,11 +291,12 @@ add_executable(Mount_Everestimate
 		Game/GameObjects/Scenes/CreditsMenuScene/Object_CreditsMenuBackground.cpp Game/GameObjects/Scenes/CreditsMenuScene/Object_CreditsMenuBackground.hpp
 		Game/GameObjects/Scenes/CreditsMenuScene/Behavior_Credits.cpp Game/GameObjects/Scenes/CreditsMenuScene/Behavior_Credits.hpp Game/GameObjects/Scenes/CreditsMenuScene/Script_AnimateCreditsText.cpp Game/GameObjects/Scenes/CreditsMenuScene/Script_AnimateCreditsText.hpp
 		Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_HelpScreenButton.cpp Game/GameObjects/Scenes/MainMenuScene/Buttons/Object_HelpScreenButton.hpp Game/Scenes/Menus/Scene_HelpMenu.cpp Game/Scenes/Menus/Scene_HelpMenu.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpEntry.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpEntry.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_HelpBackground.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_HelpBackground.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpKey.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpKey.hpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpDescription.cpp Game/GameObjects/Scenes/HelpMenuScene/Object_KeyHelpDescription.hpp Game/Scenes/Menus/Scene_GameWonMenu.cpp Game/Scenes/Menus/Scene_GameWonMenu.hpp Game/GameObjects/Scenes/GameWonScene/Object_GameWonSceneManager.cpp Game/GameObjects/Scenes/GameWonScene/Object_GameWonSceneManager.hpp
+        Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_FlipGoats.cpp Game/GameObjects/Utils/Cheats/CheatsLibrary/Script_FlipGoats.hpp
 		)
 
 target_link_libraries(Mount_Everestimate GOAT_Engine SDL2main)
 
-add_executable(engine_tests "Tests/_Test.cpp" Tests/AnimatorHelperTest.cpp)
+add_executable(engine_tests "Tests/_GlobalsTests.cpp" Tests/AnimatorHelperTest.cpp Tests/InputRegistryTests.cpp Tests/HttpTests.cpp Tests/ClockTests.cpp Tests/ScriptSystemTests.cpp)
 target_link_libraries(engine_tests GOAT_Engine SDL2main SDL2 SDL2_ttf SDL2_image SDL2_mixer)
 
 enable_testing()

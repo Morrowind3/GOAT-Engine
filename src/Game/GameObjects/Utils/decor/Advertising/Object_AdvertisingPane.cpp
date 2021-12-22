@@ -8,7 +8,9 @@ Object_AdvertisingPane::Object_AdvertisingPane(Transform transform, bool active)
     std::vector<std::string> adverts = {
             "https://i.imgur.com/GbWGjV4.png",
             "https://i.imgur.com/vzsq2CS.jpg",
-            "https://i.imgur.com/4GARU2X.jpg"
+            "https://i.imgur.com/4GARU2X.jpg",
+            "https://everestimate.julianmaas.com/Edmund.jpeg",
+            "https://everestimate.julianmaas.com/Edmund.jpg"
     };
 
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -16,8 +18,13 @@ Object_AdvertisingPane::Object_AdvertisingPane(Transform transform, bool active)
     std::default_random_engine random(seed);
     std::string advert = adverts[dist(random)];
 
-    auto image = Http::getInstance().imageFromWeb(advert);
-    if (image.empty()) image = "Sprites/utils/skydecor/placeholder_advert.png";
+    std::string image;
+    try {
+        image = Http::getInstance().downloadFromWeb(advert);
+    } catch (const std::runtime_error& error) {
+        Debug::getInstance().log(error.what());
+        image = "Sprites/utils/skydecor/placeholder_advert.png";
+    }
 
     sprites.insert(std::make_pair(Keys::ADVERTISEMENT, Sprite{image, true}));
     tags.insert(std::make_pair(Keys::NO_FLIP, true));

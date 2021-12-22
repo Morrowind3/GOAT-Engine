@@ -1,87 +1,75 @@
 #include "Http.hpp"
-#include <regex>
-#include <string>
 #include <io.h>
 
-size_t callbackfunction(void *ptr, size_t size, size_t nmemb, void* userdata)
-{
-    FILE* stream = (FILE*)userdata;
-    if (!stream)
-    {
-        printf("!!! No stream\n");
-        return 0;
-    }
+using namespace Engine;
 
-    size_t written = fwrite((FILE*)ptr, size, nmemb, stream);
-    return written;
+extern "C" {
+    /// Callback method for CURL
+    size_t callback(void* contents, size_t size, size_t numberOfMembers, void* userData) {
+        FILE* stream = (FILE*)userData;
+        if (!stream) return 0;
+
+        const size_t written = fwrite((FILE*)contents, size, numberOfMembers, stream);
+        return written;
+    }
 }
 
-std::string Http::imageFromWeb(const std::string& url) const {
-    if(!isSupportedFormat(url)) return "";
+/// Returns the string where the file was downloaded
+std::string Http::downloadFromWeb(const std::string& url) const {
+    std::string downloadLocation;
+
+    if (isValidUrl(url)) {
+        downloadLocation = _downloadDirectory + extractFilenameFromUrl(url);
+    } else throw std::runtime_error("HTTP-Utility: Invalid URL: " + url);
+
     mkdir(_downloadDirectory.c_str());
-    std::regex filenameRegex("([^\\/]+$)");
-    std::smatch match;
-    std::string filePathString;
-
-    if (std::regex_search(url.begin(), url.end(), match, filenameRegex)){
-        filePathString = _downloadDirectory + match[0].str();
-        printf(filePathString.c_str());
-
-    } else return "";
-
-    FILE* fp = fopen(filePathString.c_str(), "wb");
+    FILE* fp = fopen(downloadLocation.c_str(), "wb");
     if (!fp)
     {
-        printf("Failed to create file on the disk\n");
-        return "";
+        throw std::runtime_error("HTTP-Utility: Failed to create file on the disk");
     }
 
-    curl_easy_setopt(_curl, CURLOPT_URL, url.c_str());
-    curl_easy_setopt(_curl, CURLOPT_WRITEDATA, fp);
-    curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, callbackfunction);
-    curl_easy_setopt(_curl, CURLOPT_FOLLOWLOCATION, 1);
+    auto* curl = _httpClient.getClient();
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callback);
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
 
-    CURLcode rc = curl_easy_perform(_curl);
-    if (rc)
+    CURLcode responseCodeCurl = curl_easy_perform(curl);
+    if (responseCodeCurl)
     {
-        printf("Failed to download: %s\n", url.c_str());
-        return "";
+        fclose(fp);
+        throw std::runtime_error("HTTP-Utility: Failed to download URL " + url +
+            "\nAssociated CURL code: " + std::to_string(responseCodeCurl));
     }
 
-    long res_code = 0;
-    curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE, &res_code);
-    if (!((res_code == 200 || res_code == 201)))
+    long responseCodeHtml = 0;
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &responseCodeHtml);
+    if (responseCodeHtml != 200 && responseCodeHtml != 201)
     {
-        printf("Response code: %d\n", res_code);
-        return "";
+        fclose(fp);
+        throw std::runtime_error("HTTP-Utility: Failed to download URL " + url +
+            "\nAssociated HTTP code: " + std::to_string(responseCodeHtml));
     }
 
     fclose(fp);
-    return filePathString;
+    _debug.log("HTTP-Utility: Downloaded URL " + url + " to " + downloadLocation);
+    return downloadLocation;
 }
 
-
-
-Http::Http() {
-    curl_global_init(CURL_GLOBAL_ALL);
-    _curl = curl_easy_init();
-    curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 0L); //Disables SSL verification. Remove if class expands and this can start introducing security risks
-    curl_easy_setopt(_curl, CURLOPT_VERBOSE, 0L);
+[[maybe_unused]] void Http::setDownloadDirectory(const std::string& directory) {
+    _downloadDirectory = directory;
 }
 
-Http::~Http(){
-    curl_easy_cleanup(_curl);
-    curl_global_cleanup();
+bool Http::isValidUrl(const std::string& url) {
+    return std::regex_match (url.begin(), url.end(),
+        std::regex {R"(^(([^:\/?#]+):)?(//([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?)", std::regex::extended});
 }
 
-bool Http::isSupportedFormat(const std::string &url) {
-    std::string formats[3] {".png", ".jpg", ".jpeg"};
-
-    for(const auto& format : formats){
-        if(url.size() >= format.size() &&
-        url.compare(url.size() - format.size(), format.size(), format) == 0){
-            return true;
-        };
-    }
-    return false;
+std::string Http::extractFilenameFromUrl(const std::string& url) {
+    std::smatch match;
+    if (std::regex_search(url.begin(), url.end(), match, std::regex {"([^\\/]+$)"}))
+        return match[0].str();
+    throw std::runtime_error("HTTP-Utility: No filename found in URL: " + url);
 }
