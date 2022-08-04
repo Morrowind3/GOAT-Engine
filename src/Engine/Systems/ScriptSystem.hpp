@@ -5,6 +5,7 @@
 #include "Apis/PhysicsApi.hpp"
 #include "../Utilities/Input.hpp"
 #include "../Utilities/Globals.hpp"
+#include "SystemHelpers/LuaHelper.hpp"
 
 namespace Engine {
     class ScriptSystem : public System {

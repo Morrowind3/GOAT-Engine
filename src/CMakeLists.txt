@@ -4,7 +4,7 @@ project(GOAT_Engine)
 set(CMAKE_CXX_STANDARD 17)
 
 SET(MINGW_STATIC_FLAGS "-static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic")
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${MINGW_STATIC_FLAGS}")
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}  ${MINGW_STATIC_FLAGS}")
 
 set(SDL2_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2-2.0.16/include")
 set(SDL2_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SDL2-2.0.16/lib/x86")
@@ -19,9 +19,11 @@ set(SQLITE_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/include")
 set(SQLITE_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/SQLite/lib")
 set(CURL_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/CURL/lib")
 set(CURL_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/CURL/include")
+set(LUA_LIB_DIR "${PROJECT_SOURCE_DIR}/Libraries/Lua/lib")
+set(LUA_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libraries/Lua/include")
 
-include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR} ${CURL_INCLUDE_DIR})
-link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${SQLITE_LIB_DIR} ${CURL_LIB_DIR})
+include_directories(${SDL2_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} ${BOX2D_INCLUDE_DIR} ${SQLITE_INCLUDE_DIR} ${CURL_INCLUDE_DIR} ${LUA_INCLUDE_DIR})
+link_directories(${SDL2_LIB_DIR} ${SDL2_TTF_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_MIXER_LIB_DIR} ${SQLITE_LIB_DIR} ${CURL_LIB_DIR} ${LUA_LIB_DIR})
 
 file(GLOB_RECURSE Box2D_SRC
         Libraries/Box2D/*.h
@@ -122,9 +124,9 @@ add_library(GOAT_Engine STATIC
         Engine/Systems/Apis/Implementations/Sqlite/SqlTable.cpp
         Engine/Systems/Apis/Implementations/Sqlite/ForeignKey.cpp
         Engine/Systems/Apis/Implementations/Sqlite/DataModel.cpp Engine/Systems/Apis/Implementations/Sqlite/DataModel.hpp
-        Engine/API/GameObjects/Rectangle.hpp 
+        Engine/API/GameObjects/Rectangle.hpp
 		Engine/Utilities/Debug.cpp Engine/Utilities/Debug.hpp
-		Engine/API/Camera.cpp Engine/API/Camera.hpp 
+		Engine/API/Camera.cpp Engine/API/Camera.hpp
 		Engine/Utilities/Globals.cpp Engine/Utilities/Globals.hpp
         Engine/Utilities/Input/InputRegistry.cpp Engine/Utilities/Input/InputRegistry.hpp
 		Engine/Utilities/Input/KeyCode.hpp
@@ -140,13 +142,13 @@ add_library(GOAT_Engine STATIC
 		Engine/Systems/SystemHelpers/AnimatorHelper.cpp Engine/Systems/SystemHelpers/AnimatorHelper.hpp 
 		Engine/API/LayerGroup.cpp Engine/API/LayerGroup.hpp
         Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.cpp Engine/Systems/Apis/Implementations/Managers/Textures/TickTextureCacheData.hpp
-		Engine/Utilities/Http.cpp Engine/Utilities/Http.hpp
-		Engine/Utilities/Http/HttpClient.cpp Engine/Utilities/Http/HttpClient.hpp
-		)
+		Engine/Utilities/Http.cpp
+		Engine/Utilities/Http/HttpClient.cpp
+		Engine/Systems/SystemHelpers/LuaHelper.cpp)
 
 
 target_include_directories(GOAT_Engine PUBLIC "Box2D")
-target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3 libcurl)
+target_link_libraries(GOAT_Engine TessilOrdered SDL2 SDL2_ttf SDL2_image SDL2_mixer sqlite3 libcurl lua54)
 
 add_executable(Mount_Everestimate
         Game/Keys.hpp
@@ -306,3 +308,8 @@ add_custom_command(TARGET Mount_Everestimate POST_BUILD
         ${PROJECT_SOURCE_DIR}/DLLs
         ${PROJECT_SOURCE_DIR}/Game/Resources
         $<TARGET_FILE_DIR:Mount_Everestimate>)
+
+add_custom_command(TARGET Mount_Everestimate POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_directory
+		${PROJECT_SOURCE_DIR}/Game/LuaScripts
+		$<TARGET_FILE_DIR:Mount_Everestimate>/LuaScripts)
