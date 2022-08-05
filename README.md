@@ -1,4 +1,7 @@
 # SpicH
+## Branch-specific
+This branch expands the engine with rudimentary lua support as part of a quick experiment.  You'll still need to pass data to lua in C++ manually, and receive data from lua manually, so it's not very useful in the current state. 
+
 ## Information
 
 - C++ version: 17
