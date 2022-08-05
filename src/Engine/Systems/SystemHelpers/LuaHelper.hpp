@@ -5,7 +5,7 @@
 
 class LuaHelper {
 public:
-    static void execute(const char* filename);
+    static void execute(const char* filename, const char* function = nullptr);
 };
 
 

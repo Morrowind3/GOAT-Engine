@@ -10,28 +10,38 @@ void print_error(lua_State* state) {
     lua_pop(state, 1);
 }
 
-void LuaHelper::execute(const char* filename)
+void LuaHelper::execute(const char* filename, const char* function)
 {
     lua_State *state = luaL_newstate();
-
-    // Make standard libraries available in the Lua object
     luaL_openlibs(state);
 
-    int result;
-    // Load the program; this supports both source code and bytecode files.
-    result = luaL_loadfile(state, filename);
-
+    int result = luaL_loadfile(state, filename);
     if ( result != LUA_OK ) {
         print_error(state);
         return;
     }
-    // Finally, execute the program by calling into it.
-    // Change the arguments if you're not running vanilla Lua code.
+
     result = lua_pcall(state, 0, LUA_MULTRET, 0);
     if ( result != LUA_OK ) {
         print_error(state);
         return;
     }
+
+    if(function != nullptr){
+        lua_getglobal(state,function);
+        if(lua_isfunction(state, -1) )
+        {
+            // push function arguments into stack
+            lua_pushnumber(state, 5.0);
+            lua_pushnumber(state, 6.0);
+            lua_pcall(state,2,1,0);
+            if (!lua_isnil(state, -1))
+            {
+                lua_pop(state,1);
+            }
+        }
+    }
+
     lua_close(state);
 }
 

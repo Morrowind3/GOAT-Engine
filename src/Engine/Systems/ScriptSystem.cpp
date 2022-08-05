@@ -38,7 +38,7 @@ void ScriptSystem::runOnStarts(std::vector<std::shared_ptr<GameObject>>& activeO
             }
         }
     }
-    LuaHelper::execute("LuaScripts/test.lua");
+    LuaHelper::execute("LuaScripts/test.lua", "onStart");
 }
 
 void ScriptSystem::runOnUpdates(std::vector<std::shared_ptr<GameObject>>& activeObjects, const double deltaTime) {
