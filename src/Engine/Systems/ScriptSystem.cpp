@@ -19,7 +19,6 @@ void ScriptSystem::onFrameTick(const double deltaTime) {
     destroyObjectsMarkedForDestruction();
     _physics.runCollisionScripts();
     auto active = activeObjects();
-    runOnStarts(active);
     runPressedButtons(active);
     runOnDestroys(active);
     runOnUpdates(active, deltaTime);
